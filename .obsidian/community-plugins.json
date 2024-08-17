@@ -12,5 +12,6 @@
   "url-display",
   "cycle-through-panes",
   "remember-cursor-position",
-  "mononote"
+  "mononote",
+  "floating-toc"
 ]
