@@ -10,6 +10,9 @@ paginate  = 14  # 每页显示的文章数量
 rssLimit  = 10  # RSS订阅中最多显示的文章数量
 copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."  # RSS模板中使用的版权声明
 
+
+
+googleAnalytics = "G-HV98V20MVF"  # Google Analytics的跟踪ID
 # disqusShortname = ""
 hasCJKLanguage = true  # 启用对CJK（中日韩）语言的支持
 
@@ -35,11 +38,6 @@ disable404     = false  # 启用404页面
 disableHugoGeneratorInject = false  # 启用Hugo生成器注入
 
 
-[services]
-  [services.googleAnalytics]
-    id = "G-HV98V20MVF"
-  # [services.disqus]
-    # shortname = ""  # 如果没有使用，可以删除这部分
 
 [permalinks]
   posts = "/posts/:year/:month/:title/"  # 文章的永久链接格式
