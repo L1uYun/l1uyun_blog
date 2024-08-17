@@ -35,6 +35,12 @@ disable404     = false  # 启用404页面
 disableHugoGeneratorInject = false  # 启用Hugo生成器注入
 
 
+[services]
+  [services.googleAnalytics]
+    id = "G-RSXEZVCJT4"
+  # [services.disqus]
+    # shortname = ""  # 如果没有使用，可以删除这部分
+
 [permalinks]
   posts = "/posts/:year/:month/:title/"  # 文章的永久链接格式
 
