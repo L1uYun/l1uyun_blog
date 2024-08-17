@@ -10,10 +10,6 @@ paginate  = 14  # 每页显示的文章数量
 rssLimit  = 10  # RSS订阅中最多显示的文章数量
 copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."  # RSS模板中使用的版权声明
 
-
-
-googleAnalytics = "G-HV98V20MVF"  # Google Analytics的跟踪ID
-# disqusShortname = ""
 hasCJKLanguage = true  # 启用对CJK（中日韩）语言的支持
 
 archetypeDir = "archetypes"  # archetypes目录的位置
