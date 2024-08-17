@@ -345,4 +345,5 @@ public static boolean checkXXE(String content) {
 在 Java 中，XXE（XML 外部实体注入）漏洞与其他语言类似：攻击者通过不安全的 XML 解析配置，在 XML 文档中注入恶意外部实体，能够读取本地文件、发起远程请求或执行其他恶意操作。
 # 参考
 小迪sec
+
 [Java XXE漏洞原理研究](https://www.cnblogs.com/LittleHann/p/17776458.html)
