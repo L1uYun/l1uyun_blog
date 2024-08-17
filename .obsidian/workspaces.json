@@ -21,8 +21,22 @@
                     "source": false
                   }
                 }
+              },
+              {
+                "id": "ed41d9737f803bb0",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "content/posts/javasec-urldns链.md",
+                    "mode": "source",
+                    "backlinks": false,
+                    "source": false
+                  }
+                }
               }
-            ]
+            ],
+            "currentTab": 1
           }
         ],
         "direction": "vertical"
@@ -80,7 +94,7 @@
                 "state": {
                   "type": "outline",
                   "state": {
-                    "file": "README.md"
+                    "file": "content/posts/javasec-urldns链.md"
                   }
                 }
               },
@@ -90,7 +104,7 @@
                 "state": {
                   "type": "backlink",
                   "state": {
-                    "file": "README.md",
+                    "file": "content/posts/javasec-urldns链.md",
                     "collapseAll": false,
                     "extraContext": false,
                     "sortOrder": "alphabetical",
@@ -109,7 +123,8 @@
                   "state": {}
                 }
               }
-            ]
+            ],
+            "currentTab": 2
           }
         ],
         "direction": "horizontal",
@@ -117,6 +132,7 @@
       },
       "left-ribbon": {
         "hiddenItems": {
+          "url-display:打开 URL 面板": false,
           "homepage:Open homepage": false,
           "templater-obsidian:Templater": true,
           "templates:插入模板": true,
@@ -128,8 +144,8 @@
           "zk-prefixer:创建时间戳笔记": true
         }
       },
-      "active": "afc0dfd2a0b94365",
-      "mtime": "2024-07-19T09:06:12+08:00"
+      "active": "ed41d9737f803bb0",
+      "mtime": "2024-08-17T23:24:21+08:00"
     }
   },
   "active": "Home"
