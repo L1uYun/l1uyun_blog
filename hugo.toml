@@ -2,7 +2,7 @@ baseURL = "https://l1uyun.one"
 title   = "l1uyun☁️"
 languageCode = "zh-cn"
 theme = "hello-friend-ng"
-
+timeZone = "Asia/Shanghai"
 PygmentsCodeFences = true  # 启用代码块的Pygments高亮
 # PygmentsStyle = "monokai"
 PygmentsStyle = "github-dark"  # 设置代码高亮的样式
