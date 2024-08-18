@@ -207,4 +207,4 @@ JDumpSpider
 
 
 # 参考
-[Fetching Title#0fxx](https://blog.csdn.net/m0_60571842/article/details/135096224)
+[WEB攻防-Java安全&原生反序列化&SpringBoot攻防&heapdump提取&CVE\_java spring反序列化-CSDN博客](https://blog.csdn.net/m0_60571842/article/details/135096224)
