@@ -1,7 +1,0 @@
-{
-  "pinned": [
-    "workspaces:load",
-    "obsidian-excalidraw-plugin:excalidraw-autocreate-newtab",
-    "random-note"
-  ]
-}
