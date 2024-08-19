@@ -41,9 +41,9 @@ uid=0(root) gid=0(root) groups=0(root)
 root@653a3ab3924e:/# 
 ```
 ### 内网扫描
-然后开始扫描内网
+然后开始扫描内网.
 
-这里不知道为啥出现了三台机器(多了一台192.168.100.1),192.168.100.3才是我接下来要利用的thinkphp机器
+这里不知道为啥出现了三台机器(多了一台192.168.100.1),192.168.100.3才是我接下来要利用的thinkphp机器.
 ```bash
 root@74d34925b057:/tmp# ifconfig
 eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
