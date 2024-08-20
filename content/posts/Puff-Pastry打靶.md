@@ -277,7 +277,7 @@ plesa try other path,as -path /www/wwwroot/index.php
 已完成 8/8
 [*] 扫描结束,耗时: 7m48.941223927s
 ```
-### 配置端口转发
+### 配置socks代理
 我这为啥又出现了一个多的ip....
 ```bash
 10.85.101.4 thinkphp

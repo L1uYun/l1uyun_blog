@@ -3,6 +3,7 @@ date: 2024-07-16
 title: oracle-padding-attack
 tags:
   - sec
+toc: "true"
 ---
 在打tryhackme的New-York-Flankees房间的时候遇见了这个攻击方式,没见过,学习一下
 ## 前置知识
