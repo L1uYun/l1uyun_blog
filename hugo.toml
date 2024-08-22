@@ -11,6 +11,7 @@ rssLimit  = 10  # RSS订阅中最多显示的文章数量
 copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."  # RSS模板中使用的版权声明
 
 
+
 # Google Analytics的跟踪ID
 [services]
   [services.googleAnalytics]
@@ -57,11 +58,14 @@ disableHugoGeneratorInject = false  # 启用Hugo生成器注入
     [params.author]
     name = "l1uyun"  # 作者名称
 
+    [params.busuanzi]
+    enable: true
+
+
   dateform        = "Jan 2, 2006"  # 日期格式
   dateformShort   = "Jan 2"  # 简短日期格式
   dateformNum     = "2006-01-02"  # 数字日期格式
   dateformNumTime = "2006-01-02 15:04"  # 数字日期和时间格式
-
   description = "Welcome to yao's blog"  # 网站描述
   keywords = "博客"  # 关键字
   images = [""]  # 图片
