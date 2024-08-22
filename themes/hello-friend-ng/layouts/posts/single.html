@@ -1,14 +1,22 @@
 {{ define "main" }}
   <main class="post">
 
- <div class="post-info">
+    <div class="post-info">
       <p>
       </p>
 
-<hr>
+      <hr>
       {{ partial "tags.html" .Params.tags }}
       {{ partial "categories.html" . }}
- <p>
+
+      <!-- busuanzi -->
+      {{ if .Site.Params.busuanzi.enable -}}
+        <div class="post-info">&nbsp·&nbsp
+          <span id="busuanzi_container_page_pv">本文阅读量<span id="busuanzi_value_page_pv"></span>次</span>
+        </div>
+      {{- end }}
+
+      <p>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
           <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
           <line x1="16" y1="2" x2="16" y2="6"></line>
@@ -28,7 +36,7 @@
             {{ else }} 
               ({{ i18n "lastModified" }}: {{ dateFormat "2006-01-02 15:04" .Lastmod.Local }})
             {{ end }}
-         {{ end }}
+          {{ end }}
         {{ end }}
       </p>
 
@@ -65,9 +73,10 @@
           {{ end}}
         {{ end }}                                                                                                       
       </p>
+    </div>
 
-     </div>
     <hr>
+
     <article>
       <h1 class="post-title">
         <a href="{{ .Permalink }}">{{ .Title | markdownify }}</a>
@@ -110,8 +119,6 @@
     </article>
 
     <hr />
-
-    
 
     {{- if .Site.Params.EnableSharingButtons }}
       <hr />
