@@ -59,7 +59,7 @@ disableHugoGeneratorInject = false  # 启用Hugo生成器注入
     name = "l1uyun"  # 作者名称
 
     [params.busuanzi]
-    enable: true
+    enable = true
 
 
   dateform        = "Jan 2, 2006"  # 日期格式
