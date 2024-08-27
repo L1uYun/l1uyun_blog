@@ -139,7 +139,7 @@ serverPort = 7000
 [[proxies]]
 name = "shiro"
 type = "tcp"
-localIP = "192.168.110.2"
+localIP = "192.168.110.3"
 localPort = 80
 remotePort = 9999
 ```
