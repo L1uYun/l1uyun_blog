@@ -432,7 +432,6 @@ Access denied.
 172.56.102.3   Postgres
 172.56.102.2   struts2
 ```
-![](https://img.l1uyun.one/Puff-Pastry打靶记录_image_10.png)
 这里直接拿巨魔的拓扑图
 ![](https://img.l1uyun.one/Puff-Pastry打靶记录_image_26.png)
 我现在需要再配置一个socks代理,服务器放在thinkphp机器上
