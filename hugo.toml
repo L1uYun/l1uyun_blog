@@ -70,7 +70,7 @@ disableHugoGeneratorInject = false  # 启用Hugo生成器注入
   keywords = "博客"  # 关键字
   images = [""]  # 图片
 
-  homeSubtitle = "人能常清静,天地悉皆归"  # 主页副标题
+  homeSubtitle = "崇高必至堕落，积聚必有消散，缘会终须别离，有命咸归于死。"  # 主页副标题
   # backgroundImage = "assets/images/background.jpg"  # 背景图片
 
   disableReadOtherPosts = false  # 是否禁用其他文章的链接
