@@ -113,9 +113,17 @@ disableHugoGeneratorInject = false  # 启用Hugo生成器注入
     hello = "「崇高必至堕落，积聚必有消散，缘会终须别离，有命咸归于死。」"  # 头像问候语
   
   [[params.Portraits]]
-    Path = "img/background.jpg"
+    Path = "img/cover1.jpg"
     Alt = "Image 1 Description"
-  
+
+  [[params.Portraits]]
+    Path = "img/cover2.jpg"
+    Alt = "Image 1 Description"
+
+  [[params.Portraits]]
+    Path = "img/cover1.jpg"
+    Alt = "Image 1 Description"
+
   [params.utterances]
      repository = "L1uYun/l1uyun_blog"  # GitHub仓库
      label      = "blog comment"  # GitHub标签
