@@ -121,7 +121,7 @@ disableHugoGeneratorInject = false  # 启用Hugo生成器注入
     Alt = "Image 1 Description"
 
   [[params.Portraits]]
-    Path = "img/cover1.jpg"
+    Path = "img/cover3.jpg"
     Alt = "Image 1 Description"
 
   [params.utterances]
