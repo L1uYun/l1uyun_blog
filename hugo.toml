@@ -118,11 +118,11 @@ disableHugoGeneratorInject = false  # 启用Hugo生成器注入
 
   [[params.Portraits]]
     Path = "img/cover2.jpg"
-    Alt = "Image 1 Description"
+    Alt = "Image 2 Description"
 
   [[params.Portraits]]
     Path = "img/cover3.jpg"
-    Alt = "Image 1 Description"
+    Alt = "Image 3 Description"
 
   [params.utterances]
      repository = "L1uYun/l1uyun_blog"  # GitHub仓库
