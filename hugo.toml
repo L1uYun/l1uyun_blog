@@ -71,7 +71,7 @@ disableHugoGeneratorInject = false  # 启用Hugo生成器注入
   images = [""]  # 图片
 
   homeSubtitle = ""  # 主页副标题
-  # backgroundImage = "assets/images/background.jpg"  # 背景图片
+  backgroundImage = "images/background.jpg"  # 背景图片
 
   disableReadOtherPosts = false  # 是否禁用其他文章的链接
 
