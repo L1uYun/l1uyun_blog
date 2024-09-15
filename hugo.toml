@@ -113,15 +113,15 @@ disableHugoGeneratorInject = false  # 启用Hugo生成器注入
     hello = "「崇高必至堕落，积聚必有消散，缘会终须别离，有命咸归于死。」"  # 头像问候语
   
   [[params.Portraits]]
-    Path = "img/cover1.jpg"
+    Path = "https://img.l1uyun.one/cover1.jpg"
     Alt = "Image 1 Description"
 
   [[params.Portraits]]
-    Path = "img/cover2.jpg"
+    Path = "https://img.l1uyun.one/cover2.jpg"
     Alt = "Image 2 Description"
 
   [[params.Portraits]]
-    Path = "img/cover3.jpg"
+    Path = "https://img.l1uyun.one/cover3.jpg"
     Alt = "Image 3 Description"
 
   [params.utterances]
