@@ -71,7 +71,7 @@ disableHugoGeneratorInject = false  # 启用Hugo生成器注入
   images = [""]  # 图片
 
   homeSubtitle = ""  # 主页副标题
-  backgroundImage = "images/background.jpg"  # 背景图片
+  # backgroundImage = "assets/images/background.jpg"  # 背景图片
 
   disableReadOtherPosts = false  # 是否禁用其他文章的链接
 
@@ -111,7 +111,11 @@ disableHugoGeneratorInject = false  # 启用Hugo生成器注入
   [params.portrait]
     maxWidth = "690px"  # 头像最大宽度
     hello = "「崇高必至堕落，积聚必有消散，缘会终须别离，有命咸归于死。」"  # 头像问候语
-
+  
+  [[params.Portraits]]
+    Path = "img/background.jpg"
+    Alt = "Image 1 Description"
+  
   [params.utterances]
      repository = "L1uYun/l1uyun_blog"  # GitHub仓库
      label      = "blog comment"  # GitHub标签
