@@ -67,7 +67,7 @@ disableHugoGeneratorInject = false  # 启用Hugo生成器注入
   dateformNum     = "2006-01-02"  # 数字日期格式
   dateformNumTime = "2006-01-02 15:04"  # 数字日期和时间格式
   description = "Welcome to l1uyun's blog"  # 网站描述
-  keywords = "博客"  # 关键字
+  keywords = "博客,网络安全,佛法"  # 关键字
   images = [""]  # 图片
 
   homeSubtitle = ""  # 主页副标题
