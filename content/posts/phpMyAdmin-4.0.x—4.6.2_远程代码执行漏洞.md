@@ -1,11 +1,11 @@
 ---
-title: phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞
+title: phpMyAdmin-4.0.x—4.6.2_远程代码执行漏洞
 cve: CVE-2016-5734
 tags:
   - sec/vulhub
   - sec/cve
 date: 2024-09-18T16:59:09
-lastmod: 2024-09-19T22:06:13
+lastmod: 2024-09-19T22:35:43
 toc: "true"
 draft: "false"
 ---

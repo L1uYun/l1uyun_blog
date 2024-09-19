@@ -5,7 +5,7 @@ tags:
   - sec/vulhub
   - sec/cve
 date: 2024-09-18T15:33:13
-lastmod: 2024-09-19T22:09:05
+lastmod: 2024-09-19T22:35:37
 toc: "true"
 draft: "false"
 ---
@@ -82,7 +82,7 @@ $target_blacklist = array (
 ## 漏洞修复
 升级phpmyadmin版本
 ##  相关漏洞
-[phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞](phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞.md)
+[phpMyAdmin-4.0.x—4.6.2_远程代码执行漏洞](phpMyAdmin-4.0.x—4.6.2_远程代码执行漏洞.md)
 
 ## 漏洞总结
 这个漏洞刚刚演练的时候利用过,比较熟悉了...
