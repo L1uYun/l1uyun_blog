@@ -5,7 +5,7 @@ tags:
   - sec/vulhub
   - sec/cve
 date: 2024-09-18T15:33:13
-lastmod: 2024-09-19T22:04:48
+lastmod: 2024-09-19T22:07:27
 toc: "true"
 draft: "false"
 ---
@@ -37,19 +37,20 @@ include_once()#只包含一次
 当allow_url_include and allow_url_fopen均为off 在window主机环境下仍然可以进行远程文件执行，用445端口SMB协议进行远程加载。
 
 ## 漏洞复现
-手测,脚本
 直接访问下面的路径,能输出passwd内容那就是有了
+
 `/index.php?target=db_sql.php%253f/../../../../../../../../etc/passwd`
 ![](https://img.l1uyun.one/phpmyadmin-4.8.1远程文件包含_image_2.png)
 
 利用方式的话,就是先在sql栏执行一下select命令,然后去包含session文件,就能获得webshell,进而拿shell
 
 可以执行一下SELECT '<?=phpinfo()?>';，然后查看自己的sessionid（cookie中phpMyAdmin的值），然后包含session文件即可：
+
 对应的sessions文件是 /tmp/sess_sessionid
 [phpmyadmin-4_8_1远程文件包含漏洞（CVE-2018-12613）](phpmyadmin-4_8_1远程文件包含漏洞（CVE-2018-12613）.pdf)
 
 ## 漏洞分析
-分析整个调用链
+
 简单来说就是phpmyadmin对用户传入的参数直接进行了包含,并且黑名单的检验不严格,可以绕过,从而导致了LFI
 ```php
 index.php
