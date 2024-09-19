@@ -5,7 +5,9 @@ tags:
   - sec/vulhub
   - sec/cve
 date: 2024-09-18T15:33:13
-lastmod: 2024-09-19T22:04:08
+lastmod: 2024-09-19T22:04:48
+toc: "true"
+draft: "false"
 ---
 ##  漏洞简介
 phpMyAdmin是一套开源的、基于Web的MySQL数据库管理工具。其index.php中存在一处文件包含逻辑，通过二次编码即可绕过检查，造成远程文件包含漏洞。
