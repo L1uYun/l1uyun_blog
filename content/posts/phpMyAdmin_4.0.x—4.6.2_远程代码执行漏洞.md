@@ -5,7 +5,7 @@ tags:
   - sec/vulhub
   - sec/cve
 date: 2024-09-18T16:59:09
-lastmod: 2024-09-19T22:01:32
+lastmod: 2024-09-19T22:05:56
 toc: "true"
 draft: "false"
 ---
@@ -54,6 +54,7 @@ preg_replace("/test/e",'phpinfo()',"jutst test");
 ![](https://img.l1uyun.one/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_1.png)
 ## 漏洞复现
 //手测,脚本
+
 使用的vulhub的环境,使用docker启动就行
 
 这里是直接使用了exploit-db中的poc
@@ -65,7 +66,8 @@ preg_replace("/test/e",'phpinfo()',"jutst test");
 
 参照网上其他人的分析文章,
 首先找到preg_replace()函数的调用位置,
-发现是在 /libraries/TableSearch.class.php 文件中的_getRegexReplaceRows方法里面，
+发现是在 /libraries/TableSearch.class.php 文件中的_getRegexReplaceRows方法里面
+
 ![](https://img.l1uyun.one/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_3.png)
 接下来就是依次寻找find,replaceWith和row[0]这三个参数的来源
 
@@ -74,7 +76,7 @@ preg_replace("/test/e",'phpinfo()',"jutst test");
 继续往上查找getReplacePreview方法,发现是在tbl_find_replace.php中被调用的,这里的可以看到find,replaceWith都是直接从POST中传递进来的
 ![](https://img.l1uyun.one/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_5.png)
 
-解决了前面两个参数,接下来就是看第三个参数是怎么来的,毕竟这个/e参数要成功执行代码,需要模式被匹配到.
+解决了前面两个参数,接下来就是看第三个参数是怎么来的,毕竟这个/e参数要成功执行代码,需要正则的模式被匹配到.
 
 回到_getRegexReplaceRows方法,可以看到row\[0\]应该是sql语句查询结果的第一列数据
 ![](https://img.l1uyun.one/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_6.png)
