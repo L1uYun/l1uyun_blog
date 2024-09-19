@@ -5,7 +5,7 @@ tags:
   - sec/vulhub
   - sec/cve
 date: 2024-09-18T15:33:13
-lastmod: 2024-09-19T22:07:48
+lastmod: 2024-09-19T22:08:19
 toc: "true"
 draft: "false"
 ---
@@ -44,7 +44,7 @@ include_once()#只包含一次
 
 利用方式的话,就是先在sql栏执行一下select命令,然后去包含session文件,就能获得webshell,进而拿shell
 
-可以执行一下SELECT '<?=phpinfo()?>';，然后查看自己的sessionid（cookie中phpMyAdmin的值），然后包含session文件即可：
+可以执行一下`SELECT <?=phpinfo()?>;`，然后查看自己的sessionid（cookie中phpMyAdmin的值），然后包含session文件即可：
 
 对应的sessions文件是 /tmp/sess_sessionid
 [phpmyadmin-4_8_1远程文件包含漏洞（CVE-2018-12613）](phpmyadmin-4_8_1远程文件包含漏洞（CVE-2018-12613）.pdf)
