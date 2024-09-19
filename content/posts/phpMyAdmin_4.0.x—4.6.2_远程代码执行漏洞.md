@@ -5,7 +5,7 @@ tags:
   - sec/vulhub
   - sec/cve
 date: 2024-09-18T16:59:09
-lastmod: 2024-09-19T22:05:56
+lastmod: 2024-09-19T22:06:13
 toc: "true"
 draft: "false"
 ---
@@ -135,5 +135,7 @@ find参数中传进去的%00也就是空字符,将拼接之后的/给截断了
 
 ## 参考资料
 [phpMyAdmin 4.6.2 - (Authenticated) Remote Code Execution - PHP webapps Exploit](https://www.exploit-db.com/exploits/40185)
+
 [PHP安全之慎用preg\_replace的/e修饰符 - y'ang - 博客园](https://www.cnblogs.com/angly/p/3157736.html)
+
 [CVE-2016-5734 phpmyadmin后台代码执行漏洞复现](https://xz.aliyun.com/t/7836)
