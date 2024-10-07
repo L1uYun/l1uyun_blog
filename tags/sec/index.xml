@@ -1,4 +1,175 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Sec on l1uyun☁️</title><link>https://l1uyun.one/tags/sec/</link><description>Recent content in Sec on l1uyun☁️</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Fri, 20 Sep 2024 14:55:49 +0000</lastBuildDate><atom:link href="https://l1uyun.one/tags/sec/index.xml" rel="self" type="application/rss+xml"/><item><title>phpMyAdmin-4.0.x—4.6.2_远程代码执行漏洞</title><link>https://l1uyun.one/posts/2024/09/phpmyadmin-4.0.x4.6.2_%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</link><pubDate>Wed, 18 Sep 2024 16:59:09 +0000</pubDate><guid>https://l1uyun.one/posts/2024/09/phpmyadmin-4.0.x4.6.2_%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</guid><description>&lt;h2 id="漏洞简介">漏洞简介&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Sec on l1uyun☁️</title><link>https://l1uyun.one/tags/sec/</link><description>Recent content in Sec on l1uyun☁️</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Mon, 07 Oct 2024 21:39:44 +0000</lastBuildDate><atom:link href="https://l1uyun.one/tags/sec/index.xml" rel="self" type="application/rss+xml"/><item><title>红日靶场2_win域</title><link>https://l1uyun.one/posts/2024/09/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2_win%E5%9F%9F/</link><pubDate>Sat, 28 Sep 2024 11:10:12 +0000</pubDate><guid>https://l1uyun.one/posts/2024/09/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2_win%E5%9F%9F/</guid><description>&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>环境和红日1的环境搭建差不多，不过这次给三台机器分别是域控、web服务器、个人PC机，与红日1不同的是这里将域管换成了个人PC机，因此我们的一些操作也会有所不同&lt;/p>
+&lt;h1 id="红日靶场2_win域">红日靶场2_win域&lt;/h1>
+&lt;h2 id="搭建环境">搭建环境&lt;/h2>
+&lt;p>&lt;img src="https://img.l1uyun.one/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2_win%E5%9F%9F_image_1.png">&lt;/p>
+&lt;pre tabindex="0">&lt;code>administrator
+1qaz@WSX
+默认密码都是1qaz@WSX
+&lt;/code>&lt;/pre>&lt;p>这里需要模拟内网环境,所以需要弄一个内网网卡&lt;/p>
+&lt;p>创建一个vmnet2
+&lt;img src="https://img.l1uyun.one/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2_win%E5%9F%9F_image_2.png">&lt;/p>
+&lt;p>然后把三台机器的网卡2都改成这个vmnet2就行了
+&lt;img src="https://img.l1uyun.one/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2_win%E5%9F%9F_image_3.png">
+DC机器不需要做什么处理,改完网卡直接启动就行&lt;/p>
+&lt;p>这里的另外一个网卡,作者设置的是111网段,但是我习惯了自己的ip,所以选择改pc和web两台机器里面的ip&lt;/p>
+&lt;p>先改一下pc这台机器,这台先改下ip
+&lt;img src="https://img.l1uyun.one/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2_win%E5%9F%9F_image_4.png">
+再测试一下连通性,使用外部的parrot机器ping一下,没通,需要关闭防火墙
+&lt;img src="https://img.l1uyun.one/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2_win%E5%9F%9F_image_5.png">&lt;/p>
+&lt;p>最后配置web机器,web机器需要先将恢复快照1.3版本
+会出现一个报错,直接点放弃就行,&lt;strong>这里恢复快照之后,需要重新改网卡,怪不得ping不通域控的&lt;/strong>&lt;/p>
+&lt;p>登录本地用户&lt;/p>
+&lt;pre tabindex="0">&lt;code>.\de1ay
+1qaz@WSX
+&lt;/code>&lt;/pre>&lt;p>这里提示需要修改密码,我改成1qaz@WSX3
+&lt;img src="https://img.l1uyun.one/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2_win%E5%9F%9F_image_6.png">
+进去之后直接注销掉,切换成域用户mssql,密码还是1qaz@WSX&lt;/p>
+&lt;p>然后还是先改ip
+&lt;img src="https://img.l1uyun.one/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2_win%E5%9F%9F_image_7.png">&lt;/p>
+&lt;p>改完之后测试一下两个网段都能不能ping通&lt;/p>
+&lt;p>ping不通的话得关一下web的防火墙,关掉之后就能ping通了
+&lt;img src="https://img.l1uyun.one/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2_win%E5%9F%9F_image_8.png">&lt;/p>
+&lt;p>红日1是以phpstudy搭的一个web服务，红日2用的是weblogic。web服务中，我们需要手动打开weblogic&lt;/p>
+&lt;p>进入这个路径&lt;code>C:\Oracle\Middleware\user_projects\domains\base_domain\bin&lt;/code>,没权限的时候,输管理员凭据就行.
+&lt;img src="https://img.l1uyun.one/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2_win%E5%9F%9F_image_9.png">
+以管理员身份启动一下weblogic
+&lt;img src="https://img.l1uyun.one/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2_win%E5%9F%9F_image_10.png">&lt;/p>
+&lt;p>搭建时参考的文章提到:
+WEB机和PC机：计算机右键-&amp;gt;管理-&amp;gt;配置-&amp;gt;服务-&amp;gt;Server、Workstation、Computer Browser 全部启动（Computer Browser 是关闭的,导致 net view 显示 6118 error 没能解决，在域信息收集时暂时关闭一下防火墙）&lt;/p>
+&lt;p>我这里web里的Computer Browser是关闭的,我手动打开了,pc机器是正常的.&lt;/p>
+&lt;p>访问192.168.3.80:7001/console,跳转进去登录页面,环境搭建成功
+&lt;img src="https://img.l1uyun.one/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2_win%E5%9F%9F_image_11.png">&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>web 192.168.3.80
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>pc 192.168.3.201
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>win 192.168.3.99
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>wsl kali 192.168.3.100 
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="外网">外网&lt;/h2>
+&lt;h3 id="信息收集">信息收集&lt;/h3>
+&lt;p>先处理web机器&lt;/p>
+&lt;p>端口扫描出来了不少端口,使用awk做一下处理,提取一下&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>awk -F &lt;span style="color:#a5d6ff">&amp;#39;/&amp;#39;&lt;/span> &lt;span style="color:#a5d6ff">&amp;#39;BEGIN {ORS=&amp;#34;,&amp;#34;} {print $1}&amp;#39;&lt;/span> a.txt
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>进行-A扫描&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>⇒ sudo nmap -Pn -sT 192.168.3.80 -p80,135,139,445,1433,3389,7001,49152,49153,49154,60966,63624,63632,63634 -A --min-rate&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>&lt;span style="color:#a5d6ff">5000&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Starting Nmap 7.94SVN &lt;span style="color:#ff7b72;font-weight:bold">(&lt;/span> https://nmap.org &lt;span style="color:#ff7b72;font-weight:bold">)&lt;/span> at 2024-09-28 19:40 EDT
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Nmap scan report &lt;span style="color:#ff7b72">for&lt;/span> 192.168.3.80
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Host is up &lt;span style="color:#ff7b72;font-weight:bold">(&lt;/span>0.00057s latency&lt;span style="color:#ff7b72;font-weight:bold">)&lt;/span>.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>PORT STATE SERVICE VERSION
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>80/tcp open http Microsoft IIS httpd 7.5
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| http-methods: 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_ Potentially risky methods: TRACE
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_http-server-header: Microsoft-IIS/7.5
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_http-title: Site doesn&lt;span style="color:#f85149">&amp;#39;&lt;/span>t have a title.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>135/tcp open msrpc Microsoft Windows RPC
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>139/tcp open netbios-ssn Microsoft Windows netbios-ssn
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>445/tcp open microsoft-ds Windows Server &lt;span style="color:#a5d6ff">2008&lt;/span> R2 Standard &lt;span style="color:#a5d6ff">7601&lt;/span> Service Pack &lt;span style="color:#a5d6ff">1&lt;/span> microsoft-ds
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>1433/tcp open ms-sql-s Microsoft SQL Server &lt;span style="color:#a5d6ff">2008&lt;/span> R2 10.50.4000.00; SP2
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| ssl-cert: Subject: &lt;span style="color:#79c0ff">commonName&lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>SSL_Self_Signed_Fallback
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Not valid before: 2024-09-28T03:49:00
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_Not valid after: 2054-09-28T03:49:00
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| ms-sql-ntlm-info: 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| 192.168.3.80:1433:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Target_Name: DE1AY
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| NetBIOS_Domain_Name: DE1AY
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| NetBIOS_Computer_Name: WEB
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| DNS_Domain_Name: de1ay.com
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| DNS_Computer_Name: WEB.de1ay.com
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| DNS_Tree_Name: de1ay.com
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_ Product_Version: 6.1.7601
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_ssl-date: 2024-09-28T23:42:32+00:00; 0s from scanner time.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| ms-sql-info:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| 192.168.3.80:1433:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Version:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| name: Microsoft SQL Server &lt;span style="color:#a5d6ff">2008&lt;/span> R2 SP2
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| number: 10.50.4000.00
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Product: Microsoft SQL Server &lt;span style="color:#a5d6ff">2008&lt;/span> R2
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Service pack level: SP2
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Post-SP patches applied: false
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_ TCP port: &lt;span style="color:#a5d6ff">1433&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>3389/tcp open ssl/ms-wbt-server?
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| ssl-cert: Subject: &lt;span style="color:#79c0ff">commonName&lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>WEB.de1ay.com
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Not valid before: 2024-09-27T03:21:26
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_Not valid after: 2025-03-29T03:21:26
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_ssl-date: 2024-09-28T23:42:32+00:00; 0s from scanner time.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| rdp-ntlm-info:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Target_Name: DE1AY
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| NetBIOS_Domain_Name: DE1AY
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| NetBIOS_Computer_Name: WEB
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| DNS_Domain_Name: de1ay.com
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| DNS_Computer_Name: WEB.de1ay.com
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| DNS_Tree_Name: de1ay.com
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Product_Version: 6.1.7601
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_ System_Time: 2024-09-28T23:42:27+00:00
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>7001/tcp open http Oracle WebLogic Server 10.3.6.0 &lt;span style="color:#ff7b72;font-weight:bold">(&lt;/span>Servlet 2.5; JSP 2.1; T3 enabled&lt;span style="color:#ff7b72;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_weblogic-t3-info: T3 protocol in use &lt;span style="color:#ff7b72;font-weight:bold">(&lt;/span>WebLogic version: 10.3.6.0&lt;span style="color:#ff7b72;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_http-title: Error 404--Not Found
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>49152/tcp open msrpc Microsoft Windows RPC
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>49153/tcp open msrpc Microsoft Windows RPC
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>49154/tcp open msrpc Microsoft Windows RPC
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>60966/tcp open ms-sql-s Microsoft SQL Server &lt;span style="color:#a5d6ff">2008&lt;/span> R2 10.50.4000.00; SP2
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| ms-sql-ntlm-info:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| 192.168.3.80:60966:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Target_Name: DE1AY
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| NetBIOS_Domain_Name: DE1AY
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| NetBIOS_Computer_Name: WEB
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| DNS_Domain_Name: de1ay.com
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| DNS_Computer_Name: WEB.de1ay.com
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| DNS_Tree_Name: de1ay.com
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_ Product_Version: 6.1.7601
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| ms-sql-info:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| 192.168.3.80:60966:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Version:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| name: Microsoft SQL Server &lt;span style="color:#a5d6ff">2008&lt;/span> R2 SP2
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| number: 10.50.4000.00
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Product: Microsoft SQL Server &lt;span style="color:#a5d6ff">2008&lt;/span> R2
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Service pack level: SP2
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Post-SP patches applied: false
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_ TCP port: &lt;span style="color:#a5d6ff">60966&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| ssl-cert: Subject: &lt;span style="color:#79c0ff">commonName&lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>SSL_Self_Signed_Fallback
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Not valid before: 2024-09-28T03:49:00
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_Not valid after: 2054-09-28T03:49:00
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_ssl-date: 2024-09-28T23:42:32+00:00; 0s from scanner time.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>63624/tcp open msrpc Microsoft Windows RPC
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>63632/tcp open msrpc Microsoft Windows RPC
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>63634/tcp open msrpc Microsoft Windows RPC
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>MAC Address: 00:0C:29:42:36:4C &lt;span style="color:#ff7b72;font-weight:bold">(&lt;/span>VMware&lt;span style="color:#ff7b72;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Warning: OSScan results may be unreliable because we could not find at least &lt;span style="color:#a5d6ff">1&lt;/span> open and &lt;span style="color:#a5d6ff">1&lt;/span> closed port
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Device type: general purpose
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Running: Microsoft Windows Vista|7|8.1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>OS CPE: cpe:/o:microsoft:windows_vista cpe:/o:microsoft:windows_7::sp1 cpe:/o:microsoft:windows_8.1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>OS details: Microsoft Windows Vista, Windows &lt;span style="color:#a5d6ff">7&lt;/span> SP1, or Windows 8.1 Update &lt;span style="color:#a5d6ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Network Distance: &lt;span style="color:#a5d6ff">1&lt;/span> hop
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Service Info: OSs: Windows, Windows Server &lt;span style="color:#a5d6ff">2008&lt;/span> R2 - 2012; CPE: cpe:/o:microsoft:windows
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Host script results:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| smb2-time:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| date: 2024-09-28T23:42:27
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_ start_date: 2024-09-28T03:48:57
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_nbstat: NetBIOS name: WEB, NetBIOS user: &amp;lt;unknown&amp;gt;, NetBIOS MAC: 00:0c:29:42:36:4c &lt;span style="color:#ff7b72;font-weight:bold">(&lt;/span>VMware&lt;span style="color:#ff7b72;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| smb-security-mode:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| account_used: &amp;lt;blank&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| authentication_level: user
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| challenge_response: supported
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_ message_signing: disabled &lt;span style="color:#ff7b72;font-weight:bold">(&lt;/span>dangerous, but default&lt;span style="color:#ff7b72;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_clock-skew: mean: -53m19s, deviation: 2h39m59s, median: 0s
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| smb-os-discovery:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| OS: Windows Server &lt;span style="color:#a5d6ff">2008&lt;/span> R2 Standard &lt;span style="color:#a5d6ff">7601&lt;/span> Service Pack &lt;span style="color:#a5d6ff">1&lt;/span> &lt;span style="color:#ff7b72;font-weight:bold">(&lt;/span>Windows Server &lt;span style="color:#a5d6ff">2008&lt;/span> R2 Standard 6.1&lt;span style="color:#ff7b72;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| OS CPE: cpe:/o:microsoft:windows_server_2008::sp1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Computer name: WEB
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| NetBIOS computer name: WEB&lt;span style="color:#79c0ff">\x&lt;/span>&lt;span style="color:#a5d6ff">00&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Domain name: de1ay.com
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Forest name: de1ay.com
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| FQDN: WEB.de1ay.com
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_ System time: 2024-09-29T07:42:27+08:00
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| smb2-security-mode:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| 2:1:0:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_ Message signing enabled but not required
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>TRACEROUTE
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>HOP RTT ADDRESS
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a5d6ff">1&lt;/span> 0.57 ms 192.168.3.80
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>这里的web端口是7001的weblogic&lt;/p></description></item><item><title>phpMyAdmin-4.0.x—4.6.2_远程代码执行漏洞</title><link>https://l1uyun.one/posts/2024/09/phpmyadmin-4.0.x4.6.2_%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</link><pubDate>Wed, 18 Sep 2024 16:59:09 +0000</pubDate><guid>https://l1uyun.one/posts/2024/09/phpmyadmin-4.0.x4.6.2_%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</guid><description>&lt;h2 id="漏洞简介">漏洞简介&lt;/h2>
 &lt;p>phpMyAdmin是一套开源的、基于Web的MySQL数据库管理工具。&lt;/p>
 &lt;p>在其查找并替换字符串功能中，将用户输入的信息拼接进preg_replace函数第一个参数中。
 在PHP5.4.7以前，preg_replace的第一个参数可以利用\0进行截断，并将正则模式修改为e。众所周知，e模式的正则支持执行代码，此时将可构造一个任意代码执行漏洞。&lt;/p>
@@ -426,49 +597,4 @@ java序列化的数据一般会以标记(ac ed 00 05)开头，base64编码的特
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>}&lt;span style="color:#6e7681">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">&lt;/span>}&lt;span style="color:#6e7681">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="objectinputstream">ObjectInputStream&lt;/h3>
-&lt;p>如果能找到一个对象的class文件，我们可以进行反序列化操作，调用 ObjectInputStream 读取对象的方法&lt;/p></description></item><item><title>javasec-xxe</title><link>https://l1uyun.one/posts/2024/07/javasec-xxe/</link><pubDate>Fri, 26 Jul 2024 18:10:32 +0000</pubDate><guid>https://l1uyun.one/posts/2024/07/javasec-xxe/</guid><description>&lt;h1 id="xxe注入">xxe注入&lt;/h1>
-&lt;h2 id="前置知识">前置知识&lt;/h2>
-&lt;h3 id="xml文档">XML文档&lt;/h3>
-&lt;p>要了解XXE漏洞，那么先得了解一下有关XML的基础知识。&lt;/p>
-&lt;p>XML是一种非常流行的标记语言，在1990年代后期首次标准化，并被无数的软件项目所采用。它用于配置文件，文档格式（如OOXML，ODF，PDF，RSS，&amp;hellip;），图像格式（SVG，EXIF标题）和网络协议（WebDAV，CalDAV，XMLRPC，SOAP，XMPP，SAML， XACML，&amp;hellip;）&lt;/p>
-&lt;h4 id="文档结构">文档结构&lt;/h4>
-&lt;p>XML主要由7个部分组成,&lt;/p>
-&lt;ul>
-&lt;li>文档声明&lt;/li>
-&lt;li>标签/元素&lt;/li>
-&lt;li>属性&lt;/li>
-&lt;li>注释&lt;/li>
-&lt;li>实体字符&lt;/li>
-&lt;li>CDATA 字符数据区。CDATA 指的是不应由 XML 解析器进行解析的文本数据（Unparsed Character Data）。CDATA 部分中的所有内容都会被解析器忽略。CDATA 部分由 &lt;code>**&lt;/code> 结束，某些文本比如 JavaScript 代码，包含大量 “&amp;lt;” 或 “&amp;amp;” 字符。为了避免错误，可以将脚本代码定义为 CDATA。&lt;/li>
-&lt;li>处理指令,&lt;/li>
-&lt;/ul>
-&lt;p>一个标准的xml文件为&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-xml" data-lang="xml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic">&amp;lt;!-- XML文档声明；同时也是一个处理指令,用于声明 XML 文档的版本和编码方式。&amp;lt;? xxx ?&amp;gt; 就是处理指令的格式--&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-weight:bold;font-style:italic">&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;ISO-8859-1&amp;#34;?&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic">&amp;lt;!-- bookstore根元素、book子元素--&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#7ee787">&amp;lt;bookstore&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#8b949e;font-style:italic">&amp;lt;!-- category、lang都是属性--&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7ee787">&amp;lt;book&lt;/span> category=&lt;span style="color:#a5d6ff">&amp;#34;COOKING&amp;#34;&lt;/span>&lt;span style="color:#7ee787">&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7ee787">&amp;lt;title&lt;/span> lang=&lt;span style="color:#a5d6ff">&amp;#34;en&amp;#34;&lt;/span>&lt;span style="color:#7ee787">&amp;gt;&lt;/span>Everyday Italian&lt;span style="color:#7ee787">&amp;lt;/title&amp;gt;&lt;/span> 
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#8b949e;font-style:italic">&amp;lt;!-- &amp;amp;lt;实体字符 是一个预定义的实体引用，这里也可以引用dtd中定义的实体，以 &amp;amp; 开头, 以;结尾--&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7ee787">&amp;lt;author&amp;gt;&lt;/span>Giada De Laurentiis&lt;span style="color:#ffa657">&amp;amp;lt;&lt;/span>&lt;span style="color:#7ee787">&amp;lt;/author&amp;gt;&lt;/span> 
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7ee787">&amp;lt;year&amp;gt;&lt;/span>2005&lt;span style="color:#7ee787">&amp;lt;/year&amp;gt;&lt;/span> 
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7ee787">&amp;lt;price&amp;gt;&lt;/span>30.00&lt;span style="color:#7ee787">&amp;lt;/price&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#8b949e;font-style:italic">&amp;lt;!-- script这里是CDATA，不能被xml解析器解析，可以被JavaScript解析--&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7ee787">&amp;lt;script&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#8b949e;font-weight:bold;font-style:italic">&amp;lt;![CDATA[
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-weight:bold;font-style:italic"> function matchwo(a,b)
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-weight:bold;font-style:italic"> {
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-weight:bold;font-style:italic"> if (a &amp;lt; b &amp;amp;&amp;amp; a &amp;lt; 0) then
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-weight:bold;font-style:italic"> {return 1;}
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-weight:bold;font-style:italic"> else
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-weight:bold;font-style:italic"> {return 0;}
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-weight:bold;font-style:italic"> }
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-weight:bold;font-style:italic"> ]]&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7ee787">&amp;lt;/script&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7ee787">&amp;lt;/book&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#7ee787">&amp;lt;/bookstore&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="dtd">DTD&lt;/h4>
-&lt;p>DTD（Document Type Definition）是用来定义 XML 文档的结构和合法元素的集合。
-DTD 定义了 XML 文档中可以出现的元素、属性和它们的顺序，以确保 XML 数据的格式和结构符合预定义的规则。
-DTD 可以嵌入到 XML 文档中，也可以外部定义并引用。&lt;/p></description></item></channel></rss>
+&lt;p>如果能找到一个对象的class文件，我们可以进行反序列化操作，调用 ObjectInputStream 读取对象的方法&lt;/p></description></item></channel></rss>

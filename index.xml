@@ -1,4 +1,175 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>l1uyun☁️</title><link>https://l1uyun.one/</link><description>Recent content on l1uyun☁️</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Fri, 20 Sep 2024 14:55:49 +0000</lastBuildDate><atom:link href="https://l1uyun.one/index.xml" rel="self" type="application/rss+xml"/><item><title>phpMyAdmin-4.0.x—4.6.2_远程代码执行漏洞</title><link>https://l1uyun.one/posts/2024/09/phpmyadmin-4.0.x4.6.2_%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</link><pubDate>Wed, 18 Sep 2024 16:59:09 +0000</pubDate><guid>https://l1uyun.one/posts/2024/09/phpmyadmin-4.0.x4.6.2_%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</guid><description>&lt;h2 id="漏洞简介">漏洞简介&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>l1uyun☁️</title><link>https://l1uyun.one/</link><description>Recent content on l1uyun☁️</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Mon, 07 Oct 2024 21:39:44 +0000</lastBuildDate><atom:link href="https://l1uyun.one/index.xml" rel="self" type="application/rss+xml"/><item><title>红日靶场2_win域</title><link>https://l1uyun.one/posts/2024/09/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2_win%E5%9F%9F/</link><pubDate>Sat, 28 Sep 2024 11:10:12 +0000</pubDate><guid>https://l1uyun.one/posts/2024/09/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2_win%E5%9F%9F/</guid><description>&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>环境和红日1的环境搭建差不多，不过这次给三台机器分别是域控、web服务器、个人PC机，与红日1不同的是这里将域管换成了个人PC机，因此我们的一些操作也会有所不同&lt;/p>
+&lt;h1 id="红日靶场2_win域">红日靶场2_win域&lt;/h1>
+&lt;h2 id="搭建环境">搭建环境&lt;/h2>
+&lt;p>&lt;img src="https://img.l1uyun.one/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2_win%E5%9F%9F_image_1.png">&lt;/p>
+&lt;pre tabindex="0">&lt;code>administrator
+1qaz@WSX
+默认密码都是1qaz@WSX
+&lt;/code>&lt;/pre>&lt;p>这里需要模拟内网环境,所以需要弄一个内网网卡&lt;/p>
+&lt;p>创建一个vmnet2
+&lt;img src="https://img.l1uyun.one/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2_win%E5%9F%9F_image_2.png">&lt;/p>
+&lt;p>然后把三台机器的网卡2都改成这个vmnet2就行了
+&lt;img src="https://img.l1uyun.one/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2_win%E5%9F%9F_image_3.png">
+DC机器不需要做什么处理,改完网卡直接启动就行&lt;/p>
+&lt;p>这里的另外一个网卡,作者设置的是111网段,但是我习惯了自己的ip,所以选择改pc和web两台机器里面的ip&lt;/p>
+&lt;p>先改一下pc这台机器,这台先改下ip
+&lt;img src="https://img.l1uyun.one/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2_win%E5%9F%9F_image_4.png">
+再测试一下连通性,使用外部的parrot机器ping一下,没通,需要关闭防火墙
+&lt;img src="https://img.l1uyun.one/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2_win%E5%9F%9F_image_5.png">&lt;/p>
+&lt;p>最后配置web机器,web机器需要先将恢复快照1.3版本
+会出现一个报错,直接点放弃就行,&lt;strong>这里恢复快照之后,需要重新改网卡,怪不得ping不通域控的&lt;/strong>&lt;/p>
+&lt;p>登录本地用户&lt;/p>
+&lt;pre tabindex="0">&lt;code>.\de1ay
+1qaz@WSX
+&lt;/code>&lt;/pre>&lt;p>这里提示需要修改密码,我改成1qaz@WSX3
+&lt;img src="https://img.l1uyun.one/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2_win%E5%9F%9F_image_6.png">
+进去之后直接注销掉,切换成域用户mssql,密码还是1qaz@WSX&lt;/p>
+&lt;p>然后还是先改ip
+&lt;img src="https://img.l1uyun.one/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2_win%E5%9F%9F_image_7.png">&lt;/p>
+&lt;p>改完之后测试一下两个网段都能不能ping通&lt;/p>
+&lt;p>ping不通的话得关一下web的防火墙,关掉之后就能ping通了
+&lt;img src="https://img.l1uyun.one/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2_win%E5%9F%9F_image_8.png">&lt;/p>
+&lt;p>红日1是以phpstudy搭的一个web服务，红日2用的是weblogic。web服务中，我们需要手动打开weblogic&lt;/p>
+&lt;p>进入这个路径&lt;code>C:\Oracle\Middleware\user_projects\domains\base_domain\bin&lt;/code>,没权限的时候,输管理员凭据就行.
+&lt;img src="https://img.l1uyun.one/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2_win%E5%9F%9F_image_9.png">
+以管理员身份启动一下weblogic
+&lt;img src="https://img.l1uyun.one/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2_win%E5%9F%9F_image_10.png">&lt;/p>
+&lt;p>搭建时参考的文章提到:
+WEB机和PC机：计算机右键-&amp;gt;管理-&amp;gt;配置-&amp;gt;服务-&amp;gt;Server、Workstation、Computer Browser 全部启动（Computer Browser 是关闭的,导致 net view 显示 6118 error 没能解决，在域信息收集时暂时关闭一下防火墙）&lt;/p>
+&lt;p>我这里web里的Computer Browser是关闭的,我手动打开了,pc机器是正常的.&lt;/p>
+&lt;p>访问192.168.3.80:7001/console,跳转进去登录页面,环境搭建成功
+&lt;img src="https://img.l1uyun.one/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2_win%E5%9F%9F_image_11.png">&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>web 192.168.3.80
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>pc 192.168.3.201
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>win 192.168.3.99
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>wsl kali 192.168.3.100 
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="外网">外网&lt;/h2>
+&lt;h3 id="信息收集">信息收集&lt;/h3>
+&lt;p>先处理web机器&lt;/p>
+&lt;p>端口扫描出来了不少端口,使用awk做一下处理,提取一下&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>awk -F &lt;span style="color:#a5d6ff">&amp;#39;/&amp;#39;&lt;/span> &lt;span style="color:#a5d6ff">&amp;#39;BEGIN {ORS=&amp;#34;,&amp;#34;} {print $1}&amp;#39;&lt;/span> a.txt
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>进行-A扫描&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>⇒ sudo nmap -Pn -sT 192.168.3.80 -p80,135,139,445,1433,3389,7001,49152,49153,49154,60966,63624,63632,63634 -A --min-rate&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>&lt;span style="color:#a5d6ff">5000&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Starting Nmap 7.94SVN &lt;span style="color:#ff7b72;font-weight:bold">(&lt;/span> https://nmap.org &lt;span style="color:#ff7b72;font-weight:bold">)&lt;/span> at 2024-09-28 19:40 EDT
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Nmap scan report &lt;span style="color:#ff7b72">for&lt;/span> 192.168.3.80
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Host is up &lt;span style="color:#ff7b72;font-weight:bold">(&lt;/span>0.00057s latency&lt;span style="color:#ff7b72;font-weight:bold">)&lt;/span>.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>PORT STATE SERVICE VERSION
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>80/tcp open http Microsoft IIS httpd 7.5
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| http-methods: 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_ Potentially risky methods: TRACE
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_http-server-header: Microsoft-IIS/7.5
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_http-title: Site doesn&lt;span style="color:#f85149">&amp;#39;&lt;/span>t have a title.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>135/tcp open msrpc Microsoft Windows RPC
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>139/tcp open netbios-ssn Microsoft Windows netbios-ssn
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>445/tcp open microsoft-ds Windows Server &lt;span style="color:#a5d6ff">2008&lt;/span> R2 Standard &lt;span style="color:#a5d6ff">7601&lt;/span> Service Pack &lt;span style="color:#a5d6ff">1&lt;/span> microsoft-ds
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>1433/tcp open ms-sql-s Microsoft SQL Server &lt;span style="color:#a5d6ff">2008&lt;/span> R2 10.50.4000.00; SP2
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| ssl-cert: Subject: &lt;span style="color:#79c0ff">commonName&lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>SSL_Self_Signed_Fallback
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Not valid before: 2024-09-28T03:49:00
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_Not valid after: 2054-09-28T03:49:00
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| ms-sql-ntlm-info: 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| 192.168.3.80:1433:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Target_Name: DE1AY
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| NetBIOS_Domain_Name: DE1AY
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| NetBIOS_Computer_Name: WEB
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| DNS_Domain_Name: de1ay.com
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| DNS_Computer_Name: WEB.de1ay.com
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| DNS_Tree_Name: de1ay.com
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_ Product_Version: 6.1.7601
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_ssl-date: 2024-09-28T23:42:32+00:00; 0s from scanner time.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| ms-sql-info:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| 192.168.3.80:1433:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Version:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| name: Microsoft SQL Server &lt;span style="color:#a5d6ff">2008&lt;/span> R2 SP2
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| number: 10.50.4000.00
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Product: Microsoft SQL Server &lt;span style="color:#a5d6ff">2008&lt;/span> R2
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Service pack level: SP2
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Post-SP patches applied: false
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_ TCP port: &lt;span style="color:#a5d6ff">1433&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>3389/tcp open ssl/ms-wbt-server?
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| ssl-cert: Subject: &lt;span style="color:#79c0ff">commonName&lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>WEB.de1ay.com
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Not valid before: 2024-09-27T03:21:26
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_Not valid after: 2025-03-29T03:21:26
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_ssl-date: 2024-09-28T23:42:32+00:00; 0s from scanner time.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| rdp-ntlm-info:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Target_Name: DE1AY
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| NetBIOS_Domain_Name: DE1AY
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| NetBIOS_Computer_Name: WEB
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| DNS_Domain_Name: de1ay.com
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| DNS_Computer_Name: WEB.de1ay.com
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| DNS_Tree_Name: de1ay.com
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Product_Version: 6.1.7601
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_ System_Time: 2024-09-28T23:42:27+00:00
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>7001/tcp open http Oracle WebLogic Server 10.3.6.0 &lt;span style="color:#ff7b72;font-weight:bold">(&lt;/span>Servlet 2.5; JSP 2.1; T3 enabled&lt;span style="color:#ff7b72;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_weblogic-t3-info: T3 protocol in use &lt;span style="color:#ff7b72;font-weight:bold">(&lt;/span>WebLogic version: 10.3.6.0&lt;span style="color:#ff7b72;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_http-title: Error 404--Not Found
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>49152/tcp open msrpc Microsoft Windows RPC
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>49153/tcp open msrpc Microsoft Windows RPC
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>49154/tcp open msrpc Microsoft Windows RPC
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>60966/tcp open ms-sql-s Microsoft SQL Server &lt;span style="color:#a5d6ff">2008&lt;/span> R2 10.50.4000.00; SP2
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| ms-sql-ntlm-info:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| 192.168.3.80:60966:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Target_Name: DE1AY
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| NetBIOS_Domain_Name: DE1AY
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| NetBIOS_Computer_Name: WEB
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| DNS_Domain_Name: de1ay.com
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| DNS_Computer_Name: WEB.de1ay.com
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| DNS_Tree_Name: de1ay.com
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_ Product_Version: 6.1.7601
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| ms-sql-info:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| 192.168.3.80:60966:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Version:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| name: Microsoft SQL Server &lt;span style="color:#a5d6ff">2008&lt;/span> R2 SP2
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| number: 10.50.4000.00
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Product: Microsoft SQL Server &lt;span style="color:#a5d6ff">2008&lt;/span> R2
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Service pack level: SP2
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Post-SP patches applied: false
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_ TCP port: &lt;span style="color:#a5d6ff">60966&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| ssl-cert: Subject: &lt;span style="color:#79c0ff">commonName&lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>SSL_Self_Signed_Fallback
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Not valid before: 2024-09-28T03:49:00
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_Not valid after: 2054-09-28T03:49:00
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_ssl-date: 2024-09-28T23:42:32+00:00; 0s from scanner time.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>63624/tcp open msrpc Microsoft Windows RPC
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>63632/tcp open msrpc Microsoft Windows RPC
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>63634/tcp open msrpc Microsoft Windows RPC
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>MAC Address: 00:0C:29:42:36:4C &lt;span style="color:#ff7b72;font-weight:bold">(&lt;/span>VMware&lt;span style="color:#ff7b72;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Warning: OSScan results may be unreliable because we could not find at least &lt;span style="color:#a5d6ff">1&lt;/span> open and &lt;span style="color:#a5d6ff">1&lt;/span> closed port
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Device type: general purpose
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Running: Microsoft Windows Vista|7|8.1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>OS CPE: cpe:/o:microsoft:windows_vista cpe:/o:microsoft:windows_7::sp1 cpe:/o:microsoft:windows_8.1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>OS details: Microsoft Windows Vista, Windows &lt;span style="color:#a5d6ff">7&lt;/span> SP1, or Windows 8.1 Update &lt;span style="color:#a5d6ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Network Distance: &lt;span style="color:#a5d6ff">1&lt;/span> hop
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Service Info: OSs: Windows, Windows Server &lt;span style="color:#a5d6ff">2008&lt;/span> R2 - 2012; CPE: cpe:/o:microsoft:windows
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Host script results:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| smb2-time:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| date: 2024-09-28T23:42:27
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_ start_date: 2024-09-28T03:48:57
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_nbstat: NetBIOS name: WEB, NetBIOS user: &amp;lt;unknown&amp;gt;, NetBIOS MAC: 00:0c:29:42:36:4c &lt;span style="color:#ff7b72;font-weight:bold">(&lt;/span>VMware&lt;span style="color:#ff7b72;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| smb-security-mode:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| account_used: &amp;lt;blank&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| authentication_level: user
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| challenge_response: supported
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_ message_signing: disabled &lt;span style="color:#ff7b72;font-weight:bold">(&lt;/span>dangerous, but default&lt;span style="color:#ff7b72;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_clock-skew: mean: -53m19s, deviation: 2h39m59s, median: 0s
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| smb-os-discovery:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| OS: Windows Server &lt;span style="color:#a5d6ff">2008&lt;/span> R2 Standard &lt;span style="color:#a5d6ff">7601&lt;/span> Service Pack &lt;span style="color:#a5d6ff">1&lt;/span> &lt;span style="color:#ff7b72;font-weight:bold">(&lt;/span>Windows Server &lt;span style="color:#a5d6ff">2008&lt;/span> R2 Standard 6.1&lt;span style="color:#ff7b72;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| OS CPE: cpe:/o:microsoft:windows_server_2008::sp1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Computer name: WEB
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| NetBIOS computer name: WEB&lt;span style="color:#79c0ff">\x&lt;/span>&lt;span style="color:#a5d6ff">00&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Domain name: de1ay.com
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Forest name: de1ay.com
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| FQDN: WEB.de1ay.com
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_ System time: 2024-09-29T07:42:27+08:00
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| smb2-security-mode:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| 2:1:0:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|_ Message signing enabled but not required
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>TRACEROUTE
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>HOP RTT ADDRESS
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a5d6ff">1&lt;/span> 0.57 ms 192.168.3.80
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>这里的web端口是7001的weblogic&lt;/p></description></item><item><title>phpMyAdmin-4.0.x—4.6.2_远程代码执行漏洞</title><link>https://l1uyun.one/posts/2024/09/phpmyadmin-4.0.x4.6.2_%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</link><pubDate>Wed, 18 Sep 2024 16:59:09 +0000</pubDate><guid>https://l1uyun.one/posts/2024/09/phpmyadmin-4.0.x4.6.2_%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</guid><description>&lt;h2 id="漏洞简介">漏洞简介&lt;/h2>
 &lt;p>phpMyAdmin是一套开源的、基于Web的MySQL数据库管理工具。&lt;/p>
 &lt;p>在其查找并替换字符串功能中，将用户输入的信息拼接进preg_replace函数第一个参数中。
 在PHP5.4.7以前，preg_replace的第一个参数可以利用\0进行截断，并将正则模式修改为e。众所周知，e模式的正则支持执行代码，此时将可构造一个任意代码执行漏洞。&lt;/p>
@@ -437,63 +608,4 @@ DTD 可以嵌入到 XML 文档中，也可以外部定义并引用。&lt;/p></de
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>ResultSet&lt;span style="color:#6e7681"> &lt;/span>rs&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>stmt.executeQuery(sql);&lt;span style="color:#6e7681">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>...&lt;span style="color:#6e7681">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">&lt;/span>}&lt;span style="color:#6e7681">
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>报错注入的语法&lt;/p></description></item><item><title>oracle-padding-attack</title><link>https://l1uyun.one/posts/2024/07/oracle-padding-attack/</link><pubDate>Tue, 16 Jul 2024 00:00:00 +0000</pubDate><guid>https://l1uyun.one/posts/2024/07/oracle-padding-attack/</guid><description>&lt;p>在打tryhackme的New-York-Flankees房间的时候遇见了这个攻击方式,没见过,学习一下&lt;/p>
-&lt;h2 id="前置知识">前置知识&lt;/h2>
-&lt;h3 id="块密码">块密码&lt;/h3>
-&lt;p>在分组密码加密领域，数据一次加密一个块，不同算法的块长度各不相同。&lt;/p>
-&lt;p>当要加密的数据长度不是块长度的倍数时，就需要填充。&lt;/p>
-&lt;p>高级加密标准 (AES)&lt;/p>
-&lt;p>数据加密标准 (DES)&lt;/p>
-&lt;p>三重数据加密标准 (3DES)&lt;/p>
-&lt;p>Blowfish&lt;/p>
-&lt;p>Twofish&lt;/p>
-&lt;p>&lt;img src="https://img.l1uyun.one/202407160948_oracle-padding-attack_image_1.png">&lt;/p>
-&lt;h3 id="填充方案">填充方案&lt;/h3>
-&lt;p>如前所述，分组密码采用固定大小的块，当明文不是块大小的倍数时需要填充。存在多种填充技术，但在本次攻击中，我们的重点是 PKCS#7。&lt;/p>
-&lt;h4 id="pkcs7">PKCS#7&lt;/h4>
-&lt;p>公钥加密标准 #7 (PKCS#7) 是一种广泛认可的加密标准，它定义了一种填充方案，用于在需要固定块大小的块密码模式中加密之前填充最后一个明文块。&lt;/p>
-&lt;p>考虑一个情况,块大小为8,需要填充的单词为Exploit,attack,cyber,hack&lt;/p>
-&lt;p>对于Exploit,需要填充一个字节,所以填充0x01&lt;/p>
-&lt;p>对于attack,需要填充两个字节,所以填充0x02,0x02&lt;/p>
-&lt;p>&lt;img src="https://img.l1uyun.one/202407160948_oracle-padding-attack_image_2.png">&lt;/p>
-&lt;p>另一种情况,正好以及占据了8个字节,就会另起一个块&lt;/p>
-&lt;p>&lt;img src="https://img.l1uyun.one/202407160948_oracle-padding-attack_image_3.png">&lt;/p>
-&lt;h3 id="块密码模式">块密码模式&lt;/h3>
-&lt;p>分组密码的另一个重要方面是操作模式。&lt;/p>
-&lt;p>由于分组密码对固定大小的数据块进行操作，因此在处理超过块长度的明文数据时会出现挑战。&lt;/p>
-&lt;p>各种操作模式解决了这个问题，允许对不同长度的消息进行加密和解密。一些常用的模式包括：&lt;/p>
-&lt;ol>
-&lt;li>
-&lt;p>Electronic Codebook (ECB) Mode&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Cipher Block Chaining (CBC) Mode&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Counter (CTR) Mode&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;p>任何算法都可以采用这些模式；&lt;/p>
-&lt;p>例如，您可能会遇到 AES-CBC 或 DES-CBC。&lt;/p>
-&lt;p>在oracle padding中，我们的重点是密码块链接（CBC）模式。&lt;/p>
-&lt;h4 id="cbc">CBC&lt;/h4>
-&lt;p>一般来说CBC采用两个操作,一个是加密,一个是异或操作&lt;/p>
-&lt;p>第一块明文,加密之后与初始向量异或,第二块明文加密之后,与第一块密文相异或&amp;hellip;这种方案,即使明文相同,由于初始向量是不同的,密文最终也是不同的
-&lt;img src="https://img.l1uyun.one/202407160948_oracle-padding-attack_image_4.png">
-解密的时候,首先将最后一块密文C[-1],使用解密算法解密,得到伪明文M[-1],然后将伪明文M[-1]与倒数第二块密文C[-2]进行异或,得到明文P[-1]&lt;/p>
-&lt;p>先解密,然后再异或
-&lt;img src="https://img.l1uyun.one/202407160948_oracle-padding-attack_image_5.png">&lt;/p>
-&lt;h3 id="异或运算">异或运算&lt;/h3>
-&lt;p>异或操作具有逆运算特性,即已知结果和一个操作数,就能退出来另外一个操作数&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>A^B&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>C 
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#79c0ff">在等号两边同时异或一个B&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>&amp;gt; &lt;span style="color:#79c0ff">A&lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>C^B
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#79c0ff">在等号两边同时异或一个B&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>&amp;gt; &lt;span style="color:#79c0ff">B&lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>C^A
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="漏洞检测">漏洞检测&lt;/h2>
-&lt;p>当密文值被修改之后,服务器不能正确的恢复明文时,会有报错信息回显出来
-&lt;img src="https://img.l1uyun.one/202407160948_oracle-padding-attack_image_6.png">&lt;/p>
-&lt;h2 id="攻击原理">攻击原理&lt;/h2>
-&lt;p>这里假设一个情形&lt;/p>
-&lt;p>假设加密算法为 AES，表示块大小为 16 字节，则初始化向量 (IV) 也是 16 字节。&lt;/p></description></item></channel></rss>
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>报错注入的语法&lt;/p></description></item></channel></rss>
