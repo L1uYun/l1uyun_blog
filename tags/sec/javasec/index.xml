@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Sec/Javasec on l1uyun☁️</title><link>https://l1uyun.one/tags/sec/javasec/</link><description>Recent content in Sec/Javasec on l1uyun☁️</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Sun, 18 Aug 2024 11:24:37 +0000</lastBuildDate><atom:link href="https://l1uyun.one/tags/sec/javasec/index.xml" rel="self" type="application/rss+xml"/><item><title>springboot利用</title><link>https://l1uyun.one/posts/2024/08/springboot%E5%88%A9%E7%94%A8/</link><pubDate>Tue, 06 Aug 2024 09:32:00 +0000</pubDate><guid>https://l1uyun.one/posts/2024/08/springboot%E5%88%A9%E7%94%A8/</guid><description>&lt;h1 id="springboot利用">springboot利用&lt;/h1>
+&lt;h1 id="前置知识">前置知识&lt;/h1>
+&lt;h2 id="springboot-actuator">SpringBoot Actuator&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>Spring Boot Actuator 1.x 版本默认内置路由的起始路径为 / ，2.x 版本则统一以 /actuator 为起始路径
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Spring Boot Actuator 默认的内置路由名字，如 /env 有时候也会被程序员修改，比如修改成 /appenv
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>一般来讲，暴露出 spring boot 应用的相关接口和传参信息并不能算是漏洞，但是以 “默认安全” 来讲，不暴露出这些信息更加安全。&lt;/p>
+&lt;p>对于攻击者来讲，一般会仔细审计暴露出的接口以增加对业务系统的了解，并会同时检查应用系统是否存在未授权访问、越权等其他业务类型漏洞。&lt;/p>
+&lt;h2 id="配置不当而暴露的路由">配置不当而暴露的路由&lt;/h2>
+&lt;p>主要是因为程序员开发时没有意识到暴露路由可能会造成安全风险，或者没有按照标准流程开发，忘记上线时需要修改/切换生产环境的配置&lt;/p>
+&lt;p>因为配置不当而暴露的默认内置路由可能会有：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>/actuator
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/auditevents
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/autoconfig
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/beans
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/caches
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/conditions
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/configprops
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/docs
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/dump
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/env
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/flyway
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/health
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/heapdump
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/httptrace
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/info
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/intergrationgraph
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/jolokia
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/logfile
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/loggers
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/liquibase
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/metrics
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/mappings
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/prometheus
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/refresh
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/scheduledtasks
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/sessions
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/shutdown
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/trace
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/threaddump
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/actuator/auditevents
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/actuator/beans
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/actuator/health
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/actuator/conditions
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/actuator/configprops
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/actuator/env
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/actuator/info
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/actuator/loggers
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/actuator/heapdump
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/actuator/threaddump
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/actuator/metrics
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/actuator/scheduledtasks
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/actuator/httptrace
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/actuator/mappings
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/actuator/jolokia
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/actuator/hystrix.stream
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>其中对寻找漏洞比较重要接口的有：&lt;/p></description></item><item><title>javasec-urldns链</title><link>https://l1uyun.one/posts/2024/08/javasec-urldns%E9%93%BE/</link><pubDate>Sat, 03 Aug 2024 15:51:23 +0800</pubDate><guid>https://l1uyun.one/posts/2024/08/javasec-urldns%E9%93%BE/</guid><description>&lt;h1 id="urldns链">urldns链&lt;/h1>
+&lt;p>URLDNS 是ysoserial中⼀个利⽤链的名字，但准确来说，这个其实不能称作“利⽤链”。因为其参数不是⼀个可以“利⽤”的命令，⽽仅为⼀个URL，其能触发的结果也不是命令执⾏，⽽是⼀次DNS请求。&lt;/p>
+&lt;p>虽然这个“利⽤链”实际上是不能“利⽤”的，但因为其如下的优点，⾮常适合我们在检测反序列化漏洞时使⽤&lt;/p>
+&lt;ul>
+&lt;li>使⽤Java内置的类构造，对第三⽅库没有依赖,因此对java版本没有限制&lt;/li>
+&lt;li>在⽬标没有回显的时候，能够通过DNS请求得知是否存在反序列化漏洞&lt;/li>
+&lt;/ul>
+&lt;h2 id="前置知识">前置知识&lt;/h2>
+&lt;h3 id="gadget">gadget&lt;/h3>
+&lt;p>Java反序列化漏洞产生漏洞的形式大致有两种,&lt;/p>
+&lt;ul>
+&lt;li>一种是上下文入口类的readObject方法中直接包含了危险操作(危险函数)且传入危险函数的参数可控(这种情况很少)&lt;/li>
+&lt;li>还有一种情况就是入口类的readObject方法中间接调用了其它类(B类),在B类中又调用了恶意的方法或调用了其它包含恶意方法的类,这种链式触发命令执行的结构被称为反序列化利用链,组成这种链式结构中的&amp;quot;成员类&amp;quot;被称为Gadget而这种链式结构被称为Gadget Chain,通过构造Gadget Chain可以进行反序列化攻击。&lt;/li>
+&lt;/ul>
+&lt;h2 id="漏洞分析">漏洞分析&lt;/h2>
+&lt;p>ysoserial里是这样生成payload的&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff7b72">public&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>Object&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#d2a8ff;font-weight:bold">getObject&lt;/span>(&lt;span style="color:#ff7b72">final&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>String&lt;span style="color:#6e7681"> &lt;/span>url)&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">throws&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>Exception&lt;span style="color:#6e7681"> &lt;/span>{&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#8b949e;font-style:italic">//Avoid DNS resolution during payload creation&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#8b949e;font-style:italic">//Since the field &amp;lt;code&amp;gt;java.net.URL.handler&amp;lt;/code&amp;gt; is transient, it will not be part of the serialized payload.&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>URLStreamHandler&lt;span style="color:#6e7681"> &lt;/span>handler&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">new&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>SilentURLStreamHandler();&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>HashMap&lt;span style="color:#6e7681"> &lt;/span>ht&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">new&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>HashMap();&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#8b949e;font-style:italic">// HashMap that will contain the URL&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>URL&lt;span style="color:#6e7681"> &lt;/span>u&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">new&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>URL(&lt;span style="color:#79c0ff">null&lt;/span>,&lt;span style="color:#6e7681"> &lt;/span>url,&lt;span style="color:#6e7681"> &lt;/span>handler);&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#8b949e;font-style:italic">// URL to use as the Key&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>ht.put(u,&lt;span style="color:#6e7681"> &lt;/span>url);&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#8b949e;font-style:italic">//The value can be anything that is Serializable, URL as the key is what triggers the DNS lookup.&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>Reflections.setFieldValue(u,&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">&amp;#34;hashCode&amp;#34;&lt;/span>,&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">-&lt;/span>1);&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#8b949e;font-style:italic">// During the put above, the URL&amp;#39;s hashCode is calculated and cached. This resets that so the next time hashCode is called a DNS lookup will be triggered.&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">return&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>ht;&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>}&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> 
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">static&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">class&lt;/span> &lt;span style="color:#f0883e;font-weight:bold">SilentURLStreamHandler&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">extends&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>URLStreamHandler&lt;span style="color:#6e7681"> &lt;/span>{&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">protected&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>URLConnection&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#d2a8ff;font-weight:bold">openConnection&lt;/span>(URL&lt;span style="color:#6e7681"> &lt;/span>u)&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">throws&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>IOException&lt;span style="color:#6e7681"> &lt;/span>{&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">return&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#79c0ff">null&lt;/span>;&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>}&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">protected&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">synchronized&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>InetAddress&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#d2a8ff;font-weight:bold">getHostAddress&lt;/span>(URL&lt;span style="color:#6e7681"> &lt;/span>u)&lt;span style="color:#6e7681"> &lt;/span>{&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">return&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#79c0ff">null&lt;/span>;&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>}&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>}&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>利用链&lt;/p></description></item><item><title>javasec-反序列化</title><link>https://l1uyun.one/posts/2024/08/javasec-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</link><pubDate>Thu, 01 Aug 2024 22:16:09 +0000</pubDate><guid>https://l1uyun.one/posts/2024/08/javasec-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</guid><description>&lt;h1 id="反序列化">反序列化&lt;/h1>
+&lt;p>序列化是将Java对象转换成字节流的过程。而反序列化是将字节流转换成Java对象的过程，
+java序列化的数据一般会以标记(ac ed 00 05)开头，base64编码的特征为rO0AB，&lt;/p>
+&lt;p>JAVA常见的序列化和反序列化的方法有JAVA 原生序列化和JSON 类（fastjson、jackson）序列化等。&lt;/p>
+&lt;h2 id="前置知识">前置知识&lt;/h2>
+&lt;h3 id="为什么要序列化">为什么要序列化?&lt;/h3>
+&lt;p>对象不只是存储在内存中，它还需要在传输网络中进行传输，并且保存起来之后下次再加载出来，这时候就需要序列化技术。&lt;/p>
+&lt;p>Java的序列化技术就是把对象转换成一串由二进制字节组成的数组，然后将这二进制数据保存在磁盘或传输网络。而后需要用到这对象时，磁盘或者网络接收者可以通过反序列化得到此对象，达到对象持久化的目的。&lt;/p>
+&lt;p>反序列化条件：&lt;/p>
+&lt;ul>
+&lt;li>该类必须实现 java.io.Serializable 对象&lt;/li>
+&lt;li>该类的所有属性必须是可序列化的。如果有一个属性不是可序列化的，则该属性必须注明是短暂的序列化过程：&lt;/li>
+&lt;/ul>
+&lt;ol>
+&lt;li>序列化：将 OutputStream 封装在 ObjectOutputStream 内，然后调用 writeObject 即可&lt;/li>
+&lt;li>反序列化：将 InputStream 封装在 ObjectInputStream 内，然后调用 readObject 即可反序列化出错可能原因&lt;/li>
+&lt;li>序列化字节码中的 serialVersionUID(用于记录java序列化版本)在进行反序列化时，JVM 会把传来的字节流中的 serialVersionUID 与本地相应实体类的 serialVersionUID 进行比较，如果相同就认为是一致的，可以进行反序列化，否则就抛出序列化版本不一致的异常- InvalidCastException&lt;/li>
+&lt;/ol>
+&lt;h3 id="objectoutputstream">ObjectOutputStream&lt;/h3>
+&lt;p>java.io.ObjectOutputStream 类，将Java对象的原始数据类型写出到文件,实现对象的持久存储。&lt;/p>
+&lt;p>一个对象要想序列化，必须满足两个条件:
+1.该类必须实现 java.io.Serializable 接口， Serializable 是一个标记接口，不实现此接口的类将不会
+使任何状态序列化或反序列化，会抛出 NotSerializableException 。
+2.该类的所有属性必须是可序列化的。如果有一个属性不需要可序列化的，则该属性必须注明是瞬态的，使用transient 关键字修饰。&lt;/p>
+&lt;p>示例:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">public&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">class&lt;/span> &lt;span style="color:#f0883e;font-weight:bold">Employee&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">implements&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>java.io.Serializable{&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">public&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>String&lt;span style="color:#6e7681"> &lt;/span>name;&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">public&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>String&lt;span style="color:#6e7681"> &lt;/span>address;&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">public&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">transient&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">int&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>age;&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#8b949e;font-style:italic">// transient瞬态修饰成员,不会被序列化&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">public&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">void&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#d2a8ff;font-weight:bold">addressCheck&lt;/span>()&lt;span style="color:#6e7681"> &lt;/span>{&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>System.out.println(&lt;span style="color:#a5d6ff">&amp;#34;Address check : &amp;#34;&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">+&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>name&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">+&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">&amp;#34; -- &amp;#34;&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">+&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>address);&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#8b949e;font-style:italic">//此处省略tostring等方法&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>}&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">&lt;/span>}&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff7b72">public&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">class&lt;/span> &lt;span style="color:#f0883e;font-weight:bold">SerializeDemo&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>{&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">public&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">static&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">void&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#d2a8ff;font-weight:bold">main&lt;/span>(String&lt;span style="color:#ff7b72;font-weight:bold">[]&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>args)&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">throws&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>IOException&lt;span style="color:#6e7681"> &lt;/span>{&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>Employee&lt;span style="color:#6e7681"> &lt;/span>e&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">new&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>Employee();&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>e.name&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">&amp;#34;zhangsan&amp;#34;&lt;/span>;&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>e.age&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>20;&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>e.address&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">&amp;#34;shenzhen&amp;#34;&lt;/span>;&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#8b949e;font-style:italic">// 创建序列化流&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>ObjectOutputStream&lt;span style="color:#6e7681"> &lt;/span>outputStream&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">new&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>ObjectOutputStream(&lt;span style="color:#ff7b72">new&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">&lt;/span>FileOutputStream(&lt;span style="color:#a5d6ff">&amp;#34;ser.txt&amp;#34;&lt;/span>));&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#8b949e;font-style:italic">// 写出对象&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>outputStream.writeObject(e);&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#8b949e;font-style:italic">// 释放资源&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>outputStream.close();&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>}&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">&lt;/span>}&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="objectinputstream">ObjectInputStream&lt;/h3>
+&lt;p>如果能找到一个对象的class文件，我们可以进行反序列化操作，调用 ObjectInputStream 读取对象的方法&lt;/p></description></item><item><title>javasec-xxe</title><link>https://l1uyun.one/posts/2024/07/javasec-xxe/</link><pubDate>Fri, 26 Jul 2024 18:10:32 +0000</pubDate><guid>https://l1uyun.one/posts/2024/07/javasec-xxe/</guid><description>&lt;h1 id="xxe注入">xxe注入&lt;/h1>
+&lt;h2 id="前置知识">前置知识&lt;/h2>
+&lt;h3 id="xml文档">XML文档&lt;/h3>
+&lt;p>要了解XXE漏洞，那么先得了解一下有关XML的基础知识。&lt;/p>
+&lt;p>XML是一种非常流行的标记语言，在1990年代后期首次标准化，并被无数的软件项目所采用。它用于配置文件，文档格式（如OOXML，ODF，PDF，RSS，&amp;hellip;），图像格式（SVG，EXIF标题）和网络协议（WebDAV，CalDAV，XMLRPC，SOAP，XMPP，SAML， XACML，&amp;hellip;）&lt;/p>
+&lt;h4 id="文档结构">文档结构&lt;/h4>
+&lt;p>XML主要由7个部分组成,&lt;/p>
+&lt;ul>
+&lt;li>文档声明&lt;/li>
+&lt;li>标签/元素&lt;/li>
+&lt;li>属性&lt;/li>
+&lt;li>注释&lt;/li>
+&lt;li>实体字符&lt;/li>
+&lt;li>CDATA 字符数据区。CDATA 指的是不应由 XML 解析器进行解析的文本数据（Unparsed Character Data）。CDATA 部分中的所有内容都会被解析器忽略。CDATA 部分由 &lt;code>**&lt;/code> 结束，某些文本比如 JavaScript 代码，包含大量 “&amp;lt;” 或 “&amp;amp;” 字符。为了避免错误，可以将脚本代码定义为 CDATA。&lt;/li>
+&lt;li>处理指令,&lt;/li>
+&lt;/ul>
+&lt;p>一个标准的xml文件为&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-xml" data-lang="xml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic">&amp;lt;!-- XML文档声明；同时也是一个处理指令,用于声明 XML 文档的版本和编码方式。&amp;lt;? xxx ?&amp;gt; 就是处理指令的格式--&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-weight:bold;font-style:italic">&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;ISO-8859-1&amp;#34;?&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic">&amp;lt;!-- bookstore根元素、book子元素--&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#7ee787">&amp;lt;bookstore&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#8b949e;font-style:italic">&amp;lt;!-- category、lang都是属性--&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7ee787">&amp;lt;book&lt;/span> category=&lt;span style="color:#a5d6ff">&amp;#34;COOKING&amp;#34;&lt;/span>&lt;span style="color:#7ee787">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7ee787">&amp;lt;title&lt;/span> lang=&lt;span style="color:#a5d6ff">&amp;#34;en&amp;#34;&lt;/span>&lt;span style="color:#7ee787">&amp;gt;&lt;/span>Everyday Italian&lt;span style="color:#7ee787">&amp;lt;/title&amp;gt;&lt;/span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#8b949e;font-style:italic">&amp;lt;!-- &amp;amp;lt;实体字符 是一个预定义的实体引用，这里也可以引用dtd中定义的实体，以 &amp;amp; 开头, 以;结尾--&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7ee787">&amp;lt;author&amp;gt;&lt;/span>Giada De Laurentiis&lt;span style="color:#ffa657">&amp;amp;lt;&lt;/span>&lt;span style="color:#7ee787">&amp;lt;/author&amp;gt;&lt;/span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7ee787">&amp;lt;year&amp;gt;&lt;/span>2005&lt;span style="color:#7ee787">&amp;lt;/year&amp;gt;&lt;/span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7ee787">&amp;lt;price&amp;gt;&lt;/span>30.00&lt;span style="color:#7ee787">&amp;lt;/price&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#8b949e;font-style:italic">&amp;lt;!-- script这里是CDATA，不能被xml解析器解析，可以被JavaScript解析--&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7ee787">&amp;lt;script&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#8b949e;font-weight:bold;font-style:italic">&amp;lt;![CDATA[
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-weight:bold;font-style:italic"> function matchwo(a,b)
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-weight:bold;font-style:italic"> {
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-weight:bold;font-style:italic"> if (a &amp;lt; b &amp;amp;&amp;amp; a &amp;lt; 0) then
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-weight:bold;font-style:italic"> {return 1;}
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-weight:bold;font-style:italic"> else
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-weight:bold;font-style:italic"> {return 0;}
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-weight:bold;font-style:italic"> }
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-weight:bold;font-style:italic"> ]]&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7ee787">&amp;lt;/script&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7ee787">&amp;lt;/book&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#7ee787">&amp;lt;/bookstore&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="dtd">DTD&lt;/h4>
+&lt;p>DTD（Document Type Definition）是用来定义 XML 文档的结构和合法元素的集合。
+DTD 定义了 XML 文档中可以出现的元素、属性和它们的顺序，以确保 XML 数据的格式和结构符合预定义的规则。
+DTD 可以嵌入到 XML 文档中，也可以外部定义并引用。&lt;/p></description></item><item><title>javasec-sql注入</title><link>https://l1uyun.one/posts/2024/07/javasec-sql%E6%B3%A8%E5%85%A5/</link><pubDate>Tue, 23 Jul 2024 20:37:06 +0000</pubDate><guid>https://l1uyun.one/posts/2024/07/javasec-sql%E6%B3%A8%E5%85%A5/</guid><description>&lt;h1 id="javasec-sql注入">javasec-sql注入&lt;/h1>
+&lt;h2 id="前置知识">前置知识&lt;/h2>
+&lt;h3 id="sql注入">sql注入&lt;/h3>
+&lt;p>没有对用户的输入进行处理(过滤,黑名单,SQL预编译),直接将输入拼接到了sql语句中,&lt;/p>
+&lt;p>导致执行了用户构造的恶意SQL语句&lt;/p>
+&lt;p>SQL注入的语法与使用的数据库相关,与语言无关&lt;/p>
+&lt;h3 id="java数据库操作">java数据库操作&lt;/h3>
+&lt;h4 id="jdbc">jdbc&lt;/h4>
+&lt;p>java database connection&lt;/p>
+&lt;p>java提供的数据库驱动库,用于进行数据库连接,执行SQL语句&lt;/p>
+&lt;p>JDBC有两个方法执行SQL语句，分别是PrepareStatement和Statement。&lt;/p>
+&lt;h4 id="hibernate">Hibernate&lt;/h4>
+&lt;p>Hibernate是一个对象关系映射（ORM）框架，它将Java对象与数据库表进行映射，使开发者可以使用面向对象的编程方式来操作数据库。&lt;/p>
+&lt;p>Hibernate能够将Java类自动映射到数据库表上，并且能够自动生成SQL语句来操作数据库，减少了手动编写SQL的繁琐工作。&lt;/p>
+&lt;h4 id="mybatis">Mybatis&lt;/h4>
+&lt;p>Mybatis是一个持久层框架，它通过消除几乎所有的JDBC代码和手动设置参数及获取结果集的工作来简化对数据库的操作。Mybatis可以通过XML或注解的方式将要执行的SQL、参数和结果映射进行配置。&lt;/p>
+&lt;p>Mybatis与Hibernate这样的ORM（对象关系映射）框架不同，它更关注SQL本身，适合对数据库操作有较高控制要求的场景。其高效、灵活和简洁的特性，使得它在企业级开发中被广泛使用。&lt;/p>
+&lt;h2 id="复现环境">复现环境&lt;/h2>
+&lt;p>&lt;a href="https://github.com/j3ers3/Hello-Java-Sec">Hello-Java-Sec&lt;/a>
+&lt;img src="https://img.l1uyun.one/javasec-sql%E6%B3%A8%E5%85%A5_image_1.png">
+&lt;a href="https://github.com/bewhale/JavaSec">JavaSec&lt;/a>
+&lt;img src="https://img.l1uyun.one/javasec-sql%E6%B3%A8%E5%85%A5_image_2.png">&lt;/p>
+&lt;h2 id="jdbc-1">JDBC&lt;/h2>
+&lt;p>JDBC有两个方法执行SQL语句，分别是PrepareStatement和Statement。&lt;/p>
+&lt;p>JDBCTemplate是Spring对JDBC的封装&lt;/p>
+&lt;h3 id="statement">Statement&lt;/h3>
+&lt;p>这就是普通的写法,没有使用预编译&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic">// 采用Statement方法拼接SQL语句，导致注入产生&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">&lt;/span>&lt;span style="color:#ff7b72">public&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>String&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#d2a8ff;font-weight:bold">vul1&lt;/span>(String&lt;span style="color:#6e7681"> &lt;/span>id)&lt;span style="color:#6e7681"> &lt;/span>{&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>Class.forName(&lt;span style="color:#a5d6ff">&amp;#34;com.mysql.cj.jdbc.Driver&amp;#34;&lt;/span>);&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>Connection&lt;span style="color:#6e7681"> &lt;/span>conn&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>DriverManager.getConnection(db_url,&lt;span style="color:#6e7681"> &lt;/span>db_user,&lt;span style="color:#6e7681"> &lt;/span>db_pass);&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>Statement&lt;span style="color:#6e7681"> &lt;/span>stmt&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>conn.createStatement();&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#8b949e;font-style:italic">// 拼接语句产生SQL注入&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>String&lt;span style="color:#6e7681"> &lt;/span>sql&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">&amp;#34;select * from users where id = &amp;#39;&amp;#34;&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">+&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>id&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">+&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">&amp;#34;&amp;#39;&amp;#34;&lt;/span>;&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>ResultSet&lt;span style="color:#6e7681"> &lt;/span>rs&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>stmt.executeQuery(sql);&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>...&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">&lt;/span>}&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>报错注入的语法&lt;/p></description></item></channel></rss>

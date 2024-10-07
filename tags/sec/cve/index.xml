@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Sec/Cve on l1uyun☁️</title><link>https://l1uyun.one/tags/sec/cve/</link><description>Recent content in Sec/Cve on l1uyun☁️</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Fri, 20 Sep 2024 14:55:49 +0000</lastBuildDate><atom:link href="https://l1uyun.one/tags/sec/cve/index.xml" rel="self" type="application/rss+xml"/><item><title>phpMyAdmin-4.0.x—4.6.2_远程代码执行漏洞</title><link>https://l1uyun.one/posts/2024/09/phpmyadmin-4.0.x4.6.2_%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</link><pubDate>Wed, 18 Sep 2024 16:59:09 +0000</pubDate><guid>https://l1uyun.one/posts/2024/09/phpmyadmin-4.0.x4.6.2_%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</guid><description>&lt;h2 id="漏洞简介">漏洞简介&lt;/h2>
+&lt;p>phpMyAdmin是一套开源的、基于Web的MySQL数据库管理工具。&lt;/p>
+&lt;p>在其查找并替换字符串功能中，将用户输入的信息拼接进preg_replace函数第一个参数中。
+在PHP5.4.7以前，preg_replace的第一个参数可以利用\0进行截断，并将正则模式修改为e。众所周知，e模式的正则支持执行代码，此时将可构造一个任意代码执行漏洞。&lt;/p>
+&lt;h2 id="影响版本">影响版本&lt;/h2>
+&lt;p>// 漏洞涉及的组件,版本&lt;/p>
+&lt;p>phpmyadmin
+4.0.x-4.0.10.16
+4.4.x-4.4.15.7
+4.6.x-4.6.3（实际上由于该版本要求PHP5.5+，所以无法复现本漏洞）&lt;/p>
+&lt;p>Php版本： 4.3.0 ~5.4.6
+Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了&lt;/p>
+&lt;h2 id="利用条件">利用条件&lt;/h2>
+&lt;p>// 利用这个漏洞的前置要求,例如进后台啥的&lt;/p>
+&lt;p>这个漏洞需要登录，且要能够写入数据。&lt;/p>
+&lt;h2 id="前置知识">前置知识&lt;/h2>
+&lt;h3 id="preg_replace的e参数">preg_replace的/e参数&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-php" data-lang="php">&lt;span style="display:flex;">&lt;span>mixed preg_replace ( mixed pattern, mixed replacement, mixed subject,[int limit],[int count])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#79c0ff">$pattern&lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">:&lt;/span> 要搜索的模式，可以是字符串或一个字符串数组。反斜杠定界符尽量不要使用，而是使用 &lt;span style="color:#8b949e;font-style:italic"># 或者 ~
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic">&lt;/span>&lt;span style="color:#79c0ff">$replacement&lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">:&lt;/span> 用于替换的字符串或字符串数组。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#79c0ff">$subject&lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">:&lt;/span> 要搜索替换的目标字符串或字符串数组。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#79c0ff">$limit&lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">:&lt;/span> 可选，对于每个模式用于每个 subject 字符串的最大可替换次数。默认是&lt;span style="color:#ff7b72;font-weight:bold">-&lt;/span>&lt;span style="color:#a5d6ff">1&lt;/span>（无限制）。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#79c0ff">$count&lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">:&lt;/span> 可选，为替换执行的次数。
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>/e 修正符使 preg_replace() 将 replacement 参数当作 PHP 代码(在适当的逆向引用替换完之后)。
+提示：要确保 replacement 构成一个合法的 PHP 代码字符串，否则 PHP 会在报告在包含 preg_replace() 的行中出现语法解析错误。
+例如,对于下面这个代码,访问h=phpinfo(),就能触发phpinfo页面&lt;/p></description></item><item><title>phpmyadmin-4.8.1远程文件包含</title><link>https://l1uyun.one/posts/2024/09/phpmyadmin-4.8.1%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/</link><pubDate>Wed, 18 Sep 2024 15:33:13 +0000</pubDate><guid>https://l1uyun.one/posts/2024/09/phpmyadmin-4.8.1%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/</guid><description>&lt;h2 id="漏洞简介">漏洞简介&lt;/h2>
+&lt;p>phpMyAdmin是一套开源的、基于Web的MySQL数据库管理工具。其index.php中存在一处文件包含逻辑，通过二次编码即可绕过检查，造成远程文件包含漏洞。&lt;/p>
+&lt;p>这个漏洞刚刚打演练的时候用过,分析一下原理&lt;/p>
+&lt;h2 id="影响版本">影响版本&lt;/h2>
+&lt;p>phpmyadmin 4.8.0 &amp;amp; 4.8.1&lt;/p>
+&lt;h2 id="前提条件">前提条件&lt;/h2>
+&lt;p>能够进入后台,也就是要有数据库的凭据&lt;/p>
+&lt;h2 id="前置知识">前置知识&lt;/h2>
+&lt;h3 id="php文件包含">php文件包含&lt;/h3>
+&lt;p>服务器执行PHP文件时，可以通过文件包含函数加载另一个文件中的PHP代码，并且当PHP来执行，这会为开发者节省大量的时间。
+文件包含相关函数&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>require&lt;span style="color:#ff7b72;font-weight:bold">()&lt;/span>&lt;span style="color:#8b949e;font-style:italic">#函数出现错误的时候，会直接报错并退出程序的执行&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>require_once&lt;span style="color:#ff7b72;font-weight:bold">()&lt;/span>&lt;span style="color:#8b949e;font-style:italic">#只包含一次&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>include&lt;span style="color:#ff7b72;font-weight:bold">()&lt;/span>&lt;span style="color:#8b949e;font-style:italic">#在包含的过程中如果出现错误，会抛出一个警告，程序继续正常运行&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>include_once&lt;span style="color:#ff7b72;font-weight:bold">()&lt;/span>&lt;span style="color:#8b949e;font-style:italic">#只包含一次&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>文件包含分为本地文件包含和远程文件包含&lt;/p>
+&lt;p>远程文件包含利用需要下面这两个配置文件都开启
+当allow_url_include和allow_url_fopen都开启时，可以通过利用远程url或者php://协议直接getshell，即远程文件包含，
+但allow_url_include在php5.2之后默认为off，利用机会有限。
+&lt;img src="https://img.l1uyun.one/phpmyadmin-4.8.1%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB_image_1.png">
+当allow_url_include and allow_url_fopen均为off 在window主机环境下仍然可以进行远程文件执行，用445端口SMB协议进行远程加载。&lt;/p>
+&lt;h2 id="漏洞复现">漏洞复现&lt;/h2>
+&lt;p>直接访问下面的路径,能输出passwd内容那就是有了&lt;/p>
+&lt;p>&lt;code>/index.php?target=db_sql.php%253f/../../../../../../../../etc/passwd&lt;/code>
+&lt;img src="https://img.l1uyun.one/phpmyadmin-4.8.1%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB_image_2.png">&lt;/p>
+&lt;p>利用方式的话,就是先在sql栏执行一下select命令,然后去包含session文件,就能获得webshell,进而拿shell&lt;/p>
+&lt;p>可以执行一下&lt;code>SELECT &amp;lt;?=phpinfo()?&amp;gt;;&lt;/code>，然后查看自己的sessionid（cookie中phpMyAdmin的值），然后包含session文件即可：&lt;/p>
+&lt;p>对应的sessions文件是 /tmp/sess_sessionid
+&lt;a href="phpmyadmin-4_8_1%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%EF%BC%88CVE-2018-12613%EF%BC%89.pdf">phpmyadmin-4_8_1远程文件包含漏洞（CVE-2018-12613）&lt;/a>&lt;/p>
+&lt;h2 id="漏洞分析">漏洞分析&lt;/h2>
+&lt;p>简单来说就是phpmyadmin对用户传入的参数直接进行了包含,并且黑名单的检验不严格,可以绕过,从而导致了LFI&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-php" data-lang="php">&lt;span style="display:flex;">&lt;span>index&lt;span style="color:#ff7b72;font-weight:bold">.&lt;/span>php
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic">// If we have a valid target, let&amp;#39;s load that script instead
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic">&lt;/span>&lt;span style="color:#ff7b72">if&lt;/span> (&lt;span style="color:#ff7b72;font-weight:bold">!&lt;/span> &lt;span style="color:#ff7b72">empty&lt;/span>(&lt;span style="color:#79c0ff">$_REQUEST&lt;/span>[&lt;span style="color:#a5d6ff">&amp;#39;target&amp;#39;&lt;/span>])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff7b72;font-weight:bold">&amp;amp;&amp;amp;&lt;/span> is_string(&lt;span style="color:#79c0ff">$_REQUEST&lt;/span>[&lt;span style="color:#a5d6ff">&amp;#39;target&amp;#39;&lt;/span>])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff7b72;font-weight:bold">&amp;amp;&amp;amp;&lt;/span> &lt;span style="color:#ff7b72;font-weight:bold">!&lt;/span> preg_match(&lt;span style="color:#a5d6ff">&amp;#39;/^index/&amp;#39;&lt;/span>, &lt;span style="color:#79c0ff">$_REQUEST&lt;/span>[&lt;span style="color:#a5d6ff">&amp;#39;target&amp;#39;&lt;/span>])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff7b72;font-weight:bold">&amp;amp;&amp;amp;&lt;/span> &lt;span style="color:#ff7b72;font-weight:bold">!&lt;/span> in_array(&lt;span style="color:#79c0ff">$_REQUEST&lt;/span>[&lt;span style="color:#a5d6ff">&amp;#39;target&amp;#39;&lt;/span>], &lt;span style="color:#79c0ff">$target_blacklist&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff7b72;font-weight:bold">&amp;amp;&amp;amp;&lt;/span> Core&lt;span style="color:#ff7b72;font-weight:bold">::&lt;/span>checkPageValidity(&lt;span style="color:#79c0ff">$_REQUEST&lt;/span>[&lt;span style="color:#a5d6ff">&amp;#39;target&amp;#39;&lt;/span>])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff7b72">include&lt;/span> &lt;span style="color:#79c0ff">$_REQUEST&lt;/span>[&lt;span style="color:#a5d6ff">&amp;#39;target&amp;#39;&lt;/span>];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff7b72">exit&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic"># 黑名单
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic">&lt;/span>&lt;span style="color:#79c0ff">$target_blacklist&lt;/span> &lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span> &lt;span style="color:#ff7b72">array&lt;/span> (
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a5d6ff">&amp;#39;import.php&amp;#39;&lt;/span>, &lt;span style="color:#a5d6ff">&amp;#39;export.php&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后就是在phpmyadmin中,执行sql语句之后,会存储在session文件中,如果包含这个文件,就能让select里面的php代码被执行&lt;/p></description></item></channel></rss>

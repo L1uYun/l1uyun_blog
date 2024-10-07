@@ -1,0 +1,123 @@
+<!doctype html><html lang=en><head><meta charset=UTF-8><meta http-equiv=X-UA-Compatible content="ie=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=author content><meta name=description content="springboot利用 前置知识 SpringBoot Actuator Spring Boot Actuator 1.x 版本默认内置路由的起始路径为 / ，2.x 版本则统一以 /actuator 为起始路径 Spring Boot Actuator 默认的内置路由名字，如 /env 有时候也会被程序员修改，比如修改成 /appenv 一般来讲，暴露出 spring boot 应用的相关接口和传参信息并不能算是漏洞，但是以 “默认安全” 来讲，不暴露出这些信息更加安全。
+对于攻击者来讲，一般会仔细审计暴露出的接口以增加对业务系统的了解，并会同时检查应用系统是否存在未授权访问、越权等其他业务类型漏洞。
+配置不当而暴露的路由 主要是因为程序员开发时没有意识到暴露路由可能会造成安全风险，或者没有按照标准流程开发，忘记上线时需要修改/切换生产环境的配置
+因为配置不当而暴露的默认内置路由可能会有：
+/actuator /auditevents /autoconfig /beans /caches /conditions /configprops /docs /dump /env /flyway /health /heapdump /httptrace /info /intergrationgraph /jolokia /logfile /loggers /liquibase /metrics /mappings /prometheus /refresh /scheduledtasks /sessions /shutdown /trace /threaddump /actuator/auditevents /actuator/beans /actuator/health /actuator/conditions /actuator/configprops /actuator/env /actuator/info /actuator/loggers /actuator/heapdump /actuator/threaddump /actuator/metrics /actuator/scheduledtasks /actuator/httptrace /actuator/mappings /actuator/jolokia /actuator/hystrix.stream 其中对寻找漏洞比较重要接口的有：
+"><meta name=keywords content=",sec/javasec"><meta name=robots content="noodp"><meta name=theme-color content><link rel=canonical href=https://l1uyun.one/posts/2024/08/springboot%E5%88%A9%E7%94%A8/><title>springboot利用 | l1uyun☁️ — l1uyun's Blog
+</title><link rel=stylesheet href=/main.7ec86b545988b95db913eae589911b139b09ce5bdcae9ce4a659ba5efa58ffe3.css integrity="sha256-fshrVFmIuV25E+rliZEbE5sJzlvcrpzkplm6XvpY/+M="><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest><link rel=mask-icon href=/safari-pinned-tab.svg color><link rel="shortcut icon" href=/favicon.ico><meta name=msapplication-TileColor content><meta itemprop=name content="springboot利用"><meta itemprop=description content="springboot利用 前置知识 SpringBoot Actuator Spring Boot Actuator 1.x 版本默认内置路由的起始路径为 / ，2.x 版本则统一以 /actuator 为起始路径 Spring Boot Actuator 默认的内置路由名字，如 /env 有时候也会被程序员修改，比如修改成 /appenv 一般来讲，暴露出 spring boot 应用的相关接口和传参信息并不能算是漏洞，但是以 “默认安全” 来讲，不暴露出这些信息更加安全。
+对于攻击者来讲，一般会仔细审计暴露出的接口以增加对业务系统的了解，并会同时检查应用系统是否存在未授权访问、越权等其他业务类型漏洞。
+配置不当而暴露的路由 主要是因为程序员开发时没有意识到暴露路由可能会造成安全风险，或者没有按照标准流程开发，忘记上线时需要修改/切换生产环境的配置
+因为配置不当而暴露的默认内置路由可能会有：
+/actuator /auditevents /autoconfig /beans /caches /conditions /configprops /docs /dump /env /flyway /health /heapdump /httptrace /info /intergrationgraph /jolokia /logfile /loggers /liquibase /metrics /mappings /prometheus /refresh /scheduledtasks /sessions /shutdown /trace /threaddump /actuator/auditevents /actuator/beans /actuator/health /actuator/conditions /actuator/configprops /actuator/env /actuator/info /actuator/loggers /actuator/heapdump /actuator/threaddump /actuator/metrics /actuator/scheduledtasks /actuator/httptrace /actuator/mappings /actuator/jolokia /actuator/hystrix.stream 其中对寻找漏洞比较重要接口的有："><meta itemprop=datePublished content="2024-08-06T09:32:00+00:00"><meta itemprop=dateModified content="2024-08-18T11:24:37+00:00"><meta itemprop=wordCount content="183"><meta itemprop=keywords content="Sec/Javasec"><meta name=twitter:card content="summary"><meta name=twitter:title content="springboot利用"><meta name=twitter:description content="springboot利用 前置知识 SpringBoot Actuator Spring Boot Actuator 1.x 版本默认内置路由的起始路径为 / ，2.x 版本则统一以 /actuator 为起始路径 Spring Boot Actuator 默认的内置路由名字，如 /env 有时候也会被程序员修改，比如修改成 /appenv 一般来讲，暴露出 spring boot 应用的相关接口和传参信息并不能算是漏洞，但是以 “默认安全” 来讲，不暴露出这些信息更加安全。
+对于攻击者来讲，一般会仔细审计暴露出的接口以增加对业务系统的了解，并会同时检查应用系统是否存在未授权访问、越权等其他业务类型漏洞。
+配置不当而暴露的路由 主要是因为程序员开发时没有意识到暴露路由可能会造成安全风险，或者没有按照标准流程开发，忘记上线时需要修改/切换生产环境的配置
+因为配置不当而暴露的默认内置路由可能会有：
+/actuator /auditevents /autoconfig /beans /caches /conditions /configprops /docs /dump /env /flyway /health /heapdump /httptrace /info /intergrationgraph /jolokia /logfile /loggers /liquibase /metrics /mappings /prometheus /refresh /scheduledtasks /sessions /shutdown /trace /threaddump /actuator/auditevents /actuator/beans /actuator/health /actuator/conditions /actuator/configprops /actuator/env /actuator/info /actuator/loggers /actuator/heapdump /actuator/threaddump /actuator/metrics /actuator/scheduledtasks /actuator/httptrace /actuator/mappings /actuator/jolokia /actuator/hystrix.stream 其中对寻找漏洞比较重要接口的有："><meta property="og:url" content="https://l1uyun.one/posts/2024/08/springboot%E5%88%A9%E7%94%A8/"><meta property="og:site_name" content="l1uyun☁️"><meta property="og:title" content="springboot利用"><meta property="og:description" content="springboot利用 前置知识 SpringBoot Actuator Spring Boot Actuator 1.x 版本默认内置路由的起始路径为 / ，2.x 版本则统一以 /actuator 为起始路径 Spring Boot Actuator 默认的内置路由名字，如 /env 有时候也会被程序员修改，比如修改成 /appenv 一般来讲，暴露出 spring boot 应用的相关接口和传参信息并不能算是漏洞，但是以 “默认安全” 来讲，不暴露出这些信息更加安全。
+对于攻击者来讲，一般会仔细审计暴露出的接口以增加对业务系统的了解，并会同时检查应用系统是否存在未授权访问、越权等其他业务类型漏洞。
+配置不当而暴露的路由 主要是因为程序员开发时没有意识到暴露路由可能会造成安全风险，或者没有按照标准流程开发，忘记上线时需要修改/切换生产环境的配置
+因为配置不当而暴露的默认内置路由可能会有：
+/actuator /auditevents /autoconfig /beans /caches /conditions /configprops /docs /dump /env /flyway /health /heapdump /httptrace /info /intergrationgraph /jolokia /logfile /loggers /liquibase /metrics /mappings /prometheus /refresh /scheduledtasks /sessions /shutdown /trace /threaddump /actuator/auditevents /actuator/beans /actuator/health /actuator/conditions /actuator/configprops /actuator/env /actuator/info /actuator/loggers /actuator/heapdump /actuator/threaddump /actuator/metrics /actuator/scheduledtasks /actuator/httptrace /actuator/mappings /actuator/jolokia /actuator/hystrix.stream 其中对寻找漏洞比较重要接口的有："><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2024-08-06T09:32:00+00:00"><meta property="article:modified_time" content="2024-08-18T11:24:37+00:00"><meta property="article:tag" content="Sec/Javasec"><meta property="article:published_time" content="2024-08-06 09:32:00 +0000 UTC"><script async src="https://www.googletagmanager.com/gtag/js?id=G-HV98V20MVF"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-HV98V20MVF")</script><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script><meta name=referrer content="no-referrer-when-downgrade"><link rel=stylesheet href=https://unpkg.com/swiper/swiper-bundle.min.css><script src=https://unpkg.com/swiper/swiper-bundle.min.js></script><link rel=stylesheet href=/css/custom.css></head><body><div class=container><header class=header><span class=header__inner><a href=/ style=text-decoration:none><div class=logo><span class=logo__mark>></span>
+<span class=logo__text>$ cd /home/l1uyun☁️ </span><span class=logo__cursor style=background-color:#87ceeb></span></div></a><span class=header__right><nav class=menu><ul class=menu__inner><li><a href=/posts/>Posts</a></li><li><a href=/tags/>Tags</a></li><li><a href=/about/>About</a></li></ul></nav><span class=menu-trigger><svg viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+</span><span class="theme-toggle not-selectable"><svg class="theme-toggler" width="22" height="22" viewBox="0 0 48 48" fill="none"><path d="M22 41c10.4934.0 19-8.5066 19-19C41 11.5066 32.4934 3 22 3 11.5066 3 3 11.5066 3 22s8.5066 19 19 19zM7 22C7 13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22z"/></svg></span></span></span></header><div class=content><main class=post><div class=post-info><p></p><hr><p><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7" y2="7"/></svg>
+<span class=tag><a href=https://l1uyun.one/tags/sec/javasec/>sec/javasec</a></span></p><p><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+2024-08-06 09:32
+(Last updated: 2024-08-18 11:24)</p><p><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+183 Words
+<span>&nbsp;&nbsp;</span>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+One minute</p></div><hr><article><h1 class=post-title><a href=https://l1uyun.one/posts/2024/08/springboot%E5%88%A9%E7%94%A8/>springboot利用</a></h1><hr><aside id=toc><div class=toc-title>Table of Contents</div><nav id=TableOfContents><ul><li><a href=#springboot-actuator>SpringBoot Actuator</a></li><li><a href=#配置不当而暴露的路由>配置不当而暴露的路由</a></li><li><a href=#漏洞检测>漏洞检测</a><ul><li><a href=#检测清单>检测清单</a></li><li><a href=#黑盒发现>黑盒发现</a></li><li><a href=#白盒发现>白盒发现</a></li></ul></li><li><a href=#信息泄露利用>信息泄露利用</a><ul><li><a href=#内部路由泄露>内部路由泄露</a></li><li><a href=#heapdump敏感信息查询>heapdump敏感信息查询</a></li></ul></li><li><a href=#漏洞利用>漏洞利用</a><ul><li><a href=#框架漏洞>框架漏洞</a></li><li><a href=#利用类漏洞来进行rce攻击>利用类漏洞来进行RCE攻击</a></li></ul></li></ul><ul><li><a href=#安装源码>安装源码</a></li><li><a href=#源码审计>源码审计</a></li></ul></nav></aside><hr><div class=post-content><h1 id=springboot利用>springboot利用</h1><h1 id=前置知识>前置知识</h1><h2 id=springboot-actuator>SpringBoot Actuator</h2><div class=highlight><pre tabindex=0 style=color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>Spring Boot Actuator 1.x 版本默认内置路由的起始路径为 / ，2.x 版本则统一以 /actuator 为起始路径
+</span></span><span style=display:flex><span>Spring Boot Actuator 默认的内置路由名字，如 /env 有时候也会被程序员修改，比如修改成 /appenv
+</span></span></code></pre></div><p>一般来讲，暴露出 spring boot 应用的相关接口和传参信息并不能算是漏洞，但是以 “默认安全” 来讲，不暴露出这些信息更加安全。</p><p>对于攻击者来讲，一般会仔细审计暴露出的接口以增加对业务系统的了解，并会同时检查应用系统是否存在未授权访问、越权等其他业务类型漏洞。</p><h2 id=配置不当而暴露的路由>配置不当而暴露的路由</h2><p>主要是因为程序员开发时没有意识到暴露路由可能会造成安全风险，或者没有按照标准流程开发，忘记上线时需要修改/切换生产环境的配置</p><p>因为配置不当而暴露的默认内置路由可能会有：</p><div class=highlight><pre tabindex=0 style=color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>/actuator
+</span></span><span style=display:flex><span>/auditevents
+</span></span><span style=display:flex><span>/autoconfig
+</span></span><span style=display:flex><span>/beans
+</span></span><span style=display:flex><span>/caches
+</span></span><span style=display:flex><span>/conditions
+</span></span><span style=display:flex><span>/configprops
+</span></span><span style=display:flex><span>/docs
+</span></span><span style=display:flex><span>/dump
+</span></span><span style=display:flex><span>/env
+</span></span><span style=display:flex><span>/flyway
+</span></span><span style=display:flex><span>/health
+</span></span><span style=display:flex><span>/heapdump
+</span></span><span style=display:flex><span>/httptrace
+</span></span><span style=display:flex><span>/info
+</span></span><span style=display:flex><span>/intergrationgraph
+</span></span><span style=display:flex><span>/jolokia
+</span></span><span style=display:flex><span>/logfile
+</span></span><span style=display:flex><span>/loggers
+</span></span><span style=display:flex><span>/liquibase
+</span></span><span style=display:flex><span>/metrics
+</span></span><span style=display:flex><span>/mappings
+</span></span><span style=display:flex><span>/prometheus
+</span></span><span style=display:flex><span>/refresh
+</span></span><span style=display:flex><span>/scheduledtasks
+</span></span><span style=display:flex><span>/sessions
+</span></span><span style=display:flex><span>/shutdown
+</span></span><span style=display:flex><span>/trace
+</span></span><span style=display:flex><span>/threaddump
+</span></span><span style=display:flex><span>/actuator/auditevents
+</span></span><span style=display:flex><span>/actuator/beans
+</span></span><span style=display:flex><span>/actuator/health
+</span></span><span style=display:flex><span>/actuator/conditions
+</span></span><span style=display:flex><span>/actuator/configprops
+</span></span><span style=display:flex><span>/actuator/env
+</span></span><span style=display:flex><span>/actuator/info
+</span></span><span style=display:flex><span>/actuator/loggers
+</span></span><span style=display:flex><span>/actuator/heapdump
+</span></span><span style=display:flex><span>/actuator/threaddump
+</span></span><span style=display:flex><span>/actuator/metrics
+</span></span><span style=display:flex><span>/actuator/scheduledtasks
+</span></span><span style=display:flex><span>/actuator/httptrace
+</span></span><span style=display:flex><span>/actuator/mappings
+</span></span><span style=display:flex><span>/actuator/jolokia
+</span></span><span style=display:flex><span>/actuator/hystrix.stream
+</span></span></code></pre></div><p>其中对寻找漏洞比较重要接口的有：</p><p>/env、/actuator/env
+GET 请求 /env 会直接泄露环境变量、内网地址、配置中的用户名等信息；当程序员的属性名命名不规范，例如 password 写成 psasword、pwd 时，会泄露密码明文；</p><p>同时有一定概率可以通过 POST 请求 /env 接口设置一些属性，间接触发相关 RCE 漏洞；同时有概率获得星号遮掩的密码、密钥等重要隐私信息的明文。</p><p>/refresh、/actuator/refresh
+POST 请求 /env 接口设置属性后，可同时配合 POST 请求 /refresh 接口刷新属性变量来触发相关 RCE 漏洞。</p><p>/restart、/actuator/restart
+暴露出此接口的情况较少；可以配合 POST请求 /env 接口设置属性后，再 POST 请求 /restart 接口重启应用来触发相关 RCE 漏洞。</p><p>/jolokia、/actuator/jolokia
+可以通过 /jolokia/list 接口寻找可以利用的 MBean，间接触发相关 RCE 漏洞、获得星号遮掩的重要隐私信息的明文等。</p><p>/trace、/actuator/httptrace
+一些 http 请求包访问跟踪信息，有可能在其中发现内网应用系统的一些请求信息详情；以及有效用户或管理员的 cookie、jwt token 等信息。</p><h2 id=漏洞检测>漏洞检测</h2><h3 id=检测清单>检测清单</h3><p><a href=https://github.com/LandGrey/SpringBootVulExploit>https://github.com/LandGrey/SpringBootVulExploit</a>
+<img src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_1.png>
+<img src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_2.png></p><h3 id=黑盒发现>黑盒发现</h3><p>人工识别，BP插件</p><p>人工识别
+1、网站图片文件是一个绿色的树叶。2、特有的报错信息。3、Whitelabel Error Page关键字
+<img alt=|750 src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_3.png></p><p>BP插件
+<a href=https://github.com/API-Security/APIKit>https://github.com/API-Security/APIKit</a>
+打开BurpSuite页面,点击Extender然后选择Extensions,添加APIKit.jar
+<img src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_4.png>
+安装好插件后啥都不用管，让数据包经过BP即可触发插件被动扫描
+<img alt=|800 src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_5.png></p><h3 id=白盒发现>白盒发现</h3><p>pom.xml,引用库</p><div class=highlight><pre tabindex=0 style=color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=display:flex><span><span style=color:#7ee787>&lt;dependency&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#7ee787>&lt;groupId&gt;</span>org.springframework.boot<span style=color:#7ee787>&lt;/groupId&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#7ee787>&lt;artifactId&gt;</span>spring-boot-starter-actuator<span style=color:#7ee787>&lt;/artifactId&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#7ee787>&lt;/dependency&gt;</span>
+</span></span></code></pre></div><p>配置文件Actuator设置全部暴露<code>management.endpoints.web.exposure.include=*</code>
+<img src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_6.png></p><p><img src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_7.png></p><h2 id=信息泄露利用>信息泄露利用</h2><h3 id=内部路由泄露>内部路由泄露</h3><p><a href=https://github.com/AabyssZG/SpringBoot-Scan>https://github.com/AabyssZG/SpringBoot-Scan</a>
+<img src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_8.png>
+<img src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_9.png></p><h3 id=heapdump敏感信息查询>heapdump敏感信息查询</h3><p>配置密码，AK/SK等</p><p><img alt=|800 src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_10.png></p><p>下载下来
+<img src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_11.png>
+然后使用JDumpSPider工具来获取数据
+<img src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_12.png></p><p>![](<a href=https://img.l1uyun.one/Pasted>https://img.l1uyun.one/Pasted</a> image 20240806101506.png)</p><p>这里还有另外一款工具,支持关键词搜索
+<a href=https://github.com/wyzxxz/heapdump_tool>https://github.com/wyzxxz/heapdump_tool</a>
+<img alt=|750 src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_14.png></p><p><img alt=|850 src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_15.png></p><p><img src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_16.png></p><h2 id=漏洞利用>漏洞利用</h2><h3 id=框架漏洞>框架漏洞</h3><p><a href=https://github.com/AabyssZG/SpringBoot-Scan>https://github.com/AabyssZG/SpringBoot-Scan</a>
+<img src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_17.png></p><p><img src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_18.png></p><p><img src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_19.png></p><h3 id=利用类漏洞来进行rce攻击>利用类漏洞来进行RCE攻击</h3><p>服务器上执行JNDIExploit工具(可以本地、也可以远程VPS上运行)
+<img src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_20.png></p><p><img src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_21.png></p><p><img src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_22.png></p><p><img src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_23.png></p><h1 id=cms源码审计>CMS源码审计</h1><h2 id=安装源码>安装源码</h2><p><img src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_24.png>
+<img src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_25.png>
+<img src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_26.png>
+<img src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_27.png></p><p><img src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_28.png></p><p><img src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_29.png>
+起始就是把actuator的接口做了可视化
+<img src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_30.png></p><h2 id=源码审计>源码审计</h2><p>从pom.xml看有没有调用Actuator库
+<img src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_31.png></p><div class=highlight><pre tabindex=0 style=color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=display:flex><span>配置文件中Actuator设置是否为*(全部暴露)
+</span></span><span style=display:flex><span>management.endpoints.web.exposure.include=*
+</span></span></code></pre></div><p><img alt=|700 src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_32.png></p><p><img alt=|700 src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_33.png></p><p>泄露安全(heapdump)
+<img src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_34.png>
+使用heapdump敏感信息查询工具提取敏感信息
+JDumpSpider
+<img alt=|750 src=https://img.l1uyun.one/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8_image_35.png></p><h1 id=一句话总结>一句话总结</h1><p>遇到springboot框架从两个方面去寻找安全问题：
+1.泄露安全(是否泄露了内部路由及heapdump)
+2.漏洞安全(利用相关框架漏洞检测工具测试是否存在漏洞)</p><h1 id=参考>参考</h1><p><a href=https://blog.csdn.net/m0_60571842/article/details/135096224>WEB攻防-Java安全&原生反序列化&amp;SpringBoot攻防&amp;heapdump提取&amp;CVE_java spring反序列化-CSDN博客</a></p></div></article><hr><div class=pagination><div class=pagination__buttons><span class="button previous"><a href=https://l1uyun.one/posts/2024/08/puff-pastry%E6%89%93%E9%9D%B6/><span class=button__icon>←</span>
+<span class=button__text>Puff-Pastry打靶</span>
+</a></span><span class="button next"><a href=https://l1uyun.one/posts/2024/08/javasec-urldns%E9%93%BE/><span class=button__text>javasec-urldns链</span>
+<span class=button__icon>→</span></a></span></div></div><script src=https://utteranc.es/client.js repo=L1uYun/l1uyun_blog label="blog comment" issue-term=title theme=github-light crossorigin=anonymous async></script></main></div><footer class=footer><div class=footer__inner><div class=footer__content><span>&copy; 2024</span>
+<span><a href=https://l1uyun.one/></a></span><span><a href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank rel=noopener>CC BY-NC 4.0</a></span>
+<span><a href=https://l1uyun.one/posts/index.xml target=_blank title=rss><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 019 9"/><path d="M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1"/></svg></a></span><div class=busuanzi-footer><span id=busuanzi_container_site_pv>本站总访问量<span id=busuanzi_value_site_pv></span>次
+</span><span id=busuanzi_container_site_uv>本站访客数<span id=busuanzi_value_site_uv></span>人次</span></div></div></div><div class=footer__inner><div class=footer__content><span>Powered by <a href=http://gohugo.io>Hugo</a></span><span>Made with &#10084; by <a href=https://github.com/rhazdon>Djordje Atlialp</a></span></div></div></footer></div><script type=text/javascript src=/bundle.min.243fec32d3a4ae91a0f3d22849096c696784566f8bf3d340ce4ebfd711d99f3cac4489fe226e2645c6c5c284d863f37ddc0d610af7b3fa108a2d4387981d3db7.js integrity="sha512-JD/sMtOkrpGg89IoSQlsaWeEVm+L89NAzk6/1xHZnzysRIn+Im4mRcbFwoTYY/N93A1hCvez+hCKLUOHmB09tw=="></script><script src=/js/view-image.min.js></script><script>window.ViewImage&&ViewImage.init(".content img")</script></body></html>
