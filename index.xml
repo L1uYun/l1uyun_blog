@@ -1,4 +1,68 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>l1uyun☁️</title><link>https://l1uyun.one/</link><description>Recent content on l1uyun☁️</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Mon, 07 Oct 2024 21:39:44 +0000</lastBuildDate><atom:link href="https://l1uyun.one/index.xml" rel="self" type="application/rss+xml"/><item><title>红日靶场2_win域</title><link>https://l1uyun.one/posts/2024/09/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2_win%E5%9F%9F/</link><pubDate>Sat, 28 Sep 2024 11:10:12 +0000</pubDate><guid>https://l1uyun.one/posts/2024/09/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2_win%E5%9F%9F/</guid><description>&lt;h1 id="前言">前言&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>l1uyun☁️</title><link>https://l1uyun.one/</link><description>Recent content on l1uyun☁️</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Wed, 09 Oct 2024 14:36:06 +0000</lastBuildDate><atom:link href="https://l1uyun.one/index.xml" rel="self" type="application/rss+xml"/><item><title>红日靶场3</title><link>https://l1uyun.one/posts/2024/10/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA3/</link><pubDate>Mon, 07 Oct 2024 21:20:16 +0000</pubDate><guid>https://l1uyun.one/posts/2024/10/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA3/</guid><description>&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>得加快红日靶场的进度了&lt;/p>
+&lt;h1 id="红日靶场3">红日靶场3&lt;/h1>
+&lt;h2 id="搭建环境">搭建环境&lt;/h2>
+&lt;p>这个靶场只有一台web服务器暴露在外网中&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>外网网段 192.168.3.1/24
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>攻击机 parrot 192.168.3.101
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>攻击机 wsl 192.168.3.100
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>攻击机 win 192.168.3.99
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>web-centos 192.168.3.3
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>内网网段
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>192.168.93.1/24
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>五台靶机都是配置了only-host网卡,除了centos额外有一个nat网卡,来与外网通信.
+启动centos靶机之后,需要&lt;code>service network restart&lt;/code>&lt;/p>
+&lt;blockquote>
+&lt;p>[!INFO]
+配完环境之后,发现忘了弄快照了,可能不会在一个完整的时间内完成,所以&amp;hellip;.重新解压一下,改完网卡后,先弄下快照&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="外网">外网&lt;/h2>
+&lt;p>访问192.168.3.3&lt;/p>
+&lt;h3 id="信息收集">信息收集&lt;/h3>
+&lt;p>&lt;img src="https://img.l1uyun.one/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA3_image_1.png">
+joomla cms
+&lt;img src="https://img.l1uyun.one/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA3_image_2.png">
+这个cms之前打靶机的时候遇见过
+&lt;img src="https://img.l1uyun.one/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA3_image_3.png">
+在README.txt中发现了版本信息(在http://192.168.3.3/administrator/manifests/files/joomla.xml中也有)
+&lt;img src="https://img.l1uyun.one/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA3_image_4.png">
+在exploit-db中查找一下,先看看两个sql注入,RealEstateManager和VehicleManager组件的,但是这台机器,这两个组件都没有&lt;/p>
+&lt;p>后台弱口令登录失败,跑一下爆破脚本&lt;/p>
+&lt;p>继续找一下nday,尝试了一下,没啥进展&lt;/p>
+&lt;h3 id="数据库凭据泄露">数据库凭据泄露&lt;/h3>
+&lt;p>回到目录扫描
+御剑扫一下
+&lt;img src="https://img.l1uyun.one/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA3_image_5.png">
+phpinfo
+&lt;img src="https://img.l1uyun.one/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA3_image_6.png">
+电脑卡起来了,御剑崩了,换成dirsearch,扫到了下面这个文件
+&lt;code>http://192.168.3.3/configuration.php~&lt;/code>
+里面有数据库的账号密码&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>	public &lt;span style="color:#79c0ff">$dbtype&lt;/span> &lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span> &lt;span style="color:#a5d6ff">&amp;#39;mysqli&amp;#39;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	public &lt;span style="color:#79c0ff">$host&lt;/span> &lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span> &lt;span style="color:#a5d6ff">&amp;#39;localhost&amp;#39;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	public &lt;span style="color:#79c0ff">$user&lt;/span> &lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span> &lt;span style="color:#a5d6ff">&amp;#39;testuser&amp;#39;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	public &lt;span style="color:#79c0ff">$password&lt;/span> &lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span> &lt;span style="color:#a5d6ff">&amp;#39;cvcvgjASD!@&amp;#39;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	public &lt;span style="color:#79c0ff">$db&lt;/span> &lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span> &lt;span style="color:#a5d6ff">&amp;#39;joomla&amp;#39;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	public &lt;span style="color:#79c0ff">$dbprefix&lt;/span> &lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span> &lt;span style="color:#a5d6ff">&amp;#39;am2zu_&amp;#39;&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>navicat连一下
+&lt;img src="https://img.l1uyun.one/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA3_image_7.png">&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>admin
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#79c0ff">$2&lt;/span>y&lt;span style="color:#79c0ff">$10$N&lt;/span>/Yv/9rzxyq.z0gLTT5og.pj3FFAP8Sq2PcBgsMX/Qnc2671qQkHy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>administrator
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#79c0ff">$2&lt;/span>y&lt;span style="color:#79c0ff">$10$t1RelJijihpPhL8LARC9JuM&lt;/span>/AWrVR.nto/XycrybdRbk8IEg6Dze2
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>bcrypt加密&lt;/p>
+&lt;h3 id="sql添加管理员">sql添加管理员&lt;/h3>
+&lt;p>没跑出来,&lt;a href="https://docs.joomla.org/How_do_you_recover_or_reset_your_admin_password%3F/zh-cn">添加一个新用户算了&lt;/a>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff7b72">INSERT&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">INTO&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">`&lt;/span>am2zu_users&lt;span style="color:#ff7b72;font-weight:bold">`&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>(&lt;span style="color:#ff7b72;font-weight:bold">`&lt;/span>name&lt;span style="color:#ff7b72;font-weight:bold">`&lt;/span>,&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">`&lt;/span>username&lt;span style="color:#ff7b72;font-weight:bold">`&lt;/span>,&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">`&lt;/span>password&lt;span style="color:#ff7b72;font-weight:bold">`&lt;/span>,&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">`&lt;/span>params&lt;span style="color:#ff7b72;font-weight:bold">`&lt;/span>,&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">`&lt;/span>registerDate&lt;span style="color:#ff7b72;font-weight:bold">`&lt;/span>,&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">`&lt;/span>lastvisitDate&lt;span style="color:#ff7b72;font-weight:bold">`&lt;/span>,&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">`&lt;/span>lastResetTime&lt;span style="color:#ff7b72;font-weight:bold">`&lt;/span>)&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">&lt;/span>&lt;span style="color:#ff7b72">VALUES&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>(&lt;span style="color:#a5d6ff">&amp;#39;Administrator2&amp;#39;&lt;/span>,&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">&amp;#39;admin2&amp;#39;&lt;/span>,&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">&amp;#39;d2064d358136996bd22421584a7cb33e:trd7TvKHx6dMeoMmBVxYmg0vuXEA4199&amp;#39;&lt;/span>,&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">&amp;#39;&amp;#39;&lt;/span>,&lt;span style="color:#6e7681"> &lt;/span>NOW(),&lt;span style="color:#6e7681"> &lt;/span>NOW(),&lt;span style="color:#6e7681"> &lt;/span>NOW());&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">&lt;/span>&lt;span style="color:#ff7b72">INSERT&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">INTO&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">`&lt;/span>am2zu_user_usergroup_map&lt;span style="color:#ff7b72;font-weight:bold">`&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>(&lt;span style="color:#ff7b72;font-weight:bold">`&lt;/span>user_id&lt;span style="color:#ff7b72;font-weight:bold">`&lt;/span>,&lt;span style="color:#ff7b72;font-weight:bold">`&lt;/span>group_id&lt;span style="color:#ff7b72;font-weight:bold">`&lt;/span>)&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">&lt;/span>&lt;span style="color:#ff7b72">VALUES&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>(LAST_INSERT_ID(),&lt;span style="color:#a5d6ff">&amp;#39;8&amp;#39;&lt;/span>);&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后使用admin2:secret登录进入后台
+&lt;img src="https://img.l1uyun.one/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA3_image_8.png">&lt;/p></description></item><item><title>红日靶场2_win域</title><link>https://l1uyun.one/posts/2024/09/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2_win%E5%9F%9F/</link><pubDate>Sat, 28 Sep 2024 11:10:12 +0000</pubDate><guid>https://l1uyun.one/posts/2024/09/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2_win%E5%9F%9F/</guid><description>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>环境和红日1的环境搭建差不多，不过这次给三台机器分别是域控、web服务器、个人PC机，与红日1不同的是这里将域管换成了个人PC机，因此我们的一些操作也会有所不同&lt;/p>
 &lt;h1 id="红日靶场2_win域">红日靶场2_win域&lt;/h1>
 &lt;h2 id="搭建环境">搭建环境&lt;/h2>
@@ -569,43 +633,4 @@ java序列化的数据一般会以标记(ac ed 00 05)开头，base64编码的特
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="dtd">DTD&lt;/h4>
 &lt;p>DTD（Document Type Definition）是用来定义 XML 文档的结构和合法元素的集合。
 DTD 定义了 XML 文档中可以出现的元素、属性和它们的顺序，以确保 XML 数据的格式和结构符合预定义的规则。
-DTD 可以嵌入到 XML 文档中，也可以外部定义并引用。&lt;/p></description></item><item><title>javasec-sql注入</title><link>https://l1uyun.one/posts/2024/07/javasec-sql%E6%B3%A8%E5%85%A5/</link><pubDate>Tue, 23 Jul 2024 20:37:06 +0000</pubDate><guid>https://l1uyun.one/posts/2024/07/javasec-sql%E6%B3%A8%E5%85%A5/</guid><description>&lt;h1 id="javasec-sql注入">javasec-sql注入&lt;/h1>
-&lt;h2 id="前置知识">前置知识&lt;/h2>
-&lt;h3 id="sql注入">sql注入&lt;/h3>
-&lt;p>没有对用户的输入进行处理(过滤,黑名单,SQL预编译),直接将输入拼接到了sql语句中,&lt;/p>
-&lt;p>导致执行了用户构造的恶意SQL语句&lt;/p>
-&lt;p>SQL注入的语法与使用的数据库相关,与语言无关&lt;/p>
-&lt;h3 id="java数据库操作">java数据库操作&lt;/h3>
-&lt;h4 id="jdbc">jdbc&lt;/h4>
-&lt;p>java database connection&lt;/p>
-&lt;p>java提供的数据库驱动库,用于进行数据库连接,执行SQL语句&lt;/p>
-&lt;p>JDBC有两个方法执行SQL语句，分别是PrepareStatement和Statement。&lt;/p>
-&lt;h4 id="hibernate">Hibernate&lt;/h4>
-&lt;p>Hibernate是一个对象关系映射（ORM）框架，它将Java对象与数据库表进行映射，使开发者可以使用面向对象的编程方式来操作数据库。&lt;/p>
-&lt;p>Hibernate能够将Java类自动映射到数据库表上，并且能够自动生成SQL语句来操作数据库，减少了手动编写SQL的繁琐工作。&lt;/p>
-&lt;h4 id="mybatis">Mybatis&lt;/h4>
-&lt;p>Mybatis是一个持久层框架，它通过消除几乎所有的JDBC代码和手动设置参数及获取结果集的工作来简化对数据库的操作。Mybatis可以通过XML或注解的方式将要执行的SQL、参数和结果映射进行配置。&lt;/p>
-&lt;p>Mybatis与Hibernate这样的ORM（对象关系映射）框架不同，它更关注SQL本身，适合对数据库操作有较高控制要求的场景。其高效、灵活和简洁的特性，使得它在企业级开发中被广泛使用。&lt;/p>
-&lt;h2 id="复现环境">复现环境&lt;/h2>
-&lt;p>&lt;a href="https://github.com/j3ers3/Hello-Java-Sec">Hello-Java-Sec&lt;/a>
-&lt;img src="https://img.l1uyun.one/javasec-sql%E6%B3%A8%E5%85%A5_image_1.png">
-&lt;a href="https://github.com/bewhale/JavaSec">JavaSec&lt;/a>
-&lt;img src="https://img.l1uyun.one/javasec-sql%E6%B3%A8%E5%85%A5_image_2.png">&lt;/p>
-&lt;h2 id="jdbc-1">JDBC&lt;/h2>
-&lt;p>JDBC有两个方法执行SQL语句，分别是PrepareStatement和Statement。&lt;/p>
-&lt;p>JDBCTemplate是Spring对JDBC的封装&lt;/p>
-&lt;h3 id="statement">Statement&lt;/h3>
-&lt;p>这就是普通的写法,没有使用预编译&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic">// 采用Statement方法拼接SQL语句，导致注入产生&lt;/span>&lt;span style="color:#6e7681">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">&lt;/span>&lt;span style="color:#ff7b72">public&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>String&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#d2a8ff;font-weight:bold">vul1&lt;/span>(String&lt;span style="color:#6e7681"> &lt;/span>id)&lt;span style="color:#6e7681"> &lt;/span>{&lt;span style="color:#6e7681">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>Class.forName(&lt;span style="color:#a5d6ff">&amp;#34;com.mysql.cj.jdbc.Driver&amp;#34;&lt;/span>);&lt;span style="color:#6e7681">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>Connection&lt;span style="color:#6e7681"> &lt;/span>conn&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>DriverManager.getConnection(db_url,&lt;span style="color:#6e7681"> &lt;/span>db_user,&lt;span style="color:#6e7681"> &lt;/span>db_pass);&lt;span style="color:#6e7681">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>Statement&lt;span style="color:#6e7681"> &lt;/span>stmt&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>conn.createStatement();&lt;span style="color:#6e7681">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#8b949e;font-style:italic">// 拼接语句产生SQL注入&lt;/span>&lt;span style="color:#6e7681">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>String&lt;span style="color:#6e7681"> &lt;/span>sql&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">&amp;#34;select * from users where id = &amp;#39;&amp;#34;&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">+&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>id&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">+&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">&amp;#34;&amp;#39;&amp;#34;&lt;/span>;&lt;span style="color:#6e7681">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>ResultSet&lt;span style="color:#6e7681"> &lt;/span>rs&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>stmt.executeQuery(sql);&lt;span style="color:#6e7681">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>...&lt;span style="color:#6e7681">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">&lt;/span>}&lt;span style="color:#6e7681">
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>报错注入的语法&lt;/p></description></item></channel></rss>
+DTD 可以嵌入到 XML 文档中，也可以外部定义并引用。&lt;/p></description></item></channel></rss>
