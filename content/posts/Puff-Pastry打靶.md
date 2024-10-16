@@ -3,7 +3,7 @@ title: Puff-Pastry打靶
 tags:
   - sec
 date: 2024-08-18T11:59:41
-lastmod: 2024-08-19T13:01:04
+lastmod: 2024-10-16T15:05:57
 toc: "true"
 draft: "false"
 ---
@@ -434,8 +434,10 @@ Access denied.
 ```
 这里直接拿巨魔的拓扑图
 ![](https://img.l1uyun.one/Puff-Pastry打靶记录_image_26.png)
-我现在需要再配置一个socks代理,服务器放在thinkphp机器上
+我现在需要再配置一个socks代理,服务器放在thinkphp机器上,客户端放在phpmyadmin机器上
 ```toml
+phpmyadmin.toml
+
 serverAddr = "10.85.101.4"
 serverPort = 7000
 
