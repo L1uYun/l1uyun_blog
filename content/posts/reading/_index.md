@@ -1,7 +1,7 @@
 ---
-title: 闲聊
+title: reading
 slug: chat
 date: 2024-10-27T08:37:45
-lastmod: 2024-10-27T08:49:32
+lastmod: 2024-10-27T08:55:07
 tags: 
 ---
