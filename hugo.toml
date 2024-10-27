@@ -83,5 +83,4 @@ rssLimit = 5
 
 [params.twikoo]
 	enable = false
-  visitor = true
-  
+  visitor = false
