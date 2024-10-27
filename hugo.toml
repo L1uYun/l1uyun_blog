@@ -1,172 +1,87 @@
-baseURL = "https://l1uyun.one"
-title   = "l1uyun☁️"
-languageCode = "zh-cn"
-theme = "hello-friend-ng"
+baseURL = 'https://l1uyun.one/'
+languageCode = 'zh-CN'
+timeZone = 'Asia/Shanghai'
+title = 'l1uyun_blog'
 
-PygmentsCodeFences = true  # 启用代码块的Pygments高亮
-# PygmentsStyle = "monokai"
-PygmentsStyle = "github-dark"  # 设置代码高亮的样式
-paginate  = 14  # 每页显示的文章数量
-rssLimit  = 10  # RSS订阅中最多显示的文章数量
-copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."  # RSS模板中使用的版权声明
-
-
-
-# Google Analytics的跟踪ID
-[services]
-  [services.googleAnalytics]
-    ID = 'G-HV98V20MVF'
-# disqusShortname = ""
-
-hasCJKLanguage = true  # 启用对CJK（中日韩）语言的支持
-
-archetypeDir = "archetypes"  # archetypes目录的位置
-contentDir   = "content"  # 内容目录的位置
-dataDir      = "data"  # 数据目录的位置
-layoutDir    = "layouts"  # 布局目录的位置
-publishDir   = "public"  # 发布目录的位置
-
-ignoreFiles = ["archetypes/"]  
-buildDrafts  = false  # 是否构建草稿
-buildFuture  = false  # 是否构建未来发布的内容
-buildExpired = false  # 是否构建已过期的内容
-canonifyURLs = true  # 规范化URL
-
-enableRobotsTXT = true  # 启用robots.txt
-enableGitInfo   = false  # 禁用Git信息
-enableEmoji     = true  # 启用Emoji
-enableMissingTranslationPlaceholders = false  # 禁用缺失翻译的占位符
-disableRSS     = false  # 启用RSS
-disableSitemap = false  # 启用站点地图
-disable404     = false  # 启用404页面
-disableHugoGeneratorInject = false  # 启用Hugo生成器注入
-
-
+# 主题
+theme  =  "hello-friend"
+summaryLength = 140
+hasCJKLanguage = true
+# 每页显示的文章数量用于分页
+paginate =  10
+# rss 输出数量
+rssLimit = 5
 
 [permalinks]
-  posts = "/posts/:year/:month/:title/"  # 文章的永久链接格式
-
-[blackfriday]
-  hrefTargetBlank = true  # 链接在新标签页打开
-
-[taxonomies]
-  tag      = "tags"  # 标签分类
-  category = "categories"  # 分类
-  series   = "series"  # 系列
-
-[params]
-    [params.author]
-    name = "l1uyun"  # 作者名称
-
-    [params.busuanzi]
-    enable = true
-
-
-  dateform        = "Jan 2, 2006"  # 日期格式
-  dateformShort   = "Jan 2"  # 简短日期格式
-  dateformNum     = "2006-01-02"  # 数字日期格式
-  dateformNumTime = "2006-01-02 15:04"  # 数字日期和时间格式
-  description = "Welcome to l1uyun's blog"  # 网站描述
-  keywords = "博客,网络安全,佛法"  # 关键字
-  images = [""]  # 图片
-
-  homeSubtitle = ""  # 主页副标题
-  # backgroundImage = "assets/images/background.jpg"  # 背景图片
-
-  disableReadOtherPosts = false  # 是否禁用其他文章的链接
-
-  enableThemeToggle = true  # 启用主题切换
-
-  enableSharingButtons = true  # 启用分享按钮
-  enableGlobalLanguageMenu = true  # 启用全局语言菜单
-
-  customCSS = ['/css/custom.css']  # 自定义CSS文件
-  customJS  = []  # 自定义JS文件
-
-  justifyContent = false  # 设置文本对齐方式
-
-  [params.footer]
-    trademark = 2024  # 商标年份
-    rss = true  # 启用RSS
-    copyright = true  # 启用版权
-    author = true  # 启用作者信息
-
-    topText = []
-    bottomText = [
-      "Powered by <a href=\"http://gohugo.io\">Hugo</a>",
-      "Made with &#10084; by <a href=\"https://github.com/rhazdon\">Djordje Atlialp</a>"
-    ]  # 页脚文本
-
-  [params.favicon.color]
-    mask = "#1b1c1d"  # favicon颜色
-    msapplication = "#1b1c1d"  # favicon颜色
-    theme = "#1b1c1d"  # favicon颜色
-
-  [params.logo]
-    logoMark     = ">"  # Logo标记
-    logoText     = "$ cd /home/l1uyun☁️ "  # Logo文本
-    logoHomeLink = "/"  # Logo主页链接
-    logoCursorColor    = "#87CEEB"  # Logo光标颜色
-
-  [params.portrait]
-    maxWidth = "690px"  # 头像最大宽度
-    hello = "「崇高必至堕落，积聚必有消散，缘会终须别离，有命咸归于死。」"  # 头像问候语
-  
-  [[params.Portraits]]
-    Path = "https://img.l1uyun.one/cover1.jpg"
-    Alt = "Image 1 Description"
-
-  [[params.Portraits]]
-    Path = "https://img.l1uyun.one/cover2.jpg"
-    Alt = "Image 2 Description"
-
-  [[params.Portraits]]
-    Path = "https://img.l1uyun.one/cover3.jpg"
-    Alt = "Image 3 Description"
-
-  [params.utterances]
-     repository = "L1uYun/l1uyun_blog"  # GitHub仓库
-     label      = "blog comment"  # GitHub标签
-     issueTerm  = "title"  # Issue匹配项
-     theme      = "github-light"  # Utteranc.es主题
-
-  [[params.social]]
-    name = "twitter"
-    url  = "https://twitter.com/ftliuyun"
-
-
-  [[params.social]]
-    name = "bilibili"
-    url  = "https://space.bilibili.com/661621630"
-
-  [[params.social]]
-    name = "email"
-    url  = "mailto:abandon846185293@gmail.com"
-
-  [[params.social]]
-    name = "github"
-    url  = "https://github.com/L1uYun"
-
-[languages]
-  [languages.en]
-    weight    = 1
-    copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
-  [languages.en.params]
-    subtitle  = "l1uyun's Blog"  # 英文语言设置
+  posts = "/posts/:filename/"
+  tags = "/tags/:slug/"
 
 [menu]
   [[menu.main]]
-    identifier = "posts"
-    name       = "Posts"
-    url        = "posts/"
-    weight     = "1"  # 菜单项
+  name="读书"
+  url="/posts/reading/"
+  weight="1"
   [[menu.main]]
-    identifier = "about"
-    name       = "About"
-    url        = "about/"
-    weight     = "10"
- [[menu.main]]
-   identifier = "tags"
-   name       = "Tags"
-   url        = "/tags/"
-   weight     = "9"
+  name="sec"
+  url="/posts/sec/"
+  weight="2"
+  [[menu.main]]
+  name="闲聊"
+  url="/posts/chat/"
+  weight="3"
+  [[menu.main]]
+  name="归档"
+  url="/archives/"
+  weight="4"
+  [[menu.main]]
+  name="关于我"
+  url="/about/"
+  weight="6"
+  [[menu.main]]
+  name="🔍"
+  url="/search/"
+  weight="6"
+
+
+
+[params]
+  # dir name of your blog content (default is `content/posts`)
+  contentTypeName = "posts"
+  # "light" or "dark"
+  defaultTheme = "light"
+  # if you set this to 0, only submenu trigger will be visible
+  # showMenuItems = 4
+  # Enable to show reading time in minutes for posts
+  showReadingTime = true
+  logoText = "hello friend"
+
+  MenuMore = "更多"
+  DateFormatList = "2006-01-02"
+  DateFormatSingle = "2006-01-02"
+  ReadMore = "阅读全文"
+  
+  description = ""
+	keywords = ""
+ 
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 1
+    
+[outputs]
+  home = ["Atom", "HTML","JSON"] # <domain>/atom.xml
+  page = ["HTML"]
+  
+[outputFormats.Atom]
+  mediatype = "application/rss"
+  baseName = "atom"
+
+[params.twikoo]
+	enable = false
+  visitor = true
+  

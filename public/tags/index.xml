@@ -1,33 +1,46 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on l1uyun☁️</title>
+    <title>标签 on l1uyun_blog</title>
     <link>http://localhost:1313/tags/</link>
-    <description>Recent content in Tags on l1uyun☁️</description>
+    <description>Recent content in 标签 on l1uyun_blog</description>
     <generator>Hugo</generator>
-    <language>en</language>
-    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Mon, 19 Aug 2024 13:01:04 +0000</lastBuildDate>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 16 Oct 2024 15:05:57 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Sec</title>
       <link>http://localhost:1313/tags/sec/</link>
-      <pubDate>Sun, 18 Aug 2024 11:59:41 +0000</pubDate>
+      <pubDate>Mon, 07 Oct 2024 21:20:16 +0800</pubDate>
       <guid>http://localhost:1313/tags/sec/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sec/Win</title>
+      <link>http://localhost:1313/tags/sec/win/</link>
+      <pubDate>Mon, 07 Oct 2024 21:20:16 +0800</pubDate>
+      <guid>http://localhost:1313/tags/sec/win/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sec/Cve</title>
+      <link>http://localhost:1313/tags/sec/cve/</link>
+      <pubDate>Wed, 18 Sep 2024 16:59:09 +0800</pubDate>
+      <guid>http://localhost:1313/tags/sec/cve/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sec/Vulhub</title>
+      <link>http://localhost:1313/tags/sec/vulhub/</link>
+      <pubDate>Wed, 18 Sep 2024 16:59:09 +0800</pubDate>
+      <guid>http://localhost:1313/tags/sec/vulhub/</guid>
       <description></description>
     </item>
     <item>
       <title>Sec/Javasec</title>
       <link>http://localhost:1313/tags/sec/javasec/</link>
-      <pubDate>Tue, 06 Aug 2024 09:32:00 +0000</pubDate>
+      <pubDate>Tue, 06 Aug 2024 09:32:00 +0800</pubDate>
       <guid>http://localhost:1313/tags/sec/javasec/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>L1uyun</title>
-      <link>http://localhost:1313/tags/l1uyun/</link>
-      <pubDate>Thu, 11 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/l1uyun/</guid>
       <description></description>
     </item>
   </channel>
