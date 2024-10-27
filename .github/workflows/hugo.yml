@@ -24,7 +24,7 @@ jobs:
                   extended: false # 用 stack 主题需要加这个配置
 
             - name: Build Web
-              run: hugo --minify
+              run: hugo
 
             - name: Deploy Web
               uses: peaceiris/actions-gh-pages@v4
