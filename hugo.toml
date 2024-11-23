@@ -60,7 +60,7 @@ rssLimit = 10
   DateFormatSingle = "2006-01-02"
   ReadMore = "阅读全文"
   
-  description = "feedId:83062970711988224+userId:82763952068134912"
+  Description = "feedId:83062970711988224+userId:82763952068134912"
 	keywords = ""
   # 实际使用是vercount项目，而不是busuanzi
   [params.busuanzi]
