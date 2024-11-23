@@ -84,3 +84,5 @@ rssLimit = 10
 [params.twikoo]
 	enable = false
   visitor = false
+[params.busuanzi]
+  enable = true
