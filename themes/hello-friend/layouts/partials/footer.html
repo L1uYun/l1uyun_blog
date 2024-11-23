@@ -14,6 +14,17 @@
     <div class="copyright copyright-font">
       <span>共 {{$totalWord }} 字 <br/> {{$wowBook | safeHTML }}</span>
     </div>
+      <!-- busuanzi -->
+    {{ if .Site.Params.busuanzi.enable -}}
+    <div class="busuanzi-footer">
+      <span id="busuanzi_container_site_pv">
+        本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      </span>
+      <span id="busuanzi_container_site_uv">
+        本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      </span>
+    </div>
+    {{- end -}}
     {{ if $.Site.Copyright }}
       <div class="copyright copyright--user">{{ $.Site.Copyright | safeHTML }}</div>
     {{else}}
@@ -22,17 +33,6 @@
       </div>
     {{end}}
   </div>
-  <!-- busuanzi -->
-  {{ if .Site.Params.busuanzi.enable -}}
-  <div class="busuanzi-footer">
-    <span id="busuanzi_container_site_pv">
-      本站总访问量<span id="busuanzi_value_site_pv"></span>次
-    </span>
-    <span id="busuanzi_container_site_uv">
-      本站访客数<span id="busuanzi_value_site_uv"></span>人次
-    </span>
-  </div>
-  {{- end -}}
 </footer>
 
 <script type="text/javascript" src="/theme-main-1.js"></script>
