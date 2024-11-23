@@ -11,11 +11,6 @@
   <div class="post {{ $PostCate }}">
     {{ partial "breadcrumb.html" . }}
   {{ if eq $PostCate "chat"}}
-      {{ .Render "chat"}}
-      <div class="post-content">
-        <a href="{{ .Permalink }}" rel="link"><img loading="lazy" decoding="async" class="post-avatar avatar" src=https://cravatar.cn/avatar/{{ md5 "ciwiehenfan@sina.com" }}></a>
-          {{ .Content }}
-      </div>
   {{ else }}
     <h2 class="post-title"><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h2>
     <div class="post-meta">
