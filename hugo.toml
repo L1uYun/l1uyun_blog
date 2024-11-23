@@ -63,7 +63,7 @@ rssLimit = 10
   description = ""
 	keywords = ""
   [params.busuanzi]
-    enable = false
+    enable = true
 
 [markup]
   [markup.goldmark]
