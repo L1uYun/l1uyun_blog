@@ -62,6 +62,7 @@ rssLimit = 10
   
   description = ""
 	keywords = ""
+  # 实际使用是vercount项目，而不是busuanzi
   [params.busuanzi]
     enable = true
 
