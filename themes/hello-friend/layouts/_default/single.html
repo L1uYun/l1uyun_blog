@@ -15,7 +15,7 @@
     <h2 class="post-title"><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h2>
     <div class="post-meta">
       {{ if .Site.Params.busuanzi.enable -}}
-      <div  class="meta-item">&nbsp·&nbsp
+      <div  class="meta-item">
         本文总阅读量 <span id="vercount_value_page_pv">Loading</span> 次
       </div>
       {{- end }}
