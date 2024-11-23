@@ -10,7 +10,7 @@ hasCJKLanguage = true
 # 每页显示的文章数量用于分页
 pagination.pagerSize =  10
 # rss 输出数量
-rssLimit = 5
+rssLimit = 10
 
 [permalinks]
   posts = "/posts/:filename/"
