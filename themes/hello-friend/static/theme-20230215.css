@@ -732,17 +732,39 @@ hr {
 	text-decoration: none
 }
 
-#all-tags a{
-	font-size: 1.2rem;
-	text-decoration: none;
-	margin-right: 1rem;
+#all-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
-@media (max-width:683px) {
-	#all-tags a{
-		font-size: 0.95rem;
-		margin-right: 0.5rem;
-	}
+
+#all-tags span {
+  display: inline-flex;
+  align-items: center; /* 确保标签和数字垂直对齐 */
 }
+
+#all-tags a {
+  font-size: 1.2rem;
+  text-decoration: none;
+  margin-right: 0.2rem; /* 标签和数字之间的间距 */
+}
+
+#all-tags small {
+  font-size: 0.85rem;
+  color: gray;
+  margin-left: 0.2rem; /* 减少数字与标签之间的间距 */
+}
+
+@media (max-width: 683px) {
+  #all-tags a {
+    font-size: 0.95rem;
+  }
+
+  #all-tags small {
+    font-size: 0.75rem;
+  }
+}
+
 .post-content {
 	font-family: "LXGW WenKai Screen", -apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,serif;
 	font-weight: 500;
