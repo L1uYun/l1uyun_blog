@@ -3,7 +3,8 @@ title: zon
 tags:
   - sec/hackmyvm
 date: 2024-02-11T10:52:40
-lastmod: 2024-11-24T18:52:52
+lastmod: 2024-11-24T18:56:34
+toc: "true"
 ---
 ## 启动机器
 得指定网络接口

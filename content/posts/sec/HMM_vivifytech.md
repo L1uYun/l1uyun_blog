@@ -3,7 +3,9 @@ title: vivifytech
 tags:
   - sec/hackmyvm
 date: 2024-02-13T12:46:25
-lastmod: 2024-11-24T18:50:00
+lastmod: 2024-11-24T18:55:54
+toc: "true"
+draft: "false"
 ---
 
 192.168.10.12

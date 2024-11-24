@@ -4,7 +4,8 @@ tags:
   - sec/redteam
 status: 
 date: 2024-05-14T20:49:52
-lastmod: 2024-11-24T18:54:23
+lastmod: 2024-11-24T18:56:00
+toc: "true"
 ---
 ## 靶机启动
 ```shell

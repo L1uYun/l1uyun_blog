@@ -1,7 +1,7 @@
 ---
 title: javasec-反序列化
 date: 2024-08-01T22:16:09
-lastmod: 2024-08-18T10:06:17
+lastmod: 2024-11-24T18:56:35
 tags:
   - sec/javasec
 toc: "true"

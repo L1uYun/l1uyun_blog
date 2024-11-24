@@ -3,8 +3,8 @@ title: vinylizer
 tags:
   - sec/hackmyvm
 date: 2024-02-10T11:51:04
-lastmod: 2024-11-24T18:48:48
-authors: 
+lastmod: 2024-11-24T18:56:16
+toc: "true"
 ---
 ## 主机发现
 使用 nmap 进行主机发现[[THM_Nmap Live Host Discovery(活动主机发现)]]
