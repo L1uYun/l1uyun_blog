@@ -732,16 +732,21 @@ hr {
 	text-decoration: none
 }
 
-#all-tags a{
-	font-size: 1.2rem;
-	text-decoration: none;
-	margin-right: 1rem;
+#all-tags {
+	display: flex;
+	flex-wrap: wrap; /* 允许内容换行 */
+	gap: 0.5rem; /* 添加元素间距 */
+  }
+  
+#all-tags a {
+font-size: 1.2rem;
+text-decoration: none;
+margin: 0; /* 使用 gap 代替 margin */
+}  
+@media (max-width: 683px) {
+#all-tags a {
+	font-size: 0.95rem;
 }
-@media (max-width:683px) {
-	#all-tags a{
-		font-size: 0.95rem;
-		margin-right: 0.5rem;
-	}
 }
 .post-content {
 	font-family: "LXGW WenKai Screen", -apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,serif;
