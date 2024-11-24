@@ -3,7 +3,7 @@ title: HMV_airbind
 tags:
   - sec/hackmyvm
 date: 2024-06-15T11:46:25
-lastmod: 2024-11-24T18:56:04
+lastmod: 2024-11-24T19:08:55
 toc: "true"
 ---
 
@@ -51,7 +51,7 @@ Nmap done: 1 IP address (1 host up) scanned in 7.38 seconds
 在db目录下找到一个sqlite的转储文件,使用在线工具解析一下,发现user
 ![HMV_airbind_image_2](https://img.l1uyun.one/HMV_airbind_image_2.png)
 
-```
+```bash
 admin@localhost.com
 $2y$10$2XxuEupev6gU1qWoURsIYu7XHNiy7nve9iq7H0mUX/MzFnmvbxC9S
 
@@ -85,14 +85,14 @@ Session completed.
 进去之后sudo -l,nopasswd/all
 ### user.txt
 应该又是docker环境了
-```
+```bash
 root@ubuntu:/# find / -type f -name "user.txt" 2>/dev/null
 /root/user.txt
 root@ubuntu:/# cat /root/user.txt
 4408f370877687429c6ab332e6f560d0
 ```
 ### 枚举
-```
+```bash
 root@ubuntu:/# ip a
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00

