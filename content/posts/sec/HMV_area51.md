@@ -1,9 +1,9 @@
 ---
 title: area51
 tags:
-  - sec/redteam
+  - sec/hackmyvm
 date: 2024-04-16T19:27:27
-lastmod: 2024-11-24T19:10:29
+lastmod: 2024-11-24T19:25:01
 toc: "true"
 ---
 
