@@ -1,8 +1,8 @@
 ---
 date: 2021-11-24T18:37:13
-lastmod: 2024-11-24T18:41:50
+lastmod: 2024-11-25T23:02:51
 draft: "false"
 title: test123
 ---
 
-HNUCTF{fake_flag}
+HNUCTF{os1nt_1s_fun}
