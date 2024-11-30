@@ -1,8 +1,7 @@
 ---
 title: 关于我
 date: 2024-10-27T08:37:45
-lastmod: 2024-11-30T11:15:29
-hideInList: false
+lastmod: 2024-11-30T11:31:34
 tags:
   - l1uyun
 ---
