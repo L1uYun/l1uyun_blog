@@ -91,4 +91,4 @@ rssLimit = 10
   repo = "L1uYun/l1uyun_blog" ##换成自己得
   issueTerm = "title"
   label="💬comment"
-  theme = "boxy-light"
+  theme = "github-light"
