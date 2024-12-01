@@ -89,6 +89,6 @@ rssLimit = 10
 [params.utteranc]
   enable = true
   repo = "L1uYun/l1uyun_blog" ##换成自己得
-  issue-term="title"
+  issueTerm = "title"
   label="💬comment"
   theme = "github-light"
