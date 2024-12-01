@@ -65,7 +65,6 @@ rssLimit = 10
   # 实际使用是vercount项目，而不是busuanzi
   [params.busuanzi]
     enable = true
-
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
@@ -86,3 +85,9 @@ rssLimit = 10
 [params.twikoo]
   enable = false
   visitor = false
+
+[params.utteranc]
+  enable = true
+  repo = "L1uYun/l1uyun_blog" ##换成自己得
+  issueTerm = "pathname"
+  theme = "github-light"
