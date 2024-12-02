@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sec/Javasec on l1uyun_blog</title>
+    <link>https://l1uyun.one/tags/sec/javasec/</link>
+    <description>Recent content in Sec/Javasec on l1uyun_blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 24 Nov 2024 18:56:35 +0800</lastBuildDate>
+    <atom:link href="https://l1uyun.one/tags/sec/javasec/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>springboot利用</title>
+      <link>https://l1uyun.one/posts/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8/</link>
+      <pubDate>Tue, 06 Aug 2024 09:32:00 +0800</pubDate>
+      <guid>https://l1uyun.one/posts/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8/</guid>
+      <description>&lt;h1 id=&#34;springboot利用&#34;&gt;springboot利用&lt;/h1&gt;&#xA;&lt;h1 id=&#34;前置知识&#34;&gt;前置知识&lt;/h1&gt;&#xA;&lt;h2 id=&#34;springboot-actuator&#34;&gt;SpringBoot Actuator&lt;/h2&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Spring Boot Actuator 1.x 版本默认内置路由的起始路径为 / ，2.x 版本则统一以 /actuator 为起始路径&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Spring Boot Actuator 默认的内置路由名字，如 /env 有时候也会被程序员修改，比如修改成 /appenv&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;一般来讲，暴露出 spring boot 应用的相关接口和传参信息并不能算是漏洞，但是以 “默认安全” 来讲，不暴露出这些信息更加安全。&lt;/p&gt;&#xA;&lt;p&gt;对于攻击者来讲，一般会仔细审计暴露出的接口以增加对业务系统的了解，并会同时检查应用系统是否存在未授权访问、越权等其他业务类型漏洞。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>javasec-urldns链</title>
+      <link>https://l1uyun.one/posts/javasec-urldns%E9%93%BE/</link>
+      <pubDate>Sat, 03 Aug 2024 15:51:23 +0800</pubDate>
+      <guid>https://l1uyun.one/posts/javasec-urldns%E9%93%BE/</guid>
+      <description>&lt;h1 id=&#34;urldns链&#34;&gt;urldns链&lt;/h1&gt;&#xA;&lt;p&gt;URLDNS 是ysoserial中⼀个利⽤链的名字，但准确来说，这个其实不能称作“利⽤链”。因为其参数不是⼀个可以“利⽤”的命令，⽽仅为⼀个URL，其能触发的结果也不是命令执⾏，⽽是⼀次DNS请求。&lt;/p&gt;&#xA;&lt;p&gt;虽然这个“利⽤链”实际上是不能“利⽤”的，但因为其如下的优点，⾮常适合我们在检测反序列化漏洞时使⽤&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>javasec-反序列化</title>
+      <link>https://l1uyun.one/posts/javasec-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</link>
+      <pubDate>Thu, 01 Aug 2024 22:16:09 +0800</pubDate>
+      <guid>https://l1uyun.one/posts/javasec-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</guid>
+      <description>&lt;h1 id=&#34;反序列化&#34;&gt;反序列化&lt;/h1&gt;&#xA;&lt;p&gt;序列化是将Java对象转换成字节流的过程。而反序列化是将字节流转换成Java对象的过程，&#xA;java序列化的数据一般会以标记(ac ed 00 05)开头，base64编码的特征为rO0AB，&lt;/p&gt;&#xA;&lt;p&gt;JAVA常见的序列化和反序列化的方法有JAVA 原生序列化和JSON 类（fastjson、jackson）序列化等。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>javasec-xxe</title>
+      <link>https://l1uyun.one/posts/javasec-xxe/</link>
+      <pubDate>Fri, 26 Jul 2024 18:10:32 +0800</pubDate>
+      <guid>https://l1uyun.one/posts/javasec-xxe/</guid>
+      <description>&lt;h1 id=&#34;xxe注入&#34;&gt;xxe注入&lt;/h1&gt;&#xA;&lt;h2 id=&#34;前置知识&#34;&gt;前置知识&lt;/h2&gt;&#xA;&lt;h3 id=&#34;xml文档&#34;&gt;XML文档&lt;/h3&gt;&#xA;&lt;p&gt;要了解XXE漏洞，那么先得了解一下有关XML的基础知识。&lt;/p&gt;&#xA;&lt;p&gt;XML是一种非常流行的标记语言，在1990年代后期首次标准化，并被无数的软件项目所采用。它用于配置文件，文档格式（如OOXML，ODF，PDF，RSS，&amp;hellip;），图像格式（SVG，EXIF标题）和网络协议（WebDAV，CalDAV，XMLRPC，SOAP，XMPP，SAML， XACML，&amp;hellip;）&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>javasec-sql注入</title>
+      <link>https://l1uyun.one/posts/javasec-sql%E6%B3%A8%E5%85%A5/</link>
+      <pubDate>Tue, 23 Jul 2024 20:37:06 +0800</pubDate>
+      <guid>https://l1uyun.one/posts/javasec-sql%E6%B3%A8%E5%85%A5/</guid>
+      <description>&lt;h1 id=&#34;javasec-sql注入&#34;&gt;javasec-sql注入&lt;/h1&gt;&#xA;&lt;h2 id=&#34;前置知识&#34;&gt;前置知识&lt;/h2&gt;&#xA;&lt;h3 id=&#34;sql注入&#34;&gt;sql注入&lt;/h3&gt;&#xA;&lt;p&gt;没有对用户的输入进行处理(过滤,黑名单,SQL预编译),直接将输入拼接到了sql语句中,&lt;/p&gt;&#xA;&lt;p&gt;导致执行了用户构造的恶意SQL语句&lt;/p&gt;&#xA;&lt;p&gt;SQL注入的语法与使用的数据库相关,与语言无关&lt;/p&gt;&#xA;&lt;h3 id=&#34;java数据库操作&#34;&gt;java数据库操作&lt;/h3&gt;&#xA;&lt;h4 id=&#34;jdbc&#34;&gt;jdbc&lt;/h4&gt;&#xA;&lt;p&gt;java database connection&lt;/p&gt;&#xA;&lt;p&gt;java提供的数据库驱动库,用于进行数据库连接,执行SQL语句&lt;/p&gt;&#xA;&lt;p&gt;JDBC有两个方法执行SQL语句，分别是PrepareStatement和Statement。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

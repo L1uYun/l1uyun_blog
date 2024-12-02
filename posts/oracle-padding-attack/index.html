@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>oracle-padding-attack :: l1uyun_blog</title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta charset="UTF-8"/>
+<meta name="renderer" content="webkit"/>
+<meta name="force-rendering" content="webkit"/>
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="在打tryhackme的New-York-Flankees房间的时候遇见了这个攻击方式,没见过,学习一下
+前置知识 块密码 在分组密码加密领域，数据一次加密一个块，不同算法的块长度各不相同。
+当要加密的数据长度不是块长度的倍数时，就需要填充。
+高级加密标准 (AES)
+数据加密标准 (DES)
+三重数据加密标准 (3DES)
+Blowfish
+Twofish
+填充方案 如前所述，分组密码采用固定大小的块，当明文不是块大小的倍数时需要填充。存在多种填充技术，但在本次攻击中，我们的重点是 PKCS#7。
+"/>
+<meta name="keywords" content=""/>
+
+<link href="/atom.xml" title="l1uyun_blog" type="application/rss+xml">
+<link rel="canonical" href="https://l1uyun.one/posts/oracle-padding-attack/" />
+<link rel="stylesheet" href="//cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.6.0/lxgwwenkaiscreen.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="/theme-20230215.css">
+<link rel="shortcut icon" href="https://l1uyun.one/favicon.ico">
+<link rel="apple-touch-icon" href="https://l1uyun.one/favicon.ico">
+<link rel="bookmark" href="https://l1uyun.one/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://l1uyun.one/favicon.ico">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="l1uyun_blog">
+
+<script defer src="https://cn.vercount.one/js"></script>
+<meta property="og:url" content="https://l1uyun.one/posts/oracle-padding-attack/">
+  <meta property="og:site_name" content="l1uyun_blog">
+  <meta property="og:title" content="oracle-padding-attack">
+  <meta property="og:description" content="在打tryhackme的New-York-Flankees房间的时候遇见了这个攻击方式,没见过,学习一下
+前置知识 块密码 在分组密码加密领域，数据一次加密一个块，不同算法的块长度各不相同。
+当要加密的数据长度不是块长度的倍数时，就需要填充。
+高级加密标准 (AES)
+数据加密标准 (DES)
+三重数据加密标准 (3DES)
+Blowfish
+Twofish
+填充方案 如前所述，分组密码采用固定大小的块，当明文不是块大小的倍数时需要填充。存在多种填充技术，但在本次攻击中，我们的重点是 PKCS#7。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-07-16T00:00:00+08:00">
+    <meta property="article:modified_time" content="2024-11-12T08:13:19+08:00">
+    <meta property="article:tag" content="Sec">
+
+
+
+
+<script>
+if ( false || (!!window.MSInputMethodContext && !!document.documentMode)) {
+    document.write('\x3Cscript id="_iealwn_js" data-outver="11" src="https://support.dmeng.net/ie-alert-warning/latest.js">\x3C/script>');
+}
+</script>
+<script async defer data-website-id="c27bd84b-02a3-4c3f-a168-0d7fadec9c74" src="https://u.edui.fun/lmmtj.js"></script>
+
+    
+  <link rel="prefetch" href="https://l1uyun.one/posts/javasec-sql%E6%B3%A8%E5%85%A5/">
+  <link rel="prefetch" href="https://l1uyun.one/posts/hmv_airbind/">
+
+  </head>
+  <body class="">
+    <script>var getTheme = localStorage.getItem("theme") || '';if(getTheme == 'dark'){document.body.classList.add("dark")}else if(getTheme == 'light'){document.body.classList.remove("dark")}</script>
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a href="https://l1uyun.one/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__text">l1uyun_blog</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu hidden">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/posts/reading/">读书</a></li>
+        
+      
+        
+          <li><a href="/posts/sec/">sec</a></li>
+        
+      
+        
+          <li><a href="/posts/chat/">闲聊</a></li>
+        
+      
+        
+          <li><a href="/archives/">归档</a></li>
+        
+      
+        
+          <li><a href="/about/">关于我</a></li>
+        
+      
+        
+          <li><a href="/search/">🔍</a></li>
+        
+      
+    
+    <li><a href="javascript:;" onclick="randomPost()" title="随机访问一篇文章"><svg t="1660103436159" class="icon search-box-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1184" width="32" height="32"><path d="M421.376 481.28s117.248 24.576 175.104-8.704c0 0-89.6 70.144-89.6 166.4 0.512-0.512-8.192-121.344-85.504-157.696zM438.784 969.216s68.608 6.656 68.608-80.896c0 0 3.072 88.576 65.024 78.336 0 0.512-50.688 22.016-133.632 2.56zM161.28 238.08s-30.208 65.536 11.264 91.648c0 0-67.072-17.408-81.408 37.376 0 0 8.704-82.944 70.144-129.024zM857.6 227.328s49.152 50.176 1.024 81.408c0 0 58.88-18.432 66.56 36.352 0 0 5.12-69.632-67.584-117.76z" p-id="1185"></path><path d="M443.392 970.752c-5.632 0-10.752-1.024-15.36-3.072l-270.848-157.184-1.536-1.024s-1.024-1.024-4.608-2.56c-51.2-29.184-62.976-94.208-65.536-120.832V386.56c0-3.072 0.512-7.168 1.024-11.264l0.512-3.584 1.024-2.56c19.456-50.688 76.8-51.2 103.936-44.032l-1.536 5.632 4.096-6.144L476.16 486.4l18.944 37.888c20.992 36.864 29.184 77.824 32.768 99.84v258.048c-4.608 56.32-36.864 76.288-55.808 82.944-1.024 0.512-15.36 5.632-28.672 5.632z m-262.144-196.096l263.168 152.576c12.288-0.512 36.864-6.656 40.448-48.128v-250.368c-4.608-31.744-20.992-103.936-72.192-128L322.56 445.44l1.536 3.072-142.336-82.432c-2.048-0.512-40.448-9.216-52.736 15.872-0.512 2.56-0.512 4.608-0.512 6.144v294.4c1.536 16.896 9.728 67.072 43.52 86.528 3.584 2.048 6.656 4.096 9.216 5.632z" p-id="1186"></path><path d="M837.632 212.992c6.656 4.096 12.8 7.168 18.432 10.752l1.536 1.024 1.536 1.536c5.12 4.096 10.752 9.216 16.384 15.36 6.144 11.776 5.632 33.28 4.608 49.152-1.024 12.288-6.656 30.208-26.624 44.544l-1.024 0.512-247.808 156.672c-26.624 14.336-62.976 18.432-96.256 18.432-40.96 0-77.824-6.656-89.088-8.704l-3.072-0.512-245.248-142.336c-39.424-29.696-28.16-85.504-15.36-113.664l2.56-6.144 263.68-166.912c29.184-14.336 104.448-43.008 173.056-1.024 3.584 2.56 58.368 34.304 119.296 69.632M431.616 460.8c40.448 7.168 114.176 13.824 152.576-6.144l244.736-155.136c7.168-5.632 8.192-10.24 8.704-12.8 1.024-11.264-9.728-26.624-15.36-32.768-55.808-32.256-243.712-141.312-250.368-145.408-49.664-30.72-107.008-9.216-130.048 2.56L192.512 268.8c-4.096 12.288-12.288 42.496 3.584 55.808l235.52 136.192z" p-id="1187"></path><path d="M831.488 299.008c4.096-1.024 38.4-11.264 66.048 6.144 7.168 4.608 17.92 11.776 24.064 24.576 1.024 5.632 4.096 10.752 4.608 16.896v2.048l-1.024 323.072c-5.12 35.328-22.528 91.648-77.312 125.44l-5.12 3.584h-1.024l-262.144 165.888-4.608 0.512c-4.096 0.512-8.704 1.024-12.8 1.024-15.872 0-30.208-5.12-41.984-14.848-24.576-20.48-32.768-55.808-35.328-73.728l-1.024-252.928h1.536c6.144-96.768 88.576-164.864 96.768-171.008l-0.512-0.512L829.44 299.52m-301.056 567.808c0.512 10.24 5.12 41.472 19.968 53.76 3.072 2.56 7.68 5.632 16.384 5.12l264.704-167.936c56.32-38.4 53.76-115.712 53.76-116.224l-0.512-32.256 1.024-250.368h-0.512c-1.536-12.8-7.168-16.384-8.704-17.408-8.704-5.632-23.552-3.072-28.672-2.048l-235.52 148.992c-1.024 0.512-80.896 65.024-80.896 149.504h-1.536l0.512 228.864zM435.2 264.192c0 27.648 31.744 50.176 71.168 50.176s71.168-22.528 71.168-50.176-31.744-50.176-71.168-50.176S435.2 236.544 435.2 264.192z" p-id="1188"></path><path d="M663.552 782.848c0 30.72-22.528 67.072-49.664 80.384-27.648 13.824-50.176-0.512-50.176-31.232s22.528-67.072 50.176-80.384c27.136-13.824 49.664 0 49.664 31.232zM760.32 602.624c0 30.72-22.528 67.072-49.664 80.384-27.648 13.824-49.664-0.512-49.664-31.232s22.528-67.072 49.664-80.384c27.136-13.824 49.664 0.512 49.664 31.232zM867.84 428.032c0 30.72-22.528 67.072-49.664 80.384-27.648 13.824-50.176-0.512-50.176-31.232s22.528-67.072 50.176-80.384c27.136-13.824 49.664 0 49.664 31.232zM270.848 538.112c0 30.72-22.016 41.984-48.64 24.576-27.136-16.896-48.64-55.808-48.64-86.528 0-30.72 22.016-41.984 48.64-24.576 26.624 16.896 48.64 55.808 48.64 86.528zM432.128 823.296c0 30.72-22.016 41.984-48.64 24.576-26.624-17.408-48.64-55.808-48.64-86.528 0-30.72 22.016-41.984 48.64-24.576 26.624 16.896 48.64 55.808 48.64 86.528z" p-id="1189"></path></svg></a></li>
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/posts/reading/">读书</a></li>
+      
+    
+      
+        <li><a href="/posts/sec/">sec</a></li>
+      
+    
+      
+        <li><a href="/posts/chat/">闲聊</a></li>
+      
+    
+      
+        <li><a href="/archives/">归档</a></li>
+      
+    
+      
+        <li><a href="/about/">关于我</a></li>
+      
+    
+      
+        <li><a href="/search/">🔍</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+
+      <div class="content">
+        
+  
+  
+  
+  
+  <div class="post sec">
+    <div  class="breadcrumb">
+  
+
+  
+
+  
+
+  
+
+<li>
+  <a href="https://l1uyun.one/">首页</a>
+</li>
+
+
+<li>
+  <a href="https://l1uyun.one/posts/">Posts</a>
+</li>
+
+
+<li>
+  <a href="https://l1uyun.one/posts/sec/">sec</a>
+</li>
+
+
+<li class="active">
+  <a href="https://l1uyun.one/posts/oracle-padding-attack/">oracle-padding-attack</a>
+</li>
+
+</div>
+
+
+  
+    <h2 class="post-title"><a href="https://l1uyun.one/posts/oracle-padding-attack/">oracle-padding-attack</a></h2>
+    <div class="post-meta">
+      <div  class="meta-item">
+        本文总阅读量 <span id="vercount_value_page_pv">Loading</span> 次
+      </div>
+      
+        <span class="post-date">2024-07-16</span>
+        
+          
+        
+      
+    </div>
+    
+  
+    <div class="post-content">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#前置知识">前置知识</a>
+          <ul>
+            <li><a href="#块密码">块密码</a></li>
+            <li><a href="#填充方案">填充方案</a></li>
+            <li><a href="#块密码模式">块密码模式</a></li>
+            <li><a href="#异或运算">异或运算</a></li>
+          </ul>
+        </li>
+        <li><a href="#漏洞检测">漏洞检测</a></li>
+        <li><a href="#攻击原理">攻击原理</a>
+          <ul>
+            <li><a href="#恢复伪明文">恢复伪明文</a></li>
+            <li><a href="#恢复明文">恢复明文</a></li>
+          </ul>
+        </li>
+        <li><a href="#疑惑与解决">疑惑与解决</a></li>
+      </ul>
+    </li>
+    <li><a href="#一句话总结">一句话总结</a></li>
+    <li><a href="#引用">引用</a></li>
+  </ul>
+</nav>
+      <p>在打tryhackme的New-York-Flankees房间的时候遇见了这个攻击方式,没见过,学习一下</p>
+<h2 id="前置知识">前置知识</h2>
+<h3 id="块密码">块密码</h3>
+<p>在分组密码加密领域，数据一次加密一个块，不同算法的块长度各不相同。</p>
+<p>当要加密的数据长度不是块长度的倍数时，就需要填充。</p>
+<p>高级加密标准 (AES)</p>
+<p>数据加密标准 (DES)</p>
+<p>三重数据加密标准 (3DES)</p>
+<p>Blowfish</p>
+<p>Twofish</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/202407160948_oracle-padding-attack_image_1.png" alt=""  /></p>
+<h3 id="填充方案">填充方案</h3>
+<p>如前所述，分组密码采用固定大小的块，当明文不是块大小的倍数时需要填充。存在多种填充技术，但在本次攻击中，我们的重点是 PKCS#7。</p>
+<h4 id="pkcs7">PKCS#7</h4>
+<p>公钥加密标准 #7 (PKCS#7) 是一种广泛认可的加密标准，它定义了一种填充方案，用于在需要固定块大小的块密码模式中加密之前填充最后一个明文块。</p>
+<p>考虑一个情况,块大小为8,需要填充的单词为Exploit,attack,cyber,hack</p>
+<p>对于Exploit,需要填充一个字节,所以填充0x01</p>
+<p>对于attack,需要填充两个字节,所以填充0x02,0x02</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/202407160948_oracle-padding-attack_image_2.png" alt=""  /></p>
+<p>另一种情况,正好以及占据了8个字节,就会另起一个块</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/202407160948_oracle-padding-attack_image_3.png" alt=""  /></p>
+<h3 id="块密码模式">块密码模式</h3>
+<p>分组密码的另一个重要方面是操作模式。</p>
+<p>由于分组密码对固定大小的数据块进行操作，因此在处理超过块长度的明文数据时会出现挑战。</p>
+<p>各种操作模式解决了这个问题，允许对不同长度的消息进行加密和解密。一些常用的模式包括：</p>
+<ol>
+<li>
+<p>Electronic Codebook (ECB) Mode</p>
+</li>
+<li>
+<p>Cipher Block Chaining (CBC) Mode</p>
+</li>
+<li>
+<p>Counter (CTR) Mode</p>
+</li>
+</ol>
+<p>任何算法都可以采用这些模式；</p>
+<p>例如，您可能会遇到 AES-CBC 或 DES-CBC。</p>
+<p>在oracle padding中，我们的重点是密码块链接（CBC）模式。</p>
+<h4 id="cbc">CBC</h4>
+<p>一般来说CBC采用两个操作,一个是加密,一个是异或操作</p>
+<p>第一块明文,加密之后与初始向量异或,第二块明文加密之后,与第一块密文相异或&hellip;这种方案,即使明文相同,由于初始向量是不同的,密文最终也是不同的</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/202407160948_oracle-padding-attack_image_4.png" alt=""  /></p>
+<p>解密的时候,首先将最后一块密文C[-1],使用解密算法解密,得到伪明文M[-1],然后将伪明文M[-1]与倒数第二块密文C[-2]进行异或,得到明文P[-1]</p>
+<p>先解密,然后再异或
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/202407160948_oracle-padding-attack_image_5.png" alt=""  /></p>
+<h3 id="异或运算">异或运算</h3>
+<p>异或操作具有逆运算特性,即已知结果和一个操作数,就能退出来另外一个操作数</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>A^B<span style="color:#f92672">=</span>C    
+</span></span><span style="display:flex;"><span>在等号两边同时异或一个B
+</span></span><span style="display:flex;"><span><span style="color:#f92672">=</span>&gt;  A<span style="color:#f92672">=</span>C^B
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>在等号两边同时异或一个B
+</span></span><span style="display:flex;"><span><span style="color:#f92672">=</span>&gt;  B<span style="color:#f92672">=</span>C^A
+</span></span></code></pre></div><h2 id="漏洞检测">漏洞检测</h2>
+<p>当密文值被修改之后,服务器不能正确的恢复明文时,会有报错信息回显出来
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/202407160948_oracle-padding-attack_image_6.png" alt=""  /></p>
+<h2 id="攻击原理">攻击原理</h2>
+<p>这里假设一个情形</p>
+<p>假设加密算法为 AES，表示块大小为 16 字节，则初始化向量 (IV) 也是 16 字节。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    encrypted_data <span style="color:#f92672">=</span> b<span style="color:#e6db74">&#39;31323334353637383930313233343536f044039223b4b9aea7bc48cd1be80682&#39;</span>
+</span></span><span style="display:flex;"><span>    oracle_padding<span style="color:#f92672">(</span>ciphertext<span style="color:#f92672">=</span>encrypted_data<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>在许多实现中，IV 与消息一起传输。这里假设encrypted_data的前面十六个字节表示IV值,其他值是Cookie</p>
+<p>对于每个密文块而言,先将密文解密成伪明文(keystream bytes),然后与IV(对于其他的密文块而言,IV就是前面一个密文块)进行异或,得到明文</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/202407160948_oracle-padding-attack_image_7.png" alt=""  /></p>
+<p>这里如果我们修改IV值,就能够改变服务器那边解密出来的明文值,而服务器出现解密失败的话,会有填充错误的信息回显出来,(<em>这是漏洞产生的条件</em>)表明服务器检查了解密出来的明文的最后一个字节并将其识别为无效的填充字节。</p>
+<p>如果我们尝试对IV进行逐个字节的修改,来让解密之后的明文的填充字节有效(并且我们是知道的),就能逐个字节的解密出来中间的伪明文,最后通过与已知的IV异或,就能得到明文值</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>步骤:
+</span></span><span style="display:flex;"><span>初始化：我们从IV的最后一个字节（第16个字节）开始。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>逐步修改：将IV的第16个字节增加1，然后发送修改后的密文或IV进行解密。如果服务器返回填充无效错误，继续增加该字节的值。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>填充有效：当服务器不再返回填充无效错误时，表示填充是有效的。根据PKCS#7填充规则，这意味着解密后的伪明文的最后一个字节是0x01。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>推导明文：通过异或操作推导出密文对应位置的伪明文值。例如，如果IV的最后一个字节是0x35，且解密后伪明文的最后一个字节是0x01，则0x35 ^ 0x01 <span style="color:#f92672">=</span> 明文的最后一个字节。
+</span></span></code></pre></div><h3 id="恢复伪明文">恢复伪明文</h3>
+<p>我们从 IV 的最后一个字节（IV 的第 16 个字节）开始。将其增加 1，我们重新发送修改后的 cookie 进行解密。再次收到错误，表明填充无效。我们重复这个过程，直到服务器不再发送填充错误。发生这种情况时，表示填充正确，表明明文的最后一个字节的字节值为 0x01.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Keystream<span style="color:#f92672">[</span>15<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> IV<span style="color:#f92672">[</span>15<span style="color:#f92672">]</span> ^ 0x01
+</span></span><span style="display:flex;"><span>Keystream<span style="color:#f92672">[</span>15<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 0x35 ^ 0x01 <span style="color:#f92672">=</span> 0x34
+</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/202407160948_oracle-padding-attack_image_8.png" alt=""  /></p>
+<p>接下来，我们对 IV 的倒数第二个字节（IV 的第 15 个字节）重复相同的过程，挑战是相同的，我们需要猜测 IV 值并将它们发送到服务器，直到我们不再遇到填充错误,即填充的字节为0x02。不过，现在不同的是，我们要求明文的最后两个字节是0x02和0x02。</p>
+<p>对于最后一个字节，我们已经知道了伪明文的值,可以通过简单的异或运算来解决。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>IV<span style="color:#f92672">[</span>15<span style="color:#f92672">]</span> ^ Keystream<span style="color:#f92672">[</span>15<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 0x02
+</span></span><span style="display:flex;"><span>IV<span style="color:#f92672">[</span>15<span style="color:#f92672">]</span> ^ 0x34 <span style="color:#f92672">=</span> 0x02 <span style="color:#f92672">=</span>&gt; IV<span style="color:#f92672">[</span>15<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 0x36
+</span></span></code></pre></div><p>然而，对于倒数第二个字节，我们需要尝试所有可能的值。从 0x00 开始递增，直到没有错误为止，我们发现 IV 字节是 0x35。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Keystream<span style="color:#f92672">[</span>14<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> IV<span style="color:#f92672">[</span>14<span style="color:#f92672">]</span> ^ 0x02
+</span></span><span style="display:flex;"><span>Keystream<span style="color:#f92672">[</span>14<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 0x35 ^ 0x02 <span style="color:#f92672">=</span> 0x37
+</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/202407160948_oracle-padding-attack_image_9.png" alt=""  />
+&hellip;重复上述过程,直到恢复所有的伪明文</p>
+<h3 id="恢复明文">恢复明文</h3>
+<p>第二阶段很简单,我们已经有了原始的IV值,和解密出来的伪明文,直接异或就能得到明文</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Plaintext<span style="color:#f92672">[</span>15<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> IV<span style="color:#f92672">[</span>15<span style="color:#f92672">]</span> ^ Keystream<span style="color:#f92672">[</span>15<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Plaintext<span style="color:#f92672">[</span>15<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 0x36 ^ 0x34 <span style="color:#f92672">=</span> 0x2 -&gt; padding no ASCII
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Plaintext<span style="color:#f92672">[</span>14<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> IV<span style="color:#f92672">[</span>14<span style="color:#f92672">]</span> ^ Keystream<span style="color:#f92672">[</span>14<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Plaintext<span style="color:#f92672">[</span>14<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 0x35 ^ 0x37 <span style="color:#f92672">=</span> 0x2 -&gt; padding no ASCII
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Plaintext<span style="color:#f92672">[</span>13<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> IV<span style="color:#f92672">[</span>13<span style="color:#f92672">]</span> ^ Keystream<span style="color:#f92672">[</span>13<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Plaintext<span style="color:#f92672">[</span>13<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 0x34 ^ 0x15 <span style="color:#f92672">=</span> 0x21 -&gt; convert to ASCII !
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><h2 id="疑惑与解决">疑惑与解决</h2>
+<p>密码学还是接触的太少了&hellip;</p>
+<p>我们假设C1|C2,我们要解密C2,这里C1就是C2的IV值</p>
+<p>假设明文P2的最后两个字节是0x02,0x02,即已经有两个填充字节了</p>
+<p>C1的最后一个字节C1[-1]是0x01,伪明文M2[-1]是0x01^0x02=0x03</p>
+<p>我的疑惑是,如果从0x00开始修改C1[-1],也就是尝试修改IV.会不会在让明文的最后一个字节为0x01之前,提前让解密之后的明文的最后一个字节为0x02,这样就满足了两个填充字符的要求,也会返回填充正确,但是这种情况下我们不能控制填充正确时的明文填充值.就不能得到伪明文的值了</p>
+<p>根据计算</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>M2<span style="color:#f92672">[</span>-1<span style="color:#f92672">]</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0011</span>
+</span></span><span style="display:flex;"><span>C1<span style="color:#f92672">[</span>-1<span style="color:#f92672">]</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span>  
+</span></span><span style="display:flex;"><span>这里得到的P<span style="color:#f92672">[</span>-1<span style="color:#f92672">]</span>是0x03,填充失败
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>M2<span style="color:#f92672">[</span>-1<span style="color:#f92672">]</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0011</span>
+</span></span><span style="display:flex;"><span>C1<span style="color:#f92672">[</span>-1<span style="color:#f92672">]</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0001</span> 
+</span></span><span style="display:flex;"><span>这里得到的P<span style="color:#f92672">[</span>-1<span style="color:#f92672">]</span>是0x02,填充成功了...但是我们需要的是0x01时成功
+</span></span></code></pre></div><p>但是如果不是从0x00开始修改,而是从他最开始的值+1开始</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>M2<span style="color:#f92672">[</span>-1<span style="color:#f92672">]</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0011</span>
+</span></span><span style="display:flex;"><span>C1<span style="color:#f92672">[</span>-1<span style="color:#f92672">]</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0010</span>  
+</span></span><span style="display:flex;"><span>最开始是0x01.从加1开始就是0x02了,这样就能确保得到0x01的明文填充值
+</span></span></code></pre></div><p>继续假设P2末尾序列是0x03,0x03,0x03</p>
+<p>C1[-1]的值是0xfa,那么伪明文M2[-1]的值就是0xff</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>M2<span style="color:#f92672">[</span>-1<span style="color:#f92672">]</span> <span style="color:#ae81ff">1111</span> <span style="color:#ae81ff">1111</span>
+</span></span><span style="display:flex;"><span>C1<span style="color:#f92672">[</span>-1<span style="color:#f92672">]</span> <span style="color:#ae81ff">1111</span> <span style="color:#ae81ff">1101</span>
+</span></span><span style="display:flex;"><span>从0xfb开始进行枚举  0x02,填充失败
+</span></span><span style="display:flex;"><span>M2<span style="color:#f92672">[</span>-1<span style="color:#f92672">]</span> <span style="color:#ae81ff">1111</span> <span style="color:#ae81ff">1111</span>
+</span></span><span style="display:flex;"><span>C1<span style="color:#f92672">[</span>-1<span style="color:#f92672">]</span> <span style="color:#ae81ff">1111</span> <span style="color:#ae81ff">1110</span> 
+</span></span><span style="display:flex;"><span>0x01,填充成功
+</span></span></code></pre></div><p>这样的机制,确保了不会提前得到原本的填充值.</p>
+<h1 id="一句话总结">一句话总结</h1>
+<p>通过修改IV值的末尾字节,来控制解密之后的明文的末尾字节为指定的填充字节,从而获得中间的伪明文值,进而获取明文</p>
+<h1 id="引用">引用</h1>
+<p><a href="https://medium.com/@masjadaan/oracle-padding-attack-a61369993c86" target="_blank" rel="noopener nofollow noreferrer" >Oracle Padding Attack</a></p>
+<p><a href="https://book.hacktricks.xyz/crypto-and-stego/padding-oracle-priv" target="_blank" rel="noopener nofollow noreferrer" >hacktricks_Padding Oracle</a></p>
+
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          #<a href="https://l1uyun.one/tags/sec/">sec</a>&nbsp;
+        
+      </span>
+    
+  
+    <div class="clear"></div>
+    
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            
+              <span class="pagination__title-h">阅读更多</span>
+            
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+              <span class="button previous">
+                <a href="https://l1uyun.one/posts/javasec-sql%E6%B3%A8%E5%85%A5/">
+                  <span class="button__icon">←</span>
+                  <span class="button__text">javasec-sql注入</span>
+                </a>
+              </span>
+            
+            
+              <span class="button next">
+                <a href="https://l1uyun.one/posts/hmv_airbind/">
+                  <span class="button__text">HMV_airbind</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+    
+    </div>
+
+      </div>
+
+      
+        
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+
+
+
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="copyright copyright-font">
+      <span>共 46742 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+    </div>
+      
+    <div class="busuanzi-footer">
+      本站总访客数 <span id="vercount_value_site_uv">Loading</span> 人
+      本站总访问量 <span id="vercount_value_site_pv">Loading</span> 次
+    </div>
+      <div class="copyright">
+        <span>© 2024 Powered by <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a> Theme by <a href="https://github.com/lmm214/immmmm/tree/master/themes/hello-friend" target="_blank" rel="noopener">immmmm</a></span>
+      </div>
+    
+  </div>
+</footer>
+
+<script type="text/javascript" src="/theme-main-1.js"></script>
+<script type="text/javascript" src="/lately.min.js"></script>
+<script type="text/javascript" src="/waterfall.min.js"></script>
+<script type="text/javascript" src="/imgStatus.min.js"></script>
+<script type="text/javascript" src="/view-image.js"></script>
+<script type="text/javascript" src="/theme-lmm-20230123.js"></script>
+<script type="text/javascript" src="/pangu.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    pangu.autoSpacingPage();
+  });
+</script>
+
+
+
+
+    <section class="comments">
+      <script
+        src="https://utteranc.es/client.js"
+        repo="L1uYun/l1uyun_blog"
+        issue-term="title"
+        label="💬comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async
+      ></script>
+    </section>
+    
+      
+    </div>
+  </body>
+</html>

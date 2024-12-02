@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sec/Cve on l1uyun_blog</title>
+    <link>https://l1uyun.one/tags/sec/cve/</link>
+    <description>Recent content in Sec/Cve on l1uyun_blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 20 Sep 2024 14:55:49 +0800</lastBuildDate>
+    <atom:link href="https://l1uyun.one/tags/sec/cve/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>phpMyAdmin-4.0.x—4.6.2_远程代码执行漏洞</title>
+      <link>https://l1uyun.one/posts/phpmyadmin-4.0.x4.6.2_%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</link>
+      <pubDate>Wed, 18 Sep 2024 16:59:09 +0800</pubDate>
+      <guid>https://l1uyun.one/posts/phpmyadmin-4.0.x4.6.2_%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</guid>
+      <description>&lt;h2 id=&#34;漏洞简介&#34;&gt;漏洞简介&lt;/h2&gt;&#xA;&lt;p&gt;phpMyAdmin是一套开源的、基于Web的MySQL数据库管理工具。&lt;/p&gt;&#xA;&lt;p&gt;在其查找并替换字符串功能中，将用户输入的信息拼接进preg_replace函数第一个参数中。&#xA;在PHP5.4.7以前，preg_replace的第一个参数可以利用\0进行截断，并将正则模式修改为e。众所周知，e模式的正则支持执行代码，此时将可构造一个任意代码执行漏洞。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>phpmyadmin-4.8.1远程文件包含</title>
+      <link>https://l1uyun.one/posts/phpmyadmin-4.8.1%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/</link>
+      <pubDate>Wed, 18 Sep 2024 15:33:13 +0800</pubDate>
+      <guid>https://l1uyun.one/posts/phpmyadmin-4.8.1%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/</guid>
+      <description>&lt;h2 id=&#34;漏洞简介&#34;&gt;漏洞简介&lt;/h2&gt;&#xA;&lt;p&gt;phpMyAdmin是一套开源的、基于Web的MySQL数据库管理工具。其index.php中存在一处文件包含逻辑，通过二次编码即可绕过检查，造成远程文件包含漏洞。&lt;/p&gt;&#xA;&lt;p&gt;这个漏洞刚刚打演练的时候用过,分析一下原理&lt;/p&gt;&#xA;&lt;h2 id=&#34;影响版本&#34;&gt;影响版本&lt;/h2&gt;&#xA;&lt;p&gt;phpmyadmin 4.8.0 &amp;amp; 4.8.1&lt;/p&gt;&#xA;&lt;h2 id=&#34;前提条件&#34;&gt;前提条件&lt;/h2&gt;&#xA;&lt;p&gt;能够进入后台,也就是要有数据库的凭据&lt;/p&gt;&#xA;&lt;h2 id=&#34;前置知识&#34;&gt;前置知识&lt;/h2&gt;&#xA;&lt;h3 id=&#34;php文件包含&#34;&gt;php文件包含&lt;/h3&gt;&#xA;&lt;p&gt;服务器执行PHP文件时，可以通过文件包含函数加载另一个文件中的PHP代码，并且当PHP来执行，这会为开发者节省大量的时间。&#xA;文件包含相关函数&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

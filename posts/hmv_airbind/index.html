@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>HMV_airbind :: l1uyun_blog</title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta charset="UTF-8"/>
+<meta name="renderer" content="webkit"/>
+<meta name="force-rendering" content="webkit"/>
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="端口扫描 ~ ➤ nmap -Pn -sT 192.168.124.210 -p- Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-06-14 23:47 EDT Nmap scan report for 192.168.124.210 Host is up (0.0047s latency). Not shown: 65533 closed tcp ports (conn-refused) PORT STATE SERVICE 22/tcp filtered ssh 80/tcp open http Nmap done: 1 IP address (1 host up) scanned in 7.38 seconds 22端口是filtered&hellip;没注意这个细节 web_80 目录扫描 扫目录扫出来,状态不太行,应该先判断一下优先查看哪些目录
+/images (Status: 301) [Size: 319] [--&gt; http://192.168.124.210/images/] /.php (Status: 403) [Size: 280] /about.php (Status: 302) [Size: 0] [--&gt; login.php] /login.php (Status: 200) [Size: 1924] /logos.php (Status: 200) [Size: 1977] /stats.php (Status: 302) [Size: 0] [--&gt; login.php] /index.php (Status: 302) [Size: 0] [--&gt; login.php] /.html (Status: 403) [Size: 280] /screenshots (Status: 301) [Size: 324] [--&gt; http://192.168.124.210/screenshots/] /scripts (Status: 301) [Size: 320] [--&gt; http://192.168.124.210/scripts/] /registration.php (Status: 302) [Size: 0] [--&gt; login.php] /includes (Status: 301) [Size: 321] [--&gt; http://192.168.124.210/includes/] /db (Status: 301) [Size: 315] [--&gt; http://192.168.124.210/db/] /logout.php (Status: 302) [Size: 0] [--&gt; .] /styles (Status: 301) [Size: 319] [--&gt; http://192.168.124.210/styles/] /settings.php (Status: 302) [Size: 0] [--&gt; login.php] /auth.php (Status: 200) [Size: 0] db文件泄露 在db目录下找到一个sqlite的转储文件,使用在线工具解析一下,发现user "/>
+<meta name="keywords" content=""/>
+
+<link href="/atom.xml" title="l1uyun_blog" type="application/rss+xml">
+<link rel="canonical" href="https://l1uyun.one/posts/hmv_airbind/" />
+<link rel="stylesheet" href="//cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.6.0/lxgwwenkaiscreen.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="/theme-20230215.css">
+<link rel="shortcut icon" href="https://l1uyun.one/favicon.ico">
+<link rel="apple-touch-icon" href="https://l1uyun.one/favicon.ico">
+<link rel="bookmark" href="https://l1uyun.one/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://l1uyun.one/favicon.ico">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="l1uyun_blog">
+
+<script defer src="https://cn.vercount.one/js"></script>
+<meta property="og:url" content="https://l1uyun.one/posts/hmv_airbind/">
+  <meta property="og:site_name" content="l1uyun_blog">
+  <meta property="og:title" content="HMV_airbind">
+  <meta property="og:description" content="端口扫描 ~ ➤ nmap -Pn -sT 192.168.124.210 -p- Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-06-14 23:47 EDT Nmap scan report for 192.168.124.210 Host is up (0.0047s latency). Not shown: 65533 closed tcp ports (conn-refused) PORT STATE SERVICE 22/tcp filtered ssh 80/tcp open http Nmap done: 1 IP address (1 host up) scanned in 7.38 seconds 22端口是filtered…没注意这个细节 web_80 目录扫描 扫目录扫出来,状态不太行,应该先判断一下优先查看哪些目录
+/images (Status: 301) [Size: 319] [--&gt; http://192.168.124.210/images/] /.php (Status: 403) [Size: 280] /about.php (Status: 302) [Size: 0] [--&gt; login.php] /login.php (Status: 200) [Size: 1924] /logos.php (Status: 200) [Size: 1977] /stats.php (Status: 302) [Size: 0] [--&gt; login.php] /index.php (Status: 302) [Size: 0] [--&gt; login.php] /.html (Status: 403) [Size: 280] /screenshots (Status: 301) [Size: 324] [--&gt; http://192.168.124.210/screenshots/] /scripts (Status: 301) [Size: 320] [--&gt; http://192.168.124.210/scripts/] /registration.php (Status: 302) [Size: 0] [--&gt; login.php] /includes (Status: 301) [Size: 321] [--&gt; http://192.168.124.210/includes/] /db (Status: 301) [Size: 315] [--&gt; http://192.168.124.210/db/] /logout.php (Status: 302) [Size: 0] [--&gt; .] /styles (Status: 301) [Size: 319] [--&gt; http://192.168.124.210/styles/] /settings.php (Status: 302) [Size: 0] [--&gt; login.php] /auth.php (Status: 200) [Size: 0] db文件泄露 在db目录下找到一个sqlite的转储文件,使用在线工具解析一下,发现user">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-06-15T11:46:25+08:00">
+    <meta property="article:modified_time" content="2024-11-24T19:08:55+08:00">
+    <meta property="article:tag" content="Sec/Hackmyvm">
+
+
+
+
+<script>
+if ( false || (!!window.MSInputMethodContext && !!document.documentMode)) {
+    document.write('\x3Cscript id="_iealwn_js" data-outver="11" src="https://support.dmeng.net/ie-alert-warning/latest.js">\x3C/script>');
+}
+</script>
+<script async defer data-website-id="c27bd84b-02a3-4c3f-a168-0d7fadec9c74" src="https://u.edui.fun/lmmtj.js"></script>
+
+    
+  <link rel="prefetch" href="https://l1uyun.one/posts/oracle-padding-attack/">
+  <link rel="prefetch" href="https://l1uyun.one/posts/hmv_adria/">
+
+  </head>
+  <body class="">
+    <script>var getTheme = localStorage.getItem("theme") || '';if(getTheme == 'dark'){document.body.classList.add("dark")}else if(getTheme == 'light'){document.body.classList.remove("dark")}</script>
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a href="https://l1uyun.one/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__text">l1uyun_blog</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu hidden">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/posts/reading/">读书</a></li>
+        
+      
+        
+          <li><a href="/posts/sec/">sec</a></li>
+        
+      
+        
+          <li><a href="/posts/chat/">闲聊</a></li>
+        
+      
+        
+          <li><a href="/archives/">归档</a></li>
+        
+      
+        
+          <li><a href="/about/">关于我</a></li>
+        
+      
+        
+          <li><a href="/search/">🔍</a></li>
+        
+      
+    
+    <li><a href="javascript:;" onclick="randomPost()" title="随机访问一篇文章"><svg t="1660103436159" class="icon search-box-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1184" width="32" height="32"><path d="M421.376 481.28s117.248 24.576 175.104-8.704c0 0-89.6 70.144-89.6 166.4 0.512-0.512-8.192-121.344-85.504-157.696zM438.784 969.216s68.608 6.656 68.608-80.896c0 0 3.072 88.576 65.024 78.336 0 0.512-50.688 22.016-133.632 2.56zM161.28 238.08s-30.208 65.536 11.264 91.648c0 0-67.072-17.408-81.408 37.376 0 0 8.704-82.944 70.144-129.024zM857.6 227.328s49.152 50.176 1.024 81.408c0 0 58.88-18.432 66.56 36.352 0 0 5.12-69.632-67.584-117.76z" p-id="1185"></path><path d="M443.392 970.752c-5.632 0-10.752-1.024-15.36-3.072l-270.848-157.184-1.536-1.024s-1.024-1.024-4.608-2.56c-51.2-29.184-62.976-94.208-65.536-120.832V386.56c0-3.072 0.512-7.168 1.024-11.264l0.512-3.584 1.024-2.56c19.456-50.688 76.8-51.2 103.936-44.032l-1.536 5.632 4.096-6.144L476.16 486.4l18.944 37.888c20.992 36.864 29.184 77.824 32.768 99.84v258.048c-4.608 56.32-36.864 76.288-55.808 82.944-1.024 0.512-15.36 5.632-28.672 5.632z m-262.144-196.096l263.168 152.576c12.288-0.512 36.864-6.656 40.448-48.128v-250.368c-4.608-31.744-20.992-103.936-72.192-128L322.56 445.44l1.536 3.072-142.336-82.432c-2.048-0.512-40.448-9.216-52.736 15.872-0.512 2.56-0.512 4.608-0.512 6.144v294.4c1.536 16.896 9.728 67.072 43.52 86.528 3.584 2.048 6.656 4.096 9.216 5.632z" p-id="1186"></path><path d="M837.632 212.992c6.656 4.096 12.8 7.168 18.432 10.752l1.536 1.024 1.536 1.536c5.12 4.096 10.752 9.216 16.384 15.36 6.144 11.776 5.632 33.28 4.608 49.152-1.024 12.288-6.656 30.208-26.624 44.544l-1.024 0.512-247.808 156.672c-26.624 14.336-62.976 18.432-96.256 18.432-40.96 0-77.824-6.656-89.088-8.704l-3.072-0.512-245.248-142.336c-39.424-29.696-28.16-85.504-15.36-113.664l2.56-6.144 263.68-166.912c29.184-14.336 104.448-43.008 173.056-1.024 3.584 2.56 58.368 34.304 119.296 69.632M431.616 460.8c40.448 7.168 114.176 13.824 152.576-6.144l244.736-155.136c7.168-5.632 8.192-10.24 8.704-12.8 1.024-11.264-9.728-26.624-15.36-32.768-55.808-32.256-243.712-141.312-250.368-145.408-49.664-30.72-107.008-9.216-130.048 2.56L192.512 268.8c-4.096 12.288-12.288 42.496 3.584 55.808l235.52 136.192z" p-id="1187"></path><path d="M831.488 299.008c4.096-1.024 38.4-11.264 66.048 6.144 7.168 4.608 17.92 11.776 24.064 24.576 1.024 5.632 4.096 10.752 4.608 16.896v2.048l-1.024 323.072c-5.12 35.328-22.528 91.648-77.312 125.44l-5.12 3.584h-1.024l-262.144 165.888-4.608 0.512c-4.096 0.512-8.704 1.024-12.8 1.024-15.872 0-30.208-5.12-41.984-14.848-24.576-20.48-32.768-55.808-35.328-73.728l-1.024-252.928h1.536c6.144-96.768 88.576-164.864 96.768-171.008l-0.512-0.512L829.44 299.52m-301.056 567.808c0.512 10.24 5.12 41.472 19.968 53.76 3.072 2.56 7.68 5.632 16.384 5.12l264.704-167.936c56.32-38.4 53.76-115.712 53.76-116.224l-0.512-32.256 1.024-250.368h-0.512c-1.536-12.8-7.168-16.384-8.704-17.408-8.704-5.632-23.552-3.072-28.672-2.048l-235.52 148.992c-1.024 0.512-80.896 65.024-80.896 149.504h-1.536l0.512 228.864zM435.2 264.192c0 27.648 31.744 50.176 71.168 50.176s71.168-22.528 71.168-50.176-31.744-50.176-71.168-50.176S435.2 236.544 435.2 264.192z" p-id="1188"></path><path d="M663.552 782.848c0 30.72-22.528 67.072-49.664 80.384-27.648 13.824-50.176-0.512-50.176-31.232s22.528-67.072 50.176-80.384c27.136-13.824 49.664 0 49.664 31.232zM760.32 602.624c0 30.72-22.528 67.072-49.664 80.384-27.648 13.824-49.664-0.512-49.664-31.232s22.528-67.072 49.664-80.384c27.136-13.824 49.664 0.512 49.664 31.232zM867.84 428.032c0 30.72-22.528 67.072-49.664 80.384-27.648 13.824-50.176-0.512-50.176-31.232s22.528-67.072 50.176-80.384c27.136-13.824 49.664 0 49.664 31.232zM270.848 538.112c0 30.72-22.016 41.984-48.64 24.576-27.136-16.896-48.64-55.808-48.64-86.528 0-30.72 22.016-41.984 48.64-24.576 26.624 16.896 48.64 55.808 48.64 86.528zM432.128 823.296c0 30.72-22.016 41.984-48.64 24.576-26.624-17.408-48.64-55.808-48.64-86.528 0-30.72 22.016-41.984 48.64-24.576 26.624 16.896 48.64 55.808 48.64 86.528z" p-id="1189"></path></svg></a></li>
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/posts/reading/">读书</a></li>
+      
+    
+      
+        <li><a href="/posts/sec/">sec</a></li>
+      
+    
+      
+        <li><a href="/posts/chat/">闲聊</a></li>
+      
+    
+      
+        <li><a href="/archives/">归档</a></li>
+      
+    
+      
+        <li><a href="/about/">关于我</a></li>
+      
+    
+      
+        <li><a href="/search/">🔍</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+
+      <div class="content">
+        
+  
+  
+  
+  
+  <div class="post sec">
+    <div  class="breadcrumb">
+  
+
+  
+
+  
+
+  
+
+<li>
+  <a href="https://l1uyun.one/">首页</a>
+</li>
+
+
+<li>
+  <a href="https://l1uyun.one/posts/">Posts</a>
+</li>
+
+
+<li>
+  <a href="https://l1uyun.one/posts/sec/">sec</a>
+</li>
+
+
+<li class="active">
+  <a href="https://l1uyun.one/posts/hmv_airbind/">HMV_airbind</a>
+</li>
+
+</div>
+
+
+  
+    <h2 class="post-title"><a href="https://l1uyun.one/posts/hmv_airbind/">HMV_airbind</a></h2>
+    <div class="post-meta">
+      <div  class="meta-item">
+        本文总阅读量 <span id="vercount_value_page_pv">Loading</span> 次
+      </div>
+      
+        <span class="post-date">2024-06-15</span>
+        
+          
+        
+      
+    </div>
+    
+  
+    <div class="post-content">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#端口扫描">端口扫描</a></li>
+        <li><a href="#web_80">web_80</a>
+          <ul>
+            <li><a href="#目录扫描">目录扫描</a></li>
+            <li><a href="#db文件泄露">db文件泄露</a></li>
+            <li><a href="#gif89a文件上传">GIF89a,文件上传</a></li>
+          </ul>
+        </li>
+        <li><a href="#root1">root1</a>
+          <ul>
+            <li><a href="#usertxt">user.txt</a></li>
+            <li><a href="#枚举">枚举</a></li>
+          </ul>
+        </li>
+        <li><a href="#id_rsaipv6访问">id_rsa+ipv6访问</a></li>
+        <li><a href="#l1uyun">l1uyun</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      <h2 id="端口扫描">端口扫描</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>~ ➤ nmap -Pn -sT 192.168.124.210 -p-
+</span></span><span style="display:flex;"><span>Starting Nmap 7.94SVN <span style="color:#f92672">(</span> https://nmap.org <span style="color:#f92672">)</span> at 2024-06-14 23:47 EDT
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 192.168.124.210
+</span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.0047s latency<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>Not shown: <span style="color:#ae81ff">65533</span> closed tcp ports <span style="color:#f92672">(</span>conn-refused<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>PORT   STATE    SERVICE
+</span></span><span style="display:flex;"><span>22/tcp filtered ssh
+</span></span><span style="display:flex;"><span>80/tcp open     http
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Nmap <span style="color:#66d9ef">done</span>: <span style="color:#ae81ff">1</span> IP address <span style="color:#f92672">(</span><span style="color:#ae81ff">1</span> host up<span style="color:#f92672">)</span> scanned in 7.38 seconds
+</span></span></code></pre></div><p>22端口是filtered&hellip;没注意这个细节
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMV_airbind_image_1.png" alt="HMV_airbind_image_1"  /></p>
+<h2 id="web_80">web_80</h2>
+<h3 id="目录扫描">目录扫描</h3>
+<p>扫目录扫出来,状态不太行,应该先判断一下优先查看哪些目录</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>/images               <span style="color:#f92672">(</span>Status: 301<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 319<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; http://192.168.124.210/images/<span style="color:#f92672">]</span>   
+</span></span><span style="display:flex;"><span>/.php                 <span style="color:#f92672">(</span>Status: 403<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 280<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/about.php            <span style="color:#f92672">(</span>Status: 302<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 0<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; login.php<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/login.php            <span style="color:#f92672">(</span>Status: 200<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 1924<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/logos.php            <span style="color:#f92672">(</span>Status: 200<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 1977<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/stats.php            <span style="color:#f92672">(</span>Status: 302<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 0<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; login.php<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/index.php            <span style="color:#f92672">(</span>Status: 302<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 0<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; login.php<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/.html                <span style="color:#f92672">(</span>Status: 403<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 280<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/screenshots          <span style="color:#f92672">(</span>Status: 301<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 324<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; http://192.168.124.210/screenshots/<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/scripts              <span style="color:#f92672">(</span>Status: 301<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 320<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; http://192.168.124.210/scripts/<span style="color:#f92672">]</span>  
+</span></span><span style="display:flex;"><span>/registration.php     <span style="color:#f92672">(</span>Status: 302<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 0<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; login.php<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/includes             <span style="color:#f92672">(</span>Status: 301<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 321<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; http://192.168.124.210/includes/<span style="color:#f92672">]</span> 
+</span></span><span style="display:flex;"><span>/db                   <span style="color:#f92672">(</span>Status: 301<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 315<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; http://192.168.124.210/db/<span style="color:#f92672">]</span>       
+</span></span><span style="display:flex;"><span>/logout.php           <span style="color:#f92672">(</span>Status: 302<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 0<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; .<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/styles               <span style="color:#f92672">(</span>Status: 301<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 319<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; http://192.168.124.210/styles/<span style="color:#f92672">]</span>   
+</span></span><span style="display:flex;"><span>/settings.php         <span style="color:#f92672">(</span>Status: 302<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 0<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; login.php<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/auth.php             <span style="color:#f92672">(</span>Status: 200<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 0<span style="color:#f92672">]</span>
+</span></span></code></pre></div><h3 id="db文件泄露">db文件泄露</h3>
+<p>在db目录下找到一个sqlite的转储文件,使用在线工具解析一下,发现user
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMV_airbind_image_2.png" alt="HMV_airbind_image_2"  /></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>admin@localhost.com
+</span></span><span style="display:flex;"><span>$2y$10$2XxuEupev6gU1qWoURsIYu7XHNiy7nve9iq7H0mUX/MzFnmvbxC9S
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>~ ➤ john hhh
+</span></span><span style="display:flex;"><span>Using default input encoding: UTF-8
+</span></span><span style="display:flex;"><span>Loaded <span style="color:#ae81ff">1</span> password hash <span style="color:#f92672">(</span>bcrypt <span style="color:#f92672">[</span>Blowfish 32/64 X3<span style="color:#f92672">])</span>
+</span></span><span style="display:flex;"><span>Cost <span style="color:#ae81ff">1</span> <span style="color:#f92672">(</span>iteration count<span style="color:#f92672">)</span> is <span style="color:#ae81ff">1024</span> <span style="color:#66d9ef">for</span> all loaded hashes
+</span></span><span style="display:flex;"><span>Will run <span style="color:#ae81ff">8</span> OpenMP threads
+</span></span><span style="display:flex;"><span>Proceeding with single, rules:Single
+</span></span><span style="display:flex;"><span>Press <span style="color:#e6db74">&#39;q&#39;</span> or Ctrl-C to abort, almost any other key <span style="color:#66d9ef">for</span> status
+</span></span><span style="display:flex;"><span>Almost <span style="color:#66d9ef">done</span>: Processing the remaining buffered candidate passwords, <span style="color:#66d9ef">if</span> any.
+</span></span><span style="display:flex;"><span>Proceeding with wordlist:/usr/share/john/password.lst
+</span></span><span style="display:flex;"><span>admin            <span style="color:#f92672">(</span>?<span style="color:#f92672">)</span>     
+</span></span><span style="display:flex;"><span>1g 0:00:00:29 DONE 2/3 <span style="color:#f92672">(</span>2024-06-14 23:58<span style="color:#f92672">)</span> 0.03439g/s 99.07p/s 99.07c/s 99.07C/s Smokey..buzz
+</span></span><span style="display:flex;"><span>Use the <span style="color:#e6db74">&#34;--show&#34;</span> option to display all of the cracked passwords reliably
+</span></span><span style="display:flex;"><span>Session completed. 
+</span></span></code></pre></div><p>&hellip;..admin,admin弱口令是吧</p>
+<h3 id="gif89a文件上传">GIF89a,文件上传</h3>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMV_airbind_image_3.png" alt="HMV_airbind_image_3"  /></p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMV_airbind_image_4.png" alt="HMV_airbind_image_4"  /></p>
+<h2 id="root1">root1</h2>
+<p>还是得用原生的终端,tabby又出现卡死了
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMV_airbind_image_5.png" alt="HMV_airbind_image_5"  />
+进去之后sudo -l,nopasswd/all</p>
+<h3 id="usertxt">user.txt</h3>
+<p>应该又是docker环境了</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@ubuntu:/# find / -type f -name <span style="color:#e6db74">&#34;user.txt&#34;</span> 2&gt;/dev/null
+</span></span><span style="display:flex;"><span>/root/user.txt
+</span></span><span style="display:flex;"><span>root@ubuntu:/# cat /root/user.txt
+</span></span><span style="display:flex;"><span>4408f370877687429c6ab332e6f560d0
+</span></span></code></pre></div><h3 id="枚举">枚举</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@ubuntu:/# ip a
+</span></span><span style="display:flex;"><span>1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span style="color:#ae81ff">65536</span> qdisc noqueue state UNKNOWN group default qlen <span style="color:#ae81ff">1000</span>
+</span></span><span style="display:flex;"><span>    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+</span></span><span style="display:flex;"><span>    inet 127.0.0.1/8 scope host lo
+</span></span><span style="display:flex;"><span>       valid_lft forever preferred_lft forever
+</span></span><span style="display:flex;"><span>    inet6 ::1/128 scope host
+</span></span><span style="display:flex;"><span>       valid_lft forever preferred_lft forever
+</span></span><span style="display:flex;"><span>2: eth0@if8: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span style="color:#ae81ff">1500</span> qdisc noqueue state UP group default qlen <span style="color:#ae81ff">1000</span>
+</span></span><span style="display:flex;"><span>    link/ether dc:a1:f7:82:76:13 brd ff:ff:ff:ff:ff:ff link-netnsid <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    inet 10.0.3.241/24 brd 10.0.3.255 scope global eth0
+</span></span><span style="display:flex;"><span>       valid_lft forever preferred_lft forever
+</span></span><span style="display:flex;"><span>    inet6 fe80::dea1:f7ff:fe82:7613/64 scope link
+</span></span><span style="display:flex;"><span>       valid_lft forever preferred_lft forever
+</span></span><span style="display:flex;"><span>3: wlan0: &lt;NO-CARRIER,BROADCAST,MULTICAST,UP&gt; mtu <span style="color:#ae81ff">1500</span> qdisc mq state DOWN group default qlen <span style="color:#ae81ff">1000</span>
+</span></span><span style="display:flex;"><span>    link/ether 02:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff
+</span></span><span style="display:flex;"><span>6: ap0: &lt;BROADCAST,MULTICAST&gt; mtu <span style="color:#ae81ff">1500</span> qdisc noop state DOWN group default qlen <span style="color:#ae81ff">1000</span>
+</span></span><span style="display:flex;"><span>    link/ether 42:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff
+</span></span></code></pre></div><p>体验上还是tabby好一点</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>root@ubuntu:/tmp# ./fscan64 -h 10.0.3.241/24
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   ___                              _
+</span></span><span style="display:flex;"><span>  / _ <span style="color:#ae81ff">\ </span>    ___  ___ _ __ __ _  ___| | __
+</span></span><span style="display:flex;"><span> / /_<span style="color:#ae81ff">\/</span>____/ __|/ __| <span style="color:#960050;background-color:#1e0010">&#39;</span>__/ _<span style="color:#e6db74">`</span> |/ __| |/ /
+</span></span><span style="display:flex;"><span>/ /_<span style="color:#ae81ff">\\</span>_____<span style="color:#ae81ff">\_</span>_ <span style="color:#ae81ff">\ </span><span style="color:#f92672">(</span>__| | | <span style="color:#f92672">(</span>_| | <span style="color:#f92672">(</span>__|   &lt;
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">\_</span>___/     |___/<span style="color:#ae81ff">\_</span>__|_|  <span style="color:#ae81ff">\_</span>_,_|<span style="color:#ae81ff">\_</span>__|_|<span style="color:#ae81ff">\_\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>                     fscan version: 1.8.3
+</span></span><span style="display:flex;"><span>start infoscan
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>icmp<span style="color:#f92672">)</span> Target 10.0.3.1        is alive
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>icmp<span style="color:#f92672">)</span> Target 10.0.3.241      is alive
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Icmp alive hosts len is: <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>10.0.3.241:80 open
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> alive ports len is: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>start vulscan
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> WebTitle http://10.0.3.241         code:302 len:0      title:None 跳转url: http://10.0.3.241/login.php
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> WebTitle http://10.0.3.241/login.php code:200 len:1924   title:Wallos - Subscription Tracker
+</span></span><span style="display:flex;"><span>已完成 1/1
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> 扫描结束,耗时: 7.077390677s
+</span></span><span style="display:flex;"><span>root@ubuntu:/tmp#
+</span></span></code></pre></div><h2 id="id_rsaipv6访问">id_rsa+ipv6访问</h2>
+<p>好吧,看了一下群主的wp,原来是ipv6
+进去之后得到id_rsa,然后使用ipv6地址来ssh连接</p>
+<p>&hellip;..四个ipv6地址,尝试了三次都没中&hellip;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>	➜  workspace  ssh -i id_rsa root@fe80::a00:27ff:fe85:25f9%eth5
+</span></span><span style="display:flex;"><span>Linux airbind 6.1.0-18-amd64 <span style="color:#75715e">#1 SMP PREEMPT_DYNAMIC Debian 6.1.76-1 (2024-02-01) x86_64</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>The programs included with the Debian GNU/Linux system are free software;
+</span></span><span style="display:flex;"><span>the exact distribution terms <span style="color:#66d9ef">for</span> each program are described in the
+</span></span><span style="display:flex;"><span>individual files in /usr/share/doc/*/copyright.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+</span></span><span style="display:flex;"><span>permitted by applicable law.
+</span></span><span style="display:flex;"><span>root@airbind:~# cat root.txt
+</span></span><span style="display:flex;"><span>2bd693135712f88726c22770278a2dcf
+</span></span><span style="display:flex;"><span>root@airbind:~#
+</span></span></code></pre></div><h2 id="l1uyun">l1uyun</h2>
+<p>第一次接触涉及ipv6的靶场&hellip;&hellip;
+刚刚思路已经到了尝试id_rsa,但是没有想到是得用ipv6..
+fscan的时候是扫描出来了一些ipv6地址..但是我没有往这个方向去想&hellip;</p>
+
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          #<a href="https://l1uyun.one/tags/sec/hackmyvm/">sec/hackmyvm</a>&nbsp;
+        
+      </span>
+    
+  
+    <div class="clear"></div>
+    
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            
+              <span class="pagination__title-h">阅读更多</span>
+            
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+              <span class="button previous">
+                <a href="https://l1uyun.one/posts/oracle-padding-attack/">
+                  <span class="button__icon">←</span>
+                  <span class="button__text">oracle-padding-attack</span>
+                </a>
+              </span>
+            
+            
+              <span class="button next">
+                <a href="https://l1uyun.one/posts/hmv_adria/">
+                  <span class="button__text">HMV_adria</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+    
+    </div>
+
+      </div>
+
+      
+        
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+
+
+
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="copyright copyright-font">
+      <span>共 46742 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+    </div>
+      
+    <div class="busuanzi-footer">
+      本站总访客数 <span id="vercount_value_site_uv">Loading</span> 人
+      本站总访问量 <span id="vercount_value_site_pv">Loading</span> 次
+    </div>
+      <div class="copyright">
+        <span>© 2024 Powered by <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a> Theme by <a href="https://github.com/lmm214/immmmm/tree/master/themes/hello-friend" target="_blank" rel="noopener">immmmm</a></span>
+      </div>
+    
+  </div>
+</footer>
+
+<script type="text/javascript" src="/theme-main-1.js"></script>
+<script type="text/javascript" src="/lately.min.js"></script>
+<script type="text/javascript" src="/waterfall.min.js"></script>
+<script type="text/javascript" src="/imgStatus.min.js"></script>
+<script type="text/javascript" src="/view-image.js"></script>
+<script type="text/javascript" src="/theme-lmm-20230123.js"></script>
+<script type="text/javascript" src="/pangu.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    pangu.autoSpacingPage();
+  });
+</script>
+
+
+
+
+    <section class="comments">
+      <script
+        src="https://utteranc.es/client.js"
+        repo="L1uYun/l1uyun_blog"
+        issue-term="title"
+        label="💬comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async
+      ></script>
+    </section>
+    
+      
+    </div>
+  </body>
+</html>

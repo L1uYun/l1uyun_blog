@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sec/Win on l1uyun_blog</title>
+    <link>https://l1uyun.one/tags/sec/win/</link>
+    <description>Recent content in Sec/Win on l1uyun_blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 24 Nov 2024 18:41:52 +0800</lastBuildDate>
+    <atom:link href="https://l1uyun.one/tags/sec/win/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>红日靶场3</title>
+      <link>https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA3/</link>
+      <pubDate>Mon, 07 Oct 2024 21:20:16 +0800</pubDate>
+      <guid>https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA3/</guid>
+      <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;&#xA;&lt;p&gt;得加快红日靶场的进度了&lt;/p&gt;&#xA;&lt;h1 id=&#34;红日靶场3&#34;&gt;红日靶场3&lt;/h1&gt;&#xA;&lt;h2 id=&#34;搭建环境&#34;&gt;搭建环境&lt;/h2&gt;&#xA;&lt;p&gt;这个靶场只有一台web服务器暴露在外网中&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;外网网段 192.168.3.1/24&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;攻击机 parrot 192.168.3.101&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;攻击机 wsl  192.168.3.100&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;攻击机 win  192.168.3.99&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;web-centos 192.168.3.3&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;内网网段&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;192.168.93.1/24&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;五台靶机都是配置了only-host网卡,除了centos额外有一个nat网卡,来与外网通信.&#xA;启动centos靶机之后,需要&lt;code&gt;service network restart&lt;/code&gt;&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;[!INFO]&#xA;配完环境之后,发现忘了弄快照了,可能不会在一个完整的时间内完成,所以&amp;hellip;.重新解压一下,改完网卡后,先弄下快照&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>红日靶场2_win域</title>
+      <link>https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2/</link>
+      <pubDate>Sat, 28 Sep 2024 11:10:12 +0800</pubDate>
+      <guid>https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2/</guid>
+      <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;&#xA;&lt;p&gt;环境和红日1的环境搭建差不多，不过这次给三台机器分别是域控、web服务器、个人PC机，与红日1不同的是这里将域管换成了个人PC机，因此我们的一些操作也会有所不同&lt;/p&gt;&#xA;&lt;h1 id=&#34;红日靶场2_win域&#34;&gt;红日靶场2_win域&lt;/h1&gt;&#xA;&lt;h2 id=&#34;搭建环境&#34;&gt;搭建环境&lt;/h2&gt;&#xA;&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_1.png&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;administrator&#xA;1qaz@WSX&#xA;默认密码都是1qaz@WSX&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里需要模拟内网环境,所以需要弄一个内网网卡&lt;/p&gt;&#xA;&lt;p&gt;创建一个vmnet2&#xA;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_2.png&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;&#xA;&lt;p&gt;然后把三台机器的网卡2都改成这个vmnet2就行了&#xA;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_3.png&#34; alt=&#34;&#34;  /&gt;&#xA;DC机器不需要做什么处理,改完网卡直接启动就行&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
