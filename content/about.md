@@ -3,11 +3,11 @@ title: 关于我
 tags:
   - l1uyun
 date: 2024-10-27T08:37:45
-lastmod: 2024-12-01T20:20:27
+lastmod: 2024-12-06T16:38:03
 disable_comments: false
 ---
 ## About Me
-
+	
 - 信息安全专业本科生，就读于 HNU。
 - INTP(仅作为一个快速认知我的符号)
 - 多感官想象障碍者,内在五感缺失，无法进行感官想象。
@@ -24,7 +24,7 @@ disable_comments: false
 - 阅读思考
 - 生活感悟
 
-欢迎使用rss[订阅本站](https://l1uyun.one/atom.xml)
+欢迎使用[rss](https://l1uyun.one/atom.xml)订阅本站
 
 
  
