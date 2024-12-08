@@ -3,14 +3,16 @@ title: slowman
 tags:
   - sec/hackmyvm
 date: 2024-02-15T15:44:24
-lastmod: 2024-11-24T19:11:25
+lastmod: 2024-12-08T19:34:53
 toc: "true"
 ---
 ## 端口扫描
 网络环境问题,还是得 nmap 的全端口扫描
+
 ![HMM_slowman_image_1](https://img.l1uyun.one/HMM_slowman_image_1.png)
 
 ## ftp 匿名登录
+
 ![HMM_slowman_image_2](https://img.l1uyun.one/HMM_slowman_image_2.png)
 
 ## 爆破 mysql 密码
