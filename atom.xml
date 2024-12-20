@@ -7,7 +7,7 @@
             <link href="https://l1uyun.one/atom.xml" rel="self" type="application/rss+xml" title="atom" />
             <link href="https://l1uyun.one/" rel="alternate" type="text/html" title="html" />
             <link href="https://l1uyun.one/index.json" rel="alternate" type="application/json" title="json" />
-    <updated>2024-12-20T12:46:33+00:00</updated>
+    <updated>2024-12-20T12:47:54+00:00</updated>
     
     
     
@@ -23,7 +23,7 @@
             
             
             <published>2024-12-18T20:53:50+08:00</published>
-            <updated>2024-12-20T20:46:12+08:00</updated>
+            <updated>2024-12-20T20:47:31+08:00</updated>
             
             
             <content type="html"><![CDATA[<h1 id="前言">前言</h1>
@@ -77,9 +77,9 @@
 <p>第一天全程在当人工bot，播报比赛的一血二血三血情况，比赛开始前面半个小时，还在担心没人打，没人拿一血，不过比赛刚开始几分钟就有人解出题了，不得不说，这几个新生确实nb，不过也与大模型有关吧，我没有去测试，但是估计所有的题，都能使用chatgpt解决</p>
 <p>第一天结束的时候，大部分题都被解决的差不多了。</p>
 <h3 id="day2">day2</h3>
-<p>第二天一觉醒来，有个学长半夜屠榜了
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e5%8a%9e%e4%ba%86%e4%b8%80%e5%9c%bactf%e6%a0%a1%e8%b5%9b_image_5.png" alt=""  />
-以及发现有个校外✌ak了，从周六下午五点，打到周天早上七点，太肝了。</p>
+<p>第二天一觉醒来，有个学长半夜屠榜了</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e5%8a%9e%e4%ba%86%e4%b8%80%e5%9c%bactf%e6%a0%a1%e8%b5%9b_image_5.png" alt=""  /></p>
+<p>以及发现有个校外✌ak了，从周六下午五点，打到周天早上七点，太肝了。</p>
 <hr>
 <h2 id="赛后">赛后</h2>
 <h3 id="做题情况">做题情况</h3>
@@ -96,11 +96,11 @@
 <h3 id="官方wp">官方wp</h3>
 <p>原本是有计划出官方wp的，但是遇到了期末考试，我也就懒得弄了，正好老登们在群里发了官方wp，就封他们为官方wp了。</p>
 <p>看了一下他们的wp，思路上差不了多少，毕竟都是easy题。</p>
-<p>我出的misc方向的《网络鲨鱼》，没人尝试去连接那个mysql数据库，出题的时候没有想清楚，觉得是新生赛，就在后面又给了一个base64编码的flag，导致这道题跟另外一道流量分析的题差不多了。</p>
+<p>我出的misc方向的《网络鲨鱼》，没人尝试去连接那个mysql数据库，出题的时候没有想清楚，觉得是新生赛，就在后面又给了一个base64编码的flag，导致这道题跟另外一道流量分析的题很相似了。</p>
 <p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e5%8a%9e%e4%ba%86%e4%b8%80%e5%9c%bactf%e6%a0%a1%e8%b5%9b_image_8.png" alt="|500"  /></p>
 <h3 id="意外事件">意外事件</h3>
 <p>虽然过了交wp的时间，但是之后的一两天内我还是有在翻看邮箱，结果在垃圾箱里面发现了一封异常的邮件，点进去一看是举报&hellip;..还好我有翻垃圾箱的习惯</p>
-<p>这种事情只能上报了，最终按照指示，找了新生里面的第一名第二名谈话，两个新生态度都很好，都没有不承认，最终也是处理完了这件意外事件，取消了这两人的pwn方向成绩。</p>
+<p>这种事情只能上报了，按照指示，找了新生里面的第一名第二名谈话，两个新生态度都很好，都没有不承认，最终也是处理完了这件意外事件，取消了这两人的pwn方向成绩。</p>
 <h3 id="公示成绩">公示成绩</h3>
 <p>基本上是认真参与了就有奖，新生赛道，14个wp，12个奖。（他们这500赚的轻松🙄，我在衡阳，7天时间，每天9小时，最终还是拿了奖才能有500&hellip;&hellip;.）</p>
 <p>高年级赛道，只有四个wp，但是有十个礼品，最终弄成大礼包送出去了。</p>
