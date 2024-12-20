@@ -6,8 +6,15 @@
     <description>Recent content in Sec on l1uyun_blog</description>
     <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 24 Nov 2024 18:41:52 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 20 Dec 2024 19:33:01 +0800</lastBuildDate>
     <atom:link href="https://l1uyun.one/tags/sec/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>办了一场ctf校赛</title>
+      <link>https://l1uyun.one/posts/%E5%8A%9E%E4%BA%86%E4%B8%80%E5%9C%BActf%E6%A0%A1%E8%B5%9B/</link>
+      <pubDate>Wed, 18 Dec 2024 20:53:50 +0800</pubDate>
+      <guid>https://l1uyun.one/posts/%E5%8A%9E%E4%BA%86%E4%B8%80%E5%9C%BActf%E6%A0%A1%E8%B5%9B/</guid>
+      <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;&#xA;&lt;p&gt;最近办了一场学校的ctf校赛，这也许是我最后一次接触ctf，目前比赛算是结束了，复盘一下比赛，复盘一下我自己。&lt;/p&gt;&#xA;&lt;h1 id=&#34;办了一场校内ctf赛&#34;&gt;办了一场校内ctf赛&lt;/h1&gt;&#xA;&lt;h2 id=&#34;缘起&#34;&gt;缘起&lt;/h2&gt;&#xA;&lt;p&gt;办比赛的缘起要从我莫名当上协会负责人说起，九月份去衡阳打攻防，打的过程中，上一届的会长skywt在qq上问我要不要当下一任会长，我同意了，回去之后忙完年审材料，换届材料之后，我就成了协会的负责人。（我估计也会这样把协会传下去），这一身份让我与办ctf校赛这一事情产生了内在联系。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>sec</title>
       <link>https://l1uyun.one/posts/sec/</link>
@@ -70,13 +77,6 @@
       <pubDate>Sun, 18 Aug 2024 11:59:41 +0800</pubDate>
       <guid>https://l1uyun.one/posts/puff-pastry%E6%89%93%E9%9D%B6/</guid>
       <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;&#xA;&lt;p&gt;在群里瞅见了这个靶机,没打过这种复杂环境的靶机,玩一下&lt;/p&gt;&#xA;&lt;h1 id=&#34;puff-pastry打靶记录&#34;&gt;Puff-Pastry打靶记录&lt;/h1&gt;&#xA;&lt;h2 id=&#34;搭建&#34;&gt;搭建&lt;/h2&gt;&#xA;&lt;p&gt;使用docker搭建,然后本地能够访问到一个8080端口&#xA;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_1.png&#34; alt=&#34;|207&#34;  /&gt;&#xA;这里我最开始是使用的Windows docker,后面改成了使用虚拟机&lt;/p&gt;&#xA;&lt;h2 id=&#34;shiro&#34;&gt;shiro&lt;/h2&gt;&#xA;&lt;h3 id=&#34;探测&#34;&gt;探测&lt;/h3&gt;&#xA;&lt;p&gt;java后端&#xA;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_2.png&#34; alt=&#34;|522&#34;  /&gt;&#xA;进去只有一个登录框,在搭建过程中已经知道了第一台机器是shiro,选择记住密码,登录&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>springboot利用</title>
-      <link>https://l1uyun.one/posts/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8/</link>
-      <pubDate>Tue, 06 Aug 2024 09:32:00 +0800</pubDate>
-      <guid>https://l1uyun.one/posts/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8/</guid>
-      <description>&lt;h1 id=&#34;springboot利用&#34;&gt;springboot利用&lt;/h1&gt;&#xA;&lt;h1 id=&#34;前置知识&#34;&gt;前置知识&lt;/h1&gt;&#xA;&lt;h2 id=&#34;springboot-actuator&#34;&gt;SpringBoot Actuator&lt;/h2&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Spring Boot Actuator 1.x 版本默认内置路由的起始路径为 / ，2.x 版本则统一以 /actuator 为起始路径&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Spring Boot Actuator 默认的内置路由名字，如 /env 有时候也会被程序员修改，比如修改成 /appenv&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;一般来讲，暴露出 spring boot 应用的相关接口和传参信息并不能算是漏洞，但是以 “默认安全” 来讲，不暴露出这些信息更加安全。&lt;/p&gt;&#xA;&lt;p&gt;对于攻击者来讲，一般会仔细审计暴露出的接口以增加对业务系统的了解，并会同时检查应用系统是否存在未授权访问、越权等其他业务类型漏洞。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
