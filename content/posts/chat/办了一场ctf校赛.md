@@ -3,10 +3,10 @@ title: 办了一场ctf校赛
 tags:
   - l1uyun/hnu
   - sec/ctf
-lastmod: 2024-12-20T19:30:39
+lastmod: 2024-12-20T19:33:01
 date: 2024-12-18T20:53:50
 toc: "true"
-draft: "true"
+draft: "false"
 keywords:
   - hugo
   - ctf
