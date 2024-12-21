@@ -3,7 +3,7 @@ title: 关于我
 tags:
   - l1uyun
 date: 2024-10-27T08:37:45
-lastmod: 2024-12-21T12:21:10
+lastmod: 2024-12-21T12:43:16
 disable_comments: false
 ---
 ## About Me
@@ -28,7 +28,7 @@ disable_comments: false
 
 欢迎使用[rss](https://l1uyun.one/atom.xml)订阅本站
 
-## Friends 
+## My Friends 
 
 {{< friends >}}
  

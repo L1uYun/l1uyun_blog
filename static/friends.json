@@ -1,9 +1,20 @@
 {
     "friend": [
         {
+            "name": "kongyu204",
+            "url": "https://www.kongyu204.com",
+            "src": "https://www.kongyu204.com/favicon.ico",
+            "des": "" 
+        },
+        {
+            "name": "SixGoogle",
+            "url": "https://comgoogle.github.io",
+            "src": "https://file.notion.so/f/f/dd719a06-a4c3-47e4-9b49-3a2adc703adc/10daba46-51b9-474a-9c22-1222e6e158b2/PMI74K6FO73MCR770JT.png?table=collection&id=51a399fe-3ada-47de-a312-8e2ad5e56579&spaceId=dd719a06-a4c3-47e4-9b49-3a2adc703adc&expirationTimestamp=1734847200000&signature=UIY0KZkcwBaK1ucSlSa2U1jMs_eGDijS10ONG3-iXP0",
+            "des": "" 
+        },
+        {
             "name": "SkyWT",
             "url": "https://skywt.cn",
-            "md5": "f0f4d19ef613943fdcef7e890031a04b" ,
             "src": "https://skywt.cn/avatar.png",
             "des": "" 
         }
