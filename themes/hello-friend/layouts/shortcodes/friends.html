@@ -1,7 +1,8 @@
-{{ $friends := getJSON "static/friends.json" }}
-{{ range $friends.friend}}
+{{ $resource := resources.Get "static/friends.json" }}
+{{ $friends := $resource | transform.Unmarshal }}
+{{ range $friends.friend }}
 <div class="archive-item links-item cf-friends">
-	<img loading="lazy" class="archive-list-image avatar" src="{{- if .src -}}{{- .src -}}{{- else -}}https://cravatar.cn/avatar/{{ .md5 -}}{{- end -}}"/>
-	<a target="_blank" href={{ .url }} >{{ .name }}</a>
+    <img loading="lazy" class="archive-list-image avatar" src="{{- if .src -}}{{- .src -}}{{- else -}}https://cravatar.cn/avatar/{{ .md5 -}}{{- end -}}" />
+    <a target="_blank" href="{{ .url }}">{{ .name }}</a>
 </div>
 {{ end }}
