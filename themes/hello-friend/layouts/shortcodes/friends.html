@@ -2,8 +2,8 @@
 {{ $friends := $file | transform.Unmarshal }}
 
 {{ range $friends.friend }}
-  <div class="archive-item links-item cf-friends">
+  <div class="archive-item links-item cf-friends" style="width: auto;">
     <img loading="lazy" class="archive-list-image avatar" src="{{- if .src -}}{{- .src -}}{{- else -}}https://cravatar.cn/avatar/{{ .md5 -}}{{- end -}}"/>
-    <a target="_blank" href={{ .url }} >{{ .name }}</a>
+    <a target="_blank" href="{{ .url }}">{{ .name }}</a>
   </div>
 {{ end }}
