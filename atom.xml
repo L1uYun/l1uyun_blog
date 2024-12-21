@@ -7,7 +7,7 @@
             <link href="https://l1uyun.one/atom.xml" rel="self" type="application/rss+xml" title="atom" />
             <link href="https://l1uyun.one/" rel="alternate" type="text/html" title="html" />
             <link href="https://l1uyun.one/index.json" rel="alternate" type="application/json" title="json" />
-    <updated>2024-12-20T12:49:34+00:00</updated>
+    <updated>2024-12-21T04:27:00+00:00</updated>
     
     
     
@@ -23,14 +23,14 @@
             
             
             <published>2024-12-18T20:53:50+08:00</published>
-            <updated>2024-12-20T20:49:11+08:00</updated>
+            <updated>2024-12-21T12:24:20+08:00</updated>
             
             
             <content type="html"><![CDATA[<h1 id="前言">前言</h1>
 <p>最近办了一场学校的ctf校赛，这也许是我最后一次接触ctf，目前比赛算是结束了，复盘一下比赛，复盘一下我自己。</p>
 <h1 id="办了一场校内ctf赛">办了一场校内ctf赛</h1>
 <h2 id="缘起">缘起</h2>
-<p>办比赛的缘起要从我莫名当上协会负责人说起，九月份去衡阳打攻防，打的过程中，上一届的会长skywt在qq上问我要不要当下一任会长，我同意了，回去之后忙完年审材料，换届材料之后，我就成了协会的负责人。（我估计也会这样把协会传下去），这一身份让我与办ctf校赛这一事情产生了内在联系。</p>
+<p>办比赛的缘起要从我莫名当上协会负责人说起，九月份去衡阳打攻防，打的过程中，上一届的会长SkyWT在qq上问我要不要当下一任会长，我同意了，回去之后忙完年审材料，换届材料之后，我就成了协会的负责人。（我估计也会这样把协会传下去），这一身份让我与办ctf校赛这一事情产生了内在联系。</p>
 <p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e5%8a%9e%e4%ba%86%e4%b8%80%e5%9c%bactf%e6%a0%a1%e8%b5%9b_image_1.jpeg" alt="|300"  /></p>
 <p>另一部分是源自带我去衡阳打攻防的学姐，在衡阳跟我说过这学期她需要办一场ctf比赛，她与学院的老师有过这方面的约定，而我对这位带我去打攻防的学姐是非常感激的。她带我去打攻防，是基于为爱发电的理念，“如果我带你去打了攻防，有了这一次攻防，你之后就有可能去带新人去打，这样我们学校做渗透的就能传下去”，这种热爱，传承的意味在一定程度上影响了我。但是与这种感染相比更多的是对学姐的感激（让我短暂远离了学校这一苦闷的秩序，以及让我中断那段时间的自我内耗）。</p>
 <hr>
