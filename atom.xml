@@ -7,12 +7,68 @@
             <link href="https://l1uyun.one/atom.xml" rel="self" type="application/rss+xml" title="atom" />
             <link href="https://l1uyun.one/" rel="alternate" type="text/html" title="html" />
             <link href="https://l1uyun.one/index.json" rel="alternate" type="application/json" title="json" />
-    <updated>2025-01-11T05:13:11+00:00</updated>
+    <updated>2025-01-11T09:24:16+00:00</updated>
     
     
     
     
         <id>https://l1uyun.one/atom.xml</id>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[2025W02_随便取个标题先]]></title>
+            <link href="https://l1uyun.one/posts/2025w02_%E9%9A%8F%E4%BE%BF%E5%8F%96%E4%B8%AA%E6%A0%87%E9%A2%98%E5%85%88/" rel="alternate" type="text/html" />
+            
+                <id>https://l1uyun.one/posts/2025w02_%E9%9A%8F%E4%BE%BF%E5%8F%96%E4%B8%AA%E6%A0%87%E9%A2%98%E5%85%88/</id>
+            
+            
+            <published>2025-01-09T23:06:51+08:00</published>
+            <updated>2025-01-11T17:23:59+08:00</updated>
+            
+            
+            <content type="html"><![CDATA[<h1 id="前言">前言</h1>
+<p>回家有一段时间了，最近一段时间都处于颓废状态，上一次想通过写什么来摆脱这种状态是在元旦前后，想着写写年终总结，给自己画一下新年计划这一大饼，但是在折腾obsidian时，看见了去年的年度计划九宫格，感到更加迷茫，过去的未来是过去的幻想，未来是现在的幻想。于是我放弃了新年计划（也许农历新年的时候还会捡起来。）</p>
+<h1 id="缘起">缘起</h1>
+<p>大约在一年之前看了肖神的<a href="https://github.com/Kiprey/Skr_Learning" target="_blank" rel="noopener nofollow noreferrer" >天问之路</a>之后，写过一段时间周记，现在在obsidian里面有着10篇左右的周记，但是后面又陷入了日常之中，没有将这一习性保留下来。</p>
+<p>最近一段时间，在网上翻阅博客的时候，看见了一些有趣的weekly，让我再次有了写周记的想法，我几乎每天都在写memos，需要有这样一个步骤来将这些memos整理一下，需要有这样一个复盘的动作。趁着三分钟热度，我重新折腾了一下obsidian，为周记弄了个快捷命令。再列了几个关键词，列了一个简单的纲要。</p>
+<p>以后会不定期的更新weekly，当我想表达一些东西，但是又没其他地方输出，并且还不能形成完整文章的时候，就都给它写进一周小记里面吧。</p>
+<h1 id="墨水屏新设备">墨水屏新设备</h1>
+<p>在上个月月底换了一个新的墨水屏设备，在这之前，我一直用的kindle，最开始是高考之后买来读书的，大一上当了一学期的泡面盖，看书的需求是使用电脑和手机来满足的，但是加上平常学习娱乐也都在电脑上，一天使用电脑的时间过长了，眼睛受不了，就把kindle捡起来了，kindle基本上能满足我看闲书的需求，但是由于尺寸小不适合看pdf，批注不方便导出，亚马逊退出中国等原因，早就有了更换设备的想法。但是由于我克制的习性，直到今年年末才因缘和合，换了个设备。</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/2025W02_%e9%9a%8f%e4%be%bf%e5%8f%96%e4%b8%aa%e6%a0%87%e9%a2%98%e5%85%88_image_1.jpg" alt="|500"  /></p>
+<p>当我想要什么的时候，并且这种想要并不能马上满足的时候，我习惯先压制我的想要，我并不能确定我的&rsquo;想要&rsquo;是否主要是出于我真实的需求，还是因为社交媒体向我甩过来的欲望（也许仅仅是内化的程度不同，都是来自外界的⌈模仿欲望⌋，前者我已经内化并转换成我合理的需求了）。并且我对欲望抱有一种想要远离的倾向，五色令人目盲，五音令人耳聋，五味令人口爽，驰骋畋猎，令人心发狂；难得之货，令人行妨。早期对道家道教的兴趣以及⌈家庭带来的更多是存在于我幻想中的物质层面的匮乏体验⌋，让我的信念系统倾向于去延迟这种满足。</p>
+<p>换墨水屏设备这一事情拖了大半年，中间有几次是能够买的，但是由于我的禁欲倾向，很快又抑制住了，过段时间又&rsquo;想&rsquo;买的时候，外部条件，也就是&rsquo;缘&rsquo;又不再充足了。（戒社看的太多了，以至于我很难去使用网贷这一方式来满足这类欲望）</p>
+<p>新设备，满足了我&rsquo;换新&rsquo;，&lsquo;大尺寸看pdf&rsquo;，&lsquo;护眼&rsquo;，&lsquo;手写&rsquo;等一系列需求|欲望，这段时间，我几乎将全部的阅读需求都放到了这一设备中，包括知乎，贴吧，网文等娱乐，与之前的使用手机电脑来进行娱乐性质的阅读相比，现在一天下来，眼睛明显舒服不少。</p>
+<p>墨水屏与常见的屏幕不同，本身并不发光，只是对环境光进行漫反射（有些设备带了背光，只是为了在弱环境光条件下也能阅读，但是弱光条件下本身就不建议阅读），平常使用的屏幕，屏幕背后带有光源，发出的光会透过屏幕，直射进入眼睛中，强度较大，更容易眼睛疲劳，并且其中的蓝光部分穿透能力强，可以穿透人眼的正常组织到达视网膜，损伤视网膜色素上皮细胞和感光细胞，蓝光也会影响我们的节律系统，进而对睡眠产生影响。</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/2025W02_%e9%9a%8f%e4%be%bf%e5%8f%96%e4%b8%aa%e6%a0%87%e9%a2%98%e5%85%88_image_2.jpg" alt="|500"  /></p>
+<p>早些时间，还没有护眼这一需求，但是现在已经明显感受到我的眼睛的耐久度下降了，在之后，我可能会all in 墨水屏设备，墨水屏手机，墨水屏显示器。希望最近的国产墨水屏给力一点，打破元太的垄断，把价格打下去。</p>
+<h1 id="最近在读-西方哲学史讲演录">最近在读-西方哲学史讲演录</h1>
+<p>很早之前就想要读一点哲学史了，高中的时候买过一本罗素的西方哲学史，但是只是翻了前面几页，甚至都还没有看完泰勒斯。后面幻想着进入大学之后读一下西方哲学史，但是这只是过去的幻想而已。</p>
+<p>直到最近终于有了一点读哲学的激情，凭借三分钟热度，大致翻了一遍赵林的西方哲学史讲演录。从古希腊的自然哲学和形而上学到近代黑格尔的辩证法，只能说是大致粗看了一遍，知道了一些概念。后面又去找了一本讲现代西方哲学史的书，但是看到实用主义那里就看不下去了，三分钟热度算是结束了。之后可能会去看点逻辑学，看点思想实验。对哲学的兴趣估计会一直持续下去，只是现在没有激情了。在没有外界限制下，或者说，当我财富自由了，当我生活在乌托邦|人间天国时，我是会去读哲学的，而在想象中的理想状态下值得做的事情，在任何状态下都会是值得我去做的。</p>
+<h1 id="科目三挂掉">科目三挂掉</h1>
+<p>大学的第一次挂科挂在了科目三🤣。我对考驾照这一事情并没有什么热情，只是在家庭的要求以及身边的朋友的影响下报了名，甚至我将其当成一种浪费，我并没有什么买车的想法。一个僧人需要会开车吗？也许需要吧。</p>
+<p>挂了之后，在回去的路上刷了一些知乎，看了一下别人挂掉科目三之后的感受，并没有什么感觉，回宿舍之后，才有了一些悲伤感，自我怀疑感，考试这种东西，太能引起中国学生的情绪了😅。当念头充满我的脑子的时候，我马上升起了，⌈越是这种时候就越是修行的时候⌋，我的念头并不是我，我需要的是让这些念头过去，而不是捕捉这些念头，将这些念头当成我，然后产生更多的念头，最终陷入悲伤的心境中。在当下的力量，或许是另外哪本灵修冥想类书籍中有这样的类比，天空中一直都有云飘来飘去，但是天空一直都是蓝色的。(这个类比让我的电脑桌面壁纸很长一段时间都是漂浮的流云☁️)。另外一个类比是，意识是一片湖水，当你升起一个念头的时候，就向湖中投入了一个石子，水面泛起波纹，湖水不再清澈，你想要让内心重新澄澈起来，但你认为你的念头就是你，于是你主动产生更多的念头，往湖水中投入更多的石头。</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/2025W02_%e9%9a%8f%e4%be%bf%e5%8f%96%e4%b8%aa%e6%a0%87%e9%a2%98%e5%85%88_image_3.jpg" alt="|550"  /></p>
+<p>在接触佛法之后，开车时，无论是平常骑电动车还是练车的时候，都会给我带来一丝不适感。我不希望被车撞，我能够直觉的想象到被车撞之后各种层面上的痛苦。所以我开车的时候不会去撞人，会集中注意去保持正常行驶。但是我也会希望被车撞，希望史铁生笔下的必然降临的死亡节日早点到来，进行转化之后，在我开车的时候，我能够明显觉察到我内心的疯狂念头，虽然每次只是一闪而过，但是我觉察到了我有这样的疯狂念头，这种觉察令我不适。</p>
+<p>我认同在这种情况下的念佛号行为，当你觉察到了那些疯狂的念头升起，并且将要开始造作的时候，马上默念几声阿弥陀佛，来代替疯狂念头之后将要升起的其他疯狂念头，这与功德无关，只是用一些词语来对治自己的疯狂念头而已，念哈吉米与念阿弥陀佛并没有什么区别（还是有区别的，不同的词语带来的感受是不同的）。不过这也与我的多感官心盲症有关，称名念佛，是通过观想佛陀的功德来构建某种特殊心境，然后维持在这种心境，进而获得禅定体验的方式，而对我来说，念几万遍，都无法在脑海中看见什么佛陀，更不用说去构建情景，获得心境了。（这也是我最近对佛法热情消散的主要原因，绝大多数的禅定方法都不适合拥有多感官心盲症的我）</p>
+<h1 id="l1uyun">l1uyun</h1>
+<p>胡言乱语，就先说这些吧。下周见！</p>
+]]></content>
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://l1uyun.one/tags/journal" term="journal" label="journal" />
+                            
+                        
+                    
+                
+            
+        </entry>
     
         
         <entry>
@@ -2194,186 +2250,6 @@ find参数中传进去的%00也就是空字符,将拼接之后的/给截断了</
                             
                              
                                 <category scheme="https://l1uyun.one/tags/sec" term="sec" label="sec" />
-                            
-                        
-                    
-                
-            
-        </entry>
-    
-        
-        <entry>
-            <title type="html"><![CDATA[springboot利用]]></title>
-            <link href="https://l1uyun.one/posts/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8/" rel="alternate" type="text/html" />
-            
-                <id>https://l1uyun.one/posts/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8/</id>
-            
-            
-            <published>2024-08-06T09:32:00+08:00</published>
-            <updated>2024-11-21T21:21:15+08:00</updated>
-            
-            
-            <content type="html"><![CDATA[<h1 id="springboot利用">springboot利用</h1>
-<h1 id="前置知识">前置知识</h1>
-<h2 id="springboot-actuator">SpringBoot Actuator</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Spring Boot Actuator 1.x 版本默认内置路由的起始路径为 / ，2.x 版本则统一以 /actuator 为起始路径
-</span></span><span style="display:flex;"><span>Spring Boot Actuator 默认的内置路由名字，如 /env 有时候也会被程序员修改，比如修改成 /appenv
-</span></span></code></pre></div><p>一般来讲，暴露出 spring boot 应用的相关接口和传参信息并不能算是漏洞，但是以 “默认安全” 来讲，不暴露出这些信息更加安全。</p>
-<p>对于攻击者来讲，一般会仔细审计暴露出的接口以增加对业务系统的了解，并会同时检查应用系统是否存在未授权访问、越权等其他业务类型漏洞。</p>
-<h2 id="配置不当而暴露的路由">配置不当而暴露的路由</h2>
-<p>主要是因为程序员开发时没有意识到暴露路由可能会造成安全风险，或者没有按照标准流程开发，忘记上线时需要修改/切换生产环境的配置</p>
-<p>因为配置不当而暴露的默认内置路由可能会有：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/actuator
-</span></span><span style="display:flex;"><span>/auditevents
-</span></span><span style="display:flex;"><span>/autoconfig
-</span></span><span style="display:flex;"><span>/beans
-</span></span><span style="display:flex;"><span>/caches
-</span></span><span style="display:flex;"><span>/conditions
-</span></span><span style="display:flex;"><span>/configprops
-</span></span><span style="display:flex;"><span>/docs
-</span></span><span style="display:flex;"><span>/dump
-</span></span><span style="display:flex;"><span>/env
-</span></span><span style="display:flex;"><span>/flyway
-</span></span><span style="display:flex;"><span>/health
-</span></span><span style="display:flex;"><span>/heapdump
-</span></span><span style="display:flex;"><span>/httptrace
-</span></span><span style="display:flex;"><span>/info
-</span></span><span style="display:flex;"><span>/intergrationgraph
-</span></span><span style="display:flex;"><span>/jolokia
-</span></span><span style="display:flex;"><span>/logfile
-</span></span><span style="display:flex;"><span>/loggers
-</span></span><span style="display:flex;"><span>/liquibase
-</span></span><span style="display:flex;"><span>/metrics
-</span></span><span style="display:flex;"><span>/mappings
-</span></span><span style="display:flex;"><span>/prometheus
-</span></span><span style="display:flex;"><span>/refresh
-</span></span><span style="display:flex;"><span>/scheduledtasks
-</span></span><span style="display:flex;"><span>/sessions
-</span></span><span style="display:flex;"><span>/shutdown
-</span></span><span style="display:flex;"><span>/trace
-</span></span><span style="display:flex;"><span>/threaddump
-</span></span><span style="display:flex;"><span>/actuator/auditevents
-</span></span><span style="display:flex;"><span>/actuator/beans
-</span></span><span style="display:flex;"><span>/actuator/health
-</span></span><span style="display:flex;"><span>/actuator/conditions
-</span></span><span style="display:flex;"><span>/actuator/configprops
-</span></span><span style="display:flex;"><span>/actuator/env
-</span></span><span style="display:flex;"><span>/actuator/info
-</span></span><span style="display:flex;"><span>/actuator/loggers
-</span></span><span style="display:flex;"><span>/actuator/heapdump
-</span></span><span style="display:flex;"><span>/actuator/threaddump
-</span></span><span style="display:flex;"><span>/actuator/metrics
-</span></span><span style="display:flex;"><span>/actuator/scheduledtasks
-</span></span><span style="display:flex;"><span>/actuator/httptrace
-</span></span><span style="display:flex;"><span>/actuator/mappings
-</span></span><span style="display:flex;"><span>/actuator/jolokia
-</span></span><span style="display:flex;"><span>/actuator/hystrix.stream
-</span></span></code></pre></div><p>其中对寻找漏洞比较重要接口的有：</p>
-<p>/env、/actuator/env
-GET 请求 /env 会直接泄露环境变量、内网地址、配置中的用户名等信息；当程序员的属性名命名不规范，例如 password 写成 psasword、pwd 时，会泄露密码明文；</p>
-<p>同时有一定概率可以通过 POST 请求 /env 接口设置一些属性，间接触发相关 RCE 漏洞；同时有概率获得星号遮掩的密码、密钥等重要隐私信息的明文。</p>
-<p>/refresh、/actuator/refresh
-POST 请求 /env 接口设置属性后，可同时配合 POST 请求 /refresh 接口刷新属性变量来触发相关 RCE 漏洞。</p>
-<p>/restart、/actuator/restart
-暴露出此接口的情况较少；可以配合 POST请求 /env 接口设置属性后，再 POST 请求 /restart 接口重启应用来触发相关 RCE 漏洞。</p>
-<p>/jolokia、/actuator/jolokia
-可以通过 /jolokia/list 接口寻找可以利用的 MBean，间接触发相关 RCE 漏洞、获得星号遮掩的重要隐私信息的明文等。</p>
-<p>/trace、/actuator/httptrace
-一些 http 请求包访问跟踪信息，有可能在其中发现内网应用系统的一些请求信息详情；以及有效用户或管理员的 cookie、jwt token 等信息。</p>
-<h2 id="漏洞检测">漏洞检测</h2>
-<h3 id="检测清单">检测清单</h3>
-<p><a href="https://github.com/LandGrey/SpringBootVulExploit" target="_blank" rel="noopener nofollow noreferrer" >https://github.com/LandGrey/SpringBootVulExploit</a>
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_1.png" alt=""  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_2.png" alt=""  /></p>
-<h3 id="黑盒发现">黑盒发现</h3>
-<p>人工识别，BP插件</p>
-<p>人工识别
-1、网站图片文件是一个绿色的树叶。2、特有的报错信息。3、Whitelabel Error Page关键字
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_3.png" alt="|750"  /></p>
-<p>BP插件
-<a href="https://github.com/API-Security/APIKit" target="_blank" rel="noopener nofollow noreferrer" >https://github.com/API-Security/APIKit</a>
-打开BurpSuite页面,点击Extender然后选择Extensions,添加APIKit.jar
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_4.png" alt=""  />
-安装好插件后啥都不用管，让数据包经过BP即可触发插件被动扫描
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_5.png" alt="|800"  /></p>
-<h3 id="白盒发现">白盒发现</h3>
-<p>pom.xml,引用库</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;dependency&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-starter-actuator<span style="color:#f92672">&lt;/artifactId&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/dependency&gt;</span>
-</span></span></code></pre></div><p>配置文件Actuator设置全部暴露<code>management.endpoints.web.exposure.include=*</code>
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_6.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_7.png" alt=""  /></p>
-<h2 id="信息泄露利用">信息泄露利用</h2>
-<h3 id="内部路由泄露">内部路由泄露</h3>
-<p><a href="https://github.com/AabyssZG/SpringBoot-Scan" target="_blank" rel="noopener nofollow noreferrer" >https://github.com/AabyssZG/SpringBoot-Scan</a>
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_8.png" alt=""  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_9.png" alt=""  /></p>
-<h3 id="heapdump敏感信息查询">heapdump敏感信息查询</h3>
-<p>配置密码，AK/SK等</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_10.png" alt="|800"  /></p>
-<p>下载下来
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_11.png" alt=""  />
-然后使用JDumpSPider工具来获取数据
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_12.png" alt=""  /></p>
-<p>![](<a href="https://img.l1uyun.one/Pasted" target="_blank" rel="noopener nofollow noreferrer" >https://img.l1uyun.one/Pasted</a> image 20240806101506.png)</p>
-<p>这里还有另外一款工具,支持关键词搜索
-<a href="https://github.com/wyzxxz/heapdump_tool" target="_blank" rel="noopener nofollow noreferrer" >https://github.com/wyzxxz/heapdump_tool</a>
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_14.png" alt="|750"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_15.png" alt="|850"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_16.png" alt=""  /></p>
-<h2 id="漏洞利用">漏洞利用</h2>
-<h3 id="框架漏洞">框架漏洞</h3>
-<p><a href="https://github.com/AabyssZG/SpringBoot-Scan" target="_blank" rel="noopener nofollow noreferrer" >https://github.com/AabyssZG/SpringBoot-Scan</a>
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_17.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_18.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_19.png" alt=""  /></p>
-<h3 id="利用类漏洞来进行rce攻击">利用类漏洞来进行RCE攻击</h3>
-<p>服务器上执行JNDIExploit工具(可以本地、也可以远程VPS上运行)
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_20.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_21.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_22.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_23.png" alt=""  /></p>
-<h1 id="cms源码审计">CMS源码审计</h1>
-<h2 id="安装源码">安装源码</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_24.png" alt=""  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_25.png" alt=""  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_26.png" alt=""  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_27.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_28.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_29.png" alt=""  />
-起始就是把actuator的接口做了可视化
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_30.png" alt=""  /></p>
-<h2 id="源码审计">源码审计</h2>
-<p>从pom.xml看有没有调用Actuator库
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_31.png" alt=""  /></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>配置文件中Actuator设置是否为*(全部暴露)
-</span></span><span style="display:flex;"><span>management.endpoints.web.exposure.include=*
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_32.png" alt="|700"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_33.png" alt="|700"  /></p>
-<p>泄露安全(heapdump)
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_34.png" alt=""  />
-使用heapdump敏感信息查询工具提取敏感信息
-JDumpSpider
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_35.png" alt="|750"  /></p>
-<h1 id="一句话总结">一句话总结</h1>
-<p>遇到springboot框架从两个方面去寻找安全问题：
-1.泄露安全(是否泄露了内部路由及heapdump)
-2.漏洞安全(利用相关框架漏洞检测工具测试是否存在漏洞)</p>
-<h1 id="参考">参考</h1>
-<p><a href="https://blog.csdn.net/m0_60571842/article/details/135096224" target="_blank" rel="noopener nofollow noreferrer" >WEB攻防-Java安全&amp;原生反序列化&amp;SpringBoot攻防&amp;heapdump提取&amp;CVE_java spring反序列化-CSDN博客</a></p>
-]]></content>
-            
-                 
-                    
-                 
-                    
-                         
-                        
-                            
-                             
-                                <category scheme="https://l1uyun.one/tags/sec/javasec" term="sec/javasec" label="sec/javasec" />
                             
                         
                     

@@ -163,6 +163,45 @@ if ( false || (!!window.MSInputMethodContext && !!document.documentMode)) {
   <div class="posts">
     
     <div class="post on-list">
+      <h1 class="post-title"><a href="https://l1uyun.one/posts/puff-pastry%E6%89%93%E9%9D%B6/">Puff-Pastry打靶</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2024-08-18
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://l1uyun.one/tags/sec/">sec</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content">
+        <h1 id="前言">前言</h1>
+<p>在群里瞅见了这个靶机,没打过这种复杂环境的靶机,玩一下</p>
+<h1 id="puff-pastry打靶记录">Puff-Pastry打靶记录</h1>
+<h2 id="搭建">搭建</h2>
+<p>使用docker搭建,然后本地能够访问到一个8080端口
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_1.png" alt="|207"  />
+这里我最开始是使用的Windows docker,后面改成了使用虚拟机</p>
+<h2 id="shiro">shiro</h2>
+<h3 id="探测">探测</h3>
+<p>java后端
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_2.png" alt="|522"  />
+进去只有一个登录框,在搭建过程中已经知道了第一台机器是shiro,选择记住密码,登录</p>
+      </div>
+      
+        <div><a class="read-more button" href="/posts/puff-pastry%E6%89%93%E9%9D%B6/">阅读全文 →</a></div>
+      
+    </div>
+    
+    <div class="post on-list">
       <h1 class="post-title"><a href="https://l1uyun.one/posts/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8/">springboot利用</a></h1>
       <div class="post-meta">
         
@@ -554,63 +593,6 @@ java序列化的数据一般会以标记(ac ed 00 05)开头，base64编码的特
       
     </div>
     
-    <div class="post on-list">
-      <h1 class="post-title"><a href="https://l1uyun.one/posts/hmv_slowman/">slowman</a></h1>
-      <div class="post-meta">
-        
-          <span class="post-date">
-            2024-02-15
-          </span>
-        
-
-        
-        <span class="">
-          
-            #<a href="https://l1uyun.one/tags/sec/hackmyvm/">sec/hackmyvm</a>&nbsp;
-          
-        </span>
-        
-      </div>
-
-      
-
-      <div class="post-content">
-        <h2 id="端口扫描">端口扫描</h2>
-<p>网络环境问题,还是得 nmap 的全端口扫描</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_slowman_image_1.png" alt="HMM_slowman_image_1"  /></p>
-<h2 id="ftp-匿名登录">ftp 匿名登录</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_slowman_image_2.png" alt="HMM_slowman_image_2"  /></p>
-<h2 id="爆破-mysql-密码">爆破 mysql 密码</h2>
-<p>trainerjeff
-接下来得看 mysql 了
-hydra 好慢
-换了 ncrack 试试</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo ncrack -T5 -v -u trainerjeff -P /usr/share/wordlists/rockyou.txt mysql://192.168.10.8
-</span></span><span style="display:flex;"><span>sudo  medusa -h 192.168.10.8 -u trainerjeff -P /usr/share/wordlists/rockyou.txt -M mysql
-</span></span><span style="display:flex;"><span>sudo hydra -l trainerjeff -P /usr/share/wordlists/rockyou.txt 192.168.10.8 mysql
-</span></span></code></pre></div><p>没出来, 吐了, 每分钟八次. 太慢了. 看 wp 算了
-假装枚举出来了
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_slowman_image_3.png" alt="HMM_slowman_image_3"  /></p>
-<h2 id="枚举-mysql-信息">枚举 mysql 信息</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo mysql -h 192.168.10.8 -u trainerjeff -psoccer1
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_slowman_image_4.png" alt="HMM_slowman_image_4"  /></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>|  <span style="color:#ae81ff">1</span> | gonzalo     tH1sS2stH3g0nz4l0pAsSWW0rDD!! 
-</span></span><span style="display:flex;"><span>|  <span style="color:#ae81ff">2</span> | $SECRETLOGINURL /secretLOGIN/login.html  
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_slowman_image_5.png" alt="HMM_slowman_image_5"  /></p>
-<h2 id="web-枚举">web 枚举</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_slowman_image_6.png" alt="HMM_slowman_image_6"  />
-进入之前 mysql 中发现的隐藏目录, 使用发现的用户名密码登录, 后面发现这个也能登录 ssh
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_slowman_image_7.png" alt="HMM_slowman_image_7"  />
-进去之后有个压缩包, 有密码
-使用 john
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_slowman_image_8.png" alt="HMM_slowman_image_8"  />
-解压之后是一个账号和密码, 猜测是 ssh 的</p>
-      </div>
-      
-        <div><a class="read-more button" href="/posts/hmv_slowman/">阅读全文 →</a></div>
-      
-    </div>
-    
     <div class="pagination">
   <div class="pagination__buttons">
     
@@ -695,6 +677,8 @@ hydra 好慢
 
     
 
+    
+
 
 
 
@@ -705,7 +689,7 @@ hydra 好慢
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 51213 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 54095 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
       
     <div class="busuanzi-footer">
