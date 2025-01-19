@@ -500,16 +500,18 @@ a {
 img {
 	border-radius: 4px;
 	display: inline-block;
-	max-width: 100%
-}
-
-img.center,img.left {
-	margin-right: auto
-}
-
-img.center,img.right {
-	margin-left: auto
-}
+	max-width: 90%;
+	height:	auto;
+  }
+  
+  img.center, img.left {
+	margin-right: auto;
+  }
+  
+  img.center, img.right {
+	margin-left: auto;
+  }
+  
 
 figure {text-align: center;margin:0;}
 figure figcaption {margin:0.5rem auto 1rem;width: 25%;border-top: 1px solid #bbb;font-size:0.8em;color:#bbb;padding:5px;line-height:1.8em;}
