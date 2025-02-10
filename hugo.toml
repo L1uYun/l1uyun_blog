@@ -1,7 +1,7 @@
 baseURL = 'https://l1uyun.one/'
 languageCode = 'zh-CN'
 timeZone = 'Asia/Shanghai'
-title = 'l1uyun_blog'
+title = 'l1uyun'
 
 # 主题
 theme  =  "hello-friend"
