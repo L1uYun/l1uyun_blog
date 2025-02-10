@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
-    <generator uri="https://gohugo.io/" version="0.143.1">Hugo</generator><title type="html"><![CDATA[l1uyun_blog]]></title>
+    <generator uri="https://gohugo.io/" version="0.143.1">Hugo</generator><title type="html"><![CDATA[l1uyun]]></title>
     
     
     
             <link href="https://l1uyun.one/atom.xml" rel="self" type="application/rss+xml" title="atom" />
             <link href="https://l1uyun.one/" rel="alternate" type="text/html" title="html" />
             <link href="https://l1uyun.one/index.json" rel="alternate" type="application/json" title="json" />
-    <updated>2025-02-10T11:21:48+00:00</updated>
+    <updated>2025-02-10T11:22:32+00:00</updated>
     
     
     
