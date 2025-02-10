@@ -501,7 +501,7 @@ img {
 	border-radius: 4px;
 	display: inline-block;
 	max-width: 90%;
-	height:	400px;
+	max-height:	90%;
   }
   
   img.center, img.left {
