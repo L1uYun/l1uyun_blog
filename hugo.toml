@@ -64,7 +64,7 @@ rssLimit = 10
 	keywords = ""
   # 实际使用是vercount项目，而不是busuanzi
   [params.busuanzi]
-    enable = true
+    enable = false
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
