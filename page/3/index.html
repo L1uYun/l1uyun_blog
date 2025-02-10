@@ -163,6 +163,69 @@ if ( false || (!!window.MSInputMethodContext && !!document.documentMode)) {
   <div class="posts">
     
     <div class="post on-list">
+      <h1 class="post-title"><a href="https://l1uyun.one/posts/hmv_airbind/">HMV_airbind</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2024-06-15
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://l1uyun.one/tags/sec/hackmyvm/">sec/hackmyvm</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content">
+        <h2 id="端口扫描">端口扫描</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>~ ➤ nmap -Pn -sT 192.168.124.210 -p-
+</span></span><span style="display:flex;"><span>Starting Nmap 7.94SVN <span style="color:#f92672">(</span> https://nmap.org <span style="color:#f92672">)</span> at 2024-06-14 23:47 EDT
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 192.168.124.210
+</span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.0047s latency<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>Not shown: <span style="color:#ae81ff">65533</span> closed tcp ports <span style="color:#f92672">(</span>conn-refused<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>PORT   STATE    SERVICE
+</span></span><span style="display:flex;"><span>22/tcp filtered ssh
+</span></span><span style="display:flex;"><span>80/tcp open     http
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Nmap <span style="color:#66d9ef">done</span>: <span style="color:#ae81ff">1</span> IP address <span style="color:#f92672">(</span><span style="color:#ae81ff">1</span> host up<span style="color:#f92672">)</span> scanned in 7.38 seconds
+</span></span></code></pre></div><p>22端口是filtered&hellip;没注意这个细节
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMV_airbind_image_1.png" alt="HMV_airbind_image_1"  /></p>
+<h2 id="web_80">web_80</h2>
+<h3 id="目录扫描">目录扫描</h3>
+<p>扫目录扫出来,状态不太行,应该先判断一下优先查看哪些目录</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>/images               <span style="color:#f92672">(</span>Status: 301<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 319<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; http://192.168.124.210/images/<span style="color:#f92672">]</span>   
+</span></span><span style="display:flex;"><span>/.php                 <span style="color:#f92672">(</span>Status: 403<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 280<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/about.php            <span style="color:#f92672">(</span>Status: 302<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 0<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; login.php<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/login.php            <span style="color:#f92672">(</span>Status: 200<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 1924<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/logos.php            <span style="color:#f92672">(</span>Status: 200<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 1977<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/stats.php            <span style="color:#f92672">(</span>Status: 302<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 0<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; login.php<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/index.php            <span style="color:#f92672">(</span>Status: 302<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 0<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; login.php<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/.html                <span style="color:#f92672">(</span>Status: 403<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 280<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/screenshots          <span style="color:#f92672">(</span>Status: 301<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 324<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; http://192.168.124.210/screenshots/<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/scripts              <span style="color:#f92672">(</span>Status: 301<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 320<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; http://192.168.124.210/scripts/<span style="color:#f92672">]</span>  
+</span></span><span style="display:flex;"><span>/registration.php     <span style="color:#f92672">(</span>Status: 302<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 0<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; login.php<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/includes             <span style="color:#f92672">(</span>Status: 301<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 321<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; http://192.168.124.210/includes/<span style="color:#f92672">]</span> 
+</span></span><span style="display:flex;"><span>/db                   <span style="color:#f92672">(</span>Status: 301<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 315<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; http://192.168.124.210/db/<span style="color:#f92672">]</span>       
+</span></span><span style="display:flex;"><span>/logout.php           <span style="color:#f92672">(</span>Status: 302<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 0<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; .<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/styles               <span style="color:#f92672">(</span>Status: 301<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 319<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; http://192.168.124.210/styles/<span style="color:#f92672">]</span>   
+</span></span><span style="display:flex;"><span>/settings.php         <span style="color:#f92672">(</span>Status: 302<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 0<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; login.php<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/auth.php             <span style="color:#f92672">(</span>Status: 200<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 0<span style="color:#f92672">]</span>
+</span></span></code></pre></div><h3 id="db文件泄露">db文件泄露</h3>
+<p>在db目录下找到一个sqlite的转储文件,使用在线工具解析一下,发现user
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMV_airbind_image_2.png" alt="HMV_airbind_image_2"  /></p>
+      </div>
+      
+        <div><a class="read-more button" href="/posts/hmv_airbind/">阅读全文 →</a></div>
+      
+    </div>
+    
+    <div class="post on-list">
       <h1 class="post-title"><a href="https://l1uyun.one/posts/hmv_adria/">HMV_adria</a></h1>
       <div class="post-meta">
         
@@ -678,60 +741,6 @@ freddie</p>
       
     </div>
     
-    <div class="post on-list">
-      <h1 class="post-title"><a href="https://l1uyun.one/posts/hmv_quick2/">quick2</a></h1>
-      <div class="post-meta">
-        
-          <span class="post-date">
-            2024-02-09
-          </span>
-        
-
-        
-        <span class="">
-          
-            #<a href="https://l1uyun.one/tags/sec/hackmyvm/">sec/hackmyvm</a>&nbsp;
-          
-        </span>
-        
-      </div>
-
-      
-
-      <div class="post-content">
-        <p>启动靶机前
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_1.png" alt="HMM_quick2_image_1|700"  />
-启动后
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_2.png" alt="HMM_quick2_image_2|650"  />
-192.168.10.4
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_3.png" alt="HMM_quick2_image_3|600"  />
-2024-02-14-20:18:39
-后面都是直接用 arp-scan 来扫描某一个网卡的下的局域网ip 了</p>
-<h2 id="端口扫描">端口扫描</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_4.png" alt="HMM_quick2_image_4|700"  /></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nmap 192.168.10.4 -p22,80 -Pn -sT -sV -O -sC -oA  portscan/nmap
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_5.png" alt="HMM_quick2_image_5|750"  /></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nmap 192.168.10.4 -sT -Pn -p20,80 --script<span style="color:#f92672">=</span>vuln -oA  portscan/vuln
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_6.png" alt="HMM_quick2_image_6|700"  /></p>
-<h2 id="web-服务">web 服务</h2>
-<p>主页里面在端口扫描的时候发现有一个参数 page
-尝试 local file include LFI
-获取到了/etc/passwd
-在 home 目录下有文件夹的有这两个用户</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>andrew:x:1000:1000: Andrew Speed:/home/andrew:/bin/bash
-</span></span><span style="display:flex;"><span>nick:x:1001:1001: Nick Greenhorn,,,:/home/nick:/bin/bash
-</span></span></code></pre></div><p>获得了 user. txt</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_7.png" alt="HMM_quick2_image_7|500"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_8.png" alt="HMM_quick2_image_8|483"  /></p>
-<p>进行目录扫描 ferox 发现失效了, 以后还是先尝试 gobuster, 不行的话再 feroxbuster
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_9.png" alt="HMM_quick2_image_9|750"  />
-进入 file. php 页面</p>
-      </div>
-      
-        <div><a class="read-more button" href="/posts/hmv_quick2/">阅读全文 →</a></div>
-      
-    </div>
-    
     <div class="pagination">
   <div class="pagination__buttons">
     
@@ -822,6 +831,8 @@ freddie</p>
 
     
 
+    
+
 
 
 
@@ -832,7 +843,7 @@ freddie</p>
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 62612 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 66618 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
       
     <div class="busuanzi-footer">
