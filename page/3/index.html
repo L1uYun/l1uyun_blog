@@ -163,6 +163,46 @@ if ( false || (!!window.MSInputMethodContext && !!document.documentMode)) {
   <div class="posts">
     
     <div class="post on-list">
+      <h1 class="post-title"><a href="https://l1uyun.one/posts/oracle-padding-attack/">oracle-padding-attack</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2024-07-16
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://l1uyun.one/tags/sec/">sec</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content">
+        <p>在打tryhackme的New-York-Flankees房间的时候遇见了这个攻击方式,没见过,学习一下</p>
+<h2 id="前置知识">前置知识</h2>
+<h3 id="块密码">块密码</h3>
+<p>在分组密码加密领域，数据一次加密一个块，不同算法的块长度各不相同。</p>
+<p>当要加密的数据长度不是块长度的倍数时，就需要填充。</p>
+<p>高级加密标准 (AES)</p>
+<p>数据加密标准 (DES)</p>
+<p>三重数据加密标准 (3DES)</p>
+<p>Blowfish</p>
+<p>Twofish</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/202407160948_oracle-padding-attack_image_1.png" alt=""  /></p>
+<h3 id="填充方案">填充方案</h3>
+<p>如前所述，分组密码采用固定大小的块，当明文不是块大小的倍数时需要填充。存在多种填充技术，但在本次攻击中，我们的重点是 PKCS#7。</p>
+      </div>
+      
+        <div><a class="read-more button" href="/posts/oracle-padding-attack/">阅读全文 →</a></div>
+      
+    </div>
+    
+    <div class="post on-list">
       <h1 class="post-title"><a href="https://l1uyun.one/posts/hmv_airbind/">HMV_airbind</a></h1>
       <div class="post-meta">
         
@@ -689,58 +729,6 @@ freddie</p>
       
     </div>
     
-    <div class="post on-list">
-      <h1 class="post-title"><a href="https://l1uyun.one/posts/hmv_zeug/">zeug_hard</a></h1>
-      <div class="post-meta">
-        
-          <span class="post-date">
-            2024-02-09
-          </span>
-        
-
-        
-        <span class="">
-          
-            #<a href="https://l1uyun.one/tags/sec/hackmyvm/">sec/hackmyvm</a>&nbsp;
-          
-        </span>
-        
-      </div>
-
-      
-
-      <div class="post-content">
-        <p>netdiscover</p>
-<h2 id="主机发现">主机发现</h2>
-<p>启动前
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_1.png" alt="HMM_zeug_image_1|550"  />
-启动后, 以后就先导入 VirtualBox 然后导出, 再导入 VMware 算了
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_2.png" alt="HMM_zeug_image_2"  />
-靶机 ip 192.168.10.4</p>
-<h2 id="端口扫描">端口扫描</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_3.png" alt="HMM_zeug_image_3"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_4.png" alt="HMM_zeug_image_4|700"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_5.png" alt="HMM_zeug_image_5|550"  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_6.png" alt="HMM_zeug_image_6|600"  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_7.png" alt="HMM_zeug_image_7"  /></p>
-<h2 id="ftp-匿名登录">FTP 匿名登录</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_8.png" alt="HMM_zeug_image_8"  /></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>~/workspace cat README.txt
-</span></span><span style="display:flex;"><span>Hi, Cosette, don<span style="color:#e6db74">&#39;t forget to disable the debug mode in the web application, we don&#39;</span>t want security breaches.
-</span></span></code></pre></div><p>提示有一个 debug 页面可以利用</p>
-<h2 id="web-侦查">web 侦查</h2>
-<p>进去之后是一个上传文件的页面, 先去搜了一下 cve, 因为不确定 cms 名称啥的,
-后面搜到了 console 目录, 然后访问了 console 目录, 才确定这是 Werkzeug
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_9.png" alt="HMM_zeug_image_9|900"  />
-这里的 cve 用不了
-想着来目录扫描一下
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_10.png" alt="HMM_zeug_image_10|550"  /></p>
-      </div>
-      
-        <div><a class="read-more button" href="/posts/hmv_zeug/">阅读全文 →</a></div>
-      
-    </div>
-    
     <div class="pagination">
   <div class="pagination__buttons">
     
@@ -833,6 +821,8 @@ freddie</p>
 
     
 
+    
+
 
 
 
@@ -843,7 +833,7 @@ freddie</p>
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 66659 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 69154 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
       
     
