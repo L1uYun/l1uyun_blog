@@ -3,7 +3,7 @@ title: 关于我
 tags:
   - l1uyun
 date: 2024-10-27T08:37:45
-lastmod: 2025-01-25T19:06:53
+lastmod: 2025-02-23T21:42:30
 disable_comments: false
 ---
 ## About Me
@@ -14,14 +14,6 @@ disable_comments: false
 - 📖 阅读爱好者,每本书,都会让"我"改变。  
 - 🌌 宗教体验探索者，相信神圣与圆满只能通过感受触及，宗教是通向这种体验的路径之一。
 --- 
-
-
-
-
-
-
----
-
 
 ## About This Blog
 - 给自己一个输出的地方,随便写一些文字。
