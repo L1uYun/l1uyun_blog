@@ -7,7 +7,7 @@
             <link href="https://l1uyun.one/atom.xml" rel="self" type="application/rss+xml" title="atom" />
             <link href="https://l1uyun.one/" rel="alternate" type="text/html" title="html" />
             <link href="https://l1uyun.one/index.json" rel="alternate" type="application/json" title="json" />
-    <updated>2025-03-16T12:53:34+00:00</updated>
+    <updated>2025-03-16T12:56:13+00:00</updated>
     
     
     
@@ -23,7 +23,7 @@
             
             
             <published>2025-03-16T20:30:26+08:00</published>
-            <updated>2025-03-16T20:53:14+08:00</updated>
+            <updated>2025-03-16T20:55:52+08:00</updated>
             
             
             <content type="html"><![CDATA[<h1 id="前言">前言</h1>
@@ -126,10 +126,10 @@
 <p>宗教只是一些讲了很多年，很多人认同的故事，并且由于太早了，早到我们还没有找到科学这一优秀的讲故事方法，这些宗教故事现在充满矛盾，像屎山代码，用一个新的设定来修复之前设定产生的bug，结果又引入了新的bug，并且现在也不好维护了。</p>
 <p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/2025W11_%e8%99%9a%e6%97%a0%e6%98%af%e8%b5%b7%e7%82%b9_image_12.png" alt=""  /></p>
 <h3 id="另一个视角">另一个视角</h3>
-<p>做一个思想实验，在菩萨保佑我这一前提下，感冒治愈的概率。</p>
+<p>做一个思想实验，我的感冒治愈是由于菩萨保佑的概率</p>
 <p>菩萨保佑的先验概率取决于你的信仰，如果你是信徒，你可以认为P(菩萨保佑)的概率是100%，不是信徒的话，那就是0%。</p>
 <p>再去评估一下所谓的感冒治愈的先验概率，让ChatGPT给我估计一个值，P(感冒治愈)=95%。</p>
-<p>菩萨保佑你的话，你感冒肯定能治愈，这里的菩萨泛指什么神，P（感冒治愈|菩萨保佑）=100%（也是随意估计的），</p>
+<p>菩萨保佑你的话，你感冒肯定能治愈，这里的菩萨泛指什么神，P（感冒治愈|菩萨保佑）=100%（也是随意估计的）</p>
 <p>那么贝叶斯公式计算出来 ，对于信徒，P(菩萨保佑|感冒治愈)=1×1/0.95，概率还突破1了，原来确实是菩萨保佑了我，对于非信徒，P(菩萨保佑|感冒治愈)=1×0/0.95=0%。如果这个非信徒有一点点相信呢，50%的相信，那菩萨保佑的后验概率就到了52.6%，70%的相信呢，后验概率就到了73.7%。</p>
 <p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/2025W11_%e8%99%9a%e6%97%a0%e6%98%af%e8%b5%b7%e7%82%b9_image_13.png" alt=""  /></p>
 <p><strong>信徒会将生活中的一切事情都推给菩萨，忽视了这些事情的先验概率，例如感冒本身的治愈概率就很高，从而越发相信，非信徒则不会。</strong></p>
