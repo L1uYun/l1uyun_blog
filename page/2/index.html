@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-	<meta name="generator" content="Hugo 0.144.2">
+	<meta name="generator" content="Hugo 0.145.0">
     
       <title>l1uyun</title>
     
@@ -161,6 +161,51 @@ if ( false || (!!window.MSInputMethodContext && !!document.documentMode)) {
   
 
   <div class="posts">
+    
+    <div class="post on-list">
+      <h1 class="post-title"><a href="https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA3/">红日靶场3</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2024-10-07
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://l1uyun.one/tags/sec/win/">sec/win</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content">
+        <h1 id="前言">前言</h1>
+<p>得加快红日靶场的进度了</p>
+<h1 id="红日靶场3">红日靶场3</h1>
+<h2 id="搭建环境">搭建环境</h2>
+<p>这个靶场只有一台web服务器暴露在外网中</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>外网网段 192.168.3.1/24
+</span></span><span style="display:flex;"><span>攻击机 parrot 192.168.3.101
+</span></span><span style="display:flex;"><span>攻击机 wsl  192.168.3.100
+</span></span><span style="display:flex;"><span>攻击机 win  192.168.3.99
+</span></span><span style="display:flex;"><span>web-centos 192.168.3.3
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>内网网段
+</span></span><span style="display:flex;"><span>192.168.93.1/24
+</span></span></code></pre></div><p>五台靶机都是配置了only-host网卡,除了centos额外有一个nat网卡,来与外网通信.
+启动centos靶机之后,需要<code>service network restart</code></p>
+<blockquote>
+<p>[!INFO]
+配完环境之后,发现忘了弄快照了,可能不会在一个完整的时间内完成,所以&hellip;.重新解压一下,改完网卡后,先弄下快照</p>
+      </div>
+      
+        <div><a class="read-more button" href="/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA3/">阅读全文 →</a></div>
+      
+    </div>
     
     <div class="post on-list">
       <h1 class="post-title"><a href="https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2/">红日靶场2_win域</a></h1>
@@ -478,44 +523,6 @@ java序列化的数据一般会以标记(ac ed 00 05)开头，base64编码的特
       
     </div>
     
-    <div class="post on-list">
-      <h1 class="post-title"><a href="https://l1uyun.one/posts/javasec-sql%E6%B3%A8%E5%85%A5/">javasec-sql注入</a></h1>
-      <div class="post-meta">
-        
-          <span class="post-date">
-            2024-07-23
-          </span>
-        
-
-        
-        <span class="">
-          
-            #<a href="https://l1uyun.one/tags/sec/javasec/">sec/javasec</a>&nbsp;
-          
-        </span>
-        
-      </div>
-
-      
-
-      <div class="post-content">
-        <h1 id="javasec-sql注入">javasec-sql注入</h1>
-<h2 id="前置知识">前置知识</h2>
-<h3 id="sql注入">sql注入</h3>
-<p>没有对用户的输入进行处理(过滤,黑名单,SQL预编译),直接将输入拼接到了sql语句中,</p>
-<p>导致执行了用户构造的恶意SQL语句</p>
-<p>SQL注入的语法与使用的数据库相关,与语言无关</p>
-<h3 id="java数据库操作">java数据库操作</h3>
-<h4 id="jdbc">jdbc</h4>
-<p>java database connection</p>
-<p>java提供的数据库驱动库,用于进行数据库连接,执行SQL语句</p>
-<p>JDBC有两个方法执行SQL语句，分别是PrepareStatement和Statement。</p>
-      </div>
-      
-        <div><a class="read-more button" href="/posts/javasec-sql%E6%B3%A8%E5%85%A5/">阅读全文 →</a></div>
-      
-    </div>
-    
     <div class="pagination">
   <div class="pagination__buttons">
     
@@ -610,6 +617,8 @@ java序列化的数据一般会以标记(ac ed 00 05)开头，base64编码的特
 
     
 
+    
+
 
 
 
@@ -620,7 +629,7 @@ java序列化的数据一般会以标记(ac ed 00 05)开头，base64编码的特
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 69153 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 75461 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
       
     
