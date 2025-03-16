@@ -7,7 +7,7 @@
             <link href="https://l1uyun.one/atom.xml" rel="self" type="application/rss+xml" title="atom" />
             <link href="https://l1uyun.one/" rel="alternate" type="text/html" title="html" />
             <link href="https://l1uyun.one/index.json" rel="alternate" type="application/json" title="json" />
-    <updated>2025-03-16T12:56:13+00:00</updated>
+    <updated>2025-03-16T13:00:56+00:00</updated>
     
     
     
@@ -23,7 +23,7 @@
             
             
             <published>2025-03-16T20:30:26+08:00</published>
-            <updated>2025-03-16T20:55:52+08:00</updated>
+            <updated>2025-03-16T21:00:33+08:00</updated>
             
             
             <content type="html"><![CDATA[<h1 id="前言">前言</h1>
@@ -132,10 +132,11 @@
 <p>菩萨保佑你的话，你感冒肯定能治愈，这里的菩萨泛指什么神，P（感冒治愈|菩萨保佑）=100%（也是随意估计的）</p>
 <p>那么贝叶斯公式计算出来 ，对于信徒，P(菩萨保佑|感冒治愈)=1×1/0.95，概率还突破1了，原来确实是菩萨保佑了我，对于非信徒，P(菩萨保佑|感冒治愈)=1×0/0.95=0%。如果这个非信徒有一点点相信呢，50%的相信，那菩萨保佑的后验概率就到了52.6%，70%的相信呢，后验概率就到了73.7%。</p>
 <p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/2025W11_%e8%99%9a%e6%97%a0%e6%98%af%e8%b5%b7%e7%82%b9_image_13.png" alt=""  /></p>
-<p><strong>信徒会将生活中的一切事情都推给菩萨，忽视了这些事情的先验概率，例如感冒本身的治愈概率就很高，从而越发相信，非信徒则不会。</strong></p>
+<p><strong>信徒会将生活中的一切事情都推给菩萨，忽视这些事情的先验概率，例如感冒本身的治愈概率就很高，从而越发相信，非信徒则不会。</strong></p>
 <p>换成一个绝症呢，假设有个绝症，4%的概率存活，对于信徒而言，菩萨保佑的后验概率会更高，对于完全不信者来说，还是0，对于只信一点点的人，5%的相信，那菩萨保佑你的概率也会大于1。</p>
 <p><strong>但是你是否存活，这归高斯管，归正态分布管，总有人存活，总有人死掉，活下去的人会对宗教更加信仰，哪怕你只信那么一点点。</strong></p>
-<p>也许我需要对宗教重新赋魅，让上帝或者什么神仙来当我的权威。</p>
+<hr>
+<p>不过也许我需要对宗教重新赋魅，让上帝或者什么神仙来当我的权威。</p>
 <p>上帝爱我。</p>
 <hr>
 <h1 id="l1uyun">l1uyun</h1>
