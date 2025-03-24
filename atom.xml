@@ -7,7 +7,7 @@
             <link href="https://l1uyun.one/atom.xml" rel="self" type="application/rss+xml" title="atom" />
             <link href="https://l1uyun.one/" rel="alternate" type="text/html" title="html" />
             <link href="https://l1uyun.one/index.json" rel="alternate" type="application/json" title="json" />
-    <updated>2025-03-24T00:52:48+00:00</updated>
+    <updated>2025-03-24T01:40:48+00:00</updated>
     
     
     
@@ -23,7 +23,7 @@
             
             
             <published>2025-03-23T22:10:48+08:00</published>
-            <updated>2025-03-24T08:52:29+08:00</updated>
+            <updated>2025-03-24T09:40:25+08:00</updated>
             
             
             <content type="html"><![CDATA[<h1 id="前言">前言</h1>
@@ -58,10 +58,7 @@
 <hr>
 <h1 id="l1uyun">l1uyun</h1>
 <p>原本还列了一些主题，但是我自然的状态消失了，那就不说了，下周见？</p>
-<pre tabindex="0"><code class="language-dataview" data-lang="dataview">LIST
-where file.cday.weekyear = this.file.cday.weekyear AND file.cday.year = this.file.cday.year
-sort file.name asc
-</code></pre>]]></content>
+]]></content>
             
                  
                     
