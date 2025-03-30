@@ -163,6 +163,37 @@ if ( false || (!!window.MSInputMethodContext && !!document.documentMode)) {
   <div class="posts">
     
     <div class="post on-list">
+      <h1 class="post-title"><a href="https://l1uyun.one/posts/javasec-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">javasec-反序列化</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2024-08-01
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://l1uyun.one/tags/sec/javasec/">sec/javasec</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content">
+        <h1 id="反序列化">反序列化</h1>
+<p>序列化是将Java对象转换成字节流的过程。而反序列化是将字节流转换成Java对象的过程，
+java序列化的数据一般会以标记(ac ed 00 05)开头，base64编码的特征为rO0AB，</p>
+<p>JAVA常见的序列化和反序列化的方法有JAVA 原生序列化和JSON 类（fastjson、jackson）序列化等。</p>
+      </div>
+      
+        <div><a class="read-more button" href="/posts/javasec-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">阅读全文 →</a></div>
+      
+    </div>
+    
+    <div class="post on-list">
       <h1 class="post-title"><a href="https://l1uyun.one/posts/javasec-xxe/">javasec-xxe</a></h1>
       <div class="post-meta">
         
@@ -629,68 +660,6 @@ hydra 好慢
       
     </div>
     
-    <div class="post on-list">
-      <h1 class="post-title"><a href="https://l1uyun.one/posts/hmv_zon/">zon</a></h1>
-      <div class="post-meta">
-        
-          <span class="post-date">
-            2024-02-11
-          </span>
-        
-
-        
-        <span class="">
-          
-            #<a href="https://l1uyun.one/tags/sec/hackmyvm/">sec/hackmyvm</a>&nbsp;
-          
-        </span>
-        
-      </div>
-
-      
-
-      <div class="post-content">
-        <h2 id="启动机器">启动机器</h2>
-<p>得指定网络接口</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo arp-scan -I eth5 -l
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_zon_image_1.png" alt="HMM_zon_image_1"  /></p>
-<h2 id="端口扫描">端口扫描</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo rustscan -a 192.168.10.13 -r 1-65535 -t <span style="color:#ae81ff">8000</span> --ulimit <span style="color:#ae81ff">5000</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>sudo nmap 192.168.10.13 -sT -Pn -p22,80 -sV -sC -O -oN portscan/norm
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>sudo nmap 192.168.10.13 -sT -Pn -p22,80 --script<span style="color:#f92672">=</span>vuln -oN portscan/vuln
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_zon_image_2.png" alt="HMM_zon_image_2"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_zon_image_3.png" alt="HMM_zon_image_3"  /></p>
-<h2 id="利用空格绕过文件上传过滤">利用空格绕过文件上传过滤</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_zon_image_4.png" alt="HMM_zon_image_4"  /></p>
-<p>测试之后是检查文件名, 而不是文件头, 而且图片马不能正常解析
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_zon_image_5.png" alt="HMM_zon_image_5|750"  /></p>
-<ul>
-<li>
-<p>非 jpeg 格式的无法上传
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_zon_image_6.png" alt="HMM_zon_image_6"  /></p>
-</li>
-<li>
-<p>jpeg 格式能够正常上传
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_zon_image_7.png" alt="HMM_zon_image_7"  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_zon_image_8.png" alt="HMM_zon_image_8"  />
-后面尝试了图片马, 但是没有正常解析, 无法执行命令</p>
-</li>
-</ul>
-<p>使用空格绕过</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#e6db74">&#34;webshell.jpeg .php&#34;</span>
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_zon_image_9.png" alt="HMM_zon_image_9"  /></p>
-<p>一句话木马, 获得 webshell
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_zon_image_10.png" alt="HMM_zon_image_10"  />
-freddie</p>
-      </div>
-      
-        <div><a class="read-more button" href="/posts/hmv_zon/">阅读全文 →</a></div>
-      
-    </div>
-    
     <div class="pagination">
   <div class="pagination__buttons">
     
@@ -789,6 +758,8 @@ freddie</p>
 
     
 
+    
+
 
 
 
@@ -799,7 +770,7 @@ freddie</p>
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 77441 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 80518 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
       
     
