@@ -1,12 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Posts on l1uyun</title>
-    <link>https://l1uyun.one/posts/</link>
-    <description>Recent content in Posts on l1uyun</description>
-    <generator>Hugo</generator>
-    <language>zh-CN</language>
-    <lastBuildDate></lastBuildDate>
-    <atom:link href="https://l1uyun.one/posts/index.xml" rel="self" type="application/rss+xml" />
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
+    <generator uri="https://gohugo.io/" version="0.146.3">Hugo</generator><title type="html"><![CDATA[l1uyun]]></title>
+    
+    
+    
+            <link href="https://l1uyun.one/posts/" rel="alternate" type="text/html" title="html" />
+            <link href="https://l1uyun.one/posts/index.xml" rel="alternate" type="application/rss+xml" title="rss" />
+    <updated>2025-04-14T09:09:47+00:00</updated>
+    
+    
+    
+    
+        <id>https://l1uyun.one/posts/</id>
+    
+</feed>

