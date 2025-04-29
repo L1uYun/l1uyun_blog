@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>2025W18_比特迷思 :: l1uyun</title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta charset="UTF-8"/>
+<meta name="renderer" content="webkit"/>
+<meta name="force-rendering" content="webkit"/>
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="前言 上周和上上周，我在flomo中列了一些主题，但是没有勇气继续写下去，最终放弃了更新，连续两周的放弃更新让我感受到了一些压力，所以我决定放弃周记这一说法，随缘更新，但仍然会使用2025Wxx的形式，直到我对时间有新的理解。
+我并不是在写下我的思考结果，而是在借助这一载体思考。
+大道至简吗？ 过去很长一段时间，受传统文化的影响，我对大道至简这一说法深信不疑，但是始终没有一个工具，让我理解这里说的“简”。在大学这几年，学习了计算机科学（特别是自己课外学的信息论），为我提供了一个工具，让我理解了这一说法。这一工具就是比特bit，这是计算机描述世界的语言。
+"/>
+<meta name="keywords" content="hugo"/>
+
+<link href="/atom.xml" title="l1uyun" type="application/rss+xml">
+<link rel="canonical" href="https://l1uyun.one/posts/2025w18_%E6%AF%94%E7%89%B9%E8%BF%B7%E6%80%9D/" />
+<link rel="stylesheet" href="//cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.6.0/lxgwwenkaiscreen.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="/theme-20230215.css">
+<link rel="shortcut icon" href="https://l1uyun.one/favicon.ico">
+<link rel="apple-touch-icon" href="https://l1uyun.one/favicon.ico">
+<link rel="bookmark" href="https://l1uyun.one/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://l1uyun.one/favicon.ico">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="l1uyun">
+
+
+<meta property="og:url" content="https://l1uyun.one/posts/2025w18_%E6%AF%94%E7%89%B9%E8%BF%B7%E6%80%9D/">
+  <meta property="og:site_name" content="l1uyun">
+  <meta property="og:title" content="2025W18_比特迷思">
+  <meta property="og:description" content="前言 上周和上上周，我在flomo中列了一些主题，但是没有勇气继续写下去，最终放弃了更新，连续两周的放弃更新让我感受到了一些压力，所以我决定放弃周记这一说法，随缘更新，但仍然会使用2025Wxx的形式，直到我对时间有新的理解。
+我并不是在写下我的思考结果，而是在借助这一载体思考。
+大道至简吗？ 过去很长一段时间，受传统文化的影响，我对大道至简这一说法深信不疑，但是始终没有一个工具，让我理解这里说的“简”。在大学这几年，学习了计算机科学（特别是自己课外学的信息论），为我提供了一个工具，让我理解了这一说法。这一工具就是比特bit，这是计算机描述世界的语言。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-04-29T12:18:38+08:00">
+    <meta property="article:modified_time" content="2025-04-29T12:24:10+08:00">
+    <meta property="article:tag" content="Weekly">
+    <meta property="article:tag" content="比特迷思">
+
+
+
+
+<script>
+if ( false || (!!window.MSInputMethodContext && !!document.documentMode)) {
+    document.write('\x3Cscript id="_iealwn_js" data-outver="11" src="https://support.dmeng.net/ie-alert-warning/latest.js">\x3C/script>');
+}
+</script>
+<script async defer data-website-id="c27bd84b-02a3-4c3f-a168-0d7fadec9c74" src="https://u.edui.fun/lmmtj.js"></script>
+
+    
+  
+  <link rel="prefetch" href="https://l1uyun.one/posts/2025w15_%E8%B4%9F%E7%86%B5/">
+
+  </head>
+  <body class="">
+    <script>var getTheme = localStorage.getItem("theme") || '';if(getTheme == 'dark'){document.body.classList.add("dark")}else if(getTheme == 'light'){document.body.classList.remove("dark")}</script>
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a href="https://l1uyun.one/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__text">l1uyun</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu hidden">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/posts/reading/">读书</a></li>
+        
+      
+        
+          <li><a href="/posts/sec/">sec</a></li>
+        
+      
+        
+          <li><a href="/posts/chat/">闲聊</a></li>
+        
+      
+        
+          <li><a href="/archives/">归档</a></li>
+        
+      
+        
+          <li><a href="/about/">关于我</a></li>
+        
+      
+        
+          <li><a href="/search/">🔍</a></li>
+        
+      
+    
+    <li><a href="javascript:;" onclick="randomPost()" title="随机访问一篇文章"><svg t="1660103436159" class="icon search-box-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1184" width="32" height="32"><path d="M421.376 481.28s117.248 24.576 175.104-8.704c0 0-89.6 70.144-89.6 166.4 0.512-0.512-8.192-121.344-85.504-157.696zM438.784 969.216s68.608 6.656 68.608-80.896c0 0 3.072 88.576 65.024 78.336 0 0.512-50.688 22.016-133.632 2.56zM161.28 238.08s-30.208 65.536 11.264 91.648c0 0-67.072-17.408-81.408 37.376 0 0 8.704-82.944 70.144-129.024zM857.6 227.328s49.152 50.176 1.024 81.408c0 0 58.88-18.432 66.56 36.352 0 0 5.12-69.632-67.584-117.76z" p-id="1185"></path><path d="M443.392 970.752c-5.632 0-10.752-1.024-15.36-3.072l-270.848-157.184-1.536-1.024s-1.024-1.024-4.608-2.56c-51.2-29.184-62.976-94.208-65.536-120.832V386.56c0-3.072 0.512-7.168 1.024-11.264l0.512-3.584 1.024-2.56c19.456-50.688 76.8-51.2 103.936-44.032l-1.536 5.632 4.096-6.144L476.16 486.4l18.944 37.888c20.992 36.864 29.184 77.824 32.768 99.84v258.048c-4.608 56.32-36.864 76.288-55.808 82.944-1.024 0.512-15.36 5.632-28.672 5.632z m-262.144-196.096l263.168 152.576c12.288-0.512 36.864-6.656 40.448-48.128v-250.368c-4.608-31.744-20.992-103.936-72.192-128L322.56 445.44l1.536 3.072-142.336-82.432c-2.048-0.512-40.448-9.216-52.736 15.872-0.512 2.56-0.512 4.608-0.512 6.144v294.4c1.536 16.896 9.728 67.072 43.52 86.528 3.584 2.048 6.656 4.096 9.216 5.632z" p-id="1186"></path><path d="M837.632 212.992c6.656 4.096 12.8 7.168 18.432 10.752l1.536 1.024 1.536 1.536c5.12 4.096 10.752 9.216 16.384 15.36 6.144 11.776 5.632 33.28 4.608 49.152-1.024 12.288-6.656 30.208-26.624 44.544l-1.024 0.512-247.808 156.672c-26.624 14.336-62.976 18.432-96.256 18.432-40.96 0-77.824-6.656-89.088-8.704l-3.072-0.512-245.248-142.336c-39.424-29.696-28.16-85.504-15.36-113.664l2.56-6.144 263.68-166.912c29.184-14.336 104.448-43.008 173.056-1.024 3.584 2.56 58.368 34.304 119.296 69.632M431.616 460.8c40.448 7.168 114.176 13.824 152.576-6.144l244.736-155.136c7.168-5.632 8.192-10.24 8.704-12.8 1.024-11.264-9.728-26.624-15.36-32.768-55.808-32.256-243.712-141.312-250.368-145.408-49.664-30.72-107.008-9.216-130.048 2.56L192.512 268.8c-4.096 12.288-12.288 42.496 3.584 55.808l235.52 136.192z" p-id="1187"></path><path d="M831.488 299.008c4.096-1.024 38.4-11.264 66.048 6.144 7.168 4.608 17.92 11.776 24.064 24.576 1.024 5.632 4.096 10.752 4.608 16.896v2.048l-1.024 323.072c-5.12 35.328-22.528 91.648-77.312 125.44l-5.12 3.584h-1.024l-262.144 165.888-4.608 0.512c-4.096 0.512-8.704 1.024-12.8 1.024-15.872 0-30.208-5.12-41.984-14.848-24.576-20.48-32.768-55.808-35.328-73.728l-1.024-252.928h1.536c6.144-96.768 88.576-164.864 96.768-171.008l-0.512-0.512L829.44 299.52m-301.056 567.808c0.512 10.24 5.12 41.472 19.968 53.76 3.072 2.56 7.68 5.632 16.384 5.12l264.704-167.936c56.32-38.4 53.76-115.712 53.76-116.224l-0.512-32.256 1.024-250.368h-0.512c-1.536-12.8-7.168-16.384-8.704-17.408-8.704-5.632-23.552-3.072-28.672-2.048l-235.52 148.992c-1.024 0.512-80.896 65.024-80.896 149.504h-1.536l0.512 228.864zM435.2 264.192c0 27.648 31.744 50.176 71.168 50.176s71.168-22.528 71.168-50.176-31.744-50.176-71.168-50.176S435.2 236.544 435.2 264.192z" p-id="1188"></path><path d="M663.552 782.848c0 30.72-22.528 67.072-49.664 80.384-27.648 13.824-50.176-0.512-50.176-31.232s22.528-67.072 50.176-80.384c27.136-13.824 49.664 0 49.664 31.232zM760.32 602.624c0 30.72-22.528 67.072-49.664 80.384-27.648 13.824-49.664-0.512-49.664-31.232s22.528-67.072 49.664-80.384c27.136-13.824 49.664 0.512 49.664 31.232zM867.84 428.032c0 30.72-22.528 67.072-49.664 80.384-27.648 13.824-50.176-0.512-50.176-31.232s22.528-67.072 50.176-80.384c27.136-13.824 49.664 0 49.664 31.232zM270.848 538.112c0 30.72-22.016 41.984-48.64 24.576-27.136-16.896-48.64-55.808-48.64-86.528 0-30.72 22.016-41.984 48.64-24.576 26.624 16.896 48.64 55.808 48.64 86.528zM432.128 823.296c0 30.72-22.016 41.984-48.64 24.576-26.624-17.408-48.64-55.808-48.64-86.528 0-30.72 22.016-41.984 48.64-24.576 26.624 16.896 48.64 55.808 48.64 86.528z" p-id="1189"></path></svg></a></li>
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/posts/reading/">读书</a></li>
+      
+    
+      
+        <li><a href="/posts/sec/">sec</a></li>
+      
+    
+      
+        <li><a href="/posts/chat/">闲聊</a></li>
+      
+    
+      
+        <li><a href="/archives/">归档</a></li>
+      
+    
+      
+        <li><a href="/about/">关于我</a></li>
+      
+    
+      
+        <li><a href="/search/">🔍</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+
+      <div class="content">
+        
+  
+  
+  
+  
+  <div class="post chat">
+    <div  class="breadcrumb">
+  
+
+  
+
+  
+
+  
+
+<li>
+  <a href="https://l1uyun.one/">首页</a>
+</li>
+
+
+<li>
+  <a href="https://l1uyun.one/posts/">Posts</a>
+</li>
+
+
+<li>
+  <a href="https://l1uyun.one/posts/chat/">闲聊</a>
+</li>
+
+
+<li class="active">
+  <a href="https://l1uyun.one/posts/2025w18_%E6%AF%94%E7%89%B9%E8%BF%B7%E6%80%9D/">2025W18_比特迷思</a>
+</li>
+
+</div>
+
+
+  
+    <h2 class="post-title"><a href="https://l1uyun.one/posts/2025w18_%E6%AF%94%E7%89%B9%E8%BF%B7%E6%80%9D/">2025W18_比特迷思</a></h2>
+    <div class="post-meta">
+      
+      
+        <span class="post-date">2025-04-29</span>
+        
+          
+        
+      
+    </div>
+    
+  
+    <div class="post-content">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#前言">前言</a></li>
+        <li><a href="#大道至简吗">大道至简吗？</a></li>
+        <li><a href="#三元世界">三元世界</a></li>
+        <li><a href="#我能找到两个维度吗">我能找到两个维度吗？</a></li>
+        <li><a href="#数字世界">数字世界</a></li>
+        <li><a href="#比特迷思">比特迷思</a></li>
+        <li><a href="#l1uyun">l1uyun</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      <h2 id="前言">前言</h2>
+<p>上周和上上周，我在flomo中列了一些主题，但是没有勇气继续写下去，最终放弃了更新，连续两周的放弃更新让我感受到了一些压力，所以我决定放弃周记这一说法，随缘更新，但仍然会使用2025Wxx的形式，直到我对时间有新的理解。</p>
+<p>我并不是在写下我的思考结果，而是在借助这一载体思考。</p>
+<h2 id="大道至简吗">大道至简吗？</h2>
+<p>过去很长一段时间，受传统文化的影响，我对大道至简这一说法深信不疑，但是始终没有一个工具，让我理解这里说的“简”。在大学这几年，学习了计算机科学（特别是自己课外学的信息论），为我提供了一个工具，让我理解了这一说法。这一工具就是比特bit，这是计算机描述世界的语言。</p>
+<p>大道至简，用比特直接翻译过来就是<strong>我们可以用很少的二进制位来描述真实世界(的规律)</strong>，而当谈到大道至简这一说法时，我往往会想起高中时学过的一些阴阳五行知识。无、有、阴阳、四象、八卦、六十四卦。</p>
+<p>将这些符号用比特这一视角翻译一下。前面的无和有都是0个比特的情况，之后是阴阳，这一阶段有两种变化，需要一个bit来表示，阴阳、有无、高下、长短、动静、男女。再到四象，有四种变化，需要2个bit，太阳，少阴，太阴、少阳。再之后是八卦，八种变化，需要3个bit，乾兑离震巽坎艮坤。</p>
+<p>当我们考虑0个bit这一至简的大道时，这一大道只能描述一种绝对的经验，“无”或者“有”，绝对的&quot;肯定&quot;或者绝对的&quot;否定&quot;，是未经辨别的、混沌未分的经验。接着我们考虑1个bit的大道，此时世界是非黑即白，非阴即阳的，这是我们世俗的世界。而当我们考虑2个bit的大道时，有四种状态，极阳、阳极生阴、极阴、阴极生阳，不再那么非黑即白，黑白之间出现了一些变化，有了运动。而当我们用3个bit来描述世界的时候，世界有了八种状态，复杂度再次增加，可以用太极图表示此时的世界。八卦进一步叠加，还有六十四卦，这是命理学的原初模型&hellip;</p>
+<p>不过3个bit或者6个bit真的能够准确描述真实世界吗？当然不能，学过些计算机科学的人，会很容易感受这一点，3个比特连一个字节都没有，3个比特能做什么，能够描述八个数字，能表示八种指令，能够表示tcp握手挥手时的syn，ack，fin三种状态&hellip;三个比特所能建构出来的系统并不能创生万物。</p>
+<p><strong>真实世界的复杂度是无限大的，万物相互连接，和合而成，对于真实世界的任何东西，我们都需要用无限长的bit，或者说压根就不能用bit来准确描述，bit是压缩，是简化、是牺牲。</strong>（想起来一个计算机民科笑话——我发明了一个绝妙的压缩算法，能将任何大小的数据压缩到1bit，现在只差一个解压缩算法了），<strong>符号只是我们理解世界的工具，而不是在准确描述世界。</strong></p>
+<p>我并不擅长举出具体的例子，我将上述的抽象描述交给deepseek，他给我提供了一些例子。</p>
+<ul>
+<li>bit就像最基础的乐高积木块（1×1方块），宣称&quot;大道至简&quot;就像说&quot;所有城堡都可以用8块积木搭成&quot;，实际上要搭长沙五一广场的立体模型，可能需要上百万块积木。</li>
+<li>就像用体温计测体温：0bit精度：混沌未分，没有发烧这一概念，1bit精度：只能知道&quot;发烧/不发烧&quot;（阴阳），2bit精度：能分&quot;高烧/低烧/正常/偏低&quot;（四象），但永远测不出真实体温（需要∞位小数）。</li>
+</ul>
+<p>好吧，说了这么多，我只是在说这样一个感受，<strong>真实世界是复杂的，我们需要看到复杂性。</strong> 但是如果我以大道至简的方式，只说这一句话，那我只是说了一句废话，我只有说了上述那些废话，这一感受才更加具体，我才描述的更加精确，才呈现出更多的复杂。</p>
+<p><strong>大道至简应该是看山还是山，是返璞归真、是追求复杂性后的状态，是能够在不同复杂度层级自由切换。</strong></p>
+<p>根据我在网络世界的观察，绝大多数人都是傻逼，都没有看见复杂性，他们的世界是非黑即白的，非左即右，是只有两种性别的，是二元对立的&hellip;</p>
+<p>上面这个判断也是简化。我也是傻逼，这句说我也是傻逼，也是简化&hellip;.停止这种无穷后退，我现在需要在简化的层级上表达，而并不需要进入复杂之中。简化并不能反映真实，但是有用。不过这里的有用指的什么呢？<strong>也许是给大脑省葡萄糖吧，大多数人都挺擅长这个。</strong> 好吧，跑题了。在这段我想要表达的是——<strong>我只是认识到了复杂性，我渴望更多的经验到复杂性。</strong></p>
+<hr>
+<h2 id="三元世界">三元世界</h2>
+<p><strong>只要认知能跨过1bit的门槛，哪怕只上升到log₂(3) ≈ 1.58496bit的复杂度，就已经比99%的地表生物厉害了。</strong></p>
+<p>在认识到绝大多数人都是二元对立的煞笔后，那我想，只要能看见大于1个bit复杂度的世界，看到中间的模糊性，就算很好的认识世界了。</p>
+<p>我在之前的周记中也提到过三元世界，世俗世界充满二元对立，而灵性世界以三为基础。</p>
+<p>看到黑和白，以及黑白之间的灰。看到此和彼，以及彼此之间。放弃二元对立，采用三元的世界，看到log₂(3)bit复杂度的世界。</p>
+<p>这种看见1.58bit的世界，换句话表达就是，<strong>要允许模糊存在，要知道到自己不知道。</strong></p>
+<hr>
+<h2 id="我能找到两个维度吗">我能找到两个维度吗？</h2>
+<p>基于上面的迷思，我想到一个思维动作：</p>
+<p>当我想要认识或评价任何事物，<strong>我需要先找到两个纬度</strong>，看到2bits的复杂度。</p>
+<p>当我未曾觉察出两个纬度时，我对事物的认识是0bit或者1bit的，是混沌的，或者非黑即白的。而一但找到两个纬度，就能依靠这个二维结构看的更清晰一点。</p>
+<p>例如SWOT分析(内部外部，有利有害，此时四个象限是机遇，优势，劣势，威胁)，意识形态光谱(经济左右和威权自由)。</p>
+<hr>
+<h2 id="数字世界">数字世界</h2>
+<p>昨天傍晚在湘江边散步时，我产生了下面的随想，这个随想是我决定记录上面关于比特的迷思的缘起。</p>
+<p>我戴着耳机，耳机里放着播客节目，沿着江边的木质地板走着，突然想起来，我耳机里的声音真实吗？</p>
+<p>耳机里的声音经过了数字采样，我们有1bit，16bit，32bit float这几种采样精度，以及有不同的采样频率，但是即使是间隔很微小的时间，并且以32bit的深度来采样，跟原本的声音相比仍然存在很多差别，存在很多被简化掉的东西。</p>
+<p>当原本的声音对我<strong>在场</strong>的时候，我不止在听我想要接受的声音，风声、人声这些背景噪声，环境中的气味分子、空气的湿度等等同样<strong>在场</strong>，以及不止是我的耳朵在听，我的身体同样在感受那些震动，这些都被简化了。</p>
+<p><strong>我为什么不摘下耳机，去听自然的、真实世界的声音呢。</strong></p>
+<p>音频是这样，视频也是同理。</p>
+<hr>
+<h2 id="比特迷思">比特迷思</h2>
+<p>在迷思当中我简化了一些东西，我们确实使用比特创造出了复杂系统，我现在正在使用比特造物。</p>
+<p>比特作为基本单元，只能表示两种可能，但是经过抽象，比特能够产生更大的基本单元字节，在这个更大的基本单元中，底层的细节被忽略，新的抽象单元产生新的特性。这样不断进行抽象动作，在更高的抽象层级，产生了足够大的复杂性。</p>
+<p>计算机系统通过抽象这一动作来实现其复杂性，而生命系统通过编码来实现复杂性，其基本单元为4种碱基，这一基本单元复杂度为2bits，但是通过无限的排列组合、以及漫长时间，最终涌现出了惊人的复杂度。</p>
+<p>此外，关于阴阳五行，我的理解是，这是<strong>一种取象方式，分类方式</strong>，阴阳的世界并不是a[2]，而是a[∞][2]，同样八卦是a[∞][8]，命理学模型并不是一个封闭符号系统，其符号并不是一维的，精确的。例如奇门遁甲这一命理模型有十天干，十二地支，八卦，八门，八神，九星，九宫，这些符号系统都是一种取象方式，都是一个无限长的二维矩阵。至于矩形到底有多长，这取决于命理师的取象、联想能力，命理学模型就是在借助人脑做一些矩阵运算。（如果没有多感官心盲症，也许我也会在后湖摆摊算命）</p>
+<p>好吧，居然真有迷思这个词，迷思是myth，指一种普遍存在但缺乏事实依据的错误观念、误解、谬见或刻板印象。我只是凭据直觉用这个词来表达一种混乱、神志不清状态下的随想（瞎想，胡言乱语），不过<strong>按字面意思理解大道至简是一种myth，认为比特（符号）能够准确描述真实也是一种myth，普遍纯在的二元对立思维也是一种myth。</strong></p>
+<p>比特迷思还有一个缘起，但是我脑中的葡萄糖不够了。</p>
+<hr>
+<h2 id="l1uyun">l1uyun</h2>
+<p>凡有所学，皆成性格，比特迷思还会继续下去。</p>
+<p>胡言乱语，就先说这些吧。</p>
+
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          #<a href="https://l1uyun.one/tags/weekly/">weekly</a>&nbsp;
+        
+          #<a href="https://l1uyun.one/tags/%E6%AF%94%E7%89%B9%E8%BF%B7%E6%80%9D/">比特迷思</a>&nbsp;
+        
+      </span>
+    
+  
+    <div class="clear"></div>
+    
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            
+              <span class="pagination__title-h">阅读更多</span>
+            
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+            
+              <span class="button next">
+                <a href="https://l1uyun.one/posts/2025w15_%E8%B4%9F%E7%86%B5/">
+                  <span class="button__text">2025W15_负熵</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+    
+    </div>
+
+      </div>
+
+      
+        
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+
+
+
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="copyright copyright-font">
+      <span>共 86497 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+    </div>
+      
+    
+      <div class="copyright">
+        <span>© 2025 Powered by <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a> Theme by <a href="https://github.com/lmm214/immmmm/tree/master/themes/hello-friend" target="_blank" rel="noopener">immmmm</a></span>
+      </div>
+    
+  </div>
+</footer>
+
+<script type="text/javascript" src="/theme-main-1.js"></script>
+<script type="text/javascript" src="/lately.min.js"></script>
+<script type="text/javascript" src="/waterfall.min.js"></script>
+<script type="text/javascript" src="/imgStatus.min.js"></script>
+<script type="text/javascript" src="/view-image.js"></script>
+<script type="text/javascript" src="/theme-lmm-20230123.js"></script>
+<script type="text/javascript" src="/pangu.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    pangu.autoSpacingPage();
+  });
+</script>
+
+
+
+
+    <section class="comments">
+      <script
+        src="https://utteranc.es/client.js"
+        repo="L1uYun/l1uyun_blog"
+        issue-term="title"
+        label="💬comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async
+      ></script>
+    </section>
+    
+      
+    </div>
+  </body>
+</html>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
-    <generator uri="https://gohugo.io/" version="0.146.3">Hugo</generator><title type="html"><![CDATA[l1uyun]]></title>
+    <generator uri="https://gohugo.io/" version="0.147.0">Hugo</generator><title type="html"><![CDATA[l1uyun]]></title>
     
     
     
             <link href="https://l1uyun.one/posts/sec/" rel="alternate" type="text/html" title="html" />
             <link href="https://l1uyun.one/posts/sec/index.xml" rel="alternate" type="application/rss+xml" title="rss" />
-    <updated>2025-04-14T09:22:31+00:00</updated>
+    <updated>2025-04-29T04:24:56+00:00</updated>
     
     
     
@@ -784,9 +784,9 @@ WEB机和PC机：计算机右键-&gt;管理-&gt;配置-&gt;服务-&gt;Server、W
         
         <entry>
             <title type="html"><![CDATA[phpMyAdmin-4.0.x—4.6.2_远程代码执行漏洞]]></title>
-            <link href="https://l1uyun.one/posts/phpmyadmin-4/" rel="alternate" type="text/html" />
+            <link href="https://l1uyun.one/posts/phpmyadmin-4.0.x4.6.2_%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/" rel="alternate" type="text/html" />
             
-                <id>https://l1uyun.one/posts/phpmyadmin-4/</id>
+                <id>https://l1uyun.one/posts/phpmyadmin-4.0.x4.6.2_%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</id>
             
             
             <published>2024-09-18T16:59:09+08:00</published>
@@ -890,6 +890,110 @@ find参数中传进去的%00也就是空字符,将拼接之后的/给截断了</
 <p><a href="https://www.exploit-db.com/exploits/40185" target="_blank" rel="noopener nofollow noreferrer" >phpMyAdmin 4.6.2 - (Authenticated) Remote Code Execution - PHP webapps Exploit</a></p>
 <p><a href="https://www.cnblogs.com/angly/p/3157736.html" target="_blank" rel="noopener nofollow noreferrer" >PHP安全之慎用preg_replace的/e修饰符 - y&rsquo;ang - 博客园</a></p>
 <p><a href="https://xz.aliyun.com/t/7836" target="_blank" rel="noopener nofollow noreferrer" >CVE-2016-5734 phpmyadmin后台代码执行漏洞复现</a></p>
+]]></content>
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://l1uyun.one/tags/sec/vulhub" term="sec/vulhub" label="sec/vulhub" />
+                             
+                                <category scheme="https://l1uyun.one/tags/sec/cve" term="sec/cve" label="sec/cve" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[phpmyadmin-4.8.1远程文件包含]]></title>
+            <link href="https://l1uyun.one/posts/phpmyadmin-4.8.1%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" rel="alternate" type="text/html" />
+            
+                <id>https://l1uyun.one/posts/phpmyadmin-4.8.1%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/</id>
+            
+            
+            <published>2024-09-18T15:33:13+08:00</published>
+            <updated>2024-09-19T22:35:37+08:00</updated>
+            
+            
+            <content type="html"><![CDATA[<h2 id="漏洞简介">漏洞简介</h2>
+<p>phpMyAdmin是一套开源的、基于Web的MySQL数据库管理工具。其index.php中存在一处文件包含逻辑，通过二次编码即可绕过检查，造成远程文件包含漏洞。</p>
+<p>这个漏洞刚刚打演练的时候用过,分析一下原理</p>
+<h2 id="影响版本">影响版本</h2>
+<p>phpmyadmin 4.8.0 &amp; 4.8.1</p>
+<h2 id="前提条件">前提条件</h2>
+<p>能够进入后台,也就是要有数据库的凭据</p>
+<h2 id="前置知识">前置知识</h2>
+<h3 id="php文件包含">php文件包含</h3>
+<p>服务器执行PHP文件时，可以通过文件包含函数加载另一个文件中的PHP代码，并且当PHP来执行，这会为开发者节省大量的时间。
+文件包含相关函数</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>require<span style="color:#f92672">()</span><span style="color:#75715e">#函数出现错误的时候，会直接报错并退出程序的执行</span>
+</span></span><span style="display:flex;"><span>require_once<span style="color:#f92672">()</span><span style="color:#75715e">#只包含一次</span>
+</span></span><span style="display:flex;"><span>include<span style="color:#f92672">()</span><span style="color:#75715e">#在包含的过程中如果出现错误，会抛出一个警告，程序继续正常运行</span>
+</span></span><span style="display:flex;"><span>include_once<span style="color:#f92672">()</span><span style="color:#75715e">#只包含一次</span>
+</span></span></code></pre></div><p>文件包含分为本地文件包含和远程文件包含</p>
+<p>远程文件包含利用需要下面这两个配置文件都开启
+当allow_url_include和allow_url_fopen都开启时，可以通过利用远程url或者php://协议直接getshell，即远程文件包含，
+但allow_url_include在php5.2之后默认为off，利用机会有限。
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpmyadmin-4.8.1%e8%bf%9c%e7%a8%8b%e6%96%87%e4%bb%b6%e5%8c%85%e5%90%ab_image_1.png" alt=""  />
+当allow_url_include and allow_url_fopen均为off 在window主机环境下仍然可以进行远程文件执行，用445端口SMB协议进行远程加载。</p>
+<h2 id="漏洞复现">漏洞复现</h2>
+<p>直接访问下面的路径,能输出passwd内容那就是有了</p>
+<p><code>/index.php?target=db_sql.php%253f/../../../../../../../../etc/passwd</code>
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpmyadmin-4.8.1%e8%bf%9c%e7%a8%8b%e6%96%87%e4%bb%b6%e5%8c%85%e5%90%ab_image_2.png" alt=""  /></p>
+<p>利用方式的话,就是先在sql栏执行一下select命令,然后去包含session文件,就能获得webshell,进而拿shell</p>
+<p>可以执行一下<code>SELECT &lt;?=phpinfo()?&gt;;</code>，然后查看自己的sessionid（cookie中phpMyAdmin的值），然后包含session文件即可：</p>
+<p>对应的sessions文件是 /tmp/sess_sessionid
+<a href="phpmyadmin-4_8_1%e8%bf%9c%e7%a8%8b%e6%96%87%e4%bb%b6%e5%8c%85%e5%90%ab%e6%bc%8f%e6%b4%9e%ef%bc%88CVE-2018-12613%ef%bc%89.pdf">phpmyadmin-4_8_1远程文件包含漏洞（CVE-2018-12613）</a></p>
+<h2 id="漏洞分析">漏洞分析</h2>
+<p>简单来说就是phpmyadmin对用户传入的参数直接进行了包含,并且黑名单的检验不严格,可以绕过,从而导致了LFI</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">index</span><span style="color:#f92672">.</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// If we have a valid target, let&#39;s load that script instead
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span> <span style="color:#66d9ef">empty</span>($_REQUEST[<span style="color:#e6db74">&#39;target&#39;</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">is_string</span>($_REQUEST[<span style="color:#e6db74">&#39;target&#39;</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span> <span style="color:#a6e22e">preg_match</span>(<span style="color:#e6db74">&#39;/^index/&#39;</span>, $_REQUEST[<span style="color:#e6db74">&#39;target&#39;</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span> <span style="color:#a6e22e">in_array</span>($_REQUEST[<span style="color:#e6db74">&#39;target&#39;</span>], $target_blacklist)
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">Core</span><span style="color:#f92672">::</span><span style="color:#a6e22e">checkPageValidity</span>($_REQUEST[<span style="color:#e6db74">&#39;target&#39;</span>])
+</span></span><span style="display:flex;"><span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">include</span> $_REQUEST[<span style="color:#e6db74">&#39;target&#39;</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">exit</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 黑名单
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$target_blacklist <span style="color:#f92672">=</span> <span style="color:#66d9ef">array</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;import.php&#39;</span>, <span style="color:#e6db74">&#39;export.php&#39;</span>
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><p>然后就是在phpmyadmin中,执行sql语句之后,会存储在session文件中,如果包含这个文件,就能让select里面的php代码被执行</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/index.php?target<span style="color:#f92672">=</span>db_sql.php?/../../../../../../../../etc/passwd
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#Windows环境下利用需要对?进行编码</span>
+</span></span><span style="display:flex;"><span>/index.php?target<span style="color:#f92672">=</span>db_sql.php%253f/../../../../../../../../tmp/sess_21faa6130eaba2b5e04e313bfacc60d4
+</span></span></code></pre></div><h2 id="漏洞发现">漏洞发现</h2>
+<p>进入后台之后,查看版本信息</p>
+<h2 id="漏洞修复">漏洞修复</h2>
+<p>升级phpmyadmin版本</p>
+<h2 id="相关漏洞">相关漏洞</h2>
+<p><a href="phpMyAdmin-4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e.md">phpMyAdmin-4.0.x—4.6.2_远程代码执行漏洞</a></p>
+<h2 id="漏洞总结">漏洞总结</h2>
+<p>这个漏洞刚刚演练的时候利用过,比较熟悉了&hellip;
+记忆这个漏洞</p>
+<ul>
+<li>组件:phpmyadmin</li>
+<li>版本:4.8.1&amp;4.8.0</li>
+<li>漏洞类型:文件包含</li>
+</ul>
+<p>假设你在尝试利用,挖掘这个漏洞</p>
+<ul>
+<li>漏洞产生点:首页的target参数</li>
+<li>漏洞类型:文件包含</li>
+<li>漏洞利用方法:通过对sessions文件进行包含从而实现rce</li>
+<li>遇到问题之后的解决方案:</li>
+</ul>
 ]]></content>
             
                  
@@ -2788,250 +2892,6 @@ XXE 攻击可能导致敏感信息泄露、服务拒绝（DoS）攻击等安全�
 <h1 id="参考">参考</h1>
 <p>小迪sec</p>
 <p><a href="https://www.cnblogs.com/LittleHann/p/17776458.html" target="_blank" rel="noopener nofollow noreferrer" >Java XXE漏洞原理研究</a></p>
-]]></content>
-            
-                 
-                    
-                 
-                    
-                         
-                        
-                            
-                             
-                                <category scheme="https://l1uyun.one/tags/sec/javasec" term="sec/javasec" label="sec/javasec" />
-                            
-                        
-                    
-                
-            
-        </entry>
-    
-        
-        <entry>
-            <title type="html"><![CDATA[javasec-sql注入]]></title>
-            <link href="https://l1uyun.one/posts/javasec-sql%E6%B3%A8%E5%85%A5/" rel="alternate" type="text/html" />
-            
-                <id>https://l1uyun.one/posts/javasec-sql%E6%B3%A8%E5%85%A5/</id>
-            
-            
-            <published>2024-07-23T20:37:06+08:00</published>
-            <updated>2024-08-18T10:06:17+08:00</updated>
-            
-            
-            <content type="html"><![CDATA[<h1 id="javasec-sql注入">javasec-sql注入</h1>
-<h2 id="前置知识">前置知识</h2>
-<h3 id="sql注入">sql注入</h3>
-<p>没有对用户的输入进行处理(过滤,黑名单,SQL预编译),直接将输入拼接到了sql语句中,</p>
-<p>导致执行了用户构造的恶意SQL语句</p>
-<p>SQL注入的语法与使用的数据库相关,与语言无关</p>
-<h3 id="java数据库操作">java数据库操作</h3>
-<h4 id="jdbc">jdbc</h4>
-<p>java database connection</p>
-<p>java提供的数据库驱动库,用于进行数据库连接,执行SQL语句</p>
-<p>JDBC有两个方法执行SQL语句，分别是PrepareStatement和Statement。</p>
-<h4 id="hibernate">Hibernate</h4>
-<p>Hibernate是一个对象关系映射（ORM）框架，它将Java对象与数据库表进行映射，使开发者可以使用面向对象的编程方式来操作数据库。</p>
-<p>Hibernate能够将Java类自动映射到数据库表上，并且能够自动生成SQL语句来操作数据库，减少了手动编写SQL的繁琐工作。</p>
-<h4 id="mybatis">Mybatis</h4>
-<p>Mybatis是一个持久层框架，它通过消除几乎所有的JDBC代码和手动设置参数及获取结果集的工作来简化对数据库的操作。Mybatis可以通过XML或注解的方式将要执行的SQL、参数和结果映射进行配置。</p>
-<p>Mybatis与Hibernate这样的ORM（对象关系映射）框架不同，它更关注SQL本身，适合对数据库操作有较高控制要求的场景。其高效、灵活和简洁的特性，使得它在企业级开发中被广泛使用。</p>
-<h2 id="复现环境">复现环境</h2>
-<p><a href="https://github.com/j3ers3/Hello-Java-Sec" target="_blank" rel="noopener nofollow noreferrer" >Hello-Java-Sec</a>
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-sql%e6%b3%a8%e5%85%a5_image_1.png" alt=""  />
-<a href="https://github.com/bewhale/JavaSec" target="_blank" rel="noopener nofollow noreferrer" >JavaSec</a>
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-sql%e6%b3%a8%e5%85%a5_image_2.png" alt=""  /></p>
-<h2 id="jdbc-1">JDBC</h2>
-<p>JDBC有两个方法执行SQL语句，分别是PrepareStatement和Statement。</p>
-<p>JDBCTemplate是Spring对JDBC的封装</p>
-<h3 id="statement">Statement</h3>
-<p>这就是普通的写法,没有使用预编译</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// 采用Statement方法拼接SQL语句，导致注入产生</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">vul1</span>(String id) {
-</span></span><span style="display:flex;"><span>    Class.<span style="color:#a6e22e">forName</span>(<span style="color:#e6db74">&#34;com.mysql.cj.jdbc.Driver&#34;</span>);
-</span></span><span style="display:flex;"><span>    Connection conn <span style="color:#f92672">=</span> DriverManager.<span style="color:#a6e22e">getConnection</span>(db_url, db_user, db_pass);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    Statement stmt <span style="color:#f92672">=</span> conn.<span style="color:#a6e22e">createStatement</span>();
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 拼接语句产生SQL注入</span>
-</span></span><span style="display:flex;"><span>    String sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;select * from users where id = &#39;&#34;</span> <span style="color:#f92672">+</span> id <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&#39;&#34;</span>;
-</span></span><span style="display:flex;"><span>    ResultSet rs <span style="color:#f92672">=</span> stmt.<span style="color:#a6e22e">executeQuery</span>(sql);
-</span></span><span style="display:flex;"><span>    ...
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>报错注入的语法</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>http://127.0.0.1:8888/SQLI/JDBC/vul1?id<span style="color:#f92672">=</span>1%27%20and%20updatexml<span style="color:#f92672">(</span>1,concat<span style="color:#f92672">(</span>0x7e,<span style="color:#f92672">(</span>SELECT%20user<span style="color:#f92672">())</span>,0x7e<span style="color:#f92672">)</span>,1<span style="color:#f92672">)</span>--%20+
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-sql%e6%b3%a8%e5%85%a5_image_3.png" alt=""  /></p>
-<h3 id="preparestatement">PrepareStatement</h3>
-<p>这里是使用了预编译,但是没有按照预编译的语法来写,还是有漏洞存在</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// PrepareStatement会对SQL语句进行预编译，但如果直接采取拼接的方式构造SQL，此时进行预编译也无用。</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">vul2</span>(String id) {
-</span></span><span style="display:flex;"><span>    Class.<span style="color:#a6e22e">forName</span>(<span style="color:#e6db74">&#34;com.mysql.cj.jdbc.Driver&#34;</span>);
-</span></span><span style="display:flex;"><span>    Connection conn <span style="color:#f92672">=</span> DriverManager.<span style="color:#a6e22e">getConnection</span>(db_url, db_user, db_pass);
-</span></span><span style="display:flex;"><span>    String sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;select * from users where id = &#34;</span> <span style="color:#f92672">+</span> id;
-</span></span><span style="display:flex;"><span>    PreparedStatement st <span style="color:#f92672">=</span> conn.<span style="color:#a6e22e">prepareStatement</span>(sql);
-</span></span><span style="display:flex;"><span>    ResultSet rs <span style="color:#f92672">=</span> st.<span style="color:#a6e22e">executeQuery</span>();
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-sql%e6%b3%a8%e5%85%a5_image_4.png" alt=""  /></p>
-<h3 id="jdbctemplate">JDBCTemplate</h3>
-<p>也是一样的,如果使用拼接,而不是使用占位符,就会导致SQL注入</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// JDBCTemplate是Spring对JDBC的封装，如果使用拼接语句便会产生注入</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> Map<span style="color:#f92672">&lt;</span>String, Object<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">vul3</span>(String id) {
-</span></span><span style="display:flex;"><span>    DriverManagerDataSource dataSource <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DriverManagerDataSource();
-</span></span><span style="display:flex;"><span>    ...
-</span></span><span style="display:flex;"><span>    JdbcTemplate jdbctemplate <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> JdbcTemplate(dataSource);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    String sql_vul <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;select * from users where id = &#34;</span> <span style="color:#f92672">+</span> id;
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 安全语句</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// String sql_safe = &#34;select * from users where id = ?&#34;;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> jdbctemplate.<span style="color:#a6e22e">queryForMap</span>(sql_vul);
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="黑名单过滤">黑名单过滤</h3>
-<p>修复方法是采用黑名单过滤掉危险字符,当然,最好还是使用预编译的方法</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// 采用黑名单过滤危险字符，同时也容易误伤（次方案）</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">checkSql</span>(String content) {
-</span></span><span style="display:flex;"><span>    String<span style="color:#f92672">[]</span> black_list <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;&#39;&#34;</span>, <span style="color:#e6db74">&#34;;&#34;</span>, <span style="color:#e6db74">&#34;--&#34;</span>, <span style="color:#e6db74">&#34;+&#34;</span>, <span style="color:#e6db74">&#34;,&#34;</span>, <span style="color:#e6db74">&#34;%&#34;</span>, <span style="color:#e6db74">&#34;=&#34;</span>, <span style="color:#e6db74">&#34;&gt;&#34;</span>, <span style="color:#e6db74">&#34;*&#34;</span>, <span style="color:#e6db74">&#34;(&#34;</span>, <span style="color:#e6db74">&#34;)&#34;</span>, <span style="color:#e6db74">&#34;and&#34;</span>, <span style="color:#e6db74">&#34;or&#34;</span>, <span style="color:#e6db74">&#34;exec&#34;</span>, <span style="color:#e6db74">&#34;insert&#34;</span>, <span style="color:#e6db74">&#34;select&#34;</span>, <span style="color:#e6db74">&#34;delete&#34;</span>, <span style="color:#e6db74">&#34;update&#34;</span>, <span style="color:#e6db74">&#34;count&#34;</span>, <span style="color:#e6db74">&#34;drop&#34;</span>, <span style="color:#e6db74">&#34;chr&#34;</span>, <span style="color:#e6db74">&#34;mid&#34;</span>, <span style="color:#e6db74">&#34;master&#34;</span>, <span style="color:#e6db74">&#34;truncate&#34;</span>, <span style="color:#e6db74">&#34;char&#34;</span>, <span style="color:#e6db74">&#34;declare&#34;</span>};
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (String s : black_list) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (content.<span style="color:#a6e22e">toLowerCase</span>().<span style="color:#a6e22e">contains</span>(s)) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="使用占位符">使用?占位符</h3>
-<p>解决方法就是采用预编译的正确写法,占位符</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// 正确的使用PrepareStatement可以有效避免SQL注入，使用？作为占位符，进行参数化查询</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">safe1</span>(String id) {
-</span></span><span style="display:flex;"><span>    String sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;select * from users where id = ?&#34;</span>;
-</span></span><span style="display:flex;"><span>    PreparedStatement st <span style="color:#f92672">=</span> conn.<span style="color:#a6e22e">prepareStatement</span>(sql);
-</span></span><span style="display:flex;"><span>    st.<span style="color:#a6e22e">setString</span>(1, id);
-</span></span><span style="display:flex;"><span>    ResultSet rs <span style="color:#f92672">=</span> st.<span style="color:#a6e22e">executeQuery</span>();
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="使用esapi过滤输入">使用ESAPI过滤输入</h3>
-<p>安全写法是使用ESAPI来对输入进行过滤,当然使用占位符就可以了</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// ESAPI 是一个免费、开源的、网页应用程序安全控件库，它使程序员能够更容易写出更低风险的程序</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// 官网：https://owasp.org/www-project-enterprise-security-api/</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">safe3</span>(String id) {
-</span></span><span style="display:flex;"><span>    Codec<span style="color:#f92672">&lt;</span>Character<span style="color:#f92672">&gt;</span> oracleCodec <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> OracleCodec();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    Statement stmt <span style="color:#f92672">=</span> conn.<span style="color:#a6e22e">createStatement</span>();
-</span></span><span style="display:flex;"><span>    String sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;select * from users where id = &#39;&#34;</span> <span style="color:#f92672">+</span> ESAPI.<span style="color:#a6e22e">encoder</span>().<span style="color:#a6e22e">encodeForSQL</span>(oracleCodec, id) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&#39;&#34;</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    ResultSet rs <span style="color:#f92672">=</span> stmt.<span style="color:#a6e22e">executeQuery</span>(sql);
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>                    
-</span></span></code></pre></div><h3 id="强制参数类型">强制参数类型</h3>
-<p>不使用string类型的参数,而是写死类型,那样也能避免sql注入</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// 如果参数类型为boolean,byte,short,int,long,float,double等，sql语句无法拼接字符串，因此不存在注入</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> Map<span style="color:#f92672">&lt;</span>String, Object<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">safe4</span>(Integer id) {
-</span></span><span style="display:flex;"><span>    String sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;select * from users where id = &#34;</span> <span style="color:#f92672">+</span> id;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> jdbctemplate.<span style="color:#a6e22e">queryForMap</span>(sql);
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="总结">总结</h3>
-<p>-jdbc
-出现SQL注入的条件是</p>
-<p>1、采用Statement方法拼接SQL语句</p>
-<p>2、PrepareStatement会对SQL语句进行预编译，但如果直接采取拼接的方式构造SQL，此时进行预编译也无用。</p>
-<p>3、JDBCTemplate是Spring对JDBC的封装，如果使用拼接语句便会产生注入</p>
-<p>安全写法：SQL语句占位符（?） + PrepareStatement预编译</p>
-<h2 id="mybatis-1">Mybatis</h2>
-<p>MyBatis框架底层已经实现了对SQL注入的防御，但存在使用不当的情况下，仍然存在SQL注入的风险。</p>
-<p>MyBatis支持两种参数符号，一种是#，另一种是$，#使用预编译，$使用拼接SQL。</p>
-<p>这里的问题主要是使用#{}的问题,使用#{}之后,传进来的参数会被转成带双引号的字符串,导致sql语句错误,开发偷懒就使用了${}进行拼接处理.</p>
-<h3 id="order-by-注入">order by 注入</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// 由于使用#{}会将对象转成字符串，形成order by &#34;user&#34; desc造成错误，因此很多研发会采用${}来解决，从而造成SQL注入</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@GetMapping</span>(<span style="color:#e6db74">&#34;/vul/order&#34;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> List<span style="color:#f92672">&lt;</span>User<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">orderBy</span>(String field, String sort) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> userMapper.<span style="color:#a6e22e">orderBy</span>(field, sort);
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// xml方式</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span>select id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;orderBy&#34;</span> resultType<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;com.best.hello.entity.User&#34;</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span>    select <span style="color:#f92672">*</span> from users order by ${field} ${sort}
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/</span>select<span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// 注解方式</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Select</span>(<span style="color:#e6db74">&#34;select * from users order by ${field} desc&#34;</span>)
-</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>User<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">orderBy2</span>(<span style="color:#a6e22e">@Param</span>(<span style="color:#e6db74">&#34;field&#34;</span>) String field);
-</span></span><span style="display:flex;"><span>                    
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>http://127.0.0.1:8888/SQLI/MyBatis/vul/order?field<span style="color:#f92672">=</span>id&amp;sort<span style="color:#f92672">=</span>desc,1
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">[{</span><span style="color:#e6db74">&#34;id&#34;</span>:2,<span style="color:#e6db74">&#34;user&#34;</span>:<span style="color:#e6db74">&#34;admin&#34;</span>,<span style="color:#e6db74">&#34;pass&#34;</span>:<span style="color:#e6db74">&#34;password&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:1,<span style="color:#e6db74">&#34;user&#34;</span>:<span style="color:#e6db74">&#34;zhangwei&#34;</span>,<span style="color:#e6db74">&#34;pass&#34;</span>:<span style="color:#e6db74">&#34;123456&#34;</span><span style="color:#f92672">}]</span>
-</span></span></code></pre></div><h3 id="搜索框注入">搜索框注入</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>// 模糊搜索时，直接使用<span style="color:#e6db74">&#39;%#{q}%&#39;</span> 会报错，部分研发图方便直接改成<span style="color:#e6db74">&#39;%${q}%&#39;</span>从而造成注入
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>@Select<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;select * from users where user like &#39;%</span><span style="color:#e6db74">${</span>q<span style="color:#e6db74">}</span><span style="color:#e6db74">%&#39;&#34;</span><span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>List&lt;User&gt; search<span style="color:#f92672">(</span>String q<span style="color:#f92672">)</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>// 安全代码,采用concat
-</span></span><span style="display:flex;"><span>@Select<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;select * from users where user like concat(&#39;%&#39;,#{q},&#39;%&#39;)&#34;</span><span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>List&lt;User&gt; search<span style="color:#f92672">(</span>String q<span style="color:#f92672">)</span>;
-</span></span></code></pre></div><h3 id="in-注入">in 注入</h3>
-<p>这里也是使用了${}来进行了拼接,会导致错误</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>    @RequestMapping<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/in&#34;</span><span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    public String in<span style="color:#f92672">(</span>String ids, Model model<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        try <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>//            List&lt;String&gt; list <span style="color:#f92672">=</span> Arrays.asList<span style="color:#f92672">(</span>ids.split<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;,&#34;</span><span style="color:#f92672">))</span>;
-</span></span><span style="display:flex;"><span>//            ArrayList&lt;Admin&gt; adminList <span style="color:#f92672">=</span> injectService.in<span style="color:#f92672">(</span>list<span style="color:#f92672">)</span>;
-</span></span><span style="display:flex;"><span>            ArrayList&lt;Admin&gt; adminList <span style="color:#f92672">=</span> injectService.in<span style="color:#f92672">(</span>ids<span style="color:#f92672">)</span>;
-</span></span><span style="display:flex;"><span>            model.addAttribute<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;userInfo&#34;</span>, adminList<span style="color:#f92672">)</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span> catch <span style="color:#f92672">(</span>Exception e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>            e.printStackTrace<span style="color:#f92672">()</span>;
-</span></span><span style="display:flex;"><span>            model.addAttribute<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;results&#34;</span>, e.toString<span style="color:#f92672">())</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;basevul/sqli/mybatis_in&#34;</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    //  正确安全写法
-</span></span><span style="display:flex;"><span>    //  @Select<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;&lt;script&gt;&#34;</span> + <span style="color:#e6db74">&#34;SELECT * FROM users WHERE id IN &#34;</span> + <span style="color:#e6db74">&#34;&lt;foreach item=&#39;item&#39; index=&#39;index&#39; collection=&#39;ids&#39; open=&#39;(&#39; separator=&#39;,&#39; close=&#39;)&#39;&gt;&#34;</span> + <span style="color:#e6db74">&#34;#{item}&#34;</span> + <span style="color:#e6db74">&#34;&lt;/foreach&gt;&#34;</span> + <span style="color:#e6db74">&#34;&lt;/script&gt;&#34;</span><span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    //  ArrayList&lt;Admin&gt; in<span style="color:#f92672">(</span>@Param<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;ids&#34;</span><span style="color:#f92672">)</span> List&lt;String&gt; ids<span style="color:#f92672">)</span>;
-</span></span><span style="display:flex;"><span>    @Select<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Select * from users where id in (</span><span style="color:#e6db74">${</span>ids<span style="color:#e6db74">}</span><span style="color:#e6db74">)&#34;</span><span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    ArrayList&lt;Admin&gt; in<span style="color:#f92672">(</span>@Param<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;ids&#34;</span><span style="color:#f92672">)</span> String ids<span style="color:#f92672">)</span>;
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><h3 id="使用排序映射">使用排序映射</h3>
-<p>安全写法是在xml中使用排序映射</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;select</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;orderBySafe&#34;</span> <span style="color:#a6e22e">resultType=</span><span style="color:#e6db74">&#34;com.best.hello.entity.User&#34;</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span>    select * from users
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;choose&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;when</span> <span style="color:#a6e22e">test=</span><span style="color:#e6db74">&#34;field == &#39;id&#39;&#34;</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span>            order by id desc
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/when&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;when</span> <span style="color:#a6e22e">test=</span><span style="color:#e6db74">&#34;field == &#39;user&#39;&#34;</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span>            order by user desc
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/when&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;otherwise&gt;</span>
-</span></span><span style="display:flex;"><span>            order by id desc
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/otherwise&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/choose&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/select&gt;</span>
-</span></span></code></pre></div><h3 id="使用">使用#</h3>
-<p>使用Mybatis作为持久层框架，应通过#{}语法进行参数绑定，MyBatis 会创建 PreparedStatement 参数占位符，并通过占位符安全地设置参数。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// 使用 #{} 安全编码</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Select</span>(<span style="color:#e6db74">&#34;select * from users where user like CONCAT(&#39;%&#39;, #{user}, &#39;%&#39;)&#34;</span>)
-</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>User<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">queryByUser</span>(<span style="color:#a6e22e">@Param</span>(<span style="color:#e6db74">&#34;user&#34;</span>) String user);
-</span></span></code></pre></div><h3 id="强制参数类型-1">强制参数类型</h3>
-<p>安全写法,强制类型</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// 使用 ${} 本身是存在注入的，但由于强制使用Integer或long类型导致注入无效（无法注入字符串）</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Select</span>(<span style="color:#e6db74">&#34;select * from users where id = ${id}&#34;</span>)
-</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>User<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">queryById2</span>(<span style="color:#a6e22e">@Param</span>(<span style="color:#e6db74">&#34;id&#34;</span>) Integer id);
-</span></span></code></pre></div><h3 id="总结-1">总结</h3>
-<p>-MyBatis
-MyBatis支持两种参数符号，一种是#，另一种是$，#使用预编译，$使用拼接SQL。</p>
-<p>1、order by注入：由于使用#{}会将对象转成字符串，形成order by &ldquo;user&rdquo; desc造成错误，因此很多研发会采用${}来解决，从而造成注入.</p>
-<p>2、like 注入：模糊搜索时，直接使用&rsquo;%#{q}%&rsquo; 会报错，部分研发图方便直接改成&rsquo;%${q}%&lsquo;从而造成注入.</p>
-<p>3、in注入：in之后多个id查询时使用 # 同样会报错，从而造成注入.</p>
-<h1 id="一句话总结">一句话总结</h1>
-<p>在写sql语句时使用预编译,并且正确使用占位符,不要直接进行拼接处理</p>
-<h1 id="引用">引用</h1>
-<p>小迪sec</p>
 ]]></content>
             
                  

