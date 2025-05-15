@@ -3,10 +3,11 @@ title: 关于我
 tags:
   - l1uyun
 date: 2024-10-27T08:37:45
-lastmod: 2025-03-24T08:52:08
+lastmod: 2025-05-15T23:34:27
 disable_comments: false
 ---
 ## About Me
+你好，我是流云，这个名字源自我小学时的网名“飞天流云”，后来简化为“流云”，到大学之后又写成了liuyun或者l1uyun
 	
 - 🔐 信息安全专业本科生，就读于 HNU。  
 - 💭 INTP(仅作为一个快速认知我的符号)  
