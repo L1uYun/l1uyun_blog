@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-	<meta name="generator" content="Hugo 0.147.6">
+	<meta name="generator" content="Hugo 0.147.7">
     
       <title>l1uyun</title>
     
@@ -153,6 +153,46 @@ if ( false || (!!window.MSInputMethodContext && !!document.documentMode)) {
   
 
   <div class="posts">
+    
+    <div class="post on-list">
+      <h1 class="post-title"><a href="https://l1uyun.one/posts/phpmyadmin-4.8.1%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">phpmyadmin-4.8.1远程文件包含</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2024-09-18
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://l1uyun.one/tags/sec/vulhub/">sec/vulhub</a>&nbsp;
+          
+            #<a href="https://l1uyun.one/tags/sec/cve/">sec/cve</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content">
+        <h2 id="漏洞简介">漏洞简介</h2>
+<p>phpMyAdmin是一套开源的、基于Web的MySQL数据库管理工具。其index.php中存在一处文件包含逻辑，通过二次编码即可绕过检查，造成远程文件包含漏洞。</p>
+<p>这个漏洞刚刚打演练的时候用过,分析一下原理</p>
+<h2 id="影响版本">影响版本</h2>
+<p>phpmyadmin 4.8.0 &amp; 4.8.1</p>
+<h2 id="前提条件">前提条件</h2>
+<p>能够进入后台,也就是要有数据库的凭据</p>
+<h2 id="前置知识">前置知识</h2>
+<h3 id="php文件包含">php文件包含</h3>
+<p>服务器执行PHP文件时，可以通过文件包含函数加载另一个文件中的PHP代码，并且当PHP来执行，这会为开发者节省大量的时间。
+文件包含相关函数</p>
+      </div>
+      
+        <div><a class="read-more button" href="/posts/phpmyadmin-4.8.1%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">阅读全文 →</a></div>
+      
+    </div>
     
     <div class="post on-list">
       <h1 class="post-title"><a href="https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA1/">红日靶场1</a></h1>
@@ -497,59 +537,6 @@ java序列化的数据一般会以标记(ac ed 00 05)开头，base64编码的特
       
     </div>
     
-    <div class="post on-list">
-      <h1 class="post-title"><a href="https://l1uyun.one/posts/hmv_adria/">HMV_adria</a></h1>
-      <div class="post-meta">
-        
-          <span class="post-date">
-            2024-05-14
-          </span>
-        
-
-        
-        <span class="">
-          
-            #<a href="https://l1uyun.one/tags/sec/hackmyvm/">sec/hackmyvm</a>&nbsp;
-          
-        </span>
-        
-      </div>
-
-      
-
-      <div class="post-content">
-        <h2 id="靶机启动">靶机启动</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#ae81ff">68</span> ◯  arp-scan -l
-</span></span><span style="display:flex;"><span>Interface: ens33, type: EN10MB, MAC: 00:0c:29:31:02:fd, IPv4: 192.168.244.101
-</span></span><span style="display:flex;"><span>Starting arp-scan 1.10.0 with <span style="color:#ae81ff">256</span> hosts <span style="color:#f92672">(</span>https://github.com/royhills/arp-scan<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>192.168.244.99  f6:39:4a:3d:95:18       <span style="color:#f92672">(</span>Unknown: locally administered<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>192.168.244.102 08:00:27:22:48:cd       PCS Systemtechnik GmbH
-</span></span><span style="display:flex;"><span>192.168.244.190 ca:a7:78:4d:50:e1       <span style="color:#f92672">(</span>Unknown: locally administered<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">3</span> packets received by filter, <span style="color:#ae81ff">0</span> packets dropped by kernel
-</span></span><span style="display:flex;"><span>Ending arp-scan 1.10.0: <span style="color:#ae81ff">256</span> hosts scanned in 2.273 seconds <span style="color:#f92672">(</span>112.63 hosts/sec<span style="color:#f92672">)</span>. <span style="color:#ae81ff">3</span> responded
-</span></span></code></pre></div><h2 id="端口扫描">端口扫描</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>&gt; nmap 192.168.244.102 -Pn -sT -p- --min-rate <span style="color:#ae81ff">4000</span>
-</span></span><span style="display:flex;"><span>Starting Nmap 7.94SVN <span style="color:#f92672">(</span> https://nmap.org <span style="color:#f92672">)</span> at 2024-05-16 20:50 EDT
-</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 192.168.244.102
-</span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.046s latency<span style="color:#f92672">)</span>.
-</span></span><span style="display:flex;"><span>Not shown: <span style="color:#ae81ff">65531</span> closed tcp ports <span style="color:#f92672">(</span>conn-refused<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>PORT    STATE SERVICE
-</span></span><span style="display:flex;"><span>22/tcp  open  ssh
-</span></span><span style="display:flex;"><span>80/tcp  open  http
-</span></span><span style="display:flex;"><span>139/tcp open  netbios-ssn
-</span></span><span style="display:flex;"><span>445/tcp open  microsoft-ds
-</span></span></code></pre></div><p>先简单看一下各个服务</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>&gt; whatweb adria.hmv
-</span></span><span style="display:flex;"><span>http://adria.hmv <span style="color:#f92672">[</span><span style="color:#ae81ff">200</span> OK<span style="color:#f92672">]</span> Apache<span style="color:#f92672">[</span>2.4.57<span style="color:#f92672">]</span>, Bootstrap, Cookies<span style="color:#f92672">[</span>INTELLI_7da515443a<span style="color:#f92672">]</span>, Country<span style="color:#f92672">[</span>RESERVED<span style="color:#f92672">][</span>ZZ<span style="color:#f92672">]</span>, HTML5, HTTPServer<span style="color:#f92672">[</span>Debian Linux<span style="color:#f92672">][</span>Apache/2.4.57 <span style="color:#f92672">(</span>Debian<span style="color:#f92672">)]</span>, IP<span style="color:#f92672">[</span>192.168.244.102<span style="color:#f92672">]</span>, JQuery, MetaGenerator<span style="color:#f92672">[</span>Subrion CMS - Open Source Content Management System<span style="color:#f92672">]</span>, Open-Graph-Protocol, PoweredBy<span style="color:#f92672">[</span>Subrion<span style="color:#f92672">]</span>, Script, Title<span style="color:#f92672">[</span>Blog :: Powered by Subrion 4.2<span style="color:#f92672">]</span>, UncommonHeaders<span style="color:#f92672">[</span>x-powered-cms<span style="color:#f92672">]</span>, X-UA-Compatible<span style="color:#f92672">[</span>IE<span style="color:#f92672">=</span>Edge<span style="color:#f92672">]</span>
-</span></span></code></pre></div><h2 id="smb_139445">smb_139+445</h2>
-<p>枚举一下smb</p>
-      </div>
-      
-        <div><a class="read-more button" href="/posts/hmv_adria/">阅读全文 →</a></div>
-      
-    </div>
-    
     <div class="pagination">
   <div class="pagination__buttons">
     
@@ -658,6 +645,8 @@ java序列化的数据一般会以标记(ac ed 00 05)开头，base64编码的特
 
     
 
+    
+
 
 
 
@@ -668,7 +657,7 @@ java序列化的数据一般会以标记(ac ed 00 05)开头，base64编码的特
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 93295 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 95920 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
       
     
