@@ -1587,27 +1587,32 @@ photos .photo:last-child {
 }
 
 .links-item{
-    padding:10px 15px;
-    font-size:14px;
-    box-sizing:border-box;
+    padding: 20px; /* 调整内边距 */
+    font-size: 14px;
+    box-sizing: border-box;
     display: flex; /* 使用 flex 布局 */
     flex-direction: column; /* 垂直排列子元素 */
     align-items: center; /* 水平居中 */
     background: #fafafa;
     background: var(--light-header);
-    border-radius: 8px; /* 调整圆角 */
+    border-radius: 12px; /* 调整圆角 */
     text-align: center; /* 文本居中 */
     width: 100%; /* 让每个网格项填充其容器 */
-    min-height: 120px; /* 设置最小高度 */
-    box-shadow: 0 1px 2px rgba(0,0,0,.25),0 0 1px rgba(0,0,0,.25); /* 添加阴影 */
+    min-height: 150px; /* 调整最小高度 */
+    box-shadow: 0 4px 8px rgba(0,0,0,.1); /* 调整阴影 */
+    transition: transform 0.3s ease; /* 添加过渡效果 */
+}
+.links-item:hover {
+    transform: translateY(-5px); /* 悬停时上移 */
 }
 .links-item img{
     border-radius:50%; /* 将头像设置为圆形 */
-    width:60px; /* 调整头像大小 */
-    height:60px; /* 调整头像大小 */
+    width:70px; /* 调整头像大小 */
+    height:70px; /* 调整头像大小 */
     background: #fff;
     margin-bottom: 10px; /* 添加底部外边距 */
     float: none; /* 移除浮动 */
+    box-shadow: 0 2px 4px rgba(0,0,0,.1); /* 添加头像阴影 */
 }
 .links-item a{
     display: block;
@@ -1619,16 +1624,19 @@ photos .photo:last-child {
     text-decoration: none; /* 移除下划线 */
     margin-bottom: 5px; /* 添加底部外边距 */
     font-weight: bold; /* 字体加粗 */
+    font-size: 1.2rem; /* 调整名字字体大小 */
+    color: var(--light-color); /* 使用主题颜色 */
 }
 .links-item p{
     margin: 0; /* 移除默认外边距 */
-    font-size: 12px; /* 调整描述字体大小 */
-    color: #555; /* 调整描述颜色 */
+    font-size: 0.9rem; /* 调整描述字体大小 */
+    color: var(--light-color-secondary); /* 使用主题次要颜色 */
     word-break: break-word; /* 允许换行 */
     flex-grow: 1; /* 允许描述占据剩余空间 */
     display: flex; /* 使用 flex 布局 */
     align-items: center; /* 垂直居中 */
     justify-content: center; /* 水平居中 */
+    line-height: 1.5; /* 调整行高 */
 }
 @media only screen and (max-width:683px) {
 	.friends-grid {
@@ -1638,18 +1646,24 @@ photos .photo:last-child {
     }
 	.links-item{
         min-width: 100px; /* 调整小屏幕下的最小宽度 */
-        min-height: 100px; /* 调整小屏幕下的最小高度 */
+        min-height: 120px; /* 调整小屏幕下的最小高度 */
+        padding: 15px; /* 调整小屏幕下的内边距 */
     }
     .links-item img{
-        width:40px; /* 调整小屏幕下头像大小 */
-        height:40px; /* 调整小屏幕下头像大小 */
+        width:50px; /* 调整小屏幕下头像大小 */
+        height:50px; /* 调整小屏幕下头像大小 */
+        margin-bottom: 8px; /* 调整小屏幕下底部外边距 */
     }
     .links-item a{
-        font-size: 12px; /* 调整小屏幕下链接字体大小 */
+        font-size: 1rem; /* 调整小屏幕下链接字体大小 */
+        margin-bottom: 3px; /* 调整小屏幕下底部外边距 */
     }
     .links-item p{
-        font-size: 10px; /* 调整小屏幕下描述字体大小 */
+        font-size: 0.8rem; /* 调整小屏幕下描述字体大小 */
+        line-height: 1.4; /* 调整小屏幕下行高 */
     }
 }
-.dark .links-item{background: #252627;background: var(--dark-header);}
-.dark .links-item p{color: #ccc;} /* 调整暗色模式下描述颜色 */
+.dark .links-item{background: var(--dark-header); box-shadow: 0 4px 8px rgba(0,0,0,.3);} /* 调整暗色模式下背景和阴影 */
+.dark .links-item img{box-shadow: 0 2px 4px rgba(0,0,0,.2);} /* 调整暗色模式下头像阴影 */
+.dark .links-item a{color: var(--dark-color);} /* 调整暗色模式下链接颜色 */
+.dark .links-item p{color: var(--dark-color-secondary);} /* 调整暗色模式下描述颜色 */
