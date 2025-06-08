@@ -1601,7 +1601,6 @@ photos .photo:last-child {
     min-height: 150px; /* 调整最小高度 */
     box-shadow: 0 4px 8px rgba(0,0,0,.1); /* 调整阴影 */
     transition: transform 0.3s ease; /* 添加过渡效果 */
-    font-family: 'Noto Serif SC', serif !important; /* 添加字体样式 */
 }
 .links-item:hover {
     transform: translateY(-5px); /* 悬停时上移 */
