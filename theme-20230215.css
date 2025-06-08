@@ -1577,3 +1577,79 @@ photos .photo:last-child {
 	.db-card-comment{display: none;}
 }
 /* db-card -------- edn */
+
+.friends-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* 根据容器宽度自动填充列，每列最小宽度150px */
+    gap: 20px; /* 设置网格间距 */
+    padding: 20px; /* 添加内边距 */
+    justify-items: center; /* 网格项水平居中 */
+}
+
+.links-item{
+    padding:10px 15px;
+    font-size:14px;
+    box-sizing:border-box;
+    display: flex; /* 使用 flex 布局 */
+    flex-direction: column; /* 垂直排列子元素 */
+    align-items: center; /* 水平居中 */
+    background: #fafafa;
+    background: var(--light-header);
+    border-radius: 8px; /* 调整圆角 */
+    text-align: center; /* 文本居中 */
+    width: 100%; /* 让每个网格项填充其容器 */
+    min-height: 120px; /* 设置最小高度 */
+    box-shadow: 0 1px 2px rgba(0,0,0,.25),0 0 1px rgba(0,0,0,.25); /* 添加阴影 */
+}
+.links-item img{
+    border-radius:50%; /* 将头像设置为圆形 */
+    width:60px; /* 调整头像大小 */
+    height:60px; /* 调整头像大小 */
+    background: #fff;
+    margin-bottom: 10px; /* 添加底部外边距 */
+    float: none; /* 移除浮动 */
+}
+.links-item a{
+    display: block;
+    padding:0; /* 移除内边距 */
+    margin-left:0; /* 移除左外边距 */
+    word-break: break-word; /* 允许换行 */
+    height: auto; /* 移除固定高度 */
+    overflow: visible; /* 移除隐藏溢出 */
+    text-decoration: none; /* 移除下划线 */
+    margin-bottom: 5px; /* 添加底部外边距 */
+    font-weight: bold; /* 字体加粗 */
+}
+.links-item p{
+    margin: 0; /* 移除默认外边距 */
+    font-size: 12px; /* 调整描述字体大小 */
+    color: #555; /* 调整描述颜色 */
+    word-break: break-word; /* 允许换行 */
+    flex-grow: 1; /* 允许描述占据剩余空间 */
+    display: flex; /* 使用 flex 布局 */
+    align-items: center; /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
+}
+@media only screen and (max-width:683px) {
+	.friends-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* 调整小屏幕下的列布局 */
+        gap: 10px; /* 调整小屏幕下的间距 */
+        padding: 10px; /* 调整小屏幕下的内边距 */
+    }
+	.links-item{
+        min-width: 100px; /* 调整小屏幕下的最小宽度 */
+        min-height: 100px; /* 调整小屏幕下的最小高度 */
+    }
+    .links-item img{
+        width:40px; /* 调整小屏幕下头像大小 */
+        height:40px; /* 调整小屏幕下头像大小 */
+    }
+    .links-item a{
+        font-size: 12px; /* 调整小屏幕下链接字体大小 */
+    }
+    .links-item p{
+        font-size: 10px; /* 调整小屏幕下描述字体大小 */
+    }
+}
+.dark .links-item{background: #252627;background: var(--dark-header);}
+.dark .links-item p{color: #ccc;} /* 调整暗色模式下描述颜色 */
