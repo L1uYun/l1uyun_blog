@@ -24,7 +24,7 @@ disable_comments: false
 - 阅读思考
 - 生活感悟
 
-欢迎使用[rss](https://l1uyun.one/atom.xml)订阅本站
+欢迎使用[RSS](https://l1uyun.one/atom.xml)订阅本站
 
 ## My Friends 
 
