@@ -155,6 +155,39 @@ if ( false || (!!window.MSInputMethodContext && !!document.documentMode)) {
   <div class="posts">
     
     <div class="post on-list">
+      <h1 class="post-title"><a href="https://l1uyun.one/posts/phpmyadmin-4.0.x4.6.2_%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/">phpMyAdmin-4.0.x—4.6.2_远程代码执行漏洞</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2024-09-18
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://l1uyun.one/tags/sec/vulhub/">sec/vulhub</a>&nbsp;
+          
+            #<a href="https://l1uyun.one/tags/sec/cve/">sec/cve</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content">
+        <h2 id="漏洞简介">漏洞简介</h2>
+<p>phpMyAdmin是一套开源的、基于Web的MySQL数据库管理工具。</p>
+<p>在其查找并替换字符串功能中，将用户输入的信息拼接进preg_replace函数第一个参数中。
+在PHP5.4.7以前，preg_replace的第一个参数可以利用\0进行截断，并将正则模式修改为e。众所周知，e模式的正则支持执行代码，此时将可构造一个任意代码执行漏洞。</p>
+      </div>
+      
+        <div><a class="read-more button" href="/posts/phpmyadmin-4.0.x4.6.2_%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/">阅读全文 →</a></div>
+      
+    </div>
+    
+    <div class="post on-list">
       <h1 class="post-title"><a href="https://l1uyun.one/posts/phpmyadmin-4.8.1%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">phpmyadmin-4.8.1远程文件包含</a></h1>
       <div class="post-meta">
         
@@ -474,69 +507,6 @@ java序列化的数据一般会以标记(ac ed 00 05)开头，base64编码的特
       
     </div>
     
-    <div class="post on-list">
-      <h1 class="post-title"><a href="https://l1uyun.one/posts/hmv_airbind/">HMV_airbind</a></h1>
-      <div class="post-meta">
-        
-          <span class="post-date">
-            2024-06-15
-          </span>
-        
-
-        
-        <span class="">
-          
-            #<a href="https://l1uyun.one/tags/sec/hackmyvm/">sec/hackmyvm</a>&nbsp;
-          
-        </span>
-        
-      </div>
-
-      
-
-      <div class="post-content">
-        <h2 id="端口扫描">端口扫描</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>~ ➤ nmap -Pn -sT 192.168.124.210 -p-
-</span></span><span style="display:flex;"><span>Starting Nmap 7.94SVN <span style="color:#f92672">(</span> https://nmap.org <span style="color:#f92672">)</span> at 2024-06-14 23:47 EDT
-</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 192.168.124.210
-</span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.0047s latency<span style="color:#f92672">)</span>.
-</span></span><span style="display:flex;"><span>Not shown: <span style="color:#ae81ff">65533</span> closed tcp ports <span style="color:#f92672">(</span>conn-refused<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>PORT   STATE    SERVICE
-</span></span><span style="display:flex;"><span>22/tcp filtered ssh
-</span></span><span style="display:flex;"><span>80/tcp open     http
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Nmap <span style="color:#66d9ef">done</span>: <span style="color:#ae81ff">1</span> IP address <span style="color:#f92672">(</span><span style="color:#ae81ff">1</span> host up<span style="color:#f92672">)</span> scanned in 7.38 seconds
-</span></span></code></pre></div><p>22端口是filtered&hellip;没注意这个细节
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMV_airbind_image_1.png" alt="HMV_airbind_image_1"  /></p>
-<h2 id="web_80">web_80</h2>
-<h3 id="目录扫描">目录扫描</h3>
-<p>扫目录扫出来,状态不太行,应该先判断一下优先查看哪些目录</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>/images               <span style="color:#f92672">(</span>Status: 301<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 319<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; http://192.168.124.210/images/<span style="color:#f92672">]</span>   
-</span></span><span style="display:flex;"><span>/.php                 <span style="color:#f92672">(</span>Status: 403<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 280<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>/about.php            <span style="color:#f92672">(</span>Status: 302<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 0<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; login.php<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>/login.php            <span style="color:#f92672">(</span>Status: 200<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 1924<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>/logos.php            <span style="color:#f92672">(</span>Status: 200<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 1977<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>/stats.php            <span style="color:#f92672">(</span>Status: 302<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 0<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; login.php<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>/index.php            <span style="color:#f92672">(</span>Status: 302<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 0<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; login.php<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>/.html                <span style="color:#f92672">(</span>Status: 403<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 280<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>/screenshots          <span style="color:#f92672">(</span>Status: 301<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 324<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; http://192.168.124.210/screenshots/<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>/scripts              <span style="color:#f92672">(</span>Status: 301<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 320<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; http://192.168.124.210/scripts/<span style="color:#f92672">]</span>  
-</span></span><span style="display:flex;"><span>/registration.php     <span style="color:#f92672">(</span>Status: 302<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 0<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; login.php<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>/includes             <span style="color:#f92672">(</span>Status: 301<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 321<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; http://192.168.124.210/includes/<span style="color:#f92672">]</span> 
-</span></span><span style="display:flex;"><span>/db                   <span style="color:#f92672">(</span>Status: 301<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 315<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; http://192.168.124.210/db/<span style="color:#f92672">]</span>       
-</span></span><span style="display:flex;"><span>/logout.php           <span style="color:#f92672">(</span>Status: 302<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 0<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; .<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>/styles               <span style="color:#f92672">(</span>Status: 301<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 319<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; http://192.168.124.210/styles/<span style="color:#f92672">]</span>   
-</span></span><span style="display:flex;"><span>/settings.php         <span style="color:#f92672">(</span>Status: 302<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 0<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; login.php<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>/auth.php             <span style="color:#f92672">(</span>Status: 200<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 0<span style="color:#f92672">]</span>
-</span></span></code></pre></div><h3 id="db文件泄露">db文件泄露</h3>
-<p>在db目录下找到一个sqlite的转储文件,使用在线工具解析一下,发现user
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMV_airbind_image_2.png" alt="HMV_airbind_image_2"  /></p>
-      </div>
-      
-        <div><a class="read-more button" href="/posts/hmv_airbind/">阅读全文 →</a></div>
-      
-    </div>
-    
     <div class="pagination">
   <div class="pagination__buttons">
     
@@ -647,6 +617,8 @@ java序列化的数据一般会以标记(ac ed 00 05)开头，base64编码的特
 
     
 
+    
+
 
 
 
@@ -657,7 +629,7 @@ java序列化的数据一般会以标记(ac ed 00 05)开头，base64编码的特
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 95956 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 98555 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
       
     
