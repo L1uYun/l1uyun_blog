@@ -3,7 +3,7 @@ title: 关于我
 tags:
   - l1uyun
 date: 2024-10-27T08:37:45
-lastmod: 2025-08-04T22:14:37
+lastmod: 2025-08-05T13:11:48
 disable_comments: false
 ---
 ## About Me
@@ -18,6 +18,7 @@ disable_comments: false
 - 这是一个自由书写的地方，记录一些胡言乱语。
 
 写的内容大概是：
+- 技术学习
 - 阅读思考
 - 生活感悟
 
