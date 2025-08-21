@@ -471,17 +471,22 @@ if ( false || (!!window.MSInputMethodContext && !!document.documentMode)) {
 
 
     <section class="comments">
-      <script
-        src="https://utteranc.es/client.js"
-        repo="L1uYun/l1uyun_blog"
-        issue-term="title"
-        label="💬comment"
-        theme="github-light"
-        crossorigin="anonymous"
-        async
-      ></script>
+      <div id="twikoo"></div>
+      <script src="https://cdn.staticfile.org/twikoo/1.6.8/twikoo.all.min.js"></script>
+      <script>
+        twikoo.init({
+          envId: 'twikoo.l1uyun.one',
+          el: '#twikoo',
+          region: 'ap-shanghai',
+          path: window.location.pathname,
+          lang: 'zh-CN'
+        });
+        
+        
+      </script>
     </section>
-    
+
+
       
     </div>
   </body>
