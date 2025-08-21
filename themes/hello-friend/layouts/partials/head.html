@@ -10,8 +10,8 @@
 
 <link href="/atom.xml" title="{{ $.Site.Title }}" type="application/rss+xml">
 <link rel="canonical" href="{{ .Permalink }}" />
-<link rel="stylesheet" href="//cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.6.0/lxgwwenkaiscreen.css" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="/theme-20230215.css">
+<link rel="stylesheet" href="/LXGWNeoZhiSong/lxgwneozhisong.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="/theme-20230215.css?v=2401-1">
 <link rel="shortcut icon" href="{{ "favicon.ico" | absURL }}">
 <link rel="apple-touch-icon" href="{{ "favicon.ico" | absURL }}">
 <link rel="bookmark" href="{{ "favicon.ico" | absURL }}">
@@ -42,7 +42,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 }
 </script>
 
-{{- if not hugo.IsServer }}
-<script async defer data-website-id="c27bd84b-02a3-4c3f-a168-0d7fadec9c74" src="https://u.edui.fun/lmmtj.js"></script>
+{{- if not .Site.IsServer }}
+<script defer src="https://views.edui.fun/lmm214.js" data-website-id="ddb6c6c5-cb77-4e2d-a3fc-768f2957f78f"></script>
 {{ end -}}
+
+<script  src="/quicklink.umd.js"></script>
+<script>window.addEventListener('load', () => {  quicklink.listen();});</script>
 

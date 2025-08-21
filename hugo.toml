@@ -87,6 +87,7 @@ rssLimit = 10
   visitor = false
   envId = "https://twikoo.l1uyun.one"
   lang = "zh-CN"
+  showInDev = true  # 设置为 true 在开发模式下也显示评论
 
 [params.utteranc]
   enable = false
