@@ -85,8 +85,7 @@ rssLimit = 10
 [params.twikoo]
   enable = true
   visitor = false
-  envId = "twikoo.l1uyun.one" # 请替换为你的Vercel部署的twikoo环境ID
-  region = "ap-shanghai"
+  envId = "twikoo.l1uyun.one"
   lang = "zh-CN"
 
 [params.utteranc]
