@@ -86,5 +86,10 @@
     {{ end }}
 
     <!-- {{ partial "subscribe-form.html" . }} -->
+    
+    {{ if not (eq .Params.Comments "false") }}
+        {{ partial "comments.html" . }}
+    {{ end }}
+
     </div>
 {{ end }}

@@ -1,0 +1,10 @@
+<!-- twikoo -->
+{{- if .Site.Params.twikoo.enable}}
+<div class="pagination__title">
+  <span class="pagination__title-h">欢迎评论</span>
+  <hr />
+</div>
+  <div id="tcomment"></div>
+  <script src="/twikoo1640.js"></script>
+  <script>twikoo.init({ envId: '{{ .Site.Params.twikoo.envId }}', el: '#tcomment' })</script>
+{{- end }}
