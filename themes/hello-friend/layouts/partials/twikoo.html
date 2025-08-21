@@ -7,7 +7,7 @@
         twikoo.init({
           envId: '{{ .Site.Params.twikoo.envId }}',
           el: '#twikoo',
-          region: '{{ .Site.Params.twikoo.region | default "ap-shanghai" }}',
+          region: '{{ .Site.Params.twikoo.region}}',
           path: window.location.pathname,
           lang: '{{ .Site.Params.twikoo.lang | default "zh-CN" }}'
         });
