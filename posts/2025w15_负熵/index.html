@@ -19,8 +19,8 @@ Monday 到周天晚上，我都还没有产生写周记的情感冲动，以为�
 
 <link href="/atom.xml" title="l1uyun" type="application/rss+xml">
 <link rel="canonical" href="https://l1uyun.one/posts/2025w15_%E8%B4%9F%E7%86%B5/" />
-<link rel="stylesheet" href="//cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.6.0/lxgwwenkaiscreen.css" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="/theme-20230215.css">
+<link rel="stylesheet" href="/LXGWNeoZhiSong/lxgwneozhisong.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="/theme-20230215.css?v=2401-1">
 <link rel="shortcut icon" href="https://l1uyun.one/favicon.ico">
 <link rel="apple-touch-icon" href="https://l1uyun.one/favicon.ico">
 <link rel="bookmark" href="https://l1uyun.one/favicon.ico">
@@ -52,7 +52,12 @@ if ( false || (!!window.MSInputMethodContext && !!document.documentMode)) {
     document.write('\x3Cscript id="_iealwn_js" data-outver="11" src="https://support.dmeng.net/ie-alert-warning/latest.js">\x3C/script>');
 }
 </script>
-<script async defer data-website-id="c27bd84b-02a3-4c3f-a168-0d7fadec9c74" src="https://u.edui.fun/lmmtj.js"></script>
+
+
+<script defer src="https://views.edui.fun/lmm214.js" data-website-id="ddb6c6c5-cb77-4e2d-a3fc-768f2957f78f"></script>
+<script  src="/quicklink.umd.js"></script>
+<script>window.addEventListener('load', () => {  quicklink.listen();});</script>
+
 
     
   <link rel="prefetch" href="https://l1uyun.one/posts/2025w18_%E6%AF%94%E7%89%B9%E8%BF%B7%E6%80%9D/">
@@ -60,7 +65,21 @@ if ( false || (!!window.MSInputMethodContext && !!document.documentMode)) {
 
   </head>
   <body class="">
-    <script>var getTheme = localStorage.getItem("theme") || '';if(getTheme == 'dark'){document.body.classList.add("dark")}else if(getTheme == 'light'){document.body.classList.remove("dark")}</script>
+    <script>
+checkNightMode()
+function checkNightMode() {
+  var Mode = localStorage.getItem("theme") || ''
+  if (Mode == "dark") {
+    document.body.classList.add("dark")
+  }else if (Mode == null || Mode == "undefined" || Mode == "") {
+    if (matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.body.classList.add("dark")
+    }else if (matchMedia('(prefers-color-scheme: light)').matches) {
+      document.body.classList.remove("dark")
+    }
+  }
+}
+    </script>
     <div class="container">
       <header class="header">
   <span class="header__inner">
@@ -308,6 +327,19 @@ if ( false || (!!window.MSInputMethodContext && !!document.documentMode)) {
     
 
     
+    
+    
+        
+<div class="pagination__title">
+  <span class="pagination__title-h">欢迎评论</span>
+  <hr />
+</div>
+  <div id="tcomment"></div>
+  <script src="/twikoo1640.js"></script>
+  <script>twikoo.init({ envId: 'https:\/\/twikoo.l1uyun.one', el: '#tcomment' })</script>
+
+    
+
     </div>
 
       </div>
@@ -428,23 +460,6 @@ if ( false || (!!window.MSInputMethodContext && !!document.documentMode)) {
 </script>
 
 
-
-
-    <section class="comments">
-      <div id="twikoo"></div>
-      <script src="https://cdn.staticfile.org/twikoo/1.6.8/twikoo.all.min.js"></script>
-      <script>
-        twikoo.init({
-          envId: 'https:\/\/twikoo.l1uyun.one',
-          el: '#twikoo',
-          region: '',
-          path: window.location.pathname,
-          lang: 'zh-CN'
-        });
-        
-        
-      </script>
-    </section>
 
 
       
