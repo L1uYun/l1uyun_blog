@@ -83,11 +83,14 @@ rssLimit = 10
   baseName = "atom"
 
 [params.twikoo]
-  enable = false
+  enable = true
   visitor = false
+  envId = "twikoo.l1uyun.one" # 请替换为你的Vercel部署的twikoo环境ID
+  region = "ap-shanghai"
+  lang = "zh-CN"
 
 [params.utteranc]
-  enable = true
+  enable = false
   repo = "L1uYun/l1uyun_blog" ##换成自己得
   issueTerm = "title"
   label="💬comment"
