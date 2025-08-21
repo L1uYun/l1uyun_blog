@@ -706,17 +706,20 @@ XXE 攻击可能导致敏感信息泄露、服务拒绝（DoS）攻击等安全�
 
 
     <section class="comments">
-      <script
-        src="https://utteranc.es/client.js"
-        repo="L1uYun/l1uyun_blog"
-        issue-term="title"
-        label="💬comment"
-        theme="github-light"
-        crossorigin="anonymous"
-        async
-      ></script>
+      <div id="twikoo"></div>
+      <script src="https://cdn.jsdelivr.net/npm/twikoo@1.6.8/dist/twikoo.all.min.js"></script>
+      <script>
+        twikoo.init({
+          envId: 'https:\/\/l1uyun-blog.vercel.app', 
+          el: '#twikoo',
+          region: 'ap-shanghai', 
+          path: window.location.pathname,
+          lang: 'zh-CN'
+        });
+      </script>
     </section>
-    
+
+
       
     </div>
   </body>
