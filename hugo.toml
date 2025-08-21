@@ -85,7 +85,7 @@ rssLimit = 10
 [params.twikoo]
   enable = true
   visitor = false
-  envId = "twikoo.l1uyun.one"
+  envId = "https://twikoo.l1uyun.one"
   lang = "zh-CN"
 
 [params.utteranc]

@@ -16,7 +16,7 @@
         // 访客统计功能
         twikoo.getVisitCount({
           envId: '{{ .Site.Params.twikoo.envId }}',
-          region: '{{ .Site.Params.twikoo.region | default "ap-shanghai" }}',
+          region: '{{ .Site.Params.twikoo.region}}',
           path: window.location.pathname
         }).then(function (res) {
           console.log('访客统计:', res);
