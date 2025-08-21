@@ -83,7 +83,9 @@ rssLimit = 10
   baseName = "atom"
 
 [params.twikoo]
-  enable = false
+  enable = true
+  envId = "https://l1uyun-blog.vercel.app" # 需要替换为你的 Vercel 环境ID
+  region = "ap-shanghai"
   visitor = false
 
 [params.utteranc]
