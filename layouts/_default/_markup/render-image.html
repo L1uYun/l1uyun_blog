@@ -1,0 +1,11 @@
+{{/* Markdown image render hook: center image, show caption from title or alt */}}
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="{{ .Destination | safeURL }}" alt="{{ .Text }}"{{ with .Title }} title="{{ . }}"{{ end }} />
+  {{- if .Title -}}
+    <figcaption>{{ .Title }}</figcaption>
+  {{- else if .Text -}}
+    <figcaption>{{ .Text }}</figcaption>
+  {{- end -}}
+</figure>
+
+
