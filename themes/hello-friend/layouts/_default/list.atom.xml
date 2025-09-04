@@ -61,8 +61,18 @@
         <entry>
             {{ printf `<title type="html"><![CDATA[%s]]></title>` .Title | safeHTML }}
             {{- $custom := .Params.url -}}
+            {{- $customStr := "" -}}
             {{- if $custom -}}
-            <link href="{{ $custom | absURL }}" rel="alternate" type="text/html" />
+                {{- if (eq (printf "%T" $custom) "string") -}}
+                    {{- $customStr = $custom -}}
+                {{- else -}}
+                    {{- range first 1 $custom -}}
+                        {{- $customStr = . -}}
+                    {{- end -}}
+                {{- end -}}
+            {{- end -}}
+            {{- if $customStr -}}
+            <link href="{{ $customStr | absURL }}" rel="alternate" type="text/html" />
             {{- else -}}
             <link href="{{ .Permalink }}" rel="alternate" type="text/html" />
             {{- end -}}
@@ -73,8 +83,8 @@
             {{ with .Params.id }}
                 <id>{{ . | plainify }}</id>
             {{ else }}
-                {{- if $custom -}}
-                <id>{{ $custom | absURL }}</id>
+                {{- if $customStr -}}
+                <id>{{ $customStr | absURL }}</id>
                 {{- else -}}
                 <id>{{ .Permalink }}</id>
                 {{- end -}}
