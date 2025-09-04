@@ -417,15 +417,30 @@ function checkNightMode() {
 <p>环境和红日1的环境搭建差不多，不过这次给三台机器分别是域控、web服务器、个人PC机，与红日1不同的是这里将域管换成了个人PC机，因此我们的一些操作也会有所不同</p>
 <h1 id="红日靶场2_win域">红日靶场2_win域</h1>
 <h2 id="搭建环境">搭建环境</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_1.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_1.png" alt="" /></figure>
+
+
+</p>
 <pre tabindex="0"><code>administrator
 1qaz@WSX
 默认密码都是1qaz@WSX
 </code></pre><p>这里需要模拟内网环境,所以需要弄一个内网网卡</p>
 <p>创建一个vmnet2
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_2.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_2.png" alt="" /></figure>
+
+
+</p>
 <p>然后把三台机器的网卡2都改成这个vmnet2就行了
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_3.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_3.png" alt="" /></figure>
+
+
+
 DC机器不需要做什么处理,改完网卡直接启动就行</p>
       </div>
       
@@ -532,9 +547,19 @@ DC机器不需要做什么处理,改完网卡直接启动就行</p>
 <h1 id="红日靶场1-win域">红日靶场1-win域</h1>
 <h2 id="环境搭建">环境搭建</h2>
 <p>下载完之后,解压,并在vmware中扫描虚拟机</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_1.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_1.png" alt="" /></figure>
+
+
+</p>
 <p>根据这个网络拓扑图,win7机器有两个网卡,是通外网的,win2003和win2008是在内网环境中</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_2.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_2.png" alt="" /></figure>
+
+
+</p>
 <p>先给win7添加一下网卡,这里我习惯使用桥接,所以另一个网卡是桥接模式</p>
       </div>
       
@@ -658,7 +683,7 @@ DC机器不需要做什么处理,改完网卡直接启动就行</p>
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 85391 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 85604 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
       
     

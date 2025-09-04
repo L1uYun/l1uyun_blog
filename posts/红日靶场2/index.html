@@ -255,44 +255,99 @@ function checkNightMode() {
 <p>环境和红日1的环境搭建差不多，不过这次给三台机器分别是域控、web服务器、个人PC机，与红日1不同的是这里将域管换成了个人PC机，因此我们的一些操作也会有所不同</p>
 <h1 id="红日靶场2_win域">红日靶场2_win域</h1>
 <h2 id="搭建环境">搭建环境</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_1.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_1.png" alt="" /></figure>
+
+
+</p>
 <pre tabindex="0"><code>administrator
 1qaz@WSX
 默认密码都是1qaz@WSX
 </code></pre><p>这里需要模拟内网环境,所以需要弄一个内网网卡</p>
 <p>创建一个vmnet2
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_2.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_2.png" alt="" /></figure>
+
+
+</p>
 <p>然后把三台机器的网卡2都改成这个vmnet2就行了
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_3.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_3.png" alt="" /></figure>
+
+
+
 DC机器不需要做什么处理,改完网卡直接启动就行</p>
 <p>这里的另外一个网卡,作者设置的是111网段,但是我习惯了自己的ip,所以选择改pc和web两台机器里面的ip</p>
 <p>先改一下pc这台机器,这台先改下ip
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_4.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_4.png" alt="" /></figure>
+
+
+
 再测试一下连通性,使用外部的parrot机器ping一下,没通,需要关闭防火墙
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_5.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_5.png" alt="" /></figure>
+
+
+</p>
 <p>最后配置web机器,web机器需要先将恢复快照1.3版本
 会出现一个报错,直接点放弃就行,<strong>这里恢复快照之后,需要重新改网卡,怪不得ping不通域控的</strong></p>
 <p>登录本地用户</p>
 <pre tabindex="0"><code>.\de1ay
 1qaz@WSX
 </code></pre><p>这里提示需要修改密码,我改成1qaz@WSX3
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_6.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_6.png" alt="" /></figure>
+
+
+
 进去之后直接注销掉,切换成域用户mssql,密码还是1qaz@WSX</p>
 <p>然后还是先改ip
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_7.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_7.png" alt="" /></figure>
+
+
+</p>
 <p>改完之后测试一下两个网段都能不能ping通</p>
 <p>ping不通的话得关一下web的防火墙,关掉之后就能ping通了
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_8.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_8.png" alt="" /></figure>
+
+
+</p>
 <p>红日1是以phpstudy搭的一个web服务，红日2用的是weblogic。web服务中，我们需要手动打开weblogic</p>
 <p>进入这个路径<code>C:\Oracle\Middleware\user_projects\domains\base_domain\bin</code>,没权限的时候,输管理员凭据就行.
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_9.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_9.png" alt="" /></figure>
+
+
+
 以管理员身份启动一下weblogic
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_10.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_10.png" alt="" /></figure>
+
+
+</p>
 <p>搭建时参考的文章提到:
 WEB机和PC机：计算机右键-&gt;管理-&gt;配置-&gt;服务-&gt;Server、Workstation、Computer Browser 全部启动（Computer Browser 是关闭的,导致 net view 显示 6118 error 没能解决，在域信息收集时暂时关闭一下防火墙）</p>
 <p>我这里web里的Computer Browser是关闭的,我手动打开了,pc机器是正常的.</p>
 <p>访问192.168.3.80:7001/console,跳转进去登录页面,环境搭建成功
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_11.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_11.png" alt="" /></figure>
+
+
+</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>web 192.168.3.80
 </span></span><span style="display:flex;"><span>pc  192.168.3.201
 </span></span><span style="display:flex;"><span>win 192.168.3.99
@@ -428,26 +483,71 @@ WEB机和PC机：计算机右键-&gt;管理-&gt;配置-&gt;服务-&gt;Server、W
 <a href="weblogic-wls-wsat-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96%e6%bc%8f%e6%b4%9e.md">weblogic-wls-wsat-反序列化漏洞</a>
 这个检测脚本卡主了,上一键利用工具了</p>
 <p>CVE-2016-0638
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_12.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_13.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_12.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_13.png" alt="" /></figure>
+
+
+</p>
 <h3 id="antsword_内存马">antsword_内存马</h3>
 <p>使用这个工具里面的内存马,上传antsword_Custom_Filter内存马</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_14.png" alt="|650"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_14.png" alt="|650" /><figcaption>|650</figcaption></figure>
+
+
+</p>
 <p>进去之后查看ip,是存在内网环境的
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_15.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_15.png" alt="" /></figure>
+
+
+</p>
 <h2 id="内网">内网</h2>
 <p>这里还有一台PC机器是暴露在外网环境中的,但是已经拿了web机器的shell,就先进内网</p>
 <h3 id="信息收集-1">信息收集</h3>
 <p>局域网机器
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_16.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_16.png" alt="" /></figure>
+
+
+
 本机信息
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_17.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_17.png" alt="" /></figure>
+
+
+
 无法查看域用户
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_18.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_18.png" alt="" /></figure>
+
+
+
 本地管理员组,这里面有域用户DE1AY\Domain Admins这个域用户
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_19.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_19.png" alt="" /></figure>
+
+
+
 域信息
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_20.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_20.png" alt="" /></figure>
+
+
+</p>
 <h3 id="cs上线">CS上线</h3>
 <p>添加监听器</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>name：为监听器名字，可任意
@@ -455,23 +555,63 @@ WEB机和PC机：计算机右键-&gt;管理-&gt;配置-&gt;服务-&gt;Server、W
 </span></span><span style="display:flex;"><span>HTTP Hosts: shell反弹的主机，也就是我们kali的ip（如果是阿里云，则填阿里云主机的公网ip）
 </span></span><span style="display:flex;"><span>HTTP Hosts(Stager): Stager的马请求下载payload的地址（一般也是和上面的ip填一样）
 </span></span><span style="display:flex;"><span>HTTP Port(C2): C2监听的端口
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_21.png" alt=""  />
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_21.png" alt="" /></figure>
+
+
+
 创建payload
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_22.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_22.png" alt="" /></figure>
+
+
+
 上传马子,将shell传到cs上
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_23.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_23.png" alt="" /></figure>
+
+
+</p>
 <p>获取明文凭据
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_24.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_24.png" alt="" /></figure>
+
+
+</p>
 <p>rdp也能连上去
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_25.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_25.png" alt="" /></figure>
+
+
+
 噢,简称和完整域名的区别
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_26.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_26.png" alt="" /></figure>
+
+
+</p>
 <h3 id="cs后渗透_横向移动">CS后渗透_横向移动</h3>
 <p>上线cs之后,使用cs上面的横向移动模块中psexec就能解决掉剩下的两台机器了</p>
 <p>域控
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_27.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_27.png" alt="" /></figure>
+
+
+</p>
 <p>PC机器
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_28.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_28.png" alt="" /></figure>
+
+
+</p>
 <h1 id="links">links</h1>
 <p><a href="https://xz.aliyun.com/t/11676" target="_blank" rel="noopener nofollow noreferrer" >https://xz.aliyun.com/t/11676</a></p>
 <p><a href="https://www.viewofthai.link/2022/09/11/" target="_blank" rel="noopener nofollow noreferrer" >https://www.viewofthai.link/2022/09/11/</a>红日att＆ck系列靶场（二）/</p>
@@ -630,7 +770,7 @@ WEB机和PC机：计算机右键-&gt;管理-&gt;配置-&gt;服务-&gt;Server、W
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 85391 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 85604 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
       
     

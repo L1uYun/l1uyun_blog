@@ -309,8 +309,18 @@ SYSTEM、PUBLIC是外部资源的申请</p>
 <p>（通用实体、参数实体）</p>
 <p>1)内部实体
 所谓内部实体是指在一个实体中定义的另一个实体，也就是嵌套定义。
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_1.png" alt=""  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_2.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_1.png" alt="" /></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_2.png" alt="" /></figure>
+
+
+
 使用&amp;xxe对上面定义的xxe实体进行了引用，到时候输出的时候&amp;xxe就会被“test”替换。</p>
 <p>在XML内部声明DTD:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
@@ -333,22 +343,42 @@ SYSTEM、PUBLIC是外部资源的申请</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!ENTITY entityName PUBLIC &#34;publicID&#34; &#34;fileName&#34;&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!ENTITY example PUBLIC &#34;-//W3C//DTD HTML 4.01 Transitional//EN&#34; &#34;html4-transitional.dtd&#34;&gt;</span>
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_3.png" alt=""  />
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_3.png" alt="" /></figure>
+
+
+
 有些XML文档包含system标识符定义的“实体”，这些文档会在DOCTYPE头部标签中呈现。这些定义的’实体’能够访问本地或者远程的内容。
 假如 SYSTEM 后面的内容可以被攻击者控制，那么攻击者就可以随意替换为其他内容，从而读取服务器本地文件（file:///etc/passwd）或者远程文件（http://www.baidu.com/abc.txt）。</p>
 <p>3）通用实体
 用”&amp;实体名“引用的实体，在DTD中定义，在XML文档中引用。
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_4.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_4.png" alt="" /></figure>
+
+
+</p>
 <p>4）参数实体
 使用<code>% 实体名</code>（这里空格不能少）在 DTD 中定义，并且只能在 DTD 中使用<code>%实体名;</code>引用
 只有在DTD文件中，参数实体的声明才能引用其他实体
 和通用实体一样，参数实体也可以外部引用
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_5.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_5.png" alt="" /></figure>
+
+
+</p>
 <h3 id="xxe">XXE</h3>
 <p>XXE（XML External Entity Injection，XML 外部实体注入）是一种安全漏洞，通常发生在解析 XML 数据时。攻击者通过在 XML 文档中注入外部实体来读取本地文件、发送数据到远程服务器，甚至执行其他恶意操作。
 XXE 攻击可能导致敏感信息泄露、服务拒绝（DoS）攻击等安全问题。</p>
 <p>XXE漏洞之所以名为外部实体漏洞，就是因为问题主要出自于外部资源的申请以及外部实体的引用这部分特性中。我们从XXE的全称（XML外部实体注入）可以看出，XXE也是一种XML注入，只不过注入的是XML外部实体罢了。
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_6.png" alt="|500"  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_6.png" alt="|500" /><figcaption>|500</figcaption></figure>
+
+
+</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;ISO-8859-1&#34;?&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE foo [  
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">  &lt;!ELEMENT foo ANY &gt;</span>
@@ -410,7 +440,12 @@ XXE 攻击可能导致敏感信息泄露、服务拒绝（DoS）攻击等安全�
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> e.<span style="color:#a6e22e">toString</span>();
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_2.png" alt=""  />
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_2.png" alt="" /></figure>
+
+
+
 修复方法就是上面代码中的,setFeature,禁用外部实体</p>
 <h3 id="saxparser">SAXParser</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">/**
@@ -431,8 +466,18 @@ XXE 攻击可能导致敏感信息泄露、服务拒绝（DoS）攻击等安全�
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>会有报错信息,但是dnslog弹成功了
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_7.png" alt=""  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_8.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_7.png" alt="" /></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_8.png" alt="" /></figure>
+
+
+</p>
 <h3 id="saxreader">SAXReader</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">/**
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * SAXReader 是一个用于读取和解析 XML 文档的类。它基于 SAX (Simple API for XML) 实现，
@@ -710,7 +755,7 @@ XXE 攻击可能导致敏感信息泄露、服务拒绝（DoS）攻击等安全�
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 85391 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 85604 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
       
     

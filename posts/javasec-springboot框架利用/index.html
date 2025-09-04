@@ -332,19 +332,44 @@ POST 请求 /env 接口设置属性后，可同时配合 POST 请求 /refresh �
 <h2 id="漏洞检测">漏洞检测</h2>
 <h3 id="检测清单">检测清单</h3>
 <p><a href="https://github.com/LandGrey/SpringBootVulExploit" target="_blank" rel="noopener nofollow noreferrer" >https://github.com/LandGrey/SpringBootVulExploit</a>
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_1.png" alt=""  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_2.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_1.png" alt="" /></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_2.png" alt="" /></figure>
+
+
+</p>
 <h3 id="黑盒发现">黑盒发现</h3>
 <p>人工识别，BP插件</p>
 <p>人工识别
 1、网站图片文件是一个绿色的树叶。2、特有的报错信息。3、Whitelabel Error Page关键字
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_3.png" alt="|750"  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_3.png" alt="|750" /><figcaption>|750</figcaption></figure>
+
+
+</p>
 <p>BP插件
 <a href="https://github.com/API-Security/APIKit" target="_blank" rel="noopener nofollow noreferrer" >https://github.com/API-Security/APIKit</a>
 打开BurpSuite页面,点击Extender然后选择Extensions,添加APIKit.jar
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_4.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_4.png" alt="" /></figure>
+
+
+
 安装好插件后啥都不用管，让数据包经过BP即可触发插件被动扫描
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_5.png" alt="|800"  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_5.png" alt="|800" /><figcaption>|800</figcaption></figure>
+
+
+</p>
 <h3 id="白盒发现">白盒发现</h3>
 <p>pom.xml,引用库</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;dependency&gt;</span>
@@ -352,60 +377,205 @@ POST 请求 /env 接口设置属性后，可同时配合 POST 请求 /refresh �
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-starter-actuator<span style="color:#f92672">&lt;/artifactId&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/dependency&gt;</span>
 </span></span></code></pre></div><p>配置文件Actuator设置全部暴露<code>management.endpoints.web.exposure.include=*</code>
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_6.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_7.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_6.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_7.png" alt="" /></figure>
+
+
+</p>
 <h2 id="信息泄露利用">信息泄露利用</h2>
 <h3 id="内部路由泄露">内部路由泄露</h3>
 <p><a href="https://github.com/AabyssZG/SpringBoot-Scan" target="_blank" rel="noopener nofollow noreferrer" >https://github.com/AabyssZG/SpringBoot-Scan</a>
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_8.png" alt=""  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_9.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_8.png" alt="" /></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_9.png" alt="" /></figure>
+
+
+</p>
 <h3 id="heapdump敏感信息查询">heapdump敏感信息查询</h3>
 <p>配置密码，AK/SK等</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_10.png" alt="|800"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_10.png" alt="|800" /><figcaption>|800</figcaption></figure>
+
+
+</p>
 <p>下载下来
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_11.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_11.png" alt="" /></figure>
+
+
+
 然后使用JDumpSPider工具来获取数据
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_12.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_12.png" alt="" /></figure>
+
+
+</p>
 <p>![](<a href="https://img.l1uyun.one/Pasted" target="_blank" rel="noopener nofollow noreferrer" >https://img.l1uyun.one/Pasted</a> image 20240806101506.png)</p>
 <p>这里还有另外一款工具,支持关键词搜索
 <a href="https://github.com/wyzxxz/heapdump_tool" target="_blank" rel="noopener nofollow noreferrer" >https://github.com/wyzxxz/heapdump_tool</a>
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_14.png" alt="|750"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_15.png" alt="|850"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_16.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_14.png" alt="|750" /><figcaption>|750</figcaption></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_15.png" alt="|850" /><figcaption>|850</figcaption></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_16.png" alt="" /></figure>
+
+
+</p>
 <h2 id="漏洞利用">漏洞利用</h2>
 <h3 id="框架漏洞">框架漏洞</h3>
 <p><a href="https://github.com/AabyssZG/SpringBoot-Scan" target="_blank" rel="noopener nofollow noreferrer" >https://github.com/AabyssZG/SpringBoot-Scan</a>
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_17.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_18.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_19.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_17.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_18.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_19.png" alt="" /></figure>
+
+
+</p>
 <h3 id="利用类漏洞来进行rce攻击">利用类漏洞来进行RCE攻击</h3>
 <p>服务器上执行JNDIExploit工具(可以本地、也可以远程VPS上运行)
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_20.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_21.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_22.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_23.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_20.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_21.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_22.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_23.png" alt="" /></figure>
+
+
+</p>
 <h1 id="cms源码审计">CMS源码审计</h1>
 <h2 id="安装源码">安装源码</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_24.png" alt=""  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_25.png" alt=""  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_26.png" alt=""  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_27.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_28.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_29.png" alt=""  />
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_24.png" alt="" /></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_25.png" alt="" /></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_26.png" alt="" /></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_27.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_28.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_29.png" alt="" /></figure>
+
+
+
 起始就是把actuator的接口做了可视化
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_30.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_30.png" alt="" /></figure>
+
+
+</p>
 <h2 id="源码审计">源码审计</h2>
 <p>从pom.xml看有没有调用Actuator库
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_31.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_31.png" alt="" /></figure>
+
+
+</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>配置文件中Actuator设置是否为*(全部暴露)
 </span></span><span style="display:flex;"><span>management.endpoints.web.exposure.include=*
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_32.png" alt="|700"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_33.png" alt="|700"  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_32.png" alt="|700" /><figcaption>|700</figcaption></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_33.png" alt="|700" /><figcaption>|700</figcaption></figure>
+
+
+</p>
 <p>泄露安全(heapdump)
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_34.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_34.png" alt="" /></figure>
+
+
+
 使用heapdump敏感信息查询工具提取敏感信息
 JDumpSpider
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_35.png" alt="|750"  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_35.png" alt="|750" /><figcaption>|750</figcaption></figure>
+
+
+</p>
 <h1 id="一句话总结">一句话总结</h1>
 <p>遇到springboot框架从两个方面去寻找安全问题：
 1.泄露安全(是否泄露了内部路由及heapdump)
@@ -566,7 +736,7 @@ JDumpSpider
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 85391 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 85604 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
       
     

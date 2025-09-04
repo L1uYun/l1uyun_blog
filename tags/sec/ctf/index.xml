@@ -6,7 +6,7 @@
     
             <link href="https://l1uyun.one/tags/sec/ctf/" rel="alternate" type="text/html" title="html" />
             <link href="https://l1uyun.one/tags/sec/ctf/index.xml" rel="alternate" type="application/rss+xml" title="rss" />
-    <updated>2025-09-03T01:13:55+00:00</updated>
+    <updated>2025-09-04T12:43:56+00:00</updated>
     
     
     
@@ -30,7 +30,12 @@
 <h1 id="办了一场ctf校赛">办了一场ctf校赛</h1>
 <h2 id="缘起">缘起</h2>
 <p>办比赛的缘起要从我莫名当上协会负责人说起，九月份去衡阳打攻防，打的过程中，上一届的会长SkyWT在qq上问我要不要当下一任会长，我答应了，回去之后忙完年审材料，换届材料之后，我就成了协会的负责人。（我估计也会这样把协会传下去），这一身份让我与办ctf校赛这一事情产生了内在联系。</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e5%8a%9e%e4%ba%86%e4%b8%80%e5%9c%bactf%e6%a0%a1%e8%b5%9b_image_1.jpeg" alt="|300"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e5%8a%9e%e4%ba%86%e4%b8%80%e5%9c%bactf%e6%a0%a1%e8%b5%9b_image_1.jpeg" alt="|300" /><figcaption>|300</figcaption></figure>
+
+
+</p>
 <p>另一部分是源自带我去衡阳打攻防的学姐，在衡阳跟我说过这学期她需要办一场ctf比赛，她与学院的老师有过这方面的约定，而我对这位带我去打攻防的学姐是非常感激的。她带我去打攻防，是基于为爱发电的理念，“如果我带你去打了攻防，有了这一次攻防，你之后就有可能去带新人去打，这样我们学校做渗透的就能传下去”，这种热爱，传承的意味在一定程度上影响了我。但是与这种感染相比更多的是对学姐的感激（让我短暂远离了学校这一苦闷的秩序，以及让我中断那段时间的自我内耗）。</p>
 <hr>
 <p>再回忆一下让比赛办下去的外部因素，也就是’缘‘。</p>
@@ -53,7 +58,12 @@
 <p>最开始是打算使用超算中心的服务器，由于没有办比赛的经验，不清楚要租一个什么配置的服务器，在询问了探姬师傅以及结合超算中心的价格表，准备租个2核4g，20Mbps带宽的服务器，但是走完申请流程，拿到服务器之后，发现没有给公网ip，也没有给学校内网的ip，以及还需要签一个安全承诺书，不能扫描服务器，不能部署有漏洞的服务啥的，但是我们是办ctf比赛&hellip;.</p>
 <p>最终选择在腾讯云上租服务器，配合双十一的卷，不到四百块钱租了一个月的轻量应用服务器。8核16g，18Mbps，月流量3500G，比赛只用了一点点，大概是3-5%的性能</p>
 <p>部署平台是使用GZCTF这一开源平台，使用docker部署</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e5%8a%9e%e4%ba%86%e4%b8%80%e5%9c%bactf%e6%a0%a1%e8%b5%9b_image_2.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e5%8a%9e%e4%ba%86%e4%b8%80%e5%9c%bactf%e6%a0%a1%e8%b5%9b_image_2.png" alt="" /></figure>
+
+
+</p>
 <h3 id="出题">出题</h3>
 <p>原本定了六个方向的题，web，pwn，reverse，crypto，misc，osint，kery学长还弄了一道ai题</p>
 <p>由于是校内的新生赛，所以都是出的easy难度的题</p>
@@ -61,9 +71,19 @@
 <p>crypto方向，是因为没人学，我也没学过，就简单出了两个编码和一个easy_rsa。</p>
 <h3 id="预热">预热</h3>
 <p>由于学院那边突然就把推文给发出去了，那时候离宣讲会都还有两个星期，导致整个比赛莫名的启动了，于是kery学长建议弄几个预热题，让大家熟悉一下，也让我们主办方熟悉和测试一下比赛平台。</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e5%8a%9e%e4%ba%86%e4%b8%80%e5%9c%bactf%e6%a0%a1%e8%b5%9b_image_3.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e5%8a%9e%e4%ba%86%e4%b8%80%e5%9c%bactf%e6%a0%a1%e8%b5%9b_image_3.png" alt="" /></figure>
+
+
+</p>
 <p>当时我负责的题是已经出完了，我就直接从我出的web题里面丢了几道在预热赛里面。</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e5%8a%9e%e4%ba%86%e4%b8%80%e5%9c%bactf%e6%a0%a1%e8%b5%9b_image_4.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e5%8a%9e%e4%ba%86%e4%b8%80%e5%9c%bactf%e6%a0%a1%e8%b5%9b_image_4.png" alt="" /></figure>
+
+
+</p>
 <h3 id="宣讲会">宣讲会</h3>
 <p>宣讲会，我在消极应对，最开始是不知道要演示些啥，后面弄了预热，那就讲讲预热题吧，我也没做什么准备，只是在宣讲会开始前一个多小时，在宿舍练习了一遍，讲了半个多小时，然后就直接过去了。</p>
 <p>原本预期中，我是坐在下面，使用腾讯会议投屏，来演示的，但是由于学姐主持的时候我和她都没有反应过来，没有意识到只需要退出她电脑上的ppt，换到腾讯会议的界面就行，我就莫名奇妙的拿着电脑上去了。</p>
@@ -77,15 +97,30 @@
 <p>第一天结束的时候，大部分题都被解决的差不多了。</p>
 <h3 id="day2">day2</h3>
 <p>第二天一觉醒来，有个学长半夜屠榜了</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e5%8a%9e%e4%ba%86%e4%b8%80%e5%9c%bactf%e6%a0%a1%e8%b5%9b_image_5.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e5%8a%9e%e4%ba%86%e4%b8%80%e5%9c%bactf%e6%a0%a1%e8%b5%9b_image_5.png" alt="" /></figure>
+
+
+</p>
 <p>以及发现有个校外✌ak了，从周六下午五点，打到周天早上七点，太肝了。</p>
 <hr>
 <h2 id="赛后">赛后</h2>
 <h3 id="做题情况">做题情况</h3>
 <p>所有的题目都被做出来了。</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e5%8a%9e%e4%ba%86%e4%b8%80%e5%9c%bactf%e6%a0%a1%e8%b5%9b_image_6.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e5%8a%9e%e4%ba%86%e4%b8%80%e5%9c%bactf%e6%a0%a1%e8%b5%9b_image_6.png" alt="" /></figure>
+
+
+</p>
 <p>还有一些非预期解，例如ai那道题，找个在线的加噪点网站就能解决，或者干脆使用win自带的画图，在图像里面随便画几笔就能通过。</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e5%8a%9e%e4%ba%86%e4%b8%80%e5%9c%bactf%e6%a0%a1%e8%b5%9b_image_7.png" alt="||550"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e5%8a%9e%e4%ba%86%e4%b8%80%e5%9c%bactf%e6%a0%a1%e8%b5%9b_image_7.png" alt="||550" /><figcaption>||550</figcaption></figure>
+
+
+</p>
 <p>总共43个人答了签到题。。。</p>
 <h3 id="作弊情况">作弊情况</h3>
 <p>比赛过程中发现有提交其他人flag的，我们大部分题目都是使用的动态flag，能在后台看见哪只队伍提交了哪只队伍的flag。发现有这种情况之后，我们发了个警告，但是没起到什么作用，马上这两只队伍又出现了互相提交flag的情况，不过最后这两只队伍也没有提交wp，大概只是来玩一下的。</p>
@@ -96,7 +131,12 @@
 <p>原本是有计划出官方wp的，但是遇到了期末考试，我也就懒得弄了，正好老登们在群里发了官方wp，就封他们为官方wp了。</p>
 <p>看了一下他们的wp，思路上差不了多少，毕竟都是easy题。</p>
 <p>我出的misc方向的《网络鲨鱼》，没人尝试去连接那个mysql数据库，出题的时候没有想清楚，觉得是新生赛，就在后面又给了一个base64编码的flag，导致这道题跟另外一道流量分析的题很相似了。</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e5%8a%9e%e4%ba%86%e4%b8%80%e5%9c%bactf%e6%a0%a1%e8%b5%9b_image_8.png" alt="|500"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e5%8a%9e%e4%ba%86%e4%b8%80%e5%9c%bactf%e6%a0%a1%e8%b5%9b_image_8.png" alt="|500" /><figcaption>|500</figcaption></figure>
+
+
+</p>
 <h3 id="意外事件">意外事件</h3>
 <p>虽然过了交wp的时间，但是之后的一两天内我还是有在翻看邮箱，结果在垃圾箱里面发现了一封异常的邮件，点进去一看是举报&hellip;..还好我有翻垃圾箱的习惯</p>
 <p>这种事情只能上报了，按照指示，找了新生里面的第一名第二名谈话，两个新生态度都很好，都没有不承认，最终也是处理完了这件意外事件，取消了这两人的pwn方向成绩。</p>

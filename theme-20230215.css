@@ -531,6 +531,36 @@ code {
 	font-weight: 400;
 }
 
+/* --- Scoped styles for post content images (类似少数派样式) --- */
+.post-content figure.md-figure,.content .post .post-content figure.md-figure { 
+	max-width: 480px; /* 进一步收窄正文图片 */
+	margin: 1.2rem auto; 
+	text-align: center;
+}
+.post-content figure.md-figure > img,.content .post .post-content figure.md-figure > img {
+	display: block;
+	margin: 0 auto;
+	max-width: 100%;
+	max-height: 360px; /* 限制高度，纵向图也会缩小 */
+	height: auto;
+	object-fit: contain;
+	border-radius: 4px;
+}
+.post-content figure.md-figure > figcaption,.content .post .post-content figure.md-figure > figcaption {
+	margin: .6rem auto 0;
+	padding-top: .4rem;
+	width: 90%;
+	font-size: .85rem;
+	line-height: 1.6;
+	color: #8a8a8a;
+	border-top: 1px solid rgba(0,0,0,.08);
+}
+@media (max-width: 840px) {
+	.post-content figure.md-figure,.content .post .post-content figure.md-figure {max-width: 92%;}
+	.post-content figure.md-figure > figcaption,.content .post .post-content figure.md-figure > figcaption {width: 92%;}
+}
+/* --- end scoped styles --- */
+
 .dark code {
 	background: #3b3d42;
 	background: var(--dark-background-secondary)

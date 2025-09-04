@@ -272,12 +272,22 @@ function checkNightMode() {
 <p>远程文件包含利用需要下面这两个配置文件都开启
 当allow_url_include和allow_url_fopen都开启时，可以通过利用远程url或者php://协议直接getshell，即远程文件包含，
 但allow_url_include在php5.2之后默认为off，利用机会有限。
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpmyadmin-4.8.1%e8%bf%9c%e7%a8%8b%e6%96%87%e4%bb%b6%e5%8c%85%e5%90%ab_image_1.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpmyadmin-4.8.1%e8%bf%9c%e7%a8%8b%e6%96%87%e4%bb%b6%e5%8c%85%e5%90%ab_image_1.png" alt="" /></figure>
+
+
+
 当allow_url_include and allow_url_fopen均为off 在window主机环境下仍然可以进行远程文件执行，用445端口SMB协议进行远程加载。</p>
 <h2 id="漏洞复现">漏洞复现</h2>
 <p>直接访问下面的路径,能输出passwd内容那就是有了</p>
 <p><code>/index.php?target=db_sql.php%253f/../../../../../../../../etc/passwd</code>
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpmyadmin-4.8.1%e8%bf%9c%e7%a8%8b%e6%96%87%e4%bb%b6%e5%8c%85%e5%90%ab_image_2.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpmyadmin-4.8.1%e8%bf%9c%e7%a8%8b%e6%96%87%e4%bb%b6%e5%8c%85%e5%90%ab_image_2.png" alt="" /></figure>
+
+
+</p>
 <p>利用方式的话,就是先在sql栏执行一下select命令,然后去包含session文件,就能获得webshell,进而拿shell</p>
 <p>可以执行一下<code>SELECT &lt;?=phpinfo()?&gt;;</code>，然后查看自己的sessionid（cookie中phpMyAdmin的值），然后包含session文件即可：</p>
 <p>对应的sessions文件是 /tmp/sess_sessionid
@@ -481,7 +491,7 @@ function checkNightMode() {
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 85391 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 85604 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
       
     

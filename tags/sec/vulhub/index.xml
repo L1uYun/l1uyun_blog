@@ -6,7 +6,7 @@
     
             <link href="https://l1uyun.one/tags/sec/vulhub/" rel="alternate" type="text/html" title="html" />
             <link href="https://l1uyun.one/tags/sec/vulhub/index.xml" rel="alternate" type="application/rss+xml" title="rss" />
-    <updated>2025-09-03T01:13:55+00:00</updated>
+    <updated>2025-09-04T12:43:56+00:00</updated>
     
     
     
@@ -55,27 +55,62 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">preg_replace</span>(<span style="color:#e6db74">&#34;/test/e&#34;</span>,<span style="color:#e6db74">&#39;phpinfo()&#39;</span>,<span style="color:#e6db74">&#34;jutst test&#34;</span>);
 </span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_1.png" alt=""  /></p>
+</span></span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_1.png" alt="" /></figure>
+
+
+</p>
 <h2 id="漏洞复现">漏洞复现</h2>
 <p>//手测,脚本</p>
 <p>使用的vulhub的环境,使用docker启动就行</p>
 <p>这里是直接使用了exploit-db中的poc
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_2.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_2.png" alt="" /></figure>
+
+
+</p>
 <h2 id="漏洞分析">漏洞分析</h2>
 <p>// 分析原理,调用链</p>
 <p>参照网上其他人的分析文章,
 首先找到preg_replace()函数的调用位置,
 发现是在 /libraries/TableSearch.class.php 文件中的_getRegexReplaceRows方法里面</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_3.png" alt=""  />
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_3.png" alt="" /></figure>
+
+
+
 接下来就是依次寻找find,replaceWith和row[0]这三个参数的来源</p>
 <p>可以看到find,replaceWith是直接从getReplacePreview中传递过去的
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_4.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_4.png" alt="" /></figure>
+
+
+
 继续往上查找getReplacePreview方法,发现是在tbl_find_replace.php中被调用的,这里的可以看到find,replaceWith都是直接从POST中传递进来的
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_5.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_5.png" alt="" /></figure>
+
+
+</p>
 <p>解决了前面两个参数,接下来就是看第三个参数是怎么来的,毕竟这个/e参数要成功执行代码,需要正则的模式被匹配到.</p>
 <p>回到_getRegexReplaceRows方法,可以看到row[0]应该是sql语句查询结果的第一列数据
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_6.png" alt=""  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_7.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_6.png" alt="" /></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_7.png" alt="" /></figure>
+
+
+
 sql语句的内容如下</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> 
 </span></span><span style="display:flex;"><span>    PMA_Util::backquote(<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#66d9ef">column</span>),   <span style="color:#75715e">-- 获取列名并进行反引号处理
@@ -94,23 +129,63 @@ sql语句的内容如下</p>
 </span></span><span style="display:flex;"><span>    PMA_Util::backquote(<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#66d9ef">column</span>) <span style="color:#66d9ef">ASC</span>   <span style="color:#75715e">-- 按目标列升序排列
 </span></span></span></code></pre></div><p>这里面我们需要能够控制column,_db,_table,其中column是来自columnIndex这个参数,这个也是POST传进来的</p>
 <p>剩下两个参数是PMA_TableSearch类的属性,是在构造函数里面被定义的
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_8.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_8.png" alt="" /></figure>
+
+
+
 继续回溯,tbl_find_replace.php中创建了这个类,并传入了$db, $table这两个参数
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_9.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_9.png" alt="" /></figure>
+
+
+
 这两个参数是包含的libraries/common.inc.php文件,这两个参数可以通过REQUEST方法来接收变量并将其设置为全局变量。
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_10.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_10.png" alt="" /></figure>
+
+
+</p>
 <p>结合上面的分析,看看exploit-db给的poc</p>
 <p>使用poc,然后用burpsuite抓了一下包,脚本先是进行了登录
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_11.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_11.png" alt="" /></figure>
+
+
+
 前面两个数据包好像都是在获取一些Cookie信息,第一个是在登录获取token值,第二个包是在访问主页,获取了另外的一些值
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_12.png" alt=""  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_13.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_12.png" alt="" /></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_13.png" alt="" /></figure>
+
+
+
 第三个包访问了/import.php,这个文件是PhpMyAdmin中处理SQL导入的页面。这个页面允许管理员导入SQL查询语句，并在数据库中执行。</p>
 <p>创建了一个数据库test,数据表prgpwn,以及插入了数据(<code>0/e\0</code>)  即0/e和一个null byte
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_14.png" alt="|900"  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_14.png" alt="|900" /><figcaption>|900</figcaption></figure>
+
+
+
 最后一个包,访问了漏洞所在的php文件,/tbl_find_replace.php</p>
 <p>传入了db,table,find,replaceWith这些参数,find和replaceWith直接被拼接到了preg_replace的前面两个参数中,而POST的数据中的db,table,columnIndex指定了sql查询得到的结果,这个结果被拼接到了preg_replace的第三个参数,从而触发了preg_replace的/e参数的执行代码功能.
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_15.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_15.png" alt="" /></figure>
+
+
+
 find参数中传进去的%00也就是空字符,将拼接之后的/给截断了</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">preg_replace</span>(<span style="color:#e6db74">&#34;/0/e</span><span style="color:#ae81ff">\0</span><span style="color:#e6db74">/&#34;</span>,<span style="color:#e6db74">&#34;system(&#39;id&#39;)&#34;</span>,<span style="color:#e6db74">&#34;0/e</span><span style="color:#ae81ff">\0</span><span style="color:#e6db74">&#34;</span>)
@@ -173,12 +248,22 @@ find参数中传进去的%00也就是空字符,将拼接之后的/给截断了</
 <p>远程文件包含利用需要下面这两个配置文件都开启
 当allow_url_include和allow_url_fopen都开启时，可以通过利用远程url或者php://协议直接getshell，即远程文件包含，
 但allow_url_include在php5.2之后默认为off，利用机会有限。
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpmyadmin-4.8.1%e8%bf%9c%e7%a8%8b%e6%96%87%e4%bb%b6%e5%8c%85%e5%90%ab_image_1.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpmyadmin-4.8.1%e8%bf%9c%e7%a8%8b%e6%96%87%e4%bb%b6%e5%8c%85%e5%90%ab_image_1.png" alt="" /></figure>
+
+
+
 当allow_url_include and allow_url_fopen均为off 在window主机环境下仍然可以进行远程文件执行，用445端口SMB协议进行远程加载。</p>
 <h2 id="漏洞复现">漏洞复现</h2>
 <p>直接访问下面的路径,能输出passwd内容那就是有了</p>
 <p><code>/index.php?target=db_sql.php%253f/../../../../../../../../etc/passwd</code>
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpmyadmin-4.8.1%e8%bf%9c%e7%a8%8b%e6%96%87%e4%bb%b6%e5%8c%85%e5%90%ab_image_2.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpmyadmin-4.8.1%e8%bf%9c%e7%a8%8b%e6%96%87%e4%bb%b6%e5%8c%85%e5%90%ab_image_2.png" alt="" /></figure>
+
+
+</p>
 <p>利用方式的话,就是先在sql栏执行一下select命令,然后去包含session文件,就能获得webshell,进而拿shell</p>
 <p>可以执行一下<code>SELECT &lt;?=phpinfo()?&gt;;</code>，然后查看自己的sessionid（cookie中phpMyAdmin的值），然后包含session文件即可：</p>
 <p>对应的sessions文件是 /tmp/sess_sessionid

