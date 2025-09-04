@@ -60,7 +60,12 @@
         {{ $page := . }}
         <entry>
             {{ printf `<title type="html"><![CDATA[%s]]></title>` .Title | safeHTML }}
+            {{- $custom := .Params.url -}}
+            {{- if $custom -}}
+            <link href="{{ $custom | absURL }}" rel="alternate" type="text/html" />
+            {{- else -}}
             <link href="{{ .Permalink }}" rel="alternate" type="text/html" />
+            {{- end -}}
             {{- range .Translations }}
                 {{- $link := printf "%s" .Permalink | safeHTML }}
                 {{- printf `<link href=%q rel="alternate" type="text/html" hreflang=%q />` $link .Lang | safeHTML }}
@@ -68,7 +73,11 @@
             {{ with .Params.id }}
                 <id>{{ . | plainify }}</id>
             {{ else }}
+                {{- if $custom -}}
+                <id>{{ $custom | absURL }}</id>
+                {{- else -}}
                 <id>{{ .Permalink }}</id>
+                {{- end -}}
             {{ end }}
             {{ with .Params.author -}}
                 {{- range . -}} <!-- Assuming the author front-matter to be a list -->
