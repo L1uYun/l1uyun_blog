@@ -55,7 +55,7 @@ if ( false || (!!window.MSInputMethodContext && !!document.documentMode)) {
 
     
   <link rel="prefetch" href="/page/3/">
-  
+  <link rel="prefetch" href="/page/5/">
 
   </head>
   <body class="">
@@ -180,6 +180,278 @@ function checkNightMode() {
   
 
   <div class="posts">
+    
+    <div class="post on-list">
+      <h1 class="post-title"><a href="https://l1uyun.one/posts/javasec-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">javasec-反序列化</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2024-08-01
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://l1uyun.one/tags/sec/javasec/">sec/javasec</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content">
+        <h1 id="反序列化">反序列化</h1>
+<p>序列化是将Java对象转换成字节流的过程。而反序列化是将字节流转换成Java对象的过程，
+java序列化的数据一般会以标记(ac ed 00 05)开头，base64编码的特征为rO0AB，</p>
+<p>JAVA常见的序列化和反序列化的方法有JAVA 原生序列化和JSON 类（fastjson、jackson）序列化等。</p>
+      </div>
+      
+        <div><a class="read-more button" href="/posts/javasec-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">阅读全文 →</a></div>
+      
+    </div>
+    
+    <div class="post on-list">
+      <h1 class="post-title"><a href="https://l1uyun.one/posts/javasec-xxe/">javasec-xxe</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2024-07-26
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://l1uyun.one/tags/sec/javasec/">sec/javasec</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content">
+        <h1 id="xxe注入">xxe注入</h1>
+<h2 id="前置知识">前置知识</h2>
+<h3 id="xml文档">XML文档</h3>
+<p>要了解XXE漏洞，那么先得了解一下有关XML的基础知识。</p>
+<p>XML是一种非常流行的标记语言，在1990年代后期首次标准化，并被无数的软件项目所采用。它用于配置文件，文档格式（如OOXML，ODF，PDF，RSS，&hellip;），图像格式（SVG，EXIF标题）和网络协议（WebDAV，CalDAV，XMLRPC，SOAP，XMPP，SAML， XACML，&hellip;）</p>
+      </div>
+      
+        <div><a class="read-more button" href="/posts/javasec-xxe/">阅读全文 →</a></div>
+      
+    </div>
+    
+    <div class="post on-list">
+      <h1 class="post-title"><a href="https://l1uyun.one/posts/javasec-sql%E6%B3%A8%E5%85%A5/">javasec-sql注入</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2024-07-23
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://l1uyun.one/tags/sec/javasec/">sec/javasec</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content">
+        <h1 id="javasec-sql注入">javasec-sql注入</h1>
+<h2 id="前置知识">前置知识</h2>
+<h3 id="sql注入">sql注入</h3>
+<p>没有对用户的输入进行处理(过滤,黑名单,SQL预编译),直接将输入拼接到了sql语句中,</p>
+<p>导致执行了用户构造的恶意SQL语句</p>
+<p>SQL注入的语法与使用的数据库相关,与语言无关</p>
+<h3 id="java数据库操作">java数据库操作</h3>
+<h4 id="jdbc">jdbc</h4>
+<p>java database connection</p>
+<p>java提供的数据库驱动库,用于进行数据库连接,执行SQL语句</p>
+<p>JDBC有两个方法执行SQL语句，分别是PrepareStatement和Statement。</p>
+      </div>
+      
+        <div><a class="read-more button" href="/posts/javasec-sql%E6%B3%A8%E5%85%A5/">阅读全文 →</a></div>
+      
+    </div>
+    
+    <div class="post on-list">
+      <h1 class="post-title"><a href="https://l1uyun.one/posts/oracle-padding-attack/">oracle-padding-attack</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2024-07-16
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://l1uyun.one/tags/sec/">sec</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content">
+        <p>在打tryhackme的New-York-Flankees房间的时候遇见了这个攻击方式,没见过,学习一下</p>
+<h2 id="前置知识">前置知识</h2>
+<h3 id="块密码">块密码</h3>
+<p>在分组密码加密领域，数据一次加密一个块，不同算法的块长度各不相同。</p>
+<p>当要加密的数据长度不是块长度的倍数时，就需要填充。</p>
+<p>高级加密标准 (AES)</p>
+<p>数据加密标准 (DES)</p>
+<p>三重数据加密标准 (3DES)</p>
+<p>Blowfish</p>
+<p>Twofish</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/202407160948_oracle-padding-attack_image_1.png" alt="" /></figure>
+
+
+</p>
+<h3 id="填充方案">填充方案</h3>
+<p>如前所述，分组密码采用固定大小的块，当明文不是块大小的倍数时需要填充。存在多种填充技术，但在本次攻击中，我们的重点是 PKCS#7。</p>
+      </div>
+      
+        <div><a class="read-more button" href="/posts/oracle-padding-attack/">阅读全文 →</a></div>
+      
+    </div>
+    
+    <div class="post on-list">
+      <h1 class="post-title"><a href="https://l1uyun.one/posts/hmv_airbind/">HMV_airbind</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2024-06-15
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://l1uyun.one/tags/sec/hackmyvm/">sec/hackmyvm</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content">
+        <h2 id="端口扫描">端口扫描</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>~ ➤ nmap -Pn -sT 192.168.124.210 -p-
+</span></span><span style="display:flex;"><span>Starting Nmap 7.94SVN <span style="color:#f92672">(</span> https://nmap.org <span style="color:#f92672">)</span> at 2024-06-14 23:47 EDT
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 192.168.124.210
+</span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.0047s latency<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>Not shown: <span style="color:#ae81ff">65533</span> closed tcp ports <span style="color:#f92672">(</span>conn-refused<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>PORT   STATE    SERVICE
+</span></span><span style="display:flex;"><span>22/tcp filtered ssh
+</span></span><span style="display:flex;"><span>80/tcp open     http
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Nmap <span style="color:#66d9ef">done</span>: <span style="color:#ae81ff">1</span> IP address <span style="color:#f92672">(</span><span style="color:#ae81ff">1</span> host up<span style="color:#f92672">)</span> scanned in 7.38 seconds
+</span></span></code></pre></div><p>22端口是filtered&hellip;没注意这个细节
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMV_airbind_image_1.png" alt="HMV_airbind_image_1" /><figcaption>HMV_airbind_image_1</figcaption></figure>
+
+
+</p>
+<h2 id="web_80">web_80</h2>
+<h3 id="目录扫描">目录扫描</h3>
+<p>扫目录扫出来,状态不太行,应该先判断一下优先查看哪些目录</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>/images               <span style="color:#f92672">(</span>Status: 301<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 319<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; http://192.168.124.210/images/<span style="color:#f92672">]</span>   
+</span></span><span style="display:flex;"><span>/.php                 <span style="color:#f92672">(</span>Status: 403<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 280<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/about.php            <span style="color:#f92672">(</span>Status: 302<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 0<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; login.php<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/login.php            <span style="color:#f92672">(</span>Status: 200<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 1924<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/logos.php            <span style="color:#f92672">(</span>Status: 200<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 1977<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/stats.php            <span style="color:#f92672">(</span>Status: 302<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 0<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; login.php<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/index.php            <span style="color:#f92672">(</span>Status: 302<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 0<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; login.php<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/.html                <span style="color:#f92672">(</span>Status: 403<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 280<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/screenshots          <span style="color:#f92672">(</span>Status: 301<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 324<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; http://192.168.124.210/screenshots/<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/scripts              <span style="color:#f92672">(</span>Status: 301<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 320<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; http://192.168.124.210/scripts/<span style="color:#f92672">]</span>  
+</span></span><span style="display:flex;"><span>/registration.php     <span style="color:#f92672">(</span>Status: 302<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 0<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; login.php<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/includes             <span style="color:#f92672">(</span>Status: 301<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 321<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; http://192.168.124.210/includes/<span style="color:#f92672">]</span> 
+</span></span><span style="display:flex;"><span>/db                   <span style="color:#f92672">(</span>Status: 301<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 315<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; http://192.168.124.210/db/<span style="color:#f92672">]</span>       
+</span></span><span style="display:flex;"><span>/logout.php           <span style="color:#f92672">(</span>Status: 302<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 0<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; .<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/styles               <span style="color:#f92672">(</span>Status: 301<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 319<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; http://192.168.124.210/styles/<span style="color:#f92672">]</span>   
+</span></span><span style="display:flex;"><span>/settings.php         <span style="color:#f92672">(</span>Status: 302<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 0<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--&gt; login.php<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/auth.php             <span style="color:#f92672">(</span>Status: 200<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 0<span style="color:#f92672">]</span>
+</span></span></code></pre></div><h3 id="db文件泄露">db文件泄露</h3>
+<p>在db目录下找到一个sqlite的转储文件,使用在线工具解析一下,发现user
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMV_airbind_image_2.png" alt="HMV_airbind_image_2" /><figcaption>HMV_airbind_image_2</figcaption></figure>
+
+
+</p>
+      </div>
+      
+        <div><a class="read-more button" href="/posts/hmv_airbind/">阅读全文 →</a></div>
+      
+    </div>
+    
+    <div class="post on-list">
+      <h1 class="post-title"><a href="https://l1uyun.one/posts/hmv_adria/">HMV_adria</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2024-05-14
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://l1uyun.one/tags/sec/hackmyvm/">sec/hackmyvm</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content">
+        <h2 id="靶机启动">靶机启动</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#ae81ff">68</span> ◯  arp-scan -l
+</span></span><span style="display:flex;"><span>Interface: ens33, type: EN10MB, MAC: 00:0c:29:31:02:fd, IPv4: 192.168.244.101
+</span></span><span style="display:flex;"><span>Starting arp-scan 1.10.0 with <span style="color:#ae81ff">256</span> hosts <span style="color:#f92672">(</span>https://github.com/royhills/arp-scan<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>192.168.244.99  f6:39:4a:3d:95:18       <span style="color:#f92672">(</span>Unknown: locally administered<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>192.168.244.102 08:00:27:22:48:cd       PCS Systemtechnik GmbH
+</span></span><span style="display:flex;"><span>192.168.244.190 ca:a7:78:4d:50:e1       <span style="color:#f92672">(</span>Unknown: locally administered<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">3</span> packets received by filter, <span style="color:#ae81ff">0</span> packets dropped by kernel
+</span></span><span style="display:flex;"><span>Ending arp-scan 1.10.0: <span style="color:#ae81ff">256</span> hosts scanned in 2.273 seconds <span style="color:#f92672">(</span>112.63 hosts/sec<span style="color:#f92672">)</span>. <span style="color:#ae81ff">3</span> responded
+</span></span></code></pre></div><h2 id="端口扫描">端口扫描</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>&gt; nmap 192.168.244.102 -Pn -sT -p- --min-rate <span style="color:#ae81ff">4000</span>
+</span></span><span style="display:flex;"><span>Starting Nmap 7.94SVN <span style="color:#f92672">(</span> https://nmap.org <span style="color:#f92672">)</span> at 2024-05-16 20:50 EDT
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 192.168.244.102
+</span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.046s latency<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>Not shown: <span style="color:#ae81ff">65531</span> closed tcp ports <span style="color:#f92672">(</span>conn-refused<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>PORT    STATE SERVICE
+</span></span><span style="display:flex;"><span>22/tcp  open  ssh
+</span></span><span style="display:flex;"><span>80/tcp  open  http
+</span></span><span style="display:flex;"><span>139/tcp open  netbios-ssn
+</span></span><span style="display:flex;"><span>445/tcp open  microsoft-ds
+</span></span></code></pre></div><p>先简单看一下各个服务</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>&gt; whatweb adria.hmv
+</span></span><span style="display:flex;"><span>http://adria.hmv <span style="color:#f92672">[</span><span style="color:#ae81ff">200</span> OK<span style="color:#f92672">]</span> Apache<span style="color:#f92672">[</span>2.4.57<span style="color:#f92672">]</span>, Bootstrap, Cookies<span style="color:#f92672">[</span>INTELLI_7da515443a<span style="color:#f92672">]</span>, Country<span style="color:#f92672">[</span>RESERVED<span style="color:#f92672">][</span>ZZ<span style="color:#f92672">]</span>, HTML5, HTTPServer<span style="color:#f92672">[</span>Debian Linux<span style="color:#f92672">][</span>Apache/2.4.57 <span style="color:#f92672">(</span>Debian<span style="color:#f92672">)]</span>, IP<span style="color:#f92672">[</span>192.168.244.102<span style="color:#f92672">]</span>, JQuery, MetaGenerator<span style="color:#f92672">[</span>Subrion CMS - Open Source Content Management System<span style="color:#f92672">]</span>, Open-Graph-Protocol, PoweredBy<span style="color:#f92672">[</span>Subrion<span style="color:#f92672">]</span>, Script, Title<span style="color:#f92672">[</span>Blog :: Powered by Subrion 4.2<span style="color:#f92672">]</span>, UncommonHeaders<span style="color:#f92672">[</span>x-powered-cms<span style="color:#f92672">]</span>, X-UA-Compatible<span style="color:#f92672">[</span>IE<span style="color:#f92672">=</span>Edge<span style="color:#f92672">]</span>
+</span></span></code></pre></div><h2 id="smb_139445">smb_139+445</h2>
+<p>枚举一下smb</p>
+      </div>
+      
+        <div><a class="read-more button" href="/posts/hmv_adria/">阅读全文 →</a></div>
+      
+    </div>
     
     <div class="post on-list">
       <h1 class="post-title"><a href="https://l1uyun.one/posts/hmv_area51/">area51</a></h1>
@@ -582,537 +854,6 @@ hydra 好慢
       
     </div>
     
-    <div class="post on-list">
-      <h1 class="post-title"><a href="https://l1uyun.one/posts/hmv_zon/">zon</a></h1>
-      <div class="post-meta">
-        
-          <span class="post-date">
-            2024-02-11
-          </span>
-        
-
-        
-        <span class="">
-          
-            #<a href="https://l1uyun.one/tags/sec/hackmyvm/">sec/hackmyvm</a>&nbsp;
-          
-        </span>
-        
-      </div>
-
-      
-
-      <div class="post-content">
-        <h2 id="启动机器">启动机器</h2>
-<p>得指定网络接口</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo arp-scan -I eth5 -l
-</span></span></code></pre></div><p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zon_image_1.png" alt="HMM_zon_image_1" /><figcaption>HMM_zon_image_1</figcaption></figure>
-
-
-</p>
-<h2 id="端口扫描">端口扫描</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo rustscan -a 192.168.10.13 -r 1-65535 -t <span style="color:#ae81ff">8000</span> --ulimit <span style="color:#ae81ff">5000</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>sudo nmap 192.168.10.13 -sT -Pn -p22,80 -sV -sC -O -oN portscan/norm
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>sudo nmap 192.168.10.13 -sT -Pn -p22,80 --script<span style="color:#f92672">=</span>vuln -oN portscan/vuln
-</span></span></code></pre></div><p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zon_image_2.png" alt="HMM_zon_image_2" /><figcaption>HMM_zon_image_2</figcaption></figure>
-
-
-</p>
-<p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zon_image_3.png" alt="HMM_zon_image_3" /><figcaption>HMM_zon_image_3</figcaption></figure>
-
-
-</p>
-<h2 id="利用空格绕过文件上传过滤">利用空格绕过文件上传过滤</h2>
-<p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zon_image_4.png" alt="HMM_zon_image_4" /><figcaption>HMM_zon_image_4</figcaption></figure>
-
-
-</p>
-<p>测试之后是检查文件名, 而不是文件头, 而且图片马不能正常解析
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zon_image_5.png" alt="HMM_zon_image_5|750" /><figcaption>HMM_zon_image_5|750</figcaption></figure>
-
-
-</p>
-<ul>
-<li>
-<p>非 jpeg 格式的无法上传
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zon_image_6.png" alt="HMM_zon_image_6" /><figcaption>HMM_zon_image_6</figcaption></figure>
-
-
-</p>
-</li>
-<li>
-<p>jpeg 格式能够正常上传
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zon_image_7.png" alt="HMM_zon_image_7" /><figcaption>HMM_zon_image_7</figcaption></figure>
-
-
-
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zon_image_8.png" alt="HMM_zon_image_8" /><figcaption>HMM_zon_image_8</figcaption></figure>
-
-
-
-后面尝试了图片马, 但是没有正常解析, 无法执行命令</p>
-</li>
-</ul>
-<p>使用空格绕过</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#e6db74">&#34;webshell.jpeg .php&#34;</span>
-</span></span></code></pre></div><p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zon_image_9.png" alt="HMM_zon_image_9" /><figcaption>HMM_zon_image_9</figcaption></figure>
-
-
-</p>
-<p>一句话木马, 获得 webshell
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zon_image_10.png" alt="HMM_zon_image_10" /><figcaption>HMM_zon_image_10</figcaption></figure>
-
-
-
-freddie</p>
-      </div>
-      
-        <div><a class="read-more button" href="/posts/hmv_zon/">阅读全文 →</a></div>
-      
-    </div>
-    
-    <div class="post on-list">
-      <h1 class="post-title"><a href="https://l1uyun.one/posts/hmv_quick/">quick</a></h1>
-      <div class="post-meta">
-        
-          <span class="post-date">
-            2024-02-10
-          </span>
-        
-
-        
-        <span class="">
-          
-            #<a href="https://l1uyun.one/tags/sec/hackmyvm/">sec/hackmyvm</a>&nbsp;
-          
-        </span>
-        
-      </div>
-
-      
-
-      <div class="post-content">
-        <h2 id="host-discovery">host discovery</h2>
-<p>主机发现, 重置了 wsl 的环境之后, 发现能够使用 arp-scan 了
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick_image_1.png" alt="HMM_quick_image_1" /><figcaption>HMM_quick_image_1</figcaption></figure>
-
-
-
-前后对比
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick_image_2.png" alt="HMM_quick_image_2" /><figcaption>HMM_quick_image_2</figcaption></figure>
-
-
-</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>192.168.10.12
-</span></span></code></pre></div><h2 id="port-scan">port scan</h2>
-<p>只有一个 80 端口
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick_image_3.png" alt="HMM_quick_image_3" /><figcaption>HMM_quick_image_3</figcaption></figure>
-
-
-</p>
-<p>服务版本, 默认脚本, 操作系统扫描
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick_image_4.png" alt="HMM_quick_image_4" /><figcaption>HMM_quick_image_4</figcaption></figure>
-
-
-
-漏洞扫描
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick_image_5.png" alt="HMM_quick_image_5" /><figcaption>HMM_quick_image_5</figcaption></figure>
-
-
-</p>
-<h2 id="利用远程包含获得-shell">利用远程包含获得 shell</h2>
-<p>RFI
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick_image_6.png" alt="HMM_quick_image_6" /><figcaption>HMM_quick_image_6</figcaption></figure>
-
-
-
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick_image_7.png" alt="HMM_quick_image_7" /><figcaption>HMM_quick_image_7</figcaption></figure>
-
-
-</p>
-<h2 id="user-txt-pwd">user. txt PWD</h2>
-<p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick_image_8.png" alt="HMM_quick_image_8" /><figcaption>HMM_quick_image_8</figcaption></figure>
-
-
-
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick_image_9.png" alt="HMM_quick_image_9" /><figcaption>HMM_quick_image_9</figcaption></figure>
-
-
-</p>
-<h2 id="use-suid-file-to-get-root">use SUID file to get root</h2>
-<p><code>find / -type f -perm -u=s 2&gt;/dev/null</code>
-发现一个suid的 php</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./usr/bin/php7.0 -r <span style="color:#e6db74">&#34;pcntl_exec(&#39;/bin/sh&#39;, [&#39;-p&#39;]);&#34;</span>
-</span></span></code></pre></div><h2 id="root-txt-pwd">root. txt PWD</h2>
-<p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick_image_10.png" alt="HMM_quick_image_10" /><figcaption>HMM_quick_image_10</figcaption></figure>
-
-
-</p>
-      </div>
-      
-    </div>
-    
-    <div class="post on-list">
-      <h1 class="post-title"><a href="https://l1uyun.one/posts/hmv_tiny/">vinylizer</a></h1>
-      <div class="post-meta">
-        
-          <span class="post-date">
-            2024-02-10
-          </span>
-        
-
-        
-        <span class="">
-          
-            #<a href="https://l1uyun.one/tags/sec/hackmyvm/">sec/hackmyvm</a>&nbsp;
-          
-        </span>
-        
-      </div>
-
-      
-
-      <div class="post-content">
-        <h2 id="主机发现">主机发现</h2>
-<p>使用 nmap 进行主机发现[[THM_Nmap Live Host Discovery(活动主机发现)]]</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nmap 192.168.10.1/24 -PA -sn -oN portscan/discovery.nmap
-</span></span></code></pre></div><p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_vinylizer_image_1.png" alt="HMM_vinylizer_image_1" /><figcaption>HMM_vinylizer_image_1</figcaption></figure>
-
-
-</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>192.168.10.10
-</span></span></code></pre></div><h2 id="端口扫描">端口扫描</h2>
-<p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_vinylizer_image_2.png" alt="HMM_vinylizer_image_2" /><figcaption>HMM_vinylizer_image_2</figcaption></figure>
-
-
-
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_vinylizer_image_3.png" alt="HMM_vinylizer_image_3" /><figcaption>HMM_vinylizer_image_3</figcaption></figure>
-
-
-</p>
-<h2 id="web-侦查">web 侦查</h2>
-<p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_vinylizer_image_4.png" alt="HMM_vinylizer_image_4" /><figcaption>HMM_vinylizer_image_4</figcaption></figure>
-
-
-</p>
-<h2 id="利用登录页面的-sql-注入">利用登录页面的 sql 注入</h2>
-<p>sqlmap</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo sqlmap http://192.168.10.10/login.php --data <span style="color:#e6db74">&#34;username=admin&amp;password=admin&amp;login=&#34;</span>
-</span></span></code></pre></div><p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_vinylizer_image_5.png" alt="HMM_vinylizer_image_5" /><figcaption>HMM_vinylizer_image_5</figcaption></figure>
-
-
-</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>---
-</span></span><span style="display:flex;"><span>Parameter: username <span style="color:#f92672">(</span>POST<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    Type: time-based blind
-</span></span><span style="display:flex;"><span>    Title: MySQL &gt;<span style="color:#f92672">=</span> 5.0.12 AND time-based blind <span style="color:#f92672">(</span>query SLEEP<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    Payload: username<span style="color:#f92672">=</span>admin<span style="color:#e6db74">&#39; AND (SELECT 7762 FROM (SELECT(SLEEP(5)))rBJA) AND &#39;</span>mJfQ<span style="color:#e6db74">&#39;=&#39;</span>mJfQ&amp;password<span style="color:#f92672">=</span>admin&amp;login<span style="color:#f92672">=</span>
-</span></span><span style="display:flex;"><span>---
-</span></span></code></pre></div><p>查看所有数据库</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> sudo sqlmap http://192.168.10.10/login.php --data <span style="color:#e6db74">&#34;username=admin&amp;password=admin&amp;login=&#34;</span> --dbs
-</span></span></code></pre></div><p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_vinylizer_image_6.png" alt="HMM_vinylizer_image_6" /><figcaption>HMM_vinylizer_image_6</figcaption></figure>
-
-
-
-查看数据库的表信息</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> sudo sqlmap http://192.168.10.10/login.php --data <span style="color:#e6db74">&#34;username=admin&amp;password=admin&amp;login=&#34;</span> --tables -D vinyl_marketplace
-</span></span></code></pre></div><p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_vinylizer_image_7.png" alt="HMM_vinylizer_image_7" /><figcaption>HMM_vinylizer_image_7</figcaption></figure>
-
-
-
-查看某一个表的列信息</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo sqlmap http://192.168.10.10/login.php --data <span style="color:#e6db74">&#34;username=admin&amp;password=admin&amp;login=&#34;</span> --columns -D vinyl_marketplace -T users
-</span></span></code></pre></div><p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_vinylizer_image_8.png" alt="HMM_vinylizer_image_8" /><figcaption>HMM_vinylizer_image_8</figcaption></figure>
-
-
-
-查看对应列的信息</p>
-      </div>
-      
-        <div><a class="read-more button" href="/posts/hmv_tiny/">阅读全文 →</a></div>
-      
-    </div>
-    
-    <div class="post on-list">
-      <h1 class="post-title"><a href="https://l1uyun.one/posts/hmv_zeug/">zeug_hard</a></h1>
-      <div class="post-meta">
-        
-          <span class="post-date">
-            2024-02-09
-          </span>
-        
-
-        
-        <span class="">
-          
-            #<a href="https://l1uyun.one/tags/sec/hackmyvm/">sec/hackmyvm</a>&nbsp;
-          
-        </span>
-        
-      </div>
-
-      
-
-      <div class="post-content">
-        <p>netdiscover</p>
-<h2 id="主机发现">主机发现</h2>
-<p>启动前
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_1.png" alt="HMM_zeug_image_1|550" /><figcaption>HMM_zeug_image_1|550</figcaption></figure>
-
-
-
-启动后, 以后就先导入 VirtualBox 然后导出, 再导入 VMware 算了
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_2.png" alt="HMM_zeug_image_2" /><figcaption>HMM_zeug_image_2</figcaption></figure>
-
-
-
-靶机 ip 192.168.10.4</p>
-<h2 id="端口扫描">端口扫描</h2>
-<p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_3.png" alt="HMM_zeug_image_3" /><figcaption>HMM_zeug_image_3</figcaption></figure>
-
-
-</p>
-<p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_4.png" alt="HMM_zeug_image_4|700" /><figcaption>HMM_zeug_image_4|700</figcaption></figure>
-
-
-</p>
-<p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_5.png" alt="HMM_zeug_image_5|550" /><figcaption>HMM_zeug_image_5|550</figcaption></figure>
-
-
-
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_6.png" alt="HMM_zeug_image_6|600" /><figcaption>HMM_zeug_image_6|600</figcaption></figure>
-
-
-
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_7.png" alt="HMM_zeug_image_7" /><figcaption>HMM_zeug_image_7</figcaption></figure>
-
-
-</p>
-<h2 id="ftp-匿名登录">FTP 匿名登录</h2>
-<p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_8.png" alt="HMM_zeug_image_8" /><figcaption>HMM_zeug_image_8</figcaption></figure>
-
-
-</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>~/workspace cat README.txt
-</span></span><span style="display:flex;"><span>Hi, Cosette, don<span style="color:#e6db74">&#39;t forget to disable the debug mode in the web application, we don&#39;</span>t want security breaches.
-</span></span></code></pre></div><p>提示有一个 debug 页面可以利用</p>
-<h2 id="web-侦查">web 侦查</h2>
-<p>进去之后是一个上传文件的页面, 先去搜了一下 cve, 因为不确定 cms 名称啥的,
-后面搜到了 console 目录, 然后访问了 console 目录, 才确定这是 Werkzeug
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_9.png" alt="HMM_zeug_image_9|900" /><figcaption>HMM_zeug_image_9|900</figcaption></figure>
-
-
-
-这里的 cve 用不了
-想着来目录扫描一下
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zeug_image_10.png" alt="HMM_zeug_image_10|550" /><figcaption>HMM_zeug_image_10|550</figcaption></figure>
-
-
-</p>
-      </div>
-      
-        <div><a class="read-more button" href="/posts/hmv_zeug/">阅读全文 →</a></div>
-      
-    </div>
-    
-    <div class="post on-list">
-      <h1 class="post-title"><a href="https://l1uyun.one/posts/hmv_quick2/">quick2</a></h1>
-      <div class="post-meta">
-        
-          <span class="post-date">
-            2024-02-09
-          </span>
-        
-
-        
-        <span class="">
-          
-            #<a href="https://l1uyun.one/tags/sec/hackmyvm/">sec/hackmyvm</a>&nbsp;
-          
-        </span>
-        
-      </div>
-
-      
-
-      <div class="post-content">
-        <p>启动靶机前
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_1.png" alt="HMM_quick2_image_1|700" /><figcaption>HMM_quick2_image_1|700</figcaption></figure>
-
-
-
-启动后
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_2.png" alt="HMM_quick2_image_2|650" /><figcaption>HMM_quick2_image_2|650</figcaption></figure>
-
-
-
-192.168.10.4
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_3.png" alt="HMM_quick2_image_3|600" /><figcaption>HMM_quick2_image_3|600</figcaption></figure>
-
-
-
-2024-02-14-20:18:39
-后面都是直接用 arp-scan 来扫描某一个网卡的下的局域网ip 了</p>
-<h2 id="端口扫描">端口扫描</h2>
-<p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_4.png" alt="HMM_quick2_image_4|700" /><figcaption>HMM_quick2_image_4|700</figcaption></figure>
-
-
-</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nmap 192.168.10.4 -p22,80 -Pn -sT -sV -O -sC -oA  portscan/nmap
-</span></span></code></pre></div><p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_5.png" alt="HMM_quick2_image_5|750" /><figcaption>HMM_quick2_image_5|750</figcaption></figure>
-
-
-</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nmap 192.168.10.4 -sT -Pn -p20,80 --script<span style="color:#f92672">=</span>vuln -oA  portscan/vuln
-</span></span></code></pre></div><p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_6.png" alt="HMM_quick2_image_6|700" /><figcaption>HMM_quick2_image_6|700</figcaption></figure>
-
-
-</p>
-<h2 id="web-服务">web 服务</h2>
-<p>主页里面在端口扫描的时候发现有一个参数 page
-尝试 local file include LFI
-获取到了/etc/passwd
-在 home 目录下有文件夹的有这两个用户</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>andrew:x:1000:1000: Andrew Speed:/home/andrew:/bin/bash
-</span></span><span style="display:flex;"><span>nick:x:1001:1001: Nick Greenhorn,,,:/home/nick:/bin/bash
-</span></span></code></pre></div><p>获得了 user. txt</p>
-<p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_7.png" alt="HMM_quick2_image_7|500" /><figcaption>HMM_quick2_image_7|500</figcaption></figure>
-
-
-</p>
-<p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_8.png" alt="HMM_quick2_image_8|483" /><figcaption>HMM_quick2_image_8|483</figcaption></figure>
-
-
-</p>
-<p>进行目录扫描 ferox 发现失效了, 以后还是先尝试 gobuster, 不行的话再 feroxbuster
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_9.png" alt="HMM_quick2_image_9|750" /><figcaption>HMM_quick2_image_9|750</figcaption></figure>
-
-
-
-进入 file. php 页面</p>
-      </div>
-      
-        <div><a class="read-more button" href="/posts/hmv_quick2/">阅读全文 →</a></div>
-      
-    </div>
-    
-    <div class="post on-list">
-      <h1 class="post-title"><a href="https://l1uyun.one/search/">Search Results</a></h1>
-      <div class="post-meta">
-        
-          <span class="post-date">
-            2023-11-23
-          </span>
-        
-
-        
-      </div>
-
-      
-
-      <div class="post-content">
-        
-      </div>
-      
-    </div>
-    
     <div class="pagination">
   <div class="pagination__buttons">
     
@@ -1123,6 +864,13 @@ freddie</p>
         </a>
       </span>
     
+    
+      <span class="button next">
+        <a href="/page/5/">
+          <span class="button__text">下 一 页</span>
+          <span class="button__icon">→</span>
+        </a>
+      </span>
     
   </div>
 </div>
@@ -1214,6 +962,18 @@ freddie</p>
 
     
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
 
 
 
@@ -1224,7 +984,7 @@ freddie</p>
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 88486 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 112710 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
       
     
