@@ -6,7 +6,7 @@
     
             <link href="https://l1uyun.one/tags/sec/ctf/" rel="alternate" type="text/html" title="html" />
             <link href="https://l1uyun.one/tags/sec/ctf/index.xml" rel="alternate" type="application/rss+xml" title="rss" />
-    <updated>2025-09-21T12:57:16+00:00</updated>
+    <updated>2025-09-21T12:57:45+00:00</updated>
     
     
     
@@ -19,7 +19,7 @@
             <id>https://l1uyun.one/posts/%E5%8A%9E%E4%BA%86%E4%B8%80%E5%9C%BActf%E6%A0%A1%E8%B5%9B/</id>
             
             <published>2024-12-18T20:53:50+08:00</published>
-            <updated>2025-09-21T20:56:44+08:00</updated>
+            <updated>2025-09-21T20:57:15+08:00</updated>
             
             
             <content type="html"><![CDATA[<h1 id="前言">前言</h1>
@@ -125,7 +125,7 @@
 <p>做出签到题的有43个人，提交wp的，只有16个，算上群里的毕业学长发的wp，总共只有18个wp，所以审wp的工作很快就完成了，没啥内容，而且除了reverse和pwn方向，其他方向都很直接，并没有很长的链子。</p>
 <p>而我们pwn方向的出题人，倒是发现了一些疑点，我们开会之后，决定抽空找他们线下答辩一下。但是后面出了意外情况，就按照意外情况的处理方式去处理了。</p>
 <h3 id="官方wp">官方wp</h3>
-<p>原本是有计划出官方wp的，但是遇到了期末考试，我也就懒得弄了，正好学长们在群里发了官方wp，就封他们为官方wp了。</p>
+<p>原本是有计划出官方wp的，但是遇到了期末考试，我也就懒得弄了，正好学长们在群里发了wp，就封他们为官方wp了。</p>
 <p>看了一下他们的wp，思路上差不了多少，毕竟都是easy题。</p>
 <p>我出的misc方向的《网络鲨鱼》，没人尝试去连接那个mysql数据库，出题的时候没有想清楚，觉得是新生赛，就在后面又给了一个base64编码的flag，导致这道题跟另外一道流量分析的题很相似了。</p>
 <p>
