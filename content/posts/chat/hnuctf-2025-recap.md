@@ -2,7 +2,7 @@
 title: 我又办了一场CTF新生赛——写在HNUCTF2025之后
 tags:
   - draft
-lastmod: 2025-09-25T22:59:24
+lastmod: 2025-09-25T22:59:42
 date: 2025-09-25T22:46:35
 toc: "true"
 draft: "false"
@@ -34,7 +34,7 @@ url: /posts/hnuctf-2025-recap/
 
 又由于我去年做了很完整的备份，今年部署平台只需要买台服务器，把去年的备份传上去，再docker compose up -d就行了，去年的数据也都还在。
 
-在组建草台班子，到我们开始出题中间，cry他们燃了起来，为信安协会弄了个[wiki](https://www.hnusec.org)，希望能减少新生们的信息差。之后他们在群里说起了什么“为 hnu 最后燃烧一次”之类的话，我借着他们的激情写了篇解决我自己问题的[文章](https://l1uyun.one/posts/when-we-talk-about-landing/)。
+在组建草台班子，到我们开始出题中间，cry他们燃了起来，为信安协会弄了个[wiki](https://www.hnusec.org)，希望能减少新生们的信息差，之后他们在群里说起了什么“为 hnu 最后燃烧一次”之类的话，我借着他们的激情写了篇解决我自己问题的[文章](https://l1uyun.one/posts/when-we-talk-about-landing/)。
 
 ![欢迎来到hnusec](https://img.l1uyun.one/hnuctf-2025-recap_image_2.png)
 
