@@ -2,7 +2,7 @@
 title: 我又办了一场CTF新生赛——写在HNUCTF2025之后
 tags:
   - draft
-lastmod: 2025-09-25T23:58:19
+lastmod: 2025-09-26T07:31:11
 date: 2025-09-25T22:46:35
 toc: "true"
 draft: "false"
@@ -51,7 +51,7 @@ url: /posts/hnuctf-2025-recap/
 
 第三道osint题，尘封的轨迹，灵感来自我朋友qrw的博客文章配图，我觉得有些辨识度，就google识图找了一下，能找到是川外小铁路，再和Gemini聊了一下出题方向，决定让选手们溯源铁路历史，找到这个铁路最初为哪个工厂服务。
 
-![qrw.github.io](https://img.l1uyun.one/hnuctf-2025-recap_image_4.png)
+![qrw1.github.io](https://img.l1uyun.one/hnuctf-2025-recap_image_4.png)
 
 最后一道osint题沿用了去年的题，让他们在出题人的博客里面找flag，但是实际上可以在github上找最近的提交记录，只是我们将正确的flag放在了Lucian博客中，这让这道题难度增加许多。
 
