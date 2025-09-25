@@ -2,8 +2,8 @@
 title: 我又办了一场CTF新生赛——写在HNUCTF2025之后
 tags:
   - draft
-lastmod: 2025-09-25T22:50:38
-date: 2025-09-24T19:56:55
+lastmod: 2025-09-25T22:51:43
+date: 2025-09-25T22:46:35
 toc: "true"
 draft: "false"
 keywords:
