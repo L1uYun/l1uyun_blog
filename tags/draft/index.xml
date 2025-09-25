@@ -6,7 +6,7 @@
     
             <link href="https://l1uyun.one/tags/draft/" rel="alternate" type="text/html" title="html" />
             <link href="https://l1uyun.one/tags/draft/index.xml" rel="alternate" type="application/rss+xml" title="rss" />
-    <updated>2025-09-25T14:50:25+00:00</updated>
+    <updated>2025-09-25T14:51:08+00:00</updated>
     
     
     
@@ -19,7 +19,7 @@
             <id>https://l1uyun.one/posts/hnuctf-2025-recap/</id>
             
             <published>2025-09-24T19:56:55+08:00</published>
-            <updated>2025-09-25T22:49:54+08:00</updated>
+            <updated>2025-09-25T22:50:38+08:00</updated>
             
             
             <content type="html"><![CDATA[<h1 id="前言">前言</h1>
@@ -54,8 +54,8 @@
 </p>
 <h2 id="出题">出题</h2>
 <p>我在16号弄完本校保研面试才开始准备出题，在这之前的预热赛沿用了去年的原题。</p>
-<p>我们最开始出的osint题，这块最不容易出题，去年是我舍友翻遍了他的旅游相册，才勉强出了几题。他们三翻了一下他们的旅行相册，在群里说了一些出题思路。</p>
-<p>我也翻了我的相册，翻了一下昨天晚上通宵散步时拍的照片，找到了一张凌晨两点多，外卖小哥睡在公交站的照片，并在群里说了出题思路，让选手们找这是哪个公交站。这张图右侧有一个六沟垅地铁站的指示标志，但是这里实际并不是六沟垅地铁站，可以根据左侧的沙利文或者津市牛肉粉定位到准确位置。</p>
+<p>我们最开始出的osint题，这块最不容易出题，去年是我舍友翻遍了他的旅游相册，才勉强出了几题。</p>
+<p>他们三翻了一下他们的旅行相册，在群里说了一些出题思路。我也翻了我的相册，翻了一下昨天晚上通宵散步时拍的照片，找到了一张凌晨两点多，外卖小哥睡在公交站的照片，并在群里说了出题思路，让选手们找这是哪个公交站。这张图右侧有一个六沟垅地铁站的指示标志，但是这里实际并不是六沟垅地铁站，可以根据左侧的沙利文或者津市牛肉粉定位到准确位置。</p>
 <p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/hnuctf-2025-recap_image_3.png" alt="从前一天晚上8点到早上6点" /><figcaption>从前一天晚上8点到早上6点</figcaption></figure>
