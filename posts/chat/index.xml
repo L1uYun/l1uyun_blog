@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
-    <generator uri="https://gohugo.io/" version="0.150.0">Hugo</generator><title type="html"><![CDATA[l1uyun]]></title>
+    <generator uri="https://gohugo.io/" version="0.150.1">Hugo</generator><title type="html"><![CDATA[l1uyun]]></title>
     
     
     
             <link href="https://l1uyun.one/posts/chat/" rel="alternate" type="text/html" title="html" />
             <link href="https://l1uyun.one/posts/chat/index.xml" rel="alternate" type="application/rss+xml" title="rss" />
-    <updated>2025-09-25T15:00:14+00:00</updated>
+    <updated>2025-09-25T15:58:52+00:00</updated>
     
     
     
@@ -19,14 +19,14 @@
             <id>https://l1uyun.one/posts/hnuctf-2025-recap/</id>
             
             <published>2025-09-25T22:46:35+08:00</published>
-            <updated>2025-09-25T22:59:42+08:00</updated>
+            <updated>2025-09-25T23:58:19+08:00</updated>
             
             
             <content type="html"><![CDATA[<h1 id="前言">前言</h1>
 <p>我又办一场CTF新生赛。</p>
 <h1 id="背景">背景</h1>
 <h2 id="直接原因">直接原因</h2>
-<p>还是先从背景写起，办比赛的直接原因是，省里给学院下达了任务，要求我们在这个月办一场CTF比赛，来配合网络安全宣传周做一些宣传。今年的网络安全宣传周在9.15-21，所以我们最迟得在21号办完这个比赛，我们最终还是延续了去年的赛制，选择在周六周天这两天举行比赛。</p>
+<p>还是先从背景写起，办比赛的直接原因是，省里给学院下达了任务，要求我们在这个月办一场CTF比赛，来配合网络安全宣传周做一些宣传。今年的网络安全宣传周在9.15-21，所以我们最迟得在21号办完这个比赛，最终我们还是延续了去年的赛制，选择在周六周天这两天举行比赛。</p>
 <p>上述这个来自上层权力的不可抗力因素，是比赛在这个时间点举行的直接原因，但这个原因对我来说并不怎么重要，这并不是<strong>我参与</strong>的根本原因。我在收到学院老师的消息后，就按<strong>协会传统</strong>完成了换届，将这个存在感不高的协会交给了学弟cry，并将举行CTF新生赛这个kpi工作也一并交给了他。</p>
 <h2 id="内在冲突">内在冲突</h2>
 <p>在当时那个时间点，我的注意力再次被内部冲突占据了。我在等待，等待学院公布保研名额，等待学院公示保研名单。一方面，我好像上岸了，不必准备秋招，不必焦虑出路了，我只需要等待，等待奇迹完整发生在我身上。但是另一方面，这使我感到荒谬，按照预期，我应该会慢慢退出地球online这个游戏——出家，流浪或者随便死在哪里。<strong>通过不行动这一行动，使环境与我对世界的理解相符</strong>，但是宇宙并没有回应我的预期，而是给了我一条世俗的道路，使我获得了保研资格。</p>
