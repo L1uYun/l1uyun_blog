@@ -2,7 +2,7 @@
 title: 我又办了一场CTF新生赛——写在HNUCTF2025之后
 tags:
   - draft
-lastmod: 2025-09-25T22:46:35
+lastmod: 2025-09-25T22:49:54
 date: 2025-09-24T19:56:55
 toc: "true"
 draft: "false"
@@ -59,11 +59,11 @@ url: /posts/hnuctf-2025-recap/
 
 ![姑且称之为彩蛋](https://img.l1uyun.one/hnuctf-2025-recap_image_5.png)
 
-哈基米那题来自我的知乎首页，我关注的一个佛教领域答主点赞过这篇文章，在推荐算法的作用下我也刷到了这篇。web题原本准备沿用去年的题，因为时间确实不多了，周四晚上才开始出web，不过还是用cursor 水了几道。
+哈基米那题来自我的知乎首页，我关注的一个佛教领域答主点赞过这篇文章。web题原本准备沿用去年的题，因为时间确实不多了，周四晚上才开始出web，不过还是用cursor 水了几道。
 
 ![哈基米南北绿豆](https://img.l1uyun.one/hnuctf-2025-recap_image_6.png)
 
-一位已经毕业很多年的学长，为我们提供了三道blockchain方向的题目，大大缓解了我们出pwn方向题目的压力。
+一位已经毕业多年的学长，为我们提供了三道blockchain方向的题目，大大缓解了我们出pwn方向题目的压力。
 
 ![blockchain_is_so_hard](https://img.l1uyun.one/hnuctf-2025-recap_image_7.png)
 
