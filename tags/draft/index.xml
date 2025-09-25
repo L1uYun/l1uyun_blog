@@ -6,7 +6,7 @@
     
             <link href="https://l1uyun.one/tags/draft/" rel="alternate" type="text/html" title="html" />
             <link href="https://l1uyun.one/tags/draft/index.xml" rel="alternate" type="application/rss+xml" title="rss" />
-    <updated>2025-09-25T15:58:52+00:00</updated>
+    <updated>2025-09-25T23:31:45+00:00</updated>
     
     
     
@@ -19,7 +19,7 @@
             <id>https://l1uyun.one/posts/hnuctf-2025-recap/</id>
             
             <published>2025-09-25T22:46:35+08:00</published>
-            <updated>2025-09-25T23:58:19+08:00</updated>
+            <updated>2025-09-26T07:31:11+08:00</updated>
             
             
             <content type="html"><![CDATA[<h1 id="前言">前言</h1>
@@ -66,7 +66,7 @@
 <p>第三道osint题，尘封的轨迹，灵感来自我朋友qrw的博客文章配图，我觉得有些辨识度，就google识图找了一下，能找到是川外小铁路，再和Gemini聊了一下出题方向，决定让选手们溯源铁路历史，找到这个铁路最初为哪个工厂服务。</p>
 <p>
 <figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/hnuctf-2025-recap_image_4.png" alt="qrw.github.io" /><figcaption>qrw.github.io</figcaption></figure>
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/hnuctf-2025-recap_image_4.png" alt="qrw1.github.io" /><figcaption>qrw1.github.io</figcaption></figure>
 
 
 </p>
