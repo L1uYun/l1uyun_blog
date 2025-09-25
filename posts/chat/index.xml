@@ -6,7 +6,7 @@
     
             <link href="https://l1uyun.one/posts/chat/" rel="alternate" type="text/html" title="html" />
             <link href="https://l1uyun.one/posts/chat/index.xml" rel="alternate" type="application/rss+xml" title="rss" />
-    <updated>2025-09-25T14:47:15+00:00</updated>
+    <updated>2025-09-25T14:50:25+00:00</updated>
     
     
     
@@ -19,7 +19,7 @@
             <id>https://l1uyun.one/posts/hnuctf-2025-recap/</id>
             
             <published>2025-09-24T19:56:55+08:00</published>
-            <updated>2025-09-25T22:46:35+08:00</updated>
+            <updated>2025-09-25T22:49:54+08:00</updated>
             
             
             <content type="html"><![CDATA[<h1 id="前言">前言</h1>
@@ -78,14 +78,14 @@
 
 
 </p>
-<p>哈基米那题来自我的知乎首页，我关注的一个佛教领域答主点赞过这篇文章，在推荐算法的作用下我也刷到了这篇。web题原本准备沿用去年的题，因为时间确实不多了，周四晚上才开始出web，不过还是用cursor 水了几道。</p>
+<p>哈基米那题来自我的知乎首页，我关注的一个佛教领域答主点赞过这篇文章。web题原本准备沿用去年的题，因为时间确实不多了，周四晚上才开始出web，不过还是用cursor 水了几道。</p>
 <p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/hnuctf-2025-recap_image_6.png" alt="哈基米南北绿豆" /><figcaption>哈基米南北绿豆</figcaption></figure>
 
 
 </p>
-<p>一位已经毕业很多年的学长，为我们提供了三道blockchain方向的题目，大大缓解了我们出pwn方向题目的压力。</p>
+<p>一位已经毕业多年的学长，为我们提供了三道blockchain方向的题目，大大缓解了我们出pwn方向题目的压力。</p>
 <p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/hnuctf-2025-recap_image_7.png" alt="blockchain_is_so_hard" /><figcaption>blockchain_is_so_hard</figcaption></figure>
