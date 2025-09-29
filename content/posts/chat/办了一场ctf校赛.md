@@ -1,9 +1,9 @@
 ---
 title: 办了一场ctf校赛
 tags:
-  - l1uyun/hnu
-  - sec/ctf
-lastmod: 2025-09-22T08:32:09
+  - sec
+  - hnu
+lastmod: 2025-09-29T20:52:46
 date: 2024-12-18T20:53:50
 toc: "true"
 draft: "false"

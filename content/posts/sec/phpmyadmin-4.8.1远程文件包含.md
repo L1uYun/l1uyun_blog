@@ -2,10 +2,9 @@
 title: phpmyadmin-4.8.1远程文件包含
 cve: CVE-2018-12613
 tags:
-  - sec/vulhub
-  - sec/cve
+  - sec
 date: 2024-09-18T15:33:13
-lastmod: 2024-09-19T22:35:37
+lastmod: 2025-09-29T20:52:25
 toc: "true"
 draft: "false"
 ---

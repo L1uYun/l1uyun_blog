@@ -1,9 +1,9 @@
 ---
 title: XMAS
 tags:
-  - sec/hackmyvm
+  - sec
 date: 2024-02-14T17:08:44
-lastmod: 2024-11-24T19:23:10
+lastmod: 2025-09-29T20:51:34
 toc: "true"
 ---
 ## 靶机, 启动

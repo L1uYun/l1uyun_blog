@@ -1,9 +1,9 @@
 ---
 title: vinylizer
 tags:
-  - sec/hackmyvm
+  - sec
 date: 2024-02-10T11:51:04
-lastmod: 2024-11-24T19:12:03
+lastmod: 2025-09-29T20:52:01
 toc: "true"
 ---
 ## 主机发现

@@ -1,9 +1,9 @@
 ---
 title: springboot利用
 tags:
-  - sec/javasec
+  - sec
 date: 2024-08-06T09:32:00
-lastmod: 2024-11-21T21:21:15
+lastmod: 2025-09-29T20:53:09
 toc: "true"
 ---
 # springboot利用

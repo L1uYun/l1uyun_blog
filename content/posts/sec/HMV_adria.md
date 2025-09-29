@@ -1,10 +1,10 @@
 ---
 title: HMV_adria
 tags:
-  - sec/hackmyvm
+  - sec
 status: 
 date: 2024-05-14T20:49:52
-lastmod: 2024-11-24T19:25:13
+lastmod: 2025-09-29T20:51:37
 toc: "true"
 ---
 ## 靶机启动

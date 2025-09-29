@@ -1,9 +1,9 @@
 ---
 title: HMV_airbind
 tags:
-  - sec/hackmyvm
+  - sec
 date: 2024-06-15T11:46:25
-lastmod: 2024-11-24T19:08:55
+lastmod: 2025-09-29T20:51:45
 toc: "true"
 ---
 

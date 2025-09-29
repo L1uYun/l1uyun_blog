@@ -1,9 +1,9 @@
 ---
 title: quick2
 tags:
-  - sec/hackmyvm
+  - sec
 date: 2024-02-09T09:33:26
-lastmod: 2024-11-24T19:20:10
+lastmod: 2025-09-29T20:51:57
 toc: "true"
 draft: "false"
 ---

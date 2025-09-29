@@ -1,9 +1,9 @@
 ---
 title: zon
 tags:
-  - sec/hackmyvm
+  - sec
 date: 2024-02-11T10:52:40
-lastmod: 2024-11-24T19:13:11
+lastmod: 2025-09-29T20:52:08
 toc: "true"
 ---
 ## 启动机器

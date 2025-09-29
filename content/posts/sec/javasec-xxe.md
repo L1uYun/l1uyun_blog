@@ -1,9 +1,9 @@
 ---
 title: javasec-xxe
 date: 2024-07-26T18:10:32
-lastmod: 2024-08-18T10:06:17
+lastmod: 2025-09-29T20:53:20
 tags:
-  - sec/javasec
+  - sec
 toc: "true"
 ---
 # xxe注入

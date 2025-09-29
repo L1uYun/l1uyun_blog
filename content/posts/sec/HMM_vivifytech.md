@@ -1,9 +1,9 @@
 ---
 title: vivifytech
 tags:
-  - sec/hackmyvm
+  - sec
 date: 2024-02-13T12:46:25
-lastmod: 2024-11-24T19:07:49
+lastmod: 2025-09-29T20:51:23
 toc: "true"
 draft: "false"
 ---

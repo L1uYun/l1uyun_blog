@@ -1,9 +1,9 @@
 ---
 title: javasec-sql注入
 date: 2024-07-23T20:37:06
-lastmod: 2024-08-18T10:06:17
+lastmod: 2025-09-29T20:53:12
 tags:
-  - sec/javasec
+  - sec
 toc: "true"
 ---
 # javasec-sql注入

@@ -1,9 +1,9 @@
 ---
 title: slowman
 tags:
-  - sec/hackmyvm
+  - sec
 date: 2024-02-15T15:44:24
-lastmod: 2024-12-08T19:34:53
+lastmod: 2025-09-29T20:52:11
 toc: "true"
 ---
 ## 端口扫描

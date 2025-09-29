@@ -1,9 +1,9 @@
 ---
 title: zeug_hard
 tags:
-  - sec/hackmyvm
+  - sec
 date: 2024-02-09T19:30:21
-lastmod: 2024-11-24T19:12:29
+lastmod: 2025-09-29T20:52:15
 toc: "true"
 ---
 netdiscover

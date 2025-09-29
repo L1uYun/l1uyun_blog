@@ -1,9 +1,9 @@
 ---
 title: javasec-urldns链
 date: 2024-08-03T15:51:23+08:00
-lastmod: 2024-08-18T10:06:17+08:00
+lastmod: 2025-09-29T20:53:14
 tags:
-  - sec/javasec
+  - sec
 toc: "true"
 ---
 # urldns链
