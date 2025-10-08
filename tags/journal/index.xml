@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
-    <generator uri="https://gohugo.io/" version="0.151.0">Hugo</generator><title type="html"><![CDATA[l1uyun's Blog]]></title>
+    
+        <id>https://l1uyun.one/tags/journal/</id>
+    <title type="html"><![CDATA[l1uyun's Blog]]></title>
+    <updated>2025-10-08T06:03:49+00:00</updated>
+    <generator uri="https://gohugo.io/" version="0.151.0">Hugo</generator>
+    <author>
+            <name>l1uyun</name>
+            
+                <email>846185293@qq.com</email>
+            
+                <uri>https://l1uyun.one/</uri>
+            </author>
     
     
     
             <link href="https://l1uyun.one/tags/journal/" rel="alternate" type="text/html" title="html" />
             <link href="https://l1uyun.one/tags/journal/index.xml" rel="alternate" type="application/rss+xml" title="rss" />
-    <updated>2025-10-08T04:30:29+00:00</updated>
+    <updated>2025-10-08T06:03:49+00:00</updated>
     
-    
-    
-    
-        <id>https://l1uyun.one/tags/journal/</id>
     
         
         <entry>
@@ -27,8 +34,6 @@
 <p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/2025W03_%e8%bf%b7%e8%8c%ab%e7%9a%84%e4%ba%ba_image_1.png" alt="" /></figure>
-
-
 </p>
 <p>对我来说，之前一直想的是去工作，但是24年一整年我都没有真正在为这个目标做什么准备，混了大半年之后，意识到我并不热爱计算机，并不热爱安全，我对计算机/安全感兴趣这个故事已经讲不下去了。</p>
 <p>热爱需要的是擅长某件事情并且自己能够确认自己擅长这件事情，前者需要刻意练习，离开外围，深入到事情的内核之中，这点我做的不够，浪费了很多时间在外围，后者需要我主动或者自然的从外界获得的反馈中培养一种确认感&mdash;我能够做好这方面的事情，后者比前者更重要，而在这方面我是匮乏的，我并不擅长这么做，在这之后，我才意识到我这方面能力的匮乏，我缺乏这种从外界反馈中肯定自我的习惯，就连高考，这件我目前来看做的还行的事情，我都没有什么胜任感，我只是莫名奇妙的就这样了。</p>
@@ -38,8 +43,6 @@
 <p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/2025W03_%e8%bf%b7%e8%8c%ab%e7%9a%84%e4%ba%ba_image_2.png" alt="" /></figure>
-
-
 </p>
 <p>相较于工作，我并不怎么愿意继续呆在学校这一环境（甚至于现在就想逃离），我已经待在学校够长了，我渴望早一点进入下一阶段，不管是以怎样的方式进入吧。而选择读研的话，就又得压抑几年了，而且也只是把现在的焦虑推迟了一些。不过读研对我来说并非全是坏处吧，可以让我多一些时间，再多一些社会化，多去主动培养一些自信。</p>
 <p>那考公呢，国考，省考，国企事业编，我确实更倾向稳定和低强度这两个属性，但是我还是要解决我的无力感。</p>
@@ -53,8 +56,6 @@
 <p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/2025W03_%e8%bf%b7%e8%8c%ab%e7%9a%84%e4%ba%ba_image_3.png" alt="|300" /><figcaption>|300</figcaption></figure>
-
-
 </p>
 <p>我看世界的方式本身居然也是残缺的。心盲症，可以算得上是脑残了，脑部功能残缺的简称而已。在我接触到国内心盲症群体之后，才从其中的一些人口中了解到脑残这个词的本来意思。怎么算不上是脑残呢，比正常人少了很多功能呢，2%的比例，对我来说，还是更加稀有的多感官心盲症，也许只有0.5%？这种看世界的方式的残缺，可以看成神经多样性吧，但是站在世俗世界的二元对立角度下，或者说站在&rsquo;正常人&rsquo;的视角下，这就是残缺。这一残缺对我的影响更加重大，文化，观念算是在应用层了，而心盲症是发生硬件层或者说是操作系统层的问题，我‘看世界’的方式本身就是残缺的，是匮乏的，并且永远会是这样。</p>
 <p>我大脑中没有声音（心音）。音乐从来都没有进入我的世界，我直到高中才意识到身边的人，大多都有听音乐的需求，都能享受音乐带来的乐趣，而我只能通过歌词来理解音乐，无法在脑海中“听到”旋律。我脑海中也没有味道，吃饭更多像是生理需求，而不是享受过程的乐趣。除了视觉、听觉和味觉的内在体验缺失，我还没有完全感受到其他的一些感官的缺失对我产生的影响。已经意识到的缺失，总能有办法去代偿，通过关注歌词来理解音乐，理解其中的情感，通过正念来从吃饭中获得美好体验。而那些我还没有意识到的缺失，却在更大程度上决定了我。</p>
@@ -62,16 +63,12 @@
 <p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/2025W03_%e8%bf%b7%e8%8c%ab%e7%9a%84%e4%ba%ba_image_91.png" alt="" /></figure>
-
-
 </p>
 <p>不过还好，死神给我推荐了宗教，依靠宗教这一究极手段，依靠信仰这一非理性方式，大概率能够让我拥有一些平静（理性在意识,生命的领域必须得承认自己是有限的，理性只是生命的一种手段，用语言和思维这些理性的手段捕捉不到所谓的&rsquo;生命的意义&rsquo;，语言,思维相较于感受要更加抽象，也就意味着更加失真，&lsquo;感受&rsquo;要比语言和思维更加真实）。可惜我并不能很好的接受&rsquo;功德&rsquo;，&lsquo;轮回&rsquo;，&lsquo;戒律&rsquo;这些古老的设定，也许去天堂还是地狱得看你这一生吃的橘子数量🍊，&lsquo;上帝&rsquo;也一直在进步呢🙏</p>
 <p>也许如史铁生在《好运设计》里面说的吧，上帝爱我，通过这些巧妙的设计，想让我意识到目的的绝望与虚无，让我有足够的痛苦不得不将目光从结果转向过程，这是对付绝境的唯一手段。&lsquo;一个只想（只想！）使过程精彩的人是无法被剥夺的，死神也无法将一个精彩的过程变成不精彩的过程&hellip;相反坏运更利于你去创造精彩的过程。于是绝境溃败了，它必然溃败。你立于目的的绝境却实现着、欣赏着、饱尝着过程的精彩,你便把绝境送上了绝境。&rsquo;</p>
 <p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/2025W03_%e8%bf%b7%e8%8c%ab%e7%9a%84%e4%ba%ba_image_4.jpg" alt="|500" /><figcaption>|500</figcaption></figure>
-
-
 </p>
 <h1 id="本周在读">本周在读</h1>
 <p>本周最开始按着之前的想法，看了一些思想实验，找了一本《直觉泵与其他思考工具》，但是并没有看多少，看不下去的书，我就直接放弃掉，书是读不完的，而有一些书是绕不开的，我没有在对的时间遇到这本书，看不下去了，就先不看了，如果是这本书是经典，之后我大概率还是会从某个地方遇见的。</p>
@@ -79,29 +76,21 @@
 <p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/2025W03_%e8%bf%b7%e8%8c%ab%e7%9a%84%e4%ba%ba_image_5.png" alt="" /></figure>
-
-
 </p>
 <p>这本书并不是什么基督教的经书，来源于上世纪西方的新纪元运动，书名的神，并不是一般意义上“上帝”，而是一种泛神论，万物一体，这个整体就是神。也并不是一本所谓的洗脑的书籍，确实向我展现了一种全新的视角（一切都只是视角），而且很大程度上也是自洽的，也许不需要用自洽这个词，毕竟这是信仰的领域，信仰领域的知识与科学领域的知识的定义并不相同（在神学的领域，谁谁谁死之后复活是知识，而在科学的领域，知识是需要具有普遍性）。</p>
 <p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/2025W03_%e8%bf%b7%e8%8c%ab%e7%9a%84%e4%ba%ba_image_6.png" alt="" /></figure>
-
-
 </p>
 <p>信仰并不意味着反对科学。我理解的信仰（宗教）是一种生活方式，我们生活的这个世界，目前就是由科学（理性）塑造而成，怎么可能去反对我生活的这个世界呢，但是生活的全部，生命的全部并不只有理性，科学是理性的视角，但是并不是什么生活的规则，并不是什么生命要遵守的戒律。</p>
 <p>回到这本书吧，我其实还没看多少，5%不到，但是看这本书需要的心境已经消失了一些，这本书和《当下的力量》一样，更多的是需要感受。我估计会尽可能的让自己处于那种在感受的心境，尽可能的去看一些，看不下去了，就换其他书去了。</p>
 <p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/2025W03_%e8%bf%b7%e8%8c%ab%e7%9a%84%e4%ba%ba_image_7.jpg" alt="" /></figure>
-
-
 </p>
 <p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/2025W03_%e8%bf%b7%e8%8c%ab%e7%9a%84%e4%ba%ba_image_8.jpg" alt="" /></figure>
-
-
 </p>
 <h1 id="l1uyun">l1uyun</h1>
 <p>胡言乱语，就先说这些吧。下周见？</p>

@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
-    <generator uri="https://gohugo.io/" version="0.151.0">Hugo</generator><title type="html"><![CDATA[l1uyun's Blog]]></title>
+    
+        <id>https://l1uyun.one/tags/hnu/</id>
+    <title type="html"><![CDATA[l1uyun's Blog]]></title>
+    <updated>2025-10-08T06:03:49+00:00</updated>
+    <generator uri="https://gohugo.io/" version="0.151.0">Hugo</generator>
+    <author>
+            <name>l1uyun</name>
+            
+                <email>846185293@qq.com</email>
+            
+                <uri>https://l1uyun.one/</uri>
+            </author>
     
     
     
             <link href="https://l1uyun.one/tags/hnu/" rel="alternate" type="text/html" title="html" />
             <link href="https://l1uyun.one/tags/hnu/index.xml" rel="alternate" type="application/rss+xml" title="rss" />
-    <updated>2025-10-08T04:30:29+00:00</updated>
+    <updated>2025-10-08T06:03:49+00:00</updated>
     
-    
-    
-    
-        <id>https://l1uyun.one/tags/hnu/</id>
     
         
         <entry>
@@ -29,8 +36,6 @@
 <p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e5%8a%9e%e4%ba%86%e4%b8%80%e5%9c%bactf%e6%a0%a1%e8%b5%9b_image_1.jpeg" alt="|300" /><figcaption>|300</figcaption></figure>
-
-
 </p>
 <p>另一部分是源自带我去衡阳打攻防的学姐，在衡阳跟我说过这学期她需要办一场ctf比赛，她与学院的老师有过这方面的约定，而我对这位带我去打攻防的学姐是非常感激的。她带我去打攻防，是基于为爱发电的理念，“如果我带你去打了攻防，有了这一次攻防，你之后就有可能去带新人去打，这样我们学校做渗透的就能传下去”，这种热爱，传承的意味在一定程度上影响了我。但是与这种感染相比更多的是对学姐的感激（让我短暂远离了学校这一苦闷的秩序，以及让我中断那段时间的自我内耗）。</p>
 <hr>
@@ -57,8 +62,6 @@
 <p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e5%8a%9e%e4%ba%86%e4%b8%80%e5%9c%bactf%e6%a0%a1%e8%b5%9b_image_2.png" alt="" /></figure>
-
-
 </p>
 <h2 id="出题">出题</h2>
 <p>原本定了六个方向的题，web，pwn，reverse，crypto，misc，osint，kery学长还弄了一道ai题</p>
@@ -70,15 +73,11 @@
 <p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e5%8a%9e%e4%ba%86%e4%b8%80%e5%9c%bactf%e6%a0%a1%e8%b5%9b_image_3.png" alt="" /></figure>
-
-
 </p>
 <p>当时我负责的题是已经出完了，我就直接从我出的web题里面丢了几道在预热赛里面。</p>
 <p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e5%8a%9e%e4%ba%86%e4%b8%80%e5%9c%bactf%e6%a0%a1%e8%b5%9b_image_4.png" alt="" /></figure>
-
-
 </p>
 <h2 id="宣讲会">宣讲会</h2>
 <p>宣讲会，我在消极应对，最开始是不知道要演示些啥，后面弄了预热，那就讲讲预热题吧，我也没做什么准备，只是在宣讲会开始前一个多小时，在宿舍练习了一遍，讲了半个多小时，然后就直接过去了。</p>
@@ -96,8 +95,6 @@
 <p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e5%8a%9e%e4%ba%86%e4%b8%80%e5%9c%bactf%e6%a0%a1%e8%b5%9b_image_5.png" alt="" /></figure>
-
-
 </p>
 <p>以及发现有个校外✌ak了，从周六下午五点，打到周天早上七点，太肝了。</p>
 <hr>
@@ -107,15 +104,11 @@
 <p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e5%8a%9e%e4%ba%86%e4%b8%80%e5%9c%bactf%e6%a0%a1%e8%b5%9b_image_6.png" alt="" /></figure>
-
-
 </p>
 <p>还有一些非预期解，例如ai那道题，找个在线的加噪点网站就能解决，或者干脆使用win自带的画图，在图像里面随便画几笔就能通过。</p>
 <p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e5%8a%9e%e4%ba%86%e4%b8%80%e5%9c%bactf%e6%a0%a1%e8%b5%9b_image_7.png" alt="||550" /><figcaption>||550</figcaption></figure>
-
-
 </p>
 <p>总共43个人答了签到题。。。</p>
 <h2 id="作弊情况">作弊情况</h2>
@@ -130,8 +123,6 @@
 <p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e5%8a%9e%e4%ba%86%e4%b8%80%e5%9c%bactf%e6%a0%a1%e8%b5%9b_image_8.png" alt="|500" /><figcaption>|500</figcaption></figure>
-
-
 </p>
 <h2 id="意外事件">意外事件</h2>
 <p>虽然过了交wp的时间，但是之后的一两天内我还是有在翻看邮箱，结果在垃圾箱里面发现了一封异常的邮件，点进去一看是举报&hellip;..还好我有翻垃圾箱的习惯</p>

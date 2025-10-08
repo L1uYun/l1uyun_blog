@@ -9,7 +9,7 @@
             <link href="https://l1uyun.one/atom.xml" rel="self" type="application/rss+xml" title="atom" />
             <link href="https://l1uyun.one/" rel="alternate" type="text/html" title="html" />
             <link href="https://l1uyun.one/index.json" rel="alternate" type="application/json" title="json" />
-    <updated>2025-10-08T04:30:29+00:00</updated>
+    <updated>2025-10-08T06:03:48+00:00</updated>
     
     
     
@@ -20,7 +20,12 @@
         <entry>
             <title type="html"><![CDATA[2025W39_黑客与巫士]]></title><link href="https://l1uyun.one/posts/hackers_and_shamans/" rel="alternate" type="text/html" />
             <id>https://l1uyun.one/posts/hackers_and_shamans/</id>
-            
+            <author>
+                    <name>l1uyun</name>
+                    
+                    <email>846185293@qq.com</email>
+                    
+                </author>
             <published>2025-09-29T20:42:57+08:00</published>
             <updated>2025-09-30T07:52:15+08:00</updated>
             
@@ -168,7 +173,12 @@
         <entry>
             <title type="html"><![CDATA[我又办了一场CTF新生赛——写在HNUCTF2025之后]]></title><link href="https://l1uyun.one/posts/hnuctf-2025-recap/" rel="alternate" type="text/html" />
             <id>https://l1uyun.one/posts/hnuctf-2025-recap/</id>
-            
+            <author>
+                    <name>l1uyun</name>
+                    
+                    <email>846185293@qq.com</email>
+                    
+                </author>
             <published>2025-09-25T22:46:35+08:00</published>
             <updated>2025-09-27T09:25:34+08:00</updated>
             
@@ -302,7 +312,12 @@
         <entry>
             <title type="html"><![CDATA[当我们谈论上岸时我们在谈论什么]]></title><link href="https://l1uyun.one/posts/when-we-talk-about-landing/" rel="alternate" type="text/html" />
             <id>https://l1uyun.one/posts/when-we-talk-about-landing/</id>
-            
+            <author>
+                    <name>l1uyun</name>
+                    
+                    <email>846185293@qq.com</email>
+                    
+                </author>
             <published>2025-09-04T20:52:49+08:00</published>
             <updated>2025-09-21T17:56:22+08:00</updated>
             
@@ -405,7 +420,12 @@
         <entry>
             <title type="html"><![CDATA[2025W34_饿了应该吃饭吗？]]></title><link href="https://l1uyun.one/posts/2025w34_%E9%A5%BF%E4%BA%86%E5%BA%94%E8%AF%A5%E5%90%83%E9%A5%AD%E5%90%97/" rel="alternate" type="text/html" />
             <id>https://l1uyun.one/posts/2025w34_%E9%A5%BF%E4%BA%86%E5%BA%94%E8%AF%A5%E5%90%83%E9%A5%AD%E5%90%97/</id>
-            
+            <author>
+                    <name>l1uyun</name>
+                    
+                    <email>846185293@qq.com</email>
+                    
+                </author>
             <published>2025-08-19T09:28:27+08:00</published>
             <updated>2025-09-22T08:28:14+08:00</updated>
             
@@ -512,7 +532,12 @@
         <entry>
             <title type="html"><![CDATA[2025W26_信念更新与菩萨保佑]]></title><link href="https://l1uyun.one/posts/2025w26_%E4%BF%A1%E5%BF%B5%E6%9B%B4%E6%96%B0%E4%B8%8E%E8%8F%A9%E8%90%A8%E4%BF%9D%E4%BD%91/" rel="alternate" type="text/html" />
             <id>https://l1uyun.one/posts/2025w26_%E4%BF%A1%E5%BF%B5%E6%9B%B4%E6%96%B0%E4%B8%8E%E8%8F%A9%E8%90%A8%E4%BF%9D%E4%BD%91/</id>
-            
+            <author>
+                    <name>l1uyun</name>
+                    
+                    <email>846185293@qq.com</email>
+                    
+                </author>
             <published>2025-06-29T16:12:22+08:00</published>
             <updated>2025-09-22T08:28:11+08:00</updated>
             
@@ -566,7 +591,12 @@
         <entry>
             <title type="html"><![CDATA[2025W25_高考即战争]]></title><link href="https://l1uyun.one/posts/2025w25_%E9%AB%98%E8%80%83%E5%8D%B3%E6%88%98%E4%BA%89/" rel="alternate" type="text/html" />
             <id>https://l1uyun.one/posts/2025w25_%E9%AB%98%E8%80%83%E5%8D%B3%E6%88%98%E4%BA%89/</id>
-            
+            <author>
+                    <name>l1uyun</name>
+                    
+                    <email>846185293@qq.com</email>
+                    
+                </author>
             <published>2025-06-20T16:16:42+08:00</published>
             <updated>2025-09-22T08:28:00+08:00</updated>
             
@@ -633,7 +663,12 @@
         <entry>
             <title type="html"><![CDATA[2025W24_人群即野兽]]></title><link href="https://l1uyun.one/posts/2025w24_%E4%BA%BA%E7%BE%A4%E5%8D%B3%E9%87%8E%E5%85%BD/" rel="alternate" type="text/html" />
             <id>https://l1uyun.one/posts/2025w24_%E4%BA%BA%E7%BE%A4%E5%8D%B3%E9%87%8E%E5%85%BD/</id>
-            
+            <author>
+                    <name>l1uyun</name>
+                    
+                    <email>846185293@qq.com</email>
+                    
+                </author>
             <published>2025-06-15T17:02:06+08:00</published>
             <updated>2025-09-22T08:27:49+08:00</updated>
             
@@ -693,7 +728,12 @@
         <entry>
             <title type="html"><![CDATA[2025W22_逃避日常]]></title><link href="https://l1uyun.one/posts/2025w22_%E9%80%83%E9%81%BF%E6%97%A5%E5%B8%B8/" rel="alternate" type="text/html" />
             <id>https://l1uyun.one/posts/2025w22_%E9%80%83%E9%81%BF%E6%97%A5%E5%B8%B8/</id>
-            
+            <author>
+                    <name>l1uyun</name>
+                    
+                    <email>846185293@qq.com</email>
+                    
+                </author>
             <published>2025-06-02T15:00:18+08:00</published>
             <updated>2025-09-22T08:27:39+08:00</updated>
             
@@ -775,7 +815,12 @@
         <entry>
             <title type="html"><![CDATA[2025W21_信仰着信仰]]></title><link href="https://l1uyun.one/posts/2025w21_%E4%BF%A1%E4%BB%B0%E7%9D%80%E4%BF%A1%E4%BB%B0/" rel="alternate" type="text/html" />
             <id>https://l1uyun.one/posts/2025w21_%E4%BF%A1%E4%BB%B0%E7%9D%80%E4%BF%A1%E4%BB%B0/</id>
-            
+            <author>
+                    <name>l1uyun</name>
+                    
+                    <email>846185293@qq.com</email>
+                    
+                </author>
             <published>2025-05-23T10:15:02+08:00</published>
             <updated>2025-09-22T08:27:23+08:00</updated>
             
@@ -873,7 +918,12 @@
         <entry>
             <title type="html"><![CDATA[2025W20_连接]]></title><link href="https://l1uyun.one/posts/2025w20_%E8%BF%9E%E6%8E%A5/" rel="alternate" type="text/html" />
             <id>https://l1uyun.one/posts/2025w20_%E8%BF%9E%E6%8E%A5/</id>
-            
+            <author>
+                    <name>l1uyun</name>
+                    
+                    <email>846185293@qq.com</email>
+                    
+                </author>
             <published>2025-05-15T19:47:24+08:00</published>
             <updated>2025-09-22T08:27:09+08:00</updated>
             
