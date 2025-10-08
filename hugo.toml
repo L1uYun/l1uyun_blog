@@ -11,7 +11,6 @@ hasCJKLanguage = true
 pagination.pagerSize =  10
 # rss 输出数量
 rssLimit = 10
-subtitle = "梦者不知所云"
 # 或者使用tagline
 # tagline = "梦者不知所云"
 
@@ -50,6 +49,10 @@ subtitle = "梦者不知所云"
 [params]
   # dir name of your blog content (default is `content/posts`)
   contentTypeName = "posts"
+  
+  [params.author]
+    name = "l1uyun"
+    email = "846185293@qq.com"
   # "light" or "dark"
   defaultTheme = "light"
   # if you set this to 0, only submenu trigger will be visible
