@@ -831,5 +831,20 @@ function checkNightMode() {
 
       
     </div>
+    <script>
+      (function(){
+        window.randomPost = async function(){
+          try{
+            const res = await fetch('/index.json',{cache:'no-store'});
+            if(!res.ok) return;
+            const list = await res.json();
+            if(!Array.isArray(list) || list.length===0) return;
+            const item = list[Math.floor(Math.random()*list.length)];
+            const url = item.permalink||item.Permalink||item.link||item.Link||item.url||item.URL;
+            if(url){ location.href = url; }
+          }catch(e){   }
+        }
+      })();
+    </script>
   </body>
 </html>
