@@ -1,7 +1,7 @@
 baseURL = 'https://l1uyun.one/'
 languageCode = 'zh-CN'
 timeZone = 'Asia/Shanghai'
-title = 'l1uyun'
+title = "l1uyun's Blog"
 
 # 主题
 theme  =  "hello-friend"
@@ -11,6 +11,9 @@ hasCJKLanguage = true
 pagination.pagerSize =  10
 # rss 输出数量
 rssLimit = 10
+subtitle = "梦者不知所云"
+# 或者使用tagline
+# tagline = "梦者不知所云"
 
 [permalinks]
   posts = "/posts/:filename/"
@@ -60,7 +63,7 @@ rssLimit = 10
   DateFormatSingle = "2006-01-02"
   ReadMore = "阅读全文"
   
-  description = "佛法,心盲症,网络安全,渗透测试"
+  description = "心盲症,哲学,写作,黑客"
 	keywords = ""
   # 实际使用是vercount项目，而不是busuanzi
   [params.busuanzi]
