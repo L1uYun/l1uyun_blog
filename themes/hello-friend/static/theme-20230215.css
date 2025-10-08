@@ -787,21 +787,6 @@ hr {
 	word-break:break-all;
 	min-height: 70px;
 }
-.post-content h1,.post-content h2{position: relative;}
-.post-content h1{
-	left: 2em;
-	margin: 28px auto 18px!important;
-	letter-spacing: 2px;
-	font-size: 1.625rem;
-}
-.post-content h1:before{content:"##";left:-2em;color:#42b983;position:absolute;}
-.post-content h2{
-	left:2.5em;
-	margin: 28px auto 18px!important;
-	letter-spacing: 2px;
-	font-size: 1.375rem;
-}
-.post-content h2:before{content:"###";left:-2.5em;color:#42b983;position:absolute;}
 .post-content h3,.post-content h4{
 	position: relative;left: 2em;margin: 28px auto 18px!important;letter-spacing: 2px;
 }
