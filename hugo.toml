@@ -1,0 +1,103 @@
+baseURL = 'https://l1uyun.one/'
+languageCode = 'zh-CN'
+timeZone = 'Asia/Shanghai'
+title = "l1uyun's Blog"
+
+# 主题
+theme  =  "hello-friend"
+summaryLength = 140
+hasCJKLanguage = true
+# 每页显示的文章数量用于分页
+pagination.pagerSize =  10
+# rss 输出数量
+rssLimit = 10
+# 或者使用tagline
+# tagline = "梦者不知所云"
+
+[permalinks]
+  posts = "/posts/:filename/"
+  tags = "/tags/:slug/"
+
+[menu]
+  [[menu.main]]
+  name="读书"
+  url="/posts/reading/"
+  weight="1"
+  [[menu.main]]
+  name="安全"
+  url="/posts/sec"
+  weight="1"
+  [[menu.main]]
+  name="闲聊"
+  url="/posts/chat/"
+  weight="3"
+  [[menu.main]]
+  name="归档"
+  url="/archives/"
+  weight="4"
+  [[menu.main]]
+  name="关于我"
+  url="/about/"
+  weight="6"
+  [[menu.main]]
+  name="🔍"
+  url="/search/"
+  weight="6"
+
+
+
+[params]
+  # dir name of your blog content (default is `content/posts`)
+  contentTypeName = "posts"
+  
+  [params.author]
+    name = "l1uyun"
+    email = "846185293@qq.com"
+  # "light" or "dark"
+  defaultTheme = "light"
+  # if you set this to 0, only submenu trigger will be visible
+  # showMenuItems = 4
+  # Enable to show reading time in minutes for posts
+  showReadingTime = true
+  logoText = "hello friend"
+
+  MenuMore = "更多"
+  DateFormatList = "2006-01-02"
+  DateFormatSingle = "2006-01-02"
+  ReadMore = "阅读全文"
+  
+  description = "心盲症,哲学,写作,黑客"
+	keywords = ""
+  # 实际使用是vercount项目，而不是busuanzi
+  [params.busuanzi]
+    enable = false
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 1
+    
+[outputs]
+  home = ["Atom", "HTML","JSON"] # <domain>/atom.xml
+  page = ["HTML"]
+  
+[outputFormats.Atom]
+  mediatype = "application/rss"
+  baseName = "atom"
+
+[params.twikoo]
+  enable = true
+  visitor = false
+  envId = "https://twikoo.l1uyun.one"
+  lang = "zh-CN"
+  showInDev = true  # 设置为 true 在开发模式下也显示评论
+
+[params.utteranc]
+  enable = false
+  repo = "L1uYun/l1uyun_blog" ##换成自己得
+  issueTerm = "title"
+  label="💬comment"
+  theme = "github-light"
