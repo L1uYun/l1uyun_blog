@@ -704,6 +704,7 @@ hr {
 	text-align: left;
 	padding: 20px 20px 40px;
 	margin: 40px auto
+
 }
 .post:first-of-type{
 	margin:0 auto 40px;
@@ -780,13 +781,21 @@ hr {
 		margin-right: 0.5rem;
 	}
 }
+
 .post-content {
-	font-family: "LXGW Neo ZhiSong", -apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,serif;
-	font-weight: 500;
-	margin-top: 0px;
-	word-break:break-all;
-	min-height: 70px;
+  font-family: "LXGW Neo ZhiSong", -apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,serif;
+  font-weight: 500;
+  margin-top: 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.9;
+  min-height: 70px;
 }
+
+.post-content p {
+  margin: 0 0 1.2em;          /* 段落之间拉开一点 */
+}
+
 .post-content h3,.post-content h4{
 	position: relative;left: 2em;margin: 28px auto 18px!important;letter-spacing: 2px;
 }
