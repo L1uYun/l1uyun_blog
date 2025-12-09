@@ -3,7 +3,7 @@ title: 关于我
 tags:
   - l1uyun
 date: 2024-10-27T08:37:45
-lastmod: 2025-11-05T17:10:55
+lastmod: 2025-12-09T10:51:42
 Comments: "false"
 ---
 ## About Me
@@ -22,7 +22,6 @@ Comments: "false"
 如果你有任何问题或想要交流，可以通过以下方式联系我：
 
 - Emai: [846185293@qq.com](mailto:846185293@qq.com)
-- WeChat: l1uyun33
 
 ## My Friends 
 
