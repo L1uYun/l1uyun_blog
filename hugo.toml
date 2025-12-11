@@ -24,10 +24,6 @@ rssLimit = 10
   url="/posts/reading/"
   weight="1"
   [[menu.main]]
-  name="安全"
-  url="/posts/sec"
-  weight="1"
-  [[menu.main]]
   name="闲聊"
   url="/posts/chat/"
   weight="3"
