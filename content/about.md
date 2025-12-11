@@ -3,7 +3,7 @@ title: 关于我
 tags:
   - l1uyun
 date: 2024-10-27T08:37:45
-lastmod: 2025-12-11T13:25:23
+lastmod: 2025-12-11T13:27:55
 Comments: "false"
 ---
 ## About Me
@@ -17,7 +17,7 @@ Comments: "false"
 ## About This Blog
  做梦的人自己也不知道在说些什么。
 
-欢迎使用[RSS](https://l1uyun.one/atom.xml)和[Follow](https://app.folo.is/share/feeds/83062970711988224)订阅本站
+欢迎使用[RSS](https://l1uyun.one/atom.xml)或[Follow](https://app.folo.is/share/feeds/83062970711988224)订阅本站
 ## Contact Me
 如果你有任何问题或想要交流，可以通过以下方式联系我：
 
