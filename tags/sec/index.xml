@@ -3,8 +3,8 @@
     
         <id>https://l1uyun.one/tags/sec/</id>
     <title type="html"><![CDATA[l1uyun's Blog]]></title>
-    <updated>2025-12-11T05:28:16+00:00</updated>
-    <generator uri="https://gohugo.io/" version="0.152.2">Hugo</generator>
+    <updated>2026-01-24T23:37:45+00:00</updated>
+    <generator uri="https://gohugo.io/" version="0.154.5">Hugo</generator>
     <author>
             <name>l1uyun</name>
             
@@ -17,7 +17,7 @@
     
             <link href="https://l1uyun.one/tags/sec/" rel="alternate" type="text/html" title="html" />
             <link href="https://l1uyun.one/tags/sec/index.xml" rel="alternate" type="application/rss+xml" title="rss" />
-    <updated>2025-12-11T05:28:16+00:00</updated>
+    <updated>2026-01-24T23:37:45+00:00</updated>
     
     
         
@@ -1058,7 +1058,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">mixed</span> <span style="color:#a6e22e">preg_replace</span> ( <span style="color:#a6e22e">mixed</span> <span style="color:#a6e22e">pattern</span>, <span style="color:#a6e22e">mixed</span> <span style="color:#a6e22e">replacement</span>, <span style="color:#a6e22e">mixed</span> <span style="color:#a6e22e">subject</span>,[<span style="color:#a6e22e">int</span> <span style="color:#a6e22e">limit</span>],[<span style="color:#a6e22e">int</span> <span style="color:#a6e22e">count</span>])
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>$pattern<span style="color:#f92672">:</span> <span style="color:#a6e22e">要搜索的模式，可以是字符串或一个字符串数组。反斜杠定界符尽量不要使用，而是使用</span> <span style="color:#75715e"># 或者 ~
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$replacement<span style="color:#f92672">:</span> <span style="color:#a6e22e">用于替换的字符串或字符串数组。</span>
+</span></span></span><span style="display:flex;"><span>$replacement<span style="color:#f92672">:</span> <span style="color:#a6e22e">用于替换的字符串或字符串数组。</span>
 </span></span><span style="display:flex;"><span>$subject<span style="color:#f92672">:</span> <span style="color:#a6e22e">要搜索替换的目标字符串或字符串数组。</span>
 </span></span><span style="display:flex;"><span>$limit<span style="color:#f92672">:</span> <span style="color:#a6e22e">可选，对于每个模式用于每个</span> <span style="color:#a6e22e">subject</span> <span style="color:#a6e22e">字符串的最大可替换次数。默认是</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#a6e22e">（无限制）。</span>
 </span></span><span style="display:flex;"><span>$count<span style="color:#f92672">:</span> <span style="color:#a6e22e">可选，为替换执行的次数。</span>
@@ -1104,18 +1104,18 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 <p>sql语句的内容如下</p></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> 
 </span></span><span style="display:flex;"><span>    PMA_Util::backquote(<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#66d9ef">column</span>),   <span style="color:#75715e">-- 获取列名并进行反引号处理
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">1</span>,                              <span style="color:#75715e">-- 添加一个额外的列，该列用于存储替换后的值
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>)                        <span style="color:#75715e">-- 计算匹配的行数
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">FROM</span> 
+</span></span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">1</span>,                              <span style="color:#75715e">-- 添加一个额外的列，该列用于存储替换后的值
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>)                        <span style="color:#75715e">-- 计算匹配的行数
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> 
 </span></span><span style="display:flex;"><span>    PMA_Util::backquote(<span style="color:#960050;background-color:#1e0010">$</span>this<span style="color:#f92672">-&gt;</span>_db)   <span style="color:#75715e">-- 数据库名，反引号处理
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .PMA_Util::backquote(<span style="color:#960050;background-color:#1e0010">$</span>this<span style="color:#f92672">-&gt;</span>_table) <span style="color:#75715e">-- 表名，反引号处理
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">WHERE</span> 
+</span></span></span><span style="display:flex;"><span>    .PMA_Util::backquote(<span style="color:#960050;background-color:#1e0010">$</span>this<span style="color:#f92672">-&gt;</span>_table) <span style="color:#75715e">-- 表名，反引号处理
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> 
 </span></span><span style="display:flex;"><span>    PMA_Util::backquote(<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#66d9ef">column</span>)       <span style="color:#75715e">-- 目标列
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    RLIKE <span style="color:#e6db74">&#39;&#34; . PMA_Util::sqlAddSlashes($find) . &#34;&#39;</span>  <span style="color:#75715e">-- 使用正则匹配 $find，确保字符转义
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">COLLATE</span> <span style="color:#e6db74">&#34; . $charSet . &#34;</span>_bin      <span style="color:#75715e">-- 使用二进制排序规则进行区分大小写的比较
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> 
+</span></span></span><span style="display:flex;"><span>    RLIKE <span style="color:#e6db74">&#39;&#34; . PMA_Util::sqlAddSlashes($find) . &#34;&#39;</span>  <span style="color:#75715e">-- 使用正则匹配 $find，确保字符转义
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">COLLATE</span> <span style="color:#e6db74">&#34; . $charSet . &#34;</span>_bin      <span style="color:#75715e">-- 使用二进制排序规则进行区分大小写的比较
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> 
 </span></span><span style="display:flex;"><span>    PMA_Util::backquote(<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#66d9ef">column</span>)       <span style="color:#75715e">-- 按目标列分组
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> 
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> 
 </span></span><span style="display:flex;"><span>    PMA_Util::backquote(<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#66d9ef">column</span>) <span style="color:#66d9ef">ASC</span>   <span style="color:#75715e">-- 按目标列升序排列
 </span></span></span></code></pre></div><p>这里面我们需要能够控制column,_db,_table,其中column是来自columnIndex这个参数,这个也是POST传进来的</p>
 <p>剩下两个参数是PMA_TableSearch类的属性,是在构造函数里面被定义的
@@ -1219,7 +1219,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 <p>简单来说就是phpmyadmin对用户传入的参数直接进行了包含,并且黑名单的检验不严格,可以绕过,从而导致了LFI</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">index</span><span style="color:#f92672">.</span><span style="color:#a6e22e">php</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// If we have a valid target, let&#39;s load that script instead
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span> <span style="color:#66d9ef">empty</span>($_REQUEST[<span style="color:#e6db74">&#39;target&#39;</span>])
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span> <span style="color:#66d9ef">empty</span>($_REQUEST[<span style="color:#e6db74">&#39;target&#39;</span>])
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">is_string</span>($_REQUEST[<span style="color:#e6db74">&#39;target&#39;</span>])
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span> <span style="color:#a6e22e">preg_match</span>(<span style="color:#e6db74">&#39;/^index/&#39;</span>, $_REQUEST[<span style="color:#e6db74">&#39;target&#39;</span>])
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span> <span style="color:#a6e22e">in_array</span>($_REQUEST[<span style="color:#e6db74">&#39;target&#39;</span>], $target_blacklist)
@@ -1230,7 +1230,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 黑名单
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$target_blacklist <span style="color:#f92672">=</span> <span style="color:#66d9ef">array</span> (
+</span></span></span><span style="display:flex;"><span>$target_blacklist <span style="color:#f92672">=</span> <span style="color:#66d9ef">array</span> (
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;import.php&#39;</span>, <span style="color:#e6db74">&#39;export.php&#39;</span>
 </span></span><span style="display:flex;"><span>);
 </span></span></code></pre></div><p>然后就是在phpmyadmin中,执行sql语句之后,会存储在session文件中,如果包含这个文件,就能让select里面的php代码被执行</p>
