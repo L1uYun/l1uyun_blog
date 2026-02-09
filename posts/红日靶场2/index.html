@@ -340,7 +340,7 @@ WEB机和PC机：计算机右键-&gt;管理-&gt;配置-&gt;服务-&gt;Server、W
 
 
 </p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>web 192.168.3.80
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>web 192.168.3.80
 </span></span><span style="display:flex;"><span>pc  192.168.3.201
 </span></span><span style="display:flex;"><span>win 192.168.3.99
 </span></span><span style="display:flex;"><span>wsl kali 192.168.3.100 
@@ -348,9 +348,9 @@ WEB机和PC机：计算机右键-&gt;管理-&gt;配置-&gt;服务-&gt;Server、W
 <h3 id="信息收集">信息收集</h3>
 <p>先处理web机器</p>
 <p>端口扫描出来了不少端口,使用awk做一下处理,提取一下</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>awk -F <span style="color:#e6db74">&#39;/&#39;</span>  <span style="color:#e6db74">&#39;BEGIN {ORS=&#34;,&#34;} {print $1}&#39;</span> a.txt
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>awk -F <span style="color:#e6db74">&#39;/&#39;</span>  <span style="color:#e6db74">&#39;BEGIN {ORS=&#34;,&#34;} {print $1}&#39;</span> a.txt
 </span></span></code></pre></div><p>进行-A扫描</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>⇒  sudo nmap -Pn -sT 192.168.3.80  -p80,135,139,445,1433,3389,7001,49152,49153,49154,60966,63624,63632,63634 -A  --min-rate<span style="color:#f92672">=</span><span style="color:#ae81ff">5000</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>⇒  sudo nmap -Pn -sT 192.168.3.80  -p80,135,139,445,1433,3389,7001,49152,49153,49154,60966,63624,63632,63634 -A  --min-rate<span style="color:#f92672">=</span><span style="color:#ae81ff">5000</span>
 </span></span><span style="display:flex;"><span>Starting Nmap 7.94SVN <span style="color:#f92672">(</span> https://nmap.org <span style="color:#f92672">)</span> at 2024-09-28 19:40 EDT
 </span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 192.168.3.80
 </span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.00057s latency<span style="color:#f92672">)</span>.
@@ -542,7 +542,7 @@ WEB机和PC机：计算机右键-&gt;管理-&gt;配置-&gt;服务-&gt;Server、W
 </p>
 <h3 id="cs上线">CS上线</h3>
 <p>添加监听器</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>name：为监听器名字，可任意
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>name：为监听器名字，可任意
 </span></span><span style="display:flex;"><span>payload：payload类型
 </span></span><span style="display:flex;"><span>HTTP Hosts: shell反弹的主机，也就是我们kali的ip（如果是阿里云，则填阿里云主机的公网ip）
 </span></span><span style="display:flex;"><span>HTTP Hosts(Stager): Stager的马请求下载payload的地址（一般也是和上面的ip填一样）
@@ -782,7 +782,7 @@ WEB机和PC机：计算机右键-&gt;管理-&gt;配置-&gt;服务-&gt;Server、W
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 129194 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 129185 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
       
     

