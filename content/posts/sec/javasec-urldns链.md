@@ -224,7 +224,7 @@ public synchronized int hashCode() {
   }
 ```
 这里会先判断hashCode是否为-1，如果不为-1则直接返回hashCode，也就是说我们只要在put前修改URL的hashCode为其他任意值，就可以在put时不触发dns查询。(hashCode默认值为-1)
-![](https://img.l1uyun.one/javasec-urldns链_image_1.png)
+![](https://img.l1uyun.top/javasec-urldns链_image_1.png)
 这里的hashCode是private修饰的，所以我们需要通过反射来修改其值
 ```java
     public static void main(String[] args) throws Exception {
@@ -238,7 +238,7 @@ public synchronized int hashCode() {
     }
 ```
 此时输出url的hashCode为123，证明修改成功。
-	![](https://img.l1uyun.one/javasec-urldns链_image_2.png)
+	![](https://img.l1uyun.top/javasec-urldns链_image_2.png)
 当put完毕之后再将url的hashCode修改为-1，确保在反序列化调用hashCode方法时能够正常进行，下面是完整的POC
 ```java
 #URLDNS.java

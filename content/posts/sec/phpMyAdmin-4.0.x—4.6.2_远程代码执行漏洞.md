@@ -50,14 +50,14 @@ $count: 可选，为替换执行的次数。
 preg_replace("/test/e",'phpinfo()',"jutst test");
 ?>
 ```
-![](https://img.l1uyun.one/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_1.png)
+![](https://img.l1uyun.top/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_1.png)
 ## 漏洞复现
 //手测,脚本
 
 使用的vulhub的环境,使用docker启动就行
 
 这里是直接使用了exploit-db中的poc
-![](https://img.l1uyun.one/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_2.png)
+![](https://img.l1uyun.top/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_2.png)
 
 
 ## 漏洞分析
@@ -67,19 +67,19 @@ preg_replace("/test/e",'phpinfo()',"jutst test");
 首先找到preg_replace()函数的调用位置,
 发现是在 /libraries/TableSearch.class.php 文件中的_getRegexReplaceRows方法里面
 
-![](https://img.l1uyun.one/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_3.png)
+![](https://img.l1uyun.top/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_3.png)
 接下来就是依次寻找find,replaceWith和row[0]这三个参数的来源
 
 可以看到find,replaceWith是直接从getReplacePreview中传递过去的
-![](https://img.l1uyun.one/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_4.png)
+![](https://img.l1uyun.top/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_4.png)
 继续往上查找getReplacePreview方法,发现是在tbl_find_replace.php中被调用的,这里的可以看到find,replaceWith都是直接从POST中传递进来的
-![](https://img.l1uyun.one/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_5.png)
+![](https://img.l1uyun.top/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_5.png)
 
 解决了前面两个参数,接下来就是看第三个参数是怎么来的,毕竟这个/e参数要成功执行代码,需要正则的模式被匹配到.
 
 回到_getRegexReplaceRows方法,可以看到row\[0\]应该是sql语句查询结果的第一列数据
-![](https://img.l1uyun.one/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_6.png)
-![](https://img.l1uyun.one/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_7.png)
+![](https://img.l1uyun.top/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_6.png)
+![](https://img.l1uyun.top/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_7.png)
 sql语句的内容如下
 ```sql
 SELECT 
@@ -101,27 +101,27 @@ ORDER BY
 这里面我们需要能够控制column,\_db,\_table,其中column是来自columnIndex这个参数,这个也是POST传进来的
 
 剩下两个参数是PMA_TableSearch类的属性,是在构造函数里面被定义的
-![](https://img.l1uyun.one/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_8.png)
+![](https://img.l1uyun.top/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_8.png)
 继续回溯,tbl_find_replace.php中创建了这个类,并传入了$db, $table这两个参数
-![](https://img.l1uyun.one/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_9.png)
+![](https://img.l1uyun.top/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_9.png)
 这两个参数是包含的libraries/common.inc.php文件,这两个参数可以通过REQUEST方法来接收变量并将其设置为全局变量。
-![](https://img.l1uyun.one/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_10.png)
+![](https://img.l1uyun.top/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_10.png)
 
 结合上面的分析,看看exploit-db给的poc
 
 使用poc,然后用burpsuite抓了一下包,脚本先是进行了登录
-![](https://img.l1uyun.one/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_11.png)
+![](https://img.l1uyun.top/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_11.png)
 前面两个数据包好像都是在获取一些Cookie信息,第一个是在登录获取token值,第二个包是在访问主页,获取了另外的一些值
-![](https://img.l1uyun.one/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_12.png)
-![](https://img.l1uyun.one/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_13.png)
+![](https://img.l1uyun.top/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_12.png)
+![](https://img.l1uyun.top/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_13.png)
 第三个包访问了/import.php,这个文件是PhpMyAdmin中处理SQL导入的页面。这个页面允许管理员导入SQL查询语句，并在数据库中执行。
 
 创建了一个数据库test,数据表prgpwn,以及插入了数据(`0/e\0`)  即0/e和一个null byte
-![|900](https://img.l1uyun.one/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_14.png)
+![|900](https://img.l1uyun.top/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_14.png)
 最后一个包,访问了漏洞所在的php文件,/tbl_find_replace.php
 
 传入了db,table,find,replaceWith这些参数,find和replaceWith直接被拼接到了preg_replace的前面两个参数中,而POST的数据中的db,table,columnIndex指定了sql查询得到的结果,这个结果被拼接到了preg_replace的第三个参数,从而触发了preg_replace的/e参数的执行代码功能.
-![](https://img.l1uyun.one/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_15.png)
+![](https://img.l1uyun.top/phpMyAdmin_4.0.x—4.6.2_远程代码执行漏洞_image_15.png)
 find参数中传进去的%00也就是空字符,将拼接之后的/给截断了
 ```php
 <?php

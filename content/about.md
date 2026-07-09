@@ -17,7 +17,7 @@ Comments: "false"
 ## About This Blog
  做梦的人自己也不知道在说些什么。
 
-欢迎使用[RSS](https://l1uyun.one/atom.xml)或[Follow](https://app.folo.is/share/feeds/83062970711988224)订阅本站
+欢迎使用[RSS](https://l1uyun.top/atom.xml)或[Follow](https://app.folo.is/share/feeds/83062970711988224)订阅本站
 ## Contact Me
 如果你有任何问题或想要交流，可以通过以下方式联系我：
 

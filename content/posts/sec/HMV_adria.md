@@ -183,7 +183,7 @@ sudo -u adriana
 ### 利用命令的帮助页面,类more
 神奇,原来是这样子利用的,help页面是类似more的样子,可以直接!/bin/bash
 下面图里是错的,不用:,直接!bash
-![HMV_adria_image_1](https://img.l1uyun.one/HMV_adria_image_1.png)
+![HMV_adria_image_1](https://img.l1uyun.top/HMV_adria_image_1.png)
 
 ```shell
 cat user.txt
@@ -192,7 +192,7 @@ fbd401c3bff5ec92d1ba6f74a2340f0f
 
 ## 枚举
 
-![HMV_adria_image_2](https://img.l1uyun.one/HMV_adria_image_2.png)
+![HMV_adria_image_2](https://img.l1uyun.top/HMV_adria_image_2.png)
 
 
 这个脚本一眼看出来能用\*来绕过
@@ -265,10 +265,10 @@ User adriana may run the following commands on adria:
  /usr/bin/zip -r -e -P 8eNctPoCh4Potes5eVD7eMxUw6wRBmO /opt/backup.zip /var/www/html 
 ```
 
-![HMV_adria_image_3](https://img.l1uyun.one/HMV_adria_image_3.png)
+![HMV_adria_image_3](https://img.l1uyun.top/HMV_adria_image_3.png)
 ## root
 使用root密码,ssh连接一下
-![HMV_adria_image_4](https://img.l1uyun.one/HMV_adria_image_4.png)
+![HMV_adria_image_4](https://img.l1uyun.top/HMV_adria_image_4.png)
 
 ```
 ╭─root@adria ~ 

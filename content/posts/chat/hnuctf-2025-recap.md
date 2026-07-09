@@ -27,16 +27,16 @@ url: /posts/hnuctf-2025-recap/
 回到办CTF比赛这个话题，我的注意力被内部冲突占据，原本并不准备参与组织新生赛，但是协会的确没什么活跃成员，我丢给cry，cry大概率也找不到什么人手，也许只能找身边的同学，将这个比赛办成一份小组作业。我对此有些不忍，有对比赛的不忍，也有对cry的不忍，cry在去年新生赛后与我有过很多次交互，有些可以被称作意义的东西涌现在了这些交互之上，我没法直接以准备保研作为理由置身事外。（也许是因为保研与保研失败在宇宙层面同样无意义）
 
 最终是拉上了moyuin学妹以及lucian学弟，四人组成了草台班子。
-![草台的班子](https://img.l1uyun.one/hnuctf-2025-recap_image_1.png)
+![草台的班子](https://img.l1uyun.top/hnuctf-2025-recap_image_1.png)
 # 赛前
 ## 部署平台
 由于今年比赛的资金来源与去年不同，今年不必写方案，也不必发公众号推文，赛前工作只是搭建比赛平台，简单宣传、出题即可。
 
 又由于我去年做了很完整的备份，今年部署平台只需要买台服务器，把去年的备份传上去，再docker compose up -d就行了，去年的数据也都还在。
 
-在组建草台班子，到我们开始出题中间，cry他们燃了起来，为信安协会弄了个[wiki](https://www.hnusec.org)，希望能减少新生们的信息差，之后他们在群里说起了什么“为 hnu 最后燃烧一次”之类的话，我借着他们的激情写了篇解决我自己问题的[文章](https://l1uyun.one/posts/when-we-talk-about-landing/)。
+在组建草台班子，到我们开始出题中间，cry他们燃了起来，为信安协会弄了个[wiki](https://www.hnusec.org)，希望能减少新生们的信息差，之后他们在群里说起了什么“为 hnu 最后燃烧一次”之类的话，我借着他们的激情写了篇解决我自己问题的[文章](https://l1uyun.top/posts/when-we-talk-about-landing/)。
 
-![欢迎来到hnusec](https://img.l1uyun.one/hnuctf-2025-recap_image_2.png)
+![欢迎来到hnusec](https://img.l1uyun.top/hnuctf-2025-recap_image_2.png)
 
 ## 出题
 我在16号弄完本校保研面试才开始准备出题，在这之前的预热赛沿用了去年的原题。
@@ -45,44 +45,44 @@ url: /posts/hnuctf-2025-recap/
 
 他们三翻了一下他们的旅行相册，在群里说了一些出题思路。我也翻了我的相册，翻了一下昨天晚上通宵散步时拍的照片，找到了一张凌晨两点多，外卖小哥睡在公交站的照片，并在群里说了出题思路，让选手们找这是哪个公交站。这张图右侧有一个六沟垅地铁站的指示标志，但是这里实际并不是六沟垅地铁站，可以根据左侧的沙利文或者津市牛肉粉定位到准确位置。
 
-![从前一天晚上8点到早上6点](https://img.l1uyun.one/hnuctf-2025-recap_image_3.png)
+![从前一天晚上8点到早上6点](https://img.l1uyun.top/hnuctf-2025-recap_image_3.png)
 
 后面顺着这道题，又找到了另外一张，凌晨两点多银盆岭大桥上仍然在干活的民工照片。用这两张照片水了两道osint题。
 
 第三道osint题，尘封的轨迹，灵感来自我朋友qrw的博客文章配图，我觉得有些辨识度，就google识图找了一下，能找到是川外小铁路，再和Gemini聊了一下出题方向，决定让选手们溯源铁路历史，找到这个铁路最初为哪个工厂服务。
 
-![qrw1.github.io](https://img.l1uyun.one/hnuctf-2025-recap_image_4.png)
+![qrw1.github.io](https://img.l1uyun.top/hnuctf-2025-recap_image_4.png)
 
 最后一道osint题沿用了去年的题，让他们在出题人的博客里面找flag，但是实际上可以在github上找最近的提交记录，只是我们将正确的flag放在了Lucian博客中，这让这道题难度增加许多。
 
 其他方向的题，网络鲨鱼也沿用了去年的题，只是今年没有把flag放进数据包，并且在出题过程中灵机一动，把我的博客地址作为干扰项丢了上去。但是两位过来捧场的学长居然在我博客里面找到了有用的线索，这是我也没预料到的。
 
-![姑且称之为彩蛋](https://img.l1uyun.one/hnuctf-2025-recap_image_5.png)
+![姑且称之为彩蛋](https://img.l1uyun.top/hnuctf-2025-recap_image_5.png)
 
 哈基米那题来自我的知乎首页，我关注的一个佛教领域答主点赞过这篇文章。web题原本准备沿用去年的题，因为时间确实不多了，周四晚上才开始出web，不过还是用cursor 水了几道。
 
-![哈基米南北绿豆](https://img.l1uyun.one/hnuctf-2025-recap_image_6.png)
+![哈基米南北绿豆](https://img.l1uyun.top/hnuctf-2025-recap_image_6.png)
 
 一位已经毕业多年的学长，为我们提供了三道blockchain方向的题目，大大缓解了我们出pwn方向题目的压力。
 
-![blockchain_is_so_hard](https://img.l1uyun.one/hnuctf-2025-recap_image_7.png)
+![blockchain_is_so_hard](https://img.l1uyun.top/hnuctf-2025-recap_image_7.png)
 
 # 赛中
 比赛从周六的上午九点进行到周天的下午五点。
 ## day1
 原本准备使用bot来播报比赛消息，但是bot没能完成，最终还是使用了流云.bot。
 
-![](https://img.l1uyun.one/hnuctf-2025-recap_image_8.png)
+![](https://img.l1uyun.top/hnuctf-2025-recap_image_8.png)
 
 ## day2
 凌晨十二点，mufanc学长依旧半夜屠榜，拿下了大部分题目。
 
-![](https://img.l1uyun.one/hnuctf-2025-recap_image_9.png)
+![](https://img.l1uyun.top/hnuctf-2025-recap_image_9.png)
 # 赛后
 ## 做题情况
 比赛没有人ak，但是所有的题目都有被做出来。
 
-![](https://img.l1uyun.one/hnuctf-2025-recap_image_10.png)
+![](https://img.l1uyun.top/hnuctf-2025-recap_image_10.png)
 
 ## 审wp
 交wp的人不多，这些wp里面有很多直接粘贴了ai的回复。不过也能理解，他们第一次参加CTF比赛，还没有“wp也是比赛的一部分”的观念，以及他们很大程度上还不能理解ai生成的内容，只是照着ai的回复操作，然后解决了题目。
@@ -96,4 +96,4 @@ url: /posts/hnuctf-2025-recap/
 
 ---
 # 引用
-[办了一场 ctf 校赛](https://l1uyun.one/posts/办了一场ctf校赛)
+[办了一场 ctf 校赛](https://l1uyun.top/posts/办了一场ctf校赛)

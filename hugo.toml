@@ -1,4 +1,4 @@
-baseURL = 'https://l1uyun.one/'
+baseURL = 'https://l1uyun.top/'
 languageCode = 'zh-CN'
 timeZone = 'Asia/Shanghai'
 title = "l1uyun's Blog"
@@ -87,7 +87,7 @@ rssLimit = 10
 [params.twikoo]
   enable = true
   visitor = false
-  envId = "https://twikoo.l1uyun.one"
+  envId = "https://twikoo.l1uyun.top"
   lang = "zh-CN"
   showInDev = true  # 设置为 true 在开发模式下也显示评论
 

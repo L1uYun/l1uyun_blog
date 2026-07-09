@@ -32,14 +32,14 @@ include_once()#只包含一次
 远程文件包含利用需要下面这两个配置文件都开启
 当allow_url_include和allow_url_fopen都开启时，可以通过利用远程url或者php://协议直接getshell，即远程文件包含，
 但allow_url_include在php5.2之后默认为off，利用机会有限。
-![](https://img.l1uyun.one/phpmyadmin-4.8.1远程文件包含_image_1.png)
+![](https://img.l1uyun.top/phpmyadmin-4.8.1远程文件包含_image_1.png)
 当allow_url_include and allow_url_fopen均为off 在window主机环境下仍然可以进行远程文件执行，用445端口SMB协议进行远程加载。
 
 ## 漏洞复现
 直接访问下面的路径,能输出passwd内容那就是有了
 
 `/index.php?target=db_sql.php%253f/../../../../../../../../etc/passwd`
-![](https://img.l1uyun.one/phpmyadmin-4.8.1远程文件包含_image_2.png)
+![](https://img.l1uyun.top/phpmyadmin-4.8.1远程文件包含_image_2.png)
 
 利用方式的话,就是先在sql栏执行一下select命令,然后去包含session文件,就能获得webshell,进而拿shell
 

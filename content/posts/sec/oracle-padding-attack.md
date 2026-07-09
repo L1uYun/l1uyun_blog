@@ -23,7 +23,7 @@ Blowfish
 
 Twofish
 
-![](https://img.l1uyun.one/202407160948_oracle-padding-attack_image_1.png)
+![](https://img.l1uyun.top/202407160948_oracle-padding-attack_image_1.png)
 ### 填充方案
 如前所述，分组密码采用固定大小的块，当明文不是块大小的倍数时需要填充。存在多种填充技术，但在本次攻击中，我们的重点是 PKCS#7。
 #### PKCS#7
@@ -35,11 +35,11 @@ Twofish
 
 对于attack,需要填充两个字节,所以填充0x02,0x02
 
-![](https://img.l1uyun.one/202407160948_oracle-padding-attack_image_2.png)
+![](https://img.l1uyun.top/202407160948_oracle-padding-attack_image_2.png)
 
 另一种情况,正好以及占据了8个字节,就会另起一个块
 
-![](https://img.l1uyun.one/202407160948_oracle-padding-attack_image_3.png)
+![](https://img.l1uyun.top/202407160948_oracle-padding-attack_image_3.png)
 
 ### 块密码模式
 
@@ -67,12 +67,12 @@ Twofish
 
 第一块明文,加密之后与初始向量异或,第二块明文加密之后,与第一块密文相异或...这种方案,即使明文相同,由于初始向量是不同的,密文最终也是不同的
 
-![](https://img.l1uyun.one/202407160948_oracle-padding-attack_image_4.png)
+![](https://img.l1uyun.top/202407160948_oracle-padding-attack_image_4.png)
 
 解密的时候,首先将最后一块密文C\[-1]\,使用解密算法解密,得到伪明文M\[-1\],然后将伪明文M\[-1\]与倒数第二块密文C\[-2\]进行异或,得到明文P\[-1\]
 
 先解密,然后再异或
-![](https://img.l1uyun.one/202407160948_oracle-padding-attack_image_5.png)
+![](https://img.l1uyun.top/202407160948_oracle-padding-attack_image_5.png)
 ### 异或运算
 异或操作具有逆运算特性,即已知结果和一个操作数,就能退出来另外一个操作数
 ```bash
@@ -85,7 +85,7 @@ A^B=C
 ```
 ## 漏洞检测
 当密文值被修改之后,服务器不能正确的恢复明文时,会有报错信息回显出来
-![](https://img.l1uyun.one/202407160948_oracle-padding-attack_image_6.png)
+![](https://img.l1uyun.top/202407160948_oracle-padding-attack_image_6.png)
 
 ## 攻击原理
 
@@ -102,7 +102,7 @@ if __name__ == '__main__':
 
 对于每个密文块而言,先将密文解密成伪明文(keystream bytes),然后与IV(对于其他的密文块而言,IV就是前面一个密文块)进行异或,得到明文
 
-![](https://img.l1uyun.one/202407160948_oracle-padding-attack_image_7.png)
+![](https://img.l1uyun.top/202407160948_oracle-padding-attack_image_7.png)
 
 这里如果我们修改IV值,就能够改变服务器那边解密出来的明文值,而服务器出现解密失败的话,会有填充错误的信息回显出来,(*这是漏洞产生的条件*)表明服务器检查了解密出来的明文的最后一个字节并将其识别为无效的填充字节。
 
@@ -125,7 +125,7 @@ if __name__ == '__main__':
 Keystream[15] = IV[15] ^ 0x01
 Keystream[15] = 0x35 ^ 0x01 = 0x34
 ```
-![](https://img.l1uyun.one/202407160948_oracle-padding-attack_image_8.png)
+![](https://img.l1uyun.top/202407160948_oracle-padding-attack_image_8.png)
 
 接下来，我们对 IV 的倒数第二个字节（IV 的第 15 个字节）重复相同的过程，挑战是相同的，我们需要猜测 IV 值并将它们发送到服务器，直到我们不再遇到填充错误,即填充的字节为0x02。不过，现在不同的是，我们要求明文的最后两个字节是0x02和0x02。
 
@@ -139,7 +139,7 @@ IV[15] ^ 0x34 = 0x02 => IV[15] = 0x36
 Keystream[14] = IV[14] ^ 0x02
 Keystream[14] = 0x35 ^ 0x02 = 0x37
 ```
-![](https://img.l1uyun.one/202407160948_oracle-padding-attack_image_9.png)
+![](https://img.l1uyun.top/202407160948_oracle-padding-attack_image_9.png)
 ...重复上述过程,直到恢复所有的伪明文
 ### 恢复明文
 第二阶段很简单,我们已经有了原始的IV值,和解密出来的伪明文,直接异或就能得到明文

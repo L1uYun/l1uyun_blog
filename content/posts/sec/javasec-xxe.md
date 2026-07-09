@@ -70,8 +70,8 @@ SYSTEM、PUBLIC是外部资源的申请
 
 1)内部实体
 所谓内部实体是指在一个实体中定义的另一个实体，也就是嵌套定义。
-![](https://img.l1uyun.one/javasec-xxe注入_image_1.png)
-![](https://img.l1uyun.one/javasec-xxe注入_image_2.png)
+![](https://img.l1uyun.top/javasec-xxe注入_image_1.png)
+![](https://img.l1uyun.top/javasec-xxe注入_image_2.png)
 使用&xxe对上面定义的xxe实体进行了引用，到时候输出的时候&xxe就会被“test”替换。
 
 在XML内部声明DTD:
@@ -100,26 +100,26 @@ SYSTEM、PUBLIC是外部资源的申请
 <!ENTITY entityName PUBLIC "publicID" "fileName">
 <!ENTITY example PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "html4-transitional.dtd">
 ```
-![](https://img.l1uyun.one/javasec-xxe注入_image_3.png)
+![](https://img.l1uyun.top/javasec-xxe注入_image_3.png)
 有些XML文档包含system标识符定义的“实体”，这些文档会在DOCTYPE头部标签中呈现。这些定义的’实体’能够访问本地或者远程的内容。
 假如 SYSTEM 后面的内容可以被攻击者控制，那么攻击者就可以随意替换为其他内容，从而读取服务器本地文件（file:///etc/passwd）或者远程文件（http://www.baidu.com/abc.txt）。
 
 3）通用实体
 用”&实体名“引用的实体，在DTD中定义，在XML文档中引用。
-![](https://img.l1uyun.one/javasec-xxe注入_image_4.png)
+![](https://img.l1uyun.top/javasec-xxe注入_image_4.png)
 
 4）参数实体
 使用`% 实体名`（这里空格不能少）在 DTD 中定义，并且只能在 DTD 中使用`%实体名;`引用
 只有在DTD文件中，参数实体的声明才能引用其他实体
 和通用实体一样，参数实体也可以外部引用
-![](https://img.l1uyun.one/javasec-xxe注入_image_5.png)
+![](https://img.l1uyun.top/javasec-xxe注入_image_5.png)
 
 ### XXE
 XXE（XML External Entity Injection，XML 外部实体注入）是一种安全漏洞，通常发生在解析 XML 数据时。攻击者通过在 XML 文档中注入外部实体来读取本地文件、发送数据到远程服务器，甚至执行其他恶意操作。
 XXE 攻击可能导致敏感信息泄露、服务拒绝（DoS）攻击等安全问题。
 
 XXE漏洞之所以名为外部实体漏洞，就是因为问题主要出自于外部资源的申请以及外部实体的引用这部分特性中。我们从XXE的全称（XML外部实体注入）可以看出，XXE也是一种XML注入，只不过注入的是XML外部实体罢了。
-![|500](https://img.l1uyun.one/javasec-xxe注入_image_6.png)
+![|500](https://img.l1uyun.top/javasec-xxe注入_image_6.png)
 ```xml
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE foo [  
@@ -177,7 +177,7 @@ public String XMLReader(@RequestBody String content) {
 }
 ```
 
-![](https://img.l1uyun.one/javasec-xxe注入_image_2.png)
+![](https://img.l1uyun.top/javasec-xxe注入_image_2.png)
 修复方法就是上面代码中的,setFeature,禁用外部实体
 ### SAXParser
 ```java
@@ -200,8 +200,8 @@ public String SAXParser(@RequestParam String content) {
 }
 ```
 会有报错信息,但是dnslog弹成功了
-![](https://img.l1uyun.one/javasec-xxe注入_image_7.png)
-![](https://img.l1uyun.one/javasec-xxe注入_image_8.png)
+![](https://img.l1uyun.top/javasec-xxe注入_image_7.png)
+![](https://img.l1uyun.top/javasec-xxe注入_image_8.png)
 
 ### SAXReader
 ```java

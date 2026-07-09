@@ -22,7 +22,7 @@ Nmap done: 1 IP address (1 host up) scanned in 7.38 seconds
 ```
 
 22端口是filtered...没注意这个细节
-![HMV_airbind_image_1](https://img.l1uyun.one/HMV_airbind_image_1.png)
+![HMV_airbind_image_1](https://img.l1uyun.top/HMV_airbind_image_1.png)
 
 ## web_80
 
@@ -49,7 +49,7 @@ Nmap done: 1 IP address (1 host up) scanned in 7.38 seconds
 ```
 ### db文件泄露
 在db目录下找到一个sqlite的转储文件,使用在线工具解析一下,发现user
-![HMV_airbind_image_2](https://img.l1uyun.one/HMV_airbind_image_2.png)
+![HMV_airbind_image_2](https://img.l1uyun.top/HMV_airbind_image_2.png)
 
 ```bash
 admin@localhost.com
@@ -74,14 +74,14 @@ Session completed.
 
 .....admin,admin弱口令是吧
 ### GIF89a,文件上传
-![HMV_airbind_image_3](https://img.l1uyun.one/HMV_airbind_image_3.png)
+![HMV_airbind_image_3](https://img.l1uyun.top/HMV_airbind_image_3.png)
 
-![HMV_airbind_image_4](https://img.l1uyun.one/HMV_airbind_image_4.png)
+![HMV_airbind_image_4](https://img.l1uyun.top/HMV_airbind_image_4.png)
 
 ## root1
 
 还是得用原生的终端,tabby又出现卡死了
-![HMV_airbind_image_5](https://img.l1uyun.one/HMV_airbind_image_5.png)
+![HMV_airbind_image_5](https://img.l1uyun.top/HMV_airbind_image_5.png)
 进去之后sudo -l,nopasswd/all
 ### user.txt
 应该又是docker环境了

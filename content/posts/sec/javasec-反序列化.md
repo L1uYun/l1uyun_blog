@@ -160,7 +160,7 @@ public String cc(String base64) {
 }
 ```
 ObjectInputStream.readObject,将对象给恢复,调用恢复对象的readObject方法,执行命令
-![|600](https://img.l1uyun.one/javasec-反序列化_image_1.png)
+![|600](https://img.l1uyun.top/javasec-反序列化_image_1.png)
 
 #### XMLDecoder
 也是一样的,只不过是换成了xmldecode.readObject
@@ -202,7 +202,7 @@ xmlDecoder.close();
 </java>
 
 ```
-![](https://img.l1uyun.one/javasec-反序列化_image_2.png)
+![](https://img.l1uyun.top/javasec-反序列化_image_2.png)
 #### SnakeYaml
 SnakeYAML 反序列化,
 SnakeYAML 在反序列化时可以指定 class 类型和构造方法的参数,
@@ -224,7 +224,7 @@ public void yaml(String content) {
   ]]
 ]
 ```
-![](https://img.l1uyun.one/javasec-反序列化_image_3.png)
+![](https://img.l1uyun.top/javasec-反序列化_image_3.png)
 
 ### 安全代码
 #### 黑白名单
@@ -269,13 +269,13 @@ public void safe(String content) {
 白盒发现（特征类接口函数）
 ### 白盒
 看是否用到了这些库,以及上面那些函数吧
-![](https://img.l1uyun.one/javasec-反序列化_image_4.png)
+![](https://img.l1uyun.top/javasec-反序列化_image_4.png)
 ### 黑盒
 黑盒的话看流量,看特征码
 java序列化的数据一般会以标记(ac ed 00 05)开头，base64编码的特征为rO0AB，
 
 burp插件
-![|600](https://img.l1uyun.one/javasec-反序列化_image_5.png)
+![|600](https://img.l1uyun.top/javasec-反序列化_image_5.png)
 
 需要配置一下ysoserial(一款java反序列化漏洞payload生成器)的路径
 
