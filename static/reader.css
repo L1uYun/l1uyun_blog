@@ -59,6 +59,40 @@
   gap: 0.5rem;
 }
 
+.read-aloud__voice-row {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem 0.8rem;
+  margin-top: 0.85rem;
+}
+
+.read-aloud__voice-picker {
+  display: flex;
+  flex: 0 1 24rem;
+  min-width: 0;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.read-aloud__voice-picker > span {
+  flex: 0 0 auto;
+}
+
+.read-aloud__voice-picker select {
+  flex: 1 1 auto;
+  width: auto;
+  min-width: 0;
+}
+
+.read-aloud__voice-row small {
+  flex: 1 1 14rem;
+  color: var(--reader-muted);
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
 .read-aloud [hidden] {
   display: none !important;
 }
@@ -162,7 +196,7 @@
 
 .read-aloud__settings-grid {
   display: grid;
-  grid-template-columns: minmax(11rem, 1.25fr) minmax(10rem, 1fr);
+  grid-template-columns: minmax(10rem, 1fr);
   gap: 0.9rem 1.25rem;
   margin-top: 0.85rem;
   padding-top: 0.85rem;
@@ -276,6 +310,20 @@
 
   .read-aloud__actions {
     width: 100%;
+  }
+
+  .read-aloud__voice-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .read-aloud__voice-picker {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  .read-aloud__voice-row small {
+    flex: 0 0 auto;
   }
 
   .read-aloud .read-aloud__button {

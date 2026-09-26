@@ -29,29 +29,31 @@
     </div>
   </div>
 
+  <div class="read-aloud__voice-row">
+    <label class="read-aloud__voice-picker">
+      <span>音色</span>
+      <select data-reader-voice aria-describedby="read-aloud-voice-note">
+        <optgroup label="Gemini AI 声音">
+          <option value="gemini:Vindemiatrix">Vindemiatrix · 温柔舒缓（推荐）</option>
+          <option value="gemini:Achernar">Achernar · 柔和安静</option>
+          <option value="gemini:Sulafat">Sulafat · 温暖叙事</option>
+          <option value="gemini:Kore">Kore · 坚定清晰</option>
+          <option value="gemini:Aoede">Aoede · 轻盈自然</option>
+          <option value="gemini:Charon">Charon · 知性讲述</option>
+        </optgroup>
+        <optgroup label="设备声音">
+          <option value="browser:">系统默认</option>
+        </optgroup>
+      </select>
+    </label>
+    <small id="read-aloud-voice-note" data-reader-voice-note>选择后即可用对应音色朗读；失败时自动使用设备声音。</small>
+  </div>
+
   <progress class="read-aloud__progress" data-reader-progress max="1" value="0" aria-label="朗读进度"></progress>
 
   <details class="read-aloud__settings">
-    <summary>声音与语速</summary>
+    <summary>语速与语气</summary>
     <div class="read-aloud__settings-grid">
-      <label class="read-aloud__field">
-        <span>朗读声音</span>
-        <select data-reader-voice aria-describedby="read-aloud-voice-note">
-          <optgroup label="Gemini AI 声音">
-            <option value="gemini:Vindemiatrix">Vindemiatrix · 温柔舒缓（推荐）</option>
-            <option value="gemini:Achernar">Achernar · 柔和安静</option>
-            <option value="gemini:Sulafat">Sulafat · 温暖叙事</option>
-            <option value="gemini:Kore">Kore · 坚定清晰</option>
-            <option value="gemini:Aoede">Aoede · 轻盈自然</option>
-            <option value="gemini:Charon">Charon · 知性讲述</option>
-          </optgroup>
-          <optgroup label="设备声音">
-            <option value="browser:">系统默认</option>
-          </optgroup>
-        </select>
-        <small id="read-aloud-voice-note" data-reader-voice-note>AI 声音更有表现力；失败时自动使用设备声音。</small>
-      </label>
-
       <label class="read-aloud__field read-aloud__field--rate">
         <span>语速 <output data-reader-rate-output>1.00×</output></span>
         <input data-reader-rate type="range" min="0.75" max="1.35" step="0.05" value="1" aria-label="朗读语速">
