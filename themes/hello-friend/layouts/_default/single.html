@@ -1,6 +1,8 @@
 {{ define "head" }}
   {{ if .Next -}}<link rel="prefetch" href="{{ .Next.Permalink }}">{{- end }}
   {{ if .Prev -}}<link rel="prefetch" href="{{ .Prev.Permalink }}">{{- end }}
+  <link rel="stylesheet" href="/reader.css?v=20260926-2">
+  <script defer src="/reader.js?v=20260926-2"></script>
 {{ end }}
 
 {{ define "main" }}
@@ -12,7 +14,7 @@
     {{ partial "breadcrumb.html" . }}
   {{ if eq $PostCate "1111"}}
   {{ else }}
-    <h2 class="post-title"><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h2>
+    <h2 class="post-title" id="article-title"><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h2>
     <div class="post-meta">
       {{ if .Site.Params.busuanzi.enable -}}
       <div  class="meta-item">
@@ -28,15 +30,18 @@
         {{ end }}
       {{ end }}
     </div>
+    {{ if eq .Type $contentTypeName }}
+      {{ partial "reader.html" . }}
+    {{ end }}
     {{ if .Params.feature }}
       {{ if .Params.UseRelativeCover }}
-        <img loading='lazy' decoding="async" src="{{ (printf "%s%s" .Permalink .Params.feature ) }}" class="post-cover" />
+        <img loading="lazy" decoding="async" src="{{ (printf "%s%s" .Permalink .Params.feature ) }}" class="post-cover" alt="{{ .Params.featureAlt | default .Title }}" />
       {{ else }}
-        <img loading='lazy' decoding="async" src="{{ .Params.feature | absURL }}" class="post-cover" />
+        <img loading="lazy" decoding="async" src="{{ .Params.feature | absURL }}" class="post-cover" alt="{{ .Params.featureAlt | default .Title }}" />
       {{ end }}
     {{ end }}
   
-    <div class="post-content">
+    <div class="post-content" id="article-content" aria-labelledby="article-title">
       {{ if .Params.toc }}{{ .TableOfContents }}{{ end }}
       {{ .Content }}
       {{ .Render "path"}}
