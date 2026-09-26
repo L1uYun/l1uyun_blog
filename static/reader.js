@@ -35,6 +35,8 @@
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var storageKey = "l1uyun-reader-preferences-v1";
   var geminiVoices = [
+    { value: "gemini:Vindemiatrix", label: "Vindemiatrix · 温柔舒缓（推荐）" },
+    { value: "gemini:Achernar", label: "Achernar · 柔和安静" },
     { value: "gemini:Sulafat", label: "Sulafat · 温暖叙事" },
     { value: "gemini:Kore", label: "Kore · 坚定清晰" },
     { value: "gemini:Aoede", label: "Aoede · 轻盈自然" },
@@ -294,7 +296,7 @@
     if (savedVoice && optionValues.indexOf(savedVoice) !== -1) {
       voiceSelect.value = savedVoice;
     } else if (supportsGemini) {
-      voiceSelect.value = "gemini:Sulafat";
+      voiceSelect.value = "gemini:Vindemiatrix";
     } else {
       var preferred = voices.slice().sort(function (a, b) { return voiceScore(b) - voiceScore(a); })[0];
       voiceSelect.value = preferred ? "browser:" + preferred.voiceURI : "browser:";
@@ -315,7 +317,7 @@
   }
 
   function selectedGeminiVoice() {
-    return isGeminiSelected() ? voiceSelect.value.slice("gemini:".length) : "Sulafat";
+    return isGeminiSelected() ? voiceSelect.value.slice("gemini:".length) : "Vindemiatrix";
   }
 
   function selectedBrowserVoice() {

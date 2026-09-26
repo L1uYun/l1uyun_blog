@@ -2,5 +2,11 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "l1uyun-blog",
   "pages_build_output_dir": "./public",
-  "compatibility_date": "2026-09-26"
+  "compatibility_date": "2026-09-26",
+  "r2_buckets": [
+    {
+      "binding": "TTS_CACHE",
+      "bucket_name": "l1uyun-blog-tts-cache"
+    }
+  ]
 }

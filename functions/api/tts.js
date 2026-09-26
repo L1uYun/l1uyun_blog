@@ -3,7 +3,17 @@ const DEFAULT_API_URL = "https://generativelanguage.googleapis.com/v1beta/intera
 const MAX_SEGMENTS = 12;
 const MAX_SEGMENT_LENGTH = 420;
 const MAX_TRANSCRIPT_LENGTH = 720;
-const ALLOWED_VOICES = new Set(["Sulafat", "Kore", "Aoede", "Charon"]);
+const MAX_RESPONSE_BYTES = 32_000_000;
+const CACHE_VERSION = "v1";
+const DEFAULT_VOICE = "Vindemiatrix";
+const ALLOWED_VOICES = new Set([
+  "Vindemiatrix",
+  "Achernar",
+  "Sulafat",
+  "Kore",
+  "Aoede",
+  "Charon",
+]);
 const DELIVERY_STYLES = {
   expressive: "warm, vivid audiobook narration in Mandarin Chinese, with natural emotional variation, clear phrasing, and restrained dramatic emphasis",
   natural: "clear and natural Mandarin Chinese narration with calm, steady pacing",
@@ -150,7 +160,7 @@ export async function onRequestPost(context) {
   const validated = validateSegments(body.segments);
   if (!validated) return jsonResponse("朗读片段无效。", 400);
 
-  const voice = ALLOWED_VOICES.has(body.voice) ? body.voice : "Sulafat";
+  const voice = ALLOWED_VOICES.has(body.voice) ? body.voice : DEFAULT_VOICE;
   const styleName = Object.hasOwn(DELIVERY_STYLES, body.style) ? body.style : "expressive";
   const articleText = await readArticleText(env, requestUrl, body.path);
 
@@ -165,6 +175,7 @@ export async function onRequestPost(context) {
   const cacheHash = await sha256Hex(
     [GEMINI_MODEL, voice, styleName, validated.transcript].join("\n"),
   );
+  const objectKey = `reader-audio/${CACHE_VERSION}/${cacheHash}.json`;
   const cacheKey = new Request(new URL(`/__reader-audio/${cacheHash}`, requestUrl.origin), {
     method: "GET",
   });
@@ -175,6 +186,28 @@ export async function onRequestPost(context) {
     const headers = new Headers(cached.headers);
     headers.set("X-Reader-Cache", "HIT");
     return new Response(cached.body, { status: cached.status, headers });
+  }
+
+  if (env.TTS_CACHE) {
+    try {
+      const stored = await env.TTS_CACHE.get(objectKey);
+      if (stored) {
+        const headers = new Headers({
+          "Content-Type": "application/json; charset=utf-8",
+          "Cache-Control": "public, max-age=31536000, immutable",
+          "X-Content-Type-Options": "nosniff",
+          "X-Reader-Cache": "R2",
+        });
+        stored.writeHttpMetadata(headers);
+        headers.set("Content-Type", "application/json; charset=utf-8");
+        headers.set("Cache-Control", "public, max-age=31536000, immutable");
+        const response = new Response(stored.body, { status: 200, headers });
+        context.waitUntil(cache.put(cacheKey, response.clone()));
+        return response;
+      }
+    } catch {
+      // R2 is the durable cache; a temporary storage error falls through to Gemini.
+    }
   }
 
   const apiUrl = env.GEMINI_API_BASE_URL || DEFAULT_API_URL;
@@ -225,7 +258,18 @@ export async function onRequestPost(context) {
     );
   }
 
-  const response = new Response(upstream.body, {
+  let payload;
+  try {
+    payload = await upstream.arrayBuffer();
+  } catch {
+    return jsonResponse("AI 朗读响应读取失败。", 502);
+  }
+
+  if (!payload.byteLength || payload.byteLength > MAX_RESPONSE_BYTES) {
+    return jsonResponse("AI 朗读响应大小异常。", 502);
+  }
+
+  const response = new Response(payload, {
     status: 200,
     headers: {
       "Content-Type": "application/json; charset=utf-8",
@@ -234,6 +278,24 @@ export async function onRequestPost(context) {
       "X-Reader-Cache": "MISS",
     },
   });
+
+  if (env.TTS_CACHE) {
+    try {
+      await env.TTS_CACHE.put(objectKey, payload, {
+        httpMetadata: {
+          contentType: "application/json; charset=utf-8",
+          cacheControl: "public, max-age=31536000, immutable",
+        },
+        customMetadata: {
+          model: GEMINI_MODEL,
+          voice,
+          style: styleName,
+        },
+      });
+    } catch {
+      // Keep the reader available even if persistent caching is briefly unavailable.
+    }
+  }
 
   context.waitUntil(cache.put(cacheKey, response.clone()));
   return response;
