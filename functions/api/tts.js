@@ -6,6 +6,7 @@ const MAX_TRANSCRIPT_LENGTH = 720;
 const MAX_RESPONSE_BYTES = 32_000_000;
 const CACHE_VERSION = "v1";
 const DEFAULT_VOICE = "Vindemiatrix";
+const READER_ENABLED = false;
 const ALLOWED_VOICES = new Set([
   "Vindemiatrix",
   "Achernar",
@@ -130,6 +131,8 @@ async function sha256Hex(value) {
 }
 
 export async function onRequestPost(context) {
+  if (!READER_ENABLED) return jsonResponse("朗读功能暂未开放。", 404);
+
   const { request, env } = context;
   const requestUrl = new URL(request.url);
   const origin = request.headers.get("Origin");
@@ -302,5 +305,6 @@ export async function onRequestPost(context) {
 }
 
 export function onRequest(context) {
+  if (!READER_ENABLED) return jsonResponse("朗读功能暂未开放。", 404);
   return jsonResponse(`不支持 ${context.request.method} 请求。`, 405, { Allow: "POST" });
 }

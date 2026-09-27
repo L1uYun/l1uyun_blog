@@ -1,8 +1,10 @@
 {{ define "head" }}
   {{ if .Next -}}<link rel="prefetch" href="{{ .Next.Permalink }}">{{- end }}
   {{ if .Prev -}}<link rel="prefetch" href="{{ .Prev.Permalink }}">{{- end }}
+  {{/* Accessible article reader temporarily disabled.
   <link rel="stylesheet" href="/reader.css?v=20260926-4">
   <script defer src="/reader.js?v=20260926-4"></script>
+  */}}
 {{ end }}
 
 {{ define "main" }}
@@ -31,7 +33,7 @@
       {{ end }}
     </div>
     {{ if eq .Type $contentTypeName }}
-      {{ partial "reader.html" . }}
+      {{/* Accessible article reader temporarily disabled. Re-enable with: partial "reader.html" . */}}
     {{ end }}
     {{ if .Params.feature }}
       {{ if .Params.UseRelativeCover }}
